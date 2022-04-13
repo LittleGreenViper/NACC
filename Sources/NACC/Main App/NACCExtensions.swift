@@ -21,6 +21,32 @@
 import UIKit
 
 /* ###################################################################################################################################### */
+// MARK: - Attributed String Extension -
+/* ###################################################################################################################################### */
+/**
+ This extension allows us to get the displayed height and width (given a full-sized canvas -so no wrapping or truncating) of an attributed string.
+ */
+extension NSAttributedString {
+    /* ################################################################## */
+    /**
+     - returns: The string height required to display the string.
+     */
+    var stringHeight: CGFloat {
+        let rect = self.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
+        return ceil(rect.size.height)
+    }
+    
+    /* ################################################################## */
+    /**
+     - returns: The string width required to display the string.
+     */
+    var stringWidth: CGFloat {
+        let rect = self.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
+        return ceil(rect.size.width)
+    }
+}
+
+/* ###################################################################################################################################### */
 // MARK: - Bundle Extension -
 /* ###################################################################################################################################### */
 /**
@@ -35,6 +61,12 @@ extension Bundle {
 
     /* ################################################################## */
     /**
+     If there is a help site URI, it is returned here as a String. It may be nil.
+     */
+    var helpURIAsString: String? { object(forInfoDictionaryKey: "InfoScreenHelpSiteURL") as? String }
+
+    /* ################################################################## */
+    /**
      If there is a privacy site URI, it is returned here as a String. It may be nil.
      */
     var privacyURIAsString: String? { object(forInfoDictionaryKey: "InfoScreenPrivacySiteURL") as? String }
@@ -44,6 +76,12 @@ extension Bundle {
      If there is a copyright site URI, it is returned here as a URL. It may be nil.
      */
     var siteURI: URL? { URL(string: siteURIAsString ?? "") }
+    
+    /* ################################################################## */
+    /**
+     If there is a help site URI, it is returned here as a URL. It may be nil.
+     */
+    var helpURI: URL? { URL(string: helpURIAsString ?? "") }
 
     /* ################################################################## */
     /**
@@ -164,5 +202,61 @@ extension UIImage {
         let a = CGFloat(data[pixelByteOffset + 3]) / divisor
 
         return UIColor(red: r, green: g, blue: b, alpha: a)
+    }
+
+    /* ################################################################## */
+    /**
+     This allows an image to be resized, given a maximum dimension, and a scale will be determined to meet that dimension.
+     If the image is currently smaller than the maximum size, it will not be scaled.
+     
+     - parameter toMaximumSize: The maximum size, in either the X or Y axis, of the image, in pixels.
+     
+     - returns: A new image, with the given dimensions. May be nil, if there was an error.
+     */
+    func resized(toMaximumSize: CGFloat) -> UIImage? {
+        let scaleX: CGFloat = toMaximumSize / size.width
+        let scaleY: CGFloat = toMaximumSize / size.height
+        return resized(toScaleFactor: min(1.0, min(scaleX, scaleY)))
+    }
+
+    /* ################################################################## */
+    /**
+     This allows an image to be resized, given a maximum dimension, and a scale will be determined to meet that dimension.
+     
+     - parameter toScaleFactor: The scale of the resulting image, as a multiplier of the current size.
+     
+     - returns: A new image, with the given scale. May be nil, if there was an error.
+     */
+    func resized(toScaleFactor inScaleFactor: CGFloat) -> UIImage? { resized(toNewWidth: size.width * inScaleFactor, toNewHeight: size.height * inScaleFactor) }
+    
+    /* ################################################################## */
+    /**
+     This allows an image to be resized, given both a width and a height, or just one of the dimensions.
+     
+     - parameters:
+         - toNewWidth: The width (in pixels) of the desired image. If not provided, a scale will be determined from the toNewHeight parameter.
+         - toNewHeight: The height (in pixels) of the desired image. If not provided, a scale will be determined from the toNewWidth parameter.
+     
+     - returns: A new image, with the given dimensions. May be nil, if no width or height was supplied, or if there was an error.
+     */
+    func resized(toNewWidth inNewWidth: CGFloat? = nil, toNewHeight inNewHeight: CGFloat? = nil) -> UIImage? {
+        guard nil == inNewWidth,
+              nil == inNewHeight else {
+            var scaleX: CGFloat = (inNewWidth ?? size.width) / size.width
+            var scaleY: CGFloat = (inNewHeight ?? size.height) / size.height
+
+            scaleX = nil == inNewWidth ? scaleY : scaleX
+            scaleY = nil == inNewHeight ? scaleX : scaleY
+
+            let destinationSize = CGSize(width: size.width * scaleX, height: size.height * scaleY)
+            let destinationRect = CGRect(origin: .zero, size: destinationSize)
+
+            UIGraphicsBeginImageContextWithOptions(destinationSize, false, 0)
+            defer { UIGraphicsEndImageContext() }   // This makes sure that we get rid of the offscreen context.
+            draw(in: destinationRect, blendMode: .normal, alpha: 1)
+            return UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(renderingMode)
+        }
+        
+        return nil
     }
 }

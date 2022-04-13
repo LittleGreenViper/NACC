@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>NACCPersistentPrefs Class Reference</title>
+    <title>NSAttributedString Extension Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/NACCPersistentPrefs" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Extension/NSAttributedString" class="dashAnchor"></a>
 
-    <a title="NACCPersistentPrefs Class Reference"></a>
+    <a title="NSAttributedString Extension Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html"> Reference</a>
       <img class="carat" src="../img/carat.png" alt=""/>
-      NACCPersistentPrefs Class Reference
+      NSAttributedString Extension Reference
     </p>
 
     <div class="content-wrapper">
@@ -111,15 +111,15 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>NACCPersistentPrefs</h1>
+            <h1>NSAttributedString</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">NACCPersistentPrefs</span> <span class="p">:</span> <span class="kt">RVS_PersistentPrefs</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NSAttributedString</span></code></pre>
 
                 </div>
               </div>
-            <p>This is the subclass of the preferences type that will provide our persistent app settings.</p>
+            <p>This extension allows us to get the displayed height and width (given a full-sized canvas -so no wrapping or truncating) of an attributed string.</p>
 
           </div>
         </section>
@@ -127,22 +127,13 @@
         <section class="section">
           <div class="section-content">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Preference%20Keys"></a>
-                <a name="//apple_ref/swift/Section/Preference Keys" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/Preference%20Keys"></a>
-                  <h3 class="section-name"><span>Preference Keys</span>
-</h3>
-                </div>
-              </div>
               <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4NACC19NACCPersistentPrefsC4KeysO"></a>
-                    <a name="//apple_ref/swift/Enum/Keys" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4NACC19NACCPersistentPrefsC4KeysO">Keys</a>
+                    <a name="/s:So18NSAttributedStringC4NACCE12stringHeight12CoreGraphics7CGFloatVvp"></a>
+                    <a name="//apple_ref/swift/Property/stringHeight" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So18NSAttributedStringC4NACCE12stringHeight12CoreGraphics7CGFloatVvp">stringHeight</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -150,98 +141,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This is an enumeration that will list the prefs keys for us.</p>
-
-                        <a href="../Classes/NACCPersistentPrefs/Keys.html" class="slightly-smaller">See more</a>
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">Keys</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">stringHeight</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/RVS_PersistentPrefs%20Conformance"></a>
-                <a name="//apple_ref/swift/Section/RVS_PersistentPrefs Conformance" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/RVS_PersistentPrefs%20Conformance"></a>
-                  <h3 class="section-name"><span>RVS_PersistentPrefs Conformance</span>
-</h3>
-                </div>
-              </div>
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4NACC19NACCPersistentPrefsC4keysSaySSGvp"></a>
-                    <a name="//apple_ref/swift/Property/keys" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4NACC19NACCPersistentPrefsC4keysSaySSGvp">keys</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This is a list of the keys for our prefs.
-We should use the enum for the keys (rawValue).</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">override</span> <span class="k">var</span> <span class="nv">keys</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/External%20Prefs%20Access%20Computed%20Properties"></a>
-                <a name="//apple_ref/swift/Section/External Prefs Access Computed Properties" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/External%20Prefs%20Access%20Computed%20Properties"></a>
-                  <h3 class="section-name"><span>External Prefs Access Computed Properties</span>
-</h3>
-                </div>
-              </div>
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4NACC19NACCPersistentPrefsC9cleanDate10Foundation0E0Vvp"></a>
-                    <a name="//apple_ref/swift/Property/cleanDate" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4NACC19NACCPersistentPrefsC9cleanDate10Foundation0E0Vvp">cleanDate</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This flag tells us whether or not the user will be prompted to create a calendar event, whenever they indicate attendance at a meeting.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">cleanDate</span><span class="p">:</span> <span class="kt">Date</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The string height required to display the string.</p>
                       </div>
                     </section>
                   </div>
@@ -249,9 +161,9 @@ We should use the enum for the keys (rawValue).</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4NACC19NACCPersistentPrefsC20lastSelectedTabIndexSivp"></a>
-                    <a name="//apple_ref/swift/Property/lastSelectedTabIndex" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4NACC19NACCPersistentPrefsC20lastSelectedTabIndexSivp">lastSelectedTabIndex</a>
+                    <a name="/s:So18NSAttributedStringC4NACCE11stringWidth12CoreGraphics7CGFloatVvp"></a>
+                    <a name="//apple_ref/swift/Property/stringWidth" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So18NSAttributedStringC4NACCE11stringWidth12CoreGraphics7CGFloatVvp">stringWidth</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -259,16 +171,19 @@ We should use the enum for the keys (rawValue).</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This flag tells us whether or not the user prefers their search results as a list, as opposed to a map.</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">lastSelectedTabIndex</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">stringWidth</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The string width required to display the string.</p>
                       </div>
                     </section>
                   </div>

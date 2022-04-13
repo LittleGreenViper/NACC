@@ -40,6 +40,12 @@ class NACCInitialViewController: NACCBaseViewController {
     */
     private static let _minimumScreenHeight = CGFloat(400)
     
+    /* ############################################################## */
+    /**
+     The sizing coefficient to use. This compares against the screen size (center image "watermark").
+     */
+    private static let _tagSizeCoefficient = CGFloat(0.6)
+    
     /* ################################################################## */
     /**
      The period that we use for the "fade in" animation.
@@ -65,7 +71,7 @@ class NACCInitialViewController: NACCBaseViewController {
     /**
      This will contain the cleantime display for this screen. We set it at runtime.
     */
-    var cleanTimeDisplayView: LGV_UICleantimeImageViewBase?
+    var cleantimeDisplayView: LGV_UICleantimeImageViewBase?
     
     /* ################################################################################################################################## */
     // MARK: Instance IBOutlet Properties
@@ -96,11 +102,19 @@ class NACCInitialViewController: NACCBaseViewController {
 
     /* ################################################################## */
     /**
+     This is a container view for the logo, at the top of the screen.
     */
     @IBOutlet weak var logoContainerView: UIView?
     
     /* ################################################################## */
     /**
+     This is a switched-off constraint that collapses the medallion/keytag view, when the screen is a shorty.
+    */
+   @IBOutlet weak var cleantimeDisplayHeightConstraint: NSLayoutConstraint?
+    
+    /* ################################################################## */
+    /**
+     This does the same for the logo (but we use the constant, so it animates better).
     */
     @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint?
     
@@ -121,14 +135,6 @@ class NACCInitialViewController: NACCBaseViewController {
 // MARK: Instance Methods
 /* ###################################################################################################################################### */
 extension NACCInitialViewController {
-    /* ################################################################## */
-    /**
-     This reads the cleantime, then adds whatever is necessary as the cleantime commemoration display.
-    */
-    func setCleantimeDisplay() {
-        
-    }
-    
     /* ################################################################## */
     /**
      Sets the date, first time through.
@@ -167,7 +173,7 @@ extension NACCInitialViewController {
             cleantimeReportLabel?.alpha = 0.0
             infoButton?.customView?.alpha = 0.0
             actionButton?.customView?.alpha = 0.0
-            cleanTimeDisplayView?.alpha = 0
+            cleantimeDisplayView?.alpha = 0
             view.layoutIfNeeded()
             UIView.animate(withDuration: Self._fadeAnimationPeriod, animations: { [weak self] in
                                                                                     startupLogo.alpha = 0.0
@@ -176,7 +182,7 @@ extension NACCInitialViewController {
                                                                                     self?.logoContainerView?.alpha = 1.0
                                                                                     self?.dateSelector?.alpha = 1.0
                                                                                     self?.cleantimeReportLabel?.alpha = 1.0
-                                                                                    self?.cleanTimeDisplayView?.alpha = 1.0
+                                                                                    self?.cleantimeDisplayView?.alpha = 1.0
                                                                                     self?.view.layoutIfNeeded()
                                                                                 },
                            completion: { [weak self] _ in
@@ -235,10 +241,10 @@ extension NACCInitialViewController {
         if let view = view {
             if 0 < view.bounds.size.height {
                 if Self._minimumScreenHeight > view.bounds.size.height {
-                    cleantimeViewContainer?.isHidden = true
+                    cleantimeDisplayHeightConstraint?.isActive = true
                     logoHeightConstraint?.constant = 0
                 } else {
-                    cleantimeViewContainer?.isHidden = false
+                    cleantimeDisplayHeightConstraint?.isActive = false
                     logoHeightConstraint?.constant = originalLogoHeight
                 }
             }
@@ -257,6 +263,8 @@ extension NACCInitialViewController {
      - parameter inDatePicker: The picker instance.
     */
     @IBAction func newDate(_ inDatePicker: UIDatePicker!) {
+        cleantimeDisplayView?.removeFromSuperview()
+        cleantimeDisplayView = nil
         guard let datePicker = inDatePicker else { return }
         NACCPersistentPrefs().cleanDate = datePicker.date
         if let text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: datePicker.date, endDate: Date(), calendar: Calendar.current) {
@@ -266,15 +274,40 @@ extension NACCInitialViewController {
         
         let calculator = LGV_CleantimeDateCalc(startDate: datePicker.date, calendar: Calendar.current).cleanTime
         if 0 < calculator.totalDays {
+            cleantimeViewContainer?.isUserInteractionEnabled = true
             cleantimeReportLabel?.isUserInteractionEnabled = true
             cleantimeReportLabel?.textColor = UIColor(named: "SelectionTintColor")
         } else {
+            cleantimeViewContainer?.isUserInteractionEnabled = false
             cleantimeReportLabel?.isUserInteractionEnabled = false
             cleantimeReportLabel?.textColor = .label
         }
         
-        setCleantimeDisplay()
-    }
+        // Have to have at least one day, for a tag.
+        if 0 < calculator.totalDays {
+            if 0 < calculator.years {
+                cleantimeDisplayView = LGV_UISingleCleantimeMedallionImageView()
+            } else {
+                cleantimeDisplayView = LGV_UISingleCleantimeKeytagImageView()
+            }
+            
+            guard let cleantimeDisplayView = cleantimeDisplayView,
+                  let cleantimeViewContainer = cleantimeViewContainer
+            else { return }
+            
+            cleantimeDisplayView.translatesAutoresizingMaskIntoConstraints = false
+            cleantimeViewContainer.addSubview(cleantimeDisplayView)
+            cleantimeDisplayView.centerXAnchor.constraint(equalTo: cleantimeViewContainer.centerXAnchor).isActive = true
+            cleantimeDisplayView.centerYAnchor.constraint(equalTo: cleantimeViewContainer.centerYAnchor).isActive = true
+            cleantimeDisplayView.widthAnchor.constraint(lessThanOrEqualTo: cleantimeViewContainer.widthAnchor, multiplier: Self._tagSizeCoefficient).isActive = true
+            cleantimeDisplayView.heightAnchor.constraint(lessThanOrEqualTo: cleantimeViewContainer.heightAnchor, multiplier: Self._tagSizeCoefficient).isActive = true
+            
+            cleantimeDisplayView.totalDays = calculator.totalDays
+            cleantimeDisplayView.totalMonths = calculator.totalMonths
+            cleantimeDisplayView.contentMode = .scaleAspectFit
+            cleantimeDisplayView.setNeedsLayout()
+        }
+   }
     
     /* ################################################################## */
     /**
@@ -284,7 +317,9 @@ extension NACCInitialViewController {
     */
     @IBAction func actionItemHit(_ inButtonItem: UIBarButtonItem) {
         if let report = NACCAppSceneDelegate.appDelegateInstance?.report {
-            let viewController = UIActivityViewController(activityItems: [report], applicationActivities: nil)
+            let printRenderer = NACCInitialPagePrintRenderer(report: cleantimeReportLabel?.text ?? "ERROR", image: cleantimeDisplayView?.image)
+            let imageAsAny = cleantimeDisplayView?.image as Any
+            let viewController = UIActivityViewController(activityItems: [printRenderer, report, imageAsAny], applicationActivities: nil)
             
             if .pad == traitCollection.userInterfaceIdiom,
                let size = view?.bounds.size {

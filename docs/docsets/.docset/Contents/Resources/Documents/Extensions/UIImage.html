@@ -63,6 +63,9 @@
                 <a class="nav-group-task-link" href="../Classes/NACCBaseViewController.html">NACCBaseViewController</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NACCInitialPagePrintRenderer.html">NACCInitialPagePrintRenderer</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/NACCInitialViewController.html">NACCInitialViewController</a>
               </li>
               <li class="nav-group-task">
@@ -87,6 +90,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/Bundle.html">Bundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/NSAttributedString.html">NSAttributedString</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/UIImage.html">UIImage</a>
@@ -224,25 +230,12 @@ This was inspired by several of the answers <a href="https://stackoverflow.com/q
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Private%20UIImage%20Extension%20For%20Resizing"></a>
-                <a name="//apple_ref/swift/Section/Private UIImage Extension For Resizing" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/Private%20UIImage%20Extension%20For%20Resizing"></a>
-                  <h3 class="section-name"><span>Private UIImage Extension For Resizing</span>
-</h3>
-                </div>
-              </div>
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So7UIImageC4NACCE8_resized33_C9CA2A4ED3A74C72186FB336904AFCC7LL13toMaximumSizeABSg12CoreGraphics7CGFloatV_tF"></a>
-                    <a name="//apple_ref/swift/Method/_resized(toMaximumSize:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So7UIImageC4NACCE8_resized33_C9CA2A4ED3A74C72186FB336904AFCC7LL13toMaximumSizeABSg12CoreGraphics7CGFloatV_tF">_resized(toMaximumSize:<wbr>)</a>
+                    <a name="/s:So7UIImageC4NACCE7resized13toMaximumSizeABSg12CoreGraphics7CGFloatV_tF"></a>
+                    <a name="//apple_ref/swift/Method/resized(toMaximumSize:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIImageC4NACCE7resized13toMaximumSizeABSg12CoreGraphics7CGFloatV_tF">resized(toMaximumSize:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -258,7 +251,7 @@ If the image is currently smaller than the maximum size, it will not be scaled.<
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">_resized</span><span class="p">(</span><span class="nv">toMaximumSize</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">resized</span><span class="p">(</span><span class="nv">toMaximumSize</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -291,9 +284,9 @@ If the image is currently smaller than the maximum size, it will not be scaled.<
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So7UIImageC4NACCE8_resized33_C9CA2A4ED3A74C72186FB336904AFCC7LL13toScaleFactorABSg12CoreGraphics7CGFloatV_tF"></a>
-                    <a name="//apple_ref/swift/Method/_resized(toScaleFactor:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So7UIImageC4NACCE8_resized33_C9CA2A4ED3A74C72186FB336904AFCC7LL13toScaleFactorABSg12CoreGraphics7CGFloatV_tF">_resized(toScaleFactor:<wbr>)</a>
+                    <a name="/s:So7UIImageC4NACCE7resized13toScaleFactorABSg12CoreGraphics7CGFloatV_tF"></a>
+                    <a name="//apple_ref/swift/Method/resized(toScaleFactor:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIImageC4NACCE7resized13toScaleFactorABSg12CoreGraphics7CGFloatV_tF">resized(toScaleFactor:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -308,7 +301,7 @@ If the image is currently smaller than the maximum size, it will not be scaled.<
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">_resized</span><span class="p">(</span><span class="n">toScaleFactor</span> <span class="nv">inScaleFactor</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">resized</span><span class="p">(</span><span class="n">toScaleFactor</span> <span class="nv">inScaleFactor</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -341,9 +334,9 @@ If the image is currently smaller than the maximum size, it will not be scaled.<
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So7UIImageC4NACCE8_resized33_C9CA2A4ED3A74C72186FB336904AFCC7LL10toNewWidth0lM6HeightABSg12CoreGraphics7CGFloatVSg_ALtF"></a>
-                    <a name="//apple_ref/swift/Method/_resized(toNewWidth:toNewHeight:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So7UIImageC4NACCE8_resized33_C9CA2A4ED3A74C72186FB336904AFCC7LL10toNewWidth0lM6HeightABSg12CoreGraphics7CGFloatVSg_ALtF">_resized(toNewWidth:<wbr>toNewHeight:<wbr>)</a>
+                    <a name="/s:So7UIImageC4NACCE7resized10toNewWidth0dE6HeightABSg12CoreGraphics7CGFloatVSg_AKtF"></a>
+                    <a name="//apple_ref/swift/Method/resized(toNewWidth:toNewHeight:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIImageC4NACCE7resized10toNewWidth0dE6HeightABSg12CoreGraphics7CGFloatVSg_AKtF">resized(toNewWidth:<wbr>toNewHeight:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -358,7 +351,7 @@ If the image is currently smaller than the maximum size, it will not be scaled.<
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">_resized</span><span class="p">(</span><span class="n">toNewWidth</span> <span class="nv">inNewWidth</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">toNewHeight</span> <span class="nv">inNewHeight</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">resized</span><span class="p">(</span><span class="n">toNewWidth</span> <span class="nv">inNewWidth</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">toNewHeight</span> <span class="nv">inNewHeight</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>

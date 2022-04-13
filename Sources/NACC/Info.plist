@@ -38,9 +38,9 @@
 	<key>InfoScreenCopyrightSiteURL</key>
 	<string>https://littlegreenviper.com</string>
 	<key>InfoScreenHelpSiteURL</key>
-	<string>https://littlegreenviper.com</string>
+	<string>https://littlegreenviper.com/nacc/</string>
 	<key>InfoScreenPrivacySiteURL</key>
-	<string>https://littlegreenviper.com/privacy</string>
+	<string>https://littlegreenviper.com/welcome-to-little-green-viper/privacy/app-privacy/</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationSceneManifest</key>

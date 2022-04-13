@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D43C66B02694ABFF007D5883"
-               BuildableName = "RecovrrTime.app"
+               BuildableName = "NACC.app"
                BlueprintName = "NACC"
                ReferencedContainer = "container:NACC.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D43C66B02694ABFF007D5883"
-            BuildableName = "RecovrrTime.app"
+            BuildableName = "NACC.app"
             BlueprintName = "NACC"
             ReferencedContainer = "container:NACC.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D43C66B02694ABFF007D5883"
-            BuildableName = "RecovrrTime.app"
+            BuildableName = "NACC.app"
             BlueprintName = "NACC"
             ReferencedContainer = "container:NACC.xcodeproj">
          </BuildableReference>
