@@ -1,0 +1,184 @@
+/*
+ © Copyright 2022, Little Green Viper Software Development LLC
+ 
+ LICENSE:
+ 
+ MIT License
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
+ modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+import UIKit
+import RVS_Generic_Swift_Toolbox
+import LGV_Cleantime
+import LGV_UICleantime
+import RVS_GeneralObserver
+
+/* ###################################################################################################################################### */
+// MARK: - Cleantime Display View Controller -
+/* ###################################################################################################################################### */
+/**
+ This screen is used for the three cleantime displays.
+ */
+class NACCTabBaseViewController: NACCBaseViewController {
+    /* ################################################################################################################################## */
+    // MARK: LGV_UICleantimeImageViewObserver Conformance (Need to be in the main declaration)
+    /* ################################################################################################################################## */
+    /* ################################################################## */
+    /**
+     This is a UUID that is used internally
+     */
+    var uuid = UUID()
+
+    /* ################################################################################################################################## */
+    // MARK: Instance Properties
+    /* ################################################################################################################################## */
+    /* ############################################################## */
+    /**
+     This stores our subscriptions.
+     */
+    var subscriptions: [RVS_GeneralObservableProtocol] = []
+
+    /* ################################################################## */
+    /**
+     The last scroll position (after rendering).
+     
+     Used to reset the point.
+    */
+    var savedScrollPosition: CGFloat = 0
+    
+    /* ################################################################################################################################## */
+    // MARK: Instance IBOutlet Properties
+    /* ################################################################################################################################## */
+    /* ################################################################## */
+    /**
+     The scroller that holds the display.
+    */
+    @IBOutlet var scrollView: UIScrollView?
+    
+    /* ################################################################## */
+    /**
+     This is the cleantime keytag or medallion image.
+    */
+    @IBOutlet var cleantime: LGV_UICleantimeImageViewBase?
+
+    /* ################################################################## */
+    /**
+     This will be a "busy throbber," while the images are being composited.
+    */
+    @IBOutlet weak var throbber: UIActivityIndicatorView?
+}
+
+/* ###################################################################################################################################### */
+// MARK: Base Class Overrides
+/* ###################################################################################################################################### */
+extension NACCTabBaseViewController {
+    /* ################################################################## */
+    /**
+     Called when the view hierarchy has been completed.
+    */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        showThrobber()
+        cleantime?.subscribe(self)
+        let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate, calendar: Calendar.current).cleanTime
+        cleantime?.totalDays = calculator.totalDays
+        cleantime?.totalMonths = calculator.totalMonths
+        cleantime?.setNeedsLayout()
+        
+        scrollView?.accessibilityLabel = "SLUG-ACC-SCROLLVIEW".localizedVariant
+    }
+    
+    /* ################################################################## */
+    /**
+     Called just before the view appears. We use it to set the date picker date.
+     
+     - parameter inIsAnimated: True, if the appearance is to be animated.
+    */
+    override func viewWillAppear(_ inIsAnimated: Bool) {
+        super.viewWillAppear(inIsAnimated)
+        tabBarController?.navigationItem.title = tabBarItem.title
+        scrollView?.contentOffset.y = savedScrollPosition
+        scrollView?.zoomScale = 1.0
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: Instance Methods
+/* ###################################################################################################################################### */
+extension NACCTabBaseViewController {
+    /* ################################################################## */
+    /**
+     This will show a "busy throbber," while the images are being composited.
+    */
+    func showThrobber() {
+        navigationController?.isNavigationBarHidden = true
+        throbber?.isHidden = false
+        cleantime?.isHidden = true
+    }
+    
+    /* ################################################################## */
+    /**
+     This will hide the "busy throbber," after the images were composited.
+    */
+    func hideThrobber() {
+        navigationController?.isNavigationBarHidden = false
+        throbber?.isHidden = true
+        cleantime?.isHidden = false
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: LGV_UICleantimeImageViewObserverProtocol Conformance
+/* ###################################################################################################################################### */
+extension NACCTabBaseViewController: LGV_UICleantimeImageViewObserverProtocol {
+    /* ################################################################## */
+    /**
+     This is called when the images have completed rendering.
+     
+     - parameter view: The completed UIImageView
+     */
+    func renderingComplete(view inImageView: LGV_UICleantimeImageViewBase) {
+        hideThrobber()
+        guard let contentSize = scrollView?.contentSize,
+              0 < contentSize.height
+        else {
+            scrollView?.zoomScale = 1.0
+            return
+        }
+
+        // This makes sure that the scroller goes to the top of the matrix, if it is resized.
+        let intW = inImageView.intrinsicContentSize.width
+        let intH = inImageView.intrinsicContentSize.height
+        let dispW = inImageView.bounds.size.width
+        let scale = max(1.0, intW / dispW)
+        savedScrollPosition = max(0, (contentSize.height - (intH / scale)) / 2)
+        scrollView?.contentOffset.y = savedScrollPosition
+        scrollView?.minimumZoomScale = 1
+        scrollView?.maximumZoomScale = scale * 2
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: UIScrollViewDelegate Conformance
+/* ###################################################################################################################################### */
+extension NACCTabBaseViewController: UIScrollViewDelegate {
+    /* ################################################################## */
+    /**
+     This simply sets the image view as a pinch to zoom target.
+     
+     - parameter in: Ignored
+     - returns: The cleantime view.
+     */
+    func viewForZooming(in: UIScrollView) -> UIView? { cleantime }
+}

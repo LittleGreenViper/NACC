@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          NACC Doumentation
+        </a>
+         (100% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/LittleGreenViper/NACC">
+            <img class="header-icon" src="img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html"> Reference</a>
+      <img class="carat" src="img/carat.png" alt=""/>
+        Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/NACCAboutViewController.html">NACCAboutViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/NACCAppSceneDelegate.html">NACCAppSceneDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/NACCBaseViewController.html">NACCBaseViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/NACCInitialViewController.html">NACCInitialViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/NACCPersistentPrefs.html">NACCPersistentPrefs</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/NACCPersistentPrefs/Keys.html">– Keys</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/NACCTabBarController.html">NACCTabBarController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/NACCTabBarController/TabIndexes.html">– TabIndexes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/NACCTabBaseViewController.html">NACCTabBaseViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Bundle.html">Bundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/UIImage.html">UIImage</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/UIView.html">UIView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/UIViewController.html">UIViewController</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            
+            <h1 id='code-nacc-na-cleantime-calculator-code' class='heading'><code>NACC (NA Cleantime Calculator)</code></h1>
+
+<p><img src="icon.png" alt="The Project Icon"></p>
+<h2 id='overview' class='heading'>Overview</h2>
+
+<p>This is a simple &ldquo;cleantime calculator&rdquo; app, for NA members (It is not associated with <a href="https://na.org">Narcotics Anonymous World Services</a>, or NA, as a whole. It is simply a tool, written for NA members, by NA members).</p>
+<h2 id='basic-operation' class='heading'>Basic Operation</h2>
+<h3 id='the-initial-quot-my-cleantime-quot-screen' class='heading'>The Initial (&ldquo;My Cleantime&rdquo;) Screen</h3>
+
+<p>The initial screen that you see, upon starting the app, has a basic &ldquo;wheel-style&rdquo; date entry that allows you to enter a cleandate. Once you have entered a date, the label below the date entry changes into a report of the cleantime, and also becomes a &ldquo;selectable&rdquo; button.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Figure 1: The Initial Screen</th>
+<th style="text-align: center">Figure 2: After Changing the Date</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><img src="img/Figure-01.png" alt="Figure 1"></td>
+<td style="text-align: center"><img src="img/Figure-02.png" alt="Figure 2"></td>
+</tr>
+</tbody></table>
+
+<p>The app will change to accomodate Dark Mode (Figure 2):</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Figure 3: Dark Mode</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><img src="img/Figure-03.png" alt="Figure 3"></td>
+</tr>
+</tbody></table>
+
+<p>Tapping on the logo will take you to <a href="https://littlegreenviper.com">the Little Green Viper Software Development Web site</a>,</p>
+
+<p>Tapping on the &ldquo;Info&rdquo; button will bring in a screen, displaying information about the app.</p>
+
+<p>Tapping on the &ldquo;action&rdquo; button will allow you to share the report with others, using different apps, like <a href="https://apps.apple.com/us/app/messages/id1146560473">Messages</a>, or <a href="https://apps.apple.com/us/app/mail/id1108187098">Mail</a>.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Figure 4: Action Screen</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><img src="img/Figure-04.png" alt="Figure 4"></td>
+</tr>
+</tbody></table>
+<h3 id='the-cleantime-commemoration-tab-screen' class='heading'>The Cleantime Commemoration Tab Screen</h3>
+
+<p>If you select the cleantime report, it will bring in another screen, that will have three tabs. These tabs will display the cleantime, using keytags or medallions:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Figure 5: Keytags in an Array</th>
+<th style="text-align: center">Figure 6: Keytags in a Vertical Strip</th>
+<th style="text-align: center">Figure 7: Medallions in an Array</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><img src="img/Figure-05.png" alt="Figure 5"></td>
+<td style="text-align: center"><img src="img/Figure-06.png" alt="Figure 6"></td>
+<td style="text-align: center"><img src="img/Figure-07.png" alt="Figure 7"></td>
+</tr>
+</tbody></table>
+
+<p>You can scroll these displays, and also do a pinch-to-zoom.</p>
+
+<p>If you select the action button, you will now be able to print the display, share it (and the report), via <a href="https://apps.apple.com/us/app/messages/id1146560473">Messages</a>, or <a href="https://apps.apple.com/us/app/mail/id1108187098">Mail</a>, or save the image into your Photo Library.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Figure 8: Action Screen</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><img src="img/Figure-08.png" alt="Figure 8"></td>
+</tr>
+</tbody></table>
+
+<p>The app remembers the last date entered, and the last tab selected. In some cases, tabs may not be enabled (If you have entered a date less than 30 days in the past, then only the Keytag Array tab is enabled. If less than 1 year, then the Medallions tab is disabled).</p>
+<h2 id='url-scheme' class='heading'>URL Scheme</h2>
+
+<p>The app can be opened from other apps (like <a href="https://apps.apple.com/us/app/safari/id1146562112">Safari</a> or <a href="https://apps.apple.com/us/app/mail/id1108187098">Mail</a>), using a special URL scheme.</p>
+
+<p>The URL scheme is thus:</p>
+
+<p><strong>nacc://</strong><em>[YYYY-MM-DD[<strong>/</strong>N]]</em></p>
+
+<p><em>YYYY-MM-DD</em> is a standard <a href="https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates">ISO 8601 calendar date</a> (For example, September first, 1980, is 1980-09-01).</p>
+
+<p><em>N</em> is the numerical index of a tab:</p>
+
+<ul>
+<li>0 is Keytag Array</li>
+<li>1 is Keytag Strip</li>
+<li>2 is Medallions</li>
+</ul>
+<h3 id='example-urls-will-only-work-on-an-ios-device-with-nacc-installed' class='heading'>Example URLs (Will only work on an iOS device with NACC installed)</h3>
+
+<ul>
+<li><p><a href="nacc://">nacc://</a>
+This opens the app, but does nothing else. You will be at the initial page, set to whatever the last date was.</p></li>
+<li><p><a href="nacc://1980-09-01">nacc://1980-09-01</a>
+This opens the app, and sets the cleantime to September 1st, 1980. It will open the commemoration tab screen, at whatever the last selected tab was.</p></li>
+<li><p><a href="nacc://2020-03-17/1">nacc://2020-03-17/1</a>
+This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Vertical Keytag Strip tab.</p></li>
+<li><p><a href="nacc://2020-03-17/1">nacc://2020-03-17/1</a>
+This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Vertical Keytag Strip tab.</p></li>
+<li><p><a href="nacc://2020-03-17/2">nacc://2020-03-17/1</a>
+This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Medallions tab.</p></li>
+</ul>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2022 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2022-04-13)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>
