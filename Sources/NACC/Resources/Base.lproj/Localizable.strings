@@ -99,6 +99,7 @@ The Great Rift Valley Software Company
 "SLUG-ACC-REPORT-BUTTON"                        =   "This label will display the results of the calculation. If you have one day or more, you will be able to select it, and be taken to the cleantime display tabs.";
 "SLUG-ACC-ACTION-BUTTON"                        =   "This allows you to share the report. It will bring up a screen, allowing you to send the report to other apps or people (like messages and email).";
 "SLUG-ACC-INFO-BUTTON"                          =   "If you select this button, you will be taken to a screen with information about this app.";
+"SLUG-ACC-IMAGE"                                =   "This image displays the last keytag or medallion that you should have receieved for your cleantime. If you have one day or more, you can select it, and be taken to the cleantime display tabs.";
 
 // MARK: About Screen
 

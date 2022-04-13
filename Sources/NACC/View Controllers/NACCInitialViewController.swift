@@ -213,6 +213,7 @@ extension NACCInitialViewController {
         actionButton?.accessibilityLabel = "SLUG-ACC-ACTION-BUTTON".localizedVariant
         infoButton?.accessibilityLabel = "SLUG-ACC-INFO-BUTTON".localizedVariant
         cleantimeReportLabel?.accessibilityLabel = "SLUG-ACC-REPORT-BUTTON".localizedVariant
+        cleantimeViewContainer?.accessibilityLabel = "SLUG-ACC-IMAGE".localizedVariant
     }
     
     /* ################################################################## */
