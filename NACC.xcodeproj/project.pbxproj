@@ -16,6 +16,7 @@
 		D485259627FDBD2E002EE3E3 /* NACCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */; };
 		D48F812B27FCD36D001A0B87 /* NACCInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F812A27FCD36D001A0B87 /* NACCInitialViewController.swift */; };
 		D48F812D27FCD3FA001A0B87 /* NACCTabBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F812C27FCD3FA001A0B87 /* NACCTabBaseViewController.swift */; };
+		D49C9A7C280783C6008E9917 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D49C9A7A280783C6008E9917 /* InfoPlist.strings */; };
 		D4B80C7D27FCF10300401F72 /* RVS-Persistent-Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D4B80C7C27FCF10300401F72 /* RVS-Persistent-Prefs */; };
 		D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D4BD88F1269E2FAA009015D1 /* NACCAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */; };
@@ -41,6 +42,7 @@
 		D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCExtensions.swift; sourceTree = "<group>"; };
 		D48F812A27FCD36D001A0B87 /* NACCInitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCInitialViewController.swift; sourceTree = "<group>"; };
 		D48F812C27FCD3FA001A0B87 /* NACCTabBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCTabBaseViewController.swift; sourceTree = "<group>"; };
+		D49C9A7B280783C6008E9917 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPersistentPrefs.swift; sourceTree = "<group>"; };
 		D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAboutViewController.swift; sourceTree = "<group>"; };
 		D4C79A1A27F9189800FBB7D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NACC_LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				D4E2F96727FCCA3200457AD4 /* Localizable.strings */,
+				D49C9A7A280783C6008E9917 /* InfoPlist.strings */,
 				D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */,
 				D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */,
 				D4E2F96527FCCA2800457AD4 /* LGV_UICleantime.xcassets */,
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4E2F96927FCCA3200457AD4 /* Localizable.strings in Resources */,
+				D49C9A7C280783C6008E9917 /* InfoPlist.strings in Resources */,
 				D4E2F96627FCCA2800457AD4 /* LGV_UICleantime.xcassets in Resources */,
 				D43C66D12694AC20007D5883 /* Assets.xcassets in Resources */,
 				D4E2F96B27FCCD3400457AD4 /* Theme.xcassets in Resources */,
@@ -270,6 +274,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		D49C9A7A280783C6008E9917 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D49C9A7B280783C6008E9917 /* Base */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -131,7 +131,7 @@ class NACCTabBarController: UITabBarController {
         if let displayImage = (selectedViewController as? NACCTabBaseViewController)?.cleantime?.image,
            let report = NACCAppSceneDelegate.appDelegateInstance?.report,
            !report.isEmpty {
-            let viewController = UIActivityViewController(activityItems: [report, displayImage], applicationActivities: nil)
+            let viewController = UIActivityViewController(activityItems: [displayImage], applicationActivities: nil)
             
             if .pad == traitCollection.userInterfaceIdiom,
                let size = view?.bounds.size {
