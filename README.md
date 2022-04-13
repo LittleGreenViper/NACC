@@ -12,15 +12,9 @@ This is a simple "cleantime calculator" app, for NA members (It is not associate
 
 The initial screen that you see, upon starting the app, has a basic "wheel-style" date entry that allows you to enter a cleandate. Once you have entered a date, the label below the date entry changes into a report of the cleantime, and also becomes a "selectable" button.
 
-|Figure 1: The Initial Screen|Figure 2: After Changing the Date|
-|:----:|:----:|
-|![Figure 1](img/Figure-01.png)|![Figure 2](img/Figure-02.png)|
-
-The app will change to accomodate Dark Mode (Figure 2):
-
-|Figure 3: Dark Mode|
-|:----:|
-|![Figure 3](img/Figure-03.png)|
+|Figure 1: The Initial Screen|Figure 2: After Changing the Date|Figure 3: Dark Mode|
+|:----:|:----:|:----:|
+|![Figure 1](img/Figure-01.png)|![Figure 2](img/Figure-02.png)|![Figure 3](img/Figure-03.png)|
 
 Tapping on the logo will take you to [the Little Green Viper Software Development Web site](https://littlegreenviper.com),
 
