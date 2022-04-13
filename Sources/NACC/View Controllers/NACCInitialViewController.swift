@@ -286,6 +286,7 @@ extension NACCInitialViewController {
         
         // Have to have at least one day, for a tag.
         if 0 < calculator.totalDays {
+            actionButton?.isEnabled = true
             if 0 < calculator.years {
                 cleantimeDisplayView = LGV_UISingleCleantimeMedallionImageView()
             } else {
@@ -307,6 +308,8 @@ extension NACCInitialViewController {
             cleantimeDisplayView.totalMonths = calculator.totalMonths
             cleantimeDisplayView.contentMode = .scaleAspectFit
             cleantimeDisplayView.setNeedsLayout()
+        } else {
+            actionButton?.isEnabled = false
         }
    }
     
