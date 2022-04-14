@@ -298,7 +298,7 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="gcx-fi-5tv">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="725"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="JrZ-cY-Xxh" customClass="LGV_UICleantimeMultipleMedallionsImageView" customModule="LGV_UICleantime">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="JrZ-cY-Xxh" customClass="LGV_UICleantimeMultipleMedallionsImageView" customModule="LGV_UICleantime">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="725"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
@@ -308,8 +308,8 @@
                                             <constraint firstItem="Ly3-dq-lbn" firstAttribute="top" secondItem="JrZ-cY-Xxh" secondAttribute="top" id="EMo-5E-cxc"/>
                                             <constraint firstAttribute="trailing" secondItem="JrZ-cY-Xxh" secondAttribute="trailing" id="LyV-hw-OjB"/>
                                             <constraint firstItem="JrZ-cY-Xxh" firstAttribute="width" secondItem="5zO-QN-lZk" secondAttribute="width" id="bKK-QB-gmC"/>
-                                            <constraint firstItem="JrZ-cY-Xxh" firstAttribute="centerY" secondItem="gcx-fi-5tv" secondAttribute="centerY" placeholder="YES" id="eeY-Rb-6JU"/>
                                             <constraint firstItem="JrZ-cY-Xxh" firstAttribute="leading" secondItem="gcx-fi-5tv" secondAttribute="leading" id="iIB-1e-EpO"/>
+                                            <constraint firstItem="5zO-QN-lZk" firstAttribute="bottom" secondItem="JrZ-cY-Xxh" secondAttribute="bottom" placeholder="YES" id="l53-gD-vsS"/>
                                         </constraints>
                                         <viewLayoutGuide key="contentLayoutGuide" id="Ly3-dq-lbn"/>
                                         <viewLayoutGuide key="frameLayoutGuide" id="5zO-QN-lZk"/>
@@ -374,7 +374,7 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" showsHorizontalScrollIndicator="NO" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="EvK-Sc-3NK">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="725"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="0y2-lW-2GJ" customClass="LGV_UIMultipleCleantimeKeytagImageView" customModule="LGV_UICleantime">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="0y2-lW-2GJ" customClass="LGV_UIMultipleCleantimeKeytagImageView" customModule="LGV_UICleantime">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="725"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
@@ -479,7 +479,7 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" showsHorizontalScrollIndicator="NO" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="WdQ-Nu-H9j">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="725"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="3e0-wz-1xh" customClass="LGV_UIMultipleCleantimeKeytagImageView" customModule="LGV_UICleantime">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="3e0-wz-1xh" customClass="LGV_UIMultipleCleantimeKeytagImageView" customModule="LGV_UICleantime">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="725"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>

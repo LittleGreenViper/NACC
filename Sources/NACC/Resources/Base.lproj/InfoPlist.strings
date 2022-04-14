@@ -6,3 +6,4 @@ Copyright 2021, Recovrr.org
 "InfoScreenCopyrightSiteURL"                    =   "https://littlegreenviper.com";
 "InfoScreenHelpSiteURL"                         =   "https://littlegreenviper.com/nacc/";
 "InfoScreenPrivacySiteURL"                      =   "https://littlegreenviper.com/welcome-to-little-green-viper/privacy/app-privacy/";
+"NSCalendarsUsageDescription"                   =   "This app can add events to your calendar, to remind you of anniversary dates.";

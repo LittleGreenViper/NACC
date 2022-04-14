@@ -22,6 +22,8 @@ import UIKit
 import RVS_Generic_Swift_Toolbox
 import LGV_Cleantime
 import LGV_UICleantime
+import EventKit
+import EventKitUI
 
 /* ###################################################################################################################################### */
 // MARK: - Initial View Controller -
@@ -61,6 +63,12 @@ class NACCInitialViewController: NACCBaseViewController {
     /* ################################################################################################################################## */
     // MARK: Instance Properties
     /* ################################################################################################################################## */
+    /* ################################################################## */
+    /**
+     This will allow us to add events to the Calendar, without leaving this app.
+     */
+    let eventStore = EKEventStore()
+
     /* ################################################################## */
     /**
      This stores the original logo height
@@ -313,6 +321,82 @@ extension NACCInitialViewController {
         } else {
             actionButton?.isEnabled = false
         }
+        
+        /* ################################################################## */
+        /**
+         This adds an attendance event for the next meeting start time.
+         */
+        func addAttendanceEvent() {
+            /* ################################################################## */
+            /**
+             This creates an attendance event for the anniversary.
+             
+             - returns: a new EKEvent for the anniversary, or nil.
+             */
+            func makeAttendanceEvent() -> EKEvent? {
+                guard let date = dateSelector?.date else { return nil }
+                let event = EKEvent(eventStore: eventStore)
+                event.startDate = Calendar.current.startOfDay(for: date)
+                event.isAllDay = true
+                event.addRecurrenceRule(EKRecurrenceRule(recurrenceWith: .yearly, interval: 1, end: nil))
+                return event
+            }
+            
+            eventStore.requestAccess( to: EKEntityType.event,
+                                      completion: { (inIsGranted, inError) in
+                    DispatchQueue.main.async { [weak self] in
+                        guard nil == inError,
+                              inIsGranted,
+                              let self = self,
+                              let event = makeAttendanceEvent()
+                        else { return }
+
+                        let eventController = EKEventEditViewController()
+                        eventController.event = event
+                        eventController.eventStore = self.eventStore
+                        eventController.editViewDelegate = self
+                        self.present(eventController, animated: true, completion: nil)
+                    }
+                }
+            )
+        }
+//
+//            if isHomeGroup {
+//                event.addRecurrenceRule(EKRecurrenceRule(recurrenceWith: .weekly, interval: 1, end: nil))
+//            }
+//
+//            event.title = meetingInstance.name
+//            event.startDate = meetingInstance.nextStartDate
+//            event.endDate = meetingInstance.nextStartDate.addingTimeInterval(TimeInterval(meetingInstance.durationInMinutes) * 60)
+//            event.url = uri
+//
+//            if let coords = meetingInstance.locationCoords {
+//                let structuredLocation = EKStructuredLocation()
+//                structuredLocation.title = meetingInstance.basicAddress
+//                structuredLocation.geoLocation = CLLocation(coordinate: coords, altitude: 0, horizontalAccuracy: 0, verticalAccuracy: 0, timestamp: meetingInstance.nextStartDate)
+//                event.structuredLocation = structuredLocation
+//            } else {
+//                event.location = meetingInstance.basicAddress
+//            }
+//
+//            var notes = [String]()
+//
+//            if !meetingInstance.comments.isEmpty {
+//                notes.append(meetingInstance.comments)
+//            }
+//
+//            let keys = formats.keys.sorted()
+//            for key in keys {
+//                if let name = formats[key]?.short,
+//                   let description = formats[key]?.long {
+//                    let mainString = String(format: "%@ - %@", key, name)
+//                    notes.append("\(mainString)\n\(description)")
+//                }
+//            }
+//
+//            event.notes = notes.joined(separator: "\n\n")
+//
+        
    }
     
     /* ################################################################## */
@@ -322,10 +406,11 @@ extension NACCInitialViewController {
      - parameter inButton: The action item button.
     */
     @IBAction func actionItemHit(_ inButtonItem: UIBarButtonItem) {
-        if let report = NACCAppSceneDelegate.appDelegateInstance?.report {
+        if let date = dateSelector?.date,
+           let report = NACCAppSceneDelegate.appDelegateInstance?.report {
             let printRenderer = NACCPagePrintRenderer(report: cleantimeReportLabel?.text ?? "ERROR", image: cleantimeDisplayView?.image)
             let imageAsAny = cleantimeDisplayView?.image as Any
-            let viewController = UIActivityViewController(activityItems: [printRenderer, report, imageAsAny], applicationActivities: nil)
+            let viewController = UIActivityViewController(activityItems: [printRenderer, report, imageAsAny, date], applicationActivities: nil)
             
             if .pad == traitCollection.userInterfaceIdiom,
                let size = view?.bounds.size {
@@ -337,5 +422,21 @@ extension NACCInitialViewController {
 
             present(viewController, animated: true, completion: nil)
         }
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: EKEventEditViewDelegate Conformance
+/* ###################################################################################################################################### */
+extension NACCInitialViewController: EKEventEditViewDelegate {
+    /* ################################################################## */
+    /**
+     Called when the even kit has completed with an action to add the reminder to the calendar.
+     
+     - parameter inController: The controller we're talking about.
+     - parameter didCompleteWith: The even action that completed.
+     */
+    func eventEditViewController(_ inController: EKEventEditViewController, didCompleteWith inAction: EKEventEditViewAction) {
+        inController.dismiss(animated: true, completion: nil)
     }
 }
