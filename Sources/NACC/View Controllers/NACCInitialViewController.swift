@@ -321,7 +321,7 @@ extension NACCInitialViewController {
     */
     @IBAction func actionItemHit(_ inButtonItem: UIBarButtonItem) {
         if let report = NACCAppSceneDelegate.appDelegateInstance?.report {
-            let printRenderer = NACCInitialPagePrintRenderer(report: cleantimeReportLabel?.text ?? "ERROR", image: cleantimeDisplayView?.image)
+            let printRenderer = NACCPagePrintRenderer(report: cleantimeReportLabel?.text ?? "ERROR", image: cleantimeDisplayView?.image)
             let imageAsAny = cleantimeDisplayView?.image as Any
             let viewController = UIActivityViewController(activityItems: [printRenderer, report, imageAsAny], applicationActivities: nil)
             

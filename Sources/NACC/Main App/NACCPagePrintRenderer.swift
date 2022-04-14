@@ -29,7 +29,7 @@ import LGV_UICleantime
 /**
  This class is a print renderer for the initial page. It will create a formatted report, with the tag/medallion.
  */
-class NACCInitialPagePrintRenderer: UIPrintPageRenderer {
+class NACCPagePrintRenderer: UIPrintPageRenderer {
     /* ################################################################## */
     /**
      We will reduce the font to a level that will display in the area provided.
@@ -70,7 +70,7 @@ class NACCInitialPagePrintRenderer: UIPrintPageRenderer {
 /* ###################################################################################################################################### */
 // MARK: Base Class Override Calculated Instance Properties
 /* ###################################################################################################################################### */
-extension NACCInitialPagePrintRenderer {
+extension NACCPagePrintRenderer {
     /* ################################################################## */
     /**
      - returns: 1 (always)
@@ -81,7 +81,7 @@ extension NACCInitialPagePrintRenderer {
 /* ###################################################################################################################################### */
 // MARK: Base Class Override Methods
 /* ###################################################################################################################################### */
-extension NACCInitialPagePrintRenderer {
+extension NACCPagePrintRenderer {
     /* ################################################################## */
     /**
      This will draw out the report page, with the report in the top quarter, and the image in the bottom.
@@ -105,7 +105,7 @@ extension NACCInitialPagePrintRenderer {
 /* ###################################################################################################################################### */
 // MARK: Instance Methods
 /* ###################################################################################################################################### */
-extension NACCInitialPagePrintRenderer {
+extension NACCPagePrintRenderer {
     /* ################################################################## */
     /**
      Draw the text report.
