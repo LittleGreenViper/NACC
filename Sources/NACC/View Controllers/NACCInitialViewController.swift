@@ -374,7 +374,11 @@ extension NACCInitialViewController {
            let report = NACCAppSceneDelegate.appDelegateInstance?.report {
             let printRenderer = NACCPagePrintRenderer(report: cleantimeReportLabel?.text ?? "ERROR", image: cleantimeDisplayView?.image)
             let imageAsAny = cleantimeDisplayView?.image as Any
-            let viewController = UIActivityViewController(activityItems: [printRenderer, report, imageAsAny, date], applicationActivities: nil)
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let url = URL(string: String(format: "SLUG-URL-STRING".localizedVariant, dateFormatter.string(from: date))) as Any
+            let viewController = UIActivityViewController(activityItems: [printRenderer, report, imageAsAny, url], applicationActivities: nil)
             
             if .pad == traitCollection.userInterfaceIdiom,
                let size = view?.bounds.size {

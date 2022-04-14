@@ -51,6 +51,7 @@
 // MARK: CLEANDATE SCREEN
 
 "SLUG-CLEANDATE"                                =   "My Cleandate";
+"SLUG-URL-STRING"                               =   "nacc://%@";
 
 // MARK: CALENDAR EVENT
 

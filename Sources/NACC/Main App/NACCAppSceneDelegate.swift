@@ -148,6 +148,11 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         #endif
         guard !inURLContexts.isEmpty else { return }
         
+        // We only do this, if we don't already have some original prefs.
+        if nil == originalPrefs {
+            originalPrefs = (cleanDate: NACCPersistentPrefs().cleanDate, lastSelectedTabIndex: NACCTabBarController.TabIndexes(rawValue: NACCPersistentPrefs().lastSelectedTabIndex) ?? .keytagArray) // Store for replacement, later
+        }
+        
         for context in inURLContexts {
             let url = context.url
 
@@ -156,7 +161,6 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
             #endif
             if let host = url.host,
                !host.isEmpty {
-                originalPrefs = (cleanDate: NACCPersistentPrefs().cleanDate, lastSelectedTabIndex: NACCTabBarController.TabIndexes(rawValue: NACCPersistentPrefs().lastSelectedTabIndex) ?? .keytagArray) // Store for replacement, later
                 
                 let pathComponents = url.pathComponents.compactMap { ("/" != $0) && !$0.isEmpty ? $0 : nil }
                 
@@ -199,6 +203,8 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
      
      We use this to set the app to the initial screen, and also, to check if we have a URL specified.
      
+     If we don't have a URL specified, then we restore to any saved state.
+     
      - parameter: The scene instance (ignored).
      */
     func sceneWillEnterForeground(_: UIScene) {
@@ -210,9 +216,9 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
             if nil == cleandate,
                let originals = originalPrefs {
                 originalPrefs = nil
-                let date = originals.cleanDate
+                NACCPersistentPrefs().cleanDate = originals.cleanDate
                 NACCPersistentPrefs().lastSelectedTabIndex = originals.lastSelectedTabIndex.rawValue
-                initialViewController.setDate(date)
+                initialViewController.setDate(originals.cleanDate)
             } else if let date = cleandate {
                 cleandate = nil
                 #if DEBUG
