@@ -43,6 +43,8 @@
 	<string>https://littlegreenviper.com/welcome-to-little-green-viper/privacy/app-privacy/</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This app can add events to your calendar, to remind you of anniversary dates.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app allows you to save images to your Photo Library.</string>
 	<key>UIApplicationSceneManifest</key>
@@ -88,7 +90,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCalendarsUsageDescription</key>
-	<string>This app can add events to your calendar, to remind you of anniversary dates.</string>
 </dict>
 </plist>
