@@ -63,10 +63,10 @@
                 <a class="nav-group-task-link" href="../Classes/NACCBaseViewController.html">NACCBaseViewController</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/NACCInitialPagePrintRenderer.html">NACCInitialPagePrintRenderer</a>
+                <a class="nav-group-task-link" href="../Classes/NACCInitialViewController.html">NACCInitialViewController</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/NACCInitialViewController.html">NACCInitialViewController</a>
+                <a class="nav-group-task-link" href="../Classes/NACCPagePrintRenderer.html">NACCPagePrintRenderer</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/NACCPersistentPrefs.html">NACCPersistentPrefs</a>
@@ -215,6 +215,60 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC13originalPrefs10Foundation4DateV05cleanH0_AA20NACCTabBarControllerC10TabIndexesO012lastSelectedM5IndextSgvp"></a>
+                    <a name="//apple_ref/swift/Property/originalPrefs" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC13originalPrefs10Foundation4DateV05cleanH0_AA20NACCTabBarControllerC10TabIndexesO012lastSelectedM5IndextSgvp">originalPrefs</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This will contain the original prefs, if the app was started from a URL (so we reset).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">originalPrefs</span><span class="p">:</span> <span class="p">(</span><span class="nv">cleanDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span> <span class="nv">lastSelectedTabIndex</span><span class="p">:</span> <span class="kt"><a href="../Classes/NACCTabBarController.html">NACCTabBarController</a></span><span class="o">.</span><span class="kt">TabIndexes</span><span class="p">)?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC4date10Foundation4DateVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/date" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC4date10Foundation4DateVSgvp">date</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This will contain the date for the selectors.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">date</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:4NACC20NACCAppSceneDelegateC9cleandate10Foundation4DateVSgvp"></a>
                     <a name="//apple_ref/swift/Property/cleandate" class="dashAnchor"></a>
                     <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC9cleandate10Foundation4DateVSgvp">cleandate</a>
@@ -225,7 +279,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This will contain the date for the selectors.</p>
+                        <p>This will contain the date for the selectors, if set from a URL.</p>
 
                       </div>
                       <div class="declaration">
@@ -306,6 +360,33 @@
                 </div>
               </div>
               <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC26windowInterfaceOrientationSo011UIInterfaceG0VSgvp"></a>
+                    <a name="//apple_ref/swift/Property/windowInterfaceOrientation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC26windowInterfaceOrientationSo011UIInterfaceG0VSgvp">windowInterfaceOrientation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the interface (not device) orientation</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">windowInterfaceOrientation</span><span class="p">:</span> <span class="kt">UIInterfaceOrientation</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -392,7 +473,17 @@
 
 <p>The URL scheme is thus:</p>
 
-<p><strong>nacc://</strong>_[YYYY-MM-DD[*</p>
+<p>nacc://<em>[YYYY-MM-DD[</em>/<em>N]]</em></p>
+
+<p><em>YYYY-MM-DD</em> is a standard <a href="https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates">ISO 8601 calendar date</a> (For example, September first, 1980, is 1980-09-01).</p>
+
+<p><em>N</em> is the numerical index of a tab:</p>
+
+<ul>
+<li>0 is Keytag Array</li>
+<li>1 is Keytag Strip</li>
+<li><p>2 is Medallions</p></li>
+</ul>
 
                       </div>
                       <div class="declaration">
@@ -402,6 +493,37 @@
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">scene</span><span class="p">(</span><span class="n">_</span> <span class="nv">inScene</span><span class="p">:</span> <span class="kt">UIScene</span><span class="p">,</span> <span class="n">openURLContexts</span> <span class="nv">inURLContexts</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">UIOpenURLContext</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inScene</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The scene instance (ignored).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>openURLContexts</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Opening URL contexts (as a set).</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -494,6 +616,8 @@
                         <p>Called when the app is about to come into the foreground.</p>
 
 <p>We use this to set the app to the initial screen, and also, to check if we have a URL specified.</p>
+
+<p>If we don&rsquo;t have a URL specified, then we restore to any saved state.</p>
 
                       </div>
                       <div class="declaration">
@@ -620,7 +744,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2022 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2022-04-13)</p>
+      <p>&copy; 2022 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2022-04-14)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>

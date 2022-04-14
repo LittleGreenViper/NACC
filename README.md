@@ -68,11 +68,11 @@ _N_ is the numerical index of a tab:
 - [nacc://1980-09-01](nacc://1980-09-01)
   This opens the app, and sets the cleantime to September 1st, 1980. It will open the commemoration tab screen, at whatever the last selected tab was.
 
-- [nacc://2020-03-17/1](nacc://2020-03-17/1)
-  This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Vertical Keytag Strip tab.
+- [nacc://2020-03-17/0](nacc://2020-03-17/0)
+  This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Keytag Array tab.
 
 - [nacc://2020-03-17/1](nacc://2020-03-17/1)
   This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Vertical Keytag Strip tab.
 
-- [nacc://2020-03-17/1](nacc://2020-03-17/2)
+- [nacc://2020-03-17/2](nacc://2020-03-17/2)
   This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Medallions tab.

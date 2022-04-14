@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Keys Enumeration Reference</title>
+    <title>addAttendanceEvent() Instance Method Reference</title>
     <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Enum/Keys" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Method/addAttendanceEvent()" class="dashAnchor"></a>
 
-    <a title="Keys Enumeration Reference"></a>
+    <a title="addAttendanceEvent() Instance Method Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../../index.html"> Reference</a>
       <img class="carat" src="../../img/carat.png" alt=""/>
-      Keys Enumeration Reference
+      addAttendanceEvent() Instance Method Reference
     </p>
 
     <div class="content-wrapper">
@@ -111,15 +111,15 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>Keys</h1>
+            <h1>addAttendanceEvent()</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">Keys</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">addAttendanceEvent</span><span class="p">()</span></code></pre>
 
                 </div>
               </div>
-            <p>This is an enumeration that will list the prefs keys for us.</p>
+            <p>This adds an anniversary event.</p>
 
           </div>
         </section>
@@ -131,9 +131,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4NACC19NACCPersistentPrefsC4KeysO9cleanDateyA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/cleanDate" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4NACC19NACCPersistentPrefsC4KeysO9cleanDateyA2EmF">cleanDate</a>
+                    <a name="/s:4NACC25NACCInitialViewControllerC18addAttendanceEventyyF015makeAnniversaryG0L_So7EKEventCSgyF"></a>
+                    <a name="//apple_ref/swift/Function/makeAnniversaryEvent()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC25NACCInitialViewControllerC18addAttendanceEventyyF015makeAnniversaryG0L_So7EKEventCSgyF">makeAnniversaryEvent()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -141,70 +141,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This stores the cleandate, as an instance of Date</p>
+                        <p>This creates a recurring event for the anniversary.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">cleanDate</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">makeAnniversaryEvent</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">EKEvent</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4NACC19NACCPersistentPrefsC4KeysO20lastSelectedTabIndexyA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/lastSelectedTabIndex" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4NACC19NACCPersistentPrefsC4KeysO20lastSelectedTabIndexyA2EmF">lastSelectedTabIndex</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This stores the last selected tab index (0-based).</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">lastSelectedTabIndex</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4NACC19NACCPersistentPrefsC4KeysO03allD0SaySSGvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/allKeys" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4NACC19NACCPersistentPrefsC4KeysO03allD0SaySSGvpZ">allKeys</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>These are all the keys, in an Array of String.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">allKeys</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a new EKEvent for the anniversary, or nil.</p>
                       </div>
                     </section>
                   </div>
