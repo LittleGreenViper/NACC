@@ -50,7 +50,7 @@ class NACCInitialViewController: NACCBaseViewController {
     /**
      The period that we use for the "fade in" animation.
     */
-    private static let _fadeAnimationPeriod = CGFloat(1.5)
+    private static let _fadeAnimationPeriod = CGFloat(1.0)
     
     /* ################################################################## */
     /**
@@ -275,10 +275,12 @@ extension NACCInitialViewController {
         
         let calculator = LGV_CleantimeDateCalc(startDate: datePicker.date, calendar: Calendar.current).cleanTime
         if 0 < calculator.totalDays {
+            logoContainerView?.isUserInteractionEnabled = true
             cleantimeViewContainer?.isUserInteractionEnabled = true
             cleantimeReportLabel?.isUserInteractionEnabled = true
             cleantimeReportLabel?.textColor = UIColor(named: "SelectionTintColor")
         } else {
+            logoContainerView?.isUserInteractionEnabled = false
             cleantimeViewContainer?.isUserInteractionEnabled = false
             cleantimeReportLabel?.isUserInteractionEnabled = false
             cleantimeReportLabel?.textColor = .label
@@ -335,15 +337,5 @@ extension NACCInitialViewController {
 
             present(viewController, animated: true, completion: nil)
         }
-    }
-
-    /* ################################################################## */
-    /**
-     Called when the app icon button is hit.
-     - parameter: ignored
-     */
-    @IBAction func logoIconButtonHit(_: Any) {
-        guard let uri = Bundle.main.siteURI else { return }
-        UIApplication.shared.open(uri, options: [:], completionHandler: nil)
     }
 }

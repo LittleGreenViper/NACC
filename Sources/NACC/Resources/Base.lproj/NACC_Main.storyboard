@@ -240,7 +240,7 @@
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="qLi-lA-ANd" userLabel="Logo Tap Gesture Recognizer">
                     <connections>
-                        <action selector="logoIconButtonHit:" destination="UXV-2X-dsd" id="PGd-hk-j8S"/>
+                        <segue destination="NfT-p7-QCK" kind="show" id="Guu-Se-vj3"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="tkX-o9-e3u" userLabel="Medallion Tap Gesture Recognizer">

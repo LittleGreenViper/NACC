@@ -130,4 +130,14 @@ extension NACCAboutViewController {
         guard let uri = Bundle.main.helpURI else { return }
         UIApplication.shared.open(uri, options: [:], completionHandler: nil)
     }
+
+    /* ################################################################## */
+    /**
+     Called when the button to visit the main site is hit.
+     - parameter: ignored
+     */
+    @IBAction func callSiteButtonHit(_: Any) {
+        guard let uri = Bundle.main.siteURI else { return }
+        UIApplication.shared.open(uri, options: [:], completionHandler: nil)
+    }
 }

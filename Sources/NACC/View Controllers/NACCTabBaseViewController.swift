@@ -111,6 +111,35 @@ extension NACCTabBaseViewController {
         scrollView?.contentOffset.y = savedScrollPosition
         scrollView?.zoomScale = 1.0
     }
+
+    /* ################################################################## */
+    /**
+     This was inspired by [this SO answer](https://stackoverflow.com/a/60577486/879365).
+     
+     We intercept a transition from portrait to landscape, and hide the navbar and tab bar, for phones. This gives the entire screen to the display.
+     If the transition is going the other way, this ensures that the tab and nav bars are shown.
+     This will only happen, when starting from portrait, and going into landscape. Otherwise, the bars are always shown.
+     
+     - parameter to: The trait collection at the end of the transition.
+     - parameter with: The object that is coordinating the transition.
+    */
+    override func willTransition(to inNewCollection: UITraitCollection, with inCoordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: inNewCollection, with: inCoordinator)
+        
+        inCoordinator.animate { _ in
+            guard .phone == self.traitCollection.userInterfaceIdiom,
+                  let windowInterfaceOrientation = NACCAppSceneDelegate.appDelegateInstance?.windowInterfaceOrientation
+            else { return }
+            
+            if windowInterfaceOrientation.isLandscape {
+                self.tabBarController?.tabBar.isHidden = true
+                self.navigationController?.navigationBar.isHidden = true
+            } else {
+                self.tabBarController?.tabBar.isHidden = false
+                self.navigationController?.navigationBar.isHidden = false
+            }
+        }
+    }
 }
 
 /* ###################################################################################################################################### */

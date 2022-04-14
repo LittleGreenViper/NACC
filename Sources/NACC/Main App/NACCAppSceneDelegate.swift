@@ -72,6 +72,12 @@ class NACCAppSceneDelegate: UIResponder {
 extension NACCAppSceneDelegate {
     /* ################################################################## */
     /**
+     Returns the interface (not device) orientation
+     */
+    var windowInterfaceOrientation: UIInterfaceOrientation? { UIApplication.shared.windows.first?.windowScene?.interfaceOrientation }
+    
+    /* ################################################################## */
+    /**
      Easy access to our navigation controller.
      */
     var navigationController: UINavigationController? {
