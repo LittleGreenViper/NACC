@@ -150,18 +150,17 @@ extension NACCInitialViewController {
      If we pass in a date, then we ignore the prefs.
      
      - parameter inDate: The date to set. It's optional. Don't specify it to use the prefs.
-     - parameter tabIndex: The tab index to choose. This is optional. If not specified, we open on tab 0.
+     - parameter tabIndex: The tab index to choose. This is optional. If not specified, we do not open on a tab.
     */
     func setDate(_ inDate: Date? = nil, tabIndex inTabIndex: NACCTabBarController.TabIndexes? = nil) {
         if let dateSelector = dateSelector,
            let minDate = dateSelector.minimumDate {
-            NACCPersistentPrefs().lastSelectedTabIndex = inTabIndex?.rawValue ?? NACCPersistentPrefs().lastSelectedTabIndex
             let newDateValue = inDate ??  NACCPersistentPrefs().cleanDate
             if (minDate...Date()).contains(newDateValue) {
                 dateSelector.date = newDateValue
                 newDate(dateSelector)
-            
-                if nil != inDate {
+                if nil != inTabIndex {
+                    NACCPersistentPrefs().lastSelectedTabIndex = inTabIndex?.rawValue ?? NACCPersistentPrefs().lastSelectedTabIndex
                     performSegue(withIdentifier: Self._cleandateDisplaySegueID, sender: nil)
                 }
             }
@@ -201,6 +200,47 @@ extension NACCInitialViewController {
                             }
             )
         }
+    }
+    
+    /* ################################################################## */
+    /**
+     This adds an anniversary event.
+     */
+    func addAttendanceEvent(for inName: String) {
+        /* ################################################################## */
+        /**
+         This creates a recurring event for the anniversary.
+         
+         - returns: a new EKEvent for the anniversary, or nil.
+         */
+        func makeAnniversaryEvent() -> EKEvent? {
+            guard let date = dateSelector?.date else { return nil }
+            
+            let event = EKEvent(eventStore: eventStore)
+            event.startDate = Calendar.current.startOfDay(for: date)
+            event.title = String(format: "SLUG-CAL-ANNIVERSARY".localizedVariant, inName, Int(Calendar.current.dateComponents([.year], from: event.startDate).year ?? 0))
+            event.isAllDay = true
+            event.addRecurrenceRule(EKRecurrenceRule(recurrenceWith: .yearly, interval: 1, end: nil))
+            return event
+        }
+        
+        eventStore.requestAccess( to: EKEntityType.event,
+                                  completion: { (inIsGranted, inError) in
+                DispatchQueue.main.async { [weak self] in
+                    guard nil == inError,
+                          inIsGranted,
+                          let self = self,
+                          let event = makeAnniversaryEvent()
+                    else { return }
+
+                    let eventController = EKEventEditViewController()
+                    eventController.event = event
+                    eventController.eventStore = self.eventStore
+                    eventController.editViewDelegate = self
+                    self.present(eventController, animated: true, completion: nil)
+                }
+            }
+        )
     }
 }
 
@@ -271,17 +311,17 @@ extension NACCInitialViewController {
      
      - parameter inDatePicker: The picker instance.
     */
-    @IBAction func newDate(_ inDatePicker: UIDatePicker!) {
+    @IBAction func newDate(_ inDatePicker: UIDatePicker) {
         cleantimeDisplayView?.removeFromSuperview()
         cleantimeDisplayView = nil
-        guard let datePicker = inDatePicker else { return }
-        NACCPersistentPrefs().cleanDate = datePicker.date
-        if let text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: datePicker.date, endDate: Date(), calendar: Calendar.current) {
+
+        NACCPersistentPrefs().cleanDate = inDatePicker.date
+        if let text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: inDatePicker.date, endDate: Date(), calendar: Calendar.current) {
             NACCAppSceneDelegate.appDelegateInstance?.report = text
             cleantimeReportLabel?.text = text
         }
         
-        let calculator = LGV_CleantimeDateCalc(startDate: datePicker.date, calendar: Calendar.current).cleanTime
+        let calculator = LGV_CleantimeDateCalc(startDate: inDatePicker.date, calendar: Calendar.current).cleanTime
         if 0 < calculator.totalDays {
             logoContainerView?.isUserInteractionEnabled = true
             cleantimeViewContainer?.isUserInteractionEnabled = true
@@ -321,82 +361,6 @@ extension NACCInitialViewController {
         } else {
             actionButton?.isEnabled = false
         }
-        
-        /* ################################################################## */
-        /**
-         This adds an attendance event for the next meeting start time.
-         */
-        func addAttendanceEvent() {
-            /* ################################################################## */
-            /**
-             This creates an attendance event for the anniversary.
-             
-             - returns: a new EKEvent for the anniversary, or nil.
-             */
-            func makeAttendanceEvent() -> EKEvent? {
-                guard let date = dateSelector?.date else { return nil }
-                let event = EKEvent(eventStore: eventStore)
-                event.startDate = Calendar.current.startOfDay(for: date)
-                event.isAllDay = true
-                event.addRecurrenceRule(EKRecurrenceRule(recurrenceWith: .yearly, interval: 1, end: nil))
-                return event
-            }
-            
-            eventStore.requestAccess( to: EKEntityType.event,
-                                      completion: { (inIsGranted, inError) in
-                    DispatchQueue.main.async { [weak self] in
-                        guard nil == inError,
-                              inIsGranted,
-                              let self = self,
-                              let event = makeAttendanceEvent()
-                        else { return }
-
-                        let eventController = EKEventEditViewController()
-                        eventController.event = event
-                        eventController.eventStore = self.eventStore
-                        eventController.editViewDelegate = self
-                        self.present(eventController, animated: true, completion: nil)
-                    }
-                }
-            )
-        }
-//
-//            if isHomeGroup {
-//                event.addRecurrenceRule(EKRecurrenceRule(recurrenceWith: .weekly, interval: 1, end: nil))
-//            }
-//
-//            event.title = meetingInstance.name
-//            event.startDate = meetingInstance.nextStartDate
-//            event.endDate = meetingInstance.nextStartDate.addingTimeInterval(TimeInterval(meetingInstance.durationInMinutes) * 60)
-//            event.url = uri
-//
-//            if let coords = meetingInstance.locationCoords {
-//                let structuredLocation = EKStructuredLocation()
-//                structuredLocation.title = meetingInstance.basicAddress
-//                structuredLocation.geoLocation = CLLocation(coordinate: coords, altitude: 0, horizontalAccuracy: 0, verticalAccuracy: 0, timestamp: meetingInstance.nextStartDate)
-//                event.structuredLocation = structuredLocation
-//            } else {
-//                event.location = meetingInstance.basicAddress
-//            }
-//
-//            var notes = [String]()
-//
-//            if !meetingInstance.comments.isEmpty {
-//                notes.append(meetingInstance.comments)
-//            }
-//
-//            let keys = formats.keys.sorted()
-//            for key in keys {
-//                if let name = formats[key]?.short,
-//                   let description = formats[key]?.long {
-//                    let mainString = String(format: "%@ - %@", key, name)
-//                    notes.append("\(mainString)\n\(description)")
-//                }
-//            }
-//
-//            event.notes = notes.joined(separator: "\n\n")
-//
-        
    }
     
     /* ################################################################## */

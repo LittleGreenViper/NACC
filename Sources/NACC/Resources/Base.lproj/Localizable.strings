@@ -52,6 +52,10 @@
 
 "SLUG-CLEANDATE"                                =   "My Cleandate";
 
+// MARK: CALENDAR EVENT
+
+"SLUG-CAL-ANNIVERSARY"                          =   "%@ Anniversary (%d)";
+
 // MARK: ABOUT SCREEN
 
 "SLUG-ABOUT"                                    =   "About NACC";

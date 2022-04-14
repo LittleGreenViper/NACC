@@ -49,6 +49,12 @@ class NACCAppSceneDelegate: UIResponder {
 
     /* ################################################################## */
     /**
+     This will contain the original prefs, if the app was started from a URL (so we reset).
+     */
+    var originalPrefs: (cleanDate: Date, lastSelectedTabIndex: NACCTabBarController.TabIndexes)?
+
+    /* ################################################################## */
+    /**
      This will contain the date for the selectors.
      */
     var cleandate: Date?
@@ -150,9 +156,11 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
             #endif
             if let host = url.host,
                !host.isEmpty {
+                originalPrefs = (cleanDate: NACCPersistentPrefs().cleanDate, lastSelectedTabIndex: NACCTabBarController.TabIndexes(rawValue: NACCPersistentPrefs().lastSelectedTabIndex) ?? .keytagArray) // Store for replacement, later
+                
                 let pathComponents = url.pathComponents.compactMap { ("/" != $0) && !$0.isEmpty ? $0 : nil }
                 
-                selectedTab = NACCTabBarController.TabIndexes(rawValue: Int(String(pathComponents.isEmpty ? "0" : pathComponents[0])) ?? 0) ?? NACCTabBarController.TabIndexes.keytagArray
+                selectedTab = NACCTabBarController.TabIndexes(rawValue: Int(String(pathComponents.isEmpty ? "0" : pathComponents[0])) ?? 0) ?? .keytagArray
 
                 #if DEBUG
                     print("\tThe URL has this date: \(host), and wants this tab: \(selectedTab.rawValue)")
@@ -198,16 +206,23 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
             print("\n#### Scene Entering Foreground.\n####\n")
         #endif
         navigationController?.popToRootViewController(animated: false)
-        if let date = cleandate,
-           let initialViewController = initialViewController {
-            cleandate = nil
-            #if DEBUG
-                print("Setting date: \(date), and tab: \(selectedTab.rawValue)")
-            #endif
-            initialViewController.setDate(date, tabIndex: selectedTab)
+        if let initialViewController = initialViewController {
+            if nil == cleandate,
+               let originals = originalPrefs {
+                originalPrefs = nil
+                let date = originals.cleanDate
+                NACCPersistentPrefs().lastSelectedTabIndex = originals.lastSelectedTabIndex.rawValue
+                initialViewController.setDate(date)
+            } else if let date = cleandate {
+                cleandate = nil
+                #if DEBUG
+                    print("Setting date: \(date), and tab: \(selectedTab.rawValue)")
+                #endif
+                initialViewController.setDate(date, tabIndex: selectedTab)
+            }
         }
         
-        cleandate = nil
+        cleandate = nil // Take off and nuke the site from orbit. It's the only way to be sure...
     }
 }
 
