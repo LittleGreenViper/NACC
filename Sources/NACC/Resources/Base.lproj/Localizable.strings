@@ -102,6 +102,7 @@ The Great Rift Valley Software Company
 "SLUG-ACC-LOGO"                                 =   "This is the NACC logo. If you select this, the Web browser will be opened, to the Little Green Viper Software Development LLC Web site.";
 "SLUG-ACC-DATEPICKER"                           =   "This is where you enter your cleandate. Set this picker to your cleandate, and everything else will be automatically calculated.";
 "SLUG-ACC-REPORT-BUTTON"                        =   "This label will display the results of the calculation. If you have one day or more, you will be able to select it, and be taken to the cleantime display tabs.";
+"SLUG-ACC-CALENDAR-BUTTON"                      =   "This allows you to create a repeating event from the cleandate (alarms every year).";
 "SLUG-ACC-ACTION-BUTTON"                        =   "This allows you to share the report. It will bring up a screen, allowing you to send the report to other apps or people (like messages and email).";
 "SLUG-ACC-INFO-BUTTON"                          =   "If you select this button, you will be taken to a screen with information about this app.";
 "SLUG-ACC-IMAGE"                                =   "This image displays the last keytag or medallion that you should have receieved for your cleantime. If you have one day or more, you can select it, and be taken to the cleantime display tabs.";

@@ -107,7 +107,13 @@ class NACCInitialViewController: NACCBaseViewController {
      This button brings in the info screen.
     */
     @IBOutlet weak var infoButton: UIBarButtonItem?
-
+    
+    /* ################################################################## */
+    /**
+     This button allows us to create calendar events.
+    */
+    @IBOutlet weak var calendarButton: UIBarButtonItem?
+    
     /* ################################################################## */
     /**
      This is a container view for the logo, at the top of the screen.
@@ -180,11 +186,13 @@ extension NACCInitialViewController {
             cleantimeReportLabel?.alpha = 0.0
             infoButton?.customView?.alpha = 0.0
             actionButton?.customView?.alpha = 0.0
+            calendarButton?.customView?.alpha = 0.0
             cleantimeDisplayView?.alpha = 0
             view.layoutIfNeeded()
             UIView.animate(withDuration: Self._fadeAnimationPeriod, animations: { [weak self] in
                                                                                     startupLogo.alpha = 0.0
                                                                                     self?.actionButton?.customView?.alpha = 1.0
+                                                                                    self?.calendarButton?.customView?.alpha = 1.0
                                                                                     self?.infoButton?.customView?.alpha = 1.0
                                                                                     self?.logoContainerView?.alpha = 1.0
                                                                                     self?.dateSelector?.alpha = 1.0
@@ -200,49 +208,6 @@ extension NACCInitialViewController {
                             }
             )
         }
-    }
-    
-    /* ################################################################## */
-    /**
-     This adds an anniversary event.
-     */
-    func addAttendanceEvent() {
-        /* ################################################################## */
-        /**
-         This creates a recurring event for the anniversary.
-         
-         - returns: a new EKEvent for the anniversary, or nil.
-         */
-        func makeAnniversaryEvent() -> EKEvent? {
-            guard let date = dateSelector?.date,
-                  let year = Calendar.current.dateComponents([.year], from: date).year
-            else { return nil }
-            
-            let event = EKEvent(eventStore: eventStore)
-            event.startDate = Calendar.current.startOfDay(for: date)
-            event.title = String(format: "SLUG-CAL-ANNIVERSARY".localizedVariant, year)
-            event.isAllDay = true
-            event.addRecurrenceRule(EKRecurrenceRule(recurrenceWith: .yearly, interval: 1, end: nil))
-            return event
-        }
-        
-        eventStore.requestAccess( to: EKEntityType.event,
-                                  completion: { (inIsGranted, inError) in
-                DispatchQueue.main.async { [weak self] in
-                    guard nil == inError,
-                          inIsGranted,
-                          let self = self,
-                          let event = makeAnniversaryEvent()
-                    else { return }
-
-                    let eventController = EKEventEditViewController()
-                    eventController.event = event
-                    eventController.eventStore = self.eventStore
-                    eventController.editViewDelegate = self
-                    self.present(eventController, animated: true, completion: nil)
-                }
-            }
-        )
     }
 }
 
@@ -261,6 +226,7 @@ extension NACCInitialViewController {
         dateSelector?.accessibilityLabel = "SLUG-ACC-DATEPICKER".localizedVariant
         logoContainerView?.accessibilityLabel = "SLUG-ACC-LOGO".localizedVariant
         actionButton?.accessibilityLabel = "SLUG-ACC-ACTION-BUTTON".localizedVariant
+        calendarButton?.accessibilityLabel = "SLUG-ACC-CALENDAR-BUTTON".localizedVariant
         infoButton?.accessibilityLabel = "SLUG-ACC-INFO-BUTTON".localizedVariant
         cleantimeReportLabel?.accessibilityLabel = "SLUG-ACC-REPORT-BUTTON".localizedVariant
         cleantimeViewContainer?.accessibilityLabel = "SLUG-ACC-IMAGE".localizedVariant
@@ -341,6 +307,7 @@ extension NACCInitialViewController {
         // Have to have at least one day, for a tag.
         if 0 < calculator.totalDays {
             actionButton?.isEnabled = true
+            calendarButton?.isEnabled = true
             if 0 < calculator.years {
                 cleantimeDisplayView = LGV_UISingleCleantimeMedallionImageView()
             } else {
@@ -364,6 +331,7 @@ extension NACCInitialViewController {
             cleantimeDisplayView.setNeedsLayout()
         } else {
             actionButton?.isEnabled = false
+            calendarButton?.isEnabled = false
         }
    }
     
@@ -394,6 +362,53 @@ extension NACCInitialViewController {
 
             present(viewController, animated: true, completion: nil)
         }
+    }
+
+    /* ################################################################## */
+    /**
+     Called when the calendar button is hit.
+     
+     - parameter: ignored.
+    */
+    @IBAction func calendarButtonHit(_: UIBarButtonItem) {
+        /* ################################################################## */
+        /**
+         This creates a recurring event for the anniversary.
+         
+         - returns: a new EKEvent for the anniversary, or nil.
+         */
+        func makeAnniversaryEvent() -> EKEvent? {
+            guard let date = dateSelector?.date,
+                  let year = Calendar.current.dateComponents([.year], from: date).year
+            else { return nil }
+            
+            let event = EKEvent(eventStore: eventStore)
+            event.startDate = Calendar.current.startOfDay(for: date)
+            event.endDate = event.startDate.addingTimeInterval((60 * 60 * 24) - 1) // A full 23:59:59 hours, makes a day.
+            event.title = String(format: "SLUG-CAL-ANNIVERSARY".localizedVariant, year)
+            event.isAllDay = true
+            event.addRecurrenceRule(EKRecurrenceRule(recurrenceWith: .yearly, interval: 1, end: nil))
+            event.addAlarm(EKAlarm(relativeOffset: (60 * 60 * 9)))  // Adds an extra alarm for the date, itself, at 9AM.
+            return event
+        }
+        
+        eventStore.requestAccess( to: EKEntityType.event,
+                                  completion: { (inIsGranted, inError) in
+                DispatchQueue.main.async { [weak self] in
+                    guard nil == inError,
+                          inIsGranted,
+                          let self = self,
+                          let event = makeAnniversaryEvent()
+                    else { return }
+
+                    let eventController = EKEventEditViewController()
+                    eventController.event = event
+                    eventController.eventStore = self.eventStore
+                    eventController.editViewDelegate = self
+                    self.present(eventController, animated: true, completion: nil)
+                }
+            }
+        )
     }
 }
 

@@ -123,7 +123,7 @@
                                 <rect key="frame" x="83" y="324" width="248" height="248"/>
                             </imageView>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="dud-Xl-77a">
-                                <rect key="frame" x="20" y="88" width="374" height="80"/>
+                                <rect key="frame" x="20" y="96" width="374" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="s0y-NI-I4w">
                                         <rect key="frame" x="147" y="0.0" width="80" height="80"/>
@@ -145,7 +145,7 @@
                                 </connections>
                             </view>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="w1b-uu-yGw">
-                                <rect key="frame" x="20" y="176" width="374" height="162"/>
+                                <rect key="frame" x="20" y="184" width="374" height="162"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="162" id="1tE-PF-Y2D"/>
                                 </constraints>
@@ -157,7 +157,7 @@
                                 </connections>
                             </datePicker>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05z-dc-GES">
-                                <rect key="frame" x="207" y="346" width="0.0" height="0.0"/>
+                                <rect key="frame" x="207" y="354" width="0.0" height="0.0"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="AccentColor"/>
@@ -167,7 +167,7 @@
                                 </connections>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHU-YE-j9q">
-                                <rect key="frame" x="20" y="346" width="374" height="516"/>
+                                <rect key="frame" x="20" y="354" width="374" height="508"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -190,7 +190,7 @@
                             <constraint firstItem="w1b-uu-yGw" firstAttribute="top" secondItem="dud-Xl-77a" secondAttribute="bottom" constant="8" symbolic="YES" id="5pz-aO-aHK"/>
                             <constraint firstItem="w1b-uu-yGw" firstAttribute="leading" secondItem="9JF-o8-6VD" secondAttribute="leading" constant="20" id="8Ia-Gp-ZTu"/>
                             <constraint firstItem="EBU-Dq-om0" firstAttribute="width" secondItem="EBU-Dq-om0" secondAttribute="height" multiplier="1:1" id="AIX-w4-fGx"/>
-                            <constraint firstItem="dud-Xl-77a" firstAttribute="top" secondItem="9JF-o8-6VD" secondAttribute="top" id="Bbo-2v-fV5"/>
+                            <constraint firstItem="dud-Xl-77a" firstAttribute="top" secondItem="9JF-o8-6VD" secondAttribute="top" constant="8" id="Bbo-2v-fV5"/>
                             <constraint firstItem="9JF-o8-6VD" firstAttribute="trailing" secondItem="mHU-YE-j9q" secondAttribute="trailing" constant="20" id="Dq7-PG-JHQ"/>
                             <constraint firstItem="05z-dc-GES" firstAttribute="centerX" secondItem="yLY-Yv-YNj" secondAttribute="centerX" id="IRc-jb-RpI"/>
                             <constraint firstItem="EBU-Dq-om0" firstAttribute="width" relation="lessThanOrEqual" secondItem="yLY-Yv-YNj" secondAttribute="width" multiplier="0.6" id="PCb-G9-ixP"/>
@@ -207,11 +207,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SLUG-CLEANDATE" id="Kk8-4H-KCn">
-                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="cFk-Th-0hg">
-                            <connections>
-                                <action selector="actionItemHit:" destination="UXV-2X-dsd" id="E3W-Ga-0r3"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="action" id="cFk-Th-0hg">
+                                <connections>
+                                    <action selector="actionItemHit:" destination="UXV-2X-dsd" id="E3W-Ga-0r3"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem id="FhB-pr-nOi">
+                                <imageReference key="image" image="calendar" catalog="system" symbolScale="large"/>
+                                <connections>
+                                    <action selector="calendarButtonHit:" destination="UXV-2X-dsd" id="vUu-l8-THd"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" id="FJe-Mb-mZ6">
                             <imageReference key="image" image="info.circle" catalog="system" symbolScale="large"/>
                             <connections>
@@ -221,6 +229,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="actionButton" destination="cFk-Th-0hg" id="5rD-yi-PzV"/>
+                        <outlet property="calendarButton" destination="FhB-pr-nOi" id="be1-Fl-UDx"/>
                         <outlet property="cleantimeDisplayHeightConstraint" destination="gC8-a7-CuM" id="N0V-dM-U8h"/>
                         <outlet property="cleantimeReportLabel" destination="05z-dc-GES" id="gnm-Py-Seg"/>
                         <outlet property="cleantimeViewContainer" destination="mHU-YE-j9q" id="pZq-3D-0u7"/>
@@ -572,6 +581,7 @@
         <image name="SingleKeytag" width="26" height="26"/>
         <image name="StartupLogo" width="280" height="612"/>
         <image name="ThreeKeytags" width="26" height="26"/>
+        <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="circle.grid.3x3.fill" catalog="system" width="128" height="112"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
