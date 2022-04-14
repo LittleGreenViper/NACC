@@ -22,25 +22,27 @@ Tapping on the "Info" button will bring in a screen, displaying information abou
 
 Tapping on the "action" button will allow you to share the report with others, using different apps, like [Messages](https://apps.apple.com/us/app/messages/id1146560473), or [Mail](https://apps.apple.com/us/app/mail/id1108187098).
 
-|Figure 4: Action Screen|
-|:----:|
-|![Figure 4](img/Figure-04.png)|
+Tapping on the "calendar" button will allow you to create calendar reminders, every year, starting from the cleandate.
+
+|Figure 4: Action Screen|Figure 5: Calendar Screen|
+|:----:|:----:|
+|![Figure 4](img/Figure-04.png)|![Figure 5](img/Figure-05.png)|
 
 ### The Cleantime Commemoration Tab Screen
 
 If you select the cleantime report, it will bring in another screen, that will have three tabs. These tabs will display the cleantime, using keytags or medallions:
 
-|Figure 5: Keytags in an Array|Figure 6: Keytags in a Vertical Strip|Figure 7: Medallions in an Array|
+|Figure 6: Keytags in an Array|Figure 7: Keytags in a Vertical Strip|Figure 8: Medallions in an Array|
 |:----:|:----:|:----:|
-|![Figure 5](img/Figure-05.png)|![Figure 6](img/Figure-06.png)|![Figure 7](img/Figure-07.png)|
+|![Figure 6](img/Figure-06.png)|![Figure 7](img/Figure-07.png)|![Figure 8](img/Figure-08.png)|
 
 You can scroll these displays, and also do a pinch-to-zoom.
 
 If you select the action button, you will now be able to print the display, share it (and the report), via [Messages](https://apps.apple.com/us/app/messages/id1146560473), or [Mail](https://apps.apple.com/us/app/mail/id1108187098), or save the image into your Photo Library.
 
-|Figure 8: Action Screen|
+|Figure 9: Action Screen|
 |:----:|
-|![Figure 8](img/Figure-08.png)|
+|![Figure 9](img/Figure-09.png)|
 
 The app remembers the last date entered, and the last tab selected. In some cases, tabs may not be enabled (If you have entered a date less than 30 days in the past, then only the Keytag Array tab is enabled. If less than 1 year, then the Medallions tab is disabled).
 
