@@ -55,7 +55,7 @@
 
 // MARK: CALENDAR EVENT
 
-"SLUG-CAL-ANNIVERSARY"                          =   "%@ Anniversary (%d)";
+"SLUG-CAL-ANNIVERSARY"                          =   "NA Anniversary (%d)";
 
 // MARK: ABOUT SCREEN
 

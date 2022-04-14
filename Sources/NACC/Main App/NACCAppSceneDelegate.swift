@@ -57,8 +57,14 @@ class NACCAppSceneDelegate: UIResponder {
     /**
      This will contain the date for the selectors.
      */
+    var date: Date?
+
+    /* ################################################################## */
+    /**
+     This will contain the date for the selectors, if set from a URL.
+     */
     var cleandate: Date?
-    
+
     /* ################################################################## */
     /**
      This is used to allow a tab to be selected from the URL.

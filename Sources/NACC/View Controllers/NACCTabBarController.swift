@@ -129,8 +129,13 @@ class NACCTabBarController: UITabBarController {
     */
     @IBAction func actionItemHit(_ inButtonItem: UIBarButtonItem) {
         if let report = NACCAppSceneDelegate.appDelegateInstance?.report,
+           let date = NACCAppSceneDelegate.appDelegateInstance?.date,
            let image = (selectedViewController as? NACCTabBaseViewController)?.cleantime?.image {
-            let viewController = UIActivityViewController(activityItems: [NACCPagePrintRenderer(report: report, image: image), report, image as Any], applicationActivities: nil)
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let url = URL(string: String(format: "SLUG-URL-STRING".localizedVariant, dateFormatter.string(from: date)) + "/\(selectedIndex)")
+            let viewController = UIActivityViewController(activityItems: [NACCPagePrintRenderer(report: report, image: image), report, image as Any, url as Any], applicationActivities: nil)
             if .pad == traitCollection.userInterfaceIdiom,
                let size = view?.bounds.size {
                 viewController.modalPresentationStyle = .popover

@@ -206,7 +206,7 @@ extension NACCInitialViewController {
     /**
      This adds an anniversary event.
      */
-    func addAttendanceEvent(for inName: String) {
+    func addAttendanceEvent() {
         /* ################################################################## */
         /**
          This creates a recurring event for the anniversary.
@@ -214,11 +214,13 @@ extension NACCInitialViewController {
          - returns: a new EKEvent for the anniversary, or nil.
          */
         func makeAnniversaryEvent() -> EKEvent? {
-            guard let date = dateSelector?.date else { return nil }
+            guard let date = dateSelector?.date,
+                  let year = Calendar.current.dateComponents([.year], from: date).year
+            else { return nil }
             
             let event = EKEvent(eventStore: eventStore)
             event.startDate = Calendar.current.startOfDay(for: date)
-            event.title = String(format: "SLUG-CAL-ANNIVERSARY".localizedVariant, inName, Int(Calendar.current.dateComponents([.year], from: event.startDate).year ?? 0))
+            event.title = String(format: "SLUG-CAL-ANNIVERSARY".localizedVariant, year)
             event.isAllDay = true
             event.addRecurrenceRule(EKRecurrenceRule(recurrenceWith: .yearly, interval: 1, end: nil))
             return event
@@ -312,6 +314,8 @@ extension NACCInitialViewController {
      - parameter inDatePicker: The picker instance.
     */
     @IBAction func newDate(_ inDatePicker: UIDatePicker) {
+        NACCAppSceneDelegate.appDelegateInstance?.date = inDatePicker.date
+        
         cleantimeDisplayView?.removeFromSuperview()
         cleantimeDisplayView = nil
 
@@ -373,12 +377,12 @@ extension NACCInitialViewController {
         if let date = dateSelector?.date,
            let report = NACCAppSceneDelegate.appDelegateInstance?.report {
             let printRenderer = NACCPagePrintRenderer(report: cleantimeReportLabel?.text ?? "ERROR", image: cleantimeDisplayView?.image)
-            let imageAsAny = cleantimeDisplayView?.image as Any
+            let image = cleantimeDisplayView?.image
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.dateFormat = "yyyy-MM-dd"
-            let url = URL(string: String(format: "SLUG-URL-STRING".localizedVariant, dateFormatter.string(from: date))) as Any
-            let viewController = UIActivityViewController(activityItems: [printRenderer, report, imageAsAny, url], applicationActivities: nil)
+            let url = URL(string: String(format: "SLUG-URL-STRING".localizedVariant, dateFormatter.string(from: date)))
+            let viewController = UIActivityViewController(activityItems: [printRenderer, report, image as Any, url as Any], applicationActivities: nil)
             
             if .pad == traitCollection.userInterfaceIdiom,
                let size = view?.bounds.size {
