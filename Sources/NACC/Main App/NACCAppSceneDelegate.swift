@@ -135,10 +135,12 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
      
      The URL scheme is thus:
      
-     nacc://_[YYYY-MM-DD[_/_N]]_
+     nacc://_[YYYY-MM-DD[/N]]_
 
      _YYYY-MM-DD_ is a standard [ISO 8601 calendar date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (For example, September first, 1980, is 1980-09-01).
-     
+
+     The earliest date is October 5, 1953 (1953-10-05)
+
      _N_ is the numerical index of a tab:
      
         - 0 is Keytag Array
