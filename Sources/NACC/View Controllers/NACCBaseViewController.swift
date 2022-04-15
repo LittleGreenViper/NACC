@@ -110,8 +110,10 @@ class NACCBaseViewController: UIViewController {
                         centerImageView.centerXAnchor.constraint(equalTo: backgroundGradientView.centerXAnchor).isActive = true
                         centerImageView.centerYAnchor.constraint(equalTo: backgroundGradientView.centerYAnchor).isActive = true
                         
-                        centerImageView.widthAnchor.constraint(lessThanOrEqualTo: backgroundGradientView.widthAnchor, multiplier: Self._watermarkSizeCoefficient).isActive = true
-                        centerImageView.heightAnchor.constraint(lessThanOrEqualTo: backgroundGradientView.heightAnchor, multiplier: Self._watermarkSizeCoefficient).isActive = true
+                        centerImageView.widthAnchor.constraint(lessThanOrEqualTo: backgroundGradientView.widthAnchor,
+                                                               multiplier: Self._watermarkSizeCoefficient).isActive = true
+                        centerImageView.heightAnchor.constraint(lessThanOrEqualTo: backgroundGradientView.heightAnchor,
+                                                                multiplier: Self._watermarkSizeCoefficient).isActive = true
 
                         if let aspectConstraint = centerImageView.autoLayoutAspectConstraint(aspectRatio: 1.0) {
                             aspectConstraint.isActive = true

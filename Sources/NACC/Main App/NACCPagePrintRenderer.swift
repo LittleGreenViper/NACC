@@ -91,7 +91,8 @@ extension NACCPagePrintRenderer {
      */
     override func drawContentForPage(at: Int, in inContentRect: CGRect) {
         let reportRect = CGRect(origin: inContentRect.origin, size: CGSize(width: inContentRect.size.width, height: inContentRect.size.height * 0.25))
-        let imageRect = CGRect(origin: CGPoint(x: inContentRect.origin.x, y: inContentRect.origin.y + inContentRect.size.height * 0.25), size: CGSize(width: inContentRect.size.width, height: inContentRect.size.height * 0.75))
+        let imageRect = CGRect(origin: CGPoint(x: inContentRect.origin.x, y: inContentRect.origin.y + inContentRect.size.height * 0.25),
+                               size: CGSize(width: inContentRect.size.width, height: inContentRect.size.height * 0.75))
         drawReport(in: reportRect)
         
         guard !imageRect.isEmpty,
@@ -148,7 +149,8 @@ extension NACCPagePrintRenderer {
      - parameter in: This is the display rect.
      */
     func drawImage(_ inImage: UIImage, in inContentRect: CGRect) {
-        let cRect = inContentRect.insetBy(dx: (inContentRect.size.width - inImage.size.width) / 2, dy: (inContentRect.size.height - inImage.size.height) / 2)
+        let cRect = inContentRect.insetBy(dx: (inContentRect.size.width - inImage.size.width) / 2,
+                                          dy: (inContentRect.size.height - inImage.size.height) / 2)
         inImage.draw(at: cRect.origin)
     }
 }

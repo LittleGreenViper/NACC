@@ -302,7 +302,9 @@ extension NACCInitialViewController {
     */
     @IBAction func medallionImageHit(_: Any) {
         guard let date = dateSelector?.date else { return }
-        NACCPersistentPrefs().lastSelectedTabIndex = 0 < LGV_CleantimeDateCalc(startDate: date, calendar: Calendar.current).cleanTime.years ? NACCTabBarController.TabIndexes.medallions.rawValue : NACCTabBarController.TabIndexes.keytagArray.rawValue
+        NACCPersistentPrefs().lastSelectedTabIndex = 0 < LGV_CleantimeDateCalc(startDate: date, calendar: Calendar.current).cleanTime.years
+                                                        ? NACCTabBarController.TabIndexes.medallions.rawValue
+                                                        : NACCTabBarController.TabIndexes.keytagArray.rawValue
         performSegue(withIdentifier: Self._cleandateDisplaySegueID, sender: nil)
     }
     
@@ -355,8 +357,10 @@ extension NACCInitialViewController {
             cleantimeViewContainer.addSubview(cleantimeDisplayView)
             cleantimeDisplayView.centerXAnchor.constraint(equalTo: cleantimeViewContainer.centerXAnchor).isActive = true
             cleantimeDisplayView.centerYAnchor.constraint(equalTo: cleantimeViewContainer.centerYAnchor).isActive = true
-            cleantimeDisplayView.widthAnchor.constraint(lessThanOrEqualTo: cleantimeViewContainer.widthAnchor, multiplier: Self._tagSizeCoefficient).isActive = true
-            cleantimeDisplayView.heightAnchor.constraint(lessThanOrEqualTo: cleantimeViewContainer.heightAnchor, multiplier: Self._tagSizeCoefficient).isActive = true
+            cleantimeDisplayView.widthAnchor.constraint(lessThanOrEqualTo: cleantimeViewContainer.widthAnchor,
+                                                        multiplier: Self._tagSizeCoefficient).isActive = true
+            cleantimeDisplayView.heightAnchor.constraint(lessThanOrEqualTo: cleantimeViewContainer.heightAnchor,
+                                                         multiplier: Self._tagSizeCoefficient).isActive = true
             
             cleantimeDisplayView.totalDays = calculator.totalDays
             cleantimeDisplayView.totalMonths = calculator.totalMonths

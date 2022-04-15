@@ -108,7 +108,10 @@ extension NACCAboutViewController {
      - parameter: ignored.
      */
     @IBAction func displayVersionInfo(_: UIButton) {
-        let displayString = String(format: "SLUG-APP-INFO-VERSION-FORMAT".localizedVariant, Bundle.main.appDisplayName, Bundle.main.appVersionString, Bundle.main.appVersionBuildString)
+        let displayString = String(format: "SLUG-APP-INFO-VERSION-FORMAT".localizedVariant,
+                                   Bundle.main.appDisplayName,
+                                   Bundle.main.appVersionString,
+                                   Bundle.main.appVersionBuildString)
         
         let alertController = UIAlertController(title: displayString, message: nil, preferredStyle: .alert)
 

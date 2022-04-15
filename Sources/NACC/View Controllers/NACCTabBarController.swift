@@ -135,7 +135,10 @@ class NACCTabBarController: UITabBarController {
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let url = URL(string: String(format: "SLUG-URL-STRING".localizedVariant, dateFormatter.string(from: date)) + "/\(selectedIndex)")
-            let viewController = UIActivityViewController(activityItems: [NACCPagePrintRenderer(report: report, image: image), report, image as Any, url as Any], applicationActivities: nil)
+            let viewController = UIActivityViewController(activityItems: [NACCPagePrintRenderer(report: report, image: image),
+                                                                          report,
+                                                                          image as Any, url as Any],
+                                                          applicationActivities: nil)
             if .pad == traitCollection.userInterfaceIdiom,
                let size = view?.bounds.size {
                 viewController.modalPresentationStyle = .popover

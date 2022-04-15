@@ -158,7 +158,9 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         
         // We only do this, if we don't already have some original prefs.
         if nil == originalPrefs {
-            originalPrefs = (cleanDate: NACCPersistentPrefs().cleanDate, lastSelectedTabIndex: NACCTabBarController.TabIndexes(rawValue: NACCPersistentPrefs().lastSelectedTabIndex) ?? .keytagArray) // Store for replacement, later
+            // Store for replacement, later
+            originalPrefs = (cleanDate: NACCPersistentPrefs().cleanDate,
+                             lastSelectedTabIndex: NACCTabBarController.TabIndexes(rawValue: NACCPersistentPrefs().lastSelectedTabIndex) ?? .keytagArray)
         }
         
         for context in inURLContexts {

@@ -32,7 +32,8 @@ extension NSAttributedString {
      - returns: The string height required to display the string.
      */
     var stringHeight: CGFloat {
-        let rect = self.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
+        let rect = self.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude),
+                                     options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
         return ceil(rect.size.height)
     }
     
@@ -41,7 +42,8 @@ extension NSAttributedString {
      - returns: The string width required to display the string.
      */
     var stringWidth: CGFloat {
-        let rect = self.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
+        let rect = self.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude),
+                                     options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
         return ceil(rect.size.width)
     }
 }
@@ -160,7 +162,8 @@ extension UIView {
 extension UIImage {
     /* ################################################################## */
     /**
-     This is a "cascading" image fetcher. It first, ses if there is an asset with the name given, then, it looks in the SFSymbols, finally, returning the SFSymbols.nosign, if none found.
+     This is a "cascading" image fetcher. It first, sees if there is an asset with the name given,
+     then, it looks in the SFSymbols, finally, returning the SFSymbols.nosign, if none found.
      
      - parameter name: The name of the resource.
      
@@ -171,7 +174,8 @@ extension UIImage {
     /* ################################################################## */
     /**
      This returns the RGB color (as a UIColor) of the pixel in the image, at the given point. It is restricted to 32-bit (RGBA/8-bit pixel) values.
-     This was inspired by several of the answers [in this StackOverflow Question](https://stackoverflow.com/questions/25146557/how-do-i-get-the-color-of-a-pixel-in-a-uiimage-with-swift).
+     This was inspired by several of the answers
+     [in this StackOverflow Question](https://stackoverflow.com/questions/25146557/how-do-i-get-the-color-of-a-pixel-in-a-uiimage-with-swift).
      **NOTE:** This is unlikely to be highly performant!
      
      - parameter at: The point in the image to sample (NOTE: Must be within image bounds, or nil is returned).
