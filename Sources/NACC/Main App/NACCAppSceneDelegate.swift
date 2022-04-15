@@ -217,25 +217,56 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         #if DEBUG
             print("\n#### Scene Entering Foreground.\n####\n")
         #endif
-        navigationController?.popToRootViewController(animated: false)
-        if let initialViewController = initialViewController {
-            if nil == cleandate,
-               let originals = originalPrefs {
-                originalPrefs = nil
-                NACCPersistentPrefs().cleanDate = originals.cleanDate
-                NACCPersistentPrefs().lastSelectedTabIndex = originals.lastSelectedTabIndex.rawValue
-                initialViewController.setDate(originals.cleanDate)
-            } else if let date = cleandate {
+            if let date = cleandate {
                 cleandate = nil
                 #if DEBUG
                     print("Setting date: \(date), and tab: \(selectedTab.rawValue)")
                 #endif
-                initialViewController.setDate(date, tabIndex: selectedTab)
+                NACCPersistentPrefs().cleanDate = date
+                NACCPersistentPrefs().lastSelectedTabIndex = selectedTab.rawValue
             }
-        }
         
         cleandate = nil // Take off and nuke the site from orbit. It's the only way to be sure...
     }
+
+    /* ################################################################## */
+    /**
+     Called when the app is about to come into the foreground.
+     
+     We use this to set the app to the initial screen, and also, to check if we have a URL specified.
+     
+     If we don't have a URL specified, then we restore to any saved state.
+     
+     - parameter: The scene instance (ignored).
+     */
+    func sceneDidBecomeActive(_: UIScene) {
+        #if DEBUG
+            print("\n#### Scene Entering Foreground.\n####\n")
+        #endif
+        navigationController?.popToRootViewController(animated: false)
+        if nil == originalPrefs {
+            initialViewController?.setDate()
+        } else {
+            initialViewController?.setDate(NACCPersistentPrefs().cleanDate, tabIndex: selectedTab)
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     Called when the app is about to leave the foreground.
+     
+     We use this to restore our prefs from any that were stored, when the app was called from a URL.
+     
+     - parameter: The scene instance (ignored).
+     */
+    func sceneWillResignActive(_ scene: UIScene) {
+        if let originals = originalPrefs {
+            originalPrefs = nil
+            NACCPersistentPrefs().cleanDate = originals.cleanDate
+            NACCPersistentPrefs().lastSelectedTabIndex = selectedTab.rawValue
+        }
+    }
+
 }
 
 /* ###################################################################################################################################### */

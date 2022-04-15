@@ -63,39 +63,56 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mvS-Ca-3cC">
-                                <rect key="frame" x="20" y="205" width="374" height="619"/>
+                                <rect key="frame" x="20" y="205" width="374" height="627"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wof-nc-G6v">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wM9-wg-0dE">
                                 <rect key="frame" x="20" y="832" width="374" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wof-nc-G6v">
+                                        <rect key="frame" x="0.0" y="0.0" width="183" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="s5H-tw-1d6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="SLUG-PRIVACY-BUTTON"/>
+                                        <connections>
+                                            <action selector="privacyButtonHit:" destination="oY9-N7-njW" eventType="touchUpInside" id="4Qp-V4-Wnw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NmX-4a-4nX">
+                                        <rect key="frame" x="191" y="0.0" width="183" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="SLUG-LGV-BUTTON"/>
+                                        <connections>
+                                            <action selector="lgvButtonHit:" destination="oY9-N7-njW" eventType="touchUpInside" id="6FS-Jo-dld"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="s5H-tw-1d6"/>
+                                    <constraint firstItem="NmX-4a-4nX" firstAttribute="width" secondItem="wof-nc-G6v" secondAttribute="width" id="cFo-wk-AUy"/>
+                                    <constraint firstItem="NmX-4a-4nX" firstAttribute="height" secondItem="wof-nc-G6v" secondAttribute="height" id="chj-BQ-OIH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="SLUG-PRIVACY-BUTTON"/>
-                                <connections>
-                                    <action selector="privacyButtonHit:" destination="oY9-N7-njW" eventType="touchUpInside" id="4Qp-V4-Wnw"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="M9q-Q2-aKp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hHI-MN-Hx8" firstAttribute="top" secondItem="hrq-TF-zEE" secondAttribute="bottom" constant="8" symbolic="YES" id="645-pX-ZXz"/>
-                            <constraint firstItem="M9q-Q2-aKp" firstAttribute="trailing" secondItem="wof-nc-G6v" secondAttribute="trailing" constant="20" id="8PH-aq-g9s"/>
                             <constraint firstItem="hrq-TF-zEE" firstAttribute="top" secondItem="M9q-Q2-aKp" secondAttribute="top" id="9ML-20-fgV"/>
-                            <constraint firstItem="wof-nc-G6v" firstAttribute="top" secondItem="mvS-Ca-3cC" secondAttribute="bottom" constant="8" symbolic="YES" id="Fe1-CH-9CO"/>
-                            <constraint firstItem="wof-nc-G6v" firstAttribute="leading" secondItem="M9q-Q2-aKp" secondAttribute="leading" constant="20" id="MBm-zA-vCk"/>
+                            <constraint firstItem="wM9-wg-0dE" firstAttribute="top" secondItem="mvS-Ca-3cC" secondAttribute="bottom" id="KUC-uR-oDR"/>
                             <constraint firstItem="M9q-Q2-aKp" firstAttribute="trailing" secondItem="mvS-Ca-3cC" secondAttribute="trailing" constant="20" id="Qx3-G0-Tys"/>
                             <constraint firstItem="M9q-Q2-aKp" firstAttribute="trailing" secondItem="hHI-MN-Hx8" secondAttribute="trailing" constant="20" id="TW5-A7-3Mk"/>
-                            <constraint firstItem="M9q-Q2-aKp" firstAttribute="bottom" secondItem="wof-nc-G6v" secondAttribute="bottom" id="atO-Xk-c1y"/>
                             <constraint firstItem="hrq-TF-zEE" firstAttribute="centerX" secondItem="jj2-PE-SeP" secondAttribute="centerX" id="cJp-nr-c4m"/>
+                            <constraint firstItem="M9q-Q2-aKp" firstAttribute="bottom" secondItem="wM9-wg-0dE" secondAttribute="bottom" id="ciN-2p-MoE"/>
                             <constraint firstItem="hHI-MN-Hx8" firstAttribute="leading" secondItem="M9q-Q2-aKp" secondAttribute="leading" constant="20" id="fnA-tJ-JfV"/>
+                            <constraint firstItem="wM9-wg-0dE" firstAttribute="leading" secondItem="M9q-Q2-aKp" secondAttribute="leading" constant="20" id="gc2-0X-e6N"/>
                             <constraint firstItem="mvS-Ca-3cC" firstAttribute="top" secondItem="hHI-MN-Hx8" secondAttribute="bottom" constant="8" symbolic="YES" id="kcl-BX-mhM"/>
+                            <constraint firstItem="M9q-Q2-aKp" firstAttribute="trailing" secondItem="wM9-wg-0dE" secondAttribute="trailing" constant="20" id="luh-rv-YCQ"/>
                             <constraint firstItem="mvS-Ca-3cC" firstAttribute="leading" secondItem="M9q-Q2-aKp" secondAttribute="leading" constant="20" id="r8E-US-kL0"/>
                         </constraints>
                     </view>
@@ -103,6 +120,7 @@
                     <connections>
                         <outlet property="appIconButton" destination="hrq-TF-zEE" id="ZDq-zd-uQM"/>
                         <outlet property="helpView" destination="mvS-Ca-3cC" id="rny-hl-9Jq"/>
+                        <outlet property="lgvButton" destination="NmX-4a-4nX" id="E93-NH-hKi"/>
                         <outlet property="privacyButton" destination="wof-nc-G6v" id="Ydy-FV-mLX"/>
                         <outlet property="versionLabelButton" destination="hHI-MN-Hx8" id="xUR-c8-xeq"/>
                     </connections>
@@ -111,7 +129,7 @@
             </objects>
             <point key="canvasLocation" x="-1575.3623188405797" y="116.51785714285714"/>
         </scene>
-        <!--SLUG-CLEANDATE-->
+        <!--SLUG-INITIAL-TITLE-->
         <scene sceneID="WZH-Dg-DZt">
             <objects>
                 <viewController id="UXV-2X-dsd" customClass="NACCInitialViewController" customModule="NACC" customModuleProvider="target" sceneMemberID="viewController">
@@ -206,7 +224,7 @@
                             <constraint firstItem="EBU-Dq-om0" firstAttribute="centerY" secondItem="yLY-Yv-YNj" secondAttribute="centerY" id="wVk-xE-poy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SLUG-CLEANDATE" id="Kk8-4H-KCn">
+                    <navigationItem key="navigationItem" title="SLUG-INITIAL-TITLE" id="Kk8-4H-KCn">
                         <leftBarButtonItems>
                             <barButtonItem systemItem="action" id="cFk-Th-0hg">
                                 <connections>
@@ -244,17 +262,17 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pgN-pk-vGq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="o9e-FU-FDw" userLabel="Report Text Tap Gesture Recognizer">
                     <connections>
-                        <segue destination="NfT-p7-QCK" kind="show" id="b7c-b0-yJx"/>
+                        <action selector="textHit:" destination="UXV-2X-dsd" id="IPy-j9-gYC"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="qLi-lA-ANd" userLabel="Logo Tap Gesture Recognizer">
                     <connections>
-                        <segue destination="NfT-p7-QCK" kind="show" id="Guu-Se-vj3"/>
+                        <action selector="logoImageHit:" destination="UXV-2X-dsd" id="Ckd-MR-nPO"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="tkX-o9-e3u" userLabel="Medallion Tap Gesture Recognizer">
                     <connections>
-                        <segue destination="NfT-p7-QCK" kind="show" id="zyu-ZD-M7T"/>
+                        <action selector="medallionImageHit:" destination="UXV-2X-dsd" id="5rz-uR-DQn"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -572,9 +590,6 @@
             <point key="canvasLocation" x="-1480" y="844"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="KTm-4z-s92"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" name="SelectionTintColor"/>
     <resources>
         <image name="Logo" width="612" height="612"/>

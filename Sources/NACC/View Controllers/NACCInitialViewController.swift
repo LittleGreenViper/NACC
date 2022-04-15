@@ -246,7 +246,6 @@ extension NACCInitialViewController {
             startupLogo?.removeFromSuperview()  // Should never happen, but what the hell...
             startupLogo = nil
         }
-        setDate()
     }
     
     /* ################################################################## */
@@ -273,6 +272,39 @@ extension NACCInitialViewController {
 // MARK: Callbacks
 /* ###################################################################################################################################### */
 extension NACCInitialViewController {
+    /* ################################################################## */
+    /**
+     If the report text is hit, we open to whatever tab was last selected.
+     
+     - parameter: ignored
+    */
+    @IBAction func textHit(_: Any) {
+        performSegue(withIdentifier: Self._cleandateDisplaySegueID, sender: nil)
+    }
+    
+    /* ################################################################## */
+    /**
+     If the logo is hit, we open to the keytag array tab
+     
+     - parameter: ignored
+    */
+    @IBAction func logoImageHit(_: Any) {
+        NACCPersistentPrefs().lastSelectedTabIndex = NACCTabBarController.TabIndexes.keytagArray.rawValue
+        performSegue(withIdentifier: Self._cleandateDisplaySegueID, sender: nil)
+    }
+    
+    /* ################################################################## */
+    /**
+     If the medallion/keytag is hit, we open to medallions, if over a year, keytag array, otherwise.
+     
+     - parameter: ignored
+    */
+    @IBAction func medallionImageHit(_: Any) {
+        guard let date = dateSelector?.date else { return }
+        NACCPersistentPrefs().lastSelectedTabIndex = 0 < LGV_CleantimeDateCalc(startDate: date, calendar: Calendar.current).cleanTime.years ? NACCTabBarController.TabIndexes.medallions.rawValue : NACCTabBarController.TabIndexes.keytagArray.rawValue
+        performSegue(withIdentifier: Self._cleandateDisplaySegueID, sender: nil)
+    }
+    
     /* ################################################################## */
     /**
      When a new date is selected, we generate a new report.
@@ -405,6 +437,13 @@ extension NACCInitialViewController {
                     eventController.event = event
                     eventController.eventStore = self.eventStore
                     eventController.editViewDelegate = self
+                    
+                    if .pad == self.traitCollection.userInterfaceIdiom {
+                        eventController.modalPresentationStyle = .popover
+                        eventController.popoverPresentationController?.barButtonItem = self.calendarButton
+                        eventController.popoverPresentationController?.permittedArrowDirections = [.up]
+                    }
+                    
                     self.present(eventController, animated: true, completion: nil)
                 }
             }

@@ -50,7 +50,7 @@
 
 // MARK: CLEANDATE SCREEN
 
-"SLUG-CLEANDATE"                                =   "My Cleandate";
+"SLUG-INITIAL-TITLE"                            =   "NACC";
 "SLUG-URL-STRING"                               =   "nacc://%@";
 
 // MARK: CALENDAR EVENT
@@ -80,6 +80,7 @@ The Great Rift Valley Software Company
 "SLUG-APP-INFO-VERSION-FORMAT"                  =   "%@ Version: %@ (%@)";
 "SLUG-COPYRIGHT-BUTTON"                         =   "©2022 Little Green Viper Software Development LLC";
 "SLUG-PRIVACY-BUTTON"                           =   "Privacy";
+"SLUG-LGV-BUTTON"                               =   "Little Green Viper Web Site";
 
 // MARK: HORIZONTAL KEYTAGS SCREEN
 
@@ -99,7 +100,7 @@ The Great Rift Valley Software Company
 
 // MARK: Cleandate Screen
 
-"SLUG-ACC-LOGO"                                 =   "This is the NACC logo. If you select this, the Web browser will be opened, to the Little Green Viper Software Development LLC Web site.";
+"SLUG-ACC-LOGO"                                 =   "This is the NACC logo. If you select this, the app will display the results of the calculation. If you have one day or more, you will be able to select it, and be taken to the cleantime display tabs.";
 "SLUG-ACC-DATEPICKER"                           =   "This is where you enter your cleandate. Set this picker to your cleandate, and everything else will be automatically calculated.";
 "SLUG-ACC-REPORT-BUTTON"                        =   "This label will display the results of the calculation. If you have one day or more, you will be able to select it, and be taken to the cleantime display tabs.";
 "SLUG-ACC-CALENDAR-BUTTON"                      =   "This allows you to create a repeating event from the cleandate (alarms every year).";
@@ -110,10 +111,9 @@ The Great Rift Valley Software Company
 // MARK: About Screen
 
 "SLUG-ACC-APPICON-BUTTON"                       =   "This button will take you to the Little Green Viper Software Development LLC Web site, on the page that is assigned to this app.";
-
 "SLUG-ACC-VERSION-BUTTON"                       =   "This button will pop up a modal alert, with the exact build version of this app.";
-
 "SLUG-ACC-PRIVACY-BUTTON"                       =   "This button will take you to the Little Green Viper Software Development LLC Web site, on the page that defines our privacy policy.";
+"SLUG-ACC-LGV-BUTTON"                           =   "This button will take you to the Little Green Viper Software Development LLC main Web site.";
 
 // MARK: Tabs
 

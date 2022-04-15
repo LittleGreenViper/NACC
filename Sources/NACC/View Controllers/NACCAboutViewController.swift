@@ -58,6 +58,12 @@ class NACCAboutViewController: NACCBaseViewController {
 
     /* ################################################################## */
     /**
+     This displays the corporate Web site link.
+     */
+    @IBOutlet weak var lgvButton: UIButton!
+    
+    /* ################################################################## */
+    /**
      This displays the help text.
      */
     @IBOutlet weak var helpView: UITextView?
@@ -81,12 +87,14 @@ extension NACCAboutViewController {
         helpView?.text = "SLUG-APP-INFO-TEXT".localizedVariant
         
         privacyButton?.setTitle((privacyButton?.title(for: .normal) ?? "ERROR").localizedVariant, for: .normal)
+        lgvButton?.setTitle((lgvButton?.title(for: .normal) ?? "ERROR").localizedVariant, for: .normal)
         privacyButton?.titleLabel?.adjustsFontSizeToFitWidth = true
         privacyButton?.titleLabel?.minimumScaleFactor = 0.5
         
         appIconButton?.accessibilityLabel = "SLUG-ACC-APPICON-BUTTON".localizedVariant
         versionLabelButton?.accessibilityLabel = "SLUG-ACC-VERSION-BUTTON".localizedVariant
         privacyButton?.accessibilityLabel = "SLUG-ACC-PRIVACY-BUTTON".localizedVariant
+        lgvButton?.accessibilityLabel = "SLUG-ACC-LGV-BUTTON".localizedVariant
     }
 }
 
@@ -136,7 +144,7 @@ extension NACCAboutViewController {
      Called when the button to visit the main site is hit.
      - parameter: ignored
      */
-    @IBAction func callSiteButtonHit(_: Any) {
+    @IBAction func lgvButtonHit(_: Any) {
         guard let uri = Bundle.main.siteURI else { return }
         UIApplication.shared.open(uri, options: [:], completionHandler: nil)
     }
