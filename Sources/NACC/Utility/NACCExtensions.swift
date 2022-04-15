@@ -131,6 +131,12 @@ extension UIViewController {
      Returns true, if we are in Reduced Transparency Mode.
      */
     var isReducedTransparencyMode: Bool { UIAccessibility.isReduceTransparencyEnabled }
+
+    /* ################################################################## */
+    /**
+     Returns the interface (not device) orientation
+     */
+    var windowInterfaceOrientation: UIInterfaceOrientation? { UIApplication.shared.windows.first?.windowScene?.interfaceOrientation }
 }
 
 /* ###################################################################################################################################### */

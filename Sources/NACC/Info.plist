@@ -44,9 +44,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
-	<string>This app can add events to your calendar, to remind you of anniversary dates.</string>
+	<string>This app allows you to add events to your calendar, to remind you of anniversary dates.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app allows you to save images to your Photo Library.</string>
+	<string>This app allows you to save images of keytags or medallions to your Photo Library</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

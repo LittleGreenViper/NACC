@@ -60,20 +60,7 @@
 // MARK: ABOUT SCREEN
 
 "SLUG-ABOUT"                                    =   "About NACC";
-"SLUG-APP-INFO-TEXT"                            =   "This is a simple app for quantifying your cleantime.\n\
-It says nothing about qualifying your Recovery. That's between you and your sponsor.\
-Simply set the wheels to your cleandate, and touch the report text.\n\
-This app uses the following open-soure libraries:\n\
-Little Green Viper Software Development LLC
-(https://littlegreenviper.com):\
-    LGV_Cleantime: 1.3.3\
-    LGV_UICleantime: 1.0.5\n\
-
-The Great Rift Valley Software Company
-(https://riftvalleySoftware.com):\
-    RVS_GeneralObserver: 1.0.8\
-    RVS_Generic_Swift_Toolbox: 1.6.7\
-    RVS_Persistent_Prefs: 1.2.7";
+"SLUG-APP-INFO-TEXT"                            =   "This is a simple app for quantifying your cleantime.\n\nIt says nothing about qualifying your Recovery. That's between you and your sponsor.\nSimply set the wheels to your cleandate, and touch the report text.\n\nThis app uses the following open-soure libraries:\n\nLittle Green Viper Software Development LLC\n(https://littlegreenviper.com):\nLGV_Cleantime: 1.3.3\nLGV_UICleantime: 1.0.5\n\nThe Great Rift Valley Software Company\n(https://riftvalleySoftware.com):\nRVS_GeneralObserver: 1.0.8\nRVS_Generic_Swift_Toolbox: 1.6.7\nRVS_Persistent_Prefs: 1.2.7";
 
 "SLUG-OK-BUTTON-TEXT"                           =   "OK";
 "SLUG-APP-INFO-VERSION-FORMAT-SMALL"            =   "Version %@";
@@ -104,14 +91,14 @@ The Great Rift Valley Software Company
 "SLUG-ACC-DATEPICKER"                           =   "This is where you enter your cleandate. Set this picker to your cleandate, and everything else will be automatically calculated.";
 "SLUG-ACC-REPORT-BUTTON"                        =   "This label will display the results of the calculation. If you have one day or more, you will be able to select it, and be taken to the cleantime display tabs.";
 "SLUG-ACC-CALENDAR-BUTTON"                      =   "This allows you to create a repeating event from the cleandate (alarms every year).";
-"SLUG-ACC-ACTION-BUTTON"                        =   "This allows you to share the report. It will bring up a screen, allowing you to send the report to other apps or people (like messages and email).";
+"SLUG-ACC-ACTION-BUTTON"                        =   "This allows you to share the report. It will bring up a screen, allowing you to send the report to other apps or people (like messages and email). You can also print the report, or save the image in your Photo Library.";
 "SLUG-ACC-INFO-BUTTON"                          =   "If you select this button, you will be taken to a screen with information about this app.";
 "SLUG-ACC-IMAGE"                                =   "This image displays the last keytag or medallion that you should have receieved for your cleantime. If you have one day or more, you can select it, and be taken to the cleantime display tabs.";
 
 // MARK: About Screen
 
 "SLUG-ACC-APPICON-BUTTON"                       =   "This button will take you to the Little Green Viper Software Development LLC Web site, on the page that is assigned to this app.";
-"SLUG-ACC-VERSION-BUTTON"                       =   "This button will pop up a modal alert, with the exact build version of this app.";
+"SLUG-ACC-VERSION-BUTTON"                       =   "This button will pop up an alert, with the exact build version of this app.";
 "SLUG-ACC-PRIVACY-BUTTON"                       =   "This button will take you to the Little Green Viper Software Development LLC Web site, on the page that defines our privacy policy.";
 "SLUG-ACC-LGV-BUTTON"                           =   "This button will take you to the Little Green Viper Software Development LLC main Web site.";
 
@@ -120,8 +107,8 @@ The Great Rift Valley Software Company
 "SLUG-ACC-Keytag Array"                         =   "This tab displays an array of keytags, arranged in horizontal rows.";
 "SLUG-ACC-Keytag Strip"                         =   "This tab displays a vertical strip of linked keytags.";
 "SLUG-ACC-Medallions"                           =   "This tab displays an array of medallions, arranged in horizontal rows.";
-"SLUG-ACC-TABS-ACTION-BUTTON"                   =   "This allows you to share the report and the cleantime images. It will bring up a screen, allowing you to send them to other apps or people (like messages and email).";
+"SLUG-ACC-TABS-ACTION-BUTTON"                   =   "This allows you to share the report and the cleantime images. It will bring up a screen, allowing you to send them to other apps or people (like messages and email). You can also print the report, or save the image in your Photo Library.";
 
-// MARK: Tab View
+// MARK: Individual Tab View
 
-"SLUG-ACC-SCROLLVIEW"                           =   "This scrollview will display the cleantime commemoration. It can be scrolled and zoomed.";
+"SLUG-ACC-SCROLLVIEW"                           =   "This will display the cleantime commemoration. It can be scrolled and zoomed.";

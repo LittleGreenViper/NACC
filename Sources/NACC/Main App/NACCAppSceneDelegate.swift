@@ -39,60 +39,60 @@ class NACCAppSceneDelegate: UIResponder {
     /**
      Quick accessor for the app delegate, cast to this class.
      */
-    static var appDelegateInstance: NACCAppSceneDelegate?
+    private static var _appDelegateInstance: NACCAppSceneDelegate?
     
     /* ################################################################## */
     /**
      The name of our default scene configuration.
      */
-    static private let _sceneConfigurationName = "NACCDefaultConfiguration"
+    private static let _sceneConfigurationName = "NACCDefaultConfiguration"
 
     /* ################################################################## */
     /**
      This will contain the original prefs, if the app was started from a URL (so we reset).
      */
-    var originalPrefs: (cleanDate: Date, lastSelectedTabIndex: NACCTabBarController.TabIndexes)?
-
-    /* ################################################################## */
-    /**
-     This will contain the date for the selectors.
-     */
-    var date: Date?
+    private var _originalPrefs: (cleanDate: Date, lastSelectedTabIndex: NACCTabBarController.TabIndexes)?
 
     /* ################################################################## */
     /**
      This will contain the date for the selectors, if set from a URL.
      */
-    var cleandate: Date?
+    private var _cleandateFromURI: Date?
+
+    /* ################################################################## */
+    /**
+     This is a special flag, for use when opened by a URI. If true, then the app always starts at the initial screen.
+     */
+    private var _resetScreen = false
 
     /* ################################################################## */
     /**
      This is used to allow a tab to be selected from the URL.
      */
-    var selectedTab: NACCTabBarController.TabIndexes = .keytagArray
+    private var _selectedTabFromURI: NACCTabBarController.TabIndexes = .keytagArray
     
+    /* ################################################################## */
+    /**
+     This will contain the date for the selectors.
+     */
+    private var _date: Date?
+
     /* ################################################################## */
     /**
      This will contain the textual report, for the calculation.
      */
-    var report: String = ""
+    private var _report: String = ""
 }
 
 /* ###################################################################################################################################### */
-// MARK: Computed Properties
+// MARK: Private Computed Properties
 /* ###################################################################################################################################### */
 extension NACCAppSceneDelegate {
     /* ################################################################## */
     /**
-     Returns the interface (not device) orientation
-     */
-    var windowInterfaceOrientation: UIInterfaceOrientation? { UIApplication.shared.windows.first?.windowScene?.interfaceOrientation }
-    
-    /* ################################################################## */
-    /**
      Easy access to our navigation controller.
      */
-    var navigationController: UINavigationController? {
+    private var _navigationController: UINavigationController? {
         var ret: UINavigationController?
         
         if let temp = window?.rootViewController as? UINavigationController {
@@ -113,13 +113,47 @@ extension NACCAppSceneDelegate {
     /**
      This is the initial view controller.
      */
-    var initialViewController: NACCInitialViewController? {
-        if let navigationController = navigationController,
+    private var _initialViewController: NACCInitialViewController? {
+        if let navigationController = _navigationController,
            let viewController = navigationController.viewControllers[0] as? NACCInitialViewController {
             return viewController
         }
         
         return nil
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: Internal Computed Class Properties
+/* ###################################################################################################################################### */
+extension NACCAppSceneDelegate {
+    /* ################################################################## */
+    /**
+     Quick accessor for the app delegate, cast to this class. READ-ONLY.
+     */
+    class var appDelegateInstance: NACCAppSceneDelegate? { _appDelegateInstance }
+}
+
+/* ###################################################################################################################################### */
+// MARK: Internal Computed Instance Properties
+/* ###################################################################################################################################### */
+extension NACCAppSceneDelegate {
+    /* ################################################################## */
+    /**
+     This will contain the date for the selectors.
+     */
+    var date: Date? {
+        get { _date }
+        set { _date = newValue }
+    }
+
+    /* ################################################################## */
+    /**
+     This will contain the textual report, for the calculation.
+     */
+    var report: String {
+        get { _report }
+        set { _report = newValue }
     }
 }
 
@@ -157,9 +191,9 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         guard !inURLContexts.isEmpty else { return }
         
         // We only do this, if we don't already have some original prefs.
-        if nil == originalPrefs {
+        if nil == _originalPrefs {
             // Store for replacement, later
-            originalPrefs = (cleanDate: NACCPersistentPrefs().cleanDate,
+            _originalPrefs = (cleanDate: NACCPersistentPrefs().cleanDate,
                              lastSelectedTabIndex: NACCTabBarController.TabIndexes(rawValue: NACCPersistentPrefs().lastSelectedTabIndex) ?? .keytagArray)
         }
         
@@ -174,17 +208,17 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
                 
                 let pathComponents = url.pathComponents.compactMap { ("/" != $0) && !$0.isEmpty ? $0 : nil }
                 
-                selectedTab = NACCTabBarController.TabIndexes(rawValue: Int(String(pathComponents.isEmpty ? "0" : pathComponents[0])) ?? 0) ?? .keytagArray
+                _selectedTabFromURI = NACCTabBarController.TabIndexes(rawValue: Int(String(pathComponents.isEmpty ? "0" : pathComponents[0])) ?? 0) ?? .keytagArray
 
                 #if DEBUG
-                    print("\tThe URL has this date: \(host), and wants this tab: \(selectedTab.rawValue)")
+                    print("\tThe URL has this date: \(host), and wants this tab: \(_selectedTabFromURI.rawValue)")
                 #endif
 
                 let dateFormatter = DateFormatter()
                 dateFormatter.locale = Locale(identifier: "en_US_POSIX")
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 if let date = dateFormatter.date(from: host) {
-                    cleandate = date
+                    _cleandateFromURI = date
                 }
             }
         }
@@ -221,16 +255,17 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         #if DEBUG
             print("\n#### Scene Entering Foreground.\n####\n")
         #endif
-            if let date = cleandate {
-                cleandate = nil
+            if let date = _cleandateFromURI {
+                _resetScreen = true
+                _cleandateFromURI = nil
                 #if DEBUG
-                    print("Setting date: \(date), and tab: \(selectedTab.rawValue)")
+                    print("Setting date: \(date), and tab: \(_selectedTabFromURI.rawValue)")
                 #endif
                 NACCPersistentPrefs().cleanDate = date
-                NACCPersistentPrefs().lastSelectedTabIndex = selectedTab.rawValue
+                NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI.rawValue
             }
         
-        cleandate = nil // Take off and nuke the site from orbit. It's the only way to be sure...
+        _cleandateFromURI = nil // Take off and nuke the site from orbit. It's the only way to be sure...
     }
 
     /* ################################################################## */
@@ -245,14 +280,16 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
      */
     func sceneDidBecomeActive(_: UIScene) {
         #if DEBUG
-            print("\n#### Scene Entering Foreground.\n####\n")
+            print("\n#### Scene Becoming Active.\n####\n")
         #endif
-        navigationController?.popToRootViewController(animated: false)
-        if nil == originalPrefs {
-            initialViewController?.setDate()
+        if _resetScreen {
+            _navigationController?.popToRootViewController(animated: false)
+            _initialViewController?.setDate(NACCPersistentPrefs().cleanDate, tabIndex: _selectedTabFromURI)
         } else {
-            initialViewController?.setDate(NACCPersistentPrefs().cleanDate, tabIndex: selectedTab)
+            _initialViewController?.setDate()
         }
+        
+        _resetScreen = false
     }
     
     /* ################################################################## */
@@ -264,10 +301,11 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
      - parameter: The scene instance (ignored).
      */
     func sceneWillResignActive(_ scene: UIScene) {
-        if let originals = originalPrefs {
-            originalPrefs = nil
+        _navigationController?.topViewController?.presentedViewController?.dismiss(animated: false)
+        if let originals = _originalPrefs {
+            _originalPrefs = nil
             NACCPersistentPrefs().cleanDate = originals.cleanDate
-            NACCPersistentPrefs().lastSelectedTabIndex = selectedTab.rawValue
+            NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI.rawValue
         }
     }
 
@@ -285,7 +323,7 @@ extension NACCAppSceneDelegate: UIApplicationDelegate {
      - returns: true, always.
     */
     func application(_: UIApplication, didFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        Self.appDelegateInstance = self
+        Self._appDelegateInstance = self
         return true
     }
 

@@ -45,26 +45,31 @@ class NACCBaseViewController: UIViewController {
     /**
      This can be overloaded or set, to provide the image to be used as a background gradient.
      */
-    var backgroundGradientImage: UIImage? = UIImage(named: "Background-Gradient")
+    private var _backgroundGradientImage: UIImage? = UIImage(named: "Background-Gradient")
     
     /* ############################################################## */
     /**
      This can be overloaded or set, to provide the image to be used as a "watermark."
      */
-    var watermarkImage: UIImage? = UIImage(named: "CenterImage")
+    private var _watermarkImage: UIImage? = UIImage(named: "CenterImage")
 
     /* ################################################################## */
     /**
      This is the background image view.
      */
-    var myBackgroundGradientView: UIImageView?
+    private var _myBackgroundGradientView: UIImageView?
 
     /* ################################################################## */
     /**
      This is the background center image view.
      */
-    var myCenterImageView: UIImageView?
-    
+    private var _myCenterImageView: UIImageView?
+}
+
+/* ###################################################################################################################################### */
+// MARK: Base Class Overrides
+/* ###################################################################################################################################### */
+extension NACCBaseViewController {
     /* ################################################################## */
     /**
      Called when the view hierarchy has been completed.
@@ -80,9 +85,9 @@ class NACCBaseViewController: UIViewController {
         }
 
         if let view = view {
-            myBackgroundGradientView = UIImageView()
-            if let backgroundGradientView = myBackgroundGradientView,
-               let backGroundImage = backgroundGradientImage {
+            _myBackgroundGradientView = UIImageView()
+            if let backgroundGradientView = _myBackgroundGradientView,
+               let backGroundImage = _backgroundGradientImage {
                 backgroundGradientView.image = backGroundImage
                 backgroundGradientView.translatesAutoresizingMaskIntoConstraints = false
                 backgroundGradientView.contentMode = .scaleToFill
@@ -97,9 +102,9 @@ class NACCBaseViewController: UIViewController {
                 // No watermark for high contrast or reduced transparency mode.
                 if !isHighContrastMode,
                    !isReducedTransparencyMode {
-                    myCenterImageView = UIImageView()
-                    if let centerImageView = myCenterImageView,
-                       let centerImage = watermarkImage {
+                    _myCenterImageView = UIImageView()
+                    if let centerImageView = _myCenterImageView,
+                       let centerImage = _watermarkImage {
                         centerImageView.image = centerImage
                         centerImageView.alpha = Self._watermarkAlpha
                         centerImageView.translatesAutoresizingMaskIntoConstraints = false

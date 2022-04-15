@@ -88,7 +88,7 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
     /* ################################################################################################################################## */
     /* ################################################################## */
     /**
-     This flag tells us whether or not the user will be prompted to create a calendar event, whenever they indicate attendance at a meeting.
+     This stores the cleandate, as an instance of Date
      */
     var cleanDate: Date {
         get { values[Keys.cleanDate.rawValue] as? Date ?? Date() }
@@ -97,7 +97,7 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
 
     /* ################################################################## */
     /**
-     This flag tells us whether or not the user prefers their search results as a list, as opposed to a map.
+     This stores the last selected tab index (0-based).
      */
     var lastSelectedTabIndex: Int {
         get { values[Keys.lastSelectedTabIndex.rawValue] as? Int ?? 0 }

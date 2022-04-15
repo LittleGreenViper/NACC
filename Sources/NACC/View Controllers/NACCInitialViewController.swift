@@ -156,7 +156,7 @@ extension NACCInitialViewController {
      If we pass in a date, then we ignore the prefs.
      
      - parameter inDate: The date to set. It's optional. Don't specify it to use the prefs.
-     - parameter tabIndex: The tab index to choose. This is optional. If not specified, we do not open on a tab.
+     - parameter tabIndex: The tab index to choose. This is optional. If not specified, we do not open a tab.
     */
     func setDate(_ inDate: Date? = nil, tabIndex inTabIndex: NACCTabBarController.TabIndexes? = nil) {
         if let dateSelector = dateSelector,
@@ -165,8 +165,8 @@ extension NACCInitialViewController {
             if (minDate...Date()).contains(newDateValue) {
                 dateSelector.date = newDateValue
                 newDate(dateSelector)
-                if nil != inTabIndex {
-                    NACCPersistentPrefs().lastSelectedTabIndex = inTabIndex?.rawValue ?? NACCPersistentPrefs().lastSelectedTabIndex
+                if let tabIndex = inTabIndex {  // We only open to a tab, if it was explicitly requested, by indicating a tab number.
+                    NACCPersistentPrefs().lastSelectedTabIndex = tabIndex.rawValue
                     performSegue(withIdentifier: Self._cleandateDisplaySegueID, sender: nil)
                 }
             }
@@ -321,11 +321,13 @@ extension NACCInitialViewController {
         cleantimeDisplayView = nil
 
         NACCPersistentPrefs().cleanDate = inDatePicker.date
+        
         if let text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: inDatePicker.date, endDate: Date(), calendar: Calendar.current) {
             NACCAppSceneDelegate.appDelegateInstance?.report = text
             cleantimeReportLabel?.text = text
         }
         
+        // The text is set to the action color, if it is selectable (valid date).
         let calculator = LGV_CleantimeDateCalc(startDate: inDatePicker.date, calendar: Calendar.current).cleanTime
         if 0 < calculator.totalDays {
             logoContainerView?.isUserInteractionEnabled = true

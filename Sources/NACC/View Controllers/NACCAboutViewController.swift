@@ -60,7 +60,7 @@ class NACCAboutViewController: NACCBaseViewController {
     /**
      This displays the corporate Web site link.
      */
-    @IBOutlet weak var lgvButton: UIButton!
+    @IBOutlet weak var lgvButton: UIButton?
     
     /* ################################################################## */
     /**
@@ -86,8 +86,10 @@ extension NACCAboutViewController {
         versionLabelButton?.setTitle(String(format: "SLUG-APP-INFO-VERSION-FORMAT-SMALL".localizedVariant, Bundle.main.appVersionString), for: .normal)
         helpView?.text = "SLUG-APP-INFO-TEXT".localizedVariant
         
-        privacyButton?.setTitle((privacyButton?.title(for: .normal) ?? "ERROR").localizedVariant, for: .normal)
         lgvButton?.setTitle((lgvButton?.title(for: .normal) ?? "ERROR").localizedVariant, for: .normal)
+        lgvButton?.titleLabel?.adjustsFontSizeToFitWidth = true
+        lgvButton?.titleLabel?.minimumScaleFactor = 0.5
+        privacyButton?.setTitle((privacyButton?.title(for: .normal) ?? "ERROR").localizedVariant, for: .normal)
         privacyButton?.titleLabel?.adjustsFontSizeToFitWidth = true
         privacyButton?.titleLabel?.minimumScaleFactor = 0.5
         

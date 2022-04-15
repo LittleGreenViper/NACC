@@ -91,6 +91,7 @@
 			children = (
 				D4B247C3269F0C83004D8D1E /* Main App */,
 				D4B247C2269F0C76004D8D1E /* View Controllers */,
+				D4F54A192809B27200F175C4 /* Utility */,
 				D4B247C0269F0C52004D8D1E /* Resources */,
 				D4B247C1269F0C65004D8D1E /* Meta */,
 			);
@@ -144,11 +145,18 @@
 			isa = PBXGroup;
 			children = (
 				D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */,
-				D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */,
-				D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */,
-				D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */,
 			);
 			path = "Main App";
+			sourceTree = "<group>";
+		};
+		D4F54A192809B27200F175C4 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */,
+				D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */,
+				D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

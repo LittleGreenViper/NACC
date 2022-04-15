@@ -109,8 +109,6 @@ class NACCTabBarController: UITabBarController {
             }
         }
         
-        actionButton?.accessibilityLabel = "SLUG-ACC-TABS-ACTION-BUTTON".localizedVariant
-        
         let lastSelectedTabIndex = NACCPersistentPrefs().lastSelectedTabIndex
         
         if (0..<(viewControllers?.count ?? 0)).contains(lastSelectedTabIndex),
@@ -119,6 +117,8 @@ class NACCTabBarController: UITabBarController {
         } else if !(viewControllers?.isEmpty ?? true) {
             selectedViewController = viewControllers?[TabIndexes.keytagArray.rawValue]
         }
+        
+        actionButton?.accessibilityLabel = "SLUG-ACC-TABS-ACTION-BUTTON".localizedVariant
     }
     
     /* ################################################################## */

@@ -112,7 +112,7 @@ extension NACCTabBaseViewController {
         scrollView?.zoomScale = 1.0
         
         // Just in case we show up, and everything is hidden...
-        if !(NACCAppSceneDelegate.appDelegateInstance?.windowInterfaceOrientation?.isLandscape ?? false) {
+        if !(windowInterfaceOrientation?.isLandscape ?? false) {
             self.tabBarController?.tabBar.isHidden = false
             self.navigationController?.navigationBar.isHidden = false
         }
@@ -134,7 +134,7 @@ extension NACCTabBaseViewController {
         
         inCoordinator.animate { _ in
             guard .phone == self.traitCollection.userInterfaceIdiom,
-                  let windowInterfaceOrientation = NACCAppSceneDelegate.appDelegateInstance?.windowInterfaceOrientation
+                  let windowInterfaceOrientation = self.windowInterfaceOrientation
             else { return }
             
             if windowInterfaceOrientation.isLandscape {

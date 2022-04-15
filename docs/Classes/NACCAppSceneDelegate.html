@@ -161,9 +161,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4NACC20NACCAppSceneDelegateC03appD8InstanceACSgvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/appDelegateInstance" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC03appD8InstanceACSgvpZ">appDelegateInstance</a>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC04_appD8Instance33_6B36B76EA53A23136299AA0BBCD8BAFALLACSgvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/_appDelegateInstance" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC04_appD8Instance33_6B36B76EA53A23136299AA0BBCD8BAFALLACSgvpZ">_appDelegateInstance</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -178,7 +178,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">appDelegateInstance</span><span class="p">:</span> <span class="kt">NACCAppSceneDelegate</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">_appDelegateInstance</span><span class="p">:</span> <span class="kt">NACCAppSceneDelegate</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -215,9 +215,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4NACC20NACCAppSceneDelegateC13originalPrefs10Foundation4DateV05cleanH0_AA20NACCTabBarControllerC10TabIndexesO012lastSelectedM5IndextSgvp"></a>
-                    <a name="//apple_ref/swift/Property/originalPrefs" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC13originalPrefs10Foundation4DateV05cleanH0_AA20NACCTabBarControllerC10TabIndexesO012lastSelectedM5IndextSgvp">originalPrefs</a>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC14_originalPrefs33_6B36B76EA53A23136299AA0BBCD8BAFALL10Foundation4DateV05cleanO0_AA20NACCTabBarControllerC10TabIndexesO012lastSelectedT5IndextSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_originalPrefs" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC14_originalPrefs33_6B36B76EA53A23136299AA0BBCD8BAFALL10Foundation4DateV05cleanO0_AA20NACCTabBarControllerC10TabIndexesO012lastSelectedT5IndextSgvp">_originalPrefs</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -232,13 +232,268 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">originalPrefs</span><span class="p">:</span> <span class="p">(</span><span class="nv">cleanDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span> <span class="nv">lastSelectedTabIndex</span><span class="p">:</span> <span class="kt"><a href="../Classes/NACCTabBarController.html">NACCTabBarController</a></span><span class="o">.</span><span class="kt">TabIndexes</span><span class="p">)?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_originalPrefs</span><span class="p">:</span> <span class="p">(</span><span class="nv">cleanDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span> <span class="nv">lastSelectedTabIndex</span><span class="p">:</span> <span class="kt"><a href="../Classes/NACCTabBarController.html">NACCTabBarController</a></span><span class="o">.</span><span class="kt">TabIndexes</span><span class="p">)?</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC17_cleandateFromURI33_6B36B76EA53A23136299AA0BBCD8BAFALL10Foundation4DateVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_cleandateFromURI" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC17_cleandateFromURI33_6B36B76EA53A23136299AA0BBCD8BAFALL10Foundation4DateVSgvp">_cleandateFromURI</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This will contain the date for the selectors, if set from a URL.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_cleandateFromURI</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC12_resetScreen33_6B36B76EA53A23136299AA0BBCD8BAFALLSbvp"></a>
+                    <a name="//apple_ref/swift/Property/_resetScreen" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC12_resetScreen33_6B36B76EA53A23136299AA0BBCD8BAFALLSbvp">_resetScreen</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is a special flag, for use when opened by a URI. If true, then the app always starts at the initial screen.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_resetScreen</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC19_selectedTabFromURI33_6B36B76EA53A23136299AA0BBCD8BAFALLAA20NACCTabBarControllerC0F7IndexesOvp"></a>
+                    <a name="//apple_ref/swift/Property/_selectedTabFromURI" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC19_selectedTabFromURI33_6B36B76EA53A23136299AA0BBCD8BAFALLAA20NACCTabBarControllerC0F7IndexesOvp">_selectedTabFromURI</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is used to allow a tab to be selected from the URL.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_selectedTabFromURI</span><span class="p">:</span> <span class="kt"><a href="../Classes/NACCTabBarController.html">NACCTabBarController</a></span><span class="o">.</span><span class="kt">TabIndexes</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC5_date33_6B36B76EA53A23136299AA0BBCD8BAFALL10Foundation4DateVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_date" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC5_date33_6B36B76EA53A23136299AA0BBCD8BAFALL10Foundation4DateVSgvp">_date</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This will contain the date for the selectors.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_date</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC7_report33_6B36B76EA53A23136299AA0BBCD8BAFALLSSvp"></a>
+                    <a name="//apple_ref/swift/Property/_report" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC7_report33_6B36B76EA53A23136299AA0BBCD8BAFALLSSvp">_report</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This will contain the textual report, for the calculation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_report</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Private%20Computed%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Private Computed Properties" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Private%20Computed%20Properties"></a>
+                  <h3 class="section-name"><span>Private Computed Properties</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC21_navigationController33_6B36B76EA53A23136299AA0BBCD8BAFALLSo012UINavigationF0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_navigationController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC21_navigationController33_6B36B76EA53A23136299AA0BBCD8BAFALLSo012UINavigationF0CSgvp">_navigationController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Easy access to our navigation controller.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC22_initialViewController33_6B36B76EA53A23136299AA0BBCD8BAFALLAA011NACCInitialfG0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_initialViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC22_initialViewController33_6B36B76EA53A23136299AA0BBCD8BAFALLAA011NACCInitialfG0CSgvp">_initialViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is the initial view controller.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_initialViewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/NACCInitialViewController.html">NACCInitialViewController</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Internal%20Computed%20Class%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Internal Computed Class Properties" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Internal%20Computed%20Class%20Properties"></a>
+                  <h3 class="section-name"><span>Internal Computed Class Properties</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC03appD8InstanceACSgvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/appDelegateInstance" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC03appD8InstanceACSgvpZ">appDelegateInstance</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Quick accessor for the app delegate, cast to this class. READ-ONLY.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="k">var</span> <span class="nv">appDelegateInstance</span><span class="p">:</span> <span class="kt">NACCAppSceneDelegate</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Internal%20Computed%20Instance%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Internal Computed Instance Properties" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Internal%20Computed%20Instance%20Properties"></a>
+                  <h3 class="section-name"><span>Internal Computed Instance Properties</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -259,61 +514,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">date</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4NACC20NACCAppSceneDelegateC9cleandate10Foundation4DateVSgvp"></a>
-                    <a name="//apple_ref/swift/Property/cleandate" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC9cleandate10Foundation4DateVSgvp">cleandate</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This will contain the date for the selectors, if set from a URL.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">cleandate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4NACC20NACCAppSceneDelegateC11selectedTabAA20NACCTabBarControllerC0F7IndexesOvp"></a>
-                    <a name="//apple_ref/swift/Property/selectedTab" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC11selectedTabAA20NACCTabBarControllerC0F7IndexesOvp">selectedTab</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This is used to allow a tab to be selected from the URL.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">selectedTab</span><span class="p">:</span> <span class="kt"><a href="../Classes/NACCTabBarController.html">NACCTabBarController</a></span><span class="o">.</span><span class="kt">TabIndexes</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">date</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -340,101 +541,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">report</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Computed%20Properties"></a>
-                <a name="//apple_ref/swift/Section/Computed Properties" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/Computed%20Properties"></a>
-                  <h3 class="section-name"><span>Computed Properties</span>
-</h3>
-                </div>
-              </div>
-              <ul class="item-container">
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4NACC20NACCAppSceneDelegateC26windowInterfaceOrientationSo011UIInterfaceG0VSgvp"></a>
-                    <a name="//apple_ref/swift/Property/windowInterfaceOrientation" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC26windowInterfaceOrientationSo011UIInterfaceG0VSgvp">windowInterfaceOrientation</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Returns the interface (not device) orientation</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">windowInterfaceOrientation</span><span class="p">:</span> <span class="kt">UIInterfaceOrientation</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4NACC20NACCAppSceneDelegateC20navigationControllerSo012UINavigationF0CSgvp"></a>
-                    <a name="//apple_ref/swift/Property/navigationController" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC20navigationControllerSo012UINavigationF0CSgvp">navigationController</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Easy access to our navigation controller.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4NACC20NACCAppSceneDelegateC21initialViewControllerAA011NACCInitialfG0CSgvp"></a>
-                    <a name="//apple_ref/swift/Property/initialViewController" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC21initialViewControllerAA011NACCInitialfG0CSgvp">initialViewController</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This is the initial view controller.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">initialViewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/NACCInitialViewController.html">NACCInitialViewController</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">report</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
