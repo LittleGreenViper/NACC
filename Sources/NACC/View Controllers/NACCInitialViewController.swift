@@ -240,6 +240,7 @@ extension NACCInitialViewController {
     */
     override func viewWillAppear(_ inIsAnimated: Bool) {
         super.viewWillAppear(inIsAnimated)
+        navigationController?.navigationBar.isHidden = false    // Just in case...
         if inIsAnimated {
             fadeInAnimation()
         } else {

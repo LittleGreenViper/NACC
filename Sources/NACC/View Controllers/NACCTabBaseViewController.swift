@@ -110,6 +110,12 @@ extension NACCTabBaseViewController {
         tabBarController?.navigationItem.title = tabBarItem.title
         scrollView?.contentOffset.y = savedScrollPosition
         scrollView?.zoomScale = 1.0
+        
+        // Just in case we show up, and everything is hidden...
+        if !(NACCAppSceneDelegate.appDelegateInstance?.windowInterfaceOrientation?.isLandscape ?? false) {
+            self.tabBarController?.tabBar.isHidden = false
+            self.navigationController?.navigationBar.isHidden = false
+        }
     }
 
     /* ################################################################## */
