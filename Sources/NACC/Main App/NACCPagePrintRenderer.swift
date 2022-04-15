@@ -27,7 +27,7 @@ import LGV_UICleantime
 // MARK: - Initial Screen Print Renderer -
 /* ###################################################################################################################################### */
 /**
- This class is a print renderer for the initial page. It will create a formatted report, with the tag/medallion.
+ This class is a print renderer for the screens. It will create a formatted report, with the tag/medallion display, underneath. It is just 1 page.
  */
 class NACCPagePrintRenderer: UIPrintPageRenderer {
     /* ################################################################## */
