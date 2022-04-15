@@ -301,6 +301,9 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
      - parameter: The scene instance (ignored).
      */
     func sceneWillResignActive(_ scene: UIScene) {
+        #if DEBUG
+            print("\n#### Scene Resigning Active.\n####\n")
+        #endif
         _navigationController?.topViewController?.presentedViewController?.dismiss(animated: false)
         if let originals = _originalPrefs {
             _originalPrefs = nil
@@ -308,7 +311,6 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
             NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI.rawValue
         }
     }
-
 }
 
 /* ###################################################################################################################################### */
@@ -323,6 +325,9 @@ extension NACCAppSceneDelegate: UIApplicationDelegate {
      - returns: true, always.
     */
     func application(_: UIApplication, didFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        #if DEBUG
+            print("\n#### Application Finished Launching.\n####\n")
+        #endif
         Self._appDelegateInstance = self
         return true
     }
@@ -335,6 +340,9 @@ extension NACCAppSceneDelegate: UIApplicationDelegate {
      - returns: The scene configuration.
      */
     func application(_: UIApplication, configurationForConnecting inConnectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        UISceneConfiguration(name: Self._sceneConfigurationName, sessionRole: inConnectingSceneSession.role)
+        #if DEBUG
+            print("\n#### Application Delivering Configuration.\n####\n")
+        #endif
+        return UISceneConfiguration(name: Self._sceneConfigurationName, sessionRole: inConnectingSceneSession.role)
     }
 }
