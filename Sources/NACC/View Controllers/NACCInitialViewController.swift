@@ -61,28 +61,28 @@ class NACCInitialViewController: NACCBaseViewController {
     private static let _cleandateDisplaySegueID = "display-cleantime"
     
     /* ################################################################################################################################## */
-    // MARK: Instance Properties
+    // MARK: Private Instance Properties
     /* ################################################################################################################################## */
     /* ################################################################## */
     /**
      This will allow us to add events to the Calendar, without leaving this app.
      */
-    let eventStore = EKEventStore()
+    private let _eventStore = EKEventStore()
 
     /* ################################################################## */
     /**
      This stores the original logo height
     */
-    var originalLogoHeight = CGFloat(0)
+    private var _originalLogoHeight = CGFloat(0)
     
     /* ################################################################## */
     /**
      This will contain the cleantime display for this screen. We set it at runtime.
     */
-    var cleantimeDisplayView: LGV_UICleantimeImageViewBase?
+    private var _cleantimeDisplayView: LGV_UICleantimeImageViewBase?
     
     /* ################################################################################################################################## */
-    // MARK: Instance IBOutlet Properties
+    // MARK: Internal Instance IBOutlet Properties
     /* ################################################################################################################################## */
     /* ################################################################## */
     /**
@@ -187,7 +187,7 @@ extension NACCInitialViewController {
             infoButton?.customView?.alpha = 0.0
             actionButton?.customView?.alpha = 0.0
             calendarButton?.customView?.alpha = 0.0
-            cleantimeDisplayView?.alpha = 0
+            _cleantimeDisplayView?.alpha = 0
             view.layoutIfNeeded()
             UIView.animate(withDuration: Self._fadeAnimationPeriod, animations: { [weak self] in
                                                                                     startupLogo.alpha = 0.0
@@ -197,7 +197,7 @@ extension NACCInitialViewController {
                                                                                     self?.logoContainerView?.alpha = 1.0
                                                                                     self?.dateSelector?.alpha = 1.0
                                                                                     self?.cleantimeReportLabel?.alpha = 1.0
-                                                                                    self?.cleantimeDisplayView?.alpha = 1.0
+                                                                                    self?._cleantimeDisplayView?.alpha = 1.0
                                                                                     self?.view.layoutIfNeeded()
                                                                                 },
                            completion: { [weak self] _ in
@@ -222,7 +222,7 @@ extension NACCInitialViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dateSelector?.maximumDate = Date()
-        originalLogoHeight = logoHeightConstraint?.constant ?? 0
+        _originalLogoHeight = logoHeightConstraint?.constant ?? 0
         dateSelector?.accessibilityLabel = "SLUG-ACC-DATEPICKER".localizedVariant
         logoContainerView?.accessibilityLabel = "SLUG-ACC-LOGO".localizedVariant
         actionButton?.accessibilityLabel = "SLUG-ACC-ACTION-BUTTON".localizedVariant
@@ -262,7 +262,7 @@ extension NACCInitialViewController {
                     logoHeightConstraint?.constant = 0
                 } else {
                     cleantimeDisplayHeightConstraint?.isActive = false
-                    logoHeightConstraint?.constant = originalLogoHeight
+                    logoHeightConstraint?.constant = _originalLogoHeight
                 }
             }
         }
@@ -317,8 +317,8 @@ extension NACCInitialViewController {
     @IBAction func newDate(_ inDatePicker: UIDatePicker) {
         NACCAppSceneDelegate.appDelegateInstance?.date = inDatePicker.date
         
-        cleantimeDisplayView?.removeFromSuperview()
-        cleantimeDisplayView = nil
+        _cleantimeDisplayView?.removeFromSuperview()
+        _cleantimeDisplayView = nil
 
         NACCPersistentPrefs().cleanDate = inDatePicker.date
         
@@ -346,12 +346,12 @@ extension NACCInitialViewController {
             actionButton?.isEnabled = true
             calendarButton?.isEnabled = true
             if 0 < calculator.years {
-                cleantimeDisplayView = LGV_UISingleCleantimeMedallionImageView()
+                _cleantimeDisplayView = LGV_UISingleCleantimeMedallionImageView()
             } else {
-                cleantimeDisplayView = LGV_UISingleCleantimeKeytagImageView()
+                _cleantimeDisplayView = LGV_UISingleCleantimeKeytagImageView()
             }
             
-            guard let cleantimeDisplayView = cleantimeDisplayView,
+            guard let cleantimeDisplayView = _cleantimeDisplayView,
                   let cleantimeViewContainer = cleantimeViewContainer
             else { return }
             
@@ -383,8 +383,8 @@ extension NACCInitialViewController {
     @IBAction func actionItemHit(_ inButtonItem: UIBarButtonItem) {
         if let date = dateSelector?.date,
            let report = NACCAppSceneDelegate.appDelegateInstance?.report {
-            let printRenderer = NACCPagePrintRenderer(report: cleantimeReportLabel?.text ?? "ERROR", image: cleantimeDisplayView?.image)
-            let image = cleantimeDisplayView?.image
+            let printRenderer = NACCPagePrintRenderer(report: cleantimeReportLabel?.text ?? "ERROR", image: _cleantimeDisplayView?.image)
+            let image = _cleantimeDisplayView?.image
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -421,7 +421,7 @@ extension NACCInitialViewController {
                   let year = Calendar.current.dateComponents([.year], from: date).year
             else { return nil }
             
-            let event = EKEvent(eventStore: eventStore)
+            let event = EKEvent(eventStore: _eventStore)
             event.startDate = Calendar.current.startOfDay(for: date)
             event.endDate = event.startDate.addingTimeInterval((60 * 60 * 24) - 1) // A full 23:59:59 hours, makes a day.
             event.title = String(format: "SLUG-CAL-ANNIVERSARY".localizedVariant, year)
@@ -431,7 +431,7 @@ extension NACCInitialViewController {
             return event
         }
         
-        eventStore.requestAccess( to: EKEntityType.event,
+        _eventStore.requestAccess( to: EKEntityType.event,
                                   completion: { (inIsGranted, inError) in
                 DispatchQueue.main.async { [weak self] in
                     guard nil == inError,
@@ -442,7 +442,7 @@ extension NACCInitialViewController {
 
                     let eventController = EKEventEditViewController()
                     eventController.event = event
-                    eventController.eventStore = self.eventStore
+                    eventController.eventStore = self._eventStore
                     eventController.editViewDelegate = self
                     
                     if .pad == self.traitCollection.userInterfaceIdiom {
