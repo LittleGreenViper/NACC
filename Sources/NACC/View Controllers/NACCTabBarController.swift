@@ -52,7 +52,12 @@ class NACCTabBarController: UITabBarController {
      This is the "Action Item" button (share, print, etc.).
     */
     @IBOutlet weak var actionButton: UIBarButtonItem?
-    
+}
+
+/* ###################################################################################################################################### */
+// MARK: Base Class Overrides
+/* ###################################################################################################################################### */
+extension NACCTabBarController {
     /* ################################################################## */
     /**
      Called when the view hierarchy load has been completed.
@@ -120,7 +125,12 @@ class NACCTabBarController: UITabBarController {
         
         actionButton?.accessibilityLabel = "SLUG-ACC-TABS-ACTION-BUTTON".localizedVariant
     }
-    
+}
+
+/* ###################################################################################################################################### */
+// MARK: Callbacks
+/* ###################################################################################################################################### */
+extension NACCTabBarController {
     /* ################################################################## */
     /**
      Called when the action item in the navbar is hit.

@@ -32,6 +32,17 @@ import RVS_GeneralObserver
  */
 class NACCTabBaseViewController: NACCBaseViewController {
     /* ################################################################################################################################## */
+    // MARK: Private Instance Properties
+    /* ################################################################################################################################## */
+    /* ################################################################## */
+    /**
+     The last scroll position (after rendering).
+     
+     Used to reset the point.
+    */
+    private var _savedScrollPosition: CGFloat = 0
+    
+    /* ################################################################################################################################## */
     // MARK: LGV_UICleantimeImageViewObserver Conformance (Need to be in the main declaration)
     /* ################################################################################################################################## */
     /* ################################################################## */
@@ -40,25 +51,14 @@ class NACCTabBaseViewController: NACCBaseViewController {
      */
     var uuid = UUID()
 
-    /* ################################################################################################################################## */
-    // MARK: Instance Properties
-    /* ################################################################################################################################## */
     /* ############################################################## */
     /**
      This stores our subscriptions.
      */
     var subscriptions: [RVS_GeneralObservableProtocol] = []
 
-    /* ################################################################## */
-    /**
-     The last scroll position (after rendering).
-     
-     Used to reset the point.
-    */
-    var savedScrollPosition: CGFloat = 0
-    
     /* ################################################################################################################################## */
-    // MARK: Instance IBOutlet Properties
+    // MARK: Internal Instance IBOutlet Properties
     /* ################################################################################################################################## */
     /* ################################################################## */
     /**
@@ -80,6 +80,31 @@ class NACCTabBaseViewController: NACCBaseViewController {
 }
 
 /* ###################################################################################################################################### */
+// MARK: Private Instance Methods
+/* ###################################################################################################################################### */
+extension NACCTabBaseViewController {
+    /* ################################################################## */
+    /**
+     This will show a "busy throbber," while the images are being composited.
+    */
+    private func _showThrobber() {
+        navigationController?.isNavigationBarHidden = true
+        throbber?.isHidden = false
+        cleantime?.isHidden = true
+    }
+    
+    /* ################################################################## */
+    /**
+     This will hide the "busy throbber," after the images were composited.
+    */
+    private func _hideThrobber() {
+        navigationController?.isNavigationBarHidden = false
+        throbber?.isHidden = true
+        cleantime?.isHidden = false
+    }
+}
+
+/* ###################################################################################################################################### */
 // MARK: Base Class Overrides
 /* ###################################################################################################################################### */
 extension NACCTabBaseViewController {
@@ -89,7 +114,7 @@ extension NACCTabBaseViewController {
     */
     override func viewDidLoad() {
         super.viewDidLoad()
-        showThrobber()
+        _showThrobber()
         cleantime?.subscribe(self)
         let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate, calendar: Calendar.current).cleanTime
         cleantime?.totalDays = calculator.totalDays
@@ -108,7 +133,7 @@ extension NACCTabBaseViewController {
     override func viewWillAppear(_ inIsAnimated: Bool) {
         super.viewWillAppear(inIsAnimated)
         tabBarController?.navigationItem.title = tabBarItem.title
-        scrollView?.contentOffset.y = savedScrollPosition
+        scrollView?.contentOffset.y = _savedScrollPosition
         scrollView?.zoomScale = 1.0
         
         // Just in case we show up, and everything is hidden...
@@ -149,31 +174,6 @@ extension NACCTabBaseViewController {
 }
 
 /* ###################################################################################################################################### */
-// MARK: Instance Methods
-/* ###################################################################################################################################### */
-extension NACCTabBaseViewController {
-    /* ################################################################## */
-    /**
-     This will show a "busy throbber," while the images are being composited.
-    */
-    func showThrobber() {
-        navigationController?.isNavigationBarHidden = true
-        throbber?.isHidden = false
-        cleantime?.isHidden = true
-    }
-    
-    /* ################################################################## */
-    /**
-     This will hide the "busy throbber," after the images were composited.
-    */
-    func hideThrobber() {
-        navigationController?.isNavigationBarHidden = false
-        throbber?.isHidden = true
-        cleantime?.isHidden = false
-    }
-}
-
-/* ###################################################################################################################################### */
 // MARK: LGV_UICleantimeImageViewObserverProtocol Conformance
 /* ###################################################################################################################################### */
 extension NACCTabBaseViewController: LGV_UICleantimeImageViewObserverProtocol {
@@ -184,7 +184,7 @@ extension NACCTabBaseViewController: LGV_UICleantimeImageViewObserverProtocol {
      - parameter view: The completed UIImageView
      */
     func renderingComplete(view inImageView: LGV_UICleantimeImageViewBase) {
-        hideThrobber()
+        _hideThrobber()
         guard let contentSize = scrollView?.contentSize,
               0 < contentSize.height
         else {
@@ -197,8 +197,8 @@ extension NACCTabBaseViewController: LGV_UICleantimeImageViewObserverProtocol {
         let intH = inImageView.intrinsicContentSize.height
         let dispW = inImageView.bounds.size.width
         let scale = max(1.0, intW / dispW)
-        savedScrollPosition = max(0, (contentSize.height - (intH / scale)) / 2)
-        scrollView?.contentOffset.y = savedScrollPosition
+        _savedScrollPosition = max(0, (contentSize.height - (intH / scale)) / 2)
+        scrollView?.contentOffset.y = _savedScrollPosition
         scrollView?.minimumZoomScale = 1
         scrollView?.maximumZoomScale = scale * 2
     }
