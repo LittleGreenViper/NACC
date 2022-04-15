@@ -80,3 +80,12 @@ _N_ is the numerical index of a tab:
 
 - [nacc://2020-03-17/2](nacc://2020-03-17/2)
   This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Medallions tab.
+
+## LICENSE
+
+The code and keytag images are [MIT license](https://opensource.org/licenses/MIT). Use them as you will.
+
+However, the medallion images are renderings of the standard bronze [NA World Services](https://na.org) (NAWS, Inc.) [cleantime commemoration medallions](https://cart-us.na.org/2-keytags-medallions/medallions-bronze/bronze-medallions-bronze). The design of those medallions is copyrighted by NA World Services.
+
+It is important to treat the intellectual property of NA with respect.
+
