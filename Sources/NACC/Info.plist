@@ -45,6 +45,8 @@
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
 	<string>This app allows you to add events to your calendar, to remind you of anniversary dates.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>This app needs access to your contacts, in order to fill out an anniversary event.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app allows you to save images of keytags or medallions to your Photo Library</string>
 	<key>UIApplicationSceneManifest</key>

@@ -26,6 +26,7 @@
 
 "NSCalendarsUsageDescription"                   =   "This app allows you to add events to your calendar, to remind you of anniversary dates.";
 "NSPhotoLibraryUsageDescription"                =   "This app allows you to save images of keytags or medallions to your Photo Library.";
+"NSContactsUsageDescription"                    =   "This app needs access to your contacts, in order to fill out an anniversary event.";
 "InfoScreenCopyrightSiteURL"                    =   "https://littlegreenviper.com";
 "InfoScreenHelpSiteURL"                         =   "https://littlegreenviper.com/portfolio/nacc/";
 "InfoScreenPrivacySiteURL"                      =   "https://littlegreenviper.com/welcome-to-little-green-viper/privacy/app-privacy/";
