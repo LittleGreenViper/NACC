@@ -221,7 +221,6 @@ extension NACCInitialViewController {
     */
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateSelector?.maximumDate = Date()
         _originalLogoHeight = logoHeightConstraint?.constant ?? 0
         dateSelector?.accessibilityLabel = "SLUG-ACC-DATEPICKER".localizedVariant
         logoContainerView?.accessibilityLabel = "SLUG-ACC-LOGO".localizedVariant
