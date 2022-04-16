@@ -309,19 +309,23 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
     
     /* ################################################################## */
     /**
-     Called when the app is about to leave the foreground.
+     Called when the scene will be no longer visible.
      
      We use this to restore our prefs from any that were stored, when the app was called from a URL.
      
      - parameter: The scene instance (ignored).
      */
-    func sceneWillResignActive(_ scene: UIScene) {
+    func sceneDidEnterBackground(_: UIScene) {
         #if DEBUG
-            print("\n#### Scene Resigning Active.\n####\n")
+            print("\n#### Scene Entered Background.\n####\n")
         #endif
-        // The first one, is in case we have a second modal over the main one (doesn't work for all of them).
-        _navigationController?.topViewController?.presentedViewController?.presentedViewController?.dismiss(animated: false)
-        _navigationController?.topViewController?.presentedViewController?.dismiss(animated: false)
+        
+        _navigationController?.viewControllers.forEach {
+            // The first one, is in case we have a second modal over the main one (doesn't work for all of them).
+            $0.presentedViewController?.presentedViewController?.dismiss(animated: false)
+            $0.presentedViewController?.dismiss(animated: false)
+        }
+        
         if let originals = _originalPrefs {
             _originalPrefs = nil
             NACCPersistentPrefs().cleanDate = originals.cleanDate
