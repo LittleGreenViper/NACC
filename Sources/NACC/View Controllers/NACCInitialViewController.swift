@@ -164,8 +164,9 @@ extension NACCInitialViewController {
             let newDateValue = inDate ??  NACCPersistentPrefs().cleanDate
             if (minDate...Date()).contains(newDateValue) {
                 dateSelector.date = newDateValue
-                newDate(dateSelector)
-                if let tabIndex = inTabIndex {  // We only open to a tab, if it was explicitly requested, by indicating a tab number.
+                newDate()
+                if let tabIndex = inTabIndex,
+                   .undefined != tabIndex {  // We only open to a tab, if it was explicitly requested, by indicating a tab number.
                     NACCPersistentPrefs().lastSelectedTabIndex = tabIndex.rawValue
                     performSegue(withIdentifier: Self._cleandateDisplaySegueID, sender: nil)
                 }
@@ -311,65 +312,72 @@ extension NACCInitialViewController {
     /**
      When a new date is selected, we generate a new report.
      
-     - parameter inDatePicker: The picker instance.
+     - parameter inDatePicker: The picker instance. This can be ignored (in which case we try the date selector).
     */
-    @IBAction func newDate(_ inDatePicker: UIDatePicker) {
-        NACCAppSceneDelegate.appDelegateInstance?.date = inDatePicker.date
+    @IBAction func newDate(_ inDatePicker: UIDatePicker! = nil) {
+        NACCAppSceneDelegate.appDelegateInstance?.date = inDatePicker?.date ?? dateSelector?.date ?? Date()
         
-        _cleantimeDisplayView?.removeFromSuperview()
-        _cleantimeDisplayView = nil
+        // If this actually came from the date selector changing (as opposed to the screen being initialized), we clear the stored prefs.
+        if nil != inDatePicker {
+            NACCAppSceneDelegate.appDelegateInstance?.clearOriginalPrefs()
+        }
+        
+        if let date = NACCAppSceneDelegate.appDelegateInstance?.date {
+            _cleantimeDisplayView?.removeFromSuperview()
+            _cleantimeDisplayView = nil
 
-        NACCPersistentPrefs().cleanDate = inDatePicker.date
-        
-        if let text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: inDatePicker.date, endDate: Date(), calendar: Calendar.current) {
-            NACCAppSceneDelegate.appDelegateInstance?.report = text
-            cleantimeReportLabel?.text = text
-        }
-        
-        // The text is set to the action color, if it is selectable (valid date).
-        let calculator = LGV_CleantimeDateCalc(startDate: inDatePicker.date, calendar: Calendar.current).cleanTime
-        if 0 < calculator.totalDays {
-            logoContainerView?.isUserInteractionEnabled = true
-            cleantimeViewContainer?.isUserInteractionEnabled = true
-            cleantimeReportLabel?.isUserInteractionEnabled = true
-            cleantimeReportLabel?.textColor = UIColor(named: "SelectionTintColor")
-        } else {
-            logoContainerView?.isUserInteractionEnabled = false
-            cleantimeViewContainer?.isUserInteractionEnabled = false
-            cleantimeReportLabel?.isUserInteractionEnabled = false
-            cleantimeReportLabel?.textColor = .label
-        }
-        
-        // Have to have at least one day, for a tag.
-        if 0 < calculator.totalDays {
-            actionButton?.isEnabled = true
-            calendarButton?.isEnabled = true
-            if 0 < calculator.years {
-                _cleantimeDisplayView = LGV_UISingleCleantimeMedallionImageView()
-            } else {
-                _cleantimeDisplayView = LGV_UISingleCleantimeKeytagImageView()
+            NACCPersistentPrefs().cleanDate = date
+            
+            if let text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: date, endDate: Date(), calendar: Calendar.current) {
+                NACCAppSceneDelegate.appDelegateInstance?.report = text
+                cleantimeReportLabel?.text = text
             }
             
-            guard let cleantimeDisplayView = _cleantimeDisplayView,
-                  let cleantimeViewContainer = cleantimeViewContainer
-            else { return }
+            // The text is set to the action color, if it is selectable (valid date).
+            let calculator = LGV_CleantimeDateCalc(startDate: date, calendar: Calendar.current).cleanTime
+            if 0 < calculator.totalDays {
+                logoContainerView?.isUserInteractionEnabled = true
+                cleantimeViewContainer?.isUserInteractionEnabled = true
+                cleantimeReportLabel?.isUserInteractionEnabled = true
+                cleantimeReportLabel?.textColor = UIColor(named: "SelectionTintColor")
+            } else {
+                logoContainerView?.isUserInteractionEnabled = false
+                cleantimeViewContainer?.isUserInteractionEnabled = false
+                cleantimeReportLabel?.isUserInteractionEnabled = false
+                cleantimeReportLabel?.textColor = .label
+            }
             
-            cleantimeDisplayView.translatesAutoresizingMaskIntoConstraints = false
-            cleantimeViewContainer.addSubview(cleantimeDisplayView)
-            cleantimeDisplayView.centerXAnchor.constraint(equalTo: cleantimeViewContainer.centerXAnchor).isActive = true
-            cleantimeDisplayView.centerYAnchor.constraint(equalTo: cleantimeViewContainer.centerYAnchor).isActive = true
-            cleantimeDisplayView.widthAnchor.constraint(lessThanOrEqualTo: cleantimeViewContainer.widthAnchor,
-                                                        multiplier: Self._tagSizeCoefficient).isActive = true
-            cleantimeDisplayView.heightAnchor.constraint(lessThanOrEqualTo: cleantimeViewContainer.heightAnchor,
-                                                         multiplier: Self._tagSizeCoefficient).isActive = true
-            
-            cleantimeDisplayView.totalDays = calculator.totalDays
-            cleantimeDisplayView.totalMonths = calculator.totalMonths
-            cleantimeDisplayView.contentMode = .scaleAspectFit
-            cleantimeDisplayView.setNeedsLayout()
-        } else {
-            actionButton?.isEnabled = false
-            calendarButton?.isEnabled = false
+            // Have to have at least one day, for a tag.
+            if 0 < calculator.totalDays {
+                actionButton?.isEnabled = true
+                calendarButton?.isEnabled = true
+                if 0 < calculator.years {
+                    _cleantimeDisplayView = LGV_UISingleCleantimeMedallionImageView()
+                } else {
+                    _cleantimeDisplayView = LGV_UISingleCleantimeKeytagImageView()
+                }
+                
+                guard let cleantimeDisplayView = _cleantimeDisplayView,
+                      let cleantimeViewContainer = cleantimeViewContainer
+                else { return }
+                
+                cleantimeDisplayView.translatesAutoresizingMaskIntoConstraints = false
+                cleantimeViewContainer.addSubview(cleantimeDisplayView)
+                cleantimeDisplayView.centerXAnchor.constraint(equalTo: cleantimeViewContainer.centerXAnchor).isActive = true
+                cleantimeDisplayView.centerYAnchor.constraint(equalTo: cleantimeViewContainer.centerYAnchor).isActive = true
+                cleantimeDisplayView.widthAnchor.constraint(lessThanOrEqualTo: cleantimeViewContainer.widthAnchor,
+                                                            multiplier: Self._tagSizeCoefficient).isActive = true
+                cleantimeDisplayView.heightAnchor.constraint(lessThanOrEqualTo: cleantimeViewContainer.heightAnchor,
+                                                             multiplier: Self._tagSizeCoefficient).isActive = true
+                
+                cleantimeDisplayView.totalDays = calculator.totalDays
+                cleantimeDisplayView.totalMonths = calculator.totalMonths
+                cleantimeDisplayView.contentMode = .scaleAspectFit
+                cleantimeDisplayView.setNeedsLayout()
+            } else {
+                actionButton?.isEnabled = false
+                calendarButton?.isEnabled = false
+            }
         }
    }
     

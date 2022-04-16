@@ -37,6 +37,9 @@ class NACCTabBarController: UITabBarController {
      This is used to map the three tabs.
      */
     enum TabIndexes: Int {
+        // -1 means undefined
+        case undefined = -1
+        
         /// The first tab is the keytag array
         case keytagArray
         

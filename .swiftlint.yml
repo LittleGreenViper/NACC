@@ -19,9 +19,9 @@ excluded:
 - Project-Meta
 
 line_length:
-- 170 # warning
+- 199 # warning
 - 200 # error
 
 cyclomatic_complexity:
-- 6 # warning
+- 7 # warning
 - 10 # error

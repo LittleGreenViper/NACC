@@ -69,7 +69,7 @@ class NACCAppSceneDelegate: UIResponder {
     /**
      This is used to allow a tab to be selected from the URL.
      */
-    private var _selectedTabFromURI: NACCTabBarController.TabIndexes = .keytagArray
+    private var _selectedTabFromURI: NACCTabBarController.TabIndexes?
     
     /* ################################################################## */
     /**
@@ -158,6 +158,19 @@ extension NACCAppSceneDelegate {
 }
 
 /* ###################################################################################################################################### */
+// MARK: Internal Instance Methods
+/* ###################################################################################################################################### */
+extension NACCAppSceneDelegate {
+    /* ################################################################## */
+    /**
+     This clears the original prefs, and prevents the reset on close.
+     */
+    func clearOriginalPrefs() {
+        _originalPrefs = nil
+    }
+}
+
+/* ###################################################################################################################################### */
 // MARK: UIWindowSceneDelegate Conformance
 /* ###################################################################################################################################### */
 extension NACCAppSceneDelegate: UIWindowSceneDelegate {
@@ -208,10 +221,12 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
                 
                 let pathComponents = url.pathComponents.compactMap { ("/" != $0) && !$0.isEmpty ? $0 : nil }
                 
-                _selectedTabFromURI = NACCTabBarController.TabIndexes(rawValue: Int(String(pathComponents.isEmpty ? "0" : pathComponents[0])) ?? 0) ?? .keytagArray
+                _selectedTabFromURI = NACCTabBarController.TabIndexes(rawValue: Int(String(pathComponents.isEmpty
+                                                                                           ? "\(NACCTabBarController.TabIndexes.undefined.rawValue)"
+                                                                                           : pathComponents[0])) ?? NACCTabBarController.TabIndexes.undefined.rawValue)
 
                 #if DEBUG
-                    print("\tThe URL has this date: \(host), and wants this tab: \(_selectedTabFromURI.rawValue)")
+                    print("\tThe URL has this date: \(host), and wants this tab: \(_selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue)")
                 #endif
 
                 let dateFormatter = DateFormatter()
@@ -259,10 +274,10 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
                 _resetScreen = true
                 _cleandateFromURI = nil
                 #if DEBUG
-                    print("Setting date: \(date), and tab: \(_selectedTabFromURI.rawValue)")
+                    print("Setting date: \(date), and tab: \(_selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue)")
                 #endif
                 NACCPersistentPrefs().cleanDate = date
-                NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI.rawValue
+                NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue
             }
         
         _cleandateFromURI = nil // Take off and nuke the site from orbit. It's the only way to be sure...
@@ -304,11 +319,13 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         #if DEBUG
             print("\n#### Scene Resigning Active.\n####\n")
         #endif
+        // The first one, is in case we have a second modal over the main one (doesn't work for all of them).
+        _navigationController?.topViewController?.presentedViewController?.presentedViewController?.dismiss(animated: false)
         _navigationController?.topViewController?.presentedViewController?.dismiss(animated: false)
         if let originals = _originalPrefs {
             _originalPrefs = nil
             NACCPersistentPrefs().cleanDate = originals.cleanDate
-            NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI.rawValue
+            NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue
         }
     }
 }
