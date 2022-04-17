@@ -1,6 +1,6 @@
 **5.0.1.3000** *TBD*
 
-- Minor Fixes
+- Fixed an "annoyer bug" (issue #1), where changing the date, when opened from a URL, would not be saved.
 
 **5.0.0.3004** *April 26, 2022*
 
