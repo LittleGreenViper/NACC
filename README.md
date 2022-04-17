@@ -100,8 +100,21 @@ _N_ is the numerical index of a tab:
 
 - [nacc://2020-03-17/2](nacc://2020-03-17/2)
   This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Medallions tab.
+  
+## Dependencies
 
-## LICENSE
+The app is dependent upon the following 3 [Great Rift Valley Software Company](https://riftvalleysoftware.com) SPM modules:
+
+- [RVS_BasicGCDTimer](https://github.com/RiftValleySoftware/RVS_BasicGCDTimer)
+- [RVS_Generic_Swift_Toolbox](https://github.com/RiftValleySoftware/RVS_Generic_Swift_Toolbox)
+- [RVS_PersistentPrefs](https://github.com/RiftValleySoftware/RVS_PersistentPrefs)
+
+It is also dependent upon the following 2 [Little Green Viper Software Development LLC](https://littlegreenviper.com) SPM modules:
+
+- [LGV_Cleantime](https://github.com/LittleGreenViper/LGV_Cleantime)
+- [LGV_UICleantime](https://github.com/LittleGreenViper/LGV_UICleantime)
+
+## License And Copyright
 
 The code and keytag images are [MIT license](https://opensource.org/licenses/MIT). Use them as you will.
 
