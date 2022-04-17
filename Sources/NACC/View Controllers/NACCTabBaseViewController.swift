@@ -142,7 +142,7 @@ extension NACCTabBaseViewController {
             self.navigationController?.navigationBar.isHidden = false
         }
     }
-
+    
     /* ################################################################## */
     /**
      This was inspired by [this SO answer](https://stackoverflow.com/a/60577486/879365).
@@ -180,6 +180,7 @@ extension NACCTabBaseViewController: LGV_UICleantimeImageViewObserverProtocol {
     /* ################################################################## */
     /**
      This is called when the images have completed rendering.
+     We use this to find a top.
      
      - parameter view: The completed UIImageView
      */
