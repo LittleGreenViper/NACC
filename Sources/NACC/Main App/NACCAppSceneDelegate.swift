@@ -31,6 +31,12 @@ import LGV_UICleantime
 class NACCAppSceneDelegate: UIResponder {
     /* ################################################################## */
     /**
+     Used for when we store the original state of the app, when called from a URI.
+     */
+    typealias OriginalPrefsTuple = (cleanDate: Date, lastSelectedTabIndex: NACCTabBarController.TabIndexes)
+    
+    /* ################################################################## */
+    /**
      Required Window Property
      */
     var window: UIWindow?
@@ -51,7 +57,7 @@ class NACCAppSceneDelegate: UIResponder {
     /**
      This will contain the original prefs, if the app was started from a URL (so we reset).
      */
-    private var _originalPrefs: (cleanDate: Date, lastSelectedTabIndex: NACCTabBarController.TabIndexes)?
+    private static var _originalPrefs: OriginalPrefsTuple?
 
     /* ################################################################## */
     /**
@@ -166,7 +172,7 @@ extension NACCAppSceneDelegate {
      This clears the original prefs, and prevents the reset on close.
      */
     func clearOriginalPrefs() {
-        _originalPrefs = nil
+        Self._originalPrefs = nil
     }
 }
 
@@ -204,10 +210,11 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         guard !inURLContexts.isEmpty else { return }
         
         // We only do this, if we don't already have some original prefs.
-        if nil == _originalPrefs {
+        if nil == Self._originalPrefs {
             // Store for replacement, later
-            _originalPrefs = (cleanDate: NACCPersistentPrefs().cleanDate,
-                             lastSelectedTabIndex: NACCTabBarController.TabIndexes(rawValue: NACCPersistentPrefs().lastSelectedTabIndex) ?? .keytagArray)
+            let saveThesePrefs: OriginalPrefsTuple = (cleanDate: NACCPersistentPrefs().cleanDate,
+                                                      lastSelectedTabIndex: NACCTabBarController.TabIndexes(rawValue: NACCPersistentPrefs().lastSelectedTabIndex) ?? .keytagArray)
+            Self._originalPrefs = saveThesePrefs
         }
         
         for context in inURLContexts {
@@ -326,8 +333,8 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
             $0.presentedViewController?.dismiss(animated: false)
         }
         
-        if let originals = _originalPrefs {
-            _originalPrefs = nil
+        if let originals = Self._originalPrefs {
+            Self._originalPrefs = nil
             NACCPersistentPrefs().cleanDate = originals.cleanDate
             NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue
         }
