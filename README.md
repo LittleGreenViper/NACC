@@ -36,8 +36,6 @@ The initial screen that you see, upon starting the app, has a basic "wheel-style
 |:----:|:----:|:----:|
 |![Figure 1](img/Figure-01.png)|![Figure 2](img/Figure-02.png)|![Figure 3](img/Figure-03.png)|
 
-Tapping on the logo will take you to [the Little Green Viper Software Development Web site](https://littlegreenviper.com),
-
 Tapping on the "Info" button will bring in a screen, displaying information about the app.
 
 Tapping on the "action" button will allow you to share the report with others, using different apps, like [Messages](https://apps.apple.com/us/app/messages/id1146560473), or [Mail](https://apps.apple.com/us/app/mail/id1108187098).
@@ -51,6 +49,10 @@ Tapping on the "calendar" button will allow you to create calendar reminders, ev
 ### The Cleantime Commemoration Tab Screen
 
 If you select the cleantime report, it will bring in another screen, that will have three tabs. These tabs will display the cleantime, using keytags or medallions:
+
+Tapping on the logo will take you to the results, as an array of keytags.
+
+Tapping on the keytag (or medallion) will take you to the results as either medallions, or as the array of keytags. will take you to the results, as an array of keytags.
 
 |Figure 6: Keytags in an Array|Figure 7: Keytags in a Vertical Strip|Figure 8: Medallions in an Array|
 |:----:|:----:|:----:|
