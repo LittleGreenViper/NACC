@@ -34,14 +34,6 @@ class NACCTabBaseViewController: NACCBaseViewController {
     /* ################################################################################################################################## */
     // MARK: Private Instance Properties
     /* ################################################################################################################################## */
-    /* ################################################################## */
-    /**
-     The last scroll position (after rendering).
-     
-     Used to reset the point.
-    */
-    private var _savedScrollPosition: CGFloat = 0
-    
     /* ################################################################################################################################## */
     // MARK: LGV_UICleantimeImageViewObserver Conformance (Need to be in the main declaration)
     /* ################################################################################################################################## */
@@ -133,7 +125,6 @@ extension NACCTabBaseViewController {
     override func viewWillAppear(_ inIsAnimated: Bool) {
         super.viewWillAppear(inIsAnimated)
         tabBarController?.navigationItem.title = tabBarItem.title
-        scrollView?.contentOffset.y = _savedScrollPosition
         scrollView?.zoomScale = 1.0
         
         // Just in case we show up, and everything is hidden...
@@ -195,13 +186,15 @@ extension NACCTabBaseViewController: LGV_UICleantimeImageViewObserverProtocol {
 
         // This makes sure that the scroller goes to the top of the matrix, if it is resized.
         let intW = inImageView.intrinsicContentSize.width
-        let intH = inImageView.intrinsicContentSize.height
         let dispW = inImageView.bounds.size.width
         let scale = max(1.0, intW / dispW)
-        _savedScrollPosition = max(0, (contentSize.height - (intH / scale)) / 2)
-        scrollView?.contentOffset.y = _savedScrollPosition
         scrollView?.minimumZoomScale = 1
         scrollView?.maximumZoomScale = scale * 2
+        if let cleantime = cleantime,
+           let imageSize = inImageView.image?.size {
+            let aspect = imageSize.height / imageSize.width
+            cleantime.heightAnchor.constraint(equalTo: cleantime.widthAnchor, multiplier: aspect).isActive = true
+        }
     }
 }
 
