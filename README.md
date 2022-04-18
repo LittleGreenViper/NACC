@@ -52,7 +52,7 @@ If you select the cleantime report, it will bring in another screen, that will h
 
 Tapping on the logo will take you to the results, as an array of keytags.
 
-Tapping on the keytag (or medallion) will take you to the results as either medallions, or as the array of keytags. will take you to the results, as an array of keytags.
+Tapping on the keytag (or medallion) will take you to the results as either medallions, or as the array of keytags.
 
 |Figure 6: Keytags in an Array|Figure 7: Keytags in a Vertical Strip|Figure 8: Medallions in an Array|
 |:----:|:----:|:----:|
