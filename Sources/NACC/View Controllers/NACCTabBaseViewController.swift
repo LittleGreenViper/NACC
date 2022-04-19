@@ -189,7 +189,7 @@ extension NACCTabBaseViewController: LGV_UICleantimeImageViewObserverProtocol {
         let dispW = inImageView.bounds.size.width
         let scale = max(1.0, intW / dispW)
         scrollView?.minimumZoomScale = 1
-        scrollView?.maximumZoomScale = scale * 2
+        scrollView?.maximumZoomScale = max(1.0, scale)
         if let cleantime = cleantime,
            let imageSize = inImageView.image?.size {
             let aspect = imageSize.height / imageSize.width
