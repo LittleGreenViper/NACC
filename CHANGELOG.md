@@ -1,3 +1,7 @@
+**5.0.3.3000** *April 19, 2022*
+
+- Fixed an issue that was caused by zooming the keytag strip. The strip can no longer be zoomed.
+
 **5.0.2.3000** *April 19, 2022*
 
 - Fixed an "annoyer bug" (issue #3), where the keytags would be displayed too wide.
