@@ -129,14 +129,4 @@ extension NACCBaseViewController {
             }
         }
     }
-    
-    /* ################################################################## */
-    /**
-     Called just before the view appears. We use it to set the date picker date.
-     
-     - parameter inIsAnimated: True, if the appearance is to be animated.
-    */
-    override func viewWillAppear(_ inIsAnimated: Bool) {
-        super.viewWillAppear(inIsAnimated)
-    }
 }
