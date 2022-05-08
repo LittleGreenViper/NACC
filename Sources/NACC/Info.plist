@@ -41,6 +41,8 @@
 	<string>https://littlegreenviper.com/portfolio/nacc/</string>
 	<key>InfoScreenPrivacySiteURL</key>
 	<string>https://littlegreenviper.com/welcome-to-little-green-viper/privacy/app-privacy/</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.lifestyle</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCalendarsUsageDescription</key>

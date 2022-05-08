@@ -136,7 +136,13 @@ extension UIViewController {
     /**
      Returns the interface (not device) orientation
      */
-    var windowInterfaceOrientation: UIInterfaceOrientation? { UIApplication.shared.windows.first?.windowScene?.interfaceOrientation }
+    var windowInterfaceOrientation: UIInterfaceOrientation? {
+        for scene in UIApplication.shared.connectedScenes where .unattached != scene.activationState && .background != scene.activationState {
+            return (scene as? UIWindowScene)?.windows.first?.windowScene?.interfaceOrientation
+        }
+        
+        return nil
+    }
 }
 
 /* ###################################################################################################################################### */
