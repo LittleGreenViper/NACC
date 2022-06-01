@@ -1,3 +1,7 @@
+**5.0.4.3000** *June 1, 2022*
+
+- Updated to the latest SPM modules.
+
 **5.0.3.3000** *April 19, 2022*
 
 - Fixed an issue that was caused by zooming the keytag strip. The strip can no longer be zoomed.
