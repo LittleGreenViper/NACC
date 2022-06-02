@@ -1,3 +1,7 @@
+**5.0.4.3002** *June 2, 2022*
+
+- Added some text to the contacts string, in order to clarify that data is never exported (Apple requirement).
+
 **5.0.4.3000** *June 1, 2022*
 
 - Updated to the latest SPM modules.
