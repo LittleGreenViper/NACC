@@ -1,3 +1,7 @@
+**5.0.4.3003** *June 2, 2022*
+
+- Corrected typo in the new text.
+
 **5.0.4.3002** *June 2, 2022*
 
 - Added some text to the contacts string, in order to clarify that data is never exported (Apple requirement).
