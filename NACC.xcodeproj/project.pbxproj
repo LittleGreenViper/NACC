@@ -458,7 +458,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Project-Meta/NACC.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3003;
+				CURRENT_PROJECT_VERSION = 3000;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/NACC/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -467,7 +467,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0.4;
+				MARKETING_VERSION = 5.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -489,7 +489,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Project-Meta/NACC.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3003;
+				CURRENT_PROJECT_VERSION = 3000;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/NACC/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -498,7 +498,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0.4;
+				MARKETING_VERSION = 5.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -564,7 +564,7 @@
 			repositoryURL = "git@github.com:LittleGreenViper/LGV_UICleantime.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.1;
+				minimumVersion = 1.1.2;
 			};
 		};
 		D4E6423226AB228E00CA6EE7 /* XCRemoteSwiftPackageReference "RVS_GeneralObserver" */ = {
