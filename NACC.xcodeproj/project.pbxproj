@@ -202,7 +202,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					D43C66B02694ABFF007D5883 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -254,6 +254,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		D43C66E02694AF28007D5883 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);

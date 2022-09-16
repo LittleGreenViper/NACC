@@ -1,6 +1,7 @@
 **5.0.5.3000** *TBD*
 
 - Updated a dependency.
+- Updated to latest tools.
 
 **5.0.4.3003** *June 2, 2022*
 
