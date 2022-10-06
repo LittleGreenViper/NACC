@@ -541,7 +541,7 @@
 			repositoryURL = "git@github.com:RiftValleySoftware/RVS_Generic_Swift_Toolbox.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.10.2;
+				minimumVersion = 1.11.0;
 			};
 		};
 		D4895DD226A230B700624F0D /* XCRemoteSwiftPackageReference "LGV_Cleantime" */ = {
@@ -557,7 +557,7 @@
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_PersistentPrefs";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.3.3;
+				minimumVersion = 1.3.4;
 			};
 		};
 		D4E2F95D27FCC46000457AD4 /* XCRemoteSwiftPackageReference "LGV_UICleantime" */ = {
@@ -565,7 +565,7 @@
 			repositoryURL = "git@github.com:LittleGreenViper/LGV_UICleantime.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.4;
+				minimumVersion = 1.1.5;
 			};
 		};
 		D4E6423226AB228E00CA6EE7 /* XCRemoteSwiftPackageReference "RVS_GeneralObserver" */ = {
