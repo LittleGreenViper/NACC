@@ -1,3 +1,7 @@
+**5.0.6.3004** *September 14, 2023*
+
+- Tweaked the Mac version to only Catalyst.
+
 **5.0.6.3000** *September 14, 2023*
 
 - Updated a couple of dependencies.
