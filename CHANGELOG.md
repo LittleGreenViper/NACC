@@ -1,4 +1,4 @@
-**5.0.5.3000** *TBD*
+**5.0.6.3000** *September 14, 2023*
 
 - Updated a couple of dependencies.
 - Updated to latest tools.
