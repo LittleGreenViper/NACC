@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/chrismarshall/Development/LGV/NACC/NACC.xcodeproj">
+      location = "group:NACC.xcodeproj">
    </FileRef>
    <Group
       location = "container:"
