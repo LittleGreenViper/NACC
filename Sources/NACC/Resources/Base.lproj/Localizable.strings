@@ -51,7 +51,7 @@
 // MARK: CLEANDATE SCREEN
 
 "SLUG-INITIAL-TITLE"                            =   "NACC";
-"SLUG-URL-STRING"                               =   "nacc://%@";
+"SLUG-URL-STRING"                               =   "https://nacc.littlegreenviper.com/%@";
 
 // MARK: CALENDAR EVENT
 
@@ -65,7 +65,7 @@
 "SLUG-OK-BUTTON-TEXT"                           =   "OK";
 "SLUG-APP-INFO-VERSION-FORMAT-SMALL"            =   "Version %@";
 "SLUG-APP-INFO-VERSION-FORMAT"                  =   "%@ Version: %@ (%@)";
-"SLUG-COPYRIGHT-BUTTON"                         =   "©2022 Little Green Viper Software Development LLC";
+"SLUG-COPYRIGHT-BUTTON"                         =   "©2022-2024 Little Green Viper Software Development LLC";
 "SLUG-PRIVACY-BUTTON"                           =   "Privacy";
 "SLUG-LGV-BUTTON"                               =   "Little Green Viper Web Site";
 

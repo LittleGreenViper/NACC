@@ -10,7 +10,7 @@ This is a simple "cleantime calculator" app, for NA members (It is not associate
 
 ### Get the application, itself
 
-|The app is available for free, from the iOS/iPadOS Apple App Store|
+|The app is available for free, from the iOS/iPadOS/MacOS Apple App Store|
 |:--:|
 |[![Apple App Store Badge](img/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg)](https://apps.apple.com/us/app/nacc/id452299196)|
 
@@ -72,6 +72,10 @@ The URL scheme is thus:
 
 **nacc://**_[YYYY-MM-DD[**/**N]]_
 
+The Universal Link Scheme is:
+     
+**https://nacc.littlegreenviper.com/**_[YYYY-MM-DD[**/**N]]_
+
 _YYYY-MM-DD_ is a standard [ISO 8601 calendar date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (For example, September first, 1980, is 1980-09-01).
 
 The earliest date is October 5, 1953 (1953-10-05)
@@ -86,13 +90,15 @@ _N_ is the numerical index of a tab:
 |:----:|:----:|
 |![Figure 10](img/Figure-10.png)|![Figure 11](img/Figure-11.png)|
 
-### Example URLs (Will only work on an iOS device with NACC installed)
+### Example URL Scheme URLs
+
+(Will only work on a device with NACC installed)
 
 - [nacc://](nacc://)
   This opens the app, but does nothing else. You will be at the initial page, set to whatever the last date was.
 
 - [nacc://1980-09-01](nacc://1980-09-01)
-  This opens the app, and sets the cleantime to September 1st, 1980. It will open the commemoration tab screen, at whatever the last selected tab was.
+  This opens the app, and sets the cleantime to September 1st, 1980.
 
 - [nacc://2020-03-17/0](nacc://2020-03-17/0)
   This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Keytag Array tab.
@@ -101,6 +107,25 @@ _N_ is the numerical index of a tab:
   This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Vertical Keytag Strip tab.
 
 - [nacc://2020-03-17/2](nacc://2020-03-17/2)
+  This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Medallions tab.
+
+### Example Universal Link URLs
+
+(Will work on any device, but will open the NACC, if it is installed. If not, the App Store will be opened to the NACC)
+
+- [https://nacc.littlegreenviper.com](https://nacc.littlegreenviper.com)
+  This opens the app, but does nothing else. You will be at the initial page, set to whatever the last date was.
+
+- [https://nacc.littlegreenviper.com/1980-09-01](https://nacc.littlegreenviper.com/1980-09-01)
+  This opens the app, and sets the cleantime to September 1st, 1980.
+
+- [https://nacc.littlegreenviper.com/2020-03-17/0](https://nacc.littlegreenviper.com/2020-03-17/0)
+  This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Keytag Array tab.
+
+- [https://nacc.littlegreenviper.com/2020-03-17/1](https://nacc.littlegreenviper.com/2020-03-17/1)
+  This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Vertical Keytag Strip tab.
+
+- [https://nacc.littlegreenviper.com/2020-03-17/2](https://nacc.littlegreenviper.com/2020-03-17/2)
   This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Medallions tab.
   
 ## Dependencies

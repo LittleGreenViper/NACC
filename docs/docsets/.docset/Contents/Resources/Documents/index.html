@@ -82,11 +82,28 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/NACCTabBaseViewController.html">NACCTabBaseViewController</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes.html#/s:4NACC19ResourceBundleClass33_4D75BB757B50C0B31D8ECF613D7D8101LLC">ResourceBundleClass</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Global%20Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Global%20Variables.html#/resourceBundle">resourceBundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Global%20Variables.html#/s:4NACC14resourceBundle33_4D75BB757B50C0B31D8ECF613D7D8101LLSo8NSBundleCvp">resourceBundle</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/AppKit.NSImage.html">AppKit.NSImage</a>
+              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/Bundle.html">Bundle</a>
               </li>
@@ -94,13 +111,47 @@
                 <a class="nav-group-task-link" href="Extensions/NSAttributedString.html">NSAttributedString</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions/UIImage.html">UIImage</a>
+                <a class="nav-group-task-link" href="Extensions/SwiftUI.html">SwiftUI</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/SwiftUI/Color.html">– Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/SwiftUI/ShapeStyle.html">– ShapeStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/SwiftUI/Image.html">– Image</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/UIKit.UIColor.html">UIKit.UIColor</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/UIKit.UIImage.html">UIKit.UIImage</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/UIView.html">UIView</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/UIViewController.html">UIViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/_ACResourceInitProtocol.html">_ACResourceInitProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/ColorResource.html">ColorResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/ImageResource.html">ImageResource</a>
               </li>
             </ul>
           </li>
@@ -122,7 +173,7 @@
 
 <table><thead>
 <tr>
-<th style="text-align: center">The app is available for free, from the iOS/iPadOS Apple App Store</th>
+<th style="text-align: center">The app is available for free, from the iOS/iPadOS/MacOS Apple App Store</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -219,6 +270,10 @@
 
 <p><strong>nacc://</strong><em>[YYYY-MM-DD[<strong>/</strong>N]]</em></p>
 
+<p>The Universal Link Scheme is:</p>
+
+<p><strong><a href="https://nacc.littlegreenviper.com/">https://nacc.littlegreenviper.com/</a></strong><em>[YYYY-MM-DD[<strong>/</strong>N]]</em></p>
+
 <p><em>YYYY-MM-DD</em> is a standard <a href="https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates">ISO 8601 calendar date</a> (For example, September first, 1980, is 1980-09-01).</p>
 
 <p>The earliest date is October 5, 1953 (1953-10-05)</p>
@@ -242,18 +297,36 @@
 <td style="text-align: center"><img src="img/Figure-11.png" alt="Figure 11"></td>
 </tr>
 </tbody></table>
-<h3 id='example-urls-will-only-work-on-an-ios-device-with-nacc-installed' class='heading'>Example URLs (Will only work on an iOS device with NACC installed)</h3>
+<h3 id='example-url-scheme-urls' class='heading'>Example URL Scheme URLs</h3>
+
+<p>(Will only work on a device with NACC installed)</p>
 
 <ul>
 <li><p><a href="nacc://">nacc://</a>
 This opens the app, but does nothing else. You will be at the initial page, set to whatever the last date was.</p></li>
 <li><p><a href="nacc://1980-09-01">nacc://1980-09-01</a>
-This opens the app, and sets the cleantime to September 1st, 1980. It will open the commemoration tab screen, at whatever the last selected tab was.</p></li>
+This opens the app, and sets the cleantime to September 1st, 1980.</p></li>
 <li><p><a href="nacc://2020-03-17/0">nacc://2020-03-17/0</a>
 This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Keytag Array tab.</p></li>
 <li><p><a href="nacc://2020-03-17/1">nacc://2020-03-17/1</a>
 This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Vertical Keytag Strip tab.</p></li>
 <li><p><a href="nacc://2020-03-17/2">nacc://2020-03-17/2</a>
+This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Medallions tab.</p></li>
+</ul>
+<h3 id='example-universal-link-urls' class='heading'>Example Universal Link URLs</h3>
+
+<p>(Will work on any device, but will open the NACC, if it is installed. If not, the App Store will be opened to the NACC)</p>
+
+<ul>
+<li><p><a href="https://nacc.littlegreenviper.com">https://nacc.littlegreenviper.com</a>
+This opens the app, but does nothing else. You will be at the initial page, set to whatever the last date was.</p></li>
+<li><p><a href="https://nacc.littlegreenviper.com/1980-09-01">https://nacc.littlegreenviper.com/1980-09-01</a>
+This opens the app, and sets the cleantime to September 1st, 1980.</p></li>
+<li><p><a href="https://nacc.littlegreenviper.com/2020-03-17/0">https://nacc.littlegreenviper.com/2020-03-17/0</a>
+This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Keytag Array tab.</p></li>
+<li><p><a href="https://nacc.littlegreenviper.com/2020-03-17/1">https://nacc.littlegreenviper.com/2020-03-17/1</a>
+This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Vertical Keytag Strip tab.</p></li>
+<li><p><a href="https://nacc.littlegreenviper.com/2020-03-17/2">https://nacc.littlegreenviper.com/2020-03-17/2</a>
 This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Medallions tab.</p></li>
 </ul>
 <h2 id='dependencies' class='heading'>Dependencies</h2>
@@ -287,8 +360,8 @@ This opens the app, and sets the cleantime to March 17th, 2020. It will open the
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2022 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2022-07-14)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+      <p>&copy; 2024 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2024-07-17)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
 </html>

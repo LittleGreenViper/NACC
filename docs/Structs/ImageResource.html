@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ImageResource Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Struct/ImageResource" class="dashAnchor"></a>
+
+    <a title="ImageResource Structure Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          NACC Doumentation
+        </a>
+         (100% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/LittleGreenViper/NACC">
+            <img class="header-icon" src="../img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html"> Reference</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      ImageResource Structure Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NACCAboutViewController.html">NACCAboutViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NACCAppSceneDelegate.html">NACCAppSceneDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NACCBaseViewController.html">NACCBaseViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NACCInitialViewController.html">NACCInitialViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NACCPagePrintRenderer.html">NACCPagePrintRenderer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NACCPersistentPrefs.html">NACCPersistentPrefs</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NACCPersistentPrefs/Keys.html">– Keys</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NACCTabBarController.html">NACCTabBarController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NACCTabBarController/TabIndexes.html">– TabIndexes</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NACCTabBaseViewController.html">NACCTabBaseViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes.html#/s:4NACC19ResourceBundleClass33_4D75BB757B50C0B31D8ECF613D7D8101LLC">ResourceBundleClass</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Global%20Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Global%20Variables.html#/resourceBundle">resourceBundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Global%20Variables.html#/s:4NACC14resourceBundle33_4D75BB757B50C0B31D8ECF613D7D8101LLSo8NSBundleCvp">resourceBundle</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/AppKit.NSImage.html">AppKit.NSImage</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/Bundle.html">Bundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/NSAttributedString.html">NSAttributedString</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/SwiftUI.html">SwiftUI</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/SwiftUI/Color.html">– Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/SwiftUI/ShapeStyle.html">– ShapeStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/SwiftUI/Image.html">– Image</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIKit.UIColor.html">UIKit.UIColor</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIKit.UIImage.html">UIKit.UIImage</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIView.html">UIView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/UIViewController.html">UIViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/_ACResourceInitProtocol.html">_ACResourceInitProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ColorResource.html">ColorResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ImageResource.html">ImageResource</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>ImageResource</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ImageResource</span> <span class="p">:</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">Hashable</span><span class="p">,</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">Sendable</span></code></pre>
+
+                </div>
+              </div>
+            <p>An image resource.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV4name33_4D75BB757B50C0B31D8ECF613D7D8101LLSSvp"></a>
+                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV4name33_4D75BB757B50C0B31D8ECF613D7D8101LLSSvp">name</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An asset catalog image resource name.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">fileprivate</span> <span class="k">let</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV6bundle33_4D75BB757B50C0B31D8ECF613D7D8101LLSo8NSBundleCvp"></a>
+                    <a name="//apple_ref/swift/Property/bundle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV6bundle33_4D75BB757B50C0B31D8ECF613D7D8101LLSo8NSBundleCvp">bundle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An asset catalog image resource bundle.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">fileprivate</span> <span class="k">let</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kt">Foundation</span><span class="o">.</span><span class="kt">Bundle</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV4name6bundleACSS_So8NSBundleCtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(name:bundle:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV4name6bundleACSS_So8NSBundleCtcfc">init(name:<wbr>bundle:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize an <code>ImageResource</code> with <code><a href="../Structs/ImageResource.html#/s:4NACC13ImageResourceV4name33_4D75BB757B50C0B31D8ECF613D7D8101LLSSvp">name</a></code> and <code><a href="../Structs/ImageResource.html#/s:4NACC13ImageResourceV6bundle33_4D75BB757B50C0B31D8ECF613D7D8101LLSo8NSBundleCvp">bundle</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">String</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kt">Foundation</span><span class="o">.</span><span class="kt">Bundle</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Image%20Symbols"></a>
+                <a name="//apple_ref/swift/Section/Image Symbols" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Image%20Symbols"></a>
+                  <h3 class="section-name"><span>Image Symbols</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV3_18ACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/_18" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV3_18ACvpZ">_18</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;18&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">_18</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV9aboutLogoACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/aboutLogo" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV9aboutLogoACvpZ">aboutLogo</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;AboutLogo&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">aboutLogo</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV18backgroundGradientACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/backgroundGradient" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV18backgroundGradientACvpZ">backgroundGradient</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;Background-Gradient&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">backgroundGradient</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV1CACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/C" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV1CACvpZ">C</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;C&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">C</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV6centerACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/center" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV6centerACvpZ">center</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;CenterImage&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">center</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV9coinBlankACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/coinBlank" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV9coinBlankACvpZ">coinBlank</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;CoinBlank&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">coinBlank</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV1DACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/D" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV1DACvpZ">D</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;D&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">D</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV1IACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/I" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV1IACvpZ">I</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;I&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">I</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV9_infinityACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/_infinity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV9_infinityACvpZ">_infinity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;Infinity&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">_infinity</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV1LACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/L" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV1LACvpZ">L</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;L&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">L</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV4logoACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/logo" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV4logoACvpZ">logo</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;Logo&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">logo</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV1MACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/M" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV1MACvpZ">M</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;M&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">M</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV12singleKeytagACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/singleKeytag" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV12singleKeytagACvpZ">singleKeytag</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;SingleKeytag&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">singleKeytag</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV11startupLogoACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/startupLogo" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV11startupLogoACvpZ">startupLogo</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;StartupLogo&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">startupLogo</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV12threeKeytagsACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/threeKeytags" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV12threeKeytagsACvpZ">threeKeytags</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;ThreeKeytags&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">threeKeytags</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV1VACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/V" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV1VACvpZ">V</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;V&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">V</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV1XACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/X" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV1XACvpZ">X</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;X&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">X</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV9bodyBlackACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bodyBlack" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV9bodyBlackACvpZ">bodyBlack</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;body_Black&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">bodyBlack</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV8bodyBlueACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bodyBlue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV8bodyBlueACvpZ">bodyBlue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;body_Blue&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">bodyBlue</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV15bodyBurntOrangeACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bodyBurntOrange" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV15bodyBurntOrangeACvpZ">bodyBurntOrange</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;body_BurntOrange&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">bodyBurntOrange</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV15bodyDaygloGreenACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bodyDaygloGreen" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV15bodyDaygloGreenACvpZ">bodyDaygloGreen</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;body_DaygloGreen&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">bodyDaygloGreen</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV16bodyDaygloOrangeACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bodyDaygloOrange" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV16bodyDaygloOrangeACvpZ">bodyDaygloOrange</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;body_DaygloOrange&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">bodyDaygloOrange</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV8bodyGrayACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bodyGray" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV8bodyGrayACvpZ">bodyGray</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;body_Gray&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">bodyGray</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV11bodyHotPinkACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bodyHotPink" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV11bodyHotPinkACvpZ">bodyHotPink</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;body_HotPink&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">bodyHotPink</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV15bodyHunterGreenACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bodyHunterGreen" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV15bodyHunterGreenACvpZ">bodyHunterGreen</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;body_HunterGreen&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">bodyHunterGreen</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV12bodyMoonglowACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bodyMoonglow" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV12bodyMoonglowACvpZ">bodyMoonglow</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;body_Moonglow&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">bodyMoonglow</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV10bodyPurpleACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bodyPurple" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV10bodyPurpleACvpZ">bodyPurple</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;body_Purple&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">bodyPurple</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV7bodyRedACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bodyRed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV7bodyRedACvpZ">bodyRed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;body_Red&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">bodyRed</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV12bodySpeckledACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bodySpeckled" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV12bodySpeckledACvpZ">bodySpeckled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;body_Speckled&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">bodySpeckled</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV9bodyWhiteACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bodyWhite" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV9bodyWhiteACvpZ">bodyWhite</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;body_White&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">bodyWhite</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV10bodyYellowACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/bodyYellow" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV10bodyYellowACvpZ">bodyYellow</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;body_Yellow&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">bodyYellow</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV10ringClosedACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/ringClosed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV10ringClosedACvpZ">ringClosed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;ring_Closed&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">ringClosed</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV8ringOpenACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/ringOpen" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV8ringOpenACvpZ">ringOpen</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;ring_Open&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">ringOpen</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV18textEighteenMonthsACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textEighteenMonths" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV18textEighteenMonthsACvpZ">textEighteenMonths</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_EighteenMonths&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textEighteenMonths</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV16textFifteenYearsACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textFifteenYears" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV16textFifteenYearsACvpZ">textFifteenYears</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_FifteenYears&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textFifteenYears</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV14textFiftyYearsACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textFiftyYears" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV14textFiftyYearsACvpZ">textFiftyYears</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_FiftyYears&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textFiftyYears</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV13textFiveYearsACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textFiveYears" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV13textFiveYearsACvpZ">textFiveYears</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_FiveYears&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textFiveYears</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV18textFortyFiveYearsACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textFortyFiveYears" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV18textFortyFiveYearsACvpZ">textFortyFiveYears</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_FortyFiveYears&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textFortyFiveYears</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV14textFortyYearsACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textFortyYears" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV14textFortyYearsACvpZ">textFortyYears</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_FortyYears&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textFortyYears</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV13textMultiYearACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textMultiYear" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV13textMultiYearACvpZ">textMultiYear</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_MultiYear&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textMultiYear</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV14textNineMonthsACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textNineMonths" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV14textNineMonthsACvpZ">textNineMonths</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_NineMonths&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textNineMonths</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV14textNinetyDaysACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textNinetyDays" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV14textNinetyDaysACvpZ">textNinetyDays</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_NinetyDays&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textNinetyDays</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV10textOneDayACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textOneDay" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV10textOneDayACvpZ">textOneDay</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_OneDay&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textOneDay</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV11textOneYearACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textOneYear" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV11textOneYearACvpZ">textOneYear</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_OneYear&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textOneYear</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV13textSixMonthsACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textSixMonths" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV13textSixMonthsACvpZ">textSixMonths</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_SixMonths&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textSixMonths</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV13textSixtyDaysACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textSixtyDays" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV13textSixtyDaysACvpZ">textSixtyDays</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_SixtyDays&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textSixtyDays</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV19textTenThousandDaysACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textTenThousandDays" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV19textTenThousandDaysACvpZ">textTenThousandDays</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_TenThousandDays&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textTenThousandDays</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV12textTenYearsACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textTenYears" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV12textTenYearsACvpZ">textTenYears</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_TenYears&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textTenYears</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV14textThirtyDaysACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textThirtyDays" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV14textThirtyDaysACvpZ">textThirtyDays</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_ThirtyDays&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textThirtyDays</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV19textThirtyFiveYearsACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textThirtyFiveYears" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV19textThirtyFiveYearsACvpZ">textThirtyFiveYears</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_ThirtyFiveYears&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textThirtyFiveYears</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV15textThirtyYearsACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textThirtyYears" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV15textThirtyYearsACvpZ">textThirtyYears</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_ThirtyYears&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textThirtyYears</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV19textTwentyFiveYearsACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textTwentyFiveYears" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV19textTwentyFiveYearsACvpZ">textTwentyFiveYears</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_TwentyFiveYears&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textTwentyFiveYears</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV15textTwentyYearsACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textTwentyYears" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV15textTwentyYearsACvpZ">textTwentyYears</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_TwentyYears&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textTwentyYears</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV15textWelcomeBackACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/textWelcomeBack" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV15textWelcomeBackACvpZ">textWelcomeBack</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &ldquo;text_WelcomeBack&rdquo; asset catalog image resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">textWelcomeBack</span><span class="p">:</span> <span class="kt">ImageResource</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Thinnable%20Asset%20Support"></a>
+                <a name="//apple_ref/swift/Section/Thinnable Asset Support" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Thinnable%20Asset%20Support"></a>
+                  <h3 class="section-name"><span>Thinnable Asset Support</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC13ImageResourceV13thinnableName6bundleACSgSS_So8NSBundleCtc33_4D75BB757B50C0B31D8ECF613D7D8101Llfc"></a>
+                    <a name="//apple_ref/swift/Method/init(thinnableName:bundle:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC13ImageResourceV13thinnableName6bundleACSgSS_So8NSBundleCtc33_4D75BB757B50C0B31D8ECF613D7D8101Llfc">init(thinnableName:<wbr>bundle:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">thinnableName</span><span class="p">:</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">String</span><span class="p">,</span> <span class="nv">bundle</span><span class="p">:</span> <span class="kt">Foundation</span><span class="o">.</span><span class="kt">Bundle</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2024 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2024-07-17)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>

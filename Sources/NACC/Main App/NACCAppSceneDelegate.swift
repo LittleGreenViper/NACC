@@ -61,12 +61,6 @@ class NACCAppSceneDelegate: UIResponder {
 
     /* ################################################################## */
     /**
-     This will contain the date for the selectors, if set from a URL.
-     */
-    private var _cleandateFromURI: Date?
-
-    /* ################################################################## */
-    /**
      This is a special flag, for use when opened by a URI. If true, then the app always starts at the initial screen.
      */
     private var _resetScreen = false
@@ -174,21 +168,20 @@ extension NACCAppSceneDelegate {
     func clearOriginalPrefs() {
         Self._originalPrefs = nil
     }
-}
-
-/* ###################################################################################################################################### */
-// MARK: UIWindowSceneDelegate Conformance
-/* ###################################################################################################################################### */
-extension NACCAppSceneDelegate: UIWindowSceneDelegate {
+    
     /* ################################################################## */
     /**
-     Called when the app is opened via a URL.
+     This will open and set up the app, in response to a URL.
      
      We parse the URL, and set a couple of instance variables, if the URL parameters are correct.
      
      The URL scheme is thus:
      
      nacc://_[YYYY-MM-DD[/N]]_
+
+     The Universal Link Scheme is:
+     
+     https://nacc.littlegreenviper.com/_[YYYY-MM-DD[/N]]_
 
      _YYYY-MM-DD_ is a standard [ISO 8601 calendar date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (For example, September first, 1980, is 1980-09-01).
 
@@ -200,143 +193,40 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         - 1 is Keytag Strip
         - 2 is Medallions
 
-     - parameter inScene: The scene instance (ignored).
-     - parameter openURLContexts: The Opening URL contexts (as a set).
+     - parameter inURL: The URL to be parsed.
      */
-    func scene(_ inScene: UIScene, openURLContexts inURLContexts: Set<UIOpenURLContext>) {
+    func resolveURL(_ inURL: URL) {
         #if DEBUG
-            print("\n#### Scene Opening Via URL Contexts.\n####\n")
+            print("\n#### Scene was opened from this URI: \(inURL)\n####\n")
         #endif
-        guard !inURLContexts.isEmpty else { return }
-        
-        // We only do this, if we don't already have some original prefs.
-        if nil == Self._originalPrefs {
-            // Store for replacement, later
-            let saveThesePrefs: OriginalPrefsTuple = (cleanDate: NACCPersistentPrefs().cleanDate,
-                                                      lastSelectedTabIndex: NACCTabBarController.TabIndexes(rawValue: NACCPersistentPrefs().lastSelectedTabIndex) ?? .keytagArray)
-            Self._originalPrefs = saveThesePrefs
-        }
-        
-        for context in inURLContexts {
-            let url = context.url
+        if var host = inURL.host,
+           !host.isEmpty {
+            
+            var pathComponents = inURL.pathComponents.compactMap { ("/" != $0) && !$0.isEmpty ? $0 : nil }
+            
+            if "nacc.littlegreenviper.com" == host {
+                host = pathComponents.removeFirst()
+            }
+            
+            _selectedTabFromURI = NACCTabBarController.TabIndexes(rawValue: Int(String(pathComponents.isEmpty
+                                                                                       ? "\(NACCTabBarController.TabIndexes.undefined.rawValue)"
+                                                                                       : pathComponents[0])) ?? NACCTabBarController.TabIndexes.undefined.rawValue)
 
             #if DEBUG
-                print("\n#### Scene was opened from this URI: \(url)\n####\n")
+                print("\tThe URL has this date: \(host), and wants this tab: \(_selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue)")
             #endif
-            if let host = url.host,
-               !host.isEmpty {
-                
-                let pathComponents = url.pathComponents.compactMap { ("/" != $0) && !$0.isEmpty ? $0 : nil }
-                
-                _selectedTabFromURI = NACCTabBarController.TabIndexes(rawValue: Int(String(pathComponents.isEmpty
-                                                                                           ? "\(NACCTabBarController.TabIndexes.undefined.rawValue)"
-                                                                                           : pathComponents[0])) ?? NACCTabBarController.TabIndexes.undefined.rawValue)
 
-                #if DEBUG
-                    print("\tThe URL has this date: \(host), and wants this tab: \(_selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue)")
-                #endif
-
-                let dateFormatter = DateFormatter()
-                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-                dateFormatter.dateFormat = "yyyy-MM-dd"
-                if let date = dateFormatter.date(from: host) {
-                    _cleandateFromURI = date
-                }
-            }
-        }
-    }
-    
-    /* ################################################################## */
-    /**
-     Called when the app is opened via a URL (and launched).
-     
-     We simply call the other handler, and use that parse the URI.
-     
-     - parameter inScene: The scene instance (ignored).
-     - parameter willConnectTo: The session being connected (also ignored).
-     - parameter options: This contains the options, among which, is the URL context.
-     */
-    func scene(_ inScene: UIScene, willConnectTo: UISceneSession, options inConnectionOptions: UIScene.ConnectionOptions) {
-        #if DEBUG
-            print("\n#### Scene Connecting Via URL.\n####\n")
-        #endif
-        scene(inScene, openURLContexts: inConnectionOptions.urlContexts)
-    }
-    
-    /* ################################################################## */
-    /**
-     Called when the app is about to come into the foreground.
-     
-     We use this to set the app to the initial screen, and also, to check if we have a URL specified.
-     
-     If we don't have a URL specified, then we restore to any saved state.
-     
-     - parameter: The scene instance (ignored).
-     */
-    func sceneWillEnterForeground(_: UIScene) {
-        #if DEBUG
-            print("\n#### Scene Entering Foreground.\n####\n")
-        #endif
-            if let date = _cleandateFromURI {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            if let date = dateFormatter.date(from: host) {
                 _resetScreen = true
-                _cleandateFromURI = nil
                 #if DEBUG
                     print("Setting date: \(date), and tab: \(_selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue)")
                 #endif
                 NACCPersistentPrefs().cleanDate = date
                 NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue
             }
-        
-        _cleandateFromURI = nil // Take off and nuke the site from orbit. It's the only way to be sure...
-    }
-
-    /* ################################################################## */
-    /**
-     Called when the app is about to come into the foreground.
-     
-     We use this to set the app to the initial screen, and also, to check if we have a URL specified.
-     
-     If we don't have a URL specified, then we restore to any saved state.
-     
-     - parameter: The scene instance (ignored).
-     */
-    func sceneDidBecomeActive(_: UIScene) {
-        #if DEBUG
-            print("\n#### Scene Becoming Active.\n####\n")
-        #endif
-        if _resetScreen {
-            _navigationController?.popToRootViewController(animated: false)
-            _initialViewController?.setDate(NACCPersistentPrefs().cleanDate, tabIndex: _selectedTabFromURI)
-        } else {
-            _initialViewController?.setDate()
-        }
-        
-        _resetScreen = false
-    }
-    
-    /* ################################################################## */
-    /**
-     Called when the scene will be no longer visible.
-     
-     We use this to restore our prefs from any that were stored, when the app was called from a URL.
-     
-     - parameter: The scene instance (ignored).
-     */
-    func sceneDidEnterBackground(_: UIScene) {
-        #if DEBUG
-            print("\n#### Scene Entered Background.\n####\n")
-        #endif
-        
-        _navigationController?.viewControllers.forEach {
-            // The first one, is in case we have a second modal over the main one (doesn't work for all of them).
-            $0.presentedViewController?.presentedViewController?.dismiss(animated: false)
-            $0.presentedViewController?.dismiss(animated: false)
-        }
-        
-        if let originals = Self._originalPrefs {
-            Self._originalPrefs = nil
-            NACCPersistentPrefs().cleanDate = originals.cleanDate
-            NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue
         }
     }
 }
@@ -372,5 +262,117 @@ extension NACCAppSceneDelegate: UIApplicationDelegate {
             print("\n#### Application Delivering Configuration.\n####\n")
         #endif
         return UISceneConfiguration(name: Self._sceneConfigurationName, sessionRole: inConnectingSceneSession.role)
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: UIWindowSceneDelegate Conformance
+/* ###################################################################################################################################### */
+extension NACCAppSceneDelegate: UIWindowSceneDelegate {
+    /* ################################################################## */
+    /**
+     Called when the app is foregrounded via a URL.
+     
+     - parameter: The scene instance (ignored).
+     - parameter openURLContexts: The Opening URL contexts (as a set).
+     */
+    func scene(_: UIScene, openURLContexts inURLContexts: Set<UIOpenURLContext>) {
+        inURLContexts.forEach { resolveURL($0.url) }
+    }
+    
+    /* ################################################################## */
+    /**
+     Called when the app is opened via a URL from a "cold start."
+     - parameter: The scene instance.
+     - parameter willConnectTo: The session being connected (ignored).
+     - parameter options: This contains the options, among which, is the URL context.
+     */
+    func scene(_ inScene: UIScene, willConnectTo: UISceneSession, options inConnectionOptions: UIScene.ConnectionOptions) {
+        if let url = inConnectionOptions.userActivities.first?.webpageURL ?? inConnectionOptions.urlContexts.first?.url {
+            resolveURL(url)
+        }
+    }
+
+    /* ################################################################## */
+    /**
+     Called when the app is opened via a URL (and launched).
+     - parameter: The scene instance (ignored).
+     - parameter continue: The activity being continued.
+     */
+    func scene(_: UIScene, continue inUserActivity: NSUserActivity) {
+        guard let url = inUserActivity.webpageURL else { return }
+        resolveURL(url)
+    }
+
+    /* ################################################################## */
+    /**
+     Called when the app is about to come into the foreground.
+     
+     We use this to set the app to the initial screen, and also, to check if we have a URL specified.
+     
+     If we don't have a URL specified, then we restore to any saved state.
+     
+     - parameter: The scene instance (ignored).
+     */
+    func sceneWillEnterForeground(_: UIScene) {
+        #if DEBUG
+            print("\n#### Scene Entering Foreground.\n####\n")
+        #endif
+        if _resetScreen {
+            _navigationController?.popToRootViewController(animated: false)
+            _initialViewController?.setDate(NACCPersistentPrefs().cleanDate, tabIndex: _selectedTabFromURI)
+        } else {
+            _initialViewController?.setDate()
+        }
+    }
+
+    /* ################################################################## */
+    /**
+     Called when the app is about to come into the foreground.
+     
+     We use this to set the app to the initial screen, and also, to check if we have a URL specified.
+     
+     If we don't have a URL specified, then we restore to any saved state.
+     
+     - parameter: The scene instance (ignored).
+     */
+    func sceneDidBecomeActive(_: UIScene) {
+        #if DEBUG
+            print("\n#### Scene Becoming Active.\n####\n")
+        #endif
+        if _resetScreen {
+            _navigationController?.popToRootViewController(animated: false)
+            _initialViewController?.setDate(NACCPersistentPrefs().cleanDate, tabIndex: _selectedTabFromURI)
+        } else {
+            _initialViewController?.setDate()
+        }
+
+        _resetScreen = false
+    }
+    
+    /* ################################################################## */
+    /**
+     Called when the scene will be no longer visible.
+     
+     We use this to restore our prefs from any that were stored, when the app was called from a URL.
+     
+     - parameter: The scene instance (ignored).
+     */
+    func sceneDidEnterBackground(_: UIScene) {
+        #if DEBUG
+            print("\n#### Scene Entered Background.\n####\n")
+        #endif
+        
+        _navigationController?.viewControllers.forEach {
+            // The first one, is in case we have a second modal over the main one (doesn't work for all of them).
+            $0.presentedViewController?.presentedViewController?.dismiss(animated: false)
+            $0.presentedViewController?.dismiss(animated: false)
+        }
+        
+        if let originals = Self._originalPrefs {
+            Self._originalPrefs = nil
+            NACCPersistentPrefs().cleanDate = originals.cleanDate
+            NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue
+        }
     }
 }

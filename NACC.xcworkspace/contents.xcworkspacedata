@@ -7,6 +7,49 @@
    <Group
       location = "container:"
       name = "Miscellany">
+      <Group
+         location = "group:img"
+         name = "img">
+         <FileRef
+            location = "group:Figure-02.png">
+         </FileRef>
+         <FileRef
+            location = "group:Figure-03.png">
+         </FileRef>
+         <FileRef
+            location = "group:Figure-01.png">
+         </FileRef>
+         <FileRef
+            location = "group:Figure-10.png">
+         </FileRef>
+         <FileRef
+            location = "group:Figure-04.png">
+         </FileRef>
+         <FileRef
+            location = "group:Figure-05.png">
+         </FileRef>
+         <FileRef
+            location = "group:Figure-11.png">
+         </FileRef>
+         <FileRef
+            location = "group:Figure-07.png">
+         </FileRef>
+         <FileRef
+            location = "group:Figure-06.png">
+         </FileRef>
+         <FileRef
+            location = "group:Octocat.png">
+         </FileRef>
+         <FileRef
+            location = "group:Figure-08.png">
+         </FileRef>
+         <FileRef
+            location = "group:Figure-09.png">
+         </FileRef>
+         <FileRef
+            location = "group:Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg">
+         </FileRef>
+      </Group>
       <FileRef
          location = "group:CHANGELOG.md">
       </FileRef>
