@@ -1,3 +1,8 @@
+**5.1.0.0000** *July 17, 2024*
+
+- Added the latest keytags.
+- Minimum supported OS is now iOS 16.
+
 **5.0.6.3004** *September 14, 2023*
 
 - Tweaked the Mac version to only Catalyst.
