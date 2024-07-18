@@ -116,7 +116,7 @@ _N_ is the numerical index of a tab:
 - [`https://nacc.littlegreenviper.com`](https://nacc.littlegreenviper.com)
   This opens the app, but does nothing else.
 
-- [`https://nacc.littlegreenviper.com/?1980-09-01`](https://?nacc.littlegreenviper.com/?1980-09-01)
+- [`https://nacc.littlegreenviper.com/?1980-09-01`](https://nacc.littlegreenviper.com/?1980-09-01)
   This opens the app, and sets the cleantime to September 1st, 1980. It will set to the main screen.
 
 - [`https://nacc.littlegreenviper.com/?2020-03-17/0`](https://nacc.littlegreenviper.com/?2020-03-17/0)
