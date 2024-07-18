@@ -258,6 +258,7 @@ extension NACCInitialViewController {
             startupLogo?.removeFromSuperview()  // Should never happen, but what the hell...
             startupLogo = nil
         }
+        setDate()
     }
     
     /* ################################################################## */

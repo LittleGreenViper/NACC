@@ -342,8 +342,6 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         if _resetScreen {
             _navigationController?.popToRootViewController(animated: false)
             _initialViewController?.setDate(NACCPersistentPrefs().cleanDate, tabIndex: _selectedTabFromURI)
-        } else {
-            _initialViewController?.setDate()
         }
 
         _resetScreen = false
