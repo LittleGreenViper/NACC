@@ -1,4 +1,12 @@
-**5.1.0.0000** *July 17, 2024*
+**5.2.1.3007** *July 18, 2024*
+
+- (MacOS Only) Fixed a bug, where the cleandate was not being properly saved.
+
+**5.2.0.3006** *July 18, 2024*
+
+- Implemented Universal Links.
+
+**5.1.0.3005** *July 17, 2024*
 
 - Added the latest keytags.
 - Minimum supported OS is now iOS 16.
