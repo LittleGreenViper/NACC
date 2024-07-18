@@ -199,30 +199,26 @@ extension NACCAppSceneDelegate {
         #if DEBUG
             print("\n#### Scene was opened from this URI: \(inURL)\n####\n")
         #endif
-        if var host = inURL.host,
-           !host.isEmpty {
-            
-            var pathComponents = inURL.pathComponents.compactMap { ("/" != $0) && !$0.isEmpty ? $0 : nil }
-            
-            if "nacc.littlegreenviper.com" == host {
-                host = pathComponents.removeFirst()
+        if var dateString = inURL.query() {
+            let splitter = dateString.split(separator: "/")
+            if 1 < splitter.count,
+               let tabInt = Int(splitter[1]),
+               let tab = NACCTabBarController.TabIndexes(rawValue: tabInt){
+                dateString = String(splitter[0])
+                _selectedTabFromURI = tab
             }
-            
-            _selectedTabFromURI = NACCTabBarController.TabIndexes(rawValue: Int(String(pathComponents.isEmpty
-                                                                                       ? "\(NACCTabBarController.TabIndexes.undefined.rawValue)"
-                                                                                       : pathComponents[0])) ?? NACCTabBarController.TabIndexes.undefined.rawValue)
 
             #if DEBUG
-                print("\tThe URL has this date: \(host), and wants this tab: \(_selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue)")
+                print("\tThe URL has this date: \(dateString), and wants this tab: \(_selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue)")
             #endif
 
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.dateFormat = "yyyy-MM-dd"
-            if let date = dateFormatter.date(from: host) {
+            if let date = dateFormatter.date(from: dateString) {
                 _resetScreen = true
                 #if DEBUG
-                    print("Setting date: \(date), and tab: \(_selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue)")
+                    print("Setting date: \(dateString), and tab: \(_selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue)")
                 #endif
                 NACCPersistentPrefs().cleanDate = date
                 NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue

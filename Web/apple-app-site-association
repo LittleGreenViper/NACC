@@ -1,0 +1,13 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [{
+                "appIDs": ["P53V4JS928.org.magshare.NACC"],
+                "components": [{
+                    "/": "*",
+                    "comment": "Any call can go to the app."
+                }
+            ]}
+        ]
+    }
+}

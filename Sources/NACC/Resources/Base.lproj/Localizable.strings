@@ -51,7 +51,7 @@
 // MARK: CLEANDATE SCREEN
 
 "SLUG-INITIAL-TITLE"                            =   "NACC";
-"SLUG-URL-STRING"                               =   "https://nacc.littlegreenviper.com/%@";
+"SLUG-URL-STRING"                               =   "https://nacc.littlegreenviper.com/?%@";
 
 // MARK: CALENDAR EVENT
 

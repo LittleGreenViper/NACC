@@ -8,6 +8,134 @@
       location = "container:"
       name = "Miscellany">
       <Group
+         location = "group:Web"
+         name = "Web">
+         <FileRef
+            location = "group:index.html">
+         </FileRef>
+         <Group
+            location = "group:img"
+            name = "img">
+            <FileRef
+               location = "group:AppStore.png">
+            </FileRef>
+            <FileRef
+               location = "group:bodyBlack.png">
+            </FileRef>
+            <FileRef
+               location = "group:textFortyFiveYears.png">
+            </FileRef>
+            <FileRef
+               location = "group:bodyMoonglow.png">
+            </FileRef>
+            <FileRef
+               location = "group:textThirtyFiveYears.png">
+            </FileRef>
+            <FileRef
+               location = "group:textOneDay.png">
+            </FileRef>
+            <FileRef
+               location = "group:textNineMonths.png">
+            </FileRef>
+            <FileRef
+               location = "group:bodyDaygloGreen.png">
+            </FileRef>
+            <FileRef
+               location = "group:textThirtyYears.png">
+            </FileRef>
+            <FileRef
+               location = "group:textNinetyDays.png">
+            </FileRef>
+            <FileRef
+               location = "group:textTwentyYears.png">
+            </FileRef>
+            <FileRef
+               location = "group:textWelcomeBack.png">
+            </FileRef>
+            <FileRef
+               location = "group:textTwentyFiveYears.png">
+            </FileRef>
+            <FileRef
+               location = "group:textSixMonths.png">
+            </FileRef>
+            <FileRef
+               location = "group:bodyDaygloOrange.png">
+            </FileRef>
+            <FileRef
+               location = "group:bodyHunterGreen.png">
+            </FileRef>
+            <FileRef
+               location = "group:bodyRed.png">
+            </FileRef>
+            <FileRef
+               location = "group:bodyHotPink.png">
+            </FileRef>
+            <FileRef
+               location = "group:bodyYellow.png">
+            </FileRef>
+            <FileRef
+               location = "group:textSixtyDays.png">
+            </FileRef>
+            <FileRef
+               location = "group:textEighteenMonths.png">
+            </FileRef>
+            <FileRef
+               location = "group:bodyWhite.png">
+            </FileRef>
+            <FileRef
+               location = "group:textThirtyDays.png">
+            </FileRef>
+            <FileRef
+               location = "group:textFortyYears.png">
+            </FileRef>
+            <FileRef
+               location = "group:bodyBlue.png">
+            </FileRef>
+            <FileRef
+               location = "group:textFifteenYears.png">
+            </FileRef>
+            <FileRef
+               location = "group:textTenThousandDays.png">
+            </FileRef>
+            <FileRef
+               location = "group:ringOpen.png">
+            </FileRef>
+            <FileRef
+               location = "group:bodyBurntOrange.png">
+            </FileRef>
+            <FileRef
+               location = "group:textFiftyYears.png">
+            </FileRef>
+            <FileRef
+               location = "group:bodySpeckled.png">
+            </FileRef>
+            <FileRef
+               location = "group:textMultiYear.png">
+            </FileRef>
+            <FileRef
+               location = "group:textFiveYears.png">
+            </FileRef>
+            <FileRef
+               location = "group:bodyPurple.png">
+            </FileRef>
+            <FileRef
+               location = "group:bodyGray.png">
+            </FileRef>
+            <FileRef
+               location = "group:ringClosed.png">
+            </FileRef>
+            <FileRef
+               location = "group:textOneYear.png">
+            </FileRef>
+            <FileRef
+               location = "group:textTenYears.png">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:apple-app-site-association">
+         </FileRef>
+      </Group>
+      <Group
          location = "group:img"
          name = "img">
          <FileRef
