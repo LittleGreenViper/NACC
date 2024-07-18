@@ -369,7 +369,7 @@
                         break;
 
                     case 50:
-                        ret.tagBody = "bodyYellow.png";
+                        ret.tagBody = "bodyGray.png";
                         ret.tagText = "textFiftyYears.png";
                         break;
                         
