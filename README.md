@@ -94,38 +94,38 @@ _N_ is the numerical index of a tab:
 
 (Will only work on a device with NACC installed)
 
-- [nacc://](nacc://)
+- [`nacc://`](nacc://)
   This opens the app, but does nothing else.
 
-- [nacc://?1980-09-01](nacc://?1980-09-01)
+- [`nacc://?1980-09-01`](nacc://?1980-09-01)
   This opens the app, and sets the cleantime to September 1st, 1980. It will set to the main screen.
 
-- [nacc://?2020-03-17/0](nacc://?2020-03-17/0)
+- [`nacc://?2020-03-17/0`](nacc://?2020-03-17/0)
   This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Keytag Array tab.
 
-- [nacc://?2020-03-17/1](nacc://?2020-03-17/1)
+- [`nacc://?2020-03-17/1`](nacc://?2020-03-17/1)
   This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Vertical Keytag Strip tab.
 
-- [nacc://?2020-03-17/2](nacc://?2020-03-17/2)
+- [`nacc://?2020-03-17/2`](nacc://?2020-03-17/2)
   This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Medallions tab.
 
 ### Example Universal Link URLs
 
 (Will work on any device, but will open the NACC, if it is installed. If not, the App Store will be opened to the NACC)
 
-- [https://nacc.littlegreenviper.com](https://nacc.littlegreenviper.com)
+- [`https://nacc.littlegreenviper.com`](https://nacc.littlegreenviper.com)
   This opens the app, but does nothing else.
 
-- [https://nacc.littlegreenviper.com/?1980-09-01](https://nacc.littlegreenviper.com/?1980-09-01)
+- [`https://nacc.littlegreenviper.com/?1980-09-01`](https://?nacc.littlegreenviper.com/?1980-09-01)
   This opens the app, and sets the cleantime to September 1st, 1980. It will set to the main screen.
 
-- [https://nacc.littlegreenviper.com/?2020-03-17/0](https://nacc.littlegreenviper.com/?2020-03-17/0)
+- [`https://nacc.littlegreenviper.com/?2020-03-17/0`](https://nacc.littlegreenviper.com/?2020-03-17/0)
   This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Keytag Array tab.
 
-- [https://nacc.littlegreenviper.com/?2020-03-17/1](https://nacc.littlegreenviper.com/?2020-03-17/1)
+- [`https://nacc.littlegreenviper.com/?2020-03-17/1`](https://nacc.littlegreenviper.com/?2020-03-17/1)
   This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Vertical Keytag Strip tab.
 
-- [https://nacc.littlegreenviper.com/?2020-03-17/2](https://nacc.littlegreenviper.com/?2020-03-17/2)
+- [`https://nacc.littlegreenviper.com/?2020-03-17/2`](https://nacc.littlegreenviper.com/?2020-03-17/2)
   This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Medallions tab.
 
 ## Dependencies
