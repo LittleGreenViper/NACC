@@ -34,6 +34,8 @@
 /* Begin PBXFileReference section */
 		D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCBaseViewController.swift; sourceTree = "<group>"; };
 		D41657122C4846990015DDFD /* NACC.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NACC.docc; sourceTree = "<group>"; };
+		D41AC87D2C49813200C79B8C /* index.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
+		D41AC87E2C4981B500C79B8C /* apple-app-site-association */ = {isa = PBXFileReference; lastKnownFileType = text; path = "apple-app-site-association"; sourceTree = "<group>"; };
 		D42314F527FE150E00C5E5FC /* NACCTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCTabBarController.swift; sourceTree = "<group>"; };
 		D43C66C82694AC20007D5883 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAppSceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,7 +87,6 @@
 		D4C157BD2C4926FC00D82CBA /* textTwentyFiveYears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textTwentyFiveYears.png; sourceTree = "<group>"; };
 		D4C157BE2C4926FC00D82CBA /* textTwentyYears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textTwentyYears.png; sourceTree = "<group>"; };
 		D4C157BF2C4926FC00D82CBA /* textWelcomeBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textWelcomeBack.png; sourceTree = "<group>"; };
-		D4C157C12C4926FC00D82CBA /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		D4C79A1A27F9189800FBB7D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NACC_LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4C79A1C27F9189800FBB7D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NACC_Main.storyboard; sourceTree = "<group>"; };
 		D4E2F96527FCCA2800457AD4 /* LGV_UICleantime.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = LGV_UICleantime.xcassets; sourceTree = "<group>"; };
@@ -246,8 +247,9 @@
 		D4C157C22C4926FC00D82CBA /* Web */ = {
 			isa = PBXGroup;
 			children = (
+				D41AC87D2C49813200C79B8C /* index.php */,
+				D41AC87E2C4981B500C79B8C /* apple-app-site-association */,
 				D4C157C02C4926FC00D82CBA /* img */,
-				D4C157C12C4926FC00D82CBA /* index.html */,
 			);
 			path = Web;
 			sourceTree = SOURCE_ROOT;

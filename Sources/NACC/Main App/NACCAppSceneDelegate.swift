@@ -206,6 +206,8 @@ extension NACCAppSceneDelegate {
                let tab = NACCTabBarController.TabIndexes(rawValue: tabInt){
                 dateString = String(splitter[0])
                 _selectedTabFromURI = tab
+            } else {
+                _selectedTabFromURI = .undefined
             }
 
             #if DEBUG
@@ -222,6 +224,7 @@ extension NACCAppSceneDelegate {
                 #endif
                 NACCPersistentPrefs().cleanDate = date
                 NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue
+                _initialViewController?.updateScreen()
             }
         }
     }

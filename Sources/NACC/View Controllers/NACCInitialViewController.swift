@@ -165,6 +165,7 @@ extension NACCInitialViewController {
             if (minDate...Date()).contains(newDateValue) {
                 dateSelector.date = newDateValue
                 newDate()
+                navigationController?.popToRootViewController(animated: false)
                 if let tabIndex = inTabIndex,
                    .undefined != tabIndex {  // We only open to a tab, if it was explicitly requested, by indicating a tab number.
                     NACCPersistentPrefs().lastSelectedTabIndex = tabIndex.rawValue
@@ -208,6 +209,16 @@ extension NACCInitialViewController {
                                             }
                             }
             )
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     Forces a recalculation
+    */
+    func updateScreen() {
+        if let tab = NACCTabBarController.TabIndexes(rawValue: NACCPersistentPrefs().lastSelectedTabIndex) {
+            setDate(NACCPersistentPrefs().cleanDate, tabIndex: tab)
         }
     }
 }
@@ -315,7 +326,7 @@ extension NACCInitialViewController {
      - parameter inDatePicker: The picker instance. This can be ignored (in which case we try the date selector).
     */
     @IBAction func newDate(_ inDatePicker: UIDatePicker! = nil) {
-        NACCAppSceneDelegate.appDelegateInstance?.date = inDatePicker?.date ?? dateSelector?.date ?? Date()
+        NACCAppSceneDelegate.appDelegateInstance?.date = inDatePicker?.date ?? dateSelector?.date ?? NACCPersistentPrefs().cleanDate
         
         // If this actually came from the date selector changing (as opposed to the screen being initialized), we clear the stored prefs.
         if nil != inDatePicker {
