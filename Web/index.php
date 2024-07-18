@@ -398,31 +398,21 @@
                 
                 function makeImages(inImageTagObject, inIndex, ignoredArray, inThisValue) {
                     var container = document.createElement("div");
-                    container.className = "keytag";
-                    if (0 < inIndex) {
-                        container.style.marginTop = "-21%";
-                    }
-                    
-                    container.style.marginLeft = "33%";
+                    container.className = 0 == inIndex ? "first keytag" : "next keytag";
 
                     var ring = document.createElement("img");
                     ring.className = "keytag_ring";
                     ring.src = "img/" + inImageTagObject.ring;
-                    ring.style.position = "relative";
                     container.appendChild(ring);
                     
                     var tag = document.createElement("img");
                     tag.className = "keytag_tag";
                     tag.src = "img/" + inImageTagObject.tagBody;
-                    tag.style.position = "relative";
-                    tag.style.left = "-25.1%";
                     container.appendChild(tag);
 
                     var text = document.createElement("img");
                     text.className = "keytag_text";
                     text.src = "img/" + inImageTagObject.tagText;
-                    text.style.position = "relative";
-                    text.style.left = "-50.2%";
                     container.appendChild(text);
 
                     mainContainer.appendChild(container);
@@ -454,16 +444,44 @@
             }
         </script>
         <style>
+            div.main_block {
+                display: table;
+                margin: auto;
+            }
+            
+            div#all_tags {
+            }
+            
+            div.nacc_keytags {
+                margin: auto;
+                width: 320px;
+            }
+            
+            div.nacc_keytags div.keytag {
+                display: grid;
+                grid-template-rows: 320px;
+                grid-template-columns: 580px;
+            }
+            
+            div.nacc_keytags div.keytag img {
+                display: block;
+                grid-row: 1;
+                grid-column: 1;
+            }
+            
+            div.nacc_keytags div.next {
+                margin-top: -135px;
+            }
         </style>
     </head>
     <body style="text-align: center">
-        <div style="margin: auto; display: table">
+        <div class="main_block">
             <h2 style="text-align: center">NACC</h2>
             <p><a href="https://littlegreenviper.com/portfolio/nacc/">The NACC is an iphone, iPad and Mac app that will calculate your cleantime.</a></p>
             <p><a href="https://apps.apple.com/us/app/nacc/id452299196">Get it on the Apple App Store.</a></p>
             <p><a href="https://apps.apple.com/us/app/nacc/id452299196"><img src="img/AppStore.png" /></a></p>
+            <div id="all_tags"></div>
+            <script> makeADate(); </script>
         </div>
-        <div id="all_tags" style="margin: auto"></div>
-        <script> makeADate(); </script>
     </body>
 </html>
