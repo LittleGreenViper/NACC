@@ -430,7 +430,10 @@
             function makeADate() {
                 var dateString = window.location.search.split('?')[1];
                 if (null != dateString) {
-                    var splitter = dateString.split('/');
+                    var splitter = dateString.split('&');
+                    if (0 < splitter.length) {
+                        splitter = splitter[0].split('/');
+                    }
                     if (0 < splitter.length) {
                         var date = new Date(splitter[0]);
                         if (null != date) {
