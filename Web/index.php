@@ -2,7 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>NACC Bypass</title>
+        <title>NACC</title>
+        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="icon" type="image/png" href="favicon-192x192.png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="apple-touch-icon-180x180.png" sizes="180x180" />                
+
         <script>
             /********************************************************************************************/
             /**
