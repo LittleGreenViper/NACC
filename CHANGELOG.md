@@ -1,3 +1,7 @@
+**5.2.2.3008** *TBD*
+
+- Updated the dependencies
+
 **5.2.1.3007** *July 18, 2024*
 
 - (MacOS Only) Fixed a bug, where the cleandate was not being properly saved.
