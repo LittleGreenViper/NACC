@@ -1,6 +1,7 @@
 **5.2.2.3008** *TBD*
 
 - Updated the dependencies
+- Some work on the About screen. No visible changes, other than bullets in front of the dependency links.
 
 **5.2.1.3007** *July 18, 2024*
 

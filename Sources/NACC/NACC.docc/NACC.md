@@ -111,7 +111,7 @@ _N_ is the numerical index of a tab:
 
 ### Example Universal Link URLs
 
-(Will work on any device, but will open the NACC, if it is installed. If not, the App Store will be opened to the NACC)
+_Will work on any device, but will open the NACC, if it is installed. If not, a simple Web page with the date will be shown, along with instructions for accessing the app on the App Store_
 
 - [`https://nacc.littlegreenviper.com`](https://nacc.littlegreenviper.com)
   This opens the app, but does nothing else.
