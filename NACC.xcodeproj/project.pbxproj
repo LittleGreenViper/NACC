@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D41361C027F8D80B00DA1AD4 /* NACCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */; };
+		D414B34D2C863217005A12A4 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D414B34C2C8631FB005A12A4 /* Intents.intentdefinition */; };
+		D414B34F2C863DF0005A12A4 /* NACCIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D414B34E2C863DF0005A12A4 /* NACCIntentHandler.swift */; };
 		D41657132C4846990015DDFD /* NACC.docc in Sources */ = {isa = PBXBuildFile; fileRef = D41657122C4846990015DDFD /* NACC.docc */; };
 		D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42314F527FE150E00C5E5FC /* NACCTabBarController.swift */; };
 		D43C66D12694AC20007D5883 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D43C66C82694AC20007D5883 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCBaseViewController.swift; sourceTree = "<group>"; };
+		D414B34C2C8631FB005A12A4 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
+		D414B34E2C863DF0005A12A4 /* NACCIntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCIntentHandler.swift; sourceTree = "<group>"; };
 		D41657122C4846990015DDFD /* NACC.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NACC.docc; sourceTree = "<group>"; };
 		D41AC87D2C49813200C79B8C /* index.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
 		D41AC87E2C4981B500C79B8C /* apple-app-site-association */ = {isa = PBXFileReference; lastKnownFileType = text; path = "apple-app-site-association"; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				D43C66CE2694AC20007D5883 /* Info.plist */,
+				D414B34C2C8631FB005A12A4 /* Intents.intentdefinition */,
 			);
 			name = Meta;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */,
+				D414B34E2C863DF0005A12A4 /* NACCIntentHandler.swift */,
 			);
 			path = "Main App";
 			sourceTree = "<group>";
@@ -356,6 +362,8 @@
 				D43C66D42694AC20007D5883 /* NACCAppSceneDelegate.swift in Sources */,
 				D48F812D27FCD3FA001A0B87 /* NACCTabBaseViewController.swift in Sources */,
 				D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */,
+				D414B34F2C863DF0005A12A4 /* NACCIntentHandler.swift in Sources */,
+				D414B34D2C863217005A12A4 /* Intents.intentdefinition in Sources */,
 				D41657132C4846990015DDFD /* NACC.docc in Sources */,
 				D41361C027F8D80B00DA1AD4 /* NACCBaseViewController.swift in Sources */,
 				D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */,

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Sources/NACC/Utility/GetCleantime.swift">
+   </FileRef>
+   <FileRef
       location = "group:NACC.xcodeproj">
    </FileRef>
    <Group
