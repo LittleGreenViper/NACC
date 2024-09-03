@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D41361C027F8D80B00DA1AD4 /* NACCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */; };
-		D414B34D2C863217005A12A4 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D414B34C2C8631FB005A12A4 /* Intents.intentdefinition */; };
-		D414B34F2C863DF0005A12A4 /* NACCIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D414B34E2C863DF0005A12A4 /* NACCIntentHandler.swift */; };
+		D414B34F2C863DF0005A12A4 /* NACCGetCleantimeSummaryIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D414B34E2C863DF0005A12A4 /* NACCGetCleantimeSummaryIntent.swift */; };
 		D41657132C4846990015DDFD /* NACC.docc in Sources */ = {isa = PBXBuildFile; fileRef = D41657122C4846990015DDFD /* NACC.docc */; };
 		D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42314F527FE150E00C5E5FC /* NACCTabBarController.swift */; };
 		D43C66D12694AC20007D5883 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D43C66C82694AC20007D5883 /* Assets.xcassets */; };
@@ -17,6 +16,7 @@
 		D46F8CC12C47ED0800A1E7F5 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D46F8CC02C47ED0800A1E7F5 /* LGV_Cleantime */; };
 		D46F8CC42C47EDA300A1E7F5 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D46F8CC32C47EDA300A1E7F5 /* LGV_UICleantime */; };
 		D474789F28073D5400212919 /* NACCPagePrintRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */; };
+		D47894B92C87A8970018B255 /* AppShortcuts.strings in Resources */ = {isa = PBXBuildFile; fileRef = D47894B82C87A8970018B255 /* AppShortcuts.strings */; };
 		D485259627FDBD2E002EE3E3 /* NACCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */; };
 		D485519428479C10005914FF /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D485519328479C10005914FF /* RVS_Generic_Swift_Toolbox */; };
 		D485519628479C10005914FF /* RVS_GeneralObserver in Frameworks */ = {isa = PBXBuildFile; productRef = D485519528479C10005914FF /* RVS_GeneralObserver */; };
@@ -35,8 +35,7 @@
 
 /* Begin PBXFileReference section */
 		D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCBaseViewController.swift; sourceTree = "<group>"; };
-		D414B34C2C8631FB005A12A4 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
-		D414B34E2C863DF0005A12A4 /* NACCIntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCIntentHandler.swift; sourceTree = "<group>"; };
+		D414B34E2C863DF0005A12A4 /* NACCGetCleantimeSummaryIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCGetCleantimeSummaryIntent.swift; sourceTree = "<group>"; };
 		D41657122C4846990015DDFD /* NACC.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NACC.docc; sourceTree = "<group>"; };
 		D41AC87D2C49813200C79B8C /* index.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
 		D41AC87E2C4981B500C79B8C /* apple-app-site-association */ = {isa = PBXFileReference; lastKnownFileType = text; path = "apple-app-site-association"; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		D43C66D82694AC33007D5883 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		D45CF3632809AB4500065E87 /* NACC.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
 		D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPagePrintRenderer.swift; sourceTree = "<group>"; };
+		D47894B72C87A8970018B255 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
 		D47C587228070BE40019FFD3 /* NACC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NACC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCExtensions.swift; sourceTree = "<group>"; };
 		D48F812A27FCD36D001A0B87 /* NACCInitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCInitialViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				D4E2F96727FCCA3200457AD4 /* Localizable.strings */,
+				D47894B82C87A8970018B255 /* AppShortcuts.strings */,
 				D49C9A7A280783C6008E9917 /* InfoPlist.strings */,
 				D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */,
 				D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */,
@@ -180,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				D43C66CE2694AC20007D5883 /* Info.plist */,
-				D414B34C2C8631FB005A12A4 /* Intents.intentdefinition */,
 			);
 			name = Meta;
 			sourceTree = "<group>";
@@ -201,7 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */,
-				D414B34E2C863DF0005A12A4 /* NACCIntentHandler.swift */,
+				D414B34E2C863DF0005A12A4 /* NACCGetCleantimeSummaryIntent.swift */,
 			);
 			path = "Main App";
 			sourceTree = "<group>";
@@ -346,6 +346,7 @@
 				D49C9A7C280783C6008E9917 /* InfoPlist.strings in Resources */,
 				D4E2F96627FCCA2800457AD4 /* LGV_UICleantime.xcassets in Resources */,
 				D43C66D12694AC20007D5883 /* Assets.xcassets in Resources */,
+				D47894B92C87A8970018B255 /* AppShortcuts.strings in Resources */,
 				D4E2F96B27FCCD3400457AD4 /* Theme.xcassets in Resources */,
 				D4C79A2127F9189800FBB7D3 /* NACC_Main.storyboard in Resources */,
 				D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */,
@@ -362,8 +363,7 @@
 				D43C66D42694AC20007D5883 /* NACCAppSceneDelegate.swift in Sources */,
 				D48F812D27FCD3FA001A0B87 /* NACCTabBaseViewController.swift in Sources */,
 				D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */,
-				D414B34F2C863DF0005A12A4 /* NACCIntentHandler.swift in Sources */,
-				D414B34D2C863217005A12A4 /* Intents.intentdefinition in Sources */,
+				D414B34F2C863DF0005A12A4 /* NACCGetCleantimeSummaryIntent.swift in Sources */,
 				D41657132C4846990015DDFD /* NACC.docc in Sources */,
 				D41361C027F8D80B00DA1AD4 /* NACCBaseViewController.swift in Sources */,
 				D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */,
@@ -377,6 +377,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		D47894B82C87A8970018B255 /* AppShortcuts.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D47894B72C87A8970018B255 /* en */,
+			);
+			name = AppShortcuts.strings;
+			sourceTree = "<group>";
+		};
 		D49C9A7A280783C6008E9917 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

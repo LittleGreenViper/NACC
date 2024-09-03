@@ -112,3 +112,10 @@
 // MARK: Individual Tab View
 
 "SLUG-ACC-SCROLLVIEW"                           =   "This will display the cleantime commemoration. It can be scrolled and zoomed.";
+
+// MARK: App Intents
+
+// Calculate Cleantime (String) Intent
+"SLUG-GET-CLEANTIME-SUMMARY-INTENT-TITLE"       =   "Calculate Cleantime";
+"SLUG-GET-CLEANTIME-SUMMARY-INTENT-DESC"        =   "Returns a summary of your cleantime";
+"SLUG-GET-CLEANTIME-SUMMARY-INTENT-CLEANDATE"   =   "Enter your clean date";

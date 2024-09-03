@@ -18,91 +18,69 @@
  CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import Intents
+import AppIntents
 import LGV_UICleantime
+import RVS_Generic_Swift_Toolbox
 
 /* ###################################################################################################################################### */
-// MARK: - Intent Handling Class -
+// MARK: - Get Cleantime Summary -
 /* ###################################################################################################################################### */
 /**
+ This intent calculates the cleantime, based on an input cleandate, and returns a string, summarizing it.
  */
-public class NACCIntentHandler: NSObject {
+struct NACCGetCleantimeSummaryIntent: AppIntent {
     /* ################################################################## */
     /**
+     The intent title.
      */
-    public func resolveQuantity(for inIntent: GetCleantimeIntent, with inCompletion: @escaping (INDateComponentsResolutionResult) -> Void) {
-        var result: INDateComponentsResolutionResult = INDateComponentsResolutionResult.needsValue()
-        
-        if let cleanDate = inIntent.cleanDate {
-            if let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 11, day: 5)),
-               let currentDate = Calendar.current.date(from: cleanDate),
-               (Calendar.current.startOfDay(for: minimumDate)..<Calendar.current.startOfDay(for: .now).addingTimeInterval(86400)).contains(currentDate) {
-                result = INDateComponentsResolutionResult.success(with: cleanDate)
-            } else {
-                result = INDateComponentsResolutionResult.unsupported()
-            }
-        }
-        
-        inCompletion(result)
-    }
+    static let title: LocalizedStringResource = "SLUG-GET-CLEANTIME-SUMMARY-INTENT-TITLE"
+
+    /* ################################################################## */
+    /**
+     The intent description.
+     */
+    static let description: IntentDescription = "SLUG-GET-CLEANTIME-SUMMARY-INTENT-DESC"
+
+    /* ################################################################## */
+    /**
+     This is the input cleandate, as date components.
+     */
+    @Parameter(title: LocalizedStringResource("SLUG-GET-CLEANTIME-SUMMARY-INTENT-CLEANDATE"))
+    var cleanDate: DateComponents?
     
     /* ################################################################## */
     /**
+     This calculates the cleantime, and creates a text string, with the summary.
      */
-    func handle(getCleantime inIntent: GetCleantimeIntent, completion: @escaping (CleantimeResponse) -> Void) {
-        var result: CleantimeResponse = CleantimeResponse(cleantime: "ERROR")
-        
-        if let cleanDate = inIntent.cleanDate {
+    func perform() async throws -> some ReturnsValue<String> {
+        if let cleanDate = cleanDate {
             if let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 11, day: 5)),
                let currentDate = Calendar.current.date(from: cleanDate),
                (Calendar.current.startOfDay(for: minimumDate)..<Calendar.current.startOfDay(for: .now).addingTimeInterval(86400)).contains(currentDate),
                let text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: currentDate, endDate: .now, calendar: Calendar.current) {
-                result = CleantimeResponse(cleantime: text)
+                return .result(value: text)
             }
         }
-
-        completion(result)
+        
+        return .result(value: "ERROR")
     }
 }
 
 /* ###################################################################################################################################### */
-// MARK: - Intent Response Class -
+// MARK: - -
 /* ###################################################################################################################################### */
 /**
  */
-@objc public class CleantimeResponse: INIntentResponse {
+struct NACCAppShortcuts: AppShortcutsProvider {
     /* ################################################################## */
     /**
      */
-    @NSManaged public var cleantime: String?
-    
-    /* ################################################################## */
-    /**
-     */
-    init(cleantime inCleantime: String? = nil) {
-        super.init()
-        cleantime = inCleantime ?? "ERROR"
-    }
-    
-    /* ################################################################## */
-    /**
-     */
-    required init?(coder inCoder: NSCoder) {
-        super.init(coder: inCoder)
-    }
-}
+    static var shortcutTileColor: ShortcutTileColor = .navy
 
-/* ###################################################################################################################################### */
-// MARK: - Intent Extension Class -
-/* ###################################################################################################################################### */
-/**
- */
-class IntentHandler: INExtension {
     /* ################################################################## */
     /**
      */
-    override func handler(for inIntent: INIntent) -> Any {
-        guard inIntent is GetCleantimeIntent else { fatalError("Unhandled intent type: \(inIntent)") }
-        return NACCIntentHandler()
+    static var appShortcuts: [AppShortcut] {
+        AppShortcut(intent: NACCGetCleantimeSummaryIntent(), phrases: ["SLUG-GET-CLEANTIME-SUMMARY-INTENT-\(.applicationName)"], systemImageName: "calendar")
     }
 }
