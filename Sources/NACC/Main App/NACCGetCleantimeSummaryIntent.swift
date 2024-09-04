@@ -33,19 +33,19 @@ struct NACCGetCleantimeSummaryIntent: AppIntent {
     /**
      The intent title.
      */
-    static var title: LocalizedStringResource = "SLUG-GET-CLEANTIME-SUMMARY-INTENT-TITLE"
+    static var title: LocalizedStringResource = "Calculate Cleantime" // "SLUG-GET-CLEANTIME-SUMMARY-INTENT-TITLE"
 
     /* ################################################################## */
     /**
      The intent description.
      */
-    static let description: IntentDescription = "SLUG-GET-CLEANTIME-SUMMARY-INTENT-TITLE"
+    static let description: IntentDescription = "Returns a summary of your cleantime" // "SLUG-GET-CLEANTIME-SUMMARY-INTENT-TITLE"
 
     /* ################################################################## */
     /**
      This is the input cleandate, as date components.
      */
-    @Parameter(title: LocalizedStringResource("SLUG-GET-CLEANTIME-SUMMARY-INTENT-CLEANDATE"))
+    @Parameter(title: LocalizedStringResource("Enter your clean date")) // "SLUG-GET-CLEANTIME-SUMMARY-INTENT-CLEANDATE"))
     var cleanDate: DateComponents?
     
     /* ################################################################## */
