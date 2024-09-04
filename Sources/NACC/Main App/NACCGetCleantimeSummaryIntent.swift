@@ -33,13 +33,13 @@ struct NACCGetCleantimeSummaryIntent: AppIntent {
     /**
      The intent title.
      */
-    static let title: LocalizedStringResource = "SLUG-GET-CLEANTIME-SUMMARY-INTENT-TITLE"
+    static var title: LocalizedStringResource = "SLUG-GET-CLEANTIME-SUMMARY-INTENT-TITLE"
 
     /* ################################################################## */
     /**
      The intent description.
      */
-    static let description: IntentDescription = "SLUG-GET-CLEANTIME-SUMMARY-INTENT-DESC"
+    static let description: IntentDescription = "SLUG-GET-CLEANTIME-SUMMARY-INTENT-TITLE"
 
     /* ################################################################## */
     /**
