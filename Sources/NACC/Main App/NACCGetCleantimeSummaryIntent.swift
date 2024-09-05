@@ -33,7 +33,7 @@ struct NACCGetCleantimeSummaryIntent: AppIntent {
     /**
      The intent title.
      */
-    static var title: LocalizedStringResource = "Calculate Cleantime"
+    static var title: LocalizedStringResource = "Calculate My Cleantime"
 
     /* ################################################################## */
     /**
@@ -45,24 +45,26 @@ struct NACCGetCleantimeSummaryIntent: AppIntent {
     /**
      This is the input cleandate, as date components.
      */
-    @Parameter(title: LocalizedStringResource("Your clean date"))
+    @Parameter(title: LocalizedStringResource("Clean Date"), kind: .date)
     var cleanDate: DateComponents?
     
     /* ################################################################## */
     /**
      This calculates the cleantime, and creates a text string, with the summary.
      */
-    func perform() async throws -> some ReturnsValue<String> {
+    func perform() async throws -> some ReturnsValue<String> & ProvidesDialog {
         if let cleanDate = cleanDate {
             if let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 11, day: 5)),
                let currentDate = Calendar.current.date(from: cleanDate),
                (Calendar.current.startOfDay(for: minimumDate)..<Calendar.current.startOfDay(for: .now).addingTimeInterval(86400)).contains(currentDate),
-               let text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: currentDate, endDate: .now, calendar: Calendar.current) {
-                return .result(value: text)
+               let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: currentDate, endDate: .now, calendar: Calendar.current) {
+                let dialog = IntentDialog(stringLiteral: textTemp)
+                return .result(value: textTemp, dialog: dialog)
             }
         }
         
-        return .result(value: "ERROR")
+        let dialog = IntentDialog(stringLiteral: "You must enter a valid clean date!")
+        return .result(value: "", dialog: dialog)
     }
 }
 
