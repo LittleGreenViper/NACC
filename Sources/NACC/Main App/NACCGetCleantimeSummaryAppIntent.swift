@@ -28,7 +28,7 @@ import RVS_Generic_Swift_Toolbox
 /**
  This intent calculates the cleantime, based on an input cleandate, and returns a string, summarizing it.
  */
-struct NACCGetCleantimeSummaryIntent: AppIntent {
+struct NACCGetCleantimeSummaryAppIntent: AppIntent {
     /* ################################################################## */
     /**
      The intent title.
@@ -83,6 +83,6 @@ struct NACCAppShortcuts: AppShortcutsProvider {
     /**
      */
     static var appShortcuts: [AppShortcut] {
-        AppShortcut(intent: NACCGetCleantimeSummaryIntent(), phrases: ["SLUG-GET-CLEANTIME-SUMMARY-INTENT-\(.applicationName)"], systemImageName: "calendar")
+        AppShortcut(intent: NACCGetCleantimeSummaryAppIntent(), phrases: ["SLUG-GET-CLEANTIME-SUMMARY-INTENT-\(.applicationName)"], systemImageName: "calendar")
     }
 }

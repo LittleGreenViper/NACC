@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4070A3B2C8F22B60011F12D /* NACCGetCleantimeSummaryIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4070A3A2C8F22B60011F12D /* NACCGetCleantimeSummaryIntentHandler.swift */; };
 		D41361C027F8D80B00DA1AD4 /* NACCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */; };
-		D414B34F2C863DF0005A12A4 /* NACCGetCleantimeSummaryIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D414B34E2C863DF0005A12A4 /* NACCGetCleantimeSummaryIntent.swift */; };
+		D414B34F2C863DF0005A12A4 /* NACCGetCleantimeSummaryAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D414B34E2C863DF0005A12A4 /* NACCGetCleantimeSummaryAppIntent.swift */; };
 		D41657132C4846990015DDFD /* NACC.docc in Sources */ = {isa = PBXBuildFile; fileRef = D41657122C4846990015DDFD /* NACC.docc */; };
 		D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42314F527FE150E00C5E5FC /* NACCTabBarController.swift */; };
 		D43C66D12694AC20007D5883 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D43C66C82694AC20007D5883 /* Assets.xcassets */; };
@@ -34,8 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D4070A3A2C8F22B60011F12D /* NACCGetCleantimeSummaryIntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCGetCleantimeSummaryIntentHandler.swift; sourceTree = "<group>"; };
 		D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCBaseViewController.swift; sourceTree = "<group>"; };
-		D414B34E2C863DF0005A12A4 /* NACCGetCleantimeSummaryIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCGetCleantimeSummaryIntent.swift; sourceTree = "<group>"; };
+		D414B34E2C863DF0005A12A4 /* NACCGetCleantimeSummaryAppIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCGetCleantimeSummaryAppIntent.swift; sourceTree = "<group>"; };
 		D41657122C4846990015DDFD /* NACC.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NACC.docc; sourceTree = "<group>"; };
 		D41AC87D2C49813200C79B8C /* index.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
 		D41AC87E2C4981B500C79B8C /* apple-app-site-association */ = {isa = PBXFileReference; lastKnownFileType = text; path = "apple-app-site-association"; sourceTree = "<group>"; };
@@ -201,7 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */,
-				D414B34E2C863DF0005A12A4 /* NACCGetCleantimeSummaryIntent.swift */,
+				D4070A3A2C8F22B60011F12D /* NACCGetCleantimeSummaryIntentHandler.swift */,
+				D414B34E2C863DF0005A12A4 /* NACCGetCleantimeSummaryAppIntent.swift */,
 			);
 			path = "Main App";
 			sourceTree = "<group>";
@@ -363,12 +366,13 @@
 				D43C66D42694AC20007D5883 /* NACCAppSceneDelegate.swift in Sources */,
 				D48F812D27FCD3FA001A0B87 /* NACCTabBaseViewController.swift in Sources */,
 				D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */,
-				D414B34F2C863DF0005A12A4 /* NACCGetCleantimeSummaryIntent.swift in Sources */,
+				D414B34F2C863DF0005A12A4 /* NACCGetCleantimeSummaryAppIntent.swift in Sources */,
 				D41657132C4846990015DDFD /* NACC.docc in Sources */,
 				D41361C027F8D80B00DA1AD4 /* NACCBaseViewController.swift in Sources */,
 				D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */,
 				D4BD88F1269E2FAA009015D1 /* NACCAboutViewController.swift in Sources */,
 				D48F812B27FCD36D001A0B87 /* NACCInitialViewController.swift in Sources */,
+				D4070A3B2C8F22B60011F12D /* NACCGetCleantimeSummaryIntentHandler.swift in Sources */,
 				D474789F28073D5400212919 /* NACCPagePrintRenderer.swift in Sources */,
 				D485259627FDBD2E002EE3E3 /* NACCExtensions.swift in Sources */,
 			);
