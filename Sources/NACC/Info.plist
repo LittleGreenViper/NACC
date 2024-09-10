@@ -51,10 +51,6 @@
 	<string>This app needs access to your contacts, in order to fill out an anniversary event.  This information is never sent outside of your computer, and is not directly used by this app.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app allows you to save images of keytags or medallions to your Photo Library</string>
-	<key>NSUserActivityTypes</key>
-	<array>
-		<string>GetCleantimeIntent</string>
-	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -74,6 +70,10 @@
 			</array>
 		</dict>
 	</dict>
+	<key>INIntentsSupported</key>
+	<array>
+		<string>GetCleantimeIntent</string>
+	</array>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -97,6 +97,10 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>GetCleantimeIntent</string>
 	</array>
 </dict>
 </plist>
