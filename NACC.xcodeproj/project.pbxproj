@@ -25,6 +25,7 @@
 		D48F812B27FCD36D001A0B87 /* NACCInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F812A27FCD36D001A0B87 /* NACCInitialViewController.swift */; };
 		D48F812D27FCD3FA001A0B87 /* NACCTabBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F812C27FCD3FA001A0B87 /* NACCTabBaseViewController.swift */; };
 		D49C9A7C280783C6008E9917 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D49C9A7A280783C6008E9917 /* InfoPlist.strings */; };
+		D49F5F1E2C9075710039A098 /* NACCIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D49F5F1D2C9075710039A098 /* NACCIntents.intentdefinition */; };
 		D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D4BD88F1269E2FAA009015D1 /* NACCAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */; };
 		D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */; };
@@ -54,6 +55,7 @@
 		D48F812A27FCD36D001A0B87 /* NACCInitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCInitialViewController.swift; sourceTree = "<group>"; };
 		D48F812C27FCD3FA001A0B87 /* NACCTabBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCTabBaseViewController.swift; sourceTree = "<group>"; };
 		D49C9A7B280783C6008E9917 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D49F5F1C2C9075710039A098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/NACCIntents.intentdefinition; sourceTree = "<group>"; };
 		D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPersistentPrefs.swift; sourceTree = "<group>"; };
 		D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAboutViewController.swift; sourceTree = "<group>"; };
 		D4C1579B2C4926FC00D82CBA /* bodyBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bodyBlack.png; sourceTree = "<group>"; };
@@ -164,17 +166,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D49F5F1F2C9075D20039A098 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				D4070A3A2C8F22B60011F12D /* NACCGetCleantimeSummaryIntentHandler.swift */,
+				D414B34E2C863DF0005A12A4 /* NACCGetCleantimeSummaryAppIntent.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
 		D4B247C0269F0C52004D8D1E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */,
+				D49F5F1D2C9075710039A098 /* NACCIntents.intentdefinition */,
 				D4E2F96727FCCA3200457AD4 /* Localizable.strings */,
 				D47894B82C87A8970018B255 /* AppShortcuts.strings */,
 				D49C9A7A280783C6008E9917 /* InfoPlist.strings */,
-				D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */,
-				D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */,
-				D4E2F96527FCCA2800457AD4 /* LGV_UICleantime.xcassets */,
 				D43C66C82694AC20007D5883 /* Assets.xcassets */,
 				D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */,
+				D4E2F96527FCCA2800457AD4 /* LGV_UICleantime.xcassets */,
+				D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -203,8 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */,
-				D4070A3A2C8F22B60011F12D /* NACCGetCleantimeSummaryIntentHandler.swift */,
-				D414B34E2C863DF0005A12A4 /* NACCGetCleantimeSummaryAppIntent.swift */,
+				D49F5F1F2C9075D20039A098 /* Intents */,
 			);
 			path = "Main App";
 			sourceTree = "<group>";
@@ -372,6 +383,7 @@
 				D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */,
 				D4BD88F1269E2FAA009015D1 /* NACCAboutViewController.swift in Sources */,
 				D48F812B27FCD36D001A0B87 /* NACCInitialViewController.swift in Sources */,
+				D49F5F1E2C9075710039A098 /* NACCIntents.intentdefinition in Sources */,
 				D4070A3B2C8F22B60011F12D /* NACCGetCleantimeSummaryIntentHandler.swift in Sources */,
 				D474789F28073D5400212919 /* NACCPagePrintRenderer.swift in Sources */,
 				D485259627FDBD2E002EE3E3 /* NACCExtensions.swift in Sources */,
@@ -395,6 +407,14 @@
 				D49C9A7B280783C6008E9917 /* Base */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D49F5F1D2C9075710039A098 /* NACCIntents.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D49F5F1C2C9075710039A098 /* Base */,
+			);
+			name = NACCIntents.intentdefinition;
 			sourceTree = "<group>";
 		};
 		D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */ = {

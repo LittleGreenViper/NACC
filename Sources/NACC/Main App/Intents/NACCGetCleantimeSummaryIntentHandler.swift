@@ -27,5 +27,26 @@ import RVS_Generic_Swift_Toolbox
 /* ###################################################################################################################################### */
 /**
  */
-class NACCGetCleantimeSummaryIntentHandler: NSObject {
+class NACCGetCleantimeSummaryIntentHandler: NSObject, GetCleantimeIntentHandling {
+    /* ################################################################## */
+    /**
+     */
+    func resolveCleandate(for inIntent: GetCleantimeIntent, with inCompletion: @escaping (INDateComponentsResolutionResult) -> Void) {
+        guard let cleanDate = inIntent.cleandate,
+              let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 11, day: 5)),
+              let currentDate = Calendar.current.date(from: cleanDate),
+              (Calendar.current.startOfDay(for: minimumDate)..<Calendar.current.startOfDay(for: .now).addingTimeInterval(86400)).contains(currentDate)
+        else {
+            inCompletion(INDateComponentsResolutionResult.needsValue())
+            return
+        }
+        
+        inCompletion(INDateComponentsResolutionResult.success(with: Calendar.current.dateComponents([.year, .month, .day], from: currentDate)))
+    }
+
+    /* ################################################################## */
+    /**
+     */
+    func handle(intent inIntent: GetCleantimeIntent, completion inCompletion: @escaping (GetCleantimeIntentResponse) -> Void) {
+    }
 }
