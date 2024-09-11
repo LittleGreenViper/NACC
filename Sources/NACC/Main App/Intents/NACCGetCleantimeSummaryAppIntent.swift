@@ -45,7 +45,7 @@ struct NACCGetCleantimeSummaryAppIntent: AppIntent {
     /**
      This is the input cleandate, as date components.
      */
-    @Parameter(title: LocalizedStringResource("Clean Date"), kind: .date)
+    @Parameter(title: LocalizedStringResource("Enter Your Clean Date"), kind: .date)
     var cleanDate: DateComponents?
     
     /* ################################################################## */

@@ -24,4 +24,4 @@
 // --------------------------------------------   ------------------------------------------------------- *
 //********************************************** **********************************************************
 
-"SLUG-GET-CLEANTIME-SUMMARY-INTENT-${applicationName}"  =   "What's My Cleantime (${applicationName})?";
+"SLUG-GET-CLEANTIME-SUMMARY-INTENT-${applicationName}"  =   "What's My Cleantime, ${applicationName}?";

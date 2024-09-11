@@ -118,5 +118,5 @@
 // Calculate Cleantime (String) Intent
 "Calculate Cleantime"                           =   "Calculate My Cleantime";
 "Returns a summary of your cleantime"           =   "Returns a summary of your cleantime";
-"Your clean date"                               =   "Clean Date";
+"Enter Your Clean Date"                         =   "Enter Your Clean Date";
 "You must enter a valid clean date!"            =   "You must enter a valid clean date!";
