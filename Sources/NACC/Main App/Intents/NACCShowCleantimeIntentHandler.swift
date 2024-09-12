@@ -20,16 +20,21 @@
 
 import Intents
 import LGV_UICleantime
-import RVS_Generic_Swift_Toolbox
 
 /* ###################################################################################################################################### */
-// MARK: -  -
+// MARK: - Open App And Display Cleantime Intent -
 /* ###################################################################################################################################### */
 /**
+ This intent will open the app, and set it to the given date. It always opens in the main screen.
  */
 class NACCShowCleantimeIntentHandler: NSObject, ShowCleantimeIntentHandling {
     /* ################################################################## */
     /**
+     This validates the cleandate. It must be a date between October 5, 1953, and now.
+     
+     - parameters:
+        - for: The intent instance
+        - with: A tail completion function, with a date resoultion.
      */
     func resolveCleandate(for inIntent: ShowCleantimeIntent, with inCompletion: @escaping (INDateComponentsResolutionResult) -> Void) {
         guard let cleanDate = inIntent.cleandate,
@@ -46,8 +51,29 @@ class NACCShowCleantimeIntentHandler: NSObject, ShowCleantimeIntentHandling {
 
     /* ################################################################## */
     /**
+     This actually executes the intent.
+     
+     - parameters:
+        - intent: The intent instance
+        - completion: A tail completion function, with a response, containing the text of the report.
      */
     func handle(intent inIntent: ShowCleantimeIntent, completion inCompletion: @escaping (ShowCleantimeIntentResponse) -> Void) {
-        print(inIntent.cleandate.debugDescription)
+        guard let cleanDate = inIntent.cleandate,
+              let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5)),
+              let currentDate = Calendar.current.date(from: cleanDate),
+              (Calendar.current.startOfDay(for: minimumDate)..<Calendar.current.startOfDay(for: .now).addingTimeInterval(86400)).contains(currentDate),
+              let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: currentDate, endDate: .now, calendar: Calendar.current),
+              !textTemp.isEmpty
+        else {
+            inCompletion(ShowCleantimeIntentResponse(code: ShowCleantimeIntentResponseCode.failure, userActivity: nil))
+            return
+        }
+        
+        let response = ShowCleantimeIntentResponse()
+        response.report = textTemp
+        
+        inCompletion(response)
+        
+        NACCAppSceneDelegate.appDelegateInstance?.open(to: cleanDate)
     }
 }

@@ -20,13 +20,14 @@
 
 import AppIntents
 import LGV_UICleantime
-import RVS_Generic_Swift_Toolbox
 
 /* ###################################################################################################################################### */
 // MARK: - Get Cleantime Summary -
 /* ###################################################################################################################################### */
 /**
  This intent calculates the cleantime, based on an input cleandate, and returns a string, summarizing it.
+ 
+ This is meant for a "faceless" query, where the user is told their cleantime, without opening the app.
  */
 struct NACCGetCleantimeSummaryAppIntent: AppIntent {
     /* ################################################################## */
@@ -72,15 +73,18 @@ struct NACCGetCleantimeSummaryAppIntent: AppIntent {
 // MARK: - -
 /* ###################################################################################################################################### */
 /**
+ This provides the shortcut for the app intent.
  */
 struct NACCAppShortcuts: AppShortcutsProvider {
     /* ################################################################## */
     /**
+     The tile color for shortcuts generated from this app intent.
      */
     static var shortcutTileColor: ShortcutTileColor = .navy
 
     /* ################################################################## */
     /**
+     The shortcuts available to the app.
      */
     static var appShortcuts: [AppShortcut] {
         AppShortcut(intent: NACCGetCleantimeSummaryAppIntent(), phrases: ["SLUG-GET-CLEANTIME-SUMMARY-INTENT-\(.applicationName)"], systemImageName: "calendar")

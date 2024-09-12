@@ -238,6 +238,9 @@ extension NACCAppSceneDelegate {
     
     /* ################################################################## */
     /**
+     This handles an activity derived from an intent.
+     
+     - parameter inUserActivity: The activity to resolve.
      */
     func handleUserActivity(_ inUserActivity: NSUserActivity) {
         #if DEBUG
@@ -245,14 +248,26 @@ extension NACCAppSceneDelegate {
         #endif
         guard let interaction = inUserActivity.interaction,
               let intent = interaction.intent as? ShowCleantimeIntent,
-              let cleanDate = intent.cleandate,
-              let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5)),
-              let currentDate = Calendar.current.date(from: cleanDate),
+              let cleanDate = intent.cleandate
+        else { return }
+        
+        open(to: cleanDate)
+    }
+    
+    /* ################################################################## */
+    /**
+     This opens the app, and sets it to the given cleandate. It opens to the initial screen.
+     
+     - parameter to: The cleadate, as date components.
+     */
+    func open(to inCleanDate: DateComponents) {
+        guard let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5)),
+              let currentDate = Calendar.current.date(from: inCleanDate),
               (Calendar.current.startOfDay(for: minimumDate)..<Calendar.current.startOfDay(for: .now).addingTimeInterval(86400)).contains(currentDate)
         else { return }
         
         NACCPersistentPrefs().cleanDate = currentDate
-        NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue
+        NACCPersistentPrefs().lastSelectedTabIndex = NACCTabBarController.TabIndexes.undefined.rawValue
         _initialViewController?.updateScreen()
     }
 }
