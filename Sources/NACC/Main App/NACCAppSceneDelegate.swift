@@ -19,7 +19,28 @@
  */
 
 import UIKit
+import Intents
 import LGV_UICleantime
+
+/* ###################################################################################################################################### */
+// MARK: - Application Intents Handling -
+/* ###################################################################################################################################### */
+/**
+ This class has a shared intents handler that is provided by our custom setup.
+ */
+class AppIntentHandler {
+    /* ################################################################## */
+    /**
+     The shared Intents handler dispatcher (an instance of this class).
+     */
+    static var shared = AppIntentHandler()
+    
+    /* ################################################################## */
+    /**
+     The current intent handler.
+     */
+    weak var currentIntentHandler: GetCleantimeIntentHandling?
+}
 
 /* ###################################################################################################################################### */
 // MARK: - Main App Delegate -
@@ -178,21 +199,21 @@ extension NACCAppSceneDelegate {
      The URL scheme is thus:
      
      nacc://_[YYYY-MM-DD[/N]]_
-
+     
      The Universal Link Scheme is:
      
      https://nacc.littlegreenviper.com/_[YYYY-MM-DD[/N]]_
-
+     
      _YYYY-MM-DD_ is a standard [ISO 8601 calendar date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (For example, September first, 1980, is 1980-09-01).
-
+     
      The earliest date is October 5, 1953 (1953-10-05)
-
+     
      _N_ is the numerical index of a tab:
      
-        - 0 is Keytag Array
-        - 1 is Keytag Strip
-        - 2 is Medallions
-
+     - 0 is Keytag Array
+     - 1 is Keytag Strip
+     - 2 is Medallions
+     
      - parameter inURL: The URL to be parsed.
      */
     func resolveURL(_ inURL: URL) {
@@ -209,11 +230,11 @@ extension NACCAppSceneDelegate {
             } else {
                 _selectedTabFromURI = .undefined
             }
-
+            
             #if DEBUG
                 print("\tThe URL has this date: \(dateString), and wants this tab: \(_selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue)")
             #endif
-
+            
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -227,6 +248,20 @@ extension NACCAppSceneDelegate {
                 _initialViewController?.updateScreen()
             }
         }
+    }
+    
+    /* ################################################################## */
+    /**
+     */
+    func handleUserActivity(_ inUserActivity: NSUserActivity) {
+        #if DEBUG
+            print("\n#### Application Handling User Activity.\n####\n")
+        #endif
+        guard let interaction = inUserActivity.interaction,
+              let intent = interaction.intent as? GetCleantimeIntent
+        else { return }
+        
+        print(intent.debugDescription)
     }
 }
 
@@ -252,8 +287,8 @@ extension NACCAppSceneDelegate: UIApplicationDelegate {
     /* ################################################################## */
     /**
      - parameter: The application instance (ignored).
-     - parameter configurationForConnecting:
-     - parameter options:
+     - parameter configurationForConnecting: The scene session that needs the configuration.
+     - parameter options: The scene configuration options (also ignored)
      - returns: The scene configuration.
      */
     func application(_: UIApplication, configurationForConnecting inConnectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -261,6 +296,19 @@ extension NACCAppSceneDelegate: UIApplicationDelegate {
             print("\n#### Application Delivering Configuration.\n####\n")
         #endif
         return UISceneConfiguration(name: Self._sceneConfigurationName, sessionRole: inConnectingSceneSession.role)
+    }
+    
+    /* ################################################################## */
+    /**
+     Called to fetch an Intents handler.
+     
+     - parameter: The application instance (ignored).
+     - parameter handlerFor: The intent that we need a handler for.
+     - returns: The Intents handler.
+     */
+    func application(_ : UIApplication, handlerFor inIntent: INIntent) -> Any? {
+        guard inIntent is GetCleantimeIntent else { return nil }
+        return AppIntentHandler.shared.currentIntentHandler ?? NACCGetCleantimeSummaryIntentHandler()
     }
 }
 
@@ -289,6 +337,10 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
     func scene(_ inScene: UIScene, willConnectTo: UISceneSession, options inConnectionOptions: UIScene.ConnectionOptions) {
         if let url = inConnectionOptions.userActivities.first?.webpageURL ?? inConnectionOptions.urlContexts.first?.url {
             resolveURL(url)
+        } else {
+            for userActivity in inConnectionOptions.userActivities {
+                handleUserActivity(userActivity)
+            }
         }
     }
 
@@ -299,8 +351,11 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
      - parameter continue: The activity being continued.
      */
     func scene(_: UIScene, continue inUserActivity: NSUserActivity) {
-        guard let url = inUserActivity.webpageURL else { return }
-        resolveURL(url)
+        if let url = inUserActivity.webpageURL {
+            resolveURL(url)
+        } else {
+            handleUserActivity(inUserActivity)
+        }
     }
 
     /* ################################################################## */

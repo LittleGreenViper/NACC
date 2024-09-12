@@ -52,18 +52,24 @@ class NACCBaseViewController: UIViewController {
      This can be overloaded or set, to provide the image to be used as a "watermark."
      */
     private var _watermarkImage: UIImage? = UIImage(named: "CenterImage")
-
+    
     /* ################################################################## */
     /**
      This is the background image view.
      */
     private var _myBackgroundGradientView: UIImageView?
-
+    
     /* ################################################################## */
     /**
      This is the background center image view.
      */
     private var _myCenterImageView: UIImageView?
+    
+    /* ################################################################## */
+    /**
+     This handles the Get Cleantime Intent.
+     */
+    lazy var intentHandler = NACCGetCleantimeSummaryIntentHandler()
 }
 
 /* ###################################################################################################################################### */
