@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D4070A3B2C8F22B60011F12D /* NACCShowCleantimeIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4070A3A2C8F22B60011F12D /* NACCShowCleantimeIntentHandler.swift */; };
+		D411FBEC2C938E70007BC1C7 /* NACCShowCleantimeIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D411FBEB2C938E70007BC1C7 /* NACCShowCleantimeIntentHandler.swift */; };
 		D41361C027F8D80B00DA1AD4 /* NACCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */; };
 		D41657132C4846990015DDFD /* NACC.docc in Sources */ = {isa = PBXBuildFile; fileRef = D41657122C4846990015DDFD /* NACC.docc */; };
 		D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42314F527FE150E00C5E5FC /* NACCTabBarController.swift */; };
@@ -26,6 +27,8 @@
 		D48F812D27FCD3FA001A0B87 /* NACCTabBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F812C27FCD3FA001A0B87 /* NACCTabBaseViewController.swift */; };
 		D49C9A7C280783C6008E9917 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D49C9A7A280783C6008E9917 /* InfoPlist.strings */; };
 		D49F5F1E2C9075710039A098 /* NACCIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D49F5F1D2C9075710039A098 /* NACCIntents.intentdefinition */; };
+		D4B20E7A2C938D22006C7ED8 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B20E792C938D22006C7ED8 /* LGV_Cleantime */; };
+		D4B20E7C2C938D22006C7ED8 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B20E7B2C938D22006C7ED8 /* LGV_UICleantime */; };
 		D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D4BD88F1269E2FAA009015D1 /* NACCAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */; };
 		D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */; };
@@ -34,22 +37,10 @@
 		D4E2F96927FCCA3200457AD4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 		D4E2F96B27FCCD3400457AD4 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */; };
 		D4E43A4F2C937FDF00535CDD /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E43A4E2C937FDF00535CDD /* Intents.framework */; };
-		D4E43A522C937FDF00535CDD /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E43A512C937FDF00535CDD /* IntentHandler.swift */; };
-		D4E43A5A2C937FDF00535CDD /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E43A592C937FDF00535CDD /* IntentsUI.framework */; };
-		D4E43A5D2C937FDF00535CDD /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E43A5C2C937FDF00535CDD /* IntentViewController.swift */; };
-		D4E43A602C937FDF00535CDD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D4E43A5F2C937FDF00535CDD /* Base */; };
-		D4E43A642C937FDF00535CDD /* NACCIntentsUI.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4E43A582C937FDF00535CDD /* NACCIntentsUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D4E43A682C937FDF00535CDD /* NACCIntents.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4E43A4D2C937FDF00535CDD /* NACCIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D4E43A622C937FDF00535CDD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D4E43A572C937FDF00535CDD;
-			remoteInfo = NACCIntentsUI;
-		};
 		D4E43A662C937FDF00535CDD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
@@ -66,7 +57,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				D4E43A642C937FDF00535CDD /* NACCIntentsUI.appex in Embed Foundation Extensions */,
 				D4E43A682C937FDF00535CDD /* NACCIntents.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
@@ -76,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		D4070A3A2C8F22B60011F12D /* NACCShowCleantimeIntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCShowCleantimeIntentHandler.swift; sourceTree = "<group>"; };
+		D411FBEB2C938E70007BC1C7 /* NACCShowCleantimeIntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCShowCleantimeIntentHandler.swift; sourceTree = "<group>"; };
 		D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCBaseViewController.swift; sourceTree = "<group>"; };
 		D41657122C4846990015DDFD /* NACC.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NACC.docc; sourceTree = "<group>"; };
 		D41AC87D2C49813200C79B8C /* index.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
@@ -141,14 +132,8 @@
 		D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Theme.xcassets; sourceTree = "<group>"; };
 		D4E43A4D2C937FDF00535CDD /* NACCIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NACCIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E43A4E2C937FDF00535CDD /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
-		D4E43A512C937FDF00535CDD /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		D4E43A532C937FDF00535CDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4E43A582C937FDF00535CDD /* NACCIntentsUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NACCIntentsUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E43A592C937FDF00535CDD /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
-		D4E43A5C2C937FDF00535CDD /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
-		D4E43A5F2C937FDF00535CDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		D4E43A612C937FDF00535CDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4E43A652C937FDF00535CDD /* NACCIntentsUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCIntentsUI.entitlements; sourceTree = "<group>"; };
 		D4E43A692C937FDF00535CDD /* NACCIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCIntents.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,14 +155,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4E43A4F2C937FDF00535CDD /* Intents.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4E43A552C937FDF00535CDD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D4E43A5A2C937FDF00535CDD /* IntentsUI.framework in Frameworks */,
+				D4B20E7A2C938D22006C7ED8 /* LGV_Cleantime in Frameworks */,
+				D4B20E7C2C938D22006C7ED8 /* LGV_UICleantime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,10 +170,8 @@
 				D43C66D72694AC33007D5883 /* Project-Meta */,
 				D47C587228070BE40019FFD3 /* NACC.app */,
 				D4E43A502C937FDF00535CDD /* NACCIntents */,
-				D4E43A5B2C937FDF00535CDD /* NACCIntentsUI */,
 				D485519228479C10005914FF /* Frameworks */,
 				D4E43A4D2C937FDF00535CDD /* NACCIntents.appex */,
-				D4E43A582C937FDF00535CDD /* NACCIntentsUI.appex */,
 			);
 			sourceTree = "<group>";
 		};
@@ -350,21 +327,10 @@
 			isa = PBXGroup;
 			children = (
 				D4E43A692C937FDF00535CDD /* NACCIntents.entitlements */,
-				D4E43A512C937FDF00535CDD /* IntentHandler.swift */,
+				D411FBEB2C938E70007BC1C7 /* NACCShowCleantimeIntentHandler.swift */,
 				D4E43A532C937FDF00535CDD /* Info.plist */,
 			);
 			path = NACCIntents;
-			sourceTree = "<group>";
-		};
-		D4E43A5B2C937FDF00535CDD /* NACCIntentsUI */ = {
-			isa = PBXGroup;
-			children = (
-				D4E43A652C937FDF00535CDD /* NACCIntentsUI.entitlements */,
-				D4E43A5C2C937FDF00535CDD /* IntentViewController.swift */,
-				D4E43A5E2C937FDF00535CDD /* MainInterface.storyboard */,
-				D4E43A612C937FDF00535CDD /* Info.plist */,
-			);
-			path = NACCIntentsUI;
 			sourceTree = "<group>";
 		};
 		D4F54A192809B27200F175C4 /* Utility */ = {
@@ -392,7 +358,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				D4E43A632C937FDF00535CDD /* PBXTargetDependency */,
 				D4E43A672C937FDF00535CDD /* PBXTargetDependency */,
 			);
 			name = NACC;
@@ -413,32 +378,18 @@
 			buildPhases = (
 				D4E43A492C937FDF00535CDD /* Sources */,
 				D4E43A4A2C937FDF00535CDD /* Frameworks */,
-				D4E43A4B2C937FDF00535CDD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = NACCIntents;
+			packageProductDependencies = (
+				D4B20E792C938D22006C7ED8 /* LGV_Cleantime */,
+				D4B20E7B2C938D22006C7ED8 /* LGV_UICleantime */,
+			);
 			productName = NACCIntents;
 			productReference = D4E43A4D2C937FDF00535CDD /* NACCIntents.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-		D4E43A572C937FDF00535CDD /* NACCIntentsUI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D4E43A6F2C937FDF00535CDD /* Build configuration list for PBXNativeTarget "NACCIntentsUI" */;
-			buildPhases = (
-				D4E43A542C937FDF00535CDD /* Sources */,
-				D4E43A552C937FDF00535CDD /* Frameworks */,
-				D4E43A562C937FDF00535CDD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = NACCIntentsUI;
-			productName = NACCIntentsUI;
-			productReference = D4E43A582C937FDF00535CDD /* NACCIntentsUI.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -456,9 +407,7 @@
 					};
 					D4E43A4C2C937FDF00535CDD = {
 						CreatedOnToolsVersion = 15.4;
-					};
-					D4E43A572C937FDF00535CDD = {
-						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 				};
 			};
@@ -484,7 +433,6 @@
 			targets = (
 				D43C66B02694ABFF007D5883 /* NACC */,
 				D4E43A4C2C937FDF00535CDD /* NACCIntents */,
-				D4E43A572C937FDF00535CDD /* NACCIntentsUI */,
 			);
 		};
 /* End PBXProject section */
@@ -502,21 +450,6 @@
 				D4E2F96B27FCCD3400457AD4 /* Theme.xcassets in Resources */,
 				D4C79A2127F9189800FBB7D3 /* NACC_Main.storyboard in Resources */,
 				D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4E43A4B2C937FDF00535CDD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4E43A562C937FDF00535CDD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D4E43A602C937FDF00535CDD /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,26 +480,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4E43A522C937FDF00535CDD /* IntentHandler.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4E43A542C937FDF00535CDD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D4E43A5D2C937FDF00535CDD /* IntentViewController.swift in Sources */,
+				D411FBEC2C938E70007BC1C7 /* NACCShowCleantimeIntentHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D4E43A632C937FDF00535CDD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D4E43A572C937FDF00535CDD /* NACCIntentsUI */;
-			targetProxy = D4E43A622C937FDF00535CDD /* PBXContainerItemProxy */;
-		};
 		D4E43A672C937FDF00535CDD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D4E43A4C2C937FDF00535CDD /* NACCIntents */;
@@ -621,14 +541,6 @@
 				D4E2F96827FCCA3200457AD4 /* Base */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		D4E43A5E2C937FDF00535CDD /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D4E43A5F2C937FDF00535CDD /* Base */,
-			);
-			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -844,6 +756,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -868,6 +781,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -877,6 +791,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -896,71 +811,6 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = "$(APP_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCIntents;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D4E43A6D2C937FDF00535CDD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = NACCIntentsUI/NACCIntentsUI.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$(APP_BUILD)";
-				DEVELOPMENT_TEAM = P53V4JS928;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NACCIntentsUI/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = NACCIntentsUI;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = "$(APP_VERSION)";
-				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCIntentsUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D4E43A6E2C937FDF00535CDD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = NACCIntentsUI/NACCIntentsUI.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$(APP_BUILD)";
-				DEVELOPMENT_TEAM = P53V4JS928;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NACCIntentsUI/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = NACCIntentsUI;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = "$(APP_VERSION)";
-				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCIntentsUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -987,15 +837,6 @@
 			buildConfigurations = (
 				D43C66C32694AC00007D5883 /* Debug */,
 				D43C66C42694AC00007D5883 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D4E43A6F2C937FDF00535CDD /* Build configuration list for PBXNativeTarget "NACCIntentsUI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D4E43A6D2C937FDF00535CDD /* Debug */,
-				D4E43A6E2C937FDF00535CDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1079,6 +920,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D4B80C7B27FCF10300401F72 /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */;
 			productName = RVS_Persistent_Prefs;
+		};
+		D4B20E792C938D22006C7ED8 /* LGV_Cleantime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D46F8CBF2C47ED0800A1E7F5 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */;
+			productName = LGV_Cleantime;
+		};
+		D4B20E7B2C938D22006C7ED8 /* LGV_UICleantime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D46F8CC22C47EDA300A1E7F5 /* XCRemoteSwiftPackageReference "LGV_UICleantime" */;
+			productName = LGV_UICleantime;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

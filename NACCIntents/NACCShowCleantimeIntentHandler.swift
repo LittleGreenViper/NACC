@@ -1,5 +1,5 @@
 /*
- © Copyright 2012-2024, Little Green Viper Software Development LLC
+ © Copyright 2022, Little Green Viper Software Development LLC
  
  LICENSE:
  
@@ -17,11 +17,21 @@
  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
  CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import Intents
 
-//********************************************** **********************************************************
-// --------------------------------------------   ------------------------------------------------------- *
-//|  DO NOT MODIFY ON THIS SIDE OF THE EQUALS  | |   MODIFY THE TEXT ON THIS SIDE TO THE LOCAL LANGUAGE  |*
-// --------------------------------------------   ------------------------------------------------------- *
-//********************************************** **********************************************************
-
-"SLUG-GET-CLEANTIME-SUMMARY-INTENT-${applicationName}"  =   "What's My Cleantime, ${applicationName}?";
+class NACCShowCleantimeIntentHandler: INExtension {
+    override func handler(for intent: INIntent) -> Any {
+        return self
+    }
+    
+    func resolveContent(for inIntent: INIntent, with inCompletion: @escaping (INStringResolutionResult) -> Void) {
+    }
+    
+    func confirm(intent inIntent: INIntent, completion inCompletion: @escaping (INSendMessageIntentResponse) -> Void) {
+    }
+    
+    func handle(intent inIntent: INIntent, completion inCompletion: @escaping (INStringResolutionResult) -> Void) {
+        let response = INStringResolutionResult.success(with: "ERROR")
+        inCompletion(response)
+    }
+}

@@ -4,7 +4,8 @@
 <dict>
 	<key>INIntentsSupported</key>
 	<array>
-		<string>ShowCleantime</string>
+		<string>ShowCleantimeIntent</string>
+		<string>NACCGetCleantimeSummaryAppIntent</string>
 	</array>
 	<key>NSExtension</key>
 	<dict>
@@ -14,15 +15,13 @@
 			<array/>
 			<key>IntentsSupported</key>
 			<array>
-				<string>INSendMessageIntent</string>
-				<string>INSearchForMessagesIntent</string>
-				<string>INSetMessageAttributeIntent</string>
+				<string>ShowCleantimeIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.intents-service</string>
 		<key>NSExtensionPrincipalClass</key>
-		<string>$(PRODUCT_MODULE_NAME).IntentHandler</string>
+		<string>$(PRODUCT_MODULE_NAME).NACCShowCleantimeIntentHandler</string>
 	</dict>
 </dict>
 </plist>
