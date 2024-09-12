@@ -27,13 +27,13 @@ import RVS_Generic_Swift_Toolbox
 /* ###################################################################################################################################### */
 /**
  */
-class NACCGetCleantimeSummaryIntentHandler: NSObject, GetCleantimeIntentHandling {
+class NACCShowCleantimeIntentHandler: NSObject, ShowCleantimeIntentHandling {
     /* ################################################################## */
     /**
      */
-    func resolveCleandate(for inIntent: GetCleantimeIntent, with inCompletion: @escaping (INDateComponentsResolutionResult) -> Void) {
+    func resolveCleandate(for inIntent: ShowCleantimeIntent, with inCompletion: @escaping (INDateComponentsResolutionResult) -> Void) {
         guard let cleanDate = inIntent.cleandate,
-              let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 11, day: 5)),
+              let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5)),
               let currentDate = Calendar.current.date(from: cleanDate),
               (Calendar.current.startOfDay(for: minimumDate)..<Calendar.current.startOfDay(for: .now).addingTimeInterval(86400)).contains(currentDate)
         else {
@@ -47,6 +47,7 @@ class NACCGetCleantimeSummaryIntentHandler: NSObject, GetCleantimeIntentHandling
     /* ################################################################## */
     /**
      */
-    func handle(intent inIntent: GetCleantimeIntent, completion inCompletion: @escaping (GetCleantimeIntentResponse) -> Void) {
+    func handle(intent inIntent: ShowCleantimeIntent, completion inCompletion: @escaping (ShowCleantimeIntentResponse) -> Void) {
+        print(inIntent.cleandate.debugDescription)
     }
 }

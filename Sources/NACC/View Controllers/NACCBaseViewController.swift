@@ -64,12 +64,6 @@ class NACCBaseViewController: UIViewController {
      This is the background center image view.
      */
     private var _myCenterImageView: UIImageView?
-    
-    /* ################################################################## */
-    /**
-     This handles the Get Cleantime Intent.
-     */
-    lazy var intentHandler = NACCGetCleantimeSummaryIntentHandler()
 }
 
 /* ###################################################################################################################################### */

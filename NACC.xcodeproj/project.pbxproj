@@ -31,8 +31,6 @@
 		D4E2F96627FCCA2800457AD4 /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96527FCCA2800457AD4 /* LGV_UICleantime.xcassets */; };
 		D4E2F96927FCCA3200457AD4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 		D4E2F96B27FCCD3400457AD4 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */; };
-		D4E7C93C2C9201F900D2C549 /* NACCGetCleantimeSummaryAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E7C93B2C9201F900D2C549 /* NACCGetCleantimeSummaryAppIntent.swift */; };
-		D4E7C9442C9202AD00D2C549 /* AppShortcuts.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E7C9432C9202AD00D2C549 /* AppShortcuts.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,8 +96,6 @@
 		D4E2F96527FCCA2800457AD4 /* LGV_UICleantime.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = LGV_UICleantime.xcassets; sourceTree = "<group>"; };
 		D4E2F96827FCCA3200457AD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Theme.xcassets; sourceTree = "<group>"; };
-		D4E7C93B2C9201F900D2C549 /* NACCGetCleantimeSummaryAppIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCGetCleantimeSummaryAppIntent.swift; sourceTree = "<group>"; };
-		D4E7C9422C9202AD00D2C549 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				D4070A3A2C8F22B60011F12D /* NACCGetCleantimeSummaryIntentHandler.swift */,
-				D4E7C93B2C9201F900D2C549 /* NACCGetCleantimeSummaryAppIntent.swift */,
 			);
 			path = Intents;
 			sourceTree = "<group>";
@@ -180,7 +175,6 @@
 			children = (
 				D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */,
 				D49F5F1D2C9075710039A098 /* NACCIntents.intentdefinition */,
-				D4E7C9432C9202AD00D2C549 /* AppShortcuts.strings */,
 				D4E2F96727FCCA3200457AD4 /* Localizable.strings */,
 				D49C9A7A280783C6008E9917 /* InfoPlist.strings */,
 				D43C66C82694AC20007D5883 /* Assets.xcassets */,
@@ -360,7 +354,6 @@
 				D49C9A7C280783C6008E9917 /* InfoPlist.strings in Resources */,
 				D4E2F96627FCCA2800457AD4 /* LGV_UICleantime.xcassets in Resources */,
 				D43C66D12694AC20007D5883 /* Assets.xcassets in Resources */,
-				D4E7C9442C9202AD00D2C549 /* AppShortcuts.strings in Resources */,
 				D4E2F96B27FCCD3400457AD4 /* Theme.xcassets in Resources */,
 				D4C79A2127F9189800FBB7D3 /* NACC_Main.storyboard in Resources */,
 				D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */,
@@ -378,7 +371,6 @@
 				D43C66D42694AC20007D5883 /* NACCAppSceneDelegate.swift in Sources */,
 				D48F812D27FCD3FA001A0B87 /* NACCTabBaseViewController.swift in Sources */,
 				D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */,
-				D4E7C93C2C9201F900D2C549 /* NACCGetCleantimeSummaryAppIntent.swift in Sources */,
 				D41361C027F8D80B00DA1AD4 /* NACCBaseViewController.swift in Sources */,
 				D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */,
 				D4BD88F1269E2FAA009015D1 /* NACCAboutViewController.swift in Sources */,
@@ -431,14 +423,6 @@
 				D4E2F96827FCCA3200457AD4 /* Base */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		D4E7C9432C9202AD00D2C549 /* AppShortcuts.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D4E7C9422C9202AD00D2C549 /* en */,
-			);
-			name = AppShortcuts.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

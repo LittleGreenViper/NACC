@@ -54,7 +54,7 @@ struct NACCGetCleantimeSummaryAppIntent: AppIntent {
      */
     func perform() async throws -> some ReturnsValue<String> & ProvidesDialog {
         if let cleanDate = cleanDate {
-            if let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 11, day: 5)),
+            if let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5)),
                let currentDate = Calendar.current.date(from: cleanDate),
                (Calendar.current.startOfDay(for: minimumDate)..<Calendar.current.startOfDay(for: .now).addingTimeInterval(86400)).contains(currentDate),
                let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: currentDate, endDate: .now, calendar: Calendar.current) {

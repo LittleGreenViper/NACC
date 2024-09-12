@@ -18,17 +18,15 @@
 	<array>
 		<dict>
 			<key>INIntentCategory</key>
-			<string>information</string>
+			<string>generic</string>
 			<key>INIntentConfigurable</key>
 			<true/>
 			<key>INIntentDefaultImageName</key>
 			<string>AppIcon</string>
 			<key>INIntentDescription</key>
-			<string>Returns a report on your cleantime, based on your clean date.</string>
+			<string>Displays your cleantime, based on your clean date.</string>
 			<key>INIntentDescriptionID</key>
 			<string>JIIOVV</string>
-			<key>INIntentKeyParameter</key>
-			<string>cleandate</string>
 			<key>INIntentLastParameterTag</key>
 			<integer>2</integer>
 			<key>INIntentManagedParameterCombinations</key>
@@ -38,7 +36,7 @@
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>Get My Cleantime for ${cleandate}</string>
+					<string>Show My Cleantime for ${cleandate}</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>PSX6yz</string>
 					<key>INIntentParameterCombinationUpdatesLinked</key>
@@ -46,7 +44,7 @@
 				</dict>
 			</dict>
 			<key>INIntentName</key>
-			<string>GetCleantime</string>
+			<string>ShowCleantime</string>
 			<key>INIntentParameterCombinations</key>
 			<dict>
 				<key>cleandate</key>
@@ -54,7 +52,7 @@
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>Get my cleantime for ${cleandate}</string>
+					<string>Show my cleantime for ${cleandate}</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>trmFCl</string>
 				</dict>
@@ -97,7 +95,7 @@
 							<key>INIntentParameterPromptDialogCustom</key>
 							<true/>
 							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>Please provide your clean date.</string>
+							<string>Please provide a date between October 5th, 1953, and today.</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
 							<string>P2qwDt</string>
 							<key>INIntentParameterPromptDialogType</key>
@@ -110,6 +108,8 @@
 					<integer>2</integer>
 					<key>INIntentParameterType</key>
 					<string>DateComponents</string>
+					<key>INIntentParameterWindowSize</key>
+					<integer>1</integer>
 				</dict>
 			</array>
 			<key>INIntentResponse</key>
@@ -128,145 +128,36 @@
 					</dict>
 				</array>
 				<key>INIntentResponseLastParameterTag</key>
-				<integer>4</integer>
+				<integer>5</integer>
 				<key>INIntentResponseParameters</key>
 				<array>
 					<dict>
 						<key>INIntentResponseParameterDisplayName</key>
-						<string>Cleantime Report</string>
+						<string>Report</string>
 						<key>INIntentResponseParameterDisplayNameID</key>
-						<string>tLPabJ</string>
+						<string>AK3YI7</string>
 						<key>INIntentResponseParameterDisplayPriority</key>
 						<integer>1</integer>
 						<key>INIntentResponseParameterName</key>
-						<string>cleantimeReport</string>
-						<key>INIntentResponseParameterObjectType</key>
-						<string>Cleantime</string>
-						<key>INIntentResponseParameterObjectTypeNamespace</key>
-						<string>dLcCuA</string>
+						<string>report</string>
 						<key>INIntentResponseParameterTag</key>
-						<integer>4</integer>
+						<integer>5</integer>
 						<key>INIntentResponseParameterType</key>
-						<string>Object</string>
+						<string>String</string>
 					</dict>
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Get Cleantime</string>
+			<string>Show Cleantime</string>
 			<key>INIntentTitleID</key>
 			<string>oaSRoe</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
-			<string>View</string>
+			<string>Do</string>
 		</dict>
 	</array>
 	<key>INTypes</key>
-	<array>
-		<dict>
-			<key>INTypeDisplayName</key>
-			<string>Cleantime</string>
-			<key>INTypeDisplayNameID</key>
-			<string>MvSvBm</string>
-			<key>INTypeLastPropertyTag</key>
-			<integer>104</integer>
-			<key>INTypeName</key>
-			<string>Cleantime</string>
-			<key>INTypeProperties</key>
-			<array>
-				<dict>
-					<key>INTypePropertyDefault</key>
-					<true/>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>1</integer>
-					<key>INTypePropertyName</key>
-					<string>identifier</string>
-					<key>INTypePropertyTag</key>
-					<integer>1</integer>
-					<key>INTypePropertyType</key>
-					<string>String</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDefault</key>
-					<true/>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>2</integer>
-					<key>INTypePropertyName</key>
-					<string>displayString</string>
-					<key>INTypePropertyTag</key>
-					<integer>2</integer>
-					<key>INTypePropertyType</key>
-					<string>String</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDefault</key>
-					<true/>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>3</integer>
-					<key>INTypePropertyName</key>
-					<string>pronunciationHint</string>
-					<key>INTypePropertyTag</key>
-					<integer>3</integer>
-					<key>INTypePropertyType</key>
-					<string>String</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDefault</key>
-					<true/>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>4</integer>
-					<key>INTypePropertyName</key>
-					<string>alternativeSpeakableMatches</string>
-					<key>INTypePropertySupportsMultipleValues</key>
-					<true/>
-					<key>INTypePropertyTag</key>
-					<integer>4</integer>
-					<key>INTypePropertyType</key>
-					<string>SpeakableString</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDisplayName</key>
-					<string>Cleandate</string>
-					<key>INTypePropertyDisplayNameID</key>
-					<string>Uwg2ts</string>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>5</integer>
-					<key>INTypePropertyMetadata</key>
-					<dict>
-						<key>INTypePropertyMetadataDateStyle</key>
-						<string>Full</string>
-						<key>INTypePropertyMetadataFormat</key>
-						<string>Style</string>
-						<key>INTypePropertyMetadataTemplateID</key>
-						<string>Kwp7Cp</string>
-						<key>INTypePropertyMetadataTimeStyle</key>
-						<string>Full</string>
-						<key>INTypePropertyMetadataType</key>
-						<string>Date</string>
-					</dict>
-					<key>INTypePropertyName</key>
-					<string>cleandate</string>
-					<key>INTypePropertyTag</key>
-					<integer>101</integer>
-					<key>INTypePropertyType</key>
-					<string>DateComponents</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDisplayName</key>
-					<string>Cleantime Report</string>
-					<key>INTypePropertyDisplayNameID</key>
-					<string>FxctvU</string>
-					<key>INTypePropertyDisplayPriority</key>
-					<integer>6</integer>
-					<key>INTypePropertyName</key>
-					<string>cleantimeReport</string>
-					<key>INTypePropertyTag</key>
-					<integer>102</integer>
-					<key>INTypePropertyType</key>
-					<string>String</string>
-				</dict>
-			</array>
-		</dict>
-	</array>
+	<array/>
 </dict>
 </plist>

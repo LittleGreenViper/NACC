@@ -22,24 +22,10 @@ import UIKit
 import Intents
 import LGV_UICleantime
 
-/* ###################################################################################################################################### */
-// MARK: - Application Intents Handling -
-/* ###################################################################################################################################### */
-/**
- This class has a shared intents handler that is provided by our custom setup.
- */
 class AppIntentHandler {
-    /* ################################################################## */
-    /**
-     The shared Intents handler dispatcher (an instance of this class).
-     */
     static var shared = AppIntentHandler()
     
-    /* ################################################################## */
-    /**
-     The current intent handler.
-     */
-    weak var currentIntentHandler: GetCleantimeIntentHandling?
+    weak var currentIntentHandler: ShowCleantimeIntentHandling?
 }
 
 /* ###################################################################################################################################### */
@@ -258,10 +244,16 @@ extension NACCAppSceneDelegate {
             print("\n#### Application Handling User Activity.\n####\n")
         #endif
         guard let interaction = inUserActivity.interaction,
-              let intent = interaction.intent as? GetCleantimeIntent
+              let intent = interaction.intent as? ShowCleantimeIntent,
+              let cleanDate = intent.cleandate,
+              let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5)),
+              let currentDate = Calendar.current.date(from: cleanDate),
+              (Calendar.current.startOfDay(for: minimumDate)..<Calendar.current.startOfDay(for: .now).addingTimeInterval(86400)).contains(currentDate)
         else { return }
         
-        print(intent.debugDescription)
+        NACCPersistentPrefs().cleanDate = currentDate
+        NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue
+        _initialViewController?.updateScreen()
     }
 }
 
@@ -307,8 +299,8 @@ extension NACCAppSceneDelegate: UIApplicationDelegate {
      - returns: The Intents handler.
      */
     func application(_ : UIApplication, handlerFor inIntent: INIntent) -> Any? {
-        guard inIntent is GetCleantimeIntent else { return nil }
-        return AppIntentHandler.shared.currentIntentHandler ?? NACCGetCleantimeSummaryIntentHandler()
+        guard inIntent is ShowCleantimeIntent else { return nil }
+        return NACCShowCleantimeIntentHandler()
     }
 }
 
