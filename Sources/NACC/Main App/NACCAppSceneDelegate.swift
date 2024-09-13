@@ -236,7 +236,6 @@ extension NACCAppSceneDelegate {
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.dateFormat = "yyyy-MM-dd"
             if let date = dateFormatter.date(from: dateString) {
-                _resetScreen = true
                 open(to: Calendar.current.dateComponents([.year, .month, .day], from: date), with: _selectedTabFromURI ?? .undefined)
             }
         }
@@ -259,6 +258,7 @@ extension NACCAppSceneDelegate {
             print("Opening to date: \(currentDate), and tab: \(inTabIndex)")
         #endif
 
+        _resetScreen = true
         NACCPersistentPrefs().cleanDate = currentDate
         NACCPersistentPrefs().lastSelectedTabIndex = inTabIndex.rawValue
         _initialViewController?.updateScreen()
@@ -325,7 +325,6 @@ extension NACCAppSceneDelegate: UIApplicationDelegate {
         
         let tabIndex = NACCTabBarController.TabIndexes(rawValue: Int(parameters[Self.selectedTabUserDataID] ?? "-1") ?? -1) ?? .undefined
 
-        _resetScreen = true
         open(to: Calendar.current.dateComponents([.year, .month, .day], from: cleanDate), with: tabIndex)
         
         return true
