@@ -29,7 +29,7 @@ import UIKit
 extension NSAttributedString {
     /* ################################################################## */
     /**
-     - returns: The string height required to display the string.
+     - returns: The height required to display the string, in display units.
      */
     var stringHeight: CGFloat {
         let rect = self.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude),
@@ -39,7 +39,7 @@ extension NSAttributedString {
     
     /* ################################################################## */
     /**
-     - returns: The string width required to display the string.
+     - returns: The width required to display the string, in display units.
      */
     var stringWidth: CGFloat {
         let rect = self.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude),
