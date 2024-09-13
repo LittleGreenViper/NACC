@@ -19,14 +19,7 @@
  */
 
 import UIKit
-import Intents
 import LGV_UICleantime
-
-class AppIntentHandler {
-    static var shared = AppIntentHandler()
-    
-    weak var currentIntentHandler: ShowCleantimeIntentHandling?
-}
 
 /* ###################################################################################################################################### */
 // MARK: - Main App Delegate -
@@ -238,24 +231,6 @@ extension NACCAppSceneDelegate {
     
     /* ################################################################## */
     /**
-     This handles an activity derived from an intent.
-     
-     - parameter inUserActivity: The activity to resolve.
-     */
-    func handleUserActivity(_ inUserActivity: NSUserActivity) {
-        #if DEBUG
-            print("\n#### Application Handling User Activity.\n####\n")
-        #endif
-        guard let interaction = inUserActivity.interaction,
-              let intent = interaction.intent as? ShowCleantimeIntent,
-              let cleanDate = intent.cleandate
-        else { return }
-        
-        open(to: cleanDate)
-    }
-    
-    /* ################################################################## */
-    /**
      This opens the app, and sets it to the given cleandate. It opens to the initial screen.
      
      - parameter to: The cleadate, as date components.
@@ -304,19 +279,6 @@ extension NACCAppSceneDelegate: UIApplicationDelegate {
         #endif
         return UISceneConfiguration(name: Self._sceneConfigurationName, sessionRole: inConnectingSceneSession.role)
     }
-    
-    /* ################################################################## */
-    /**
-     Called to fetch an Intents handler.
-     
-     - parameter: The application instance (ignored).
-     - parameter handlerFor: The intent that we need a handler for.
-     - returns: The Intents handler.
-     */
-    func application(_ : UIApplication, handlerFor inIntent: INIntent) -> Any? {
-        guard inIntent is ShowCleantimeIntent else { return nil }
-        return NACCShowCleantimeIntentHandler()
-    }
 }
 
 /* ###################################################################################################################################### */
@@ -344,10 +306,6 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
     func scene(_ inScene: UIScene, willConnectTo: UISceneSession, options inConnectionOptions: UIScene.ConnectionOptions) {
         if let url = inConnectionOptions.userActivities.first?.webpageURL ?? inConnectionOptions.urlContexts.first?.url {
             resolveURL(url)
-        } else {
-            for userActivity in inConnectionOptions.userActivities {
-                handleUserActivity(userActivity)
-            }
         }
     }
 
@@ -360,8 +318,6 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
     func scene(_: UIScene, continue inUserActivity: NSUserActivity) {
         if let url = inUserActivity.webpageURL {
             resolveURL(url)
-        } else {
-            handleUserActivity(inUserActivity)
         }
     }
 

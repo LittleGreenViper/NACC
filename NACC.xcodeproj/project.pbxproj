@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D4070A3B2C8F22B60011F12D /* NACCShowCleantimeIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4070A3A2C8F22B60011F12D /* NACCShowCleantimeIntentHandler.swift */; };
-		D411FBEC2C938E70007BC1C7 /* NACCShowCleantimeIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D411FBEB2C938E70007BC1C7 /* NACCShowCleantimeIntentHandler.swift */; };
 		D41361C027F8D80B00DA1AD4 /* NACCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */; };
 		D41657132C4846990015DDFD /* NACC.docc in Sources */ = {isa = PBXBuildFile; fileRef = D41657122C4846990015DDFD /* NACC.docc */; };
 		D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42314F527FE150E00C5E5FC /* NACCTabBarController.swift */; };
@@ -26,7 +24,6 @@
 		D48F812B27FCD36D001A0B87 /* NACCInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F812A27FCD36D001A0B87 /* NACCInitialViewController.swift */; };
 		D48F812D27FCD3FA001A0B87 /* NACCTabBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F812C27FCD3FA001A0B87 /* NACCTabBaseViewController.swift */; };
 		D49C9A7C280783C6008E9917 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D49C9A7A280783C6008E9917 /* InfoPlist.strings */; };
-		D49F5F1E2C9075710039A098 /* NACCIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D49F5F1D2C9075710039A098 /* NACCIntents.intentdefinition */; };
 		D4B20E7A2C938D22006C7ED8 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B20E792C938D22006C7ED8 /* LGV_Cleantime */; };
 		D4B20E7C2C938D22006C7ED8 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B20E7B2C938D22006C7ED8 /* LGV_UICleantime */; };
 		D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
@@ -38,6 +35,8 @@
 		D4E2F96B27FCCD3400457AD4 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */; };
 		D4E43A4F2C937FDF00535CDD /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E43A4E2C937FDF00535CDD /* Intents.framework */; };
 		D4E43A682C937FDF00535CDD /* NACCIntents.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4E43A4D2C937FDF00535CDD /* NACCIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D4F46FDC2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F46FDB2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift */; };
+		D4F46FE12C94669E0071D359 /* NACCIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D4F46FE02C94669E0071D359 /* NACCIntents.intentdefinition */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +64,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D4070A3A2C8F22B60011F12D /* NACCShowCleantimeIntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCShowCleantimeIntentHandler.swift; sourceTree = "<group>"; };
-		D411FBEB2C938E70007BC1C7 /* NACCShowCleantimeIntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCShowCleantimeIntentHandler.swift; sourceTree = "<group>"; };
 		D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCBaseViewController.swift; sourceTree = "<group>"; };
 		D41657122C4846990015DDFD /* NACC.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NACC.docc; sourceTree = "<group>"; };
 		D41AC87D2C49813200C79B8C /* index.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
@@ -85,7 +82,6 @@
 		D48F812A27FCD36D001A0B87 /* NACCInitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCInitialViewController.swift; sourceTree = "<group>"; };
 		D48F812C27FCD3FA001A0B87 /* NACCTabBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCTabBaseViewController.swift; sourceTree = "<group>"; };
 		D49C9A7B280783C6008E9917 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D49F5F1C2C9075710039A098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/NACCIntents.intentdefinition; sourceTree = "<group>"; };
 		D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPersistentPrefs.swift; sourceTree = "<group>"; };
 		D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAboutViewController.swift; sourceTree = "<group>"; };
 		D4C1579B2C4926FC00D82CBA /* bodyBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bodyBlack.png; sourceTree = "<group>"; };
@@ -135,6 +131,8 @@
 		D4E43A532C937FDF00535CDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4E43A592C937FDF00535CDD /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		D4E43A692C937FDF00535CDD /* NACCIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCIntents.entitlements; sourceTree = "<group>"; };
+		D4F46FDB2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCShowCleantimeIntentHandler.swift; sourceTree = "<group>"; };
+		D4F46FDF2C94669E0071D359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/NACCIntents.intentdefinition; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,7 +216,6 @@
 		D49F5F1F2C9075D20039A098 /* Intents */ = {
 			isa = PBXGroup;
 			children = (
-				D4070A3A2C8F22B60011F12D /* NACCShowCleantimeIntentHandler.swift */,
 				D48C496A2C9372AA007E87C3 /* NACCGetCleantimeSummaryAppIntent.swift */,
 			);
 			path = Intents;
@@ -228,7 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */,
-				D49F5F1D2C9075710039A098 /* NACCIntents.intentdefinition */,
 				D4E2F96727FCCA3200457AD4 /* Localizable.strings */,
 				D49C9A7A280783C6008E9917 /* InfoPlist.strings */,
 				D48C496C2C9372C5007E87C3 /* AppShortcuts.strings */,
@@ -327,7 +323,8 @@
 			isa = PBXGroup;
 			children = (
 				D4E43A692C937FDF00535CDD /* NACCIntents.entitlements */,
-				D411FBEB2C938E70007BC1C7 /* NACCShowCleantimeIntentHandler.swift */,
+				D4F46FDB2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift */,
+				D4F46FE02C94669E0071D359 /* NACCIntents.intentdefinition */,
 				D4E43A532C937FDF00535CDD /* Info.plist */,
 			);
 			path = NACCIntents;
@@ -460,7 +457,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D49F5F1E2C9075710039A098 /* NACCIntents.intentdefinition in Sources */,
 				D43C66D42694AC20007D5883 /* NACCAppSceneDelegate.swift in Sources */,
 				D48F812D27FCD3FA001A0B87 /* NACCTabBaseViewController.swift in Sources */,
 				D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */,
@@ -469,7 +465,6 @@
 				D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */,
 				D4BD88F1269E2FAA009015D1 /* NACCAboutViewController.swift in Sources */,
 				D48F812B27FCD36D001A0B87 /* NACCInitialViewController.swift in Sources */,
-				D4070A3B2C8F22B60011F12D /* NACCShowCleantimeIntentHandler.swift in Sources */,
 				D474789F28073D5400212919 /* NACCPagePrintRenderer.swift in Sources */,
 				D485259627FDBD2E002EE3E3 /* NACCExtensions.swift in Sources */,
 				D41657132C4846990015DDFD /* NACC.docc in Sources */,
@@ -480,7 +475,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D411FBEC2C938E70007BC1C7 /* NACCShowCleantimeIntentHandler.swift in Sources */,
+				D4F46FDC2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift in Sources */,
+				D4F46FE12C94669E0071D359 /* NACCIntents.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,14 +507,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		D49F5F1D2C9075710039A098 /* NACCIntents.intentdefinition */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D49F5F1C2C9075710039A098 /* Base */,
-			);
-			name = NACCIntents.intentdefinition;
-			sourceTree = "<group>";
-		};
 		D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -541,6 +529,14 @@
 				D4E2F96827FCCA3200457AD4 /* Base */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		D4F46FE02C94669E0071D359 /* NACCIntents.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4F46FDF2C94669E0071D359 /* Base */,
+			);
+			name = NACCIntents.intentdefinition;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -779,7 +775,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "iOS_EXTENSION $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -814,6 +810,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = iOS_EXTENSION;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -33,10 +33,6 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>INIntentsSupported</key>
-	<array>
-		<string>ShowCleantimeIntent</string>
-	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>InfoScreenCopyrightSiteURL</key>
@@ -55,10 +51,6 @@
 	<string>This app needs access to your contacts, in order to fill out an anniversary event.  This information is never sent outside of your computer, and is not directly used by this app.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app allows you to save images of keytags or medallions to your Photo Library</string>
-	<key>NSUserActivityTypes</key>
-	<array>
-		<string>ShowCleantimeIntent</string>
-	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

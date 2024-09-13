@@ -1,5 +1,5 @@
 /*
- © Copyright 2022, Little Green Viper Software Development LLC
+ © Copyright 2012-2024, Little Green Viper Software Development LLC
  
  LICENSE:
  
@@ -17,21 +17,61 @@
  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
  CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import Intents
 
-class NACCShowCleantimeIntentHandler: INExtension {
-    override func handler(for intent: INIntent) -> Any {
-        return self
+import Intents
+import LGV_UICleantime
+
+/* ###################################################################################################################################### */
+// MARK: - Open App And Display Cleantime Intent -
+/* ###################################################################################################################################### */
+/**
+ This intent will open the app, and set it to the given date. It always opens in the main screen.
+ */
+class NACCShowCleantimeIntentHandler: INExtension, ShowCleantimeIntentHandling {
+    /* ################################################################## */
+    /**
+     This validates the cleandate. It must be a date between October 5, 1953, and now.
+     
+     - parameters:
+        - for: The intent instance
+        - with: A tail completion function, with a date resoultion.
+     */
+    func resolveCleandate(for inIntent: ShowCleantimeIntent, with inCompletion: @escaping (INDateComponentsResolutionResult) -> Void) {
+        guard let cleanDate = inIntent.cleandate,
+              let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5)),
+              let currentDate = Calendar.current.date(from: cleanDate),
+              (Calendar.current.startOfDay(for: minimumDate)..<Calendar.current.startOfDay(for: .now).addingTimeInterval(86400)).contains(currentDate)
+        else {
+            inCompletion(INDateComponentsResolutionResult.needsValue())
+            return
+        }
+        
+        inCompletion(INDateComponentsResolutionResult.success(with: Calendar.current.dateComponents([.year, .month, .day], from: currentDate)))
     }
-    
-    func resolveContent(for inIntent: INIntent, with inCompletion: @escaping (INStringResolutionResult) -> Void) {
-    }
-    
-    func confirm(intent inIntent: INIntent, completion inCompletion: @escaping (INSendMessageIntentResponse) -> Void) {
-    }
-    
-    func handle(intent inIntent: INIntent, completion inCompletion: @escaping (INStringResolutionResult) -> Void) {
-        let response = INStringResolutionResult.success(with: "ERROR")
-        inCompletion(response)
+
+    /* ################################################################## */
+    /**
+     This actually executes the intent.
+     
+     - parameters:
+        - intent: The intent instance
+        - completion: A tail completion function, with a response, containing the text of the report.
+     */
+    func handle(intent inIntent: ShowCleantimeIntent, completion inCompletion: @escaping (ShowCleantimeIntentResponse) -> Void) {
+        guard let cleanDate = inIntent.cleandate,
+              let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5)),
+              let currentDate = Calendar.current.date(from: cleanDate),
+              (Calendar.current.startOfDay(for: minimumDate)..<Calendar.current.startOfDay(for: .now).addingTimeInterval(86400)).contains(currentDate),
+              let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: currentDate, endDate: .now, calendar: Calendar.current),
+              !textTemp.isEmpty
+        else {
+            inCompletion(ShowCleantimeIntentResponse(code: ShowCleantimeIntentResponseCode.failure, userActivity: nil))
+            return
+        }
+        
+//        let response = ShowCleantimeIntentResponse(code: .success, userActivity: nil)
+//        response.report = textTemp
+//        
+//        inCompletion(response)
     }
 }
