@@ -221,6 +221,22 @@ extension NACCInitialViewController {
             setDate(NACCPersistentPrefs().cleanDate, tabIndex: tab)
         }
     }
+    
+    /* ################################################################## */
+    /**
+     This creates a user activity for the given cleandate (as components).
+     
+     - parameter for: The cleandate (as date components).
+     */
+    func activateActivity(for inCleandate: DateComponents) {
+        userActivity = NSUserActivity(activityType: NACCAppSceneDelegate.displayCleantimeID)
+        let title = "SLUG-DISPLAY-CLEANTIME-ACTIVITY-TITLE".localizedVariant
+        userActivity?.title = title
+        let stringData = String(format: "%04d-%02d-%02d", inCleandate.year ?? 0, inCleandate.month ?? 0, inCleandate.day ?? 0)
+        userActivity?.userInfo = [NACCAppSceneDelegate.cleanDateUserDataID: stringData]
+        userActivity?.isEligibleForPrediction = true
+        userActivity?.persistentIdentifier = String(inCleandate.hashValue)
+    }
 }
 
 /* ###################################################################################################################################### */
@@ -261,6 +277,17 @@ extension NACCInitialViewController {
         setDate()
     }
     
+    /* ################################################################## */
+    /**
+     Called just after the view appears. We use it to create a user activity.
+     
+     - parameter inIsAnimated: True, if the appearance is to be animated.
+    */
+    override func viewDidAppear(_ inIsAnimated: Bool) {
+        super.viewDidAppear(inIsAnimated)
+        activateActivity(for: Calendar.current.dateComponents([.year, .month, .day], from: NACCPersistentPrefs().cleanDate))
+    }
+
     /* ################################################################## */
     /**
      Called when the subviews have been arranged.

@@ -69,9 +69,8 @@ class NACCShowCleantimeIntentHandler: INExtension, ShowCleantimeIntentHandling {
             return
         }
         
-//        let response = ShowCleantimeIntentResponse(code: .success, userActivity: nil)
-//        response.report = textTemp
-//        
-//        inCompletion(response)
+        let response = ShowCleantimeIntentResponse(code: .success, userActivity: nil)
+        response.report = textTemp
+        inCompletion(response)
     }
 }

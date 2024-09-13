@@ -82,6 +82,18 @@ class NACCAppSceneDelegate: UIResponder {
      This will contain the textual report, for the calculation.
      */
     private var _report: String = ""
+    
+    /* ################################################################## */
+    /**
+     The ID for the "Display Cleantime" activity.
+     */
+    static let displayCleantimeID = "DisplayCleantime"
+    
+    /* ################################################################## */
+    /**
+     The ID for the "Display Cleantime" activity data field.
+     */
+    static let cleanDateUserDataID = "cleanDate"
 }
 
 /* ###################################################################################################################################### */
@@ -268,6 +280,8 @@ extension NACCAppSceneDelegate: UIApplicationDelegate {
 
     /* ################################################################## */
     /**
+     Called when the scene connects. Returns the configuration to use for the scene.
+     
      - parameter: The application instance (ignored).
      - parameter configurationForConnecting: The scene session that needs the configuration.
      - parameter options: The scene configuration options (also ignored)
@@ -278,6 +292,34 @@ extension NACCAppSceneDelegate: UIApplicationDelegate {
             print("\n#### Application Delivering Configuration.\n####\n")
         #endif
         return UISceneConfiguration(name: Self._sceneConfigurationName, sessionRole: inConnectingSceneSession.role)
+    }
+    
+    /* ################################################################## */
+    /**
+     Called when we receive a user activity.
+     
+     - parameter: The application instance (ignored).
+     - parameter continue: The activity.
+     - parameter restorationHandler: A completion handler (also ignored)
+     - returns: True, if it was handled.
+     */
+    func application(_ application: UIApplication, continue inUserActivity: NSUserActivity, restorationHandler: @escaping ([any UIUserActivityRestoring]?) -> Void) -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        
+        guard inUserActivity.activityType == Self.displayCleantimeID,
+              let parameters = inUserActivity.userInfo as? [String: String],
+              let cleanDateString = parameters[Self.cleanDateUserDataID],
+              let cleanDate = dateFormatter.date(from: cleanDateString)
+        else { return false }
+        
+        #if DEBUG
+            print("\n#### Application Received Display Cleantime Activity With: \(cleanDateString).\n####\n")
+        #endif
+        
+        open(to: Calendar.current.dateComponents([.year, .month, .day], from: cleanDate))
+        
+        return true
     }
 }
 

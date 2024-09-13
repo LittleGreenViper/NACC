@@ -120,3 +120,5 @@
 "Returns a summary of your cleantime"           =   "Returns a summary of your cleantime";
 "Enter Your Clean Date"                         =   "Enter Your Clean Date";
 "You must enter a valid clean date!"            =   "You must enter a valid clean date!";
+
+"SLUG-DISPLAY-CLEANTIME-ACTIVITY-TITLE"         =   "Display Cleantime";
