@@ -59,9 +59,7 @@ class NACCShowCleantimeIntentHandler: INExtension, ShowCleantimeIntentHandling {
      */
     func handle(intent inIntent: ShowCleantimeIntent, completion inCompletion: @escaping (ShowCleantimeIntentResponse) -> Void) {
         guard let cleanDate = inIntent.cleandate,
-              let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5)),
               let currentDate = Calendar.current.date(from: cleanDate),
-              (Calendar.current.startOfDay(for: minimumDate)..<Calendar.current.startOfDay(for: .now).addingTimeInterval(86400)).contains(currentDate),
               let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: currentDate, endDate: .now, calendar: Calendar.current),
               !textTemp.isEmpty
         else {

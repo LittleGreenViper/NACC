@@ -95,7 +95,7 @@
 							<key>INIntentParameterPromptDialogCustom</key>
 							<true/>
 							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>Please provide a date between October 5th, 1953, and today.</string>
+							<string>Please provide a date after October 5th, 1953.</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
 							<string>P2qwDt</string>
 							<key>INIntentParameterPromptDialogType</key>
