@@ -94,6 +94,12 @@ class NACCAppSceneDelegate: UIResponder {
      The ID for the "Display Cleantime" activity data field.
      */
     static let cleanDateUserDataID = "cleanDate"
+    
+    /* ################################################################## */
+    /**
+     The ID for the "Selected Tab" activity data field.
+     */
+    static let selectedTabUserDataID = "selectedTab"
 }
 
 /* ###################################################################################################################################### */
@@ -231,30 +237,30 @@ extension NACCAppSceneDelegate {
             dateFormatter.dateFormat = "yyyy-MM-dd"
             if let date = dateFormatter.date(from: dateString) {
                 _resetScreen = true
-                #if DEBUG
-                    print("Setting date: \(dateString), and tab: \(_selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue)")
-                #endif
-                NACCPersistentPrefs().cleanDate = date
-                NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue
-                _initialViewController?.updateScreen()
+                open(to: Calendar.current.dateComponents([.year, .month, .day], from: date), with: _selectedTabFromURI ?? .undefined)
             }
         }
     }
     
     /* ################################################################## */
     /**
-     This opens the app, and sets it to the given cleandate. It opens to the initial screen.
+     This opens the app, and sets it to the given cleandate.
      
      - parameter to: The cleadate, as date components.
+     - parameter with: The tab index. Optional. Default is the initial screen.
      */
-    func open(to inCleanDate: DateComponents) {
+    func open(to inCleanDate: DateComponents, with inTabIndex: NACCTabBarController.TabIndexes = .undefined) {
         guard let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5)),
               let currentDate = Calendar.current.date(from: inCleanDate),
               (Calendar.current.startOfDay(for: minimumDate)..<Calendar.current.startOfDay(for: .now).addingTimeInterval(86400)).contains(currentDate)
         else { return }
         
+        #if DEBUG
+            print("Opening to date: \(currentDate), and tab: \(inTabIndex)")
+        #endif
+
         NACCPersistentPrefs().cleanDate = currentDate
-        NACCPersistentPrefs().lastSelectedTabIndex = NACCTabBarController.TabIndexes.undefined.rawValue
+        NACCPersistentPrefs().lastSelectedTabIndex = inTabIndex.rawValue
         _initialViewController?.updateScreen()
     }
 }
@@ -317,7 +323,10 @@ extension NACCAppSceneDelegate: UIApplicationDelegate {
             print("\n#### Application Received Display Cleantime Activity With: \(cleanDateString).\n####\n")
         #endif
         
-        open(to: Calendar.current.dateComponents([.year, .month, .day], from: cleanDate))
+        let tabIndex = NACCTabBarController.TabIndexes(rawValue: Int(parameters[Self.selectedTabUserDataID] ?? "-1") ?? -1) ?? .undefined
+
+        _resetScreen = true
+        open(to: Calendar.current.dateComponents([.year, .month, .day], from: cleanDate), with: tabIndex)
         
         return true
     }

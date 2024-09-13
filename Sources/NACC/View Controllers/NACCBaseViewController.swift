@@ -64,6 +64,38 @@ class NACCBaseViewController: UIViewController {
      This is the background center image view.
      */
     private var _myCenterImageView: UIImageView?
+    
+    /* ################################################################## */
+    /**
+     This is set to the tab index for the page.
+     */
+    var myTabIndex: NACCTabBarController.TabIndexes = .undefined
+}
+
+/* ###################################################################################################################################### */
+// MARK: Instance Methods
+/* ###################################################################################################################################### */
+extension NACCBaseViewController {
+    /* ################################################################## */
+    /**
+     This creates a user activity for the given cleandate (as components).
+     
+     - parameter for: The cleandate (as date components).
+     - parameter with: The tab index of the page calling this.
+     */
+    func activateActivity(for inCleandate: DateComponents, with inTabIndex: NACCTabBarController.TabIndexes = .undefined) {
+        userActivity = NSUserActivity(activityType: NACCAppSceneDelegate.displayCleantimeID)
+        let title = "SLUG-DISPLAY-CLEANTIME-ACTIVITY-TITLE".localizedVariant
+        userActivity?.title = title
+        let stringData = String(format: "%04d-%02d-%02d", inCleandate.year ?? 0, inCleandate.month ?? 0, inCleandate.day ?? 0)
+        var userInfo: [String: String] = [NACCAppSceneDelegate.cleanDateUserDataID: stringData]
+        if .undefined != inTabIndex {
+            userInfo[NACCAppSceneDelegate.selectedTabUserDataID] = String(inTabIndex.rawValue)
+        }
+        userActivity?.userInfo = userInfo
+        userActivity?.isEligibleForPrediction = true
+        userActivity?.persistentIdentifier = String(inCleandate.hashValue)
+    }
 }
 
 /* ###################################################################################################################################### */
@@ -128,5 +160,16 @@ extension NACCBaseViewController {
                 }
             }
         }
+    }
+    
+    /* ################################################################## */
+    /**
+     Called just after the view appears. We use it to create a user activity.
+     
+     - parameter inIsAnimated: True, if the appearance is to be animated.
+    */
+    override func viewDidAppear(_ inIsAnimated: Bool) {
+        super.viewDidAppear(inIsAnimated)
+        activateActivity(for: Calendar.current.dateComponents([.year, .month, .day], from: NACCPersistentPrefs().cleanDate))
     }
 }

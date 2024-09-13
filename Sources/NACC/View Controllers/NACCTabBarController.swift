@@ -176,6 +176,12 @@ extension NACCTabBarController: UITabBarControllerDelegate {
      - parameter didSelect: The selected View Controller.
      */
     func tabBarController(_ inTabBarController: UITabBarController, didSelect inViewController: UIViewController) {
+        guard let controller = inViewController as? NACCBaseViewController,
+              let index = TabIndexes(rawValue: selectedIndex)
+        else { return }
+        
+        controller.myTabIndex = index
+        
         NACCPersistentPrefs().lastSelectedTabIndex = selectedIndex
     }
 }
