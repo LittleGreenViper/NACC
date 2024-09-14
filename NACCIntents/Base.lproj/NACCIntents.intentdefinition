@@ -18,7 +18,7 @@
 	<array>
 		<dict>
 			<key>INIntentCategory</key>
-			<string>generic</string>
+			<string>information</string>
 			<key>INIntentConfigurable</key>
 			<true/>
 			<key>INIntentDefaultImageName</key>
@@ -154,7 +154,7 @@
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
-			<string>Do</string>
+			<string>Open</string>
 		</dict>
 	</array>
 	<key>INTypes</key>
