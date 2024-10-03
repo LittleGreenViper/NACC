@@ -127,6 +127,11 @@ extension NACCTabBarController {
         }
         
         actionButton?.accessibilityLabel = "SLUG-ACC-TABS-ACTION-BUTTON".localizedVariant
+        
+        if #available(iOS 18.0, *),
+           .pad == UIDevice.current.userInterfaceIdiom {
+            traitOverrides.horizontalSizeClass = .compact
+        }
     }
 }
 
