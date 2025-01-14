@@ -1,7 +1,9 @@
-**5.2.2.3008** *TBD*
+**5.3.0.3009** *January 14, 2025*
 
 - Updated the dependencies
 - Some work on the About screen. No visible changes, other than bullets in front of the dependency links.
+- Released Mac version, to sync with released iOS version.
+- The iOS version has dependency work.
 
 **5.2.1.3007** *July 18, 2024*
 
