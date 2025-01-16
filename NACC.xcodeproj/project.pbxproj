@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,12 +12,12 @@
 		D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42314F527FE150E00C5E5FC /* NACCTabBarController.swift */; };
 		D43C66D12694AC20007D5883 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D43C66C82694AC20007D5883 /* Assets.xcassets */; };
 		D43C66D42694AC20007D5883 /* NACCAppSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */; };
-		D44CA5B42D392F4E00800DD5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44CA5B32D392F4E00800DD5 /* WidgetKit.framework */; };
-		D44CA5B62D392F4E00800DD5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44CA5B52D392F4E00800DD5 /* SwiftUI.framework */; };
-		D44CA5C72D392F4E00800DD5 /* NACC Widget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D44CA5B22D392F4D00800DD5 /* NACC Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D46F8CC12C47ED0800A1E7F5 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D46F8CC02C47ED0800A1E7F5 /* LGV_Cleantime */; };
 		D46F8CC42C47EDA300A1E7F5 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D46F8CC32C47EDA300A1E7F5 /* LGV_UICleantime */; };
 		D474789F28073D5400212919 /* NACCPagePrintRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */; };
+		D47EA9D32D39A2630072F491 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44CA5B32D392F4E00800DD5 /* WidgetKit.framework */; };
+		D47EA9D42D39A2630072F491 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44CA5B52D392F4E00800DD5 /* SwiftUI.framework */; };
+		D47EA9DF2D39A2640072F491 /* NACCWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D47EA9D22D39A2630072F491 /* NACCWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D485259627FDBD2E002EE3E3 /* NACCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */; };
 		D485519428479C10005914FF /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D485519328479C10005914FF /* RVS_Generic_Swift_Toolbox */; };
 		D485519628479C10005914FF /* RVS_GeneralObserver in Frameworks */ = {isa = PBXBuildFile; productRef = D485519528479C10005914FF /* RVS_GeneralObserver */; };
@@ -43,12 +43,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D44CA5C52D392F4E00800DD5 /* PBXContainerItemProxy */ = {
+		D47EA9DD2D39A2640072F491 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D44CA5B12D392F4D00800DD5;
-			remoteInfo = "NACC WidgetExtension";
+			remoteGlobalIDString = D47EA9D12D39A2630072F491;
+			remoteInfo = NACCWidgetExtension;
 		};
 		D4E43A662C937FDF00535CDD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -66,8 +66,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				D44CA5C72D392F4E00800DD5 /* NACC Widget.appex in Embed Foundation Extensions */,
 				D4E43A682C937FDF00535CDD /* NACCIntents.appex in Embed Foundation Extensions */,
+				D47EA9DF2D39A2640072F491 /* NACCWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,13 +84,13 @@
 		D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAppSceneDelegate.swift; sourceTree = "<group>"; };
 		D43C66CE2694AC20007D5883 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D43C66D82694AC33007D5883 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
-		D44CA5B22D392F4D00800DD5 /* NACC Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "NACC Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44CA5B32D392F4E00800DD5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		D44CA5B52D392F4E00800DD5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		D44CA5C82D392F4E00800DD5 /* NACC WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NACC WidgetExtension.entitlements"; sourceTree = "<group>"; };
 		D45CF3632809AB4500065E87 /* NACC.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
 		D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPagePrintRenderer.swift; sourceTree = "<group>"; };
 		D47C587228070BE40019FFD3 /* NACC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NACC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D47EA9D22D39A2630072F491 /* NACCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NACCWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCExtensions.swift; sourceTree = "<group>"; };
 		D48C496A2C9372AA007E87C3 /* NACCGetCleantimeSummaryAppIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCGetCleantimeSummaryAppIntent.swift; sourceTree = "<group>"; };
 		D48C496D2C9372C5007E87C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
@@ -151,17 +151,24 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		D44CA5C92D392F4E00800DD5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		D47EA9E22D39A2640072F491 /* Exceptions for "NACCWidget" folder in "NACCWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = D44CA5B12D392F4D00800DD5 /* NACC Widget */;
+			target = D47EA9D12D39A2630072F491 /* NACCWidgetExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D44CA5B72D392F4E00800DD5 /* NACC Widget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D44CA5C92D392F4E00800DD5 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "NACC Widget"; sourceTree = "<group>"; };
+		D47EA9D52D39A2630072F491 /* NACCWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D47EA9E22D39A2640072F491 /* Exceptions for "NACCWidget" folder in "NACCWidgetExtension" target */,
+			);
+			path = NACCWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,12 +184,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D44CA5AF2D392F4D00800DD5 /* Frameworks */ = {
+		D47EA9CF2D39A2630072F491 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D44CA5B62D392F4E00800DD5 /* SwiftUI.framework in Frameworks */,
-				D44CA5B42D392F4E00800DD5 /* WidgetKit.framework in Frameworks */,
+				D47EA9D42D39A2630072F491 /* SwiftUI.framework in Frameworks */,
+				D47EA9D32D39A2630072F491 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,10 +214,10 @@
 				D43C66D72694AC33007D5883 /* Project-Meta */,
 				D47C587228070BE40019FFD3 /* NACC.app */,
 				D4E43A502C937FDF00535CDD /* NACCIntents */,
-				D44CA5B72D392F4E00800DD5 /* NACC Widget */,
+				D47EA9D52D39A2630072F491 /* NACCWidget */,
 				D485519228479C10005914FF /* Frameworks */,
 				D4E43A4D2C937FDF00535CDD /* NACCIntents.appex */,
-				D44CA5B22D392F4D00800DD5 /* NACC Widget.appex */,
+				D47EA9D22D39A2630072F491 /* NACCWidgetExtension.appex */,
 			);
 			sourceTree = "<group>";
 		};
@@ -399,7 +406,7 @@
 			);
 			dependencies = (
 				D4E43A672C937FDF00535CDD /* PBXTargetDependency */,
-				D44CA5C62D392F4E00800DD5 /* PBXTargetDependency */,
+				D47EA9DE2D39A2640072F491 /* PBXTargetDependency */,
 			);
 			name = NACC;
 			packageProductDependencies = (
@@ -413,26 +420,26 @@
 			productReference = D47C587228070BE40019FFD3 /* NACC.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D44CA5B12D392F4D00800DD5 /* NACC Widget */ = {
+		D47EA9D12D39A2630072F491 /* NACCWidgetExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D44CA5CA2D392F4E00800DD5 /* Build configuration list for PBXNativeTarget "NACC Widget" */;
+			buildConfigurationList = D47EA9E32D39A2640072F491 /* Build configuration list for PBXNativeTarget "NACCWidgetExtension" */;
 			buildPhases = (
-				D44CA5AE2D392F4D00800DD5 /* Sources */,
-				D44CA5AF2D392F4D00800DD5 /* Frameworks */,
-				D44CA5B02D392F4D00800DD5 /* Resources */,
+				D47EA9CE2D39A2630072F491 /* Sources */,
+				D47EA9CF2D39A2630072F491 /* Frameworks */,
+				D47EA9D02D39A2630072F491 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				D44CA5B72D392F4E00800DD5 /* NACC Widget */,
+				D47EA9D52D39A2630072F491 /* NACCWidget */,
 			);
-			name = "NACC Widget";
+			name = NACCWidgetExtension;
 			packageProductDependencies = (
 			);
-			productName = "NACC WidgetExtension";
-			productReference = D44CA5B22D392F4D00800DD5 /* NACC Widget.appex */;
+			productName = NACCWidgetExtension;
+			productReference = D47EA9D22D39A2630072F491 /* NACCWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		D4E43A4C2C937FDF00535CDD /* NACCIntents */ = {
@@ -468,7 +475,7 @@
 					D43C66B02694ABFF007D5883 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
-					D44CA5B12D392F4D00800DD5 = {
+					D47EA9D12D39A2630072F491 = {
 						CreatedOnToolsVersion = 16.2;
 					};
 					D4E43A4C2C937FDF00535CDD = {
@@ -478,7 +485,6 @@
 				};
 			};
 			buildConfigurationList = D43C66822694AA88007D5883 /* Build configuration list for PBXProject "NACC" */;
-			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -493,13 +499,14 @@
 				D46F8CBF2C47ED0800A1E7F5 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */,
 				D46F8CC22C47EDA300A1E7F5 /* XCRemoteSwiftPackageReference "LGV_UICleantime" */,
 			);
+			preferredProjectObjectVersion = 77;
 			productRefGroup = D43C667E2694AA88007D5883;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				D43C66B02694ABFF007D5883 /* NACC */,
 				D4E43A4C2C937FDF00535CDD /* NACCIntents */,
-				D44CA5B12D392F4D00800DD5 /* NACC Widget */,
+				D47EA9D12D39A2630072F491 /* NACCWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -520,7 +527,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D44CA5B02D392F4D00800DD5 /* Resources */ = {
+		D47EA9D02D39A2630072F491 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -548,7 +555,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D44CA5AE2D392F4D00800DD5 /* Sources */ = {
+		D47EA9CE2D39A2630072F491 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -567,10 +574,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D44CA5C62D392F4E00800DD5 /* PBXTargetDependency */ = {
+		D47EA9DE2D39A2640072F491 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D44CA5B12D392F4D00800DD5 /* NACC Widget */;
-			targetProxy = D44CA5C52D392F4E00800DD5 /* PBXContainerItemProxy */;
+			target = D47EA9D12D39A2630072F491 /* NACCWidgetExtension */;
+			targetProxy = D47EA9DD2D39A2640072F491 /* PBXContainerItemProxy */;
 		};
 		D4E43A672C937FDF00535CDD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -783,7 +790,7 @@
 				DEVELOPMENT_TEAM = P53V4JS928;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/NACC/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -816,7 +823,7 @@
 				DEVELOPMENT_TEAM = P53V4JS928;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/NACC/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -836,36 +843,32 @@
 			};
 			name = Release;
 		};
-		D44CA5CB2D392F4E00800DD5 /* Debug */ = {
+		D47EA9E02D39A2640072F491 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "NACC WidgetExtension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3010;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "NACC Widget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "NACC Widget";
+				INFOPLIST_FILE = NACCWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NACCWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 5.4.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.magshare.NACC.NACC-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -873,36 +876,32 @@
 			};
 			name = Debug;
 		};
-		D44CA5CC2D392F4E00800DD5 /* Release */ = {
+		D47EA9E12D39A2640072F491 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "NACC WidgetExtension.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3010;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "NACC Widget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "NACC Widget";
+				INFOPLIST_FILE = NACCWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NACCWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 5.4.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.magshare.NACC.NACC-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -924,7 +923,7 @@
 				INFOPLIST_FILE = NACCIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACCIntents;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -961,7 +960,7 @@
 				INFOPLIST_FILE = NACCIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACCIntents;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1003,11 +1002,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D44CA5CA2D392F4E00800DD5 /* Build configuration list for PBXNativeTarget "NACC Widget" */ = {
+		D47EA9E32D39A2640072F491 /* Build configuration list for PBXNativeTarget "NACCWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D44CA5CB2D392F4E00800DD5 /* Debug */,
-				D44CA5CC2D392F4E00800DD5 /* Release */,
+				D47EA9E02D39A2640072F491 /* Debug */,
+				D47EA9E12D39A2640072F491 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1029,7 +1028,7 @@
 			repositoryURL = "git@github.com:RiftValleySoftware/RVS_Generic_Swift_Toolbox.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.15.4;
+				minimumVersion = 1.15.5;
 			};
 		};
 		D46F8CBF2C47ED0800A1E7F5 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */ = {

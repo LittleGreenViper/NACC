@@ -20,6 +20,7 @@
 
 import AppIntents
 import LGV_UICleantime
+import RVS_Generic_Swift_Toolbox
 
 /* ###################################################################################################################################### */
 // MARK: - Get Cleantime Summary -
@@ -87,6 +88,9 @@ struct NACCAppShortcuts: AppShortcutsProvider {
      The shortcuts available to the app.
      */
     static var appShortcuts: [AppShortcut] {
-        AppShortcut(intent: NACCGetCleantimeSummaryAppIntent(), phrases: ["SLUG-GET-CLEANTIME-SUMMARY-INTENT-\(.applicationName)"], systemImageName: "calendar")
+        AppShortcut(intent: NACCGetCleantimeSummaryAppIntent(),
+                    phrases: ["SLUG-GET-CLEANTIME-SUMMARY-INTENT-\(.applicationName)"],
+                    shortTitle: "SLUG-INTENTS-SHORTTITLE",
+                    systemImageName: "calendar")
     }
 }

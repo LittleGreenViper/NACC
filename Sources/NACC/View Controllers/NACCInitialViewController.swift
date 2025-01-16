@@ -450,8 +450,7 @@ extension NACCInitialViewController {
             return event
         }
         
-        _eventStore.requestAccess( to: EKEntityType.event,
-                                  completion: { (inIsGranted, inError) in
+        _eventStore.requestFullAccessToEvents() { (inIsGranted, inError) in
                 DispatchQueue.main.async { [weak self] in
                     guard nil == inError,
                           inIsGranted,
@@ -473,7 +472,6 @@ extension NACCInitialViewController {
                     self.present(eventController, animated: true, completion: nil)
                 }
             }
-        )
     }
 }
 
