@@ -33,6 +33,9 @@
 		D4BD88F1269E2FAA009015D1 /* NACCAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */; };
 		D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */; };
 		D4C79A2127F9189800FBB7D3 /* NACC_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */; };
+		D4E0B2922D3A85D300723D0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E0B28D2D3A85D300723D0C /* Assets.xcassets */; };
+		D4E0B2942D3A85D300723D0C /* NACCWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E0B28F2D3A85D300723D0C /* NACCWidget.swift */; };
+		D4E0B2952D3A85D300723D0C /* NACCWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E0B2902D3A85D300723D0C /* NACCWidgetBundle.swift */; };
 		D4E2F96627FCCA2800457AD4 /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96527FCCA2800457AD4 /* LGV_UICleantime.xcassets */; };
 		D4E2F96927FCCA3200457AD4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 		D4E2F96B27FCCD3400457AD4 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */; };
@@ -138,6 +141,10 @@
 		D4C157BF2C4926FC00D82CBA /* textWelcomeBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textWelcomeBack.png; sourceTree = "<group>"; };
 		D4C79A1A27F9189800FBB7D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NACC_LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4C79A1C27F9189800FBB7D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NACC_Main.storyboard; sourceTree = "<group>"; };
+		D4E0B28D2D3A85D300723D0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D4E0B28E2D3A85D300723D0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4E0B28F2D3A85D300723D0C /* NACCWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWidget.swift; sourceTree = "<group>"; };
+		D4E0B2902D3A85D300723D0C /* NACCWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWidgetBundle.swift; sourceTree = "<group>"; };
 		D4E2F96527FCCA2800457AD4 /* LGV_UICleantime.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = LGV_UICleantime.xcassets; sourceTree = "<group>"; };
 		D4E2F96827FCCA3200457AD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Theme.xcassets; sourceTree = "<group>"; };
@@ -149,27 +156,6 @@
 		D4F46FDB2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCShowCleantimeIntentHandler.swift; sourceTree = "<group>"; };
 		D4F46FDF2C94669E0071D359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/NACCIntents.intentdefinition; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		D47EA9E22D39A2640072F491 /* Exceptions for "NACCWidget" folder in "NACCWidgetExtension" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = D47EA9D12D39A2630072F491 /* NACCWidgetExtension */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		D47EA9D52D39A2630072F491 /* NACCWidget */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				D47EA9E22D39A2640072F491 /* Exceptions for "NACCWidget" folder in "NACCWidgetExtension" target */,
-			);
-			path = NACCWidget;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D42491CA2695F44C0094C15F /* Frameworks */ = {
@@ -214,7 +200,7 @@
 				D43C66D72694AC33007D5883 /* Project-Meta */,
 				D47C587228070BE40019FFD3 /* NACC.app */,
 				D4E43A502C937FDF00535CDD /* NACCIntents */,
-				D47EA9D52D39A2630072F491 /* NACCWidget */,
+				D4E0B2912D3A85D300723D0C /* NACCWidget */,
 				D485519228479C10005914FF /* Frameworks */,
 				D4E43A4D2C937FDF00535CDD /* NACCIntents.appex */,
 				D47EA9D22D39A2630072F491 /* NACCWidgetExtension.appex */,
@@ -369,6 +355,17 @@
 			path = Web;
 			sourceTree = SOURCE_ROOT;
 		};
+		D4E0B2912D3A85D300723D0C /* NACCWidget */ = {
+			isa = PBXGroup;
+			children = (
+				D4E0B2902D3A85D300723D0C /* NACCWidgetBundle.swift */,
+				D4E0B28F2D3A85D300723D0C /* NACCWidget.swift */,
+				D4E0B28D2D3A85D300723D0C /* Assets.xcassets */,
+				D4E0B28E2D3A85D300723D0C /* Info.plist */,
+			);
+			path = NACCWidget;
+			sourceTree = "<group>";
+		};
 		D4E43A502C937FDF00535CDD /* NACCIntents */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,9 +428,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				D47EA9D52D39A2630072F491 /* NACCWidget */,
 			);
 			name = NACCWidgetExtension;
 			packageProductDependencies = (
@@ -531,6 +525,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4E0B2922D3A85D300723D0C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +554,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4E0B2942D3A85D300723D0C /* NACCWidget.swift in Sources */,
+				D4E0B2952D3A85D300723D0C /* NACCWidgetBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
