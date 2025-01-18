@@ -30,6 +30,10 @@
 		D49C9A7C280783C6008E9917 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D49C9A7A280783C6008E9917 /* InfoPlist.strings */; };
 		D4B20E7A2C938D22006C7ED8 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B20E792C938D22006C7ED8 /* LGV_Cleantime */; };
 		D4B20E7C2C938D22006C7ED8 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B20E7B2C938D22006C7ED8 /* LGV_UICleantime */; };
+		D4B57E242D3C5E2D00A6844F /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
+		D4B57E262D3C5EE600A6844F /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B57E252D3C5EE600A6844F /* LGV_UICleantime */; };
+		D4B57E282D3C5EEC00A6844F /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B57E272D3C5EEC00A6844F /* LGV_Cleantime */; };
+		D4B57E2A2D3C5EF200A6844F /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D4B57E292D3C5EF200A6844F /* RVS_Persistent_Prefs */; };
 		D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D4BD88F1269E2FAA009015D1 /* NACCAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */; };
 		D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */; };
@@ -101,6 +105,7 @@
 		D48F812A27FCD36D001A0B87 /* NACCInitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCInitialViewController.swift; sourceTree = "<group>"; };
 		D48F812C27FCD3FA001A0B87 /* NACCTabBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCTabBaseViewController.swift; sourceTree = "<group>"; };
 		D49C9A7B280783C6008E9917 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D4B57E2B2D3C654C00A6844F /* NACCWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPersistentPrefs.swift; sourceTree = "<group>"; };
 		D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAboutViewController.swift; sourceTree = "<group>"; };
 		D4C1579B2C4926FC00D82CBA /* bodyBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bodyBlack.png; sourceTree = "<group>"; };
@@ -176,6 +181,9 @@
 			files = (
 				D47EA9D42D39A2630072F491 /* SwiftUI.framework in Frameworks */,
 				D47EA9D32D39A2630072F491 /* WidgetKit.framework in Frameworks */,
+				D4B57E262D3C5EE600A6844F /* LGV_UICleantime in Frameworks */,
+				D4B57E282D3C5EEC00A6844F /* LGV_Cleantime in Frameworks */,
+				D4B57E2A2D3C5EF200A6844F /* RVS_Persistent_Prefs in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +203,7 @@
 		D43C667E2694AA88007D5883 = {
 			isa = PBXGroup;
 			children = (
+				D4B57E2B2D3C654C00A6844F /* NACCWidgetExtension.entitlements */,
 				D44CA5C82D392F4E00800DD5 /* NACC WidgetExtension.entitlements */,
 				D43C66C52694AC20007D5883 /* Sources */,
 				D43C66D72694AC33007D5883 /* Project-Meta */,
@@ -431,6 +440,9 @@
 			);
 			name = NACCWidgetExtension;
 			packageProductDependencies = (
+				D4B57E252D3C5EE600A6844F /* LGV_UICleantime */,
+				D4B57E272D3C5EEC00A6844F /* LGV_Cleantime */,
+				D4B57E292D3C5EF200A6844F /* RVS_Persistent_Prefs */,
 			);
 			productName = NACCWidgetExtension;
 			productReference = D47EA9D22D39A2630072F491 /* NACCWidgetExtension.appex */;
@@ -554,6 +566,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4B57E242D3C5E2D00A6844F /* NACCPersistentPrefs.swift in Sources */,
 				D4E0B2942D3A85D300723D0C /* NACCWidget.swift in Sources */,
 				D4E0B2952D3A85D300723D0C /* NACCWidgetBundle.swift in Sources */,
 			);
@@ -846,6 +859,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3010;
@@ -879,6 +893,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3010;
@@ -1097,6 +1112,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D46F8CC22C47EDA300A1E7F5 /* XCRemoteSwiftPackageReference "LGV_UICleantime" */;
 			productName = LGV_UICleantime;
+		};
+		D4B57E252D3C5EE600A6844F /* LGV_UICleantime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D46F8CC22C47EDA300A1E7F5 /* XCRemoteSwiftPackageReference "LGV_UICleantime" */;
+			productName = LGV_UICleantime;
+		};
+		D4B57E272D3C5EEC00A6844F /* LGV_Cleantime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D46F8CBF2C47ED0800A1E7F5 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */;
+			productName = LGV_Cleantime;
+		};
+		D4B57E292D3C5EF200A6844F /* RVS_Persistent_Prefs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4B80C7B27FCF10300401F72 /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */;
+			productName = RVS_Persistent_Prefs;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

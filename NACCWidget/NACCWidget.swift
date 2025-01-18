@@ -40,6 +40,38 @@ import RVS_Persistent_Prefs
 import WidgetKit
 import SwiftUI
 
+extension Bundle {
+    /// Return the main bundle when in the app or an app extension.
+    static var app: Bundle {
+        var components = main.bundleURL.path.split(separator: "/")
+        var bundle: Bundle?
+
+        if let index = components.lastIndex(where: { $0.hasSuffix(".app") }) {
+            components.removeLast((components.count - 1) - index)
+            bundle = Bundle(path: components.joined(separator: "/"))
+        }
+
+        return bundle ?? main
+    }
+}
+
+struct NACC_Provider: TimelineProvider {
+    func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<NACC_Entry>) -> Void) {
+        let timeline = Timeline(entries: [NACC_Entry(date: .now, cleandate: .now)],
+                                policy: .atEnd
+        )
+        completion(timeline)
+    }
+    
+    func placeholder(in context: Context) -> NACC_Entry {
+        .init(date: .now, cleandate: NACCPersistentPrefs().cleanDate)
+    }
+    
+    func getSnapshot(in context: Context, completion: @escaping (NACC_Entry) -> ()) {
+        completion(NACC_Entry(date: .now, cleandate: NACCPersistentPrefs().cleanDate))
+    }
+}
+
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), emoji: "😀")
@@ -70,21 +102,38 @@ struct Provider: TimelineProvider {
 //    }
 }
 
+struct NACC_Entry: TimelineEntry {
+    var date: Date
+    let cleandate: Date
+}
+
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let emoji: String
 }
 
 struct NACCWidgetEntryView : View {
-    var entry: Provider.Entry
+    /* ################################################################## */
+    /**
+     */
+    private func _load() {
+        if let values  = UserDefaults(suiteName: "group.org.magshare.NACC"),
+           let valueList = values.object(forKey: "NACCPersistentPrefs") {
+            print(valueList)
+        }
+    }
+
+    var entry: NACC_Provider.Entry
 
     var body: some View {
         VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
+            Text("Date:")
+            Text(entry.date, style: .date)
 
-            Text("Emoji:")
-            Text(entry.emoji)
+            Text("Cleandate:")
+            Text(entry.cleandate, style: .date)
+        }.onAppear {
+            _load()
         }
     }
 }
@@ -93,7 +142,7 @@ struct NACCWidget: Widget {
     let kind: String = "NACCWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+        StaticConfiguration(kind: kind, provider: NACC_Provider()) { entry in
             if #available(iOS 17.0, *) {
                 NACCWidgetEntryView(entry: entry)
                     .containerBackground(.fill.tertiary, for: .widget)
@@ -111,6 +160,5 @@ struct NACCWidget: Widget {
 #Preview(as: .systemSmall) {
     NACCWidget()
 } timeline: {
-    SimpleEntry(date: .now, emoji: "😀")
-    SimpleEntry(date: .now, emoji: "🤩")
+    NACC_Entry(date: .now, cleandate: NACCPersistentPrefs().cleanDate)
 }

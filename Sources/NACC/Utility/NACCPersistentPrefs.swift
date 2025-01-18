@@ -91,9 +91,7 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
      This stores the cleandate, as an instance of Date
      */
     var cleanDate: Date {
-        get {
-            values[Keys.cleanDate.rawValue] as? Date ?? Date()
-        }
+        get { values[Keys.cleanDate.rawValue] as? Date ?? .now }
         set { values[Keys.cleanDate.rawValue] = newValue }
     }
 
