@@ -103,4 +103,13 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
         get { values[Keys.lastSelectedTabIndex.rawValue] as? Int ?? 0 }
         set { values[Keys.lastSelectedTabIndex.rawValue] = newValue }
     }
+    
+    /* ################################################################## */
+    /**
+     We just make sure that we use the shared group for our prefs.
+     */
+    override init() {
+        Self.groupID = g_NACC_GroupID
+        super.init()
+    }
 }

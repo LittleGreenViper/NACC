@@ -94,9 +94,9 @@
 		D43C66D82694AC33007D5883 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		D44CA5B32D392F4E00800DD5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		D44CA5B52D392F4E00800DD5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D44D99902D3D627700680D2A /* NACC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NACC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D45CF3632809AB4500065E87 /* NACC.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
 		D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPagePrintRenderer.swift; sourceTree = "<group>"; };
-		D47C587228070BE40019FFD3 /* NACC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = NACC.app; path = "/Users/chrismarshall/Developer/LGV/NACC/build/Debug-iphoneos/NACC.app"; sourceTree = "<absolute>"; };
 		D47EA9D22D39A2630072F491 /* NACCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NACCWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCExtensions.swift; sourceTree = "<group>"; };
 		D48C496A2C9372AA007E87C3 /* NACCGetCleantimeSummaryAppIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCGetCleantimeSummaryAppIntent.swift; sourceTree = "<group>"; };
@@ -161,6 +161,35 @@
 		D4F46FDF2C94669E0071D359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/NACCIntents.intentdefinition; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D48B39572D3D647500B7E4E0 /* Exceptions for "Shared" folder in "NACCIntents" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Shared.swift,
+			);
+			target = D4E43A4C2C937FDF00535CDD /* NACCIntents */;
+		};
+		D48B39582D3D647500B7E4E0 /* Exceptions for "Shared" folder in "NACCWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Shared.swift,
+			);
+			target = D47EA9D12D39A2630072F491 /* NACCWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D48B39512D3D63EB00B7E4E0 /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D48B39572D3D647500B7E4E0 /* Exceptions for "Shared" folder in "NACCIntents" target */,
+				D48B39582D3D647500B7E4E0 /* Exceptions for "Shared" folder in "NACCWidgetExtension" target */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		D42491CA2695F44C0094C15F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -207,6 +236,7 @@
 				D485519228479C10005914FF /* Frameworks */,
 				D4E43A4D2C937FDF00535CDD /* NACCIntents.appex */,
 				D47EA9D22D39A2630072F491 /* NACCWidgetExtension.appex */,
+				D44D99902D3D627700680D2A /* NACC.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -223,6 +253,7 @@
 		D43C66C62694AC20007D5883 /* NACC */ = {
 			isa = PBXGroup;
 			children = (
+				D48B39512D3D63EB00B7E4E0 /* Shared */,
 				D4B247C3269F0C83004D8D1E /* Main App */,
 				D4B247C2269F0C76004D8D1E /* View Controllers */,
 				D4F54A192809B27200F175C4 /* Utility */,
@@ -411,6 +442,9 @@
 				D4E43A672C937FDF00535CDD /* PBXTargetDependency */,
 				D47EA9DE2D39A2640072F491 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				D48B39512D3D63EB00B7E4E0 /* Shared */,
+			);
 			name = NACC;
 			packageProductDependencies = (
 				D485519328479C10005914FF /* RVS_Generic_Swift_Toolbox */,
@@ -420,7 +454,7 @@
 				D46F8CC32C47EDA300A1E7F5 /* LGV_UICleantime */,
 			);
 			productName = UICleantimeTestHarness;
-			productReference = D47C587228070BE40019FFD3 /* NACC.app */;
+			productReference = D44D99902D3D627700680D2A /* NACC.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D47EA9D12D39A2630072F491 /* NACCWidgetExtension */ = {
@@ -1061,7 +1095,7 @@
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_PersistentPrefs";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.3.10;
+				minimumVersion = 1.4.1;
 			};
 		};
 		D4E6423226AB228E00CA6EE7 /* XCRemoteSwiftPackageReference "RVS_GeneralObserver" */ = {
