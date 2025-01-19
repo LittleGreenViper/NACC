@@ -94,10 +94,9 @@
 		D43C66D82694AC33007D5883 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		D44CA5B32D392F4E00800DD5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		D44CA5B52D392F4E00800DD5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		D44CA5C82D392F4E00800DD5 /* NACC WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NACC WidgetExtension.entitlements"; sourceTree = "<group>"; };
 		D45CF3632809AB4500065E87 /* NACC.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
 		D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPagePrintRenderer.swift; sourceTree = "<group>"; };
-		D47C587228070BE40019FFD3 /* NACC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NACC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D47C587228070BE40019FFD3 /* NACC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = NACC.app; path = "/Users/chrismarshall/Developer/LGV/NACC/build/Debug-iphoneos/NACC.app"; sourceTree = "<absolute>"; };
 		D47EA9D22D39A2630072F491 /* NACCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NACCWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCExtensions.swift; sourceTree = "<group>"; };
 		D48C496A2C9372AA007E87C3 /* NACCGetCleantimeSummaryAppIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCGetCleantimeSummaryAppIntent.swift; sourceTree = "<group>"; };
@@ -203,13 +202,8 @@
 		D43C667E2694AA88007D5883 = {
 			isa = PBXGroup;
 			children = (
-				D4B57E2B2D3C654C00A6844F /* NACCWidgetExtension.entitlements */,
-				D44CA5C82D392F4E00800DD5 /* NACC WidgetExtension.entitlements */,
 				D43C66C52694AC20007D5883 /* Sources */,
 				D43C66D72694AC33007D5883 /* Project-Meta */,
-				D47C587228070BE40019FFD3 /* NACC.app */,
-				D4E43A502C937FDF00535CDD /* NACCIntents */,
-				D4E0B2912D3A85D300723D0C /* NACCWidget */,
 				D485519228479C10005914FF /* Frameworks */,
 				D4E43A4D2C937FDF00535CDD /* NACCIntents.appex */,
 				D47EA9D22D39A2630072F491 /* NACCWidgetExtension.appex */,
@@ -220,6 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				D43C66C62694AC20007D5883 /* NACC */,
+				D4E43A502C937FDF00535CDD /* NACCIntents */,
+				D4E0B2912D3A85D300723D0C /* NACCWidget */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -367,6 +363,7 @@
 		D4E0B2912D3A85D300723D0C /* NACCWidget */ = {
 			isa = PBXGroup;
 			children = (
+				D4B57E2B2D3C654C00A6844F /* NACCWidgetExtension.entitlements */,
 				D4E0B2902D3A85D300723D0C /* NACCWidgetBundle.swift */,
 				D4E0B28F2D3A85D300723D0C /* NACCWidget.swift */,
 				D4E0B28D2D3A85D300723D0C /* Assets.xcassets */,
@@ -859,14 +856,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = NACCWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Sources/NACCWidget/NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3010;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NACCWidget/Info.plist;
+				INFOPLIST_FILE = Sources/NACCWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACCWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -893,14 +890,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = NACCWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Sources/NACCWidget/NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3010;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NACCWidget/Info.plist;
+				INFOPLIST_FILE = Sources/NACCWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACCWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -925,14 +922,14 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = NACCIntents/NACCIntents.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Sources/NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3010;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NACCIntents/Info.plist;
+				INFOPLIST_FILE = Sources/NACCIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACCIntents;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -962,14 +959,14 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = NACCIntents/NACCIntents.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Sources/NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3010;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NACCIntents/Info.plist;
+				INFOPLIST_FILE = Sources/NACCIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACCIntents;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
