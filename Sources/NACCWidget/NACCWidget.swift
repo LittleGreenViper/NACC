@@ -40,7 +40,15 @@ import RVS_Persistent_Prefs
 import WidgetKit
 import SwiftUI
 
+/* ###################################################################################################################################### */
+// MARK: - Widget Data Provider -
+/* ###################################################################################################################################### */
+/**
+ */
 struct NACC_Provider: TimelineProvider {
+    /* ################################################################## */
+    /**
+     */
     func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<NACC_Entry>) -> Void) {
         let timeline = Timeline(entries: [NACC_Entry(date: .now, cleandate: NACCPersistentPrefs().cleanDate)],
                                 policy: .atEnd
@@ -48,38 +56,18 @@ struct NACC_Provider: TimelineProvider {
         completion(timeline)
     }
     
+    /* ################################################################## */
+    /**
+     */
     func placeholder(in context: Context) -> NACC_Entry {
         .init(date: .now, cleandate: NACCPersistentPrefs().cleanDate)
     }
     
+    /* ################################################################## */
+    /**
+     */
     func getSnapshot(in context: Context, completion: @escaping (NACC_Entry) -> ()) {
         completion(NACC_Entry(date: .now, cleandate: NACCPersistentPrefs().cleanDate))
-    }
-}
-
-struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
-    }
-
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
-        completion(entry)
-    }
-
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, emoji: "😀")
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
     }
 
 //    func relevances() async -> WidgetRelevances<Void> {
@@ -87,29 +75,37 @@ struct Provider: TimelineProvider {
 //    }
 }
 
+/* ###################################################################################################################################### */
+// MARK: - Widget Timeline Entry -
+/* ###################################################################################################################################### */
+/**
+ */
 struct NACC_Entry: TimelineEntry {
+    /* ################################################################## */
+    /**
+     */
     var date: Date
+    
+    /* ################################################################## */
+    /**
+     */
     let cleandate: Date
 }
 
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let emoji: String
-}
-
+/* ###################################################################################################################################### */
+// MARK: - Widget View For One Entry -
+/* ###################################################################################################################################### */
+/**
+ */
 struct NACCWidgetEntryView : View {
     /* ################################################################## */
     /**
      */
-    private func _load() {
-        if let values  = UserDefaults(suiteName: "group.org.magshare.NACC"),
-           let valueList = values.object(forKey: "NACCPersistentPrefs") {
-            print(valueList)
-        }
-    }
-
     var entry: NACC_Provider.Entry
 
+    /* ################################################################## */
+    /**
+     */
     var body: some View {
         VStack {
             Text("Date:")
@@ -117,15 +113,25 @@ struct NACCWidgetEntryView : View {
 
             Text("Cleandate:")
             Text(entry.cleandate, style: .date)
-        }.onAppear {
-            _load()
         }
     }
 }
 
+
+/* ###################################################################################################################################### */
+// MARK: - Widget Structure -
+/* ###################################################################################################################################### */
+/**
+ */
 struct NACCWidget: Widget {
+    /* ################################################################## */
+    /**
+     */
     let kind: String = "NACCWidget"
 
+    /* ################################################################## */
+    /**
+     */
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: NACC_Provider()) { entry in
             if #available(iOS 17.0, *) {
@@ -140,10 +146,4 @@ struct NACCWidget: Widget {
         .configurationDisplayName("NACC Widget")
         .description("This is an example widget.")
     }
-}
-
-#Preview(as: .systemSmall) {
-    NACCWidget()
-} timeline: {
-    NACC_Entry(date: .now, cleandate: NACCPersistentPrefs().cleanDate)
 }

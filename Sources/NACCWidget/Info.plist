@@ -7,5 +7,7 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.widgetkit-extension</string>
 	</dict>
+	<key>appGroup</key>
+    <string>group.org.magshare.NACC</string>
 </dict>
 </plist>

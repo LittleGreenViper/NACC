@@ -67,10 +67,7 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
         /**
          These are all the keys, in an Array of String.
          */
-        static var allKeys: [String] { [
-            cleanDate.rawValue,
-            lastSelectedTabIndex.rawValue
-        ] }
+        static var allKeys: [String] { [cleanDate.rawValue, lastSelectedTabIndex.rawValue] }
     }
     
     /* ################################################################################################################################## */
@@ -109,7 +106,11 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
      We just make sure that we use the shared group for our prefs.
      */
     override init() {
-        Self.groupID = g_GroupID
+        if Self.groupID?.isEmpty ?? true,
+           let appGroupString = Bundle.main.infoDictionary?["appGroup"] as? String,
+           !appGroupString.isEmpty {
+            Self.groupID = appGroupString
+        }
         super.init()
     }
 }

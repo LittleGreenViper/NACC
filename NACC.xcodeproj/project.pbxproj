@@ -161,35 +161,6 @@
 		D4F46FDF2C94669E0071D359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/NACCIntents.intentdefinition; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		D48B39572D3D647500B7E4E0 /* Exceptions for "Shared" folder in "NACCIntents" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Shared.swift,
-			);
-			target = D4E43A4C2C937FDF00535CDD /* NACCIntents */;
-		};
-		D48B39582D3D647500B7E4E0 /* Exceptions for "Shared" folder in "NACCWidgetExtension" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Shared.swift,
-			);
-			target = D47EA9D12D39A2630072F491 /* NACCWidgetExtension */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		D48B39512D3D63EB00B7E4E0 /* Shared */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				D48B39572D3D647500B7E4E0 /* Exceptions for "Shared" folder in "NACCIntents" target */,
-				D48B39582D3D647500B7E4E0 /* Exceptions for "Shared" folder in "NACCWidgetExtension" target */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
 		D42491CA2695F44C0094C15F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -243,7 +214,6 @@
 		D43C66C52694AC20007D5883 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				D48B39512D3D63EB00B7E4E0 /* Shared */,
 				D43C66C62694AC20007D5883 /* NACC */,
 				D4E43A502C937FDF00535CDD /* NACCIntents */,
 				D4E0B2912D3A85D300723D0C /* NACCWidget */,
@@ -441,9 +411,6 @@
 			dependencies = (
 				D4E43A672C937FDF00535CDD /* PBXTargetDependency */,
 				D47EA9DE2D39A2640072F491 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				D48B39512D3D63EB00B7E4E0 /* Shared */,
 			);
 			name = NACC;
 			packageProductDependencies = (

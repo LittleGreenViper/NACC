@@ -7,6 +7,8 @@
 		<string>ShowCleantimeIntent</string>
 		<string>NACCGetCleantimeSummaryAppIntent</string>
 	</array>
+	<key>appGroup</key>
+    <string>group.org.magshare.NACC</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>
