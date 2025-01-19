@@ -243,6 +243,7 @@
 		D43C66C52694AC20007D5883 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D48B39512D3D63EB00B7E4E0 /* Shared */,
 				D43C66C62694AC20007D5883 /* NACC */,
 				D4E43A502C937FDF00535CDD /* NACCIntents */,
 				D4E0B2912D3A85D300723D0C /* NACCWidget */,
@@ -253,7 +254,6 @@
 		D43C66C62694AC20007D5883 /* NACC */ = {
 			isa = PBXGroup;
 			children = (
-				D48B39512D3D63EB00B7E4E0 /* Shared */,
 				D4B247C3269F0C83004D8D1E /* Main App */,
 				D4B247C2269F0C76004D8D1E /* View Controllers */,
 				D4F54A192809B27200F175C4 /* Utility */,
@@ -1095,7 +1095,7 @@
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_PersistentPrefs";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.1;
+				minimumVersion = 1.4.2;
 			};
 		};
 		D4E6423226AB228E00CA6EE7 /* XCRemoteSwiftPackageReference "RVS_GeneralObserver" */ = {

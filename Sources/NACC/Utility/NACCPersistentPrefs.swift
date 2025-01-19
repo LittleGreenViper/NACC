@@ -109,7 +109,7 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
      We just make sure that we use the shared group for our prefs.
      */
     override init() {
-        Self.groupID = g_NACC_GroupID
+        Self.groupID = g_GroupID
         super.init()
     }
 }

@@ -22,4 +22,4 @@
 /**
  This is the app group ID, used by all the app components.
  */
-let g_NACC_GroupID = "group.org.magshare.NACC"
+let g_GroupID = "group.org.magshare.NACC"
