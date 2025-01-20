@@ -118,12 +118,6 @@ struct NACC_Entry: TimelineEntry {
         
         let calculator = LGV_CleantimeDateCalc(startDate: inCleandate).cleanTime
         
-        let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
-        keyTagImage.totalDays = calculator.totalDays
-        keyTagImage.totalMonths = calculator.totalMonths
-
-        singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
-        
         if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: inCleandate, endDate: .now) {
             text = textTemp
         } else {
@@ -136,7 +130,13 @@ struct NACC_Entry: TimelineEntry {
             medallionView.totalMonths = calculator.totalMonths
             
             singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+            singleKeytag = nil
         } else {
+            let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
+            keyTagImage.totalDays = calculator.totalDays
+            keyTagImage.totalMonths = calculator.totalMonths
+
+            singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
             singleMedallion = nil
         }
     }
