@@ -37,6 +37,7 @@
 import LGV_UICleantime
 import LGV_Cleantime
 import RVS_Persistent_Prefs
+import RVS_UIKit_Toolbox
 import WidgetKit
 import SwiftUI
 
@@ -90,6 +91,53 @@ struct NACC_Entry: TimelineEntry {
     /**
      */
     let cleandate: Date
+    
+    /* ################################################################## */
+    /**
+     */
+    let text: String
+    
+    /* ################################################################## */
+    /**
+     */
+    let singleKeytag: UIImage?
+    
+    /* ################################################################## */
+    /**
+     */
+    let singleMedallion: UIImage?
+
+    /* ################################################################## */
+    /**
+     */
+    init(date inDate: Date, cleandate inCleandate: Date) {
+        date = inDate
+        cleandate = inCleandate
+        
+        let calculator = LGV_CleantimeDateCalc(startDate: inCleandate).cleanTime
+        
+        let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
+        keyTagImage.totalDays = calculator.totalDays
+        keyTagImage.totalMonths = calculator.totalMonths
+
+        singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: 128)
+        
+        if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: inCleandate, endDate: .now) {
+            text = textTemp
+        } else {
+            text = "ERROR"
+        }
+        
+        if 0 < calculator.years {
+            let medallionView = LGV_UISingleCleantimeMedallionImageView()
+            medallionView.totalDays = calculator.totalDays
+            medallionView.totalMonths = calculator.totalMonths
+            
+            singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: 128)
+        } else {
+            singleMedallion = nil
+        }
+    }
 }
 
 /* ###################################################################################################################################### */
@@ -102,17 +150,43 @@ struct NACCWidgetEntryView : View {
     /**
      */
     var entry: NACC_Provider.Entry
+    
+    /* ################################################################## */
+    /**
+     */
+    var prefs = NACCPersistentPrefs()
+
+    /* ################################################################## */
+    /**
+     */
+    @Environment(\.widgetFamily) var family
 
     /* ################################################################## */
     /**
      */
     var body: some View {
         VStack {
-            Text("Date:")
-            Text(entry.date, style: .date)
+            HStack {
+                Text(entry.text)
+                    .minimumScaleFactor(0.5)
 
-            Text("Cleandate:")
-            Text(entry.cleandate, style: .date)
+                if // .textOnly != prefs.widgetFormat,
+                   .systemMedium == family {
+                    if let newGeneratedImage = entry.singleMedallion ?? entry.singleKeytag {
+                        Image(uiImage: newGeneratedImage)
+                    }
+                }
+            }
+            
+            if // .textOnly != prefs.widgetFormat,
+               .systemLarge == family {
+                
+            }
+
+            if // .textOnly != prefs.widgetFormat,
+               .systemExtraLarge == family {
+                
+            }
         }
     }
 }
@@ -144,6 +218,7 @@ struct NACCWidget: Widget {
             }
         }
         .configurationDisplayName("NACC Widget")
-        .description("This is an example widget.")
+        .description("Calculate your cleantime!")
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
     }
 }
