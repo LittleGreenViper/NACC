@@ -52,6 +52,7 @@ struct NACC_Provider: TimelineProvider {
     /**
      */
     func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<NACC_Entry>) -> Void) {
+        WidgetCenter.shared.reloadTimelines(ofKind: "Widgets")
         let timeline = Timeline(entries: [NACC_Entry(date: .now, cleandate: NACCPersistentPrefs().cleanDate)],
                                 policy: .atEnd
         )

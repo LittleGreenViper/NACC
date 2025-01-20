@@ -1,3 +1,5 @@
+**5.4.0.3010** *January 20, 2025*
+
 **5.3.0.3009** *January 14, 2025*
 
 - Updated the dependencies

@@ -106,11 +106,23 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
      We extract the group string from our info.plist.
      */
     override init() {
+        var oldCleandate: Date?
+        
         if Self.groupID?.isEmpty ?? true,
            let appGroupString = Bundle.main.infoDictionary?["appGroup"] as? String,
            !appGroupString.isEmpty {
+            // This loads any previous prefs, and fetches the cleandate from them (then removes them).
+            // We are changing the type of UserDefaults that we're storing, so we'll store them in our new format from now on.
+            if let loadedPrefs = UserDefaults.standard.object(forKey: "NACCPersistentPrefs") as? [String: Any] {
+                oldCleandate = loadedPrefs[Keys.cleanDate.rawValue] as? Date
+                UserDefaults.standard.removeObject(forKey: "NACCPersistentPrefs")
+            }
+            
             Self.groupID = appGroupString
         }
+        
         super.init()
+        
+        cleanDate = oldCleandate ?? cleanDate
     }
 }
