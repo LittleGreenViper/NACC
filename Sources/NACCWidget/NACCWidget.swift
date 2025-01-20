@@ -39,6 +39,7 @@ import LGV_Cleantime
 import RVS_Persistent_Prefs
 import RVS_UIKit_Toolbox
 import WidgetKit
+import AppIntents
 import SwiftUI
 
 /* ###################################################################################################################################### */
@@ -70,10 +71,6 @@ struct NACC_Provider: TimelineProvider {
     func getSnapshot(in context: Context, completion: @escaping (NACC_Entry) -> ()) {
         completion(NACC_Entry(date: .now, cleandate: NACCPersistentPrefs().cleanDate))
     }
-
-//    func relevances() async -> WidgetRelevances<Void> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
 }
 
 /* ###################################################################################################################################### */
@@ -82,6 +79,11 @@ struct NACC_Provider: TimelineProvider {
 /**
  */
 struct NACC_Entry: TimelineEntry {
+    /* ################################################################## */
+    /**
+     */
+    static private let _imageSizeInDisplayUnits = CGFloat(128)
+    
     /* ################################################################## */
     /**
      */
@@ -120,7 +122,7 @@ struct NACC_Entry: TimelineEntry {
         keyTagImage.totalDays = calculator.totalDays
         keyTagImage.totalMonths = calculator.totalMonths
 
-        singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: 128)
+        singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
         
         if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: inCleandate, endDate: .now) {
             text = textTemp
@@ -133,7 +135,7 @@ struct NACC_Entry: TimelineEntry {
             medallionView.totalDays = calculator.totalDays
             medallionView.totalMonths = calculator.totalMonths
             
-            singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: 128)
+            singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
         } else {
             singleMedallion = nil
         }
@@ -150,11 +152,6 @@ struct NACCWidgetEntryView : View {
     /**
      */
     var entry: NACC_Provider.Entry
-    
-    /* ################################################################## */
-    /**
-     */
-    var prefs = NACCPersistentPrefs()
 
     /* ################################################################## */
     /**
@@ -165,27 +162,17 @@ struct NACCWidgetEntryView : View {
     /**
      */
     var body: some View {
-        VStack {
+        if .systemSmall == family,
+           let newGeneratedImage = entry.singleMedallion ?? entry.singleKeytag {
+            Image(uiImage: newGeneratedImage)
+        } else {
             HStack {
                 Text(entry.text)
                     .minimumScaleFactor(0.5)
-
-                if // .textOnly != prefs.widgetFormat,
-                   .systemMedium == family {
-                    if let newGeneratedImage = entry.singleMedallion ?? entry.singleKeytag {
-                        Image(uiImage: newGeneratedImage)
-                    }
+                
+                if let newGeneratedImage = entry.singleMedallion ?? entry.singleKeytag {
+                    Image(uiImage: newGeneratedImage)
                 }
-            }
-            
-            if // .textOnly != prefs.widgetFormat,
-               .systemLarge == family {
-                
-            }
-
-            if // .textOnly != prefs.widgetFormat,
-               .systemExtraLarge == family {
-                
             }
         }
     }
@@ -219,6 +206,6 @@ struct NACCWidget: Widget {
         }
         .configurationDisplayName("NACC Widget")
         .description("Calculate your cleantime!")
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }

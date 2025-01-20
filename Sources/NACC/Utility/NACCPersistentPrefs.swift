@@ -43,38 +43,6 @@ import RVS_Persistent_Prefs
 /// This is the subclass of the preferences type that will provide our persistent app settings.
 class NACCPersistentPrefs: RVS_PersistentPrefs {
     /* ################################################################################################################################## */
-    // MARK: Widget Format Preference Keys
-    /* ################################################################################################################################## */
-    /**
-     This enum stores how we want to display the cleantime in the widget.
-     */
-    enum WidgetFormat: String, CaseIterable {
-        /* ############################################################## */
-        /**
-         This displays the cleandats as only a text item.
-         */
-        case textOnly
-
-        /* ############################################################## */
-        /**
-         This displays a single keytag, representing the last earned keytag.
-         */
-        case keytags
-
-        /* ############################################################## */
-        /**
-         This displays an array of horizontally-arranged medallions (if over a year). If under a year, it is text-only.
-         */
-        case medallions
-
-        /* ############################################################## */
-        /**
-         This displays a single keytag, representing the last earned keytag, if less than a year, or a medallion, if after a year.
-         */
-        case keytagOrMedallion
-    }
-
-    /* ################################################################################################################################## */
     // MARK: Preference Keys
     /* ################################################################################################################################## */
     /**
@@ -95,21 +63,9 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
 
         /* ############################################################## */
         /**
-         This stores the selected widget format as a string (must be one of the WidgetFormat values)
-         */
-        case widgetFormat
-
-        /* ############################################################## */
-        /**
          These are all the keys, in an Array of String.
          */
-        static var allKeys: [String] {
-            [
-                cleanDate.rawValue,
-                lastSelectedTabIndex.rawValue,
-                widgetFormat.rawValue
-            ]
-        }
+        static var allKeys: [String] {[cleanDate.rawValue, lastSelectedTabIndex.rawValue]}
     }
 
     /* ################################################################################################################################## */
@@ -141,21 +97,6 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
     var lastSelectedTabIndex: Int {
         get { values[Keys.lastSelectedTabIndex.rawValue] as? Int ?? 0 }
         set { values[Keys.lastSelectedTabIndex.rawValue] = newValue }
-    }
-
-    /* ################################################################## */
-    /**
-     This stores the selected widget format as a WidgetFormat value
-     */
-    var widgetFormat: WidgetFormat {
-        get {
-            guard let valueString = values[Keys.widgetFormat.rawValue] as? String,
-                  let ret = WidgetFormat(rawValue: valueString)
-            else { return .textOnly }
-
-            return ret
-        }
-        set { values[Keys.widgetFormat.rawValue] = newValue.rawValue }
     }
 
     /* ################################################################## */
