@@ -43,107 +43,6 @@ import AppIntents
 import SwiftUI
 
 /* ###################################################################################################################################### */
-// MARK: - Widget Data Provider -
-/* ###################################################################################################################################### */
-/**
- */
-struct NACC_Provider: TimelineProvider {
-    /* ################################################################## */
-    /**
-     */
-    func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<NACC_Entry>) -> Void) {
-        WidgetCenter.shared.reloadTimelines(ofKind: "Widgets")
-        let timeline = Timeline(entries: [NACC_Entry(date: .now, cleandate: NACCPersistentPrefs().cleanDate)],
-                                policy: .atEnd
-        )
-        completion(timeline)
-    }
-    
-    /* ################################################################## */
-    /**
-     */
-    func placeholder(in context: Context) -> NACC_Entry {
-        .init(date: .now, cleandate: NACCPersistentPrefs().cleanDate)
-    }
-    
-    /* ################################################################## */
-    /**
-     */
-    func getSnapshot(in context: Context, completion: @escaping (NACC_Entry) -> ()) {
-        completion(NACC_Entry(date: .now, cleandate: NACCPersistentPrefs().cleanDate))
-    }
-}
-
-/* ###################################################################################################################################### */
-// MARK: - Widget Timeline Entry -
-/* ###################################################################################################################################### */
-/**
- */
-struct NACC_Entry: TimelineEntry {
-    /* ################################################################## */
-    /**
-     */
-    static private let _imageSizeInDisplayUnits = CGFloat(128)
-    
-    /* ################################################################## */
-    /**
-     */
-    var date: Date
-    
-    /* ################################################################## */
-    /**
-     */
-    let cleandate: Date
-    
-    /* ################################################################## */
-    /**
-     */
-    let text: String
-    
-    /* ################################################################## */
-    /**
-     */
-    let singleKeytag: UIImage?
-    
-    /* ################################################################## */
-    /**
-     */
-    let singleMedallion: UIImage?
-
-    /* ################################################################## */
-    /**
-     */
-    init(date inDate: Date, cleandate inCleandate: Date) {
-        date = inDate
-        cleandate = inCleandate
-        
-        let calculator = LGV_CleantimeDateCalc(startDate: inCleandate).cleanTime
-        
-        if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: inCleandate, endDate: .now) {
-            text = textTemp
-        } else {
-            text = "ERROR"
-        }
-        
-        if 0 < calculator.years {
-            let medallionView = LGV_UISingleCleantimeMedallionImageView()
-            medallionView.totalDays = calculator.totalDays
-            medallionView.totalMonths = calculator.totalMonths
-            
-            singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
-            singleKeytag = nil
-        } else {
-            let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
-            keyTagImage.totalDays = calculator.totalDays
-            keyTagImage.totalMonths = calculator.totalMonths
-
-            singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
-            singleMedallion = nil
-        }
-    }
-}
-
-/* ###################################################################################################################################### */
 // MARK: - Widget View For One Entry -
 /* ###################################################################################################################################### */
 /**
@@ -179,7 +78,6 @@ struct NACCWidgetEntryView : View {
     }
 }
 
-
 /* ###################################################################################################################################### */
 // MARK: - Widget Structure -
 /* ###################################################################################################################################### */
@@ -189,7 +87,12 @@ struct NACCWidget: Widget {
     /* ################################################################## */
     /**
      */
-    let kind: String = "NACCWidget"
+    static let kind: String = "NACCWidget"
+
+    /* ################################################################## */
+    /**
+     */
+    let kind: String = Self.kind
 
     /* ################################################################## */
     /**
@@ -208,5 +111,97 @@ struct NACCWidget: Widget {
         .configurationDisplayName("NACC Widget")
         .description("Calculate your cleantime!")
         .supportedFamilies([.systemSmall, .systemMedium])
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: - Widget Data Provider -
+/* ###################################################################################################################################### */
+/**
+ */
+struct NACC_Provider: TimelineProvider {
+    /* ################################################################## */
+    /**
+     */
+    func getTimeline(in context: Context, completion inCompletion: @escaping @Sendable (Timeline<NACC_Entry>) -> Void) {
+        WidgetCenter.shared.reloadTimelines(ofKind: NACCWidget.kind)
+        inCompletion(Timeline(entries: [NACC_Entry(date: .now, cleandate: NACCPersistentPrefs().cleanDate)], policy: .atEnd))
+    }
+    
+    /* ################################################################## */
+    /**
+     */
+    func placeholder(in context: Context) -> NACC_Entry {
+        .init(date: .now, cleandate: .now)
+    }
+    
+    /* ################################################################## */
+    /**
+     */
+    func getSnapshot(in context: Context, completion: @escaping (NACC_Entry) -> ()) {
+        completion(NACC_Entry(date: .now, cleandate: .now))
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: - Widget Timeline Entry -
+/* ###################################################################################################################################### */
+/**
+ */
+struct NACC_Entry: TimelineEntry {
+    /* ################################################################## */
+    /**
+     */
+    static private let _imageSizeInDisplayUnits = CGFloat(128)
+    
+    /* ################################################################## */
+    /**
+     */
+    var date: Date
+    
+    /* ################################################################## */
+    /**
+     */
+    let text: String
+    
+    /* ################################################################## */
+    /**
+     */
+    let singleKeytag: UIImage?
+    
+    /* ################################################################## */
+    /**
+     */
+    let singleMedallion: UIImage?
+
+    /* ################################################################## */
+    /**
+     */
+    init(date inDate: Date, cleandate inCleandate: Date) {
+        date = inDate
+        
+        let calculator = LGV_CleantimeDateCalc(startDate: inCleandate).cleanTime
+        
+        if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: inCleandate, endDate: .now) {
+            text = textTemp
+        } else {
+            text = "ERROR"
+        }
+        
+        if 0 < calculator.years {
+            let medallionView = LGV_UISingleCleantimeMedallionImageView()
+            medallionView.totalDays = calculator.totalDays
+            medallionView.totalMonths = calculator.totalMonths
+            
+            singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+            singleKeytag = nil
+        } else {
+            let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
+            keyTagImage.totalDays = calculator.totalDays
+            keyTagImage.totalMonths = calculator.totalMonths
+
+            singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+            singleMedallion = nil
+        }
     }
 }

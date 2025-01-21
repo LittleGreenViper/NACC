@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>appGroup</key>
-    <string>group.org.magshare.NACC</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -53,6 +51,10 @@
 	<string>This app needs access to your contacts, in order to fill out an anniversary event.  This information is never sent outside of your computer, and is not directly used by this app.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app allows you to save images of keytags or medallions to your Photo Library</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>DisplayCleantime</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -74,6 +76,11 @@
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>processing</string>
+		<string>fetch</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>NACC_LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -96,9 +103,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSUserActivityTypes</key>
-	<array>
-		<string>DisplayCleantime</string>
-	</array>
+	<key>appGroup</key>
+	<string>group.org.magshare.NACC</string>
 </dict>
 </plist>

@@ -20,6 +20,7 @@
 
 import UIKit
 import LGV_UICleantime
+import WidgetKit
 
 /* ###################################################################################################################################### */
 // MARK: - Main App Delegate -
@@ -385,6 +386,7 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         #if DEBUG
             print("\n#### Scene Entering Foreground.\n####\n")
         #endif
+        WidgetCenter.shared.reloadTimelines(ofKind: "NACCWidget")
         if _resetScreen {
             _navigationController?.popToRootViewController(animated: false)
             _initialViewController?.setDate(NACCPersistentPrefs().cleanDate, tabIndex: _selectedTabFromURI)
