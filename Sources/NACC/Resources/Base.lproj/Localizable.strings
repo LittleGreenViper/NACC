@@ -125,11 +125,5 @@
 "SLUG-INTENTS-SHORTTITLE"                       =   "NA Cleantime";
 
 // MARK: Widget
-
-"SLUG-WIDGET-DISPLAY-TYPE-textOnly"             =   "Text";
-"SLUG-WIDGET-DISPLAY-TYPE-textAndKeytag"        =   "Text and Keytag";
-"SLUG-WIDGET-DISPLAY-TYPE-textAndMedallion"     =   "Text and Keytag or Medallion";
-"SLUG-WIDGET-DISPLAY-TYPE-keytagOnly"           =   "Keytag";
-"SLUG-WIDGET-DISPLAY-TYPE-medallionOnly"        =   "Keytag or Medallion";
-"SLUG-WIDGET-DISPLAY-TYPE-TITLE"                =   "Widget Display Type";
-"SLUG-WIDGET-DISPLAY-TYPE-DESCRIPTION"          =   "Choose how you want your cleantime displayed in the widget";
+"SLUG-WIDGET-NAME"                              =   "NACC";
+"SLUG-WIDGET-DESCRIPTION"                       =   "Calculate Your Cleantime!";

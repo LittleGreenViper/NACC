@@ -1,0 +1,50 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "SLUG-INTENT-DESC" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provides Parameters for the Widget"
+          }
+        }
+      }
+    },
+    "SLUG-INTENT-NAME" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NACC Widget Intent"
+          }
+        }
+      }
+    },
+    "SLUG-ONLY-SHOW-KEYTAGS" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only Show Keytags"
+          }
+        }
+      }
+    },
+    "SLUG-ONLY-SHOW-TEXT" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only Show Text"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

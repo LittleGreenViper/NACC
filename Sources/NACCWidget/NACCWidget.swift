@@ -62,9 +62,13 @@ struct NACCWidgetEntryView : View {
     /**
      */
     var body: some View {
-        if .systemSmall == family,
-           let newGeneratedImage = entry.singleMedallion ?? entry.singleKeytag {
-            Image(uiImage: newGeneratedImage)
+        if .systemSmall == family {
+            if let newGeneratedImage = entry.singleMedallion ?? entry.singleKeytag {
+                Image(uiImage: newGeneratedImage)
+            } else {
+                Text(entry.text)
+                    .minimumScaleFactor(0.5)
+            }
         } else {
             HStack {
                 Text(entry.text)
@@ -108,8 +112,8 @@ struct NACCWidget: Widget {
                     .background()
             }
         }
-        .configurationDisplayName("NACC Widget")
-        .description("Calculate your cleantime!")
+        .configurationDisplayName("SLUG-WIDGET-NAME".localizedVariant)
+        .description("SLUG-WIDGET-DESCRIPTION".localizedVariant)
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
@@ -123,12 +127,40 @@ struct NACCWidgetIntent: WidgetConfigurationIntent {
     /* ################################################################## */
     /**
      */
-    static var title = LocalizedStringResource("NACC Widget Configuration")
+    static var title = LocalizedStringResource("SLUG-INTENT-NAME", table: "WidgetStrings")
     
     /* ################################################################## */
     /**
      */
-    var forceKeytag: Bool = true
+    static var description = IntentDescription(LocalizedStringResource("SLUG-INTENT-DESC", table: "WidgetStrings"))
+    
+    /* ################################################################## */
+    /**
+     */
+    @Parameter(title: LocalizedStringResource("SLUG-ONLY-SHOW-TEXT", table: "WidgetStrings"))
+    var onlyText: Bool?
+
+    /* ################################################################## */
+    /**
+     */
+    @Parameter(title: LocalizedStringResource("SLUG-ONLY-SHOW-KEYTAGS", table: "WidgetStrings"))
+    var forceKeytag: Bool?
+
+    /* ################################################################## */
+    /**
+     */
+    init(forceKeytag inForceKeytag: Bool, onlyText inOnlyText: Bool) {
+        forceKeytag = inForceKeytag
+        onlyText = inOnlyText
+    }
+    
+    /* ################################################################## */
+    /**
+     */
+    init() {
+        forceKeytag = false
+        onlyText = false
+    }
 }
 
 /* ###################################################################################################################################### */
@@ -163,7 +195,8 @@ struct NACC_Provider: AppIntentTimelineProvider {
     /**
      */
     func timeline(for inConfiguration: NACCWidgetIntent, in inContext: Context) async -> Timeline<NACC_Entry> {
-        var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate, forceKeytag: inConfiguration.forceKeytag)
+        NACCPersistentPrefs().userDefaults?.synchronize( )
+        var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate, forceKeytag: inConfiguration.forceKeytag ?? false, onlyText: inConfiguration.onlyText ?? false)
         DispatchQueue.main.sync { entry.synchronize() }
         return Timeline(entries: [entry], policy: .atEnd)
     }
@@ -194,7 +227,12 @@ struct NACC_Entry: TimelineEntry {
     /**
      */
     var forceKeytag: Bool
-    
+
+    /* ################################################################## */
+    /**
+     */
+    var onlyText: Bool
+
     /* ################################################################## */
     /**
      */
@@ -217,34 +255,39 @@ struct NACC_Entry: TimelineEntry {
         let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
         
         if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) {
-            self.text = textTemp
+            text = textTemp
         } else {
-            self.text = "ERROR"
+            text = "ERROR"
         }
         
-        if 0 < calculator.years || forceKeytag {
+        singleKeytag = nil
+        singleMedallion = nil
+        
+        guard !onlyText else { return }
+        
+        if 0 < calculator.years,
+           !forceKeytag {
             let medallionView = LGV_UISingleCleantimeMedallionImageView()
             medallionView.totalDays = calculator.totalDays
             medallionView.totalMonths = calculator.totalMonths
             
-            self.singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
-            self.singleKeytag = nil
+            singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
         } else {
             let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
             keyTagImage.totalDays = calculator.totalDays
             keyTagImage.totalMonths = calculator.totalMonths
 
-            self.singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
-            self.singleMedallion = nil
+            singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
         }
     }
 
     /* ################################################################## */
     /**
      */
-    init(date inDate: Date = .now, cleanDate inCleandate: Date = .now, forceKeytag inForceKeytag: Bool = true) {
+    init(date inDate: Date = .now, cleanDate inCleandate: Date = .now, forceKeytag inForceKeytag: Bool = true, onlyText inOnlyText: Bool = false) {
         date = inDate
         cleanDate = inCleandate
         forceKeytag = inForceKeytag
+        onlyText = inOnlyText
     }
 }
