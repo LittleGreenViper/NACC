@@ -386,7 +386,6 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         #if DEBUG
             print("\n#### Scene Entering Foreground.\n####\n")
         #endif
-        WidgetCenter.shared.reloadTimelines(ofKind: "NACCWidget")
         if _resetScreen {
             _navigationController?.popToRootViewController(animated: false)
             _initialViewController?.setDate(NACCPersistentPrefs().cleanDate, tabIndex: _selectedTabFromURI)
@@ -429,6 +428,8 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         #if DEBUG
             print("\n#### Scene Entered Background.\n####\n")
         #endif
+        
+        WidgetCenter.shared.reloadAllTimelines()
         
         _navigationController?.viewControllers.forEach {
             // The first one, is in case we have a second modal over the main one (doesn't work for all of them).

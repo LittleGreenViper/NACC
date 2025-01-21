@@ -1067,7 +1067,7 @@
 			repositoryURL = "https://github.com/LittleGreenViper/LGV_Cleantime";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.2;
+				minimumVersion = 1.4.3;
 			};
 		};
 		D46F8CC22C47EDA300A1E7F5 /* XCRemoteSwiftPackageReference "LGV_UICleantime" */ = {
@@ -1075,7 +1075,7 @@
 			repositoryURL = "https://github.com/LittleGreenViper/LGV_UICleantime";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 2.0.2;
 			};
 		};
 		D4B80C7B27FCF10300401F72 /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */ = {
@@ -1083,7 +1083,7 @@
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_PersistentPrefs";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.2;
+				minimumVersion = 1.4.3;
 			};
 		};
 		D4E245E32D3DDB1E003EC91C /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */ = {
