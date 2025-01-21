@@ -6,7 +6,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.org.magshare.NACC</string>
+		<string>group.P53V4JS928.org.magshare.NACC</string>
 	</array>
 	<key>com.apple.security.network.client</key>
 	<true/>

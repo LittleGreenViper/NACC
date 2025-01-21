@@ -98,7 +98,7 @@ struct NACCWidget: Widget {
     /**
      */
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: NACC_Provider()) { entry in
+        AppIntentConfiguration(kind: kind, intent: NACCWidgetIntent.self, provider: NACC_Provider()) { entry in
             if #available(iOS 17.0, *) {
                 NACCWidgetEntryView(entry: entry)
                     .containerBackground(.fill.tertiary, for: .widget)
@@ -119,26 +119,53 @@ struct NACCWidget: Widget {
 /* ###################################################################################################################################### */
 /**
  */
-struct NACC_Provider: TimelineProvider {
+struct NACCWidgetIntent: WidgetConfigurationIntent {
     /* ################################################################## */
     /**
      */
-    func getTimeline(in context: Context, completion inCompletion: @escaping @Sendable (Timeline<NACC_Entry>) -> Void) {
-        inCompletion(Timeline(entries: [NACC_Entry(date: .now, cleandate: NACCPersistentPrefs().cleanDate)], policy: .atEnd))
-    }
+    static var title = LocalizedStringResource("NACC Widget Configuration")
     
+    /* ################################################################## */
+    /**
+     */
+    var forceKeytag: Bool = true
+}
+
+/* ###################################################################################################################################### */
+// MARK: - Widget Data Provider -
+/* ###################################################################################################################################### */
+/**
+ */
+struct NACC_Provider: AppIntentTimelineProvider {
+    /* ################################################################## */
+    /**
+     */
+    typealias Entry = NACC_Entry
+    
+    /* ################################################################## */
+    /**
+     */
+    typealias Intent = NACCWidgetIntent
+
     /* ################################################################## */
     /**
      */
     func placeholder(in context: Context) -> NACC_Entry {
-        .init(date: .now, cleandate: .now)
+        NACC_Entry()
     }
     
     /* ################################################################## */
     /**
      */
-    func getSnapshot(in context: Context, completion: @escaping (NACC_Entry) -> ()) {
-        completion(NACC_Entry(date: .now, cleandate: .now))
+    func snapshot(for configuration: NACCWidgetIntent, in context: Context) async -> NACC_Entry { NACC_Entry() }
+    
+    /* ################################################################## */
+    /**
+     */
+    func timeline(for inConfiguration: NACCWidgetIntent, in inContext: Context) async -> Timeline<NACC_Entry> {
+        var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate, forceKeytag: inConfiguration.forceKeytag)
+        DispatchQueue.main.sync { entry.synchronize() }
+        return Timeline(entries: [entry], policy: .atEnd)
     }
 }
 
@@ -161,46 +188,63 @@ struct NACC_Entry: TimelineEntry {
     /* ################################################################## */
     /**
      */
-    let text: String
+    var cleanDate: Date
     
     /* ################################################################## */
     /**
      */
-    let singleKeytag: UIImage?
+    var forceKeytag: Bool
     
     /* ################################################################## */
     /**
      */
-    let singleMedallion: UIImage?
-
+    var text: String = ""
+    
     /* ################################################################## */
     /**
      */
-    init(date inDate: Date, cleandate inCleandate: Date) {
-        date = inDate
+    var singleKeytag: UIImage?
+    
+    /* ################################################################## */
+    /**
+     */
+    var singleMedallion: UIImage?
+    
+    /* ################################################################## */
+    /**
+     */
+    mutating func synchronize() {
+        let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
         
-        let calculator = LGV_CleantimeDateCalc(startDate: inCleandate).cleanTime
-        
-        if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: inCleandate, endDate: .now) {
-            text = textTemp
+        if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) {
+            self.text = textTemp
         } else {
-            text = "ERROR"
+            self.text = "ERROR"
         }
         
-        if 0 < calculator.years {
+        if 0 < calculator.years || forceKeytag {
             let medallionView = LGV_UISingleCleantimeMedallionImageView()
             medallionView.totalDays = calculator.totalDays
             medallionView.totalMonths = calculator.totalMonths
             
-            singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
-            singleKeytag = nil
+            self.singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+            self.singleKeytag = nil
         } else {
             let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
             keyTagImage.totalDays = calculator.totalDays
             keyTagImage.totalMonths = calculator.totalMonths
 
-            singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
-            singleMedallion = nil
+            self.singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+            self.singleMedallion = nil
         }
+    }
+
+    /* ################################################################## */
+    /**
+     */
+    init(date inDate: Date = .now, cleanDate inCleandate: Date = .now, forceKeytag inForceKeytag: Bool = true) {
+        date = inDate
+        cleanDate = inCleandate
+        forceKeytag = inForceKeytag
     }
 }
