@@ -20,7 +20,6 @@
 
 import UIKit
 import LGV_UICleantime
-import WidgetKit
 
 /* ###################################################################################################################################### */
 // MARK: - Main App Delegate -
@@ -428,8 +427,6 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         #if DEBUG
             print("\n#### Scene Entered Background.\n####\n")
         #endif
-        
-        WidgetCenter.shared.reloadAllTimelines()
         
         _navigationController?.viewControllers.forEach {
             // The first one, is in case we have a second modal over the main one (doesn't work for all of them).

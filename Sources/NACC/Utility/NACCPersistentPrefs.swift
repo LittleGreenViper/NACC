@@ -36,6 +36,7 @@
 
 import Foundation
 import RVS_Persistent_Prefs
+import WidgetKit
 
 /* ###################################################################################################################################### */
 // MARK: - The Persistent Prefs Subclass -
@@ -87,7 +88,10 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
      */
     var cleanDate: Date {
         get { values[Keys.cleanDate.rawValue] as? Date ?? .now }
-        set { values[Keys.cleanDate.rawValue] = newValue }
+        set {
+            values[Keys.cleanDate.rawValue] = newValue
+            WidgetCenter.shared.reloadAllTimelines()
+        }
     }
 
     /* ################################################################## */
