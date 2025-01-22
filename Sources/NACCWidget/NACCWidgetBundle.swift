@@ -69,22 +69,29 @@ struct NACCWidgetEntryView : View {
     /* ################################################################## */
     /**
      */
-    @Environment(\.widgetFamily) var family
+    @Environment(\.widgetFamily) private var _family
+
+    /* ################################################################## */
+    /**
+     */
+    @Environment(\.colorScheme) private var _colorScheme
 
     /* ################################################################## */
     /**
      */
     var body: some View {
-        if .systemSmall == family {
+        if .systemSmall == _family {
             if let newGeneratedImage = entry.singleMedallion ?? entry.singleKeytag {
                 Image(uiImage: newGeneratedImage)
             } else {
                 Text(entry.text)
+                    .colorScheme(!entry.yellowTag ? .light : _colorScheme)
                     .minimumScaleFactor(0.5)
             }
         } else {
             HStack {
                 Text(entry.text)
+                    .colorScheme(!entry.yellowTag ? .light : _colorScheme)
                     .minimumScaleFactor(0.5)
                 
                 if let newGeneratedImage = entry.singleMedallion ?? entry.singleKeytag {
@@ -118,7 +125,12 @@ struct NACCWidget: Widget {
         AppIntentConfiguration(kind: kind, intent: NACCWidgetIntent.self, provider: NACC_IntentProvider()) { entry in
             if #available(iOS 17.0, *) {
                 NACCWidgetEntryView(entry: entry)
-                    .containerBackground(.fill.tertiary, for: .widget)
+                    .containerBackground(for: .widget) {
+                        if !entry.yellowTag {
+                            Image("BackgroundGradient")
+                                .resizable(resizingMode: .stretch)
+                        }
+                    }
             } else {
                 NACCWidgetEntryView(entry: entry)
                     .padding()
@@ -252,7 +264,12 @@ struct NACC_Entry: TimelineEntry {
     /**
      */
     var text: String = ""
-    
+
+    /* ################################################################## */
+    /**
+     */
+    var yellowTag = false
+
     /* ################################################################## */
     /**
      */
@@ -291,7 +308,7 @@ struct NACC_Entry: TimelineEntry {
             let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
             keyTagImage.totalDays = calculator.totalDays
             keyTagImage.totalMonths = calculator.totalMonths
-
+            yellowTag = (9..<12).contains(calculator.totalMonths) || (45..<50).contains(calculator.years)
             singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
         }
     }

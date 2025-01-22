@@ -30,6 +30,7 @@
 		D498E1862D404CB800388CC3 /* WidgetStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D498E1852D404CB800388CC3 /* WidgetStrings.xcstrings */; };
 		D498E1872D404D5500388CC3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 		D49C9A7C280783C6008E9917 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D49C9A7A280783C6008E9917 /* InfoPlist.strings */; };
+		D4A1CC022D413FCF00098329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E0B28D2D3A85D300723D0C /* Assets.xcassets */; };
 		D4B20E7A2C938D22006C7ED8 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B20E792C938D22006C7ED8 /* LGV_Cleantime */; };
 		D4B20E7C2C938D22006C7ED8 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B20E7B2C938D22006C7ED8 /* LGV_UICleantime */; };
 		D4B57E242D3C5E2D00A6844F /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
@@ -41,7 +42,6 @@
 		D4C70F172D411E7E005A2A79 /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D4C70F162D411E7E005A2A79 /* RVS_Persistent_Prefs */; };
 		D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */; };
 		D4C79A2127F9189800FBB7D3 /* NACC_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */; };
-		D4E0B2922D3A85D300723D0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E0B28D2D3A85D300723D0C /* Assets.xcassets */; };
 		D4E0B2952D3A85D300723D0C /* NACCWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E0B2902D3A85D300723D0C /* NACCWidgetBundle.swift */; };
 		D4E245E22D3DD963003EC91C /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D433F5D22D3B015600687B9C /* LGV_UICleantime.xcassets */; };
 		D4E245E92D3DDBC0003EC91C /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4E245E82D3DDBC0003EC91C /* RVS_UIKit_Toolbox */; };
@@ -546,9 +546,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4E0B2922D3A85D300723D0C /* Assets.xcassets in Resources */,
 				D498E1872D404D5500388CC3 /* Localizable.strings in Resources */,
 				D498E1862D404CB800388CC3 /* WidgetStrings.xcstrings in Resources */,
+				D4A1CC022D413FCF00098329 /* Assets.xcassets in Resources */,
 				D4E245E22D3DD963003EC91C /* LGV_UICleantime.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
