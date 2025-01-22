@@ -28,7 +28,7 @@ This is a simple "cleantime calculator" app, for NA members (It is not associate
 
 ## Basic Operation
 
-> NOTE: As of version 5.4.0, there is now a widget available. This can be configured to display the latest keytga, medallion, text report, or all of the above.
+> NOTE: As of version 5.4.0, there is now a widget available. This can be configured to display the latest keytag, medallion, text report, or all of the above.
 
 ### The Initial ("My Cleantime") Screen
 
