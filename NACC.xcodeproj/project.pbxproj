@@ -17,7 +17,6 @@
 		D46F8CC42C47EDA300A1E7F5 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D46F8CC32C47EDA300A1E7F5 /* LGV_UICleantime */; };
 		D474789F28073D5400212919 /* NACCPagePrintRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */; };
 		D477647A2D3FFA2400DB748E /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D47764792D3FFA2400DB748E /* RVS_Persistent_Prefs */; };
-		D477647E2D3FFA3600DB748E /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D477647D2D3FFA3600DB748E /* RVS_Persistent_Prefs */; };
 		D47EA9D32D39A2630072F491 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44CA5B32D392F4E00800DD5 /* WidgetKit.framework */; };
 		D47EA9D42D39A2630072F491 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44CA5B52D392F4E00800DD5 /* SwiftUI.framework */; };
 		D47EA9DF2D39A2640072F491 /* NACCWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D47EA9D22D39A2630072F491 /* NACCWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -38,6 +37,8 @@
 		D4B57E282D3C5EEC00A6844F /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B57E272D3C5EEC00A6844F /* LGV_Cleantime */; };
 		D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D4BD88F1269E2FAA009015D1 /* NACCAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */; };
+		D4C70F152D411E68005A2A79 /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D4C70F142D411E68005A2A79 /* RVS_Persistent_Prefs */; };
+		D4C70F172D411E7E005A2A79 /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D4C70F162D411E7E005A2A79 /* RVS_Persistent_Prefs */; };
 		D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */; };
 		D4C79A2127F9189800FBB7D3 /* NACC_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */; };
 		D4E0B2922D3A85D300723D0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E0B28D2D3A85D300723D0C /* Assets.xcassets */; };
@@ -100,7 +101,6 @@
 		D44D99902D3D627700680D2A /* NACC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NACC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D45CF3632809AB4500065E87 /* NACC.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
 		D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPagePrintRenderer.swift; sourceTree = "<group>"; };
-		D47764782D3FFA1500DB748E /* RVS_Persistent_Prefs */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RVS_Persistent_Prefs; path = /Users/chrismarshall/Developer/RiftValley/RVS_Persistent_Prefs; sourceTree = "<absolute>"; };
 		D477647F2D40026E00DB748E /* NACC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
 		D47EA9D22D39A2630072F491 /* NACCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NACCWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCExtensions.swift; sourceTree = "<group>"; };
@@ -171,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4C70F152D411E68005A2A79 /* RVS_Persistent_Prefs in Frameworks */,
 				D485519628479C10005914FF /* RVS_GeneralObserver in Frameworks */,
 				D46F8CC42C47EDA300A1E7F5 /* LGV_UICleantime in Frameworks */,
 				D485519428479C10005914FF /* RVS_Generic_Swift_Toolbox in Frameworks */,
@@ -183,7 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D477647E2D3FFA3600DB748E /* RVS_Persistent_Prefs in Frameworks */,
+				D4C70F172D411E7E005A2A79 /* RVS_Persistent_Prefs in Frameworks */,
 				D47EA9D42D39A2630072F491 /* SwiftUI.framework in Frameworks */,
 				D4E245E92D3DDBC0003EC91C /* RVS_UIKit_Toolbox in Frameworks */,
 				D47EA9D32D39A2630072F491 /* WidgetKit.framework in Frameworks */,
@@ -208,7 +209,6 @@
 		D43C667E2694AA88007D5883 = {
 			isa = PBXGroup;
 			children = (
-				D47764782D3FFA1500DB748E /* RVS_Persistent_Prefs */,
 				D43C66C52694AC20007D5883 /* Sources */,
 				D43C66D72694AC33007D5883 /* Project-Meta */,
 				D485519228479C10005914FF /* Frameworks */,
@@ -427,6 +427,7 @@
 				D46F8CC02C47ED0800A1E7F5 /* LGV_Cleantime */,
 				D46F8CC32C47EDA300A1E7F5 /* LGV_UICleantime */,
 				D47764792D3FFA2400DB748E /* RVS_Persistent_Prefs */,
+				D4C70F142D411E68005A2A79 /* RVS_Persistent_Prefs */,
 			);
 			productName = UICleantimeTestHarness;
 			productReference = D44D99902D3D627700680D2A /* NACC.app */;
@@ -449,7 +450,7 @@
 				D4B57E252D3C5EE600A6844F /* LGV_UICleantime */,
 				D4B57E272D3C5EEC00A6844F /* LGV_Cleantime */,
 				D4E245E82D3DDBC0003EC91C /* RVS_UIKit_Toolbox */,
-				D477647D2D3FFA3600DB748E /* RVS_Persistent_Prefs */,
+				D4C70F162D411E7E005A2A79 /* RVS_Persistent_Prefs */,
 			);
 			productName = NACCWidgetExtension;
 			productReference = D47EA9D22D39A2630072F491 /* NACCWidgetExtension.appex */;
@@ -511,6 +512,7 @@
 				D46F8CBF2C47ED0800A1E7F5 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */,
 				D46F8CC22C47EDA300A1E7F5 /* XCRemoteSwiftPackageReference "LGV_UICleantime" */,
 				D4E245E32D3DDB1E003EC91C /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */,
+				D4C70F132D411E68005A2A79 /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D43C667E2694AA88007D5883;
@@ -1083,6 +1085,14 @@
 				minimumVersion = 2.0.2;
 			};
 		};
+		D4C70F132D411E68005A2A79 /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RiftValleySoftware/RVS_PersistentPrefs";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.4;
+			};
+		};
 		D4E245E32D3DDB1E003EC91C /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_UIKit_Toolbox";
@@ -1116,10 +1126,6 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = RVS_Persistent_Prefs;
 		};
-		D477647D2D3FFA3600DB748E /* RVS_Persistent_Prefs */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = RVS_Persistent_Prefs;
-		};
 		D485519328479C10005914FF /* RVS_Generic_Swift_Toolbox */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D42491B52695EF270094C15F /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */;
@@ -1149,6 +1155,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D46F8CBF2C47ED0800A1E7F5 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */;
 			productName = LGV_Cleantime;
+		};
+		D4C70F142D411E68005A2A79 /* RVS_Persistent_Prefs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4C70F132D411E68005A2A79 /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */;
+			productName = RVS_Persistent_Prefs;
+		};
+		D4C70F162D411E7E005A2A79 /* RVS_Persistent_Prefs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4C70F132D411E68005A2A79 /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */;
+			productName = RVS_Persistent_Prefs;
 		};
 		D4E245E82D3DDBC0003EC91C /* RVS_UIKit_Toolbox */ = {
 			isa = XCSwiftPackageProductDependency;
