@@ -46,6 +46,7 @@ import SwiftUI
 // MARK: - Widget Bundle Entrypoint -
 /* ###################################################################################################################################### */
 /**
+ This file implements an 
  */
 @main
 struct NACCWidgetBundle: WidgetBundle {
@@ -85,13 +86,13 @@ struct NACCWidgetEntryView : View {
                 Image(uiImage: newGeneratedImage)
             } else {
                 Text(entry.text)
-                    .colorScheme(!entry.yellowTag ? .light : _colorScheme)
+                    .colorScheme(!entry.dontShowBackground && !entry.yellowTag ? .light : _colorScheme)
                     .minimumScaleFactor(0.5)
             }
         } else {
             HStack {
                 Text(entry.text)
-                    .colorScheme(!entry.yellowTag ? .light : _colorScheme)
+                    .colorScheme(!entry.dontShowBackground && !entry.yellowTag ? .light : _colorScheme)
                     .minimumScaleFactor(0.5)
                 
                 if let newGeneratedImage = entry.singleMedallion ?? entry.singleKeytag {
@@ -126,7 +127,8 @@ struct NACCWidget: Widget {
             if #available(iOS 17.0, *) {
                 NACCWidgetEntryView(entry: entry)
                     .containerBackground(for: .widget) {
-                        if !entry.yellowTag {
+                        if !entry.dontShowBackground,
+                           !entry.yellowTag {
                             Image("BackgroundGradient")
                                 .resizable(resizingMode: .stretch)
                         }
@@ -168,7 +170,11 @@ struct NACC_IntentProvider: AppIntentTimelineProvider {
     /**
      */
     func snapshot(for inConfiguration: NACCWidgetIntent, in: Context) async -> NACC_Entry {
-        var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate, forceKeytag: inConfiguration.forceKeytag ?? false, onlyText: inConfiguration.onlyText ?? false)
+        var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate,
+                               forceKeytag: inConfiguration.forceKeytag ?? false,
+                               onlyText: inConfiguration.onlyText ?? false,
+                               dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
+        )
         DispatchQueue.main.sync { entry.synchronize() }
         return entry
     }
@@ -178,7 +184,12 @@ struct NACC_IntentProvider: AppIntentTimelineProvider {
      */
     func timeline(for inConfiguration: NACCWidgetIntent, in: Context) async -> Timeline<NACC_Entry> {
         NACCPersistentPrefs().flush()
-        var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate, forceKeytag: inConfiguration.forceKeytag ?? false, onlyText: inConfiguration.onlyText ?? false)
+        var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate,
+                               forceKeytag: inConfiguration.forceKeytag ?? false,
+                               onlyText: inConfiguration.onlyText ?? false,
+                               dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
+        )
+        
         DispatchQueue.main.sync { entry.synchronize() }
         return Timeline(entries: [entry], policy: .atEnd)
     }
@@ -215,9 +226,19 @@ struct NACCWidgetIntent: WidgetConfigurationIntent {
     /* ################################################################## */
     /**
      */
-    init(forceKeytag inForceKeytag: Bool, onlyText inOnlyText: Bool) {
+    @Parameter(title: LocalizedStringResource("SLUG-YELLOW-BACKGROUND", table: "WidgetStrings"))
+    var dontShowYellowBackground: Bool?
+    
+    /* ################################################################## */
+    /**
+     */
+    init(forceKeytag inForceKeytag: Bool,
+         onlyText inOnlyText: Bool,
+         dontShowYellowBackground inDontShowYellowBackground: Bool
+    ) {
         forceKeytag = inForceKeytag
         onlyText = inOnlyText
+        dontShowYellowBackground = inDontShowYellowBackground
     }
     
     /* ################################################################## */
@@ -226,6 +247,7 @@ struct NACCWidgetIntent: WidgetConfigurationIntent {
     init() {
         forceKeytag = false
         onlyText = false
+        dontShowYellowBackground = false
     }
 }
 
@@ -273,6 +295,11 @@ struct NACC_Entry: TimelineEntry {
     /* ################################################################## */
     /**
      */
+    var dontShowBackground = false
+
+    /* ################################################################## */
+    /**
+     */
     var singleKeytag: UIImage?
     
     /* ################################################################## */
@@ -308,7 +335,7 @@ struct NACC_Entry: TimelineEntry {
             let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
             keyTagImage.totalDays = calculator.totalDays
             keyTagImage.totalMonths = calculator.totalMonths
-            yellowTag = (9..<12).contains(calculator.totalMonths) || (45..<50).contains(calculator.years)
+            yellowTag = dontShowBackground || (9..<12).contains(calculator.totalMonths) || (45..<50).contains(calculator.years)
             singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
         }
     }
@@ -319,11 +346,13 @@ struct NACC_Entry: TimelineEntry {
     init(date inDate: Date = .now,
          cleanDate inCleandate: Date = .now.addingTimeInterval(-86400), // Give them a day
          forceKeytag inForceKeytag: Bool = true,
-         onlyText inOnlyText: Bool = false
+         onlyText inOnlyText: Bool = false,
+         dontShowBackground inDontShowBackground: Bool = true
     ) {
         date = inDate
         cleanDate = inCleandate
         forceKeytag = inForceKeytag
         onlyText = inOnlyText
+        dontShowBackground = inDontShowBackground
     }
 }
