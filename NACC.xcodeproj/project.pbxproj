@@ -41,7 +41,6 @@
 		D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */; };
 		D4C79A2127F9189800FBB7D3 /* NACC_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */; };
 		D4E0B2922D3A85D300723D0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E0B28D2D3A85D300723D0C /* Assets.xcassets */; };
-		D4E0B2942D3A85D300723D0C /* NACCWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E0B28F2D3A85D300723D0C /* NACCWidget.swift */; };
 		D4E0B2952D3A85D300723D0C /* NACCWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E0B2902D3A85D300723D0C /* NACCWidgetBundle.swift */; };
 		D4E245E22D3DD963003EC91C /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D433F5D22D3B015600687B9C /* LGV_UICleantime.xcassets */; };
 		D4E245E92D3DDBC0003EC91C /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4E245E82D3DDBC0003EC91C /* RVS_UIKit_Toolbox */; };
@@ -155,7 +154,6 @@
 		D4C79A1C27F9189800FBB7D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NACC_Main.storyboard; sourceTree = "<group>"; };
 		D4E0B28D2D3A85D300723D0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4E0B28E2D3A85D300723D0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4E0B28F2D3A85D300723D0C /* NACCWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWidget.swift; sourceTree = "<group>"; };
 		D4E0B2902D3A85D300723D0C /* NACCWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWidgetBundle.swift; sourceTree = "<group>"; };
 		D4E2F96827FCCA3200457AD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Theme.xcassets; sourceTree = "<group>"; };
@@ -376,7 +374,6 @@
 			children = (
 				D4B57E2B2D3C654C00A6844F /* NACCWidgetExtension.entitlements */,
 				D4E0B2902D3A85D300723D0C /* NACCWidgetBundle.swift */,
-				D4E0B28F2D3A85D300723D0C /* NACCWidget.swift */,
 				D4E0B28D2D3A85D300723D0C /* Assets.xcassets */,
 				D4E0B28E2D3A85D300723D0C /* Info.plist */,
 				D498E1852D404CB800388CC3 /* WidgetStrings.xcstrings */,
@@ -580,7 +577,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4B57E242D3C5E2D00A6844F /* NACCPersistentPrefs.swift in Sources */,
-				D4E0B2942D3A85D300723D0C /* NACCWidget.swift in Sources */,
 				D4E0B2952D3A85D300723D0C /* NACCWidgetBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
