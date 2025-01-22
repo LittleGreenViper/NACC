@@ -281,6 +281,18 @@ extension NACCAppSceneDelegate: UIApplicationDelegate {
             print("\n#### Application Finished Launching.\n####\n")
         #endif
         Self._appDelegateInstance = self
+        var cleanDate = NACCPersistentPrefs().cleanDate
+        
+        // This loads any previous prefs, and fetches the cleandate from them (then removes them).
+        // We are changing the type of UserDefaults that we're storing, so we'll store them in our new format from now on.
+        if let loadedPrefs = UserDefaults.standard.object(forKey: "NACCPersistentPrefs") as? [String: Any],
+           let oldDate = loadedPrefs[NACCPersistentPrefs.Keys.cleanDate.rawValue] as? Date {
+            cleanDate = oldDate
+            UserDefaults.standard.removeObject(forKey: "NACCPersistentPrefs")
+        }
+        
+        NACCPersistentPrefs().cleanDate = cleanDate
+        
         return true
     }
 

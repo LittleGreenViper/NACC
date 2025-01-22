@@ -161,7 +161,7 @@ extension NACCInitialViewController {
     func setDate(_ inDate: Date? = nil, tabIndex inTabIndex: NACCTabBarController.TabIndexes? = nil) {
         if let dateSelector = dateSelector,
            let minDate = dateSelector.minimumDate {
-            let newDateValue = inDate ??  NACCPersistentPrefs().cleanDate
+            let newDateValue = inDate ?? NACCPersistentPrefs().cleanDate
             if (minDate...Date()).contains(newDateValue) {
                 dateSelector.date = newDateValue
                 newDate()
