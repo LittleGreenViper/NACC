@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>UIView Extension Reference</title>
+    <title>NACCGetCleantimeSummaryAppIntent Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Extension/UIView" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Struct/NACCGetCleantimeSummaryAppIntent" class="dashAnchor"></a>
 
-    <a title="UIView Extension Reference"></a>
+    <a title="NACCGetCleantimeSummaryAppIntent Structure Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,9 +44,9 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">Index</a>
       <img class="carat" src="../img/carat.png" alt=""/>
-      <a class="breadcrumb" href="../Extensions.html">Extensions</a>
+      <a class="breadcrumb" href="../Structs.html">Structures</a>
       <img class="carat" src="../img/carat.png" alt=""/>
-      UIKit.UIView Extension Reference
+      NACC.NACCGetCleantimeSummaryAppIntent Structure Reference
     </p>
 
     <div class="content-wrapper">
@@ -162,15 +162,17 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>UIView</h1>
+            <h1>NACCGetCleantimeSummaryAppIntent</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UIView</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">NACCGetCleantimeSummaryAppIntent</span> <span class="p">:</span> <span class="kt">AppIntent</span></code></pre>
 
                 </div>
               </div>
-            <p>We add a couple of ways to deal with first responders.</p>
+            <p>This intent calculates the cleantime, based on an input cleandate, and returns a string, summarizing it.</p>
+
+<p>This is meant for a &ldquo;faceless&rdquo; query, where the user is told their cleantime, without opening the app.</p>
 
           </div>
         </section>
@@ -182,9 +184,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So6UIViewC4NACCE26autoLayoutAspectConstraint11aspectRatioSo08NSLayoutF0CSg14CoreFoundation7CGFloatV_tF"></a>
-                    <a name="//apple_ref/swift/Method/autoLayoutAspectConstraint(aspectRatio:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So6UIViewC4NACCE26autoLayoutAspectConstraint11aspectRatioSo08NSLayoutF0CSg14CoreFoundation7CGFloatV_tF">autoLayoutAspectConstraint(aspectRatio:<wbr>)</a>
+                    <a name="/s:4NACC32NACCGetCleantimeSummaryAppIntentV5title10Foundation23LocalizedStringResourceVvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/title" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC32NACCGetCleantimeSummaryAppIntentV5title10Foundation23LocalizedStringResourceVvpZ">title</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -192,40 +194,101 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This creates a constraint, locking the view to a given aspect ratio.</p>
+                        <p>The intent title.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
-<span class="kd">func</span> <span class="nf">autoLayoutAspectConstraint</span><span class="p">(</span><span class="n">aspectRatio</span> <span class="nv">inAspect</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">NSLayoutConstraint</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">LocalizedStringResource</span></code></pre>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>aspectRatio</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The aspect ratio. It is W/H, so numbers less than 1.0 are wider than tall, and numbers greater than 1.0 are taller than wide.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC32NACCGetCleantimeSummaryAppIntentV11description0E7Intents0F11DescriptionVvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC32NACCGetCleantimeSummaryAppIntentV11description0E7Intents0F11DescriptionVvpZ">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The intent description.</p>
+
                       </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>An inactive constraint, locking this view to the given aspect ratio.</p>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">IntentDescription</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC32NACCGetCleantimeSummaryAppIntentV9cleanDate10Foundation0H10ComponentsVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/cleanDate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC32NACCGetCleantimeSummaryAppIntentV9cleanDate10Foundation0H10ComponentsVSgvp">cleanDate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is the input cleandate, as date components.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IntentParameter</span>
+<span class="k">var</span> <span class="nv">cleanDate</span><span class="p">:</span> <span class="kt">DateComponents</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC32NACCGetCleantimeSummaryAppIntentV7performQryYaKF"></a>
+                    <a name="//apple_ref/swift/Method/perform()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC32NACCGetCleantimeSummaryAppIntentV7performQryYaKF">perform()</a>
+                    </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This calculates the cleantime, and creates a text string, with the summary.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">perform</span><span class="p">()</span> <span class="n">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kd">some</span> <span class="kt">ReturnsValue</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="kt">ProvidesDialog</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>

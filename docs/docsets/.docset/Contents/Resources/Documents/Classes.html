@@ -42,7 +42,7 @@
     </header>
 
     <p class="breadcrumbs">
-      <a class="breadcrumb" href="index.html"> Reference</a>
+      <a class="breadcrumb" href="index.html">Index</a>
       <img class="carat" src="img/carat.png" alt=""/>
       Classes  Reference
     </p>
@@ -109,6 +109,15 @@
                 <a class="nav-group-task-link" href="Extensions/Bundle.html">Bundle</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/DeveloperToolsSupport.html">DeveloperToolsSupport</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/DeveloperToolsSupport/ColorResource.html">– ColorResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/DeveloperToolsSupport/ImageResource.html">– ImageResource</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/NSAttributedString.html">NSAttributedString</a>
               </li>
               <li class="nav-group-task">
@@ -119,9 +128,6 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/SwiftUI/ShapeStyle.html">– ShapeStyle</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions/SwiftUI/Image.html">– Image</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/UIKit.UIColor.html">UIKit.UIColor</a>
@@ -138,21 +144,13 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Protocols/_ACResourceInitProtocol.html">_ACResourceInitProtocol</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a class="nav-group-name-link" href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Structs/ColorResource.html">ColorResource</a>
+                <a class="nav-group-task-link" href="Structs/NACCAppShortcuts.html">NACCAppShortcuts</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Structs/ImageResource.html">ImageResource</a>
+                <a class="nav-group-task-link" href="Structs/NACCGetCleantimeSummaryAppIntent.html">NACCGetCleantimeSummaryAppIntent</a>
               </li>
             </ul>
           </li>
@@ -233,6 +231,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@UIApplicationMain</span>
+<span class="kd">@MainActor</span>
 <span class="kd">class</span> <span class="kt">NACCAppSceneDelegate</span> <span class="p">:</span> <span class="kt">UIResponder</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NACCAppSceneDelegate</span><span class="p">:</span> <span class="kt">UIApplicationDelegate</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NACCAppSceneDelegate</span><span class="p">:</span> <span class="kt">UIWindowSceneDelegate</span></code></pre>
@@ -276,7 +275,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">NACCPagePrintRenderer</span> <span class="p">:</span> <span class="kt">UIPrintPageRenderer</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">class</span> <span class="kt">NACCPagePrintRenderer</span> <span class="p">:</span> <span class="kt">UIPrintPageRenderer</span></code></pre>
 
                         </div>
                       </div>
@@ -358,7 +358,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">NACCAboutViewController</span> <span class="p">:</span> <span class="kt"><a href="Classes/NACCBaseViewController.html">NACCBaseViewController</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">class</span> <span class="kt">NACCAboutViewController</span> <span class="p">:</span> <span class="kt"><a href="Classes/NACCBaseViewController.html">NACCBaseViewController</a></span></code></pre>
 
                         </div>
                       </div>
@@ -400,7 +401,8 @@ It should be the base for all screens.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">NACCBaseViewController</span> <span class="p">:</span> <span class="kt">UIViewController</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">class</span> <span class="kt">NACCBaseViewController</span> <span class="p">:</span> <span class="kt">UIViewController</span></code></pre>
 
                         </div>
                       </div>
@@ -442,7 +444,8 @@ This is the first screen to be shown.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">NACCInitialViewController</span> <span class="p">:</span> <span class="kt"><a href="Classes/NACCBaseViewController.html">NACCBaseViewController</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">class</span> <span class="kt">NACCInitialViewController</span> <span class="p">:</span> <span class="kt"><a href="Classes/NACCBaseViewController.html">NACCBaseViewController</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NACCInitialViewController</span><span class="p">:</span> <span class="kt">EKEventEditViewDelegate</span></code></pre>
 
                         </div>
@@ -484,7 +487,8 @@ This is the first screen to be shown.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">NACCTabBarController</span> <span class="p">:</span> <span class="kt">UITabBarController</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">class</span> <span class="kt">NACCTabBarController</span> <span class="p">:</span> <span class="kt">UITabBarController</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NACCTabBarController</span><span class="p">:</span> <span class="kt">UITabBarControllerDelegate</span></code></pre>
 
                         </div>
@@ -526,7 +530,8 @@ This is the first screen to be shown.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">NACCTabBaseViewController</span> <span class="p">:</span> <span class="kt"><a href="Classes/NACCBaseViewController.html">NACCBaseViewController</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">class</span> <span class="kt">NACCTabBaseViewController</span> <span class="p">:</span> <span class="kt"><a href="Classes/NACCBaseViewController.html">NACCBaseViewController</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NACCTabBaseViewController</span><span class="p">:</span> <span class="kt">LGV_UICleantimeImageViewObserverProtocol</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NACCTabBaseViewController</span><span class="p">:</span> <span class="kt">UIScrollViewDelegate</span></code></pre>
 
@@ -543,8 +548,8 @@ This is the first screen to be shown.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2024 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2024-07-18)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+      <p>&copy; 2025 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2025-01-22)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
 </html>

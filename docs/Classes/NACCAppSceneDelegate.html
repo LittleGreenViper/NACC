@@ -42,9 +42,11 @@
     </header>
 
     <p class="breadcrumbs">
-      <a class="breadcrumb" href="../index.html"> Reference</a>
+      <a class="breadcrumb" href="../index.html">Index</a>
       <img class="carat" src="../img/carat.png" alt=""/>
-      NACCAppSceneDelegate Class Reference
+      <a class="breadcrumb" href="../Classes.html">Classes</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      NACC.NACCAppSceneDelegate Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -109,6 +111,15 @@
                 <a class="nav-group-task-link" href="../Extensions/Bundle.html">Bundle</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/DeveloperToolsSupport.html">DeveloperToolsSupport</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/DeveloperToolsSupport/ColorResource.html">– ColorResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/DeveloperToolsSupport/ImageResource.html">– ImageResource</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/NSAttributedString.html">NSAttributedString</a>
               </li>
               <li class="nav-group-task">
@@ -119,9 +130,6 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/SwiftUI/ShapeStyle.html">– ShapeStyle</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/SwiftUI/Image.html">– Image</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/UIKit.UIColor.html">UIKit.UIColor</a>
@@ -138,21 +146,13 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Protocols/_ACResourceInitProtocol.html">_ACResourceInitProtocol</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/ColorResource.html">ColorResource</a>
+                <a class="nav-group-task-link" href="../Structs/NACCAppShortcuts.html">NACCAppShortcuts</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/ImageResource.html">ImageResource</a>
+                <a class="nav-group-task-link" href="../Structs/NACCGetCleantimeSummaryAppIntent.html">NACCGetCleantimeSummaryAppIntent</a>
               </li>
             </ul>
           </li>
@@ -167,6 +167,7 @@
                 <div class="language">
                   
                   <pre class="highlight swift"><code><span class="kd">@UIApplicationMain</span>
+<span class="kd">@MainActor</span>
 <span class="kd">class</span> <span class="kt">NACCAppSceneDelegate</span> <span class="p">:</span> <span class="kt">UIResponder</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NACCAppSceneDelegate</span><span class="p">:</span> <span class="kt">UIApplicationDelegate</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NACCAppSceneDelegate</span><span class="p">:</span> <span class="kt">UIWindowSceneDelegate</span></code></pre>
@@ -229,7 +230,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">window</span><span class="p">:</span> <span class="kt">UIWindow</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="k">var</span> <span class="nv">window</span><span class="p">:</span> <span class="kt">UIWindow</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -256,7 +258,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">_appDelegateInstance</span><span class="p">:</span> <span class="kt">NACCAppSceneDelegate</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">_appDelegateInstance</span><span class="p">:</span> <span class="kt">NACCAppSceneDelegate</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -283,7 +286,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">_sceneConfigurationName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">_sceneConfigurationName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -310,7 +314,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">_originalPrefs</span><span class="p">:</span> <span class="kt"><a href="../Classes/NACCAppSceneDelegate.html#/s:4NACC20NACCAppSceneDelegateC18OriginalPrefsTuplea">OriginalPrefsTuple</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">_originalPrefs</span><span class="p">:</span> <span class="kt"><a href="../Classes/NACCAppSceneDelegate.html#/s:4NACC20NACCAppSceneDelegateC18OriginalPrefsTuplea">OriginalPrefsTuple</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -337,7 +342,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_resetScreen</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">private</span> <span class="k">var</span> <span class="nv">_resetScreen</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -364,7 +370,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_selectedTabFromURI</span><span class="p">:</span> <span class="kt"><a href="../Classes/NACCTabBarController.html">NACCTabBarController</a></span><span class="o">.</span><span class="kt">TabIndexes</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">private</span> <span class="k">var</span> <span class="nv">_selectedTabFromURI</span><span class="p">:</span> <span class="kt"><a href="../Classes/NACCTabBarController.html">NACCTabBarController</a></span><span class="o">.</span><span class="kt">TabIndexes</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -391,7 +398,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_date</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">private</span> <span class="k">var</span> <span class="nv">_date</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -418,7 +426,92 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_report</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">private</span> <span class="k">var</span> <span class="nv">_report</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC18displayCleantimeIDSSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/displayCleantimeID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC18displayCleantimeIDSSvpZ">displayCleantimeID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ID for the &ldquo;Display Cleantime&rdquo; activity.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">static</span> <span class="k">let</span> <span class="nv">displayCleantimeID</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC19cleanDateUserDataIDSSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/cleanDateUserDataID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC19cleanDateUserDataIDSSvpZ">cleanDateUserDataID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ID for the &ldquo;Display Cleantime&rdquo; activity data field.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">static</span> <span class="k">let</span> <span class="nv">cleanDateUserDataID</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC21selectedTabUserDataIDSSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/selectedTabUserDataID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC21selectedTabUserDataIDSSvpZ">selectedTabUserDataID</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ID for the &ldquo;Selected Tab&rdquo; activity data field.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">static</span> <span class="k">let</span> <span class="nv">selectedTabUserDataID</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -458,7 +551,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">private</span> <span class="k">var</span> <span class="nv">_navigationController</span><span class="p">:</span> <span class="kt">UINavigationController</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -485,7 +579,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">_initialViewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/NACCInitialViewController.html">NACCInitialViewController</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">private</span> <span class="k">var</span> <span class="nv">_initialViewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/NACCInitialViewController.html">NACCInitialViewController</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -525,7 +620,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="k">var</span> <span class="nv">appDelegateInstance</span><span class="p">:</span> <span class="kt">NACCAppSceneDelegate</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">class</span> <span class="k">var</span> <span class="nv">appDelegateInstance</span><span class="p">:</span> <span class="kt">NACCAppSceneDelegate</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -565,7 +661,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">date</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="k">var</span> <span class="nv">date</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -592,7 +689,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">report</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="k">var</span> <span class="nv">report</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -632,7 +730,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">clearOriginalPrefs</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">func</span> <span class="nf">clearOriginalPrefs</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -681,7 +780,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">resolveURL</span><span class="p">(</span><span class="n">_</span> <span class="nv">inURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">func</span> <span class="nf">resolveURL</span><span class="p">(</span><span class="n">_</span> <span class="nv">inURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -698,6 +798,65 @@
                               <td>
                                 <div>
                                   <p>The URL to be parsed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC20NACCAppSceneDelegateC4open2to4withy10Foundation14DateComponentsV_AA20NACCTabBarControllerC10TabIndexesOtF"></a>
+                    <a name="//apple_ref/swift/Method/open(to:with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC20NACCAppSceneDelegateC4open2to4withy10Foundation14DateComponentsV_AA20NACCTabBarControllerC10TabIndexesOtF">open(to:<wbr>with:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This opens the app, and sets it to the given cleandate.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">func</span> <span class="nf">open</span><span class="p">(</span><span class="n">to</span> <span class="nv">inCleanDate</span><span class="p">:</span> <span class="kt">DateComponents</span><span class="p">,</span> <span class="n">with</span> <span class="nv">inTabIndex</span><span class="p">:</span> <span class="kt"><a href="../Classes/NACCTabBarController.html">NACCTabBarController</a></span><span class="o">.</span><span class="kt">TabIndexes</span> <span class="o">=</span> <span class="o">.</span><span class="n">undefined</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>to</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The cleadate, as date components.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>with</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The tab index. Optional. Default is the initial screen.</p>
                                 </div>
                               </td>
                             </tr>
@@ -740,7 +899,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="nv">didFinishLaunchingWithOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="nv">didFinishLaunchingWithOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -764,13 +924,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Called when the scene connects. Returns the configuration to use for the scene.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">configurationForConnecting</span> <span class="nv">inConnectingSceneSession</span><span class="p">:</span> <span class="kt">UISceneSession</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">UIScene</span><span class="o">.</span><span class="kt">ConnectionOptions</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UISceneConfiguration</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">configurationForConnecting</span> <span class="nv">inConnectingSceneSession</span><span class="p">:</span> <span class="kt">UISceneSession</span><span class="p">,</span> <span class="nv">options</span><span class="p">:</span> <span class="kt">UIScene</span><span class="o">.</span><span class="kt">ConnectionOptions</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UISceneConfiguration</span></code></pre>
 
                         </div>
                       </div>
@@ -786,7 +948,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p></p>
+                                  <p>The scene session that needs the configuration.</p>
                                 </div>
                               </td>
                             </tr>
@@ -798,7 +960,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p></p>
+                                  <p>The scene configuration options (also ignored)</p>
                                 </div>
                               </td>
                             </tr>
@@ -808,6 +970,69 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>The scene configuration.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@NACC@objc(cs)NACCAppSceneDelegate(im)application:continueUserActivity:restorationHandler:"></a>
+                    <a name="//apple_ref/swift/Method/application(_:continue:restorationHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@NACC@objc(cs)NACCAppSceneDelegate(im)application:continueUserActivity:restorationHandler:">application(_:<wbr>continue:<wbr>restorationHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called when we receive a user activity.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="k">continue</span> <span class="nv">inUserActivity</span><span class="p">:</span> <span class="kt">NSUserActivity</span><span class="p">,</span> <span class="nv">restorationHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">([</span><span class="n">any</span> <span class="kt">UIUserActivityRestoring</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>continue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The activity.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>restorationHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A completion handler (also ignored)</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True, if it was handled.</p>
                       </div>
                     </section>
                   </div>
@@ -845,7 +1070,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">scene</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">UIScene</span><span class="p">,</span> <span class="n">openURLContexts</span> <span class="nv">inURLContexts</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">UIOpenURLContext</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">func</span> <span class="nf">scene</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">UIScene</span><span class="p">,</span> <span class="n">openURLContexts</span> <span class="nv">inURLContexts</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">UIOpenURLContext</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -891,7 +1117,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">scene</span><span class="p">(</span><span class="n">_</span> <span class="nv">inScene</span><span class="p">:</span> <span class="kt">UIScene</span><span class="p">,</span> <span class="nv">willConnectTo</span><span class="p">:</span> <span class="kt">UISceneSession</span><span class="p">,</span> <span class="n">options</span> <span class="nv">inConnectionOptions</span><span class="p">:</span> <span class="kt">UIScene</span><span class="o">.</span><span class="kt">ConnectionOptions</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">func</span> <span class="nf">scene</span><span class="p">(</span><span class="n">_</span> <span class="nv">inScene</span><span class="p">:</span> <span class="kt">UIScene</span><span class="p">,</span> <span class="nv">willConnectTo</span><span class="p">:</span> <span class="kt">UISceneSession</span><span class="p">,</span> <span class="n">options</span> <span class="nv">inConnectionOptions</span><span class="p">:</span> <span class="kt">UIScene</span><span class="o">.</span><span class="kt">ConnectionOptions</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -949,7 +1176,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">scene</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">UIScene</span><span class="p">,</span> <span class="k">continue</span> <span class="nv">inUserActivity</span><span class="p">:</span> <span class="kt">NSUserActivity</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">func</span> <span class="nf">scene</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">UIScene</span><span class="p">,</span> <span class="k">continue</span> <span class="nv">inUserActivity</span><span class="p">:</span> <span class="kt">NSUserActivity</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -999,7 +1227,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sceneWillEnterForeground</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">UIScene</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">func</span> <span class="nf">sceneWillEnterForeground</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">UIScene</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1030,7 +1259,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sceneDidBecomeActive</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">UIScene</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">func</span> <span class="nf">sceneDidBecomeActive</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">UIScene</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1059,7 +1289,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sceneDidEnterBackground</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">UIScene</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">func</span> <span class="nf">sceneDidEnterBackground</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">UIScene</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1074,8 +1305,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2024 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2024-07-18)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+      <p>&copy; 2025 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2025-01-22)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
 </html>

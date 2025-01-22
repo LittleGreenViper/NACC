@@ -28,6 +28,8 @@ This is a simple "cleantime calculator" app, for NA members (It is not associate
 
 ## Basic Operation
 
+> NOTE: As of version 5.4.0, there is now a widget available. This can be configured to display the latest keytga, medallion, text report, or all of the above.
+
 ### The Initial ("My Cleantime") Screen
 
 The initial screen that you see, upon starting the app, has a basic "wheel-style" date entry that allows you to enter a cleandate. Once you have entered a date, the label below the date entry changes into a report of the cleantime, and also becomes a "selectable" button.

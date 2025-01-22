@@ -1,4 +1,7 @@
-**5.4.0.3010** *January 20, 2025*
+**5.4.0.3019** *January 22, 2025*
+
+- There is now a widget. Cool.
+- The tags now look more realistic.
 
 **5.3.0.3009** *January 14, 2025*
 

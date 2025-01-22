@@ -42,9 +42,11 @@
     </header>
 
     <p class="breadcrumbs">
-      <a class="breadcrumb" href="../index.html"> Reference</a>
+      <a class="breadcrumb" href="../index.html">Index</a>
       <img class="carat" src="../img/carat.png" alt=""/>
-      NACCAboutViewController Class Reference
+      <a class="breadcrumb" href="../Classes.html">Classes</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      NACC.NACCAboutViewController Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -109,6 +111,15 @@
                 <a class="nav-group-task-link" href="../Extensions/Bundle.html">Bundle</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/DeveloperToolsSupport.html">DeveloperToolsSupport</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/DeveloperToolsSupport/ColorResource.html">– ColorResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/DeveloperToolsSupport/ImageResource.html">– ImageResource</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/NSAttributedString.html">NSAttributedString</a>
               </li>
               <li class="nav-group-task">
@@ -119,9 +130,6 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/SwiftUI/ShapeStyle.html">– ShapeStyle</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/SwiftUI/Image.html">– Image</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/UIKit.UIColor.html">UIKit.UIColor</a>
@@ -138,21 +146,13 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Protocols/_ACResourceInitProtocol.html">_ACResourceInitProtocol</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/ColorResource.html">ColorResource</a>
+                <a class="nav-group-task-link" href="../Structs/NACCAppShortcuts.html">NACCAppShortcuts</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/ImageResource.html">ImageResource</a>
+                <a class="nav-group-task-link" href="../Structs/NACCGetCleantimeSummaryAppIntent.html">NACCGetCleantimeSummaryAppIntent</a>
               </li>
             </ul>
           </li>
@@ -166,7 +166,8 @@
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">NACCAboutViewController</span> <span class="p">:</span> <span class="kt"><a href="../Classes/NACCBaseViewController.html">NACCBaseViewController</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">class</span> <span class="kt">NACCAboutViewController</span> <span class="p">:</span> <span class="kt"><a href="../Classes/NACCBaseViewController.html">NACCBaseViewController</a></span></code></pre>
 
                 </div>
               </div>
@@ -199,7 +200,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">_iconSizeInDisplayUnits</span><span class="p">:</span> <span class="kt">CGFloat</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">_iconSizeInDisplayUnits</span><span class="p">:</span> <span class="kt">CGFloat</span></code></pre>
 
                         </div>
                       </div>
@@ -241,6 +243,7 @@ It is a button, that links to the main Web site.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@IBOutlet</span>
+<span class="kd">@MainActor</span>
 <span class="k">weak</span> <span class="k">var</span> <span class="nv">appIconButton</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">?</span></code></pre>
 
                         </div>
@@ -270,6 +273,7 @@ Selecting it brings up an alert that includes the build number.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@IBOutlet</span>
+<span class="kd">@MainActor</span>
 <span class="k">weak</span> <span class="k">var</span> <span class="nv">versionLabelButton</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">?</span></code></pre>
 
                         </div>
@@ -298,6 +302,7 @@ Selecting it brings up an alert that includes the build number.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@IBOutlet</span>
+<span class="kd">@MainActor</span>
 <span class="k">weak</span> <span class="k">var</span> <span class="nv">privacyButton</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">?</span></code></pre>
 
                         </div>
@@ -326,6 +331,7 @@ Selecting it brings up an alert that includes the build number.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@IBOutlet</span>
+<span class="kd">@MainActor</span>
 <span class="k">weak</span> <span class="k">var</span> <span class="nv">lgvButton</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">?</span></code></pre>
 
                         </div>
@@ -354,6 +360,7 @@ Selecting it brings up an alert that includes the build number.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@IBOutlet</span>
+<span class="kd">@MainActor</span>
 <span class="k">weak</span> <span class="k">var</span> <span class="nv">helpView</span><span class="p">:</span> <span class="kt">UITextView</span><span class="p">?</span></code></pre>
 
                         </div>
@@ -394,7 +401,8 @@ Selecting it brings up an alert that includes the build number.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -435,6 +443,7 @@ Selecting it brings up an alert that includes the build number.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@IBAction</span>
+<span class="kd">@MainActor</span>
 <span class="kd">func</span> <span class="nf">displayVersionInfo</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span></code></pre>
 
                         </div>
@@ -463,6 +472,7 @@ Selecting it brings up an alert that includes the build number.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@IBAction</span>
+<span class="kd">@MainActor</span>
 <span class="kd">func</span> <span class="nf">privacyButtonHit</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
 
                         </div>
@@ -491,6 +501,7 @@ Selecting it brings up an alert that includes the build number.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@IBAction</span>
+<span class="kd">@MainActor</span>
 <span class="kd">func</span> <span class="nf">appIconButtonHit</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
 
                         </div>
@@ -519,6 +530,7 @@ Selecting it brings up an alert that includes the build number.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@IBAction</span>
+<span class="kd">@MainActor</span>
 <span class="kd">func</span> <span class="nf">lgvButtonHit</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
 
                         </div>
@@ -534,8 +546,8 @@ Selecting it brings up an alert that includes the build number.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2024 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2024-07-18)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+      <p>&copy; 2025 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2025-01-22)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
 </html>

@@ -46,39 +46,148 @@ import SwiftUI
 // MARK: - Widget Bundle Entrypoint -
 /* ###################################################################################################################################### */
 /**
- This file implements an 
+ This file implements a user-configurable widget that displays the cleantime set in the main app.
+ 
+ The display can be just the textual cleantime report, the highest keytag collected, or keytags (before 1 year), and medallions (after one year).
+ 
+ It can also combine the text with the keytag, by displaying the `systemMedium` family variant. If we display the `systemSmall` variant, then it can only be one of the above choices.
+ 
+ The widget dynamically adjusts to whatever cleantime is set in the main app, and updates in realtime.
+ 
+ The widget will, by default, display against a yellow gradient (the same one in the app icon), but that can be switched off, in the widget configuration, to use the standard color theme.
  */
 @main
 struct NACCWidgetBundle: WidgetBundle {
     /* ################################################################## */
     /**
+     We just make a widget instance for the body.
      */
     var body: some Widget { NACCWidget() }
+}
+
+/* ###################################################################################################################################### */
+// MARK: - Widget Structure -
+/* ###################################################################################################################################### */
+/**
+ This builds the view for the displayed widget. It reads the configuration, and generates a view that will be crafted to match the configuration.
+ */
+struct NACCWidget: Widget {
+    /* ################################################################## */
+    /**
+     This is our "kind" tag.
+     */
+    static let kind: String = "NACCWidget"
+
+    /* ################################################################## */
+    /**
+     The configuration is actually a container, with the generated view in it.
+     */
+    var body: some WidgetConfiguration {
+        AppIntentConfiguration(kind: Self.kind, intent: NACCWidgetIntent.self, provider: NACC_IntentProvider()) { entry in
+            NACCWidgetEntryView(entry: entry)
+                // The background is built, according to the settings in the intent.
+                .containerBackground(for: .widget) {
+                    if !entry.dontShowBackground,
+                       !entry.yellowTag {
+                        Image("BackgroundGradient")
+                            .resizable(resizingMode: .stretch)
+                    }
+                }
+        }
+        .configurationDisplayName("SLUG-WIDGET-NAME".localizedVariant)
+        .description("SLUG-WIDGET-DESCRIPTION".localizedVariant)
+        .supportedFamilies([.systemSmall, .systemMedium])
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: - Widget Intents Data Provider -
+/* ###################################################################################################################################### */
+/**
+ This describes the intent, used to build and read the "Edit Widget" screen.
+ */
+struct NACC_IntentProvider: AppIntentTimelineProvider {
+    /* ################################################################## */
+    /**
+     This is the entry instance for this provider.
+     */
+    typealias Entry = NACC_Entry
+    
+    /* ################################################################## */
+    /**
+     This is the intent that controls the settings scren.
+     */
+    typealias Intent = NACCWidgetIntent
+
+    /* ################################################################## */
+    /**
+     This is a simple placeholder view.
+     */
+    func placeholder(in context: Context) -> NACC_Entry { NACC_Entry() }
+
+    /* ################################################################## */
+    /**
+     This is a somewhat more involved view. We use "live data" to build it.
+     */
+    func snapshot(for inConfiguration: NACCWidgetIntent, in: Context) async -> NACC_Entry {
+        var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate,
+                               forceKeytag: inConfiguration.forceKeytag ?? false,
+                               onlyText: inConfiguration.onlyText ?? false,
+                               dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
+        )
+        DispatchQueue.main.sync { entry.synchronize() }
+        return entry
+    }
+    
+    /* ################################################################## */
+    /**
+     This is the final rendereing view. We make sure to flush the shared prefs cache, before displaying.
+     */
+    func timeline(for inConfiguration: NACCWidgetIntent, in: Context) async -> Timeline<NACC_Entry> {
+        NACCPersistentPrefs().flush()
+        var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate,
+                               forceKeytag: inConfiguration.forceKeytag ?? false,
+                               onlyText: inConfiguration.onlyText ?? false,
+                               dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
+        )
+        
+        DispatchQueue.main.sync { entry.synchronize() }
+        return Timeline(entries: [entry], policy: .atEnd)
+    }
 }
 
 /* ###################################################################################################################################### */
 // MARK: - Widget View For One Entry -
 /* ###################################################################################################################################### */
 /**
+ This is the display for a single widget entry.
  */
 struct NACCWidgetEntryView : View {
     /* ################################################################## */
     /**
+     This is the entry instance that determines the widget display.
      */
     var entry: NACC_IntentProvider.Entry
 
     /* ################################################################## */
     /**
+     This is the display family variant for this entry panel.
      */
     @Environment(\.widgetFamily) private var _family
 
     /* ################################################################## */
     /**
+     This is used to set the dynamic light mode/dark mode screen, if we are not displaying our yellow background.
      */
     @Environment(\.colorScheme) private var _colorScheme
 
     /* ################################################################## */
     /**
+     If the family variant is `systemSmall`, then we display one thing: either the text report, or a keytag/medallion.
+     
+     If the family variant is `systemMedium`, then we display the text report on the left, and the keytag or medallion on the right.
+     
+     It is also possible to only display text, in `systemMedium`.
      */
     var body: some View {
         if .systemSmall == _family {
@@ -104,133 +213,52 @@ struct NACCWidgetEntryView : View {
 }
 
 /* ###################################################################################################################################### */
-// MARK: - Widget Structure -
-/* ###################################################################################################################################### */
-/**
- */
-struct NACCWidget: Widget {
-    /* ################################################################## */
-    /**
-     */
-    static let kind: String = "NACCWidget"
-
-    /* ################################################################## */
-    /**
-     */
-    let kind: String = Self.kind
-
-    /* ################################################################## */
-    /**
-     */
-    var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: NACCWidgetIntent.self, provider: NACC_IntentProvider()) { entry in
-            if #available(iOS 17.0, *) {
-                NACCWidgetEntryView(entry: entry)
-                    .containerBackground(for: .widget) {
-                        if !entry.dontShowBackground,
-                           !entry.yellowTag {
-                            Image("BackgroundGradient")
-                                .resizable(resizingMode: .stretch)
-                        }
-                    }
-            } else {
-                NACCWidgetEntryView(entry: entry)
-                    .padding()
-                    .background()
-            }
-        }
-        .configurationDisplayName("SLUG-WIDGET-NAME".localizedVariant)
-        .description("SLUG-WIDGET-DESCRIPTION".localizedVariant)
-        .supportedFamilies([.systemSmall, .systemMedium])
-    }
-}
-
-/* ###################################################################################################################################### */
-// MARK: - Widget Intents Data Provider -
-/* ###################################################################################################################################### */
-/**
- */
-struct NACC_IntentProvider: AppIntentTimelineProvider {
-    /* ################################################################## */
-    /**
-     */
-    typealias Entry = NACC_Entry
-    
-    /* ################################################################## */
-    /**
-     */
-    typealias Intent = NACCWidgetIntent
-
-    /* ################################################################## */
-    /**
-     */
-    func placeholder(in context: Context) -> NACC_Entry { NACC_Entry() }
-
-    /* ################################################################## */
-    /**
-     */
-    func snapshot(for inConfiguration: NACCWidgetIntent, in: Context) async -> NACC_Entry {
-        var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate,
-                               forceKeytag: inConfiguration.forceKeytag ?? false,
-                               onlyText: inConfiguration.onlyText ?? false,
-                               dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
-        )
-        DispatchQueue.main.sync { entry.synchronize() }
-        return entry
-    }
-    
-    /* ################################################################## */
-    /**
-     */
-    func timeline(for inConfiguration: NACCWidgetIntent, in: Context) async -> Timeline<NACC_Entry> {
-        NACCPersistentPrefs().flush()
-        var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate,
-                               forceKeytag: inConfiguration.forceKeytag ?? false,
-                               onlyText: inConfiguration.onlyText ?? false,
-                               dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
-        )
-        
-        DispatchQueue.main.sync { entry.synchronize() }
-        return Timeline(entries: [entry], policy: .atEnd)
-    }
-}
-
-/* ###################################################################################################################################### */
 // MARK: - Widget Intent Configuration -
 /* ###################################################################################################################################### */
 /**
+ This controls the intent for the settings screen.
  */
 struct NACCWidgetIntent: WidgetConfigurationIntent {
     /* ################################################################## */
     /**
+     The title of the widget, displayed over the settings screen.
      */
     static var title = LocalizedStringResource("SLUG-INTENT-NAME", table: "WidgetStrings")
     
     /* ################################################################## */
     /**
+     The subheading, displayed under the title, in the settings screen.
      */
     static var description = IntentDescription(LocalizedStringResource("SLUG-INTENT-DESC", table: "WidgetStrings"))
     
     /* ################################################################## */
     /**
+     A simple switch. If on (default is off), then no image is shown; only the text report. This applies to both family variants.
      */
     @Parameter(title: LocalizedStringResource("SLUG-ONLY-SHOW-TEXT", table: "WidgetStrings"))
     var onlyText: Bool?
 
     /* ################################################################## */
     /**
+     A simple switch. If on (default is off), then medallions will not be displayed, for cleantime over a year. Ignored, if `onlyText` is true.
      */
     @Parameter(title: LocalizedStringResource("SLUG-ONLY-SHOW-KEYTAGS", table: "WidgetStrings"))
     var forceKeytag: Bool?
 
     /* ################################################################## */
     /**
+     A simple switch. If on (default is off), then the yellow background gradient will not be shown.
      */
     @Parameter(title: LocalizedStringResource("SLUG-YELLOW-BACKGROUND", table: "WidgetStrings"))
     var dontShowYellowBackground: Bool?
     
     /* ################################################################## */
     /**
+     Parameterized initializer.
+     
+     - parameter forceKeytag: If true, then medallions will not be displayed.
+     - parameter onlyText: If true, then no image is shown; only the text report.
+     - parameter dontShowYellowBackground: If true, then the yellow gradient background will NOT be shown.
      */
     init(forceKeytag inForceKeytag: Bool,
          onlyText inOnlyText: Bool,
@@ -243,6 +271,7 @@ struct NACCWidgetIntent: WidgetConfigurationIntent {
     
     /* ################################################################## */
     /**
+     Default initializer.
      */
     init() {
         forceKeytag = false
@@ -255,60 +284,74 @@ struct NACCWidgetIntent: WidgetConfigurationIntent {
 // MARK: - Widget Timeline Entry -
 /* ###################################################################################################################################### */
 /**
+ This is one data entry for the widget. There will only be one, and it should reflect the current state.
  */
 struct NACC_Entry: TimelineEntry {
     /* ################################################################## */
     /**
+     This is how big we want our images to be, in display units.
      */
     static private let _imageSizeInDisplayUnits = CGFloat(128)
     
     /* ################################################################## */
     /**
+     The entry date (used to determine whether or not to display). This is always set to `Date.now`
      */
     var date: Date
     
     /* ################################################################## */
     /**
+     The cleandate. This should reflect the date selected in the main app, and is used to determine the display.
      */
     var cleanDate: Date
     
     /* ################################################################## */
     /**
+     If true, then we should not display medallions. Ignored, if `onlyText` is true.
      */
     var forceKeytag: Bool
 
     /* ################################################################## */
     /**
+     If true, then no image should be shown; only the text report.
      */
     var onlyText: Bool
 
     /* ################################################################## */
     /**
+     The text report.
      */
     var text: String = ""
 
     /* ################################################################## */
     /**
+     If true, then the keytag is yellow, and the gradient is not shown.
      */
     var yellowTag = false
 
     /* ################################################################## */
     /**
+     If true, the gradient is not shown (regardless of the selected tag).
      */
     var dontShowBackground = false
 
     /* ################################################################## */
     /**
+     The image that represents a keytag. May be nil. Mutually exclusive with `singleMedallion`.
      */
     var singleKeytag: UIImage?
     
     /* ################################################################## */
     /**
+     The image that represents a medallion. May be nil. Mutually exclusive with `singleKeytag`.
      */
     var singleMedallion: UIImage?
     
     /* ################################################################## */
     /**
+     This renders the images and text.
+     
+     This should be called on the main thread.
      */
     mutating func synchronize() {
         let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
@@ -342,6 +385,14 @@ struct NACC_Entry: TimelineEntry {
 
     /* ################################################################## */
     /**
+     Default initializer
+     
+     - parameter date: The entry date (used to determine whether or not to display). This is always set to `Date.now`
+     - parameter cleanDate: The cleandate. This should reflect the date selected in the main app, and is used to determine the display.
+     - parameter forceKeytag: If true, then medallions will not be displayed.
+     - parameter onlyText: If true, then no image is shown; only the text report.
+     - parameter dontShowBackground: If true, then the yellow gradient background will NOT be shown.
+
      */
     init(date inDate: Date = .now,
          cleanDate inCleandate: Date = .now.addingTimeInterval(-86400), // Give them a day
