@@ -100,6 +100,8 @@
 		D44CA5B52D392F4E00800DD5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		D44D99902D3D627700680D2A /* NACC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NACC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D45CF3632809AB4500065E87 /* NACC.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
+		D45F07432D429AB100D6939A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D45F07442D429ABC00D6939A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPagePrintRenderer.swift; sourceTree = "<group>"; };
 		D477647F2D40026E00DB748E /* NACC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
 		D47EA9D22D39A2630072F491 /* NACCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NACCWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -377,6 +379,7 @@
 				D4E0B28D2D3A85D300723D0C /* Assets.xcassets */,
 				D4E0B28E2D3A85D300723D0C /* Info.plist */,
 				D498E1852D404CB800388CC3 /* WidgetStrings.xcstrings */,
+				D45F07432D429AB100D6939A /* README.md */,
 			);
 			path = NACCWidget;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				D4F46FDB2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift */,
 				D4F46FE02C94669E0071D359 /* NACCIntents.intentdefinition */,
 				D4E43A532C937FDF00535CDD /* Info.plist */,
+				D45F07442D429ABC00D6939A /* README.md */,
 			);
 			path = NACCIntents;
 			sourceTree = "<group>";

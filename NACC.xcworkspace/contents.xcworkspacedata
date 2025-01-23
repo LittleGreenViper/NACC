@@ -57,6 +57,9 @@
          location = "group:jazzy.command">
       </FileRef>
       <FileRef
+         location = "group:docs/index.html">
+      </FileRef>
+      <FileRef
          location = "group:README.md">
       </FileRef>
    </Group>
