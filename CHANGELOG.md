@@ -1,3 +1,7 @@
+**5.4.0.3020** *January 23, 2025*
+
+- Had to add the "Location" entitlement, for Mac Catalyst.
+
 **5.4.0.3019** *January 22, 2025*
 
 - There is now a widget. Cool.
