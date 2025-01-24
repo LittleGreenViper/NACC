@@ -44,3 +44,16 @@ jazzy  --readme ./Sources/NACCIntents/README.md \
        --theme fullwidth
 cp ./icon.png docs/intent/
 cp ./img/* docs/intent/img
+
+echo "Creating Docs for the NACC Watch App\n"
+rm -drf docs/watch/*
+
+jazzy  --readme ./Sources/NACCWatch/README.md \
+       --build-tool-arguments -scheme,"NACCWatch",-target,"NACCWatch" \
+       --github_url https://github.com/LittleGreenViper/NACC/tree/master/Sources/NACCWatch \
+       --title "NACC Watch App Doumentation" \
+       --min_acl private \
+       --output docs/watch \
+       --theme fullwidth
+cp ./icon.png docs/watch/
+cp ./img/* docs/watch/img
