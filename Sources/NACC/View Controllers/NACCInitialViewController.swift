@@ -450,7 +450,7 @@ extension NACCInitialViewController {
             return event
         }
         
-        _eventStore.requestFullAccessToEvents() { (inIsGranted, inError) in
+        _eventStore.requestFullAccessToEvents { (inIsGranted, inError) in
                 DispatchQueue.main.async { [weak self] in
                     guard nil == inError,
                           inIsGranted,

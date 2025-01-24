@@ -162,7 +162,7 @@ struct NACC_IntentProvider: AppIntentTimelineProvider {
 /**
  This is the display for a single widget entry.
  */
-struct NACCWidgetEntryView : View {
+struct NACCWidgetEntryView: View {
     /* ################################################################## */
     /**
      This is the entry instance that determines the widget display.

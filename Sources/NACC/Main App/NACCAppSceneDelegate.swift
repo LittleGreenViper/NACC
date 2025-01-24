@@ -221,7 +221,7 @@ extension NACCAppSceneDelegate {
             let splitter = dateString.split(separator: "/")
             if 1 < splitter.count,
                let tabInt = Int(splitter[1]),
-               let tab = NACCTabBarController.TabIndexes(rawValue: tabInt){
+               let tab = NACCTabBarController.TabIndexes(rawValue: tabInt) {
                 dateString = String(splitter[0])
                 _selectedTabFromURI = tab
             } else {
