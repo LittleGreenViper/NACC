@@ -91,6 +91,10 @@ struct NACCWidget: Widget {
                        !entry.yellowTag {
                         Image("BackgroundGradient")
                             .resizable(resizingMode: .stretch)
+                    } else {
+                        Rectangle()
+                            .containerBackground(.fill.tertiary, for: .widget)
+                            .contentShape(Rectangle())
                     }
                 }
         }
@@ -190,18 +194,19 @@ struct NACCWidgetEntryView: View {
      It is also possible to only display text, in `systemMedium`.
      */
     var body: some View {
+        let labelColor = (entry.dontShowBackground || entry.yellowTag) ? Color(UIColor.label.inverted) : .black
         if .systemSmall == _family {
             if let newGeneratedImage = entry.singleMedallion ?? entry.singleKeytag {
                 Image(uiImage: newGeneratedImage)
             } else {
                 Text(entry.text)
-                    .colorScheme(!entry.dontShowBackground && !entry.yellowTag ? .light : _colorScheme)
+                    .foregroundStyle(labelColor)
                     .minimumScaleFactor(0.5)
             }
         } else {
             HStack {
                 Text(entry.text)
-                    .colorScheme(!entry.dontShowBackground && !entry.yellowTag ? .light : _colorScheme)
+                    .foregroundStyle(labelColor)
                     .minimumScaleFactor(0.5)
                 
                 if let newGeneratedImage = entry.singleMedallion ?? entry.singleKeytag {
