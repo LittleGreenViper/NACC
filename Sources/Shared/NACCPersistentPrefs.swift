@@ -64,9 +64,42 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
 
         /* ############################################################## */
         /**
+         The Watch app screen display selection.
+         */
+        case watchAppDisplayState
+        
+        /* ############################################################## */
+        /**
          These are all the keys, in an Array of String.
          */
-        static var allKeys: [String] {[cleanDate.rawValue, lastSelectedTabIndex.rawValue]}
+        static var allKeys: [String] {[cleanDate.rawValue, lastSelectedTabIndex.rawValue, watchAppDisplayState.rawValue]}
+    }
+    
+    /* ################################################################################################################################## */
+    // MARK: Display for Main Watch App Screen
+    /* ################################################################################################################################## */
+    /**
+     Choose which of the states to display in the main screen of the Watch app. The secondary screen will always be a keytag list.
+     */
+    enum MainWatchState: Int {
+        /* ############################################################## */
+        /**
+         Only display the text report of the cleantime.
+         */
+        case text
+
+        /* ############################################################## */
+        /**
+         Only display the highest achieved keytag.
+         */
+        case keytag
+
+        /* ############################################################## */
+        /**
+         Only display the highest achieved keytag (if less than a year), or the last medallion (if a year or more).
+         This is the default.
+         */
+        case medallion
     }
 
     /* ################################################################################################################################## */
@@ -101,6 +134,21 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
     var lastSelectedTabIndex: Int {
         get { values[Keys.lastSelectedTabIndex.rawValue] as? Int ?? 0 }
         set { values[Keys.lastSelectedTabIndex.rawValue] = newValue }
+    }
+
+    /* ################################################################## */
+    /**
+     This is set and read by the Watch app. It is not accessed by any of the other targets.
+     */
+    var watchAppDisplayState: MainWatchState {
+        get {
+            guard let stateIndex = values[Keys.watchAppDisplayState.rawValue] as? Int,
+                  let ret = MainWatchState(rawValue: stateIndex)
+            else { return .medallion }
+            
+            return ret
+        }
+        set { values[Keys.watchAppDisplayState.rawValue] = newValue.rawValue }
     }
 
     /* ################################################################## */

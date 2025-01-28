@@ -125,7 +125,8 @@
 		D498E1852D404CB800388CC3 /* WidgetStrings.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = WidgetStrings.xcstrings; sourceTree = "<group>"; };
 		D49C9A7B280783C6008E9917 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D49F92162D487A060028361F /* NACC Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NACC Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4B396122D49167800CB5501 /* NACC Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NACC Watch App.entitlements"; sourceTree = "<group>"; };
+		D4B396122D49167800CB5501 /* NACCWatchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCWatchApp.entitlements; sourceTree = "<group>"; };
+		D4B396162D491A5C00CB5501 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4B57E2B2D3C654C00A6844F /* NACCWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPersistentPrefs.swift; sourceTree = "<group>"; };
 		D4BC44BF2D43E9C10088A87A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -239,7 +240,6 @@
 		D43C667E2694AA88007D5883 = {
 			isa = PBXGroup;
 			children = (
-				D4B396122D49167800CB5501 /* NACC Watch App.entitlements */,
 				D4C541492D43C03000F62EBF /* .swiftlint.yml */,
 				D43C66C52694AC20007D5883 /* Sources */,
 				D43C66D72694AC33007D5883 /* Project-Meta */,
@@ -350,6 +350,8 @@
 		D4BC44C22D43E9C10088A87A /* NACCWatch */ = {
 			isa = PBXGroup;
 			children = (
+				D4B396162D491A5C00CB5501 /* Info.plist */,
+				D4B396122D49167800CB5501 /* NACCWatchApp.entitlements */,
 				D4BC44BF2D43E9C10088A87A /* Assets.xcassets */,
 				D4BC44C12D43E9C10088A87A /* NACCWatchApp.swift */,
 				D4BC44C02D43E9C10088A87A /* NACCWatchAppContentView.swift */,
@@ -601,9 +603,9 @@
 			projectRoot = "";
 			targets = (
 				D43C66B02694ABFF007D5883 /* NACC */,
-				D4E43A4C2C937FDF00535CDD /* NACCIntents */,
-				D47EA9D12D39A2630072F491 /* NACCWidgetExtension */,
 				D4C541292D43BF7D00F62EBF /* NACC Watch App */,
+				D47EA9D12D39A2630072F491 /* NACCWidgetExtension */,
+				D4E43A4C2C937FDF00535CDD /* NACCIntents */,
 			);
 		};
 /* End PBXProject section */
@@ -1131,7 +1133,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "NACC Watch App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatch/NACCWatchApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3021;
@@ -1141,9 +1143,9 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sources/NACCWatch/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSPrincipalClass = NACCWatchApp;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = org.magshare.NACC;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -1174,7 +1176,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "NACC Watch App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatch/NACCWatchApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3021;
@@ -1184,9 +1186,9 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sources/NACCWatch/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSPrincipalClass = NACCWatchApp;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = org.magshare.NACC;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
