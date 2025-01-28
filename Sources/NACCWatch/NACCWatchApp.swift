@@ -24,15 +24,13 @@ import SwiftUI
 // MARK: - Watch App -
 /* ###################################################################################################################################### */
 /**
+ This is the main app wrapper.
  */
 @main
 struct NACCWatchApp: App {
     /* ################################################################## */
     /**
+     We simply show the content view.
      */
-    var body: some Scene {
-        WindowGroup {
-            NACCWatchAppContentView()
-        }
-    }
+    var body: some Scene { WindowGroup { NACCWatchAppContentView() } }
 }

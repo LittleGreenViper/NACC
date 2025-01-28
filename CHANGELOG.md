@@ -1,5 +1,7 @@
 **6.0.0.3021** *TBD*
-- Added Watch app.
+
+- Improved the tag appearance.
+- Added a Watch app.
 
 **5.4.0.3020** *January 23, 2025*
 

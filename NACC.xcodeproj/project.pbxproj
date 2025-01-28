@@ -33,9 +33,6 @@
 		D4A1CC022D413FCF00098329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E0B28D2D3A85D300723D0C /* Assets.xcassets */; };
 		D4B20E7A2C938D22006C7ED8 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B20E792C938D22006C7ED8 /* LGV_Cleantime */; };
 		D4B20E7C2C938D22006C7ED8 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B20E7B2C938D22006C7ED8 /* LGV_UICleantime */; };
-		D4B396132D4916D700CB5501 /* NACCWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4ED898F2D48F8F8007E9D63 /* NACCWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D4B396142D4916E800CB5501 /* NACC Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D49F92162D487A060028361F /* NACC Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D4B396152D49174300CB5501 /* NACCIntents.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4ED898E2D48F8F8007E9D63 /* NACCIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D4B57E242D3C5E2D00A6844F /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D4B57E262D3C5EE600A6844F /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B57E252D3C5EE600A6844F /* LGV_UICleantime */; };
 		D4B57E282D3C5EEC00A6844F /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B57E272D3C5EEC00A6844F /* LGV_Cleantime */; };
@@ -82,7 +79,6 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				D4B396142D4916E800CB5501 /* NACC Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,8 +89,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				D4B396152D49174300CB5501 /* NACCIntents.appex in Embed Foundation Extensions */,
-				D4B396132D4916D700CB5501 /* NACCWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,7 +118,7 @@
 		D48F812C27FCD3FA001A0B87 /* NACCTabBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCTabBaseViewController.swift; sourceTree = "<group>"; };
 		D498E1852D404CB800388CC3 /* WidgetStrings.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = WidgetStrings.xcstrings; sourceTree = "<group>"; };
 		D49C9A7B280783C6008E9917 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D49F92162D487A060028361F /* NACC Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NACC Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D49F92162D487A060028361F /* NACC Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "NACC Watch App.app"; path = "/Users/chrismarshall/Developer/LGV/NACC/build/Debug-watchos/NACC Watch App.app"; sourceTree = "<absolute>"; };
 		D4B396122D49167800CB5501 /* NACCWatchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCWatchApp.entitlements; sourceTree = "<group>"; };
 		D4B396162D491A5C00CB5501 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4B57E2B2D3C654C00A6844F /* NACCWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCWidgetExtension.entitlements; sourceTree = "<group>"; };
@@ -180,9 +174,9 @@
 		D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Theme.xcassets; sourceTree = "<group>"; };
 		D4E43A532C937FDF00535CDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4E43A692C937FDF00535CDD /* NACCIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCIntents.entitlements; sourceTree = "<group>"; };
-		D4ED898D2D48F8F8007E9D63 /* NACC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NACC.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4ED898E2D48F8F8007E9D63 /* NACCIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NACCIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4ED898F2D48F8F8007E9D63 /* NACCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NACCWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4ED898D2D48F8F8007E9D63 /* NACC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = NACC.app; path = "/Users/chrismarshall/Developer/LGV/NACC/build/Debug-iphoneos/NACC.app"; sourceTree = "<absolute>"; };
+		D4ED898E2D48F8F8007E9D63 /* NACCIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; name = NACCIntents.appex; path = "/Users/chrismarshall/Developer/LGV/NACC/build/Debug-iphoneos/NACCIntents.appex"; sourceTree = "<absolute>"; };
+		D4ED898F2D48F8F8007E9D63 /* NACCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; name = NACCWidgetExtension.appex; path = "/Users/chrismarshall/Developer/LGV/NACC/build/Debug-iphoneos/NACCWidgetExtension.appex"; sourceTree = "<absolute>"; };
 		D4ED89912D48F9D9007E9D63 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.2.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
 		D4ED89932D48F9E1007E9D63 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.2.sdk/System/Library/Frameworks/WatchKit.framework; sourceTree = DEVELOPER_DIR; };
 		D4F46FDB2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCShowCleantimeIntentHandler.swift; sourceTree = "<group>"; };
@@ -243,10 +237,6 @@
 				D4C541492D43C03000F62EBF /* .swiftlint.yml */,
 				D43C66C52694AC20007D5883 /* Sources */,
 				D43C66D72694AC33007D5883 /* Project-Meta */,
-				D49F92162D487A060028361F /* NACC Watch App.app */,
-				D4ED898D2D48F8F8007E9D63 /* NACC.app */,
-				D4ED898E2D48F8F8007E9D63 /* NACCIntents.appex */,
-				D4ED898F2D48F8F8007E9D63 /* NACCWidgetExtension.appex */,
 				D4ED89902D48F9D9007E9D63 /* Frameworks */,
 			);
 			sourceTree = "<group>";
