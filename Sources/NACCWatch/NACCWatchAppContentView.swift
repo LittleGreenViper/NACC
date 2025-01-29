@@ -19,7 +19,7 @@
  */
 
 import SwiftUI
-import RVS_Persistent_Prefs
+import WatchConnectivity
 
 /* ###################################################################################################################################### */
 // MARK: - Watch App Content View -
@@ -27,16 +27,42 @@ import RVS_Persistent_Prefs
 /**
  */
 struct NACCWatchAppContentView: View {
+    class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
+        /* ############################################################## */
+        /**
+         */
+        func session(_ inSession: WCSession, activationDidCompleteWith inActivationState: WCSessionActivationState, error inError: (any Error)?) {
+            print("Session Is: \(inActivationState)")
+        }
+        
+        func session(_ inSession: WCSession, didReceiveApplicationContext inApplicationContext: [String: Any]) {
+            print("Application Context: \(inApplicationContext)")
+        }
+    }
+    
+    var watchDelegateHandler: NACCWatchAppContentViewWatchDelegate? = NACCWatchAppContentViewWatchDelegate()
+    
+    /* ################################################################## */
+    /**
+     */
+    @State var cleandate: Date?
+
+    /* ################################################################## */
+    /**
+     */
+    static let wcSession: WCSession? = WCSession.default
+
     /* ################################################################## */
     /**
      */
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("CleanDate: \(nil != cleandate ? cleandate!.description : "ERROR")")
         }
         .padding()
+        .onAppear {
+            NACCWatchAppContentView.wcSession?.delegate = watchDelegateHandler
+            NACCWatchAppContentView.wcSession?.activate()
+        }
     }
 }
