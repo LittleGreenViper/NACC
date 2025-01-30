@@ -15,6 +15,14 @@
 		D46F8CC42C47EDA300A1E7F5 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D46F8CC32C47EDA300A1E7F5 /* LGV_UICleantime */; };
 		D474789F28073D5400212919 /* NACCPagePrintRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */; };
 		D477647A2D3FFA2400DB748E /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D47764792D3FFA2400DB748E /* RVS_Persistent_Prefs */; };
+		D47CCAE32D4BBDE800EAE5AF /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
+		D47CCAE52D4BBF7900EAE5AF /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D47CCAE42D4BBF7900EAE5AF /* RVS_Generic_Swift_Toolbox */; };
+		D47CCAE72D4BBF7900EAE5AF /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D47CCAE62D4BBF7900EAE5AF /* LGV_Cleantime */; };
+		D47CCAE92D4BBF7900EAE5AF /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D47CCAE82D4BBF7900EAE5AF /* LGV_UICleantime */; };
+		D47CCAEB2D4BBF7900EAE5AF /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D47CCAEA2D4BBF7900EAE5AF /* RVS_Persistent_Prefs */; };
+		D47CCAEC2D4BC0F600EAE5AF /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ED89912D48F9D9007E9D63 /* SwiftUI.framework */; };
+		D47CCAED2D4BC0FE00EAE5AF /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ED89932D48F9E1007E9D63 /* WatchKit.framework */; };
+		D47CCAEF2D4BC10700EAE5AF /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D47CCAEE2D4BC10700EAE5AF /* WatchConnectivity.framework */; };
 		D485259627FDBD2E002EE3E3 /* NACCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */; };
 		D485519428479C10005914FF /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D485519328479C10005914FF /* RVS_Generic_Swift_Toolbox */; };
 		D485519628479C10005914FF /* RVS_GeneralObserver in Frameworks */ = {isa = PBXBuildFile; productRef = D485519528479C10005914FF /* RVS_GeneralObserver */; };
@@ -26,7 +34,6 @@
 		D498E1872D404D5500388CC3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 		D49C9A7C280783C6008E9917 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D49C9A7A280783C6008E9917 /* InfoPlist.strings */; };
 		D4A1CC022D413FCF00098329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E0B28D2D3A85D300723D0C /* Assets.xcassets */; };
-		D4B1E5442D4AD6A000407CE4 /* NACCWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D4B1E5362D4AD69F00407CE4 /* NACCWatch.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D4B1E54F2D4AD6CA00407CE4 /* NACCWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1E54C2D4AD6CA00407CE4 /* NACCWatchApp.swift */; };
 		D4B1E5502D4AD6CA00407CE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4B1E5482D4AD6CA00407CE4 /* Preview Assets.xcassets */; };
 		D4B1E5512D4AD6CA00407CE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4B1E54A2D4AD6CA00407CE4 /* Assets.xcassets */; };
@@ -60,13 +67,6 @@
 			remoteGlobalIDString = D47EA9D12D39A2630072F491;
 			remoteInfo = NACCWidgetExtension;
 		};
-		D4B1E5412D4AD6A000407CE4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D4B1E5352D4AD69F00407CE4;
-			remoteInfo = "NACCWatch Watch App";
-		};
 		D4E43A662C937FDF00535CDD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
@@ -75,20 +75,6 @@
 			remoteInfo = NACCIntents;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		D4B1E5432D4AD6A000407CE4 /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
-				D4B1E5442D4AD6A000407CE4 /* NACCWatch.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCBaseViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +91,7 @@
 		D45F07442D429ABC00D6939A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPagePrintRenderer.swift; sourceTree = "<group>"; };
 		D477647F2D40026E00DB748E /* NACC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
+		D47CCAEE2D4BC10700EAE5AF /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.2.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
 		D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCExtensions.swift; sourceTree = "<group>"; };
 		D48C496A2C9372AA007E87C3 /* NACCGetCleantimeSummaryAppIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCGetCleantimeSummaryAppIntent.swift; sourceTree = "<group>"; };
 		D48C496D2C9372C5007E87C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
@@ -206,6 +193,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D47CCAEC2D4BC0F600EAE5AF /* SwiftUI.framework in Frameworks */,
+				D47CCAE52D4BBF7900EAE5AF /* RVS_Generic_Swift_Toolbox in Frameworks */,
+				D47CCAE72D4BBF7900EAE5AF /* LGV_Cleantime in Frameworks */,
+				D47CCAED2D4BC0FE00EAE5AF /* WatchKit.framework in Frameworks */,
+				D47CCAEF2D4BC10700EAE5AF /* WatchConnectivity.framework in Frameworks */,
+				D47CCAEB2D4BBF7900EAE5AF /* RVS_Persistent_Prefs in Frameworks */,
+				D47CCAE92D4BBF7900EAE5AF /* LGV_UICleantime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +442,7 @@
 		D4ED89902D48F9D9007E9D63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D47CCAEE2D4BC10700EAE5AF /* WatchConnectivity.framework */,
 				D4ED89932D48F9E1007E9D63 /* WatchKit.framework */,
 				D4ED89912D48F9D9007E9D63 /* SwiftUI.framework */,
 			);
@@ -474,14 +469,12 @@
 				D43C66AD2694ABFF007D5883 /* Sources */,
 				D43C66AF2694ABFF007D5883 /* Resources */,
 				D42491CA2695F44C0094C15F /* Frameworks */,
-				D4B1E5432D4AD6A000407CE4 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				D4E43A672C937FDF00535CDD /* PBXTargetDependency */,
 				D47EA9DE2D39A2640072F491 /* PBXTargetDependency */,
-				D4B1E5422D4AD6A000407CE4 /* PBXTargetDependency */,
 			);
 			name = NACC;
 			packageProductDependencies = (
@@ -534,6 +527,10 @@
 			);
 			name = NACCWatch;
 			packageProductDependencies = (
+				D47CCAE42D4BBF7900EAE5AF /* RVS_Generic_Swift_Toolbox */,
+				D47CCAE62D4BBF7900EAE5AF /* LGV_Cleantime */,
+				D47CCAE82D4BBF7900EAE5AF /* LGV_UICleantime */,
+				D47CCAEA2D4BBF7900EAE5AF /* RVS_Persistent_Prefs */,
 			);
 			productName = "NACCWatch Watch App";
 			productReference = D4B1E5362D4AD69F00407CE4 /* NACCWatch.app */;
@@ -607,9 +604,9 @@
 			projectRoot = "";
 			targets = (
 				D43C66B02694ABFF007D5883 /* NACC */,
-				D4B1E5352D4AD69F00407CE4 /* NACCWatch */,
 				D47EA9D12D39A2630072F491 /* NACCWidgetExtension */,
 				D4E43A4C2C937FDF00535CDD /* NACCIntents */,
+				D4B1E5352D4AD69F00407CE4 /* NACCWatch */,
 			);
 		};
 /* End PBXProject section */
@@ -743,6 +740,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D47CCAE32D4BBDE800EAE5AF /* NACCPersistentPrefs.swift in Sources */,
 				D4E1B33F2D4ADA3B0076E568 /* NACCWatchAppContentView.swift in Sources */,
 				D4B1E54F2D4AD6CA00407CE4 /* NACCWatchApp.swift in Sources */,
 			);
@@ -764,11 +762,6 @@
 			isa = PBXTargetDependency;
 			target = D47EA9D12D39A2630072F491 /* NACCWidgetExtension */;
 			targetProxy = D47EA9DD2D39A2640072F491 /* PBXContainerItemProxy */;
-		};
-		D4B1E5422D4AD6A000407CE4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D4B1E5352D4AD69F00407CE4 /* NACCWatch */;
-			targetProxy = D4B1E5412D4AD6A000407CE4 /* PBXContainerItemProxy */;
 		};
 		D4E43A672C937FDF00535CDD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -997,7 +990,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 6.0.0;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1032,7 +1025,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 6.0.0;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1071,7 +1064,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 6.0.0;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1110,7 +1103,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 6.0.0;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1129,15 +1122,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = WatchAppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "${PROJECT_DIR}/Sources/NACCWatch/NACCWatchApp.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3021;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				EXCLUDED_ARCHS = ios;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
@@ -1168,15 +1163,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = WatchAppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "${PROJECT_DIR}/Sources/NACCWatch/NACCWatchApp.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3021;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				EXCLUDED_ARCHS = ios;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
@@ -1225,7 +1222,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 6.0.0;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1265,7 +1262,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 6.0.0;
+				MARKETING_VERSION = 5.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1394,6 +1391,26 @@
 		};
 		D47764792D3FFA2400DB748E /* RVS_Persistent_Prefs */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = RVS_Persistent_Prefs;
+		};
+		D47CCAE42D4BBF7900EAE5AF /* RVS_Generic_Swift_Toolbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D42491B52695EF270094C15F /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */;
+			productName = RVS_Generic_Swift_Toolbox;
+		};
+		D47CCAE62D4BBF7900EAE5AF /* LGV_Cleantime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D46F8CBF2C47ED0800A1E7F5 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */;
+			productName = LGV_Cleantime;
+		};
+		D47CCAE82D4BBF7900EAE5AF /* LGV_UICleantime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D46F8CC22C47EDA300A1E7F5 /* XCRemoteSwiftPackageReference "LGV_UICleantime" */;
+			productName = LGV_UICleantime;
+		};
+		D47CCAEA2D4BBF7900EAE5AF /* RVS_Persistent_Prefs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4C70F132D411E68005A2A79 /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */;
 			productName = RVS_Persistent_Prefs;
 		};
 		D485519328479C10005914FF /* RVS_Generic_Swift_Toolbox */ = {

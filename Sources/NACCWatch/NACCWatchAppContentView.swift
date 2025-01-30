@@ -27,7 +27,22 @@ import WatchConnectivity
 /**
  */
 struct NACCWatchAppContentView: View {
+    /* ################################################################################################################################## */
+    // MARK: Watch Connecvtivity Handler
+    /* ################################################################################################################################## */
+    /**
+     */
     class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
+        /* ################################################################## */
+        /**
+         */
+        typealias ApplicationContextHandler = (_ inApplicationContext: [String: Any]) -> Void
+        
+        /* ################################################################## */
+        /**
+         */
+        var updateHandler: ApplicationContextHandler?
+        
         /* ############################################################## */
         /**
          */
@@ -35,32 +50,58 @@ struct NACCWatchAppContentView: View {
             print("Session Is: \(inActivationState)")
         }
         
+        /* ############################################################## */
+        /**
+         */
         func session(_ inSession: WCSession, didReceiveApplicationContext inApplicationContext: [String: Any]) {
             print("Application Context: \(inApplicationContext)")
         }
     }
     
+    /* ################################################################## */
+    /**
+     */
+    @State var cleanDate: Date?
+
+    /* ################################################################## */
+    /**
+     */
+    @State var watchFormat: NACCPersistentPrefs.MainWatchState?
+
+    /* ################################################################## */
+    /**
+     */
     var watchDelegateHandler: NACCWatchAppContentViewWatchDelegate? = NACCWatchAppContentViewWatchDelegate()
     
     /* ################################################################## */
     /**
      */
-    @State var cleandate: Date?
-
+    static let wcSession: WCSession? = WCSession.default
+    
     /* ################################################################## */
     /**
      */
-    static let wcSession: WCSession? = WCSession.default
+    func updateApplicationContext(_ inApplicationContext: [String: Any]) {
+        if let cleanDateTemp = inApplicationContext["cleandate"] as? TimeInterval {
+            cleanDate = Date(timeIntervalSinceReferenceDate: cleanDateTemp)
+        }
+        
+        if let watchFormatTemp = inApplicationContext["watchAppDisplayState"] as? Int {
+            watchFormat = NACCPersistentPrefs.MainWatchState(rawValue: watchFormatTemp)
+        }
+    }
 
     /* ################################################################## */
     /**
      */
     var body: some View {
         VStack {
-            Text("CleanDate: \(nil != cleandate ? cleandate!.description : "ERROR")")
+            Text("CleanDate: \(nil != cleanDate ? cleanDate!.description : "ERROR")")
         }
         .padding()
         .onAppear {
+            cleanDate = .now
+            watchFormat = .medallion
             NACCWatchAppContentView.wcSession?.delegate = watchDelegateHandler
             NACCWatchAppContentView.wcSession?.activate()
         }

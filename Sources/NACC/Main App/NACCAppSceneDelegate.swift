@@ -19,7 +19,6 @@
  */
 
 import UIKit
-import LGV_UICleantime
 import WatchConnectivity
 
 /* ###################################################################################################################################### */
@@ -104,6 +103,7 @@ class NACCAppSceneDelegate: UIResponder {
 
     /* ################################################################## */
     /**
+     This holds the WatchKit session.
      */
     static let wcSession: WCSession? = WCSession.default
 }
@@ -432,8 +432,8 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
 
         _resetScreen = false
         
-        Self.wcSession?.delegate = self
-        Self.wcSession?.activate()
+//        Self.wcSession?.delegate = self
+//        Self.wcSession?.activate()
     }
     
     /* ################################################################## */
