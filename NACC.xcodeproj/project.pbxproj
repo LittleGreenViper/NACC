@@ -38,6 +38,14 @@
 		D4A420D52D4D5E7900E4AC1E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 		D4A420D62D4D5E9B00E4AC1E /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */; };
 		D4A420D72D4D5E9B00E4AC1E /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */; };
+		D4A420E02D4D607800E4AC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A420D82D4D607800E4AC1E /* Assets.xcassets */; };
+		D4A420E22D4D607800E4AC1E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4A420DA2D4D607800E4AC1E /* Localizable.xcstrings */; };
+		D4A420E42D4D607800E4AC1E /* NACCWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A420DC2D4D607800E4AC1E /* NACCWatchApp.swift */; };
+		D4A420E52D4D607800E4AC1E /* NACCWatchAppContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A420DD2D4D607800E4AC1E /* NACCWatchAppContentView.swift */; };
+		D4A420ED2D4D607C00E4AC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A420E62D4D607C00E4AC1E /* Assets.xcassets */; };
+		D4A420EF2D4D607C00E4AC1E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D4A420EA2D4D607C00E4AC1E /* README.md */; };
+		D4A420F02D4D607C00E4AC1E /* WidgetStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */; };
+		D4A420F12D4D607C00E4AC1E /* NACCWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A420E82D4D607C00E4AC1E /* NACCWidgetBundle.swift */; };
 		D4B20E7A2C938D22006C7ED8 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B20E792C938D22006C7ED8 /* LGV_Cleantime */; };
 		D4B20E7C2C938D22006C7ED8 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B20E7B2C938D22006C7ED8 /* LGV_UICleantime */; };
 		D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
@@ -125,6 +133,19 @@
 		D49C9A7B280783C6008E9917 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D4A420B02D4D5C7900E4AC1E /* NACCWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NACCWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A420B12D4D5C7900E4AC1E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D4A420D82D4D607800E4AC1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D4A420D92D4D607800E4AC1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4A420DA2D4D607800E4AC1E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		D4A420DB2D4D607800E4AC1E /* NACCWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCWatch.entitlements; sourceTree = "<group>"; };
+		D4A420DC2D4D607800E4AC1E /* NACCWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWatchApp.swift; sourceTree = "<group>"; };
+		D4A420DD2D4D607800E4AC1E /* NACCWatchAppContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWatchAppContentView.swift; sourceTree = "<group>"; };
+		D4A420DE2D4D607800E4AC1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D4A420E62D4D607C00E4AC1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D4A420E72D4D607C00E4AC1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4A420E82D4D607C00E4AC1E /* NACCWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWidgetBundle.swift; sourceTree = "<group>"; };
+		D4A420E92D4D607C00E4AC1E /* NACCWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCWidgetExtension.entitlements; sourceTree = "<group>"; };
+		D4A420EA2D4D607C00E4AC1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = WidgetStrings.xcstrings; sourceTree = "<group>"; };
 		D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPersistentPrefs.swift; sourceTree = "<group>"; };
 		D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAboutViewController.swift; sourceTree = "<group>"; };
 		D4C080612D4957B200299FBC /* NACC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NACC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,43 +200,6 @@
 		D4F46FDB2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCShowCleantimeIntentHandler.swift; sourceTree = "<group>"; };
 		D4F46FDF2C94669E0071D359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/NACCIntents.intentdefinition; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		D45A93CA2D4C5238008B2528 /* Exceptions for "NACCWatch" folder in "NACCWatch" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-				README.md,
-			);
-			target = D45A93B62D4C4DEA008B2528 /* NACCWatch */;
-		};
-		D4A420C02D4D5C7A00E4AC1E /* Exceptions for "NACCWidget" folder in "NACCWidget" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = D4A420AF2D4D5C7900E4AC1E /* NACCWidget */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		D45A93B82D4C4DEA008B2528 /* NACCWatch */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				D45A93CA2D4C5238008B2528 /* Exceptions for "NACCWatch" folder in "NACCWatch" target */,
-			);
-			path = NACCWatch;
-			sourceTree = "<group>";
-		};
-		D4A420B42D4D5C7900E4AC1E /* NACCWidget */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				D4A420C02D4D5C7A00E4AC1E /* Exceptions for "NACCWidget" folder in "NACCWidget" target */,
-			);
-			path = NACCWidget;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D42491CA2695F44C0094C15F /* Frameworks */ = {
@@ -284,8 +268,8 @@
 			children = (
 				D4B396112D49156100CB5501 /* Shared */,
 				D43C66C62694AC20007D5883 /* NACC */,
-				D4A420B42D4D5C7900E4AC1E /* NACCWidget */,
-				D45A93B82D4C4DEA008B2528 /* NACCWatch */,
+				D4A420EC2D4D607C00E4AC1E /* NACCWidget */,
+				D4A420DF2D4D607800E4AC1E /* NACCWatch */,
 				D4E43A502C937FDF00535CDD /* NACCIntents */,
 			);
 			path = Sources;
@@ -320,6 +304,33 @@
 				D48C496A2C9372AA007E87C3 /* NACCGetCleantimeSummaryAppIntent.swift */,
 			);
 			path = Intents;
+			sourceTree = "<group>";
+		};
+		D4A420DF2D4D607800E4AC1E /* NACCWatch */ = {
+			isa = PBXGroup;
+			children = (
+				D4A420DC2D4D607800E4AC1E /* NACCWatchApp.swift */,
+				D4A420DD2D4D607800E4AC1E /* NACCWatchAppContentView.swift */,
+				D4A420D82D4D607800E4AC1E /* Assets.xcassets */,
+				D4A420D92D4D607800E4AC1E /* Info.plist */,
+				D4A420DA2D4D607800E4AC1E /* Localizable.xcstrings */,
+				D4A420DB2D4D607800E4AC1E /* NACCWatch.entitlements */,
+				D4A420DE2D4D607800E4AC1E /* README.md */,
+			);
+			path = NACCWatch;
+			sourceTree = "<group>";
+		};
+		D4A420EC2D4D607C00E4AC1E /* NACCWidget */ = {
+			isa = PBXGroup;
+			children = (
+				D4A420E82D4D607C00E4AC1E /* NACCWidgetBundle.swift */,
+				D4A420E62D4D607C00E4AC1E /* Assets.xcassets */,
+				D4A420E72D4D607C00E4AC1E /* Info.plist */,
+				D4A420E92D4D607C00E4AC1E /* NACCWidgetExtension.entitlements */,
+				D4A420EA2D4D607C00E4AC1E /* README.md */,
+				D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */,
+			);
+			path = NACCWidget;
 			sourceTree = "<group>";
 		};
 		D4B247C0269F0C52004D8D1E /* Resources */ = {
@@ -524,9 +535,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				D45A93B82D4C4DEA008B2528 /* NACCWatch */,
-			);
 			name = NACCWatch;
 			packageProductDependencies = (
 				D45A93CF2D4C542C008B2528 /* RVS_Persistent_Prefs */,
@@ -546,9 +554,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				D4A420B42D4D5C7900E4AC1E /* NACCWidget */,
 			);
 			name = NACCWidget;
 			packageProductDependencies = (
@@ -631,8 +636,8 @@
 			targets = (
 				D43C66B02694ABFF007D5883 /* NACC */,
 				D45A93B62D4C4DEA008B2528 /* NACCWatch */,
-				D4E43A4C2C937FDF00535CDD /* NACCIntents */,
 				D4A420AF2D4D5C7900E4AC1E /* NACCWidget */,
+				D4E43A4C2C937FDF00535CDD /* NACCIntents */,
 			);
 		};
 /* End PBXProject section */
@@ -657,6 +662,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4A420E02D4D607800E4AC1E /* Assets.xcassets in Resources */,
+				D4A420E22D4D607800E4AC1E /* Localizable.xcstrings in Resources */,
 				D4A420D62D4D5E9B00E4AC1E /* LGV_UICleantime.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -665,6 +672,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4A420ED2D4D607C00E4AC1E /* Assets.xcassets in Resources */,
+				D4A420EF2D4D607C00E4AC1E /* README.md in Resources */,
+				D4A420F02D4D607C00E4AC1E /* WidgetStrings.xcstrings in Resources */,
 				D4A420D72D4D5E9B00E4AC1E /* LGV_UICleantime.xcassets in Resources */,
 				D4A420D52D4D5E7900E4AC1E /* Localizable.strings in Resources */,
 			);
@@ -755,6 +765,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D45A93CE2D4C5405008B2528 /* NACCPersistentPrefs.swift in Sources */,
+				D4A420E42D4D607800E4AC1E /* NACCWatchApp.swift in Sources */,
+				D4A420E52D4D607800E4AC1E /* NACCWatchAppContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,6 +774,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4A420F12D4D607C00E4AC1E /* NACCWidgetBundle.swift in Sources */,
 				D4A420D22D4D5DFE00E4AC1E /* NACCPersistentPrefs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
