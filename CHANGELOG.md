@@ -1,5 +1,9 @@
 **6.0.0.3022** *TBD*
 
+**5.5.1.3022** *January 31, 2025*
+
+- The previous release disabled widgets. This restores them.
+
 **5.5.0.3021** *January 30, 2025*
 
 - Improved the tag appearance.
