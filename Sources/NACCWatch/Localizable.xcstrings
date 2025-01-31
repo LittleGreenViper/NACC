@@ -3,17 +3,6 @@
   "strings" : {
     "CleanDate: %@" : {
 
-    },
-    "Hello, world!" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HOWDY!"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"

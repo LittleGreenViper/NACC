@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D4B1E5352D4AD69F00407CE4"
+               BlueprintIdentifier = "D45A93B62D4C4DEA008B2528"
                BuildableName = "NACCWatch.app"
                BlueprintName = "NACCWatch"
                ReferencedContainer = "container:NACC.xcodeproj">
@@ -58,7 +58,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D4B1E5352D4AD69F00407CE4"
+            BlueprintIdentifier = "D45A93B62D4C4DEA008B2528"
             BuildableName = "NACCWatch.app"
             BlueprintName = "NACCWatch"
             ReferencedContainer = "container:NACC.xcodeproj">
@@ -75,7 +75,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D4B1E5352D4AD69F00407CE4"
+            BlueprintIdentifier = "D45A93B62D4C4DEA008B2528"
             BuildableName = "NACCWatch.app"
             BlueprintName = "NACCWatch"
             ReferencedContainer = "container:NACC.xcodeproj">

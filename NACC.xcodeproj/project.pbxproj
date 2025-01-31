@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,18 +11,13 @@
 		D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42314F527FE150E00C5E5FC /* NACCTabBarController.swift */; };
 		D43730122D497E9C00592680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D43730112D497E9C00592680 /* Assets.xcassets */; };
 		D43C66D42694AC20007D5883 /* NACCAppSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */; };
+		D45A93C42D4C4DEB008B2528 /* NACCWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D45A93B72D4C4DEA008B2528 /* NACCWatch.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D45A93CE2D4C5405008B2528 /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
+		D45A93D02D4C542C008B2528 /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D45A93CF2D4C542C008B2528 /* RVS_Persistent_Prefs */; };
 		D46F8CC12C47ED0800A1E7F5 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D46F8CC02C47ED0800A1E7F5 /* LGV_Cleantime */; };
 		D46F8CC42C47EDA300A1E7F5 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D46F8CC32C47EDA300A1E7F5 /* LGV_UICleantime */; };
 		D474789F28073D5400212919 /* NACCPagePrintRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */; };
 		D477647A2D3FFA2400DB748E /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D47764792D3FFA2400DB748E /* RVS_Persistent_Prefs */; };
-		D47CCAE32D4BBDE800EAE5AF /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
-		D47CCAE52D4BBF7900EAE5AF /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D47CCAE42D4BBF7900EAE5AF /* RVS_Generic_Swift_Toolbox */; };
-		D47CCAE72D4BBF7900EAE5AF /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D47CCAE62D4BBF7900EAE5AF /* LGV_Cleantime */; };
-		D47CCAE92D4BBF7900EAE5AF /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D47CCAE82D4BBF7900EAE5AF /* LGV_UICleantime */; };
-		D47CCAEB2D4BBF7900EAE5AF /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D47CCAEA2D4BBF7900EAE5AF /* RVS_Persistent_Prefs */; };
-		D47CCAEC2D4BC0F600EAE5AF /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ED89912D48F9D9007E9D63 /* SwiftUI.framework */; };
-		D47CCAED2D4BC0FE00EAE5AF /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ED89932D48F9E1007E9D63 /* WatchKit.framework */; };
-		D47CCAEF2D4BC10700EAE5AF /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D47CCAEE2D4BC10700EAE5AF /* WatchConnectivity.framework */; };
 		D485259627FDBD2E002EE3E3 /* NACCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */; };
 		D485519428479C10005914FF /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D485519328479C10005914FF /* RVS_Generic_Swift_Toolbox */; };
 		D485519628479C10005914FF /* RVS_GeneralObserver in Frameworks */ = {isa = PBXBuildFile; productRef = D485519528479C10005914FF /* RVS_GeneralObserver */; };
@@ -34,9 +29,6 @@
 		D498E1872D404D5500388CC3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 		D49C9A7C280783C6008E9917 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D49C9A7A280783C6008E9917 /* InfoPlist.strings */; };
 		D4A1CC022D413FCF00098329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E0B28D2D3A85D300723D0C /* Assets.xcassets */; };
-		D4B1E54F2D4AD6CA00407CE4 /* NACCWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1E54C2D4AD6CA00407CE4 /* NACCWatchApp.swift */; };
-		D4B1E5502D4AD6CA00407CE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4B1E5482D4AD6CA00407CE4 /* Preview Assets.xcassets */; };
-		D4B1E5512D4AD6CA00407CE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4B1E54A2D4AD6CA00407CE4 /* Assets.xcassets */; };
 		D4B20E7A2C938D22006C7ED8 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B20E792C938D22006C7ED8 /* LGV_Cleantime */; };
 		D4B20E7C2C938D22006C7ED8 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B20E7B2C938D22006C7ED8 /* LGV_UICleantime */; };
 		D4B57E242D3C5E2D00A6844F /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
@@ -49,7 +41,6 @@
 		D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */; };
 		D4C79A2127F9189800FBB7D3 /* NACC_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */; };
 		D4E0B2952D3A85D300723D0C /* NACCWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E0B2902D3A85D300723D0C /* NACCWidgetBundle.swift */; };
-		D4E1B33F2D4ADA3B0076E568 /* NACCWatchAppContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E1B33E2D4ADA3B0076E568 /* NACCWatchAppContentView.swift */; };
 		D4E245E92D3DDBC0003EC91C /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4E245E82D3DDBC0003EC91C /* RVS_UIKit_Toolbox */; };
 		D4E2F96927FCCA3200457AD4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 		D4E2F96B27FCCD3400457AD4 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */; };
@@ -60,6 +51,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D45A93C22D4C4DEB008B2528 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D45A93B62D4C4DEA008B2528;
+			remoteInfo = "NACCWatch Watch App";
+		};
 		D47EA9DD2D39A2640072F491 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
@@ -76,6 +74,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D45A93C82D4C4DEB008B2528 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				D45A93C42D4C4DEB008B2528 /* NACCWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCBaseViewController.swift; sourceTree = "<group>"; };
 		D41657122C4846990015DDFD /* NACC.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NACC.docc; sourceTree = "<group>"; };
@@ -86,6 +98,7 @@
 		D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAppSceneDelegate.swift; sourceTree = "<group>"; };
 		D43C66CE2694AC20007D5883 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D43C66D82694AC33007D5883 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
+		D45A93B72D4C4DEA008B2528 /* NACCWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NACCWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D45CF3632809AB4500065E87 /* NACC.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
 		D45F07432D429AB100D6939A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D45F07442D429ABC00D6939A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -99,10 +112,6 @@
 		D48F812C27FCD3FA001A0B87 /* NACCTabBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCTabBaseViewController.swift; sourceTree = "<group>"; };
 		D498E1852D404CB800388CC3 /* WidgetStrings.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = WidgetStrings.xcstrings; sourceTree = "<group>"; };
 		D49C9A7B280783C6008E9917 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D4B1E5362D4AD69F00407CE4 /* NACCWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NACCWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4B1E5482D4AD6CA00407CE4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D4B1E54A2D4AD6CA00407CE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D4B1E54C2D4AD6CA00407CE4 /* NACCWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWatchApp.swift; sourceTree = "<group>"; };
 		D4B57E2B2D3C654C00A6844F /* NACCWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPersistentPrefs.swift; sourceTree = "<group>"; };
 		D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAboutViewController.swift; sourceTree = "<group>"; };
@@ -152,17 +161,39 @@
 		D4E0B28D2D3A85D300723D0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4E0B28E2D3A85D300723D0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4E0B2902D3A85D300723D0C /* NACCWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWidgetBundle.swift; sourceTree = "<group>"; };
-		D4E1B33E2D4ADA3B0076E568 /* NACCWatchAppContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWatchAppContentView.swift; sourceTree = "<group>"; };
 		D4E2F96827FCCA3200457AD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Theme.xcassets; sourceTree = "<group>"; };
 		D4E43A532C937FDF00535CDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4E43A692C937FDF00535CDD /* NACCIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCIntents.entitlements; sourceTree = "<group>"; };
 		D4E9103B2D497FAD0036F641 /* Base */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Base; path = Base.lproj/LGV_UICleantime.xcassets; sourceTree = "<group>"; };
+		D4EC72202D4C55B7008ED9D8 /* NACCWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCWatch.entitlements; sourceTree = "<group>"; };
 		D4ED89912D48F9D9007E9D63 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.2.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
 		D4ED89932D48F9E1007E9D63 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.2.sdk/System/Library/Frameworks/WatchKit.framework; sourceTree = DEVELOPER_DIR; };
 		D4F46FDB2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCShowCleantimeIntentHandler.swift; sourceTree = "<group>"; };
 		D4F46FDF2C94669E0071D359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/NACCIntents.intentdefinition; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D45A93CA2D4C5238008B2528 /* Exceptions for "NACCWatch" folder in "NACCWatch" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+				README.md,
+			);
+			target = D45A93B62D4C4DEA008B2528 /* NACCWatch */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D45A93B82D4C4DEA008B2528 /* NACCWatch */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D45A93CA2D4C5238008B2528 /* Exceptions for "NACCWatch" folder in "NACCWatch" target */,
+			);
+			path = NACCWatch;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		D42491CA2695F44C0094C15F /* Frameworks */ = {
@@ -178,6 +209,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D45A93B42D4C4DEA008B2528 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D45A93D02D4C542C008B2528 /* RVS_Persistent_Prefs in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D47EA9CF2D39A2630072F491 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -186,20 +225,6 @@
 				D4E245E92D3DDBC0003EC91C /* RVS_UIKit_Toolbox in Frameworks */,
 				D4B57E262D3C5EE600A6844F /* LGV_UICleantime in Frameworks */,
 				D4B57E282D3C5EEC00A6844F /* LGV_Cleantime in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4B1E5332D4AD69F00407CE4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D47CCAEC2D4BC0F600EAE5AF /* SwiftUI.framework in Frameworks */,
-				D47CCAE52D4BBF7900EAE5AF /* RVS_Generic_Swift_Toolbox in Frameworks */,
-				D47CCAE72D4BBF7900EAE5AF /* LGV_Cleantime in Frameworks */,
-				D47CCAED2D4BC0FE00EAE5AF /* WatchKit.framework in Frameworks */,
-				D47CCAEF2D4BC10700EAE5AF /* WatchConnectivity.framework in Frameworks */,
-				D47CCAEB2D4BBF7900EAE5AF /* RVS_Persistent_Prefs in Frameworks */,
-				D47CCAE92D4BBF7900EAE5AF /* LGV_UICleantime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +243,7 @@
 		D43C667E2694AA88007D5883 = {
 			isa = PBXGroup;
 			children = (
+				D4EC72202D4C55B7008ED9D8 /* NACCWatch.entitlements */,
 				D4C541492D43C03000F62EBF /* .swiftlint.yml */,
 				D43C66C52694AC20007D5883 /* Sources */,
 				D43C66D72694AC33007D5883 /* Project-Meta */,
@@ -225,7 +251,7 @@
 				D4C080612D4957B200299FBC /* NACC.app */,
 				D4C080632D4957B200299FBC /* NACCWidgetExtension.appex */,
 				D4C080642D4957B200299FBC /* NACCIntents.appex */,
-				D4B1E5362D4AD69F00407CE4 /* NACCWatch.app */,
+				D45A93B72D4C4DEA008B2528 /* NACCWatch.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,7 +260,7 @@
 			children = (
 				D4B396112D49156100CB5501 /* Shared */,
 				D43C66C62694AC20007D5883 /* NACC */,
-				D4B1E54D2D4AD6CA00407CE4 /* NACCWatch */,
+				D45A93B82D4C4DEA008B2528 /* NACCWatch */,
 				D4E43A502C937FDF00535CDD /* NACCIntents */,
 				D4E0B2912D3A85D300723D0C /* NACCWidget */,
 			);
@@ -270,25 +296,6 @@
 				D48C496A2C9372AA007E87C3 /* NACCGetCleantimeSummaryAppIntent.swift */,
 			);
 			path = Intents;
-			sourceTree = "<group>";
-		};
-		D4B1E5492D4AD6CA00407CE4 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				D4B1E5482D4AD6CA00407CE4 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		D4B1E54D2D4AD6CA00407CE4 /* NACCWatch */ = {
-			isa = PBXGroup;
-			children = (
-				D4B1E5492D4AD6CA00407CE4 /* Preview Content */,
-				D4B1E54A2D4AD6CA00407CE4 /* Assets.xcassets */,
-				D4E1B33E2D4ADA3B0076E568 /* NACCWatchAppContentView.swift */,
-				D4B1E54C2D4AD6CA00407CE4 /* NACCWatchApp.swift */,
-			);
-			path = NACCWatch;
 			sourceTree = "<group>";
 		};
 		D4B247C0269F0C52004D8D1E /* Resources */ = {
@@ -469,12 +476,14 @@
 				D43C66AD2694ABFF007D5883 /* Sources */,
 				D43C66AF2694ABFF007D5883 /* Resources */,
 				D42491CA2695F44C0094C15F /* Frameworks */,
+				D45A93C82D4C4DEB008B2528 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				D4E43A672C937FDF00535CDD /* PBXTargetDependency */,
 				D47EA9DE2D39A2640072F491 /* PBXTargetDependency */,
+				D45A93C32D4C4DEB008B2528 /* PBXTargetDependency */,
 			);
 			name = NACC;
 			packageProductDependencies = (
@@ -487,6 +496,30 @@
 			);
 			productName = UICleantimeTestHarness;
 			productReference = D4C080612D4957B200299FBC /* NACC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D45A93B62D4C4DEA008B2528 /* NACCWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D45A93C52D4C4DEB008B2528 /* Build configuration list for PBXNativeTarget "NACCWatch" */;
+			buildPhases = (
+				D4EC72212D4C55D5008ED9D8 /* SwiftLint */,
+				D45A93B32D4C4DEA008B2528 /* Sources */,
+				D45A93B42D4C4DEA008B2528 /* Frameworks */,
+				D45A93B52D4C4DEA008B2528 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D45A93B82D4C4DEA008B2528 /* NACCWatch */,
+			);
+			name = NACCWatch;
+			packageProductDependencies = (
+				D45A93CF2D4C542C008B2528 /* RVS_Persistent_Prefs */,
+			);
+			productName = "NACCWatch Watch App";
+			productReference = D45A93B72D4C4DEA008B2528 /* NACCWatch.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D47EA9D12D39A2630072F491 /* NACCWidgetExtension */ = {
@@ -512,29 +545,6 @@
 			productName = NACCWidgetExtension;
 			productReference = D4C080632D4957B200299FBC /* NACCWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
-		};
-		D4B1E5352D4AD69F00407CE4 /* NACCWatch */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D4B1E5452D4AD6A000407CE4 /* Build configuration list for PBXNativeTarget "NACCWatch" */;
-			buildPhases = (
-				D4B1E5322D4AD69F00407CE4 /* Sources */,
-				D4B1E5332D4AD69F00407CE4 /* Frameworks */,
-				D4B1E5342D4AD69F00407CE4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = NACCWatch;
-			packageProductDependencies = (
-				D47CCAE42D4BBF7900EAE5AF /* RVS_Generic_Swift_Toolbox */,
-				D47CCAE62D4BBF7900EAE5AF /* LGV_Cleantime */,
-				D47CCAE82D4BBF7900EAE5AF /* LGV_UICleantime */,
-				D47CCAEA2D4BBF7900EAE5AF /* RVS_Persistent_Prefs */,
-			);
-			productName = "NACCWatch Watch App";
-			productReference = D4B1E5362D4AD69F00407CE4 /* NACCWatch.app */;
-			productType = "com.apple.product-type.application";
 		};
 		D4E43A4C2C937FDF00535CDD /* NACCIntents */ = {
 			isa = PBXNativeTarget;
@@ -570,10 +580,10 @@
 					D43C66B02694ABFF007D5883 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
-					D47EA9D12D39A2630072F491 = {
+					D45A93B62D4C4DEA008B2528 = {
 						CreatedOnToolsVersion = 16.2;
 					};
-					D4B1E5352D4AD69F00407CE4 = {
+					D47EA9D12D39A2630072F491 = {
 						CreatedOnToolsVersion = 16.2;
 					};
 					D4E43A4C2C937FDF00535CDD = {
@@ -583,7 +593,6 @@
 				};
 			};
 			buildConfigurationList = D43C66822694AA88007D5883 /* Build configuration list for PBXProject "NACC" */;
-			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -599,14 +608,15 @@
 				D4E245E32D3DDB1E003EC91C /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */,
 				D4C70F132D411E68005A2A79 /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */,
 			);
+			preferredProjectObjectVersion = 77;
 			productRefGroup = D43C667E2694AA88007D5883;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				D43C66B02694ABFF007D5883 /* NACC */,
+				D45A93B62D4C4DEA008B2528 /* NACCWatch */,
 				D47EA9D12D39A2630072F491 /* NACCWidgetExtension */,
 				D4E43A4C2C937FDF00535CDD /* NACCIntents */,
-				D4B1E5352D4AD69F00407CE4 /* NACCWatch */,
 			);
 		};
 /* End PBXProject section */
@@ -627,6 +637,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D45A93B52D4C4DEA008B2528 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D47EA9D02D39A2630072F491 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -635,15 +652,6 @@
 				D498E1872D404D5500388CC3 /* Localizable.strings in Resources */,
 				D498E1862D404CB800388CC3 /* WidgetStrings.xcstrings in Resources */,
 				D4A1CC022D413FCF00098329 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4B1E5342D4AD69F00407CE4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D4B1E5502D4AD6CA00407CE4 /* Preview Assets.xcassets in Resources */,
-				D4B1E5512D4AD6CA00407CE4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,6 +715,25 @@
 			shellPath = /bin/sh;
 			shellScript = "if command -v swiftlint 2>&1 >/dev/null\nthen\n    cd ${PROJECT_DIR}\n    swiftlint\nfi\n";
 		};
+		D4EC72212D4C55D5008ED9D8 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if command -v swiftlint 2>&1 >/dev/null\nthen\n    cd ${PROJECT_DIR}\n    swiftlint\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -727,22 +754,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D45A93B32D4C4DEA008B2528 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D45A93CE2D4C5405008B2528 /* NACCPersistentPrefs.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D47EA9CE2D39A2630072F491 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				D4B57E242D3C5E2D00A6844F /* NACCPersistentPrefs.swift in Sources */,
 				D4E0B2952D3A85D300723D0C /* NACCWidgetBundle.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4B1E5322D4AD69F00407CE4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D47CCAE32D4BBDE800EAE5AF /* NACCPersistentPrefs.swift in Sources */,
-				D4E1B33F2D4ADA3B0076E568 /* NACCWatchAppContentView.swift in Sources */,
-				D4B1E54F2D4AD6CA00407CE4 /* NACCWatchApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,6 +783,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D45A93C32D4C4DEB008B2528 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = D45A93B62D4C4DEA008B2528 /* NACCWatch */;
+			targetProxy = D45A93C22D4C4DEB008B2528 /* PBXContainerItemProxy */;
+		};
 		D47EA9DE2D39A2640072F491 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D47EA9D12D39A2630072F491 /* NACCWidgetExtension */;
@@ -979,7 +1010,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Project-Meta/NACC.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3021;
+				CURRENT_PROJECT_VERSION = 3022;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/NACC/Info.plist";
@@ -990,7 +1021,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 5.5.0;
+				MARKETING_VERSION = 6.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1014,7 +1045,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Project-Meta/NACC.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3021;
+				CURRENT_PROJECT_VERSION = 3022;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/NACC/Info.plist";
@@ -1025,7 +1056,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 5.5.0;
+				MARKETING_VERSION = 6.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1040,6 +1071,97 @@
 			};
 			name = Release;
 		};
+		D45A93C62D4C4DEB008B2528 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = NACCWatch.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3022;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = P53V4JS928;
+				DRIVERKIT_DEPLOYMENT_TARGET = "";
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sources/NACCWatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NACC;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = org.magshare.NACC;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				MARKETING_VERSION = 6.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "4,1";
+				TVOS_DEPLOYMENT_TARGET = "";
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				XROS_DEPLOYMENT_TARGET = "";
+			};
+			name = Debug;
+		};
+		D45A93C72D4C4DEB008B2528 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = NACCWatch.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3022;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = P53V4JS928;
+				DRIVERKIT_DEPLOYMENT_TARGET = "";
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sources/NACCWatch/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NACC;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = org.magshare.NACC;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				MARKETING_VERSION = 6.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "4,1";
+				TVOS_DEPLOYMENT_TARGET = "";
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				XROS_DEPLOYMENT_TARGET = "";
+			};
+			name = Release;
+		};
 		D47EA9E02D39A2640072F491 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1049,7 +1171,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWidget/NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3021;
+				CURRENT_PROJECT_VERSION = 3022;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1064,7 +1186,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 5.5.0;
+				MARKETING_VERSION = 6.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1088,7 +1210,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWidget/NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3021;
+				CURRENT_PROJECT_VERSION = 3022;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1103,7 +1225,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 5.5.0;
+				MARKETING_VERSION = 6.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1117,87 +1239,6 @@
 			};
 			name = Release;
 		};
-		D4B1E5462D4AD6A000407CE4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = WatchAppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "${PROJECT_DIR}/Sources/NACCWatch/NACCWatchApp.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = P53V4JS928;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				EXCLUDED_ARCHS = ios;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = NACC;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = org.magshare.NACC;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 6.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = Debug;
-		};
-		D4B1E5472D4AD6A000407CE4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = WatchAppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "${PROJECT_DIR}/Sources/NACCWatch/NACCWatchApp.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = P53V4JS928;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				EXCLUDED_ARCHS = ios;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = NACC;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = org.magshare.NACC;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 6.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "watchsimulator watchos";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = Release;
-		};
 		D4E43A6B2C937FDF00535CDD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1206,7 +1247,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3021;
+				CURRENT_PROJECT_VERSION = 3022;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1222,7 +1263,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 5.5.0;
+				MARKETING_VERSION = 6.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1246,7 +1287,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3021;
+				CURRENT_PROJECT_VERSION = 3022;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1262,7 +1303,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 5.5.0;
+				MARKETING_VERSION = 6.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1298,20 +1339,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		D45A93C52D4C4DEB008B2528 /* Build configuration list for PBXNativeTarget "NACCWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D45A93C62D4C4DEB008B2528 /* Debug */,
+				D45A93C72D4C4DEB008B2528 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D47EA9E32D39A2640072F491 /* Build configuration list for PBXNativeTarget "NACCWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D47EA9E02D39A2640072F491 /* Debug */,
 				D47EA9E12D39A2640072F491 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D4B1E5452D4AD6A000407CE4 /* Build configuration list for PBXNativeTarget "NACCWatch" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D4B1E5462D4AD6A000407CE4 /* Debug */,
-				D4B1E5472D4AD6A000407CE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1379,6 +1420,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D45A93CF2D4C542C008B2528 /* RVS_Persistent_Prefs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4C70F132D411E68005A2A79 /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */;
+			productName = RVS_Persistent_Prefs;
+		};
 		D46F8CC02C47ED0800A1E7F5 /* LGV_Cleantime */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D46F8CBF2C47ED0800A1E7F5 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */;
@@ -1391,26 +1437,6 @@
 		};
 		D47764792D3FFA2400DB748E /* RVS_Persistent_Prefs */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = RVS_Persistent_Prefs;
-		};
-		D47CCAE42D4BBF7900EAE5AF /* RVS_Generic_Swift_Toolbox */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D42491B52695EF270094C15F /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */;
-			productName = RVS_Generic_Swift_Toolbox;
-		};
-		D47CCAE62D4BBF7900EAE5AF /* LGV_Cleantime */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D46F8CBF2C47ED0800A1E7F5 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */;
-			productName = LGV_Cleantime;
-		};
-		D47CCAE82D4BBF7900EAE5AF /* LGV_UICleantime */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D46F8CC22C47EDA300A1E7F5 /* XCRemoteSwiftPackageReference "LGV_UICleantime" */;
-			productName = LGV_UICleantime;
-		};
-		D47CCAEA2D4BBF7900EAE5AF /* RVS_Persistent_Prefs */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D4C70F132D411E68005A2A79 /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */;
 			productName = RVS_Persistent_Prefs;
 		};
 		D485519328479C10005914FF /* RVS_Generic_Swift_Toolbox */ = {
