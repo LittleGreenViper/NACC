@@ -16,9 +16,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D47EA9D12D39A2630072F491"
-               BuildableName = "NACCWidgetExtension.appex"
-               BlueprintName = "NACCWidgetExtension"
+               BlueprintIdentifier = "D4A420AF2D4D5C7900E4AC1E"
+               BuildableName = "NACCWidget.appex"
+               BlueprintName = "NACCWidget"
                ReferencedContainer = "container:NACC.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
