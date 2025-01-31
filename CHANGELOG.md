@@ -1,3 +1,11 @@
+**5.5.1.3022** *January 31, 2025*
+
+- The previous release disabled widgets. This restores them.
+
+**5.5.0.3021** *January 30, 2025*
+
+- Improved the tag appearance.
+
 **5.4.0.3020** *January 23, 2025*
 
 - Had to add the "Location" entitlement, for Mac Catalyst.
