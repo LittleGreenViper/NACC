@@ -21,6 +21,7 @@
 import AppIntents
 import LGV_UICleantime
 import RVS_Generic_Swift_Toolbox
+import SwiftUICore
 
 /* ###################################################################################################################################### */
 // MARK: - Get Cleantime Summary -

@@ -1026,6 +1026,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 6.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
@@ -1061,6 +1062,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 6.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
