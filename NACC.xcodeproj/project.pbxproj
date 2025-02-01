@@ -39,7 +39,6 @@
 		D4A420D62D4D5E9B00E4AC1E /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */; };
 		D4A420D72D4D5E9B00E4AC1E /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */; };
 		D4A420E02D4D607800E4AC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A420D82D4D607800E4AC1E /* Assets.xcassets */; };
-		D4A420E22D4D607800E4AC1E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4A420DA2D4D607800E4AC1E /* Localizable.xcstrings */; };
 		D4A420E42D4D607800E4AC1E /* NACCWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A420DC2D4D607800E4AC1E /* NACCWatchApp.swift */; };
 		D4A420E52D4D607800E4AC1E /* NACCWatchAppContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A420DD2D4D607800E4AC1E /* NACCWatchAppContentView.swift */; };
 		D4A420ED2D4D607C00E4AC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A420E62D4D607C00E4AC1E /* Assets.xcassets */; };
@@ -58,6 +57,7 @@
 		D4E9103C2D497FAD0036F641 /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */; };
 		D4F46FDC2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F46FDB2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift */; };
 		D4F46FE12C94669E0071D359 /* NACCIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D4F46FE02C94669E0071D359 /* NACCIntents.intentdefinition */; };
+		D4F945512D4E60620073AF8F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,7 +135,6 @@
 		D4A420B12D4D5C7900E4AC1E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		D4A420D82D4D607800E4AC1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4A420D92D4D607800E4AC1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4A420DA2D4D607800E4AC1E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		D4A420DB2D4D607800E4AC1E /* NACCWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCWatch.entitlements; sourceTree = "<group>"; };
 		D4A420DC2D4D607800E4AC1E /* NACCWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWatchApp.swift; sourceTree = "<group>"; };
 		D4A420DD2D4D607800E4AC1E /* NACCWatchAppContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWatchAppContentView.swift; sourceTree = "<group>"; };
@@ -313,7 +312,6 @@
 				D4A420DD2D4D607800E4AC1E /* NACCWatchAppContentView.swift */,
 				D4A420D82D4D607800E4AC1E /* Assets.xcassets */,
 				D4A420D92D4D607800E4AC1E /* Info.plist */,
-				D4A420DA2D4D607800E4AC1E /* Localizable.xcstrings */,
 				D4A420DB2D4D607800E4AC1E /* NACCWatch.entitlements */,
 				D4A420DE2D4D607800E4AC1E /* README.md */,
 			);
@@ -337,7 +335,6 @@
 			isa = PBXGroup;
 			children = (
 				D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */,
-				D4E2F96727FCCA3200457AD4 /* Localizable.strings */,
 				D49C9A7A280783C6008E9917 /* InfoPlist.strings */,
 				D48C496C2C9372C5007E87C3 /* AppShortcuts.strings */,
 				D43730112D497E9C00592680 /* Assets.xcassets */,
@@ -456,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */,
+				D4E2F96727FCCA3200457AD4 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -663,7 +661,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4A420E02D4D607800E4AC1E /* Assets.xcassets in Resources */,
-				D4A420E22D4D607800E4AC1E /* Localizable.xcstrings in Resources */,
+				D4F945512D4E60620073AF8F /* Localizable.strings in Resources */,
 				D4A420D62D4D5E9B00E4AC1E /* LGV_UICleantime.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1107,7 +1105,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
+				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
 				MACOSX_DEPLOYMENT_TARGET = "";
 				MARKETING_VERSION = 6.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp;
@@ -1153,7 +1152,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
+				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
 				MACOSX_DEPLOYMENT_TARGET = "";
 				MARKETING_VERSION = 6.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp;

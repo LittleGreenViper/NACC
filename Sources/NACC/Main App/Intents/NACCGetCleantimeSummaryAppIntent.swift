@@ -90,7 +90,7 @@ struct NACCAppShortcuts: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
         AppShortcut(intent: NACCGetCleantimeSummaryAppIntent(),
                     phrases: ["SLUG-GET-CLEANTIME-SUMMARY-INTENT-\(.applicationName)"],
-                    shortTitle: "SLUG-INTENTS-SHORTTITLE",
+                    shortTitle: "NA Cleantime",
                     systemImageName: "calendar")
     }
 }
