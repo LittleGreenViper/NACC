@@ -432,8 +432,8 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
 
         _resetScreen = false
         
-//        Self.wcSession?.delegate = self
-//        Self.wcSession?.activate()
+        Self.wcSession?.delegate = self
+        Self.wcSession?.activate()
     }
     
     /* ################################################################## */

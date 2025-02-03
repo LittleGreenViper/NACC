@@ -82,6 +82,9 @@ struct NACCWatchAppContentView: View {
     /**
      */
     func updateApplicationContext(_ inApplicationContext: [String: Any]) {
+        #if DEBUG
+            print("Application Context Update: \(inApplicationContext)")
+        #endif
         if let cleanDateTemp = inApplicationContext["cleandate"] as? TimeInterval {
             cleanDate = Date(timeIntervalSinceReferenceDate: cleanDateTemp)
         }
