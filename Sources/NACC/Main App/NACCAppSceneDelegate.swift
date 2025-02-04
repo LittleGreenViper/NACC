@@ -484,7 +484,11 @@ extension NACCAppSceneDelegate: WCSessionDelegate {
      */
     public func session(_ inSession: WCSession, activationDidCompleteWith inActivationState: WCSessionActivationState, error inError: Error?) {
         do {
-            try Self.wcSession?.updateApplicationContext(["cleanDate": NACCPersistentPrefs().cleanDate.timeIntervalSinceReferenceDate, "watchAppDisplayState": NACCPersistentPrefs().watchAppDisplayState.rawValue])
+            #if DEBUG
+                print("Watch Session Active: \(inActivationState)")
+            #endif
+            let contextData: [String : Any] = ["cleanDate": NACCPersistentPrefs().cleanDate.timeIntervalSinceReferenceDate, "watchAppDisplayState": NACCPersistentPrefs().watchAppDisplayState.rawValue]
+            try Self.wcSession?.updateApplicationContext(contextData)
         } catch {
             print("ERROR: \(error)")
         }

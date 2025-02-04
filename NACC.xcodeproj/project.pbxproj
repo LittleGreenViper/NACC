@@ -61,13 +61,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D45A93C22D4C4DEB008B2528 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D45A93B62D4C4DEA008B2528;
-			remoteInfo = "NACCWatch Watch App";
-		};
 		D4A420BC2D4D5C7A00E4AC1E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
@@ -504,7 +497,6 @@
 			);
 			dependencies = (
 				D4E43A672C937FDF00535CDD /* PBXTargetDependency */,
-				D45A93C32D4C4DEB008B2528 /* PBXTargetDependency */,
 				D4A420BD2D4D5C7A00E4AC1E /* PBXTargetDependency */,
 			);
 			name = NACC;
@@ -789,12 +781,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D45A93C32D4C4DEB008B2528 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = D45A93B62D4C4DEA008B2528 /* NACCWatch */;
-			targetProxy = D45A93C22D4C4DEB008B2528 /* PBXContainerItemProxy */;
-		};
 		D4A420BD2D4D5C7A00E4AC1E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D4A420AF2D4D5C7900E4AC1E /* NACCWidget */;
@@ -1102,6 +1088,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = org.magshare.NACC;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1149,6 +1136,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = org.magshare.NACC;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
