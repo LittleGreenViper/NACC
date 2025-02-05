@@ -37,7 +37,13 @@ struct NACCWatchAppContentView: View {
         /**
          */
         typealias ApplicationContextHandler = (_ inApplicationContext: [String: Any]) -> Void
-        
+
+        /* ################################################################## */
+        /**
+         This holds the WatchKit session.
+         */
+        private let _wcSession = WCSession.default
+
         /* ################################################################## */
         /**
          */
@@ -54,7 +60,20 @@ struct NACCWatchAppContentView: View {
         /**
          */
         func session(_ inSession: WCSession, didReceiveApplicationContext inApplicationContext: [String: Any]) {
-            print("Application Context: \(inApplicationContext)")
+            #if DEBUG
+                print("Application Context Update: \(inApplicationContext)")
+            #endif
+            updateHandler?(inApplicationContext)
+        }
+        
+        /* ############################################################## */
+        /**
+         */
+        init(updateHandler inUpdateHandler: ApplicationContextHandler?) {
+            super.init()
+            updateHandler = inUpdateHandler
+            _wcSession.delegate = self
+            _wcSession.activate()
         }
     }
     
@@ -71,7 +90,7 @@ struct NACCWatchAppContentView: View {
     /* ################################################################## */
     /**
      */
-    var watchDelegateHandler: NACCWatchAppContentViewWatchDelegate? = NACCWatchAppContentViewWatchDelegate()
+    @State var watchDelegateHandler: NACCWatchAppContentViewWatchDelegate?
     
     /* ################################################################## */
     /**
@@ -85,13 +104,20 @@ struct NACCWatchAppContentView: View {
         #if DEBUG
             print("Application Context Update: \(inApplicationContext)")
         #endif
-        if let cleanDateTemp = inApplicationContext["cleandate"] as? TimeInterval {
-            cleanDate = Date(timeIntervalSinceReferenceDate: cleanDateTemp)
+        if let cleanDateTemp = inApplicationContext["cleanDate"] as? String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            cleanDate = dateFormatter.date(from: cleanDateTemp)
         }
         
         if let watchFormatTemp = inApplicationContext["watchAppDisplayState"] as? Int {
             watchFormat = NACCPersistentPrefs.MainWatchState(rawValue: watchFormatTemp)
         }
+        
+        #if DEBUG
+            print("Cleandate: \(cleanDate.debugDescription)")
+            print("WatchFormat: \(watchFormat.debugDescription)")
+        #endif
     }
 
     /* ################################################################## */
@@ -105,8 +131,7 @@ struct NACCWatchAppContentView: View {
         .onAppear {
             cleanDate = .now
             watchFormat = .medallion
-            NACCWatchAppContentView.wcSession?.delegate = watchDelegateHandler
-            NACCWatchAppContentView.wcSession?.activate()
+            watchDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext)
         }
     }
 }

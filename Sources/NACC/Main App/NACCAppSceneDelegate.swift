@@ -19,7 +19,6 @@
  */
 
 import UIKit
-import WatchConnectivity
 
 /* ###################################################################################################################################### */
 // MARK: - Main App Delegate -
@@ -100,12 +99,6 @@ class NACCAppSceneDelegate: UIResponder {
      The ID for the "Selected Tab" activity data field.
      */
     static let selectedTabUserDataID = "selectedTab"
-
-    /* ################################################################## */
-    /**
-     This holds the WatchKit session.
-     */
-    static let wcSession: WCSession? = WCSession.default
 }
 
 /* ###################################################################################################################################### */
@@ -431,9 +424,6 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         }
 
         _resetScreen = false
-        
-        Self.wcSession?.delegate = self
-        Self.wcSession?.activate()
     }
     
     /* ################################################################## */
@@ -459,38 +449,6 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
             Self._originalPrefs = nil
             NACCPersistentPrefs().cleanDate = originals.cleanDate
             NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue
-        }
-    }
-}
-
-/* ###################################################################################################################################### */
-// MARK: WCSessionDelegate Conformance
-/* ###################################################################################################################################### */
-extension NACCAppSceneDelegate: WCSessionDelegate {
-    /* ################################################################## */
-    /**
-     */
-    func sessionDidBecomeInactive(_ inSession: WCSession) {
-    }
-    
-    /* ################################################################## */
-    /**
-     */
-    func sessionDidDeactivate(_ inSession: WCSession) {
-    }
-
-    /* ################################################################## */
-    /**
-     */
-    public func session(_ inSession: WCSession, activationDidCompleteWith inActivationState: WCSessionActivationState, error inError: Error?) {
-        do {
-            #if DEBUG
-                print("Watch Session Active: \(inActivationState)")
-            #endif
-            let contextData: [String : Any] = ["cleanDate": NACCPersistentPrefs().cleanDate.timeIntervalSinceReferenceDate, "watchAppDisplayState": NACCPersistentPrefs().watchAppDisplayState.rawValue]
-            try Self.wcSession?.updateApplicationContext(contextData)
-        } catch {
-            print("ERROR: \(error)")
         }
     }
 }

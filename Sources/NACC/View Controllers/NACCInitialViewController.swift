@@ -24,6 +24,7 @@ import LGV_Cleantime
 import LGV_UICleantime
 import EventKit
 import EventKitUI
+import WatchConnectivity
 
 /* ###################################################################################################################################### */
 // MARK: - Initial View Controller -
@@ -71,6 +72,12 @@ class NACCInitialViewController: NACCBaseViewController {
 
     /* ################################################################## */
     /**
+     This holds the WatchKit session.
+     */
+    private let _wcSession = WCSession.default
+
+    /* ################################################################## */
+    /**
      This stores the original logo height
     */
     private var _originalLogoHeight = CGFloat(0)
@@ -80,7 +87,7 @@ class NACCInitialViewController: NACCBaseViewController {
      This will contain the cleantime display for this screen. We set it at runtime.
     */
     private var _cleantimeDisplayView: LGV_UICleantimeImageViewBase?
-    
+
     /* ################################################################################################################################## */
     // MARK: Internal Instance IBOutlet Properties
     /* ################################################################################################################################## */
@@ -233,6 +240,7 @@ extension NACCInitialViewController {
     */
     override func viewDidLoad() {
         super.viewDidLoad()
+        _wcSession.delegate = self
         _originalLogoHeight = logoHeightConstraint?.constant ?? 0
         dateSelector?.accessibilityLabel = "SLUG-ACC-DATEPICKER".localizedVariant
         logoContainerView?.accessibilityLabel = "SLUG-ACC-LOGO".localizedVariant
@@ -259,6 +267,17 @@ extension NACCInitialViewController {
             startupLogo = nil
         }
         setDate()
+    }
+    
+    /* ################################################################## */
+    /**
+     Called just after the view appears. We use it to send the Watch sync.
+     
+     - parameter inIsAnimated: True, if the appearance is to be animated.
+    */
+    override func viewDidAppear(_ inIsAnimated: Bool) {
+        super.viewDidAppear(inIsAnimated)
+        _wcSession.activate()
     }
 
     /* ################################################################## */
@@ -488,5 +507,46 @@ extension NACCInitialViewController: EKEventEditViewDelegate {
      */
     func eventEditViewController(_ inController: EKEventEditViewController, didCompleteWith inAction: EKEventEditViewAction) {
         inController.dismiss(animated: true, completion: nil)
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: WCSessionDelegate Conformance
+/* ###################################################################################################################################### */
+extension NACCInitialViewController: WCSessionDelegate {
+    /* ################################################################## */
+    /**
+     */
+    func sessionDidBecomeInactive(_ inSession: WCSession) {
+    }
+    
+    /* ################################################################## */
+    /**
+     */
+    func sessionDidDeactivate(_ inSession: WCSession) {
+    }
+
+    /* ################################################################## */
+    /**
+     */
+    public func session(_ inSession: WCSession, activationDidCompleteWith inActivationState: WCSessionActivationState, error inError: Error?) {
+            if .activated == inActivationState {
+                #if DEBUG
+                    print("Watch Session Active.")
+                #endif
+                DispatchQueue.main.async {
+                    do {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        let contextData: [String: Any] = ["cleanDate": dateFormatter.string(from: NACCPersistentPrefs().cleanDate),
+                                                          "watchAppDisplayState": NACCPersistentPrefs().watchAppDisplayState.rawValue,
+                                                          "makeMeUnique": UUID().uuidString
+                        ]
+                        try inSession.updateApplicationContext(contextData)
+                    } catch {
+                        print("ERROR: \(error)")
+                    }
+                }
+            }
     }
 }
