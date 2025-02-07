@@ -121,19 +121,19 @@ struct NACCWatchAppContentView: View {
     /**
      The text report.
      */
-    var text: String = ""
+    @State var text: String = ""
 
     /* ################################################################## */
     /**
      The image that represents a keytag. May be nil. Mutually exclusive with `singleMedallion`.
      */
-    var singleKeytag: UIImage?
+    @State var singleKeytag: UIImage?
     
     /* ################################################################## */
     /**
      The image that represents a medallion. May be nil. Mutually exclusive with `singleKeytag`.
      */
-    var singleMedallion: UIImage?
+    @State var singleMedallion: UIImage?
 
     /* ################################################################## */
     /**
@@ -180,6 +180,7 @@ struct NACCWatchAppContentView: View {
         
         NACCPersistentPrefs().cleanDate = cleanDate
         NACCPersistentPrefs().watchAppDisplayState = watchFormat
+        synchronize()
     }
     
     /* ################################################################## */
@@ -188,7 +189,7 @@ struct NACCWatchAppContentView: View {
      
      This should be called on the main thread.
      */
-    mutating func synchronize() {
+    func synchronize() {
         if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) {
             text = textTemp
         } else {
@@ -223,7 +224,7 @@ struct NACCWatchAppContentView: View {
      */
     var body: some View {
         VStack {
-            Text("CleanDate: \(cleanDate)")
+            Text(text)
         }
         .padding()
         .onAppear {
