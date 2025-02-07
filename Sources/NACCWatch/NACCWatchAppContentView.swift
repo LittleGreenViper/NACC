@@ -203,19 +203,12 @@ struct NACCWatchAppContentView: View {
         
         let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
         
-        if 0 < calculator.years,
-           .keytag != NACCPersistentPrefs().watchAppDisplayState {
-            let medallionView = LGV_MedallionImage()
-            medallionView.totalMonths = calculator.totalMonths
-            
-            singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
-        } else {
-            let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
-            keyTagImage.totalDays = calculator.totalDays
-            keyTagImage.totalMonths = calculator.totalMonths
-            yellowTag = dontShowBackground || (9..<12).contains(calculator.totalMonths) || (45..<50).contains(calculator.years)
-            singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
-        }
+        let medallionView = LGV_MedallionImage(totalMonths: calculator.totalMonths)
+        
+        singleMedallion = medallionView.drawImage() // ?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+
+        let keyTagImage = LGV_KeytagImageGenerator(isRingClosed: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths)
+        singleKeytag = keyTagImage.generatedImage // ?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
     }
 
     /* ################################################################## */
