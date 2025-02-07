@@ -32,5 +32,5 @@ struct NACCWatchApp: App {
     /**
      We simply show the content view.
      */
-    var body: some Scene { WindowGroup { NACCWatchAppContentView() } }
+    var body: some Scene { WindowGroup { NACCWatchAppContentView(cleanDate: .now, watchFormat: .medallion) } }
 }

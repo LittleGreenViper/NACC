@@ -516,21 +516,27 @@ extension NACCInitialViewController: EKEventEditViewDelegate {
 extension NACCInitialViewController: WCSessionDelegate {
     /* ################################################################## */
     /**
+     Just here to satisfy the protocol.
      */
-    func sessionDidBecomeInactive(_ inSession: WCSession) {
-    }
+    func sessionDidBecomeInactive(_: WCSession) { }
     
     /* ################################################################## */
     /**
+     Just here to satisfy the protocol.
      */
-    func sessionDidDeactivate(_ inSession: WCSession) {
-    }
+    func sessionDidDeactivate(_: WCSession) { }
 
     /* ################################################################## */
     /**
+     Called when an activation change occurs.
+     
+     - parameter inSession: The session experiencing the activation change.
+     - parameter activationDidCompleteWith: The new state.
+     - parameter error: If there was an error, it is sent in here.
      */
     public func session(_ inSession: WCSession, activationDidCompleteWith inActivationState: WCSessionActivationState, error inError: Error?) {
-            if .activated == inActivationState {
+            if nil == inError,
+               .activated == inActivationState {
                 #if DEBUG
                     print("Watch Session Active.")
                 #endif
@@ -538,15 +544,32 @@ extension NACCInitialViewController: WCSessionDelegate {
                     do {
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "yyyy-MM-dd"
-                        let contextData: [String: Any] = ["cleanDate": dateFormatter.string(from: NACCPersistentPrefs().cleanDate),
-                                                          "watchAppDisplayState": NACCPersistentPrefs().watchAppDisplayState.rawValue,
-                                                          "makeMeUnique": UUID().uuidString
+                        var contextData: [String: Any] = ["cleanDate": dateFormatter.string(from: NACCPersistentPrefs().cleanDate),
+                                                          "watchAppDisplayState": NACCPersistentPrefs().watchAppDisplayState.rawValue
                         ]
+                        #if DEBUG
+                            contextData["makeMeUnique"] = UUID().uuidString // This forces the update to occur (if not, it is cached).
+                        #endif
                         try inSession.updateApplicationContext(contextData)
                     } catch {
                         print("ERROR: \(error)")
                     }
                 }
+            } else if let error = inError {
+                print("ERROR: \(error.localizedDescription)")
             }
+    }
+    
+    /* ############################################################## */
+    /**
+     Called when the application context is updated from the peer.
+     
+     - parameter inSession: The session receiving the context update.
+     - parameter didReceiveApplicationContext: The new context data.
+     */
+    func session(_ inSession: WCSession, didReceiveApplicationContext inApplicationContext: [String: Any]) {
+        #if DEBUG
+            print("Application Context Update: \(inApplicationContext)")
+        #endif
     }
 }
