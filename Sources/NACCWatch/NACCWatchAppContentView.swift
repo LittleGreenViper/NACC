@@ -201,32 +201,37 @@ struct NACCWatchAppContentView: View {
         
         guard .text != NACCPersistentPrefs().watchAppDisplayState else { return }
         
-//        let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
-//        
-//        if 0 < calculator.years,
-//           .keytag != NACCPersistentPrefs().watchAppDisplayState {
-//            let medallionView = LGV_UISingleCleantimeMedallionImageView()
-//            medallionView.totalDays = calculator.totalDays
-//            medallionView.totalMonths = calculator.totalMonths
-//            
-//            singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
-//        } else {
-//            let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
-//            keyTagImage.totalDays = calculator.totalDays
-//            keyTagImage.totalMonths = calculator.totalMonths
-//            yellowTag = dontShowBackground || (9..<12).contains(calculator.totalMonths) || (45..<50).contains(calculator.years)
-//            singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
-//        }
+        let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
+        
+        if 0 < calculator.years,
+           .keytag != NACCPersistentPrefs().watchAppDisplayState {
+            let medallionView = LGV_MedallionImage()
+            medallionView.totalMonths = calculator.totalMonths
+            
+            singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+        } else {
+            let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
+            keyTagImage.totalDays = calculator.totalDays
+            keyTagImage.totalMonths = calculator.totalMonths
+            yellowTag = dontShowBackground || (9..<12).contains(calculator.totalMonths) || (45..<50).contains(calculator.years)
+            singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+        }
     }
 
     /* ################################################################## */
     /**
      */
     var body: some View {
-        VStack {
+        TabView {
             Text(text)
+            if let singleKeytag {
+                Image(uiImage: singleKeytag)
+            }
+            if let singleMedallion {
+                Image(uiImage: singleMedallion)
+            }
         }
-        .padding()
+        .tabViewStyle(PageTabViewStyle())
         .onAppear {
             cleanDate = .now
             watchFormat = .medallion
