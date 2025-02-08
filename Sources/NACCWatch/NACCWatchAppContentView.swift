@@ -50,6 +50,11 @@ struct NACCWatchAppContentView: View {
 
     /* ################################################################## */
     /**
+     */
+    @State private var _showCleanDatePicker: Bool = false
+    
+    /* ################################################################## */
+    /**
      The cleandate.
      */
     @Binding var cleanDate: Date
@@ -85,19 +90,54 @@ struct NACCWatchAppContentView: View {
 
     /* ################################################################## */
     /**
+     This is a "tripwire" to tell the app to bring in the cleandate picker, so the user can select a new date.
+     */
+    @State private var _navigate = false
+
+    /* ################################################################## */
+    /**
+     The main view. It's a swiped-tab view (page selector), with text, keytag, and medallion as choices. The choice is saved persistently.
+     The user can double-tap on it, to change the cleandate.
      */
     var body: some View {
         GeometryReader { inGeom in
-            TabView(selection: $watchFormat) {
-                Text(text)
-                    .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
-                Image(uiImage: (singleKeytag ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
-                    .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
-                Image(uiImage: (singleMedallion ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
-                    .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
+            NavigationStack {
+                TabView(selection: $watchFormat) {
+                    Text(text)
+                        .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
+                    Image(uiImage: (singleKeytag ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                        .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
+                    Image(uiImage: (singleMedallion ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                        .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
+                }
+                .onAppear { _navigate = false }
+                .tabViewStyle(PageTabViewStyle())
+                .onTapGesture(count: 2) { _navigate = true }
+                .navigationDestination(isPresented: $_navigate) { CleanDatePicker(cleanDate: $cleanDate) }
             }
-            .tabViewStyle(PageTabViewStyle())
             .onAppear(perform: synchronize)
         }
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: - Cleandate Picker View -
+/* ###################################################################################################################################### */
+/**
+ This will display a date picker, that the user can use to select a new date.
+ */
+struct CleanDatePicker: View {
+    /* ################################################################## */
+    /**
+     The cleandate.
+     */
+    @Binding var cleanDate: Date
+
+    /* ################################################################## */
+    /**
+     The picker view.
+     */
+    var body: some View {
+        Text("Cleandate Picker Goes Here")
     }
 }

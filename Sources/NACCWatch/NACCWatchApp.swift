@@ -168,9 +168,7 @@ struct NACCWatchApp: App {
     var body: some Scene {
         WindowGroup {
             NACCWatchAppContentView(cleanDate: $cleanDate, watchFormat: $watchFormat)
-                .onAppear {
-                    _wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext)
-                }
+                .onAppear { _wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext) }
         }
         .onChange(of: cleanDate) {
             NACCPersistentPrefs().cleanDate = cleanDate
