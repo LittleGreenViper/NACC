@@ -11,6 +11,7 @@ disabled_rules:
 - non_optional_string_data_conversion
 - private_over_fileprivate
 - legacy_hashing
+- redundant_discardable_let
 
 opt_in_rules:
 - control_statement

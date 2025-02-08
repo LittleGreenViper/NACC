@@ -30,94 +30,6 @@ import RVS_UIKit_Toolbox
 /**
  */
 struct NACCWatchAppContentView: View {
-    /* ################################################################################################################################## */
-    // MARK: Watch Connecvtivity Handler
-    /* ################################################################################################################################## */
-    /**
-     This class exists to give the Watch Connectivity a place to work.
-     */
-    class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
-        /* ################################################################## */
-        /**
-         This is a template for the update callback.
-         
-         - parameter inApplicationContext: The new application context.
-         */
-        typealias ApplicationContextHandler = (_ inApplicationContext: [String: Any]) -> Void
-
-        /* ################################################################## */
-        /**
-         This holds the WatchKit session.
-         */
-        private let _wcSession = WCSession.default
-
-        /* ################################################################## */
-        /**
-         This will be called when the context changes.
-         */
-        var updateHandler: ApplicationContextHandler?
-        
-        /* ############################################################## */
-        /**
-         Called when an activation change occurs.
-         
-         - parameter inSession: The session experiencing the activation change.
-         - parameter activationDidCompleteWith: The new state.
-         - parameter error: If there was an error, it is sent in here.
-         */
-        func session(_ inSession: WCSession, activationDidCompleteWith inActivationState: WCSessionActivationState, error inError: (any Error)?) {
-            print("Session Is: \(inActivationState)")
-        }
-        
-        /* ############################################################## */
-        /**
-         Called when the application context is updated from the peer.
-         
-         - parameter inSession: The session receiving the context update.
-         - parameter didReceiveApplicationContext: The new context data.
-        */
-        func session(_ inSession: WCSession, didReceiveApplicationContext inApplicationContext: [String: Any]) {
-            #if DEBUG
-                print("Application Context Update: \(inApplicationContext)")
-            #endif
-            updateHandler?(inApplicationContext)
-        }
-        
-        /* ############################################################## */
-        /**
-         Initializer
-         
-         - parameter updateHandler: The function that will be called with any updates.
-         */
-        init(updateHandler inUpdateHandler: ApplicationContextHandler?) {
-            super.init()
-            updateHandler = inUpdateHandler
-            _wcSession.delegate = self
-            _wcSession.activate()
-        }
-    }
-
-    /* ################################################################## */
-    /**
-     This is called to send the current state of the prefs to the peer.
-     */
-    static func sendApplicationContext() {
-        do {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            var contextData: [String: Any] = ["cleanDate": dateFormatter.string(from: NACCPersistentPrefs().cleanDate),
-                                              "watchAppDisplayState": NACCPersistentPrefs().watchAppDisplayState.rawValue
-            ]
-            #if DEBUG
-                contextData["makeMeUnique"] = UUID().uuidString
-            #endif
-
-            try wcSession?.updateApplicationContext(contextData)
-        } catch {
-            print("ERROR: \(error)")
-        }
-    }
-
     /* ################################################################## */
     /**
      The text report.
@@ -140,54 +52,16 @@ struct NACCWatchAppContentView: View {
     /**
      The cleandate.
      */
-    @State var cleanDate: Date
+    @Binding var cleanDate: Date
 
     /* ################################################################## */
     /**
+     The displayed tab.
      */
-    @State var watchFormat: NACCPersistentPrefs.MainWatchState
+    @Binding var watchFormat: Int
 
     /* ################################################################## */
     /**
-     */
-    @State var watchDelegateHandler: NACCWatchAppContentViewWatchDelegate?
-    
-    /* ################################################################## */
-    /**
-     */
-    static let wcSession: WCSession? = WCSession.default
-    
-    /* ################################################################## */
-    /**
-     */
-    func updateApplicationContext(_ inApplicationContext: [String: Any]) {
-        #if DEBUG
-            print("Application Context Update: \(inApplicationContext)")
-        #endif
-        if let cleanDateTemp = inApplicationContext["cleanDate"] as? String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            cleanDate = dateFormatter.date(from: cleanDateTemp) ?? .now
-        }
-        
-        if let watchFormatTemp = inApplicationContext["watchAppDisplayState"] as? Int {
-            watchFormat = NACCPersistentPrefs.MainWatchState(rawValue: watchFormatTemp) ?? .medallion
-        }
-        
-        #if DEBUG
-            print("Cleandate: \(cleanDate)")
-            print("WatchFormat: \(watchFormat)")
-        #endif
-        
-        NACCPersistentPrefs().cleanDate = cleanDate
-        NACCPersistentPrefs().watchAppDisplayState = watchFormat
-        synchronize()
-    }
-    
-    /* ################################################################## */
-    /**
-     This renders the images and text.
-     
      This should be called on the main thread.
      */
     func synchronize() {
@@ -200,16 +74,13 @@ struct NACCWatchAppContentView: View {
         singleKeytag = nil
         singleMedallion = nil
         
-        guard .text != NACCPersistentPrefs().watchAppDisplayState else { return }
-        
         let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
         
         let medallionView = LGV_MedallionImage(totalMonths: calculator.totalMonths)
-        
-        singleMedallion = medallionView.drawImage() // ?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+        singleMedallion = medallionView.drawImage()
 
         let keyTagImage = LGV_KeytagImageGenerator(isRingClosed: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths)
-        singleKeytag = keyTagImage.generatedImage // ?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+        singleKeytag = keyTagImage.generatedImage
     }
 
     /* ################################################################## */
@@ -217,21 +88,16 @@ struct NACCWatchAppContentView: View {
      */
     var body: some View {
         GeometryReader { inGeom in
-            TabView {
+            TabView(selection: $watchFormat) {
                 Text(text)
-                if let singleKeytag = singleKeytag?.resized(toNewHeight: inGeom.size.height) {
-                    Image(uiImage: singleKeytag)
-                }
-                if let singleMedallion = singleMedallion?.resized(toNewHeight: inGeom.size.height) {
-                    Image(uiImage: singleMedallion)
-                }
+                    .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
+                Image(uiImage: (singleKeytag ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                    .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
+                Image(uiImage: (singleMedallion ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                    .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
             }
             .tabViewStyle(PageTabViewStyle())
-            .onAppear {
-                cleanDate = .now
-                watchFormat = .medallion
-                watchDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext)
-            }
+            .onAppear(perform: synchronize)
         }
     }
 }
