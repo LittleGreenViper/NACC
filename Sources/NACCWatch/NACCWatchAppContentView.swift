@@ -22,6 +22,7 @@ import SwiftUI
 import WatchConnectivity
 import LGV_Cleantime
 import LGV_UICleantime
+import RVS_UIKit_Toolbox
 
 /* ###################################################################################################################################### */
 // MARK: - Watch App Content View -
@@ -215,20 +216,22 @@ struct NACCWatchAppContentView: View {
     /**
      */
     var body: some View {
-        TabView {
-            Text(text)
-            if let singleKeytag {
-                Image(uiImage: singleKeytag)
+        GeometryReader { inGeom in
+            TabView {
+                Text(text)
+                if let singleKeytag = singleKeytag?.resized(toNewHeight: inGeom.size.height) {
+                    Image(uiImage: singleKeytag)
+                }
+                if let singleMedallion = singleMedallion?.resized(toNewHeight: inGeom.size.height) {
+                    Image(uiImage: singleMedallion)
+                }
             }
-            if let singleMedallion {
-                Image(uiImage: singleMedallion)
+            .tabViewStyle(PageTabViewStyle())
+            .onAppear {
+                cleanDate = .now
+                watchFormat = .medallion
+                watchDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext)
             }
-        }
-        .tabViewStyle(PageTabViewStyle())
-        .onAppear {
-            cleanDate = .now
-            watchFormat = .medallion
-            watchDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext)
         }
     }
 }

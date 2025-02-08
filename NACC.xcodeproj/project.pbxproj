@@ -11,6 +11,7 @@
 		D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42314F527FE150E00C5E5FC /* NACCTabBarController.swift */; };
 		D43730122D497E9C00592680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D43730112D497E9C00592680 /* Assets.xcassets */; };
 		D43C66D42694AC20007D5883 /* NACCAppSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */; };
+		D44EE39A2D57D41C0046B47D /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D44EE3992D57D41C0046B47D /* RVS_UIKit_Toolbox */; };
 		D45A93C42D4C4DEB008B2528 /* NACCWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D45A93B72D4C4DEA008B2528 /* NACCWatch.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D45A93CE2D4C5405008B2528 /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D45BE0182D56B7A4003F4CB0 /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D45BE0172D56B7A4003F4CB0 /* RVS_Generic_Swift_Toolbox */; };
@@ -219,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D45BE01E2D56B7BA003F4CB0 /* LGV_Cleantime in Frameworks */,
+				D44EE39A2D57D41C0046B47D /* RVS_UIKit_Toolbox in Frameworks */,
 				D45BE01C2D56B7B3003F4CB0 /* RVS_Generic_Swift_Toolbox in Frameworks */,
 				D45BE0302D56B901003F4CB0 /* RVS_Persistent_Prefs in Frameworks */,
 				D45BE0352D56B980003F4CB0 /* LGV_UICleantime in Frameworks */,
@@ -541,6 +543,7 @@
 				D45BE01D2D56B7BA003F4CB0 /* LGV_Cleantime */,
 				D45BE02F2D56B901003F4CB0 /* RVS_Persistent_Prefs */,
 				D45BE0342D56B980003F4CB0 /* LGV_UICleantime */,
+				D44EE3992D57D41C0046B47D /* RVS_UIKit_Toolbox */,
 			);
 			productName = "NACCWatch Watch App";
 			productReference = D45A93B72D4C4DEA008B2528 /* NACCWatch.app */;
@@ -1407,7 +1410,7 @@
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_UIKit_Toolbox";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.6.1;
+				minimumVersion = 1.6.3;
 			};
 		};
 		D45BE0152D56B780003F4CB0 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */ = {
@@ -1429,6 +1432,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D44EE3992D57D41C0046B47D /* RVS_UIKit_Toolbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D45BE0142D56B774003F4CB0 /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */;
+			productName = RVS_UIKit_Toolbox;
+		};
 		D45BE0172D56B7A4003F4CB0 /* RVS_Generic_Swift_Toolbox */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D45BE0112D56B74E003F4CB0 /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */;
