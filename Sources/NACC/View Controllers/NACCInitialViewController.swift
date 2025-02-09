@@ -581,8 +581,6 @@ extension NACCInitialViewController: WCSessionDelegate {
             NACCPersistentPrefs().watchAppDisplayState = NACCPersistentPrefs.MainWatchState(rawValue: watchFormatTemp) ?? .medallion
         }
         
-        DispatchQueue.main.async {
-            self.setDate(NACCPersistentPrefs().cleanDate)
-        }
+        DispatchQueue.main.async { self.setDate(NACCPersistentPrefs().cleanDate) }
     }
 }

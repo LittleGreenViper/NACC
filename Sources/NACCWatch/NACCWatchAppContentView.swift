@@ -143,12 +143,8 @@ struct CleanDatePicker: View {
      */
     var body: some View {
         let minDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5)) ?? .now
-        let dateRange = minDate...Date.now
-        DatePicker("SLUG-SELECT-DATE", selection: $cleanDate, in: minDate...Date.now, displayedComponents: .date)
-            .onAppear {
-                if !dateRange.contains(cleanDate) {
-                    cleanDate = .now
-                }
-            }
+        // That "addingTimeInterval()" thing is because the DatePicker is exhibiting strange behavior, when I simply use .now. It lops off the current year.
+        DatePicker(NSLocalizedString("SLUG-SELECT-DATE", tableName: "WatchStrings", comment: ""), selection: $cleanDate, in: minDate...Date.now.addingTimeInterval(86400 * 366))
+            .onAppear { cleanDate = min(.now, max(minDate, cleanDate)) }
     }
 }
