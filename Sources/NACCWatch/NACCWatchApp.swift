@@ -77,7 +77,7 @@ struct NACCWatchApp: App {
         */
         func session(_ inSession: WCSession, didReceiveApplicationContext inApplicationContext: [String: Any]) {
             #if DEBUG
-                print("Application Context Update: \(inApplicationContext)")
+                print("Watch App Received Context Update: \(inApplicationContext)")
             #endif
             updateHandler?(inApplicationContext)
         }
@@ -139,9 +139,6 @@ struct NACCWatchApp: App {
     /**
      */
     func updateApplicationContext(_ inApplicationContext: [String: Any]) {
-        #if DEBUG
-            print("Application Context Update: \(inApplicationContext)")
-        #endif
         if let cleanDateTemp = inApplicationContext["cleanDate"] as? String {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"

@@ -67,6 +67,8 @@ struct NACCWatchAppContentView: View {
 
     /* ################################################################## */
     /**
+     Syncs the bindings with the current cleandate.
+     
      This should be called on the main thread.
      */
     func synchronize() {
@@ -110,12 +112,14 @@ struct NACCWatchAppContentView: View {
                     Image(uiImage: (singleMedallion ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
                         .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
                 }
-                .onAppear { _navigate = false }
+                .onAppear {
+                    synchronize()
+                    _navigate = false
+                }
                 .tabViewStyle(PageTabViewStyle())
                 .onTapGesture(count: 2) { _navigate = true }
                 .navigationDestination(isPresented: $_navigate) { CleanDatePicker(cleanDate: $cleanDate) }
             }
-            .onAppear(perform: synchronize)
         }
     }
 }
@@ -138,6 +142,13 @@ struct CleanDatePicker: View {
      The picker view.
      */
     var body: some View {
-        Text("Cleandate Picker Goes Here")
+        let minDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5)) ?? .now
+        let dateRange = minDate...Date.now
+        DatePicker("SLUG-SELECT-DATE", selection: $cleanDate, in: minDate...Date.now, displayedComponents: .date)
+            .onAppear {
+                if !dateRange.contains(cleanDate) {
+                    cleanDate = .now
+                }
+            }
     }
 }

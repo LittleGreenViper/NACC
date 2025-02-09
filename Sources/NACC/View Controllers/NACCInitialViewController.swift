@@ -535,29 +535,29 @@ extension NACCInitialViewController: WCSessionDelegate {
      - parameter error: If there was an error, it is sent in here.
      */
     public func session(_ inSession: WCSession, activationDidCompleteWith inActivationState: WCSessionActivationState, error inError: Error?) {
-            if nil == inError,
-               .activated == inActivationState {
-                #if DEBUG
-                    print("Watch Session Active.")
-                #endif
-                DispatchQueue.main.async {
-                    do {
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd"
-                        var contextData: [String: Any] = ["cleanDate": dateFormatter.string(from: NACCPersistentPrefs().cleanDate),
-                                                          "watchAppDisplayState": NACCPersistentPrefs().watchAppDisplayState.rawValue
-                        ]
-                        #if DEBUG
-                            contextData["makeMeUnique"] = UUID().uuidString // This forces the update to occur (if not, it is cached).
-                        #endif
-                        try inSession.updateApplicationContext(contextData)
-                    } catch {
-                        print("ERROR: \(error)")
-                    }
+        if nil == inError,
+           .activated == inActivationState {
+            #if DEBUG
+                print("Watch Session Active.")
+            #endif
+            DispatchQueue.main.async {
+                do {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    var contextData: [String: Any] = ["cleanDate": dateFormatter.string(from: NACCPersistentPrefs().cleanDate),
+                                                      "watchAppDisplayState": NACCPersistentPrefs().watchAppDisplayState.rawValue
+                    ]
+                    #if DEBUG
+                        contextData["makeMeUnique"] = UUID().uuidString // This forces the update to occur (if not, it is cached).
+                    #endif
+                    try inSession.updateApplicationContext(contextData)
+                } catch {
+                    print("ERROR: \(error)")
                 }
-            } else if let error = inError {
-                print("ERROR: \(error.localizedDescription)")
             }
+        } else if let error = inError {
+            print("ERROR: \(error.localizedDescription)")
+        }
     }
     
     /* ############################################################## */
@@ -569,7 +569,20 @@ extension NACCInitialViewController: WCSessionDelegate {
      */
     func session(_ inSession: WCSession, didReceiveApplicationContext inApplicationContext: [String: Any]) {
         #if DEBUG
-            print("Application Context Update: \(inApplicationContext)")
+            print("iOS App Received Context Update: \(inApplicationContext)")
         #endif
+        if let cleanDateTemp = inApplicationContext["cleanDate"] as? String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            NACCPersistentPrefs().cleanDate = dateFormatter.date(from: cleanDateTemp) ?? .now
+        }
+        
+        if let watchFormatTemp = inApplicationContext["watchAppDisplayState"] as? Int {
+            NACCPersistentPrefs().watchAppDisplayState = NACCPersistentPrefs.MainWatchState(rawValue: watchFormatTemp) ?? .medallion
+        }
+        
+        DispatchQueue.main.async {
+            self.setDate(NACCPersistentPrefs().cleanDate)
+        }
     }
 }

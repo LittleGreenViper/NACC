@@ -51,6 +51,7 @@
 		D4A420EF2D4D607C00E4AC1E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D4A420EA2D4D607C00E4AC1E /* README.md */; };
 		D4A420F02D4D607C00E4AC1E /* WidgetStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */; };
 		D4A420F12D4D607C00E4AC1E /* NACCWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A420E82D4D607C00E4AC1E /* NACCWidgetBundle.swift */; };
+		D4ACE7E22D584805006C00AD /* WatchStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */; };
 		D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D4BD88F1269E2FAA009015D1 /* NACCAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */; };
 		D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */; };
@@ -148,6 +149,7 @@
 		D4A420E92D4D607C00E4AC1E /* NACCWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D4A420EA2D4D607C00E4AC1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = WidgetStrings.xcstrings; sourceTree = "<group>"; };
+		D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = WatchStrings.xcstrings; sourceTree = "<group>"; };
 		D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPersistentPrefs.swift; sourceTree = "<group>"; };
 		D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAboutViewController.swift; sourceTree = "<group>"; };
 		D4C080612D4957B200299FBC /* NACC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NACC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -320,6 +322,7 @@
 				D4A420D92D4D607800E4AC1E /* Info.plist */,
 				D4A420DB2D4D607800E4AC1E /* NACCWatch.entitlements */,
 				D4A420DE2D4D607800E4AC1E /* README.md */,
+				D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */,
 			);
 			path = NACCWatch;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 			files = (
 				D4A420E02D4D607800E4AC1E /* Assets.xcassets in Resources */,
 				D4F945512D4E60620073AF8F /* Localizable.strings in Resources */,
+				D4ACE7E22D584805006C00AD /* WatchStrings.xcstrings in Resources */,
 				D4A420D62D4D5E9B00E4AC1E /* LGV_UICleantime.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
