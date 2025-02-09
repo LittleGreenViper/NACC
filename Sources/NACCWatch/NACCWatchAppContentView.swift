@@ -50,8 +50,9 @@ struct NACCWatchAppContentView: View {
 
     /* ################################################################## */
     /**
+     This is a binding for a "trigger," that determines whether or not the set cleandate picker is to be shown.
      */
-    @State private var _showCleanDatePicker: Bool = false
+    @Binding var showCleanDatePicker: Bool
     
     /* ################################################################## */
     /**
@@ -144,7 +145,7 @@ struct CleanDatePicker: View {
     var body: some View {
         let minDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5)) ?? .now
         // That "addingTimeInterval()" thing is because the DatePicker is exhibiting strange behavior, when I simply use .now. It lops off the current year.
-        DatePicker(NSLocalizedString("SLUG-SELECT-DATE", tableName: "WatchStrings", comment: ""), selection: $cleanDate, in: minDate...Date.now.addingTimeInterval(86400 * 366))
+        DatePicker(NSLocalizedString("SLUG-SELECT-DATE", tableName: "WatchStrings", comment: ""), selection: $cleanDate, in: minDate...Date.now)
             .onAppear { cleanDate = min(.now, max(minDate, cleanDate)) }
     }
 }

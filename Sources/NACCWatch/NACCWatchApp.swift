@@ -54,7 +54,7 @@ struct NACCWatchApp: App {
         /**
          This maintains a reference to the session.
          */
-        private var _wcSession = WCSession.default
+        var wcSession = WCSession.default
         
         /* ############################################################## */
         /**
@@ -91,8 +91,8 @@ struct NACCWatchApp: App {
         init(updateHandler inUpdateHandler: ApplicationContextHandler?) {
             super.init()
             updateHandler = inUpdateHandler
-            _wcSession.delegate = self
-            _wcSession.activate()
+            wcSession.delegate = self
+            wcSession.activate()
         }
     }
 
@@ -104,12 +104,19 @@ struct NACCWatchApp: App {
     
     /* ################################################################## */
     /**
+     This is a source for a "trigger," that determines whether or not the set cleandate picker is to be shown.
+     */
+    @State private var _showCleanDatePicker: Bool = false
+    
+    /* ################################################################## */
+    /**
      The cleandate.
      */
     @State var cleanDate = NACCPersistentPrefs().cleanDate
 
     /* ################################################################## */
     /**
+     This is a local state that determines which screen is shown (0 is text, 1 is keytag, 2 is medallion).
      */
     @State var watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue
 
@@ -118,18 +125,21 @@ struct NACCWatchApp: App {
      This is called to send the current state of the prefs to the peer.
      */
     func sendApplicationContext() {
+        guard _showCleanDatePicker else { return }   // Only if we are changing it on the watch.
+        
         do {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
-            var contextData: [String: Any] = ["cleanDate": dateFormatter.string(from: NACCPersistentPrefs().cleanDate),
-                                              "watchAppDisplayState": NACCPersistentPrefs().watchAppDisplayState.rawValue
+            let contextData: [String: Any] = ["cleanDate": dateFormatter.string(from: NACCPersistentPrefs().cleanDate),
+                                              "watchAppDisplayState": NACCPersistentPrefs().watchAppDisplayState.rawValue,
+                                              "makeMeUnique": UUID().uuidString
             ]
+            
             #if DEBUG
-                contextData["makeMeUnique"] = UUID().uuidString
-                print("Sending Application Context: \(contextData)")
+                print("Sending Application Context to the Phone: \(contextData)")
             #endif
 
-            try WCSession.default.updateApplicationContext(contextData)
+            try _wcSessionDelegateHandler?.wcSession.updateApplicationContext(contextData)
         } catch {
             print("ERROR: \(error)")
         }
@@ -137,6 +147,9 @@ struct NACCWatchApp: App {
     
     /* ################################################################## */
     /**
+     This will update our internal state, to match the new application context that we received from the phone.
+     
+     - parameter inApplicationContext: The new context dictionary.
      */
     func updateApplicationContext(_ inApplicationContext: [String: Any]) {
         if let cleanDateTemp = inApplicationContext["cleanDate"] as? String {
@@ -164,7 +177,7 @@ struct NACCWatchApp: App {
      */
     var body: some Scene {
         WindowGroup {
-            NACCWatchAppContentView(cleanDate: $cleanDate, watchFormat: $watchFormat)
+            NACCWatchAppContentView(showCleanDatePicker: $_showCleanDatePicker, cleanDate: $cleanDate, watchFormat: $watchFormat)
                 .onAppear { _wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext) }
         }
         .onChange(of: cleanDate) {
