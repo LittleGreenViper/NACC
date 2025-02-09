@@ -108,10 +108,13 @@ struct NACCWatchAppContentView: View {
                 TabView(selection: $watchFormat) {
                     Text(text)
                         .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
-                    Image(uiImage: (singleKeytag ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                        .foregroundStyle(Color.black)
+                    Image(uiImage: (singleKeytag ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height - 4) ?? UIImage())
                         .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
+                        .containerRelativeFrame([.horizontal, .vertical], alignment: .bottom)
                     Image(uiImage: (singleMedallion ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
                         .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
+                        .containerRelativeFrame([.horizontal, .vertical], alignment: .bottom)
                 }
                 .onAppear {
                     synchronize()
@@ -120,7 +123,7 @@ struct NACCWatchAppContentView: View {
                 .tabViewStyle(PageTabViewStyle())
                 .onTapGesture(count: 2) { _navigate = true }
                 .navigationDestination(isPresented: $_navigate) { CleanDatePicker(cleanDate: $cleanDate) }
-            }
+           }
         }
     }
 }
@@ -147,5 +150,6 @@ struct CleanDatePicker: View {
         // That "addingTimeInterval()" thing is because the DatePicker is exhibiting strange behavior, when I simply use .now. It lops off the current year.
         DatePicker(NSLocalizedString("SLUG-SELECT-DATE", tableName: "WatchStrings", comment: ""), selection: $cleanDate, in: minDate...Date.now)
             .onAppear { cleanDate = min(.now, max(minDate, cleanDate)) }
+            .foregroundStyle(.black)
     }
 }

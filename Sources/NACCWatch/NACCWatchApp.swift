@@ -179,6 +179,11 @@ struct NACCWatchApp: App {
         WindowGroup {
             NACCWatchAppContentView(showCleanDatePicker: $_showCleanDatePicker, cleanDate: $cleanDate, watchFormat: $watchFormat)
                 .onAppear { _wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext) }
+                .background {
+                    Image("BackgroundGradient")
+                        .resizable(resizingMode: .stretch)
+                        .cornerRadius(16)
+                }
         }
         .onChange(of: cleanDate) {
             NACCPersistentPrefs().cleanDate = cleanDate
