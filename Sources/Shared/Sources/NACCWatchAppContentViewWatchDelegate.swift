@@ -105,10 +105,14 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
             
             #if DEBUG
                 contextData["makeMeUnique"] = UUID().uuidString // This breaks the cache, and forces a send (debug)
-                print("Sending Application Context to the Phone: \(contextData)")
+                #if os(watchOS)
+                    print("Sending Application Context to the Phone: \(contextData)")
+                #else
+                    print("Sending Application Context to the Watch: \(contextData)")
+                #endif
             #endif
 
-            if wcSession.activationState == .activated {
+            if .activated == wcSession.activationState {
                 try wcSession.updateApplicationContext(contextData)
             }
         } catch {

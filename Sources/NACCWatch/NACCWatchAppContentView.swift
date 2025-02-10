@@ -53,7 +53,13 @@ struct NACCWatchAppContentView: View {
      This is a binding for a "trigger," that determines whether or not the set cleandate picker is to be shown.
      */
     @Binding var showCleanDatePicker: Bool
-    
+
+    /* ################################################################## */
+    /**
+     This is a binding for a "trigger," that tells the screen to update to the latest values.
+     */
+    @Binding var syncUp: Bool
+
     /* ################################################################## */
     /**
      The cleandate.
@@ -65,6 +71,29 @@ struct NACCWatchAppContentView: View {
      The displayed tab.
      */
     @Binding var watchFormat: Int
+
+    /* ################################################################## */
+    /**
+     This makes sure that the screen reflects the current state.
+     */
+    func synchronize() {
+        if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) {
+            text = textTemp
+        } else {
+            text = "ERROR"
+        }
+        
+        singleKeytag = nil
+        singleMedallion = nil
+        
+        let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
+        
+        let medallionView = LGV_MedallionImage(totalMonths: calculator.totalMonths)
+        singleMedallion = medallionView.drawImage()
+
+        let keyTagImage = LGV_KeytagImageGenerator(isRingClosed: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths)
+        singleKeytag = keyTagImage.generatedImage
+    }
 
     /* ################################################################## */
     /**
@@ -87,6 +116,11 @@ struct NACCWatchAppContentView: View {
                 }
                 .onAppear {
                     showCleanDatePicker = false
+                    synchronize()
+                }
+                .onChange(of: syncUp) {
+                    syncUp = false
+                    synchronize()
                 }
                 .tabViewStyle(PageTabViewStyle())
                 .onTapGesture(count: 2) { showCleanDatePicker = true }

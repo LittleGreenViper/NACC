@@ -266,6 +266,7 @@ extension NACCInitialViewController {
             startupLogo = nil
         }
         setDate()
+        _wcSessionDelegateHandler?.sendApplicationContext()
     }
 
     /* ################################################################## */
@@ -375,8 +376,11 @@ extension NACCInitialViewController {
             _cleantimeDisplayView = nil
 
             NACCPersistentPrefs().cleanDate = date
-            _wcSessionDelegateHandler?.sendApplicationContext()
             
+            if nil != inDatePicker {
+                _wcSessionDelegateHandler?.sendApplicationContext()
+            }
+
             if let text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: date, endDate: Date(), calendar: Calendar.current) {
                 NACCAppSceneDelegate.appDelegateInstance?.report = text
                 cleantimeReportLabel?.text = text

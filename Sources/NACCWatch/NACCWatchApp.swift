@@ -54,7 +54,13 @@ struct NACCWatchApp: App {
      This is a source for a "trigger," that determines whether or not the set cleandate picker is to be shown.
      */
     @State private var _showCleanDatePicker: Bool = false
-    
+
+    /* ################################################################## */
+    /**
+     This is a binding for a "trigger," that tells the screen to update to the latest values.
+     */
+    @State private var _syncUp: Bool = false
+
     /* ################################################################## */
     /**
      The text report.
@@ -88,23 +94,6 @@ struct NACCWatchApp: App {
             #if DEBUG
                 print("Cleandate: \(_cleanDate)")
             #endif
-
-            if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: _cleanDate, endDate: .now) {
-                _text = textTemp
-            } else {
-                _text = "ERROR"
-            }
-            
-            _singleKeytag = nil
-            _singleMedallion = nil
-            
-            let calculator = LGV_CleantimeDateCalc(startDate: _cleanDate).cleanTime
-            
-            let medallionView = LGV_MedallionImage(totalMonths: calculator.totalMonths)
-            _singleMedallion = medallionView.drawImage()
-
-            let keyTagImage = LGV_KeytagImageGenerator(isRingClosed: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths)
-            _singleKeytag = keyTagImage.generatedImage
         }
         
         if let watchFormatTemp = inApplicationContext["watchAppDisplayState"] as? Int,
@@ -116,6 +105,8 @@ struct NACCWatchApp: App {
                 print("WatchFormat: \(format)")
             #endif
         }
+        
+        _syncUp = true
     }
     
     /* ################################################################## */
@@ -128,6 +119,7 @@ struct NACCWatchApp: App {
                                     singleMedallion: $_singleMedallion,
                                     text: $_text,
                                     showCleanDatePicker: $_showCleanDatePicker,
+                                    syncUp: $_syncUp,
                                     cleanDate: $_cleanDate,
                                     watchFormat: $_watchFormat
             )
