@@ -32,21 +32,21 @@ import RVS_UIKit_Toolbox
 struct NACCWatchAppContentView: View {
     /* ################################################################## */
     /**
-     The text report.
+     The image that represents a keytag. May be nil.
      */
-    @State var text: String = ""
-
-    /* ################################################################## */
-    /**
-     The image that represents a keytag. May be nil. Mutually exclusive with `singleMedallion`.
-     */
-    @State var singleKeytag: UIImage?
+    @Binding var singleKeytag: UIImage?
     
     /* ################################################################## */
     /**
-     The image that represents a medallion. May be nil. Mutually exclusive with `singleKeytag`.
+     The image that represents a medallion. May be nil.
      */
-    @State var singleMedallion: UIImage?
+    @Binding var singleMedallion: UIImage?
+
+    /* ################################################################## */
+    /**
+     The text report.
+     */
+    @Binding var text: String
 
     /* ################################################################## */
     /**
@@ -68,37 +68,6 @@ struct NACCWatchAppContentView: View {
 
     /* ################################################################## */
     /**
-     Syncs the bindings with the current cleandate.
-     
-     This should be called on the main thread.
-     */
-    func synchronize() {
-        if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) {
-            text = textTemp
-        } else {
-            text = "ERROR"
-        }
-        
-        singleKeytag = nil
-        singleMedallion = nil
-        
-        let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
-        
-        let medallionView = LGV_MedallionImage(totalMonths: calculator.totalMonths)
-        singleMedallion = medallionView.drawImage()
-
-        let keyTagImage = LGV_KeytagImageGenerator(isRingClosed: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths)
-        singleKeytag = keyTagImage.generatedImage
-    }
-
-    /* ################################################################## */
-    /**
-     This is a "tripwire" to tell the app to bring in the cleandate picker, so the user can select a new date.
-     */
-    @State private var _navigate = false
-
-    /* ################################################################## */
-    /**
      The main view. It's a swiped-tab view (page selector), with text, keytag, and medallion as choices. The choice is saved persistently.
      The user can double-tap on it, to change the cleandate.
      */
@@ -117,12 +86,11 @@ struct NACCWatchAppContentView: View {
                         .containerRelativeFrame([.horizontal, .vertical], alignment: .bottom)
                 }
                 .onAppear {
-                    synchronize()
-                    _navigate = false
+                    showCleanDatePicker = false
                 }
                 .tabViewStyle(PageTabViewStyle())
-                .onTapGesture(count: 2) { _navigate = true }
-                .navigationDestination(isPresented: $_navigate) { CleanDatePicker(cleanDate: $cleanDate) }
+                .onTapGesture(count: 2) { showCleanDatePicker = true }
+                .navigationDestination(isPresented: $showCleanDatePicker) { CleanDatePicker(cleanDate: $cleanDate) }
            }
         }
     }

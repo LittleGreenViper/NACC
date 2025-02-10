@@ -144,7 +144,7 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
         get {
             guard let stateIndex = values[Keys.watchAppDisplayState.rawValue] as? Int,
                   let ret = MainWatchState(rawValue: stateIndex)
-            else { return .medallion }
+            else { return .text }
             
             return ret
         }
