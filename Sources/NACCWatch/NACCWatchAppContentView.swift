@@ -109,6 +109,7 @@ struct NACCWatchAppContentView: View {
                     Text(text)
                         .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
                         .foregroundStyle(Color.black)
+                        .padding()
                     Image(uiImage: (singleKeytag ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height - 4) ?? UIImage())
                         .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
                         .containerRelativeFrame([.horizontal, .vertical], alignment: .bottom)
