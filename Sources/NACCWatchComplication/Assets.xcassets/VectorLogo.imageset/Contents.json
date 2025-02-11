@@ -1,15 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "BackgroundGradient.pdf",
+      "filename" : "VectorLogo.pdf",
       "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "preserves-vector-representation" : true
   }
 }

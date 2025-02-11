@@ -12,6 +12,7 @@
 		D41361C027F8D80B00DA1AD4 /* NACCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */; };
 		D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42314F527FE150E00C5E5FC /* NACCTabBarController.swift */; };
 		D43730122D497E9C00592680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D43730112D497E9C00592680 /* Assets.xcassets */; };
+		D43939862D5C09C4007258E9 /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D43939852D5C09C4007258E9 /* RVS_UIKit_Toolbox */; };
 		D43C66D42694AC20007D5883 /* NACCAppSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */; };
 		D44EE39A2D57D41C0046B47D /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D44EE3992D57D41C0046B47D /* RVS_UIKit_Toolbox */; };
 		D45A93C42D4C4DEB008B2528 /* NACCWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D45A93B72D4C4DEA008B2528 /* NACCWatch.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -34,7 +35,6 @@
 		D474789F28073D5400212919 /* NACCPagePrintRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */; };
 		D477647A2D3FFA2400DB748E /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D47764792D3FFA2400DB748E /* RVS_Persistent_Prefs */; };
 		D485259627FDBD2E002EE3E3 /* NACCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */; };
-		D4882CB12D5B9F9100FBF2EC /* NACCWatchComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4882CB02D5B9F9100FBF2EC /* NACCWatchComplicationController.swift */; };
 		D48C496B2C9372AA007E87C3 /* NACCGetCleantimeSummaryAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C496A2C9372AA007E87C3 /* NACCGetCleantimeSummaryAppIntent.swift */; };
 		D48C496E2C9372C5007E87C3 /* AppShortcuts.strings in Resources */ = {isa = PBXBuildFile; fileRef = D48C496C2C9372C5007E87C3 /* AppShortcuts.strings */; };
 		D48F812B27FCD36D001A0B87 /* NACCInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F812A27FCD36D001A0B87 /* NACCInitialViewController.swift */; };
@@ -157,7 +157,6 @@
 		D477647F2D40026E00DB748E /* NACC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
 		D47CCAEE2D4BC10700EAE5AF /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.2.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
 		D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCExtensions.swift; sourceTree = "<group>"; };
-		D4882CB02D5B9F9100FBF2EC /* NACCWatchComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWatchComplicationController.swift; sourceTree = "<group>"; };
 		D4882CB72D5BA1DB00FBF2EC /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		D48C496A2C9372AA007E87C3 /* NACCGetCleantimeSummaryAppIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCGetCleantimeSummaryAppIntent.swift; sourceTree = "<group>"; };
 		D48C496D2C9372C5007E87C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
@@ -291,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4F9DA972D5BA6A300FFC2DC /* SwiftUI.framework in Frameworks */,
+				D43939862D5C09C4007258E9 /* RVS_UIKit_Toolbox in Frameworks */,
 				D4F9DA962D5BA6A300FFC2DC /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,7 +362,6 @@
 			children = (
 				D4A420DC2D4D607800E4AC1E /* NACCWatchApp.swift */,
 				D4A420DD2D4D607800E4AC1E /* NACCWatchAppContentView.swift */,
-				D4882CB02D5B9F9100FBF2EC /* NACCWatchComplicationController.swift */,
 				D4A420D82D4D607800E4AC1E /* Assets.xcassets */,
 				D4A420D92D4D607800E4AC1E /* Info.plist */,
 				D4A420DB2D4D607800E4AC1E /* NACCWatch.entitlements */,
@@ -671,6 +670,7 @@
 			);
 			name = NACCWatchComplicationExtension;
 			packageProductDependencies = (
+				D43939852D5C09C4007258E9 /* RVS_UIKit_Toolbox */,
 			);
 			productName = NACCWatchComplicationExtension;
 			productReference = D4F9DA952D5BA6A300FFC2DC /* NACCWatchComplicationExtension.appex */;
@@ -866,7 +866,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4882CB12D5B9F9100FBF2EC /* NACCWatchComplicationController.swift in Sources */,
 				D45A93CE2D4C5405008B2528 /* NACCPersistentPrefs.swift in Sources */,
 				D4A420E42D4D607800E4AC1E /* NACCWatchApp.swift in Sources */,
 				D412D8E32D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift in Sources */,
@@ -1456,6 +1455,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/NACCWatchComplication/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACCWatchComplication;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1492,6 +1492,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/NACCWatchComplication/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACCWatchComplication;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1624,6 +1625,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D43939852D5C09C4007258E9 /* RVS_UIKit_Toolbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D45BE0142D56B774003F4CB0 /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */;
+			productName = RVS_UIKit_Toolbox;
+		};
 		D44EE3992D57D41C0046B47D /* RVS_UIKit_Toolbox */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D45BE0142D56B774003F4CB0 /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */;

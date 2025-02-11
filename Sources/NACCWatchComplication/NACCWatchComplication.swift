@@ -20,93 +20,101 @@
 
 import WidgetKit
 import SwiftUI
+import RVS_UIKit_Toolbox
 
 /* ###################################################################################################################################### */
-// MARK: -  -
+// MARK: - The Timeline Provider for the Complication -
 /* ###################################################################################################################################### */
 /**
  */
-struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
+struct NACCWatchComplicationProvider: TimelineProvider {
+    /* ################################################################## */
+    /**
+     */
+    func placeholder(in context: Context) -> NACCWatchComplicationEntry {
+        NACCWatchComplicationEntry(date: Date(), value: "Placeholder")
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
+    /* ################################################################## */
+    /**
+     */
+    func getSnapshot(in context: Context, completion: @escaping (NACCWatchComplicationEntry) -> Void) {
+        let entry = NACCWatchComplicationEntry(date: Date(), value: "Now")
         completion(entry)
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, emoji: "😀")
-            entries.append(entry)
+    /* ################################################################## */
+    /**
+     */
+    func getTimeline(in context: Context, completion: @escaping (Timeline<NACCWatchComplicationEntry>) -> Void) {
+        let entries = (0..<5).map { offset in
+            NACCWatchComplicationEntry(date: Calendar.current.date(byAdding: .minute, value: offset * 15, to: Date())!,
+                              value: "\(offset * 15) min")
         }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
+        completion(Timeline(entries: entries, policy: .atEnd))
     }
-
-//    func relevances() async -> WidgetRelevances<Void> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
 }
 
 /* ###################################################################################################################################### */
-// MARK: -  -
+// MARK: - A Single Complication Entry -
 /* ###################################################################################################################################### */
 /**
  */
-struct SimpleEntry: TimelineEntry {
+struct NACCWatchComplicationEntry: TimelineEntry {
+    /* ################################################################## */
+    /**
+     */
     let date: Date
-    let emoji: String
+    
+    /* ################################################################## */
+    /**
+     */
+    let value: String
 }
 
 /* ###################################################################################################################################### */
-// MARK: -  -
+// MARK: - The View, Displaying the Complication -
 /* ###################################################################################################################################### */
 /**
  */
 struct NACCWatchComplicationEntryView: View {
-    var entry: Provider.Entry
+    /* ################################################################## */
+    /**
+     */
+    var entry: NACCWatchComplicationProvider.Entry
 
+    /* ################################################################## */
+    /**
+     */
     var body: some View {
-        VStack {
-            HStack {
-                Text("Time:")
-                Text(entry.date, style: .time)
-            }
-
-            Text("Emoji:")
-            Text(entry.emoji)
+        GeometryReader { inGeom in
+            Image(uiImage: UIImage(named: "LogoMask")?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
         }
     }
+        
 }
 
 /* ###################################################################################################################################### */
-// MARK: -  -
+// MARK: - The Complication Display Widget -
 /* ###################################################################################################################################### */
 /**
  */
 @main
 struct NACCWatchComplication: Widget {
+    /* ################################################################## */
+    /**
+     */
     let kind: String = "NACCWatchComplication"
 
+    /* ################################################################## */
+    /**
+     */
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            if #available(watchOS 10.0, *) {
-                NACCWatchComplicationEntryView(entry: entry)
-            } else {
-                NACCWatchComplicationEntryView(entry: entry)
-                    .padding()
-                    .background()
-            }
+        StaticConfiguration(kind: kind, provider: NACCWatchComplicationProvider()) { inEntry in
+            NACCWatchComplicationEntryView(entry: inEntry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .supportedFamilies([.accessoryCircular, .accessoryRectangular, .accessoryInline])
+        .configurationDisplayName("NACC")
+        .description("Calculate Your Cleantime!")
     }
 }
