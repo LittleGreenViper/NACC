@@ -726,9 +726,9 @@
 			projectRoot = "";
 			targets = (
 				D43C66B02694ABFF007D5883 /* NACC */,
-				D45A93B62D4C4DEA008B2528 /* NACCWatch */,
 				D4A420AF2D4D5C7900E4AC1E /* NACCWidget */,
 				D4E43A4C2C937FDF00535CDD /* NACCIntents */,
+				D45A93B62D4C4DEA008B2528 /* NACCWatch */,
 				D4F9DA942D5BA6A300FFC2DC /* NACCWatchComplicationExtension */,
 			);
 		};
@@ -1217,11 +1217,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/NACCWatch/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).NACCWatchComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = NACCWatch.NACCWatchComplicationController;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = org.magshare.NACC;
-				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1266,11 +1266,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/NACCWatch/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).NACCWatchComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = NACCWatch.NACCWatchComplicationController;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = org.magshare.NACC;
-				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1474,7 +1474,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 11.2;
+				WATCHOS_DEPLOYMENT_TARGET = 10;
 			};
 			name = Debug;
 		};
@@ -1509,7 +1509,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 11.2;
+				WATCHOS_DEPLOYMENT_TARGET = 10;
 			};
 			name = Release;
 		};

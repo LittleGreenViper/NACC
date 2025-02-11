@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "ComplicationVector.pdf",
+      "idiom" : "watch"
+    },
+    {
+      "idiom" : "watch",
+      "screen-width" : "<=145"
+    },
+    {
+      "idiom" : "watch",
+      "screen-width" : ">183"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "auto-scaling" : "auto"
+  }
+}
