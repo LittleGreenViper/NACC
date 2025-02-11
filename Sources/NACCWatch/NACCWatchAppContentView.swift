@@ -77,6 +77,8 @@ struct NACCWatchAppContentView: View {
      This makes sure that the screen reflects the current state.
      */
     func synchronize() {
+        syncUp = false
+
         if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) {
             text = textTemp
         } else {
@@ -110,17 +112,24 @@ struct NACCWatchAppContentView: View {
                     Image(uiImage: (singleKeytag ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height - 4) ?? UIImage())
                         .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
                         .containerRelativeFrame([.horizontal, .vertical], alignment: .bottom)
-                    Image(uiImage: (singleMedallion ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
-                        .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
-                        .containerRelativeFrame([.horizontal, .vertical], alignment: .bottom)
+                    if 0 < LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime.years {
+                        Image(uiImage: (singleMedallion ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                            .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
+                            .containerRelativeFrame([.horizontal, .vertical], alignment: .bottom)
+                    }
                 }
                 .onAppear {
+                    if .medallion == NACCPersistentPrefs().watchAppDisplayState,
+                       1 > LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime.years {
+                        watchFormat = NACCPersistentPrefs.MainWatchState.text.rawValue
+                    }
                     showCleanDatePicker = false
                     synchronize()
                 }
                 .onChange(of: syncUp) {
-                    syncUp = false
-                    synchronize()
+                    if syncUp {
+                        synchronize()
+                    }
                 }
                 .tabViewStyle(PageTabViewStyle())
                 .onTapGesture(count: 2) { showCleanDatePicker = true }

@@ -138,7 +138,7 @@ struct NACCWatchApp: App {
         }
         .onChange(of: _watchFormat) {
             if let formatTemp = NACCPersistentPrefs.MainWatchState(rawValue: _watchFormat),
-               NACCPersistentPrefs().watchAppDisplayState != formatTemp {
+               formatTemp != NACCPersistentPrefs().watchAppDisplayState {   // We only send it, if we changed the screen that we're viewing.
                 NACCPersistentPrefs().watchAppDisplayState = formatTemp
                 _wcSessionDelegateHandler?.sendApplicationContext()
             }
