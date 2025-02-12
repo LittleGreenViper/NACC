@@ -60,6 +60,9 @@
 		D4E2F96927FCCA3200457AD4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 		D4E2F96B27FCCD3400457AD4 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */; };
 		D4E9103C2D497FAD0036F641 /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */; };
+		D4EB29AB2D5D47EF00D40106 /* WatchStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */; };
+		D4EB29AC2D5D47EF00D40106 /* WatchStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */; };
+		D4EB29AD2D5D484400D40106 /* WatchStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */; };
 		D4F46FDC2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F46FDB2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift */; };
 		D4F46FE12C94669E0071D359 /* NACCIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D4F46FE02C94669E0071D359 /* NACCIntents.intentdefinition */; };
 		D4F945512D4E60620073AF8F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
@@ -226,6 +229,7 @@
 		D4E43A532C937FDF00535CDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4E43A692C937FDF00535CDD /* NACCIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCIntents.entitlements; sourceTree = "<group>"; };
 		D4E9103B2D497FAD0036F641 /* Base */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Base; path = Base.lproj/LGV_UICleantime.xcassets; sourceTree = "<group>"; };
+		D4EB29AE2D5D4CFE00D40106 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D4ED89912D48F9D9007E9D63 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.2.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
 		D4ED89932D48F9E1007E9D63 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.2.sdk/System/Library/Frameworks/WatchKit.framework; sourceTree = DEVELOPER_DIR; };
 		D4F46FDB2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCShowCleantimeIntentHandler.swift; sourceTree = "<group>"; };
@@ -296,7 +300,6 @@
 		D43C667E2694AA88007D5883 = {
 			isa = PBXGroup;
 			children = (
-				D462E4C12D5D0A27001E2C0F /* NACCWatchComplicationExtension.entitlements */,
 				D4C541492D43C03000F62EBF /* .swiftlint.yml */,
 				D43C66C52694AC20007D5883 /* Sources */,
 				D43C66D72694AC33007D5883 /* Project-Meta */,
@@ -362,7 +365,6 @@
 				D4A420D92D4D607800E4AC1E /* Info.plist */,
 				D4A420DB2D4D607800E4AC1E /* NACCWatch.entitlements */,
 				D4A420DE2D4D607800E4AC1E /* README.md */,
-				D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */,
 			);
 			path = NACCWatch;
 			sourceTree = "<group>";
@@ -375,7 +377,6 @@
 				D4A420E72D4D607C00E4AC1E /* Info.plist */,
 				D4A420E92D4D607C00E4AC1E /* NACCWidgetExtension.entitlements */,
 				D4A420EA2D4D607C00E4AC1E /* README.md */,
-				D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */,
 			);
 			path = NACCWidget;
 			sourceTree = "<group>";
@@ -502,6 +503,8 @@
 			isa = PBXGroup;
 			children = (
 				D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */,
+				D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */,
+				D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */,
 				D4E2F96727FCCA3200457AD4 /* Localizable.strings */,
 			);
 			path = Resources;
@@ -540,9 +543,11 @@
 		D4F9DAA82D5BA6DE00FFC2DC /* NACCWatchComplication */ = {
 			isa = PBXGroup;
 			children = (
+				D4F9DAA72D5BA6DE00FFC2DC /* NACCWatchComplication.swift */,
 				D4F9DAA52D5BA6DE00FFC2DC /* Assets.xcassets */,
 				D4F9DAA62D5BA6DE00FFC2DC /* Info.plist */,
-				D4F9DAA72D5BA6DE00FFC2DC /* NACCWatchComplication.swift */,
+				D462E4C12D5D0A27001E2C0F /* NACCWatchComplicationExtension.entitlements */,
+				D4EB29AE2D5D4CFE00D40106 /* README.md */,
 			);
 			path = NACCWatchComplication;
 			sourceTree = "<group>";
@@ -606,6 +611,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4A420C12D4D5C7A00E4AC1E /* Build configuration list for PBXNativeTarget "NACCWidget" */;
 			buildPhases = (
+				D4EB29AF2D5D4D6000D40106 /* SwiftLint */,
 				D4A420AC2D4D5C7900E4AC1E /* Sources */,
 				D4A420AD2D4D5C7900E4AC1E /* Frameworks */,
 				D4A420AE2D4D5C7900E4AC1E /* Resources */,
@@ -649,6 +655,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4F9DAA22D5BA6A300FFC2DC /* Build configuration list for PBXNativeTarget "NACCWatchComplicationExtension" */;
 			buildPhases = (
+				D4EB29B02D5D4D7B00D40106 /* SwiftLint */,
 				D4F9DA912D5BA6A300FFC2DC /* Sources */,
 				D4F9DA922D5BA6A300FFC2DC /* Frameworks */,
 				D4F9DA932D5BA6A300FFC2DC /* Resources */,
@@ -737,6 +744,7 @@
 				D48C496E2C9372C5007E87C3 /* AppShortcuts.strings in Resources */,
 				D4E2F96B27FCCD3400457AD4 /* Theme.xcassets in Resources */,
 				D4C79A2127F9189800FBB7D3 /* NACC_Main.storyboard in Resources */,
+				D4EB29AD2D5D484400D40106 /* WatchStrings.xcstrings in Resources */,
 				D43730122D497E9C00592680 /* Assets.xcassets in Resources */,
 				D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */,
 			);
@@ -757,6 +765,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4EB29AB2D5D47EF00D40106 /* WatchStrings.xcstrings in Resources */,
 				D4A420ED2D4D607C00E4AC1E /* Assets.xcassets in Resources */,
 				D4A420EF2D4D607C00E4AC1E /* README.md in Resources */,
 				D4A420F02D4D607C00E4AC1E /* WidgetStrings.xcstrings in Resources */,
@@ -769,6 +778,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4EB29AC2D5D47EF00D40106 /* WatchStrings.xcstrings in Resources */,
 				D4F9DAAA2D5BA6DE00FFC2DC /* Assets.xcassets in Resources */,
 				D462E4C32D5D0B17001E2C0F /* Localizable.strings in Resources */,
 			);
@@ -797,6 +807,44 @@
 			shellScript = "if command -v swiftlint 2>&1 >/dev/null\nthen\n    cd ${PROJECT_DIR}\n    swiftlint\nfi\n";
 		};
 		D4C5413D2D43BFD600F62EBF /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if command -v swiftlint 2>&1 >/dev/null\nthen\n    cd ${PROJECT_DIR}\n    swiftlint\nfi\n";
+		};
+		D4EB29AF2D5D4D6000D40106 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if command -v swiftlint 2>&1 >/dev/null\nthen\n    cd ${PROJECT_DIR}\n    swiftlint\nfi\n";
+		};
+		D4EB29B02D5D4D7B00D40106 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -1127,7 +1175,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Project-Meta/NACC.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3025;
+				CURRENT_PROJECT_VERSION = 3026;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/NACC/Info.plist";
@@ -1163,7 +1211,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Project-Meta/NACC.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3025;
+				CURRENT_PROJECT_VERSION = 3026;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/NACC/Info.plist";
@@ -1200,7 +1248,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatch/NACCWatch.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3025;
+				CURRENT_PROJECT_VERSION = 3026;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = P53V4JS928;
 				DRIVERKIT_DEPLOYMENT_TARGET = "";
@@ -1249,7 +1297,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatch/NACCWatch.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3025;
+				CURRENT_PROJECT_VERSION = 3026;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = P53V4JS928;
 				DRIVERKIT_DEPLOYMENT_TARGET = "";
@@ -1296,8 +1344,9 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWidget/NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3025;
+				CURRENT_PROJECT_VERSION = 3026;
 				DEVELOPMENT_TEAM = P53V4JS928;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/NACCWidget/Info.plist;
@@ -1331,8 +1380,9 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWidget/NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3025;
+				CURRENT_PROJECT_VERSION = 3026;
 				DEVELOPMENT_TEAM = P53V4JS928;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/NACCWidget/Info.plist;
@@ -1364,7 +1414,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3025;
+				CURRENT_PROJECT_VERSION = 3026;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1404,7 +1454,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3025;
+				CURRENT_PROJECT_VERSION = 3026;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1441,11 +1491,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = NACCWatchComplicationExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatchComplication/NACCWatchComplicationExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3025;
+				CURRENT_PROJECT_VERSION = 3026;
 				DEVELOPMENT_TEAM = P53V4JS928;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/NACCWatchComplication/Info.plist;
@@ -1479,11 +1530,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = NACCWatchComplicationExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatchComplication/NACCWatchComplicationExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3025;
+				CURRENT_PROJECT_VERSION = 3026;
 				DEVELOPMENT_TEAM = P53V4JS928;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/NACCWatchComplication/Info.plist;

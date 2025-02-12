@@ -48,6 +48,13 @@
 // MARK: - MAIN INTERFACE -
 // MARK: -
 
+// MARK: WIDGET STUFF
+
+"SLUG-WIDGET-SUBTITLE"                          =   "Calculate Your Cleantime!";
+"SLUG-WIDGET-DESCRIPTION"                       =   "Returns a summary of your cleantime";
+"SLUG-WIDGET-ENTRY-PROMPT"                      =   "Enter Your Clean Date";
+"SLUG-WIDGET-ENTRY-INVALID"                     =   "You must enter a valid clean date!";
+
 // MARK: CLEANDATE SCREEN
 
 "SLUG-INITIAL-TITLE"                            =   "NACC";

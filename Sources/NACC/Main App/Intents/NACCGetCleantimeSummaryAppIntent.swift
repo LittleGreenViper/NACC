@@ -35,19 +35,19 @@ struct NACCGetCleantimeSummaryAppIntent: AppIntent {
     /**
      The intent title.
      */
-    static var title: LocalizedStringResource = "Calculate My Cleantime"
+    static var title: LocalizedStringResource = LocalizedStringResource("SLUG-WIDGET-SUBTITLE", table: "WatchStrings")
 
     /* ################################################################## */
     /**
      The intent description.
      */
-    static let description: IntentDescription = "Returns a summary of your cleantime"
+    static let description: IntentDescription = IntentDescription(LocalizedStringResource("SLUG-WIDGET-DESCRIPTION", table: "WatchStrings"))
 
     /* ################################################################## */
     /**
      This is the input cleandate, as date components.
      */
-    @Parameter(title: LocalizedStringResource("Enter Your Clean Date"), kind: .date)
+    @Parameter(title: LocalizedStringResource("SLUG-WIDGET-ENTRY-PROMPT", table: "WatchStrings"), kind: .date)
     var cleanDate: DateComponents?
     
     /* ################################################################## */
@@ -65,7 +65,7 @@ struct NACCGetCleantimeSummaryAppIntent: AppIntent {
             }
         }
         
-        let dialog = IntentDialog(stringLiteral: "You must enter a valid clean date!")
+        let dialog = IntentDialog(LocalizedStringResource("SLUG-WIDGET-ENTRY-INVALID", table: "WatchStrings"))
         return .result(value: "", dialog: dialog)
     }
 }
@@ -90,7 +90,7 @@ struct NACCAppShortcuts: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
         AppShortcut(intent: NACCGetCleantimeSummaryAppIntent(),
                     phrases: ["SLUG-GET-CLEANTIME-SUMMARY-INTENT-\(.applicationName)"],
-                    shortTitle: "NA Cleantime",
+                    shortTitle: LocalizedStringResource("SLUG-WIDGET-SHORT-DESC", table: "WatchStrings"),
                     systemImageName: "calendar")
     }
 }

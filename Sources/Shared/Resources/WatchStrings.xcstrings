@@ -1,0 +1,64 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "SLUG-SELECT-DATE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Clean Date"
+          }
+        }
+      }
+    },
+    "SLUG-WIDGET-DESCRIPTION" : {
+
+    },
+    "SLUG-WIDGET-ENTRY-INVALID" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You must enter a valid cleandate!"
+          }
+        }
+      }
+    },
+    "SLUG-WIDGET-ENTRY-PROMPT" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter Your Cleandate"
+          }
+        }
+      }
+    },
+    "SLUG-WIDGET-SHORT-DESC" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NA Cleantime"
+          }
+        }
+      }
+    },
+    "SLUG-WIDGET-SUBTITLE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculate Your Cleantime!"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

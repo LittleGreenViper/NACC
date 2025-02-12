@@ -145,26 +145,20 @@ struct NACCWatchComplicationEntryView: View {
      */
     var body: some View {
         GeometryReader { inGeom in
-            HStack {
-                if .accessoryCorner == _family {
-                    Image(uiImage: entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
-                        .widgetLabel(entry.text)
-                } else {
+            if .accessoryCorner == _family || .accessoryCircular == _family {
+                Image(uiImage: entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                    .widgetLabel(entry.text)
+                    .onAppear { entry.family = _family }
+            } else {
+                HStack(alignment: .top) {
                     Image(uiImage: entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
                     if !entry.text.isEmpty {
                         Text(entry.text).font(.caption)
                     }
                 }
+                .onAppear { entry.family = _family }
             }
-            .onAppear { entry.family = _family }
         }
-    }
-    
-    /* ################################################################## */
-    /**
-     */
-    func setCleantimeReport() {
-        
     }
 }
 
@@ -193,6 +187,6 @@ struct NACCWatchComplication: Widget {
                             .accessoryCorner
         ])
         .configurationDisplayName("NACC")
-        .description("Calculate Your Cleantime!")
+        .description("SLUG-WIDGET-SUBTITLE".localizedVariant)
     }
 }
