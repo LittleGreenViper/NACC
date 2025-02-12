@@ -21,6 +21,8 @@
 import WidgetKit
 import SwiftUI
 import RVS_UIKit_Toolbox
+import LGV_UICleantime
+import LGV_Cleantime
 
 /* ###################################################################################################################################### */
 // MARK: - The Timeline Provider for the Complication -
@@ -83,6 +85,11 @@ struct NACCWatchComplicationEntryView: View {
      This is the display family variant for this complication.
      */
     @Environment(\.widgetFamily) private var _family
+    
+    /* ################################################################## */
+    /**
+     */
+    @State private var _cleantimeReprtText: String = ""
 
     /* ################################################################## */
     /**
@@ -127,7 +134,13 @@ struct NACCWatchComplicationEntryView: View {
             }
         }
     }
+    
+    /* ################################################################## */
+    /**
+     */
+    func setCleantimeReport() {
         
+    }
 }
 
 /* ###################################################################################################################################### */
