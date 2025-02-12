@@ -22,6 +22,7 @@ import SwiftUI
 import WatchConnectivity
 import LGV_Cleantime
 import LGV_UICleantime
+import ClockKit
 
 /* ###################################################################################################################################### */
 // MARK: - Watch App -
@@ -134,6 +135,10 @@ struct NACCWatchApp: App {
             NACCPersistentPrefs().cleanDate = _cleanDate
             if _showCleanDatePicker {   // Only if we are changing it on the watch.
                 _wcSessionDelegateHandler?.sendApplicationContext()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    let server = CLKComplicationServer.sharedInstance()
+                    server.activeComplications?.forEach { server.reloadTimeline(for: $0) }
+                }
             }
         }
         .onChange(of: _watchFormat) {

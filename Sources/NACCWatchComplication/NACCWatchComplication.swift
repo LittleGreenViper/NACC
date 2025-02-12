@@ -99,21 +99,18 @@ struct NACCWatchComplicationEntry: TimelineEntry {
      */
     var text: String {
         switch family {
-        case .accessoryCorner:
-            let totalDays = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.totalDays
-            if 0 < totalDays {
-                return 1 == totalDays ? "SLUG-PREFIX-CLEANTIME-DAY".localizedVariant : String(format: "SLUG-PREFIX-CLEANTIME-DAYS".localizedVariant, totalDays)
-            }
-            return "ERROR"
-
-        case .accessoryRectangular:
+        case .accessoryRectangular, .accessoryInline:
             if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: NACCPersistentPrefs().cleanDate, endDate: .now, short: true) {
                 return textTemp
             }
             return "ERROR"
 
         default:
-            return ""
+            let totalDays = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.totalDays
+            if 0 < totalDays {
+                return 1 == totalDays ? "SLUG-PREFIX-CLEANTIME-DAY".localizedVariant : String(format: "SLUG-PREFIX-CLEANTIME-DAYS".localizedVariant, totalDays)
+            }
+            return "ERROR"
         }
     }
 }
@@ -149,11 +146,16 @@ struct NACCWatchComplicationEntryView: View {
                 Image(uiImage: entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
                     .widgetLabel(entry.text)
                     .onAppear { entry.family = _family }
+            } else if .accessoryInline == _family,
+                      !entry.text.isEmpty {
+                Text(entry.text)
+                    .onAppear { entry.family = _family }
             } else {
                 HStack(alignment: .top) {
                     Image(uiImage: entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
                     if !entry.text.isEmpty {
-                        Text(entry.text).font(.caption)
+                        Text(entry.text)
+                            .font(.caption)
                     }
                 }
                 .onAppear { entry.family = _family }
