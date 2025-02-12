@@ -33,16 +33,22 @@ import RVS_Persistent_Prefs
 struct NACCWatchComplicationProvider: TimelineProvider {
     /* ################################################################## */
     /**
+     This is the display family variant for this complication.
+     */
+    @Environment(\.widgetFamily) private var _family
+    
+    /* ################################################################## */
+    /**
      */
     func placeholder(in context: Context) -> NACCWatchComplicationEntry {
-        NACCWatchComplicationEntry(date: .now)
+        NACCWatchComplicationEntry(date: .now, family: _family)
     }
 
     /* ################################################################## */
     /**
      */
     func getSnapshot(in context: Context, completion: @escaping (NACCWatchComplicationEntry) -> Void) {
-        let entry = NACCWatchComplicationEntry(date: .now)
+        let entry = NACCWatchComplicationEntry(date: .now, family: _family)
         completion(entry)
     }
 
@@ -50,7 +56,7 @@ struct NACCWatchComplicationProvider: TimelineProvider {
     /**
      */
     func getTimeline(in context: Context, completion: @escaping (Timeline<NACCWatchComplicationEntry>) -> Void) {
-        completion(Timeline(entries: [NACCWatchComplicationEntry(date: .now)], policy: .atEnd))
+        completion(Timeline(entries: [NACCWatchComplicationEntry(date: .now, family: _family)], policy: .atEnd))
     }
 }
 
@@ -79,22 +85,8 @@ struct NACCWatchComplicationEntry: TimelineEntry {
      */
     var image: UIImage {
         switch family {
-        case .systemSmall:
-            return UIImage(named: "LogoMask") ?? UIImage()
-        case .systemMedium:
-            return UIImage(named: "LogoMask") ?? UIImage()
-        case .systemLarge:
-            return UIImage(named: "LogoMask") ?? UIImage()
-        case .systemExtraLarge:
-            return UIImage(named: "VectorLogo") ?? UIImage()
-        case .accessoryCorner:
-            return UIImage(named: "LogoMask") ?? UIImage()
-        case .accessoryCircular:
-            return UIImage(named: "LogoMask") ?? UIImage()
         case .accessoryRectangular:
             return UIImage(named: "VectorLogo") ?? UIImage()
-        case .accessoryInline:
-            return UIImage(named: "LogoMask") ?? UIImage()
 
         default:
             return UIImage(named: "LogoMask") ?? UIImage()
@@ -106,24 +98,22 @@ struct NACCWatchComplicationEntry: TimelineEntry {
      The text to be displayed (based upon the family)
      */
     var text: String {
-        var shortReport = "ERROR"
-        
-        if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: NACCPersistentPrefs().cleanDate, endDate: .now, short: true) {
-            shortReport = textTemp
-        }
-
         switch family {
         case .accessoryCorner:
-            return "Acc Corner"
-        case .accessoryCircular:
-            return "Acc Circular"
+            let totalDays = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.totalDays
+            if 0 < totalDays {
+                return 1 == totalDays ? "SLUG-PREFIX-CLEANTIME-DAY".localizedVariant : String(format: "SLUG-PREFIX-CLEANTIME-DAYS".localizedVariant, totalDays)
+            }
+            return "ERROR"
+
         case .accessoryRectangular:
-            return shortReport
-        case .accessoryInline:
-            return "Inline"
+            if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: NACCPersistentPrefs().cleanDate, endDate: .now, short: true) {
+                return textTemp
+            }
+            return "ERROR"
 
         default:
-            return "Default"
+            return ""
         }
     }
 }
@@ -143,11 +133,6 @@ struct NACCWatchComplicationEntryView: View {
     /* ################################################################## */
     /**
      */
-    @State var _maxHeight: CGFloat = 64
-    
-    /* ################################################################## */
-    /**
-     */
     @State private var _cleantimeReprtText: String = ""
 
     /* ################################################################## */
@@ -161,8 +146,15 @@ struct NACCWatchComplicationEntryView: View {
     var body: some View {
         GeometryReader { inGeom in
             HStack {
-                Image(uiImage: entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
-                Text(entry.text)
+                if .accessoryCorner == _family {
+                    Image(uiImage: entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                        .widgetLabel(entry.text)
+                } else {
+                    Image(uiImage: entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                    if !entry.text.isEmpty {
+                        Text(entry.text).font(.caption)
+                    }
+                }
             }
             .onAppear { entry.family = _family }
         }
