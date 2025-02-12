@@ -80,6 +80,12 @@ struct NACCWatchComplicationEntry: TimelineEntry {
 struct NACCWatchComplicationEntryView: View {
     /* ################################################################## */
     /**
+     This is the display family variant for this complication.
+     */
+    @Environment(\.widgetFamily) private var _family
+
+    /* ################################################################## */
+    /**
      */
     var entry: NACCWatchComplicationProvider.Entry
 
@@ -88,7 +94,37 @@ struct NACCWatchComplicationEntryView: View {
      */
     var body: some View {
         GeometryReader { inGeom in
-            Image(uiImage: UIImage(named: "LogoMask")?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+            HStack {
+                switch _family {
+                case .systemSmall:
+                    Image(uiImage: UIImage(named: "LogoMask")?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                    Text("Small")
+                case .systemMedium:
+                    Image(uiImage: UIImage(named: "LogoMask")?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                    Text("Med")
+                case .systemLarge:
+                    Image(uiImage: UIImage(named: "LogoMask")?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                    Text("Large")
+                case .systemExtraLarge:
+                    Image(uiImage: UIImage(named: "VectorLogo")?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                    Text("Extra Large")
+                case .accessoryCorner:
+                    Image(uiImage: UIImage(named: "LogoMask")?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                    Text("Acc Corner")
+                case .accessoryCircular:
+                    Image(uiImage: UIImage(named: "LogoMask")?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                    Text("Acc Circular")
+                case .accessoryRectangular:
+                    Image(uiImage: UIImage(named: "VectorLogo")?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                    Text("Rectangular")
+                case .accessoryInline:
+                    Image(uiImage: UIImage(named: "LogoMask")?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                    Text("Inline")
+
+                default:
+                    Image(uiImage: UIImage(named: "LogoMask")?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                }
+            }
         }
     }
         
