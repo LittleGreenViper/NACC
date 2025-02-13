@@ -79,6 +79,8 @@ struct NACCWatchAppContentView: View {
     func synchronize() {
         syncUp = false
 
+        NACCPersistentPrefs().flush()
+
         if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) {
             text = textTemp
         } else {

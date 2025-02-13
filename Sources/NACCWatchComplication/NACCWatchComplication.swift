@@ -56,6 +56,7 @@ struct NACCWatchComplicationProvider: TimelineProvider {
     /**
      */
     func getTimeline(in context: Context, completion: @escaping (Timeline<NACCWatchComplicationEntry>) -> Void) {
+        NACCPersistentPrefs().flush()
         completion(Timeline(entries: [NACCWatchComplicationEntry(date: .now, family: _family)], policy: .atEnd))
     }
 }
