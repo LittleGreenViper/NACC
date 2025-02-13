@@ -126,11 +126,6 @@ struct NACCWatchComplicationEntryView: View {
      This is the display family variant for this complication.
      */
     @Environment(\.widgetFamily) private var _family
-    
-    /* ################################################################## */
-    /**
-     */
-    @State private var _cleantimeReprtText: String = ""
 
     /* ################################################################## */
     /**
@@ -155,7 +150,6 @@ struct NACCWatchComplicationEntryView: View {
                     Image(uiImage: entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
                     if !entry.text.isEmpty {
                         Text(entry.text)
-                            .font(.caption)
                     }
                 }
                 .onAppear { entry.family = _family }
@@ -173,6 +167,12 @@ struct NACCWatchComplicationEntryView: View {
 struct NACCWatchComplication: Widget {
     /* ################################################################## */
     /**
+     Tracks scene activity.
+     */
+    @Environment(\.scenePhase) private var _scenePhase
+
+    /* ################################################################## */
+    /**
      */
     let kind: String = "NACCWatchComplication"
 
@@ -183,12 +183,12 @@ struct NACCWatchComplication: Widget {
         StaticConfiguration(kind: kind, provider: NACCWatchComplicationProvider()) { inEntry in
             NACCWatchComplicationEntryView(entry: inEntry)
         }
-        .supportedFamilies([.accessoryCircular,
-                            .accessoryRectangular,
-                            .accessoryInline,
-                            .accessoryCorner
-        ])
         .configurationDisplayName("NACC")
         .description("SLUG-WIDGET-SUBTITLE".localizedVariant)
+        .supportedFamilies([.accessoryInline,
+                            .accessoryCircular,
+                            .accessoryRectangular,
+                            .accessoryCorner
+        ])
     }
 }

@@ -22,7 +22,7 @@ import SwiftUI
 import WatchConnectivity
 import LGV_Cleantime
 import LGV_UICleantime
-import ClockKit
+import WidgetKit
 
 /* ###################################################################################################################################### */
 // MARK: - Watch App -
@@ -32,6 +32,12 @@ import ClockKit
  */
 @main
 struct NACCWatchApp: App {
+    /* ################################################################## */
+    /**
+     Tracks scene activity.
+     */
+    @Environment(\.scenePhase) private var _scenePhase
+
     /* ################################################################## */
     /**
      This handles the session delegate.
@@ -135,10 +141,7 @@ struct NACCWatchApp: App {
             NACCPersistentPrefs().cleanDate = _cleanDate
             if _showCleanDatePicker {   // Only if we are changing it on the watch.
                 _wcSessionDelegateHandler?.sendApplicationContext()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    let server = CLKComplicationServer.sharedInstance()
-                    server.activeComplications?.forEach { server.reloadTimeline(for: $0) }
-                }
+                WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
             }
         }
         .onChange(of: _watchFormat) {
@@ -146,6 +149,12 @@ struct NACCWatchApp: App {
                formatTemp != NACCPersistentPrefs().watchAppDisplayState {   // We only send it, if we changed the screen that we're viewing.
                 NACCPersistentPrefs().watchAppDisplayState = formatTemp
                 _wcSessionDelegateHandler?.sendApplicationContext()
+            }
+        }
+        // Forces updates, whenever we become active.
+        .onChange(of: _scenePhase, initial: true) {
+            if .active == _scenePhase {
+                WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
             }
         }
     }
