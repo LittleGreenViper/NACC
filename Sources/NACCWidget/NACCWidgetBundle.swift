@@ -131,23 +131,10 @@ struct NACC_IntentProvider: AppIntentTimelineProvider {
 
     /* ################################################################## */
     /**
-     This is a somewhat more involved view. We use "live data" to build it.
+     This is a somewhat more involved view. We use "live data" to build it. We make sure to flush the shared prefs cache, before creating.
      */
     func snapshot(for inConfiguration: NACCWidgetIntent, in: Context) async -> NACC_Entry {
-        var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate,
-                               forceKeytag: inConfiguration.forceKeytag ?? false,
-                               onlyText: inConfiguration.onlyText ?? false,
-                               dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
-        )
-        DispatchQueue.main.sync { entry.synchronize() }
-        return entry
-    }
-    
-    /* ################################################################## */
-    /**
-     This is the final rendereing view. We make sure to flush the shared prefs cache, before displaying.
-     */
-    func timeline(for inConfiguration: NACCWidgetIntent, in: Context) async -> Timeline<NACC_Entry> {
+        defer { DispatchQueue.main.sync { entry.synchronize() } }
         NACCPersistentPrefs().flush()
         var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate,
                                forceKeytag: inConfiguration.forceKeytag ?? false,
@@ -155,7 +142,22 @@ struct NACC_IntentProvider: AppIntentTimelineProvider {
                                dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
         )
         
-        DispatchQueue.main.sync { entry.synchronize() }
+        return entry
+    }
+    
+    /* ################################################################## */
+    /**
+     This is the final rendereing view. We make sure to flush the shared prefs cache, before creating.
+     */
+    func timeline(for inConfiguration: NACCWidgetIntent, in: Context) async -> Timeline<NACC_Entry> {
+        defer { DispatchQueue.main.sync { entry.synchronize() } }
+        NACCPersistentPrefs().flush()
+        var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate,
+                               forceKeytag: inConfiguration.forceKeytag ?? false,
+                               onlyText: inConfiguration.onlyText ?? false,
+                               dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
+        )
+        
         return Timeline(entries: [entry], policy: .atEnd)
     }
 }
