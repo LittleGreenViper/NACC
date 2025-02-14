@@ -117,7 +117,7 @@ struct NACCWatchAppContentView: View {
                     ScrollView {
                         let image = (singleKeytag ?? UIImage(systemName: "nosign"))?.resized(toNewWidth: inGeom.size.width - 16) ?? UIImage()
                         Spacer()
-                            .frame(height: 12)
+                            .frame(height: 8)
                         Image(uiImage: image)
                             .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
                     }
@@ -174,14 +174,19 @@ struct CleanDatePicker: View {
      */
     var body: some View {
         let minDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5)) ?? .now
-        // That "addingTimeInterval()" thing is because the DatePicker is exhibiting strange behavior, when I simply use .now. It lops off the current year.
-        DatePicker(NSLocalizedString("SLUG-SELECT-DATE", tableName: "WatchStrings", comment: ""), selection: $cleanDate, in: minDate...Date.now)
-            .onAppear { cleanDate = min(.now, max(minDate, cleanDate)) }
-            .foregroundStyle(.black)
-            .background {
-                Image("BackgroundGradient")
-                    .resizable(resizingMode: .stretch)
-                    .cornerRadius(8)
-            }
+        VStack {
+            Spacer()
+                .frame(height: 4)
+            DatePicker(NSLocalizedString("SLUG-SELECT-DATE", tableName: "WatchStrings", comment: ""), selection: $cleanDate, in: minDate...Date.now)
+                .onAppear { cleanDate = min(.now, max(minDate, cleanDate)) }
+                .foregroundStyle(.black)
+            Spacer()
+                .frame(height: 4)
+        }
+        .background {
+            Image("BackgroundGradient")
+                .resizable(resizingMode: .stretch)
+                .cornerRadius(8)
+        }
     }
 }
