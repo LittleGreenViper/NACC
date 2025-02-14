@@ -121,12 +121,18 @@ struct NACCWatchAppContentView: View {
                         Image(uiImage: image)
                             .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
                     }
+                    .clipped()
 
                     if 0 < LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime.years {
                         Image(uiImage: (singleMedallion ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
                             .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
-                            .containerRelativeFrame([.horizontal, .vertical], alignment: .bottom)
+                            .containerRelativeFrame([.horizontal, .vertical], alignment: .center)
                     }
+                }
+                .background {
+                    Image("BackgroundGradient")
+                        .resizable(resizingMode: .stretch)
+                        .cornerRadius(8)
                 }
                 .onAppear {
                     if .medallion == NACCPersistentPrefs().watchAppDisplayState,
@@ -172,5 +178,10 @@ struct CleanDatePicker: View {
         DatePicker(NSLocalizedString("SLUG-SELECT-DATE", tableName: "WatchStrings", comment: ""), selection: $cleanDate, in: minDate...Date.now)
             .onAppear { cleanDate = min(.now, max(minDate, cleanDate)) }
             .foregroundStyle(.black)
+            .background {
+                Image("BackgroundGradient")
+                    .resizable(resizingMode: .stretch)
+                    .cornerRadius(8)
+            }
     }
 }
