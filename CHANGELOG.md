@@ -1,4 +1,8 @@
-**6.0.1.3022** *February 14, 2025*
+**6.1.0.3033** *TBD*
+
+- The Watch app now displays the keytags as a scrollable vertical chain.
+
+**6.0.1.3032** *February 14, 2025*
 
 - The previous release broke widgets. This fixes that.
 
