@@ -140,7 +140,7 @@ struct NACC_IntentProvider: AppIntentTimelineProvider {
                                dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
         )
         
-        DispatchQueue.main.sync { entry.synchronize() }
+        entry.synchronize()
         return entry
     }
     
@@ -155,7 +155,7 @@ struct NACC_IntentProvider: AppIntentTimelineProvider {
                                onlyText: inConfiguration.onlyText ?? false,
                                dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
         )
-        DispatchQueue.main.sync { entry.synchronize() }
+        entry.synchronize()
         return Timeline(entries: [entry], policy: .atEnd)
     }
 }
@@ -371,20 +371,21 @@ struct NACC_Entry: TimelineEntry {
         singleMedallion = nil
         
         guard !onlyText else { return }
-        
-        if 0 < calculator.years,
-           !forceKeytag {
-            let medallionView = LGV_UISingleCleantimeMedallionImageView()
-            medallionView.totalDays = calculator.totalDays
-            medallionView.totalMonths = calculator.totalMonths
-            
-            singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
-        } else {
-            let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
-            keyTagImage.totalDays = calculator.totalDays
-            keyTagImage.totalMonths = calculator.totalMonths
-            yellowTag = dontShowBackground || (9..<12).contains(calculator.totalMonths) || (45..<50).contains(calculator.years)
-            singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+        DispatchQueue.main.sync {
+            if 0 < calculator.years,
+               !forceKeytag {
+                let medallionView = LGV_UISingleCleantimeMedallionImageView()
+                medallionView.totalDays = calculator.totalDays
+                medallionView.totalMonths = calculator.totalMonths
+                
+                singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+            } else {
+                let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
+                keyTagImage.totalDays = calculator.totalDays
+                keyTagImage.totalMonths = calculator.totalMonths
+                yellowTag = dontShowBackground || (9..<12).contains(calculator.totalMonths) || (45..<50).contains(calculator.years)
+                singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+            }
         }
     }
 
