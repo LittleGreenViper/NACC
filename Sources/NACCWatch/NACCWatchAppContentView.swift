@@ -96,7 +96,7 @@ struct NACCWatchAppContentView: View {
         let medallionView = LGV_MedallionImage(totalMonths: calculator.totalMonths)
         singleMedallion = medallionView.drawImage()
 
-        let keyTagImage = LGV_KeytagImageGenerator(isRingClosed: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths)
+        let keyTagImage = LGV_MultiKeytagImageGenerator(isVerticalStrip: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths)
         singleKeytag = keyTagImage.generatedImage
     }
 
@@ -113,9 +113,15 @@ struct NACCWatchAppContentView: View {
                         .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
                         .foregroundStyle(Color.black)
                         .padding()
-                    Image(uiImage: (singleKeytag ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height - 4) ?? UIImage())
-                        .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
-                        .containerRelativeFrame([.horizontal, .vertical], alignment: .bottom)
+                    
+                    ScrollView {
+                        let image = (singleKeytag ?? UIImage(systemName: "nosign"))?.resized(toNewWidth: inGeom.size.width - 16) ?? UIImage()
+                        Spacer()
+                            .frame(height: 12)
+                        Image(uiImage: image)
+                            .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
+                    }
+
                     if 0 < LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime.years {
                         Image(uiImage: (singleMedallion ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
                             .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)

@@ -130,12 +130,13 @@ struct NACCWatchApp: App {
                                     cleanDate: $_cleanDate,
                                     watchFormat: $_watchFormat
             )
-                .onAppear { _wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext) }
-                .background {
-                    Image("BackgroundGradient")
-                        .resizable(resizingMode: .stretch)
-                        .cornerRadius(16)
-                }
+            .clipped()
+            .onAppear { _wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext) }
+            .background {
+                Image("BackgroundGradient")
+                    .resizable(resizingMode: .stretch)
+                    .cornerRadius(16)
+            }
         }
         .onChange(of: _cleanDate) {
             NACCPersistentPrefs().cleanDate = _cleanDate
