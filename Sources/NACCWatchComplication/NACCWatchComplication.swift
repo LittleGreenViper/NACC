@@ -26,9 +26,10 @@ import LGV_Cleantime
 import RVS_Persistent_Prefs
 
 /* ###################################################################################################################################### */
-// MARK: - The Timeline Provider for the Complication -
+// MARK: - Timeline Provider -
 /* ###################################################################################################################################### */
 /**
+ The Timeline Provider for the Complication
  */
 struct NACCWatchComplicationProvider: TimelineProvider {
     /* ################################################################## */
@@ -39,6 +40,7 @@ struct NACCWatchComplicationProvider: TimelineProvider {
     
     /* ################################################################## */
     /**
+     This returns a simple placeholder.
      */
     func placeholder(in context: Context) -> NACCWatchComplicationEntry {
         NACCWatchComplicationEntry(date: .now, family: _family)
@@ -46,14 +48,15 @@ struct NACCWatchComplicationProvider: TimelineProvider {
 
     /* ################################################################## */
     /**
+     This sends a "live" snapshot to the completion.
      */
     func getSnapshot(in context: Context, completion: @escaping (NACCWatchComplicationEntry) -> Void) {
-        let entry = NACCWatchComplicationEntry(date: .now, family: _family)
-        completion(entry)
+        completion(NACCWatchComplicationEntry(date: .now, family: _family))
     }
 
     /* ################################################################## */
     /**
+     This returns a full timeline entry. We make sure to flush the prefs before returning.
      */
     func getTimeline(in context: Context, completion: @escaping (Timeline<NACCWatchComplicationEntry>) -> Void) {
         NACCPersistentPrefs().flush()
@@ -117,9 +120,10 @@ struct NACCWatchComplicationEntry: TimelineEntry {
 }
 
 /* ###################################################################################################################################### */
-// MARK: - The View, Displaying the Complication -
+// MARK: - Individual Entry Display -
 /* ###################################################################################################################################### */
 /**
+ The View, Displaying the Complication
  */
 struct NACCWatchComplicationEntryView: View {
     /* ################################################################## */
@@ -130,11 +134,13 @@ struct NACCWatchComplicationEntryView: View {
 
     /* ################################################################## */
     /**
+     The timeline entry to be displayed by this view.
      */
     @State var entry: NACCWatchComplicationProvider.Entry
 
     /* ################################################################## */
     /**
+     We deliver different views, depending on the family.
      */
     var body: some View {
         GeometryReader { inGeom in
@@ -160,12 +166,19 @@ struct NACCWatchComplicationEntryView: View {
 }
 
 /* ###################################################################################################################################### */
-// MARK: - The Complication Display Widget -
+// MARK: - Main Widget -
 /* ###################################################################################################################################### */
 /**
+ The Complication Display Widget
  */
 @main
 struct NACCWatchComplication: Widget {
+    /* ################################################################## */
+    /**
+     The complication widget kind tag.
+     */
+    let kind: String = "NACCWatchComplication"
+
     /* ################################################################## */
     /**
      Tracks scene activity.
@@ -174,11 +187,7 @@ struct NACCWatchComplication: Widget {
 
     /* ################################################################## */
     /**
-     */
-    let kind: String = "NACCWatchComplication"
-
-    /* ################################################################## */
-    /**
+     This returns a view for the complication.
      */
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: NACCWatchComplicationProvider()) { inEntry in

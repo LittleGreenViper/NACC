@@ -77,6 +77,9 @@
                 <a class="nav-group-task-link" href="../Classes/NACCPersistentPrefs/Keys.html">– Keys</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NACCPersistentPrefs/MainWatchState.html">– MainWatchState</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/NACCTabBarController.html">NACCTabBarController</a>
               </li>
               <li class="nav-group-task">
@@ -84,6 +87,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/NACCTabBaseViewController.html">NACCTabBaseViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NACCWatchAppContentViewWatchDelegate.html">NACCWatchAppContentViewWatchDelegate</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes.html#/s:4NACC19ResourceBundleClass33_4D75BB757B50C0B31D8ECF613D7D8101LLC">ResourceBundleClass</a>
@@ -394,6 +400,34 @@ This is the first screen to be shown.</p>
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@MainActor</span>
 <span class="kd">private</span> <span class="k">var</span> <span class="nv">_cleantimeDisplayView</span><span class="p">:</span> <span class="kt">LGV_UICleantimeImageViewBase</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4NACC25NACCInitialViewControllerC25_wcSessionDelegateHandler030_5BC6C96B35E29B752D0459C2FD509L0LLAA019NACCWatchAppContentc5WatchG0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/_wcSessionDelegateHandler" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC25NACCInitialViewControllerC25_wcSessionDelegateHandler030_5BC6C96B35E29B752D0459C2FD509L0LLAA019NACCWatchAppContentc5WatchG0CSgvp">_wcSessionDelegateHandler</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This handles the session delegate.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">private</span> <span class="k">var</span> <span class="nv">_wcSessionDelegateHandler</span><span class="p">:</span> <span class="kt"><a href="../Classes/NACCWatchAppContentViewWatchDelegate.html">NACCWatchAppContentViewWatchDelegate</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -965,6 +999,53 @@ This is the first screen to be shown.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:4NACC25NACCInitialViewControllerC24updateApplicationContextyySDySSypGF"></a>
+                    <a name="//apple_ref/swift/Method/updateApplicationContext(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4NACC25NACCInitialViewControllerC24updateApplicationContextyySDySSypGF">updateApplicationContext(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This will update our internal state, to match the new application context that we received from the Watch.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">func</span> <span class="nf">updateApplicationContext</span><span class="p">(</span><span class="n">_</span> <span class="nv">inApplicationContext</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inApplicationContext</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The new context dictionary.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:@CM@NACC@objc(cs)NACCInitialViewController(im)textHit:"></a>
                     <a name="//apple_ref/swift/Method/textHit(_:)" class="dashAnchor"></a>
                     <a class="token" href="#/c:@CM@NACC@objc(cs)NACCInitialViewController(im)textHit:">textHit(_:<wbr>)</a>
@@ -1255,7 +1336,7 @@ This is the first screen to be shown.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2025 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2025-01-24)</p>
+      <p>&copy; 2025 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2025-02-14)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>

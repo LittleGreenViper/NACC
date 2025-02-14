@@ -57,3 +57,16 @@ jazzy  --readme ./Sources/NACCWatch/README.md \
        --theme fullwidth
 cp ./icon.png docs/watch/
 cp ./img/* docs/watch/img
+
+echo "Creating Docs for the NACC Watch Complications\n"
+rm -drf docs/complication/*
+
+jazzy  --readme ./Sources/NACCWatchComplication/README.md \
+       --build-tool-arguments -scheme,"NACCWatch",-target,"NACCWatchComplicationExtension" \
+       --github_url https://github.com/LittleGreenViper/NACC/tree/master/Sources/NACCWatchComplication \
+       --title "NACC Watch Complication Doumentation" \
+       --min_acl private \
+       --output docs/complication \
+       --theme fullwidth
+cp ./icon.png docs/complication/
+cp ./img/* docs/watch/img

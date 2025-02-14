@@ -28,6 +28,7 @@ import RVS_UIKit_Toolbox
 // MARK: - Watch App Content View -
 /* ###################################################################################################################################### */
 /**
+ The main app content container view.
  */
 struct NACCWatchAppContentView: View {
     /* ################################################################## */
