@@ -131,17 +131,16 @@ struct NACC_IntentProvider: AppIntentTimelineProvider {
 
     /* ################################################################## */
     /**
-     This is a somewhat more involved view. We use "live data" to build it. We make sure to flush the shared prefs cache, before creating.
+     This is a somewhat more involved view. We use "live data" to build it.
      */
     func snapshot(for inConfiguration: NACCWidgetIntent, in: Context) async -> NACC_Entry {
-        defer { DispatchQueue.main.sync { entry.synchronize() } }
-        NACCPersistentPrefs().flush()
         var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate,
                                forceKeytag: inConfiguration.forceKeytag ?? false,
                                onlyText: inConfiguration.onlyText ?? false,
                                dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
         )
         
+        DispatchQueue.main.sync { entry.synchronize() }
         return entry
     }
     
@@ -150,14 +149,13 @@ struct NACC_IntentProvider: AppIntentTimelineProvider {
      This is the final rendereing view. We make sure to flush the shared prefs cache, before creating.
      */
     func timeline(for inConfiguration: NACCWidgetIntent, in: Context) async -> Timeline<NACC_Entry> {
-        defer { DispatchQueue.main.sync { entry.synchronize() } }
         NACCPersistentPrefs().flush()
         var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate,
                                forceKeytag: inConfiguration.forceKeytag ?? false,
                                onlyText: inConfiguration.onlyText ?? false,
                                dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
         )
-        
+        DispatchQueue.main.sync { entry.synchronize() }
         return Timeline(entries: [entry], policy: .atEnd)
     }
 }

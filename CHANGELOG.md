@@ -1,4 +1,10 @@
-**6.0.0.3022** *TBD*
+**6.0.1.3022** *February 14, 2025*
+
+- The previous release broke widgets. This fixes that.
+
+**6.0.0.3031** *February 13, 2025*
+
+- Added a Watch app (with complications).
 
 **5.5.1.3022** *January 31, 2025*
 
