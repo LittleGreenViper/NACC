@@ -132,7 +132,7 @@ _Will work on any device, but will open the NACC, if it is installed. If not, a 
 
 ## Dependencies
 
-The app is dependent upon the following 3 [Great Rift Valley Software Company](https://riftvalleysoftware.com) SPM modules:
+The app is dependent upon the following 5 [Great Rift Valley Software Company](https://riftvalleysoftware.com) SPM modules:
 
 - [RVS_BasicGCDTimer](https://github.com/RiftValleySoftware/RVS_BasicGCDTimer)
 - [RVS_GeneralObserver](https://github.com/RiftValleySoftware/RVS_GeneralObserver)
