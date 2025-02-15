@@ -33,6 +33,12 @@ import RVS_UIKit_Toolbox
 struct NACCWatchAppContentView: View {
     /* ################################################################## */
     /**
+     If true, a "throbber" is shown, instead of the screen.
+     */
+    @State private var _showThrobber: Bool = false
+    
+    /* ################################################################## */
+    /**
      The image that represents a keytag. May be nil.
      */
     @Binding var singleKeytag: UIImage?
@@ -79,7 +85,8 @@ struct NACCWatchAppContentView: View {
      */
     func synchronize() {
         syncUp = false
-
+        _showThrobber = true
+        
         NACCPersistentPrefs().flush()
 
         if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) {
@@ -93,11 +100,14 @@ struct NACCWatchAppContentView: View {
         
         let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
         
-        let medallionView = LGV_MedallionImage(totalMonths: calculator.totalMonths)
-        singleMedallion = medallionView.drawImage()
+        let medallionView = (0 < calculator.years) ? LGV_MedallionImage(totalMonths: calculator.totalMonths).drawImage()
+                             : LGV_KeytagImageGenerator(isRingClosed: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths).generatedImage
+        
+        singleMedallion = medallionView
 
         let keyTagImage = LGV_MultiKeytagImageGenerator(isVerticalStrip: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths)
         singleKeytag = keyTagImage.generatedImage
+        _showThrobber = false
     }
 
     /* ################################################################## */
@@ -123,11 +133,9 @@ struct NACCWatchAppContentView: View {
                     }
                     .clipped()
 
-                    if 0 < LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime.years {
-                        Image(uiImage: (singleMedallion ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
-                            .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
-                            .containerRelativeFrame([.horizontal, .vertical], alignment: .center)
-                    }
+                    Image(uiImage: (singleMedallion ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                        .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
+                        .containerRelativeFrame([.horizontal, .vertical], alignment: .center)
                 }
                 .background {
                     Image("BackgroundGradient")
@@ -135,21 +143,19 @@ struct NACCWatchAppContentView: View {
                         .cornerRadius(8)
                 }
                 .onAppear {
-                    if .medallion == NACCPersistentPrefs().watchAppDisplayState,
-                       1 > LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime.years {
-                        watchFormat = NACCPersistentPrefs.MainWatchState.text.rawValue
-                    }
+                    syncUp = false
                     showCleanDatePicker = false
                     synchronize()
                 }
                 .onChange(of: syncUp) {
-                    if syncUp {
+                    if syncUp,
+                       !showCleanDatePicker {
                         synchronize()
                     }
                 }
                 .tabViewStyle(PageTabViewStyle())
                 .onTapGesture(count: 2) { showCleanDatePicker = true }
-                .navigationDestination(isPresented: $showCleanDatePicker) { CleanDatePicker(cleanDate: $cleanDate) }
+                .navigationDestination(isPresented: $showCleanDatePicker) { CleanDatePicker(cleanDate: $cleanDate, syncUp: $syncUp) }
            }
         }
     }
@@ -167,6 +173,12 @@ struct CleanDatePicker: View {
      The cleandate.
      */
     @Binding var cleanDate: Date
+
+    /* ################################################################## */
+    /**
+     This is a binding for a "trigger," that tells the screen to update to the latest values.
+     */
+    @Binding var syncUp: Bool
 
     /* ################################################################## */
     /**

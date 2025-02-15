@@ -84,7 +84,7 @@ struct NACCWatchApp: App {
     /**
      This is a local state that determines which screen is shown (0 is text, 1 is keytag, 2 is medallion).
      */
-    @State private var _watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue
+    @State private var _watchFormat = NACCPersistentPrefs.MainWatchState.text.rawValue
     
     /* ################################################################## */
     /**
@@ -130,13 +130,19 @@ struct NACCWatchApp: App {
                                     cleanDate: $_cleanDate,
                                     watchFormat: $_watchFormat
             )
-            .onAppear { _wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext) }
+            .onAppear {
+                _watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue
+                _wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext)
+            }
         }
         .onChange(of: _cleanDate) {
-            NACCPersistentPrefs().cleanDate = _cleanDate
-            if _showCleanDatePicker {   // Only if we are changing it on the watch.
-                _wcSessionDelegateHandler?.sendApplicationContext()
-                WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
+            if NACCPersistentPrefs().cleanDate != _cleanDate {
+                NACCPersistentPrefs().cleanDate = _cleanDate
+                if _showCleanDatePicker {   // Only if we are changing it on the watch.
+                    _wcSessionDelegateHandler?.sendApplicationContext()
+                    _syncUp = true
+                    WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
+                }
             }
         }
         .onChange(of: _watchFormat) {
