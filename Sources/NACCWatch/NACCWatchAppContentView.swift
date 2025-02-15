@@ -33,12 +33,6 @@ import RVS_UIKit_Toolbox
 struct NACCWatchAppContentView: View {
     /* ################################################################## */
     /**
-     If true, a "throbber" is shown, instead of the screen.
-     */
-    @State private var _showThrobber: Bool = false
-    
-    /* ################################################################## */
-    /**
      The image that represents a keytag. May be nil.
      */
     @Binding var singleKeytag: UIImage?
@@ -84,8 +78,10 @@ struct NACCWatchAppContentView: View {
      This makes sure that the screen reflects the current state.
      */
     func synchronize() {
+        #if DEBUG
+            print("Synchronizing")
+        #endif
         syncUp = false
-        _showThrobber = true
         
         NACCPersistentPrefs().flush()
 
@@ -95,9 +91,6 @@ struct NACCWatchAppContentView: View {
             text = "ERROR"
         }
         
-        singleKeytag = nil
-        singleMedallion = nil
-        
         let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
         
         let medallionView = (0 < calculator.years) ? LGV_MedallionImage(totalMonths: calculator.totalMonths).drawImage()
@@ -105,9 +98,12 @@ struct NACCWatchAppContentView: View {
         
         singleMedallion = medallionView
 
-        let keyTagImage = LGV_MultiKeytagImageGenerator(isVerticalStrip: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths)
+        let keyTagImage = LGV_MultiKeytagImageGenerator(isVerticalStrip: true,
+                                                        totalDays: calculator.totalDays,
+                                                        totalMonths: calculator.totalMonths,
+                                                        widestKeytagImageInDisplayUnits: 128
+        )
         singleKeytag = keyTagImage.generatedImage
-        _showThrobber = false
     }
 
     /* ################################################################## */
@@ -125,7 +121,7 @@ struct NACCWatchAppContentView: View {
                         .padding()
                     
                     ScrollView {
-                        let image = (singleKeytag ?? UIImage(systemName: "nosign"))?.resized(toNewWidth: inGeom.size.width - 16) ?? UIImage()
+                        let image = (singleKeytag ?? UIImage(systemName: "nosign"))?.resized(toNewWidth: 64) ?? UIImage()
                         Spacer()
                             .frame(height: 8)
                         Image(uiImage: image)
@@ -143,10 +139,11 @@ struct NACCWatchAppContentView: View {
                         .cornerRadius(8)
                 }
                 .onAppear {
-                    syncUp = false
                     showCleanDatePicker = false
-                    synchronize()
-                }
+                    if syncUp {
+                        synchronize()
+                    }
+               }
                 .onChange(of: syncUp) {
                     if syncUp,
                        !showCleanDatePicker {

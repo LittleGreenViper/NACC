@@ -66,7 +66,14 @@ struct NACCWatchApp: App {
     /**
      This is a binding for a "trigger," that tells the screen to update to the latest values.
      */
-    @State private var _syncUp: Bool = false
+    @State private var _syncUp: Bool = true {
+        didSet {
+            if _syncUp {
+                _singleKeytag = nil
+                _singleMedallion = nil
+            }
+        }
+    }
 
     /* ################################################################## */
     /**
