@@ -130,6 +130,14 @@ _Will work on any device, but will open the NACC, if it is installed. If not, a 
 - [`https://nacc.littlegreenviper.com/?2020-03-17/2`](https://nacc.littlegreenviper.com/?2020-03-17/2)
   This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Medallions tab.
 
+## Widgets
+
+As of version 5.4, you can now add widgets to your iPhone, iPad, or Mac screens.
+
+## Watch App
+
+As of version 6.0, there is now a companion Watch app, with complications.
+
 ## Dependencies
 
 The app is dependent upon the following 5 [Great Rift Valley Software Company](https://riftvalleysoftware.com) SPM modules:
