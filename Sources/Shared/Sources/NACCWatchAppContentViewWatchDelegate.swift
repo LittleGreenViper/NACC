@@ -63,6 +63,12 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
     
     /* ###################################################################### */
     /**
+     This is a simple semaphore, to indicate that an update to/from the peer is in progress.
+     */
+    var isUpdateInProgress = false
+    
+    /* ###################################################################### */
+    /**
      Called when an activation change occurs.
      
      - parameter inSession: The session experiencing the activation change.
@@ -83,12 +89,17 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
      - parameter didReceiveApplicationContext: The new context data.
     */
     func session(_ inSession: WCSession, didReceiveApplicationContext inApplicationContext: [String: Any]) {
+        guard !isUpdateInProgress else { return }
+        isUpdateInProgress = true
         #if DEBUG && os(watchOS)
             print("Watch App Received Context Update: \(inApplicationContext)")
         #elseif DEBUG
             print("iOS App Received Context Update: \(inApplicationContext)")
         #endif
-        DispatchQueue.main.async { self.updateHandler?(inApplicationContext) }
+        DispatchQueue.main.async {
+            self.updateHandler?(inApplicationContext)
+            self.isUpdateInProgress = false
+        }
     }
     
     /* ################################################################## */
@@ -96,6 +107,8 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
      This is called to send the current state of the prefs to the peer.
      */
     func sendApplicationContext() {
+        guard !isUpdateInProgress else { return }
+        isUpdateInProgress = true
         do {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -120,6 +133,7 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
                 print("WC Session Error: \(error.localizedDescription)")
             #endif
         }
+        isUpdateInProgress = false
     }
 
     /* ###################################################################### */

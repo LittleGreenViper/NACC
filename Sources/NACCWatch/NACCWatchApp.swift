@@ -93,8 +93,7 @@ struct NACCWatchApp: App {
      - parameter inApplicationContext: The new context dictionary.
      */
     func updateApplicationContext(_ inApplicationContext: [String: Any]) {
-        if !_showCleanDatePicker,
-           let cleanDateTemp = inApplicationContext["cleanDate"] as? String {
+        if let cleanDateTemp = inApplicationContext["cleanDate"] as? String {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
             _cleanDate = dateFormatter.date(from: cleanDateTemp) ?? .now
@@ -156,6 +155,7 @@ struct NACCWatchApp: App {
         // Forces updates, whenever we become active.
         .onChange(of: _scenePhase, initial: true) {
             if .active == _scenePhase {
+                NACCPersistentPrefs().flush()
                 WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
             }
         }

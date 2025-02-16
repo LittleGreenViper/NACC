@@ -78,8 +78,7 @@ struct NACCWatchAppContentView: View {
      This makes sure that the screen reflects the current state.
      */
     func synchronize() {
-        if syncUp,
-           !showCleanDatePicker {
+        if syncUp {
             DispatchQueue.global().async {
                 #if DEBUG
                     print("Synchronizing (Global Thread)")
