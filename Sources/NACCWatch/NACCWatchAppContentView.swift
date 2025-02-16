@@ -80,18 +80,17 @@ struct NACCWatchAppContentView: View {
     func synchronize() {
         DispatchQueue.global().async {
             #if DEBUG
-                print("Synchronizing")
+                print("Synchronizing (Global Thread)")
             #endif
 
             NACCPersistentPrefs().flush()
 
-            if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) {
-                text = textTemp
-            } else {
-                text = "ERROR"
-            }
-
             DispatchQueue.main.async {
+                #if DEBUG
+                    print("Synchronizing (Main Thread)")
+                #endif
+                let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) ?? ""
+
                 let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
                 
                 let medallionView = (0 < calculator.years) ? LGV_MedallionImage(totalMonths: calculator.totalMonths).drawImage()
@@ -100,11 +99,10 @@ struct NACCWatchAppContentView: View {
                 let keyTagImage = LGV_MultiKeytagImageGenerator(isVerticalStrip: true,
                                                                 totalDays: calculator.totalDays,
                                                                 totalMonths: calculator.totalMonths,
-                                                                widestKeytagImageInDisplayUnits: 128
-                )
-                singleMedallion = medallionView
-                singleKeytag = keyTagImage.generatedImage
+                                                                widestKeytagImageInDisplayUnits: 2 < calculator.years ? 64 : 128
+                ).generatedImage
                 syncUp = false
+                (text, singleKeytag, singleMedallion) = (textTemp, keyTagImage, medallionView)
             }
         }
     }
@@ -115,48 +113,43 @@ struct NACCWatchAppContentView: View {
      The user can double-tap on it, to change the cleandate.
      */
     var body: some View {
-        if syncUp,
-           !showCleanDatePicker {
-            ProgressView()
-                .onAppear { synchronize() }
-        } else {
-            GeometryReader { inGeom in
-                NavigationStack {
-                    TabView(selection: $watchFormat) {
-                        Text(text)
-                            .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
-                            .foregroundStyle(Color.black)
-                            .padding()
-                        
-                        ScrollView {
-                            let image = (singleKeytag ?? UIImage(systemName: "nosign"))?.resized(toNewWidth: 64) ?? UIImage()
-                            Spacer()
-                                .frame(height: 8)
-                            Image(uiImage: image)
-                                .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
-                        }
-                        .clipped()
-                        
-                        Image(uiImage: (singleMedallion ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
-                            .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
-                            .containerRelativeFrame([.horizontal, .vertical], alignment: .center)
+        GeometryReader { inGeom in
+            let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
+            NavigationStack {
+                TabView(selection: $watchFormat) {
+                    Text(text)
+                        .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
+                        .foregroundStyle(Color.black)
+                        .padding()
+                    
+                    ScrollView {
+                        let image = (singleKeytag ?? UIImage(systemName: "nosign"))?.resized(toNewWidth: 2 < calculator.years ? 64 : 128) ?? UIImage()
+                        Spacer()
+                            .frame(height: 8)
+                        Image(uiImage: image)
+                            .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
                     }
-                    .background {
-                        Image("BackgroundGradient")
-                            .resizable(resizingMode: .stretch)
-                            .cornerRadius(8)
-                    }
-                    .onAppear {
-                        showCleanDatePicker = false
-                        if syncUp,
-                           !showCleanDatePicker {
-                            synchronize()
-                        }
-                    }
-                    .tabViewStyle(PageTabViewStyle())
-                    .onTapGesture(count: 2) { showCleanDatePicker = true }
-                    .navigationDestination(isPresented: $showCleanDatePicker) { CleanDatePicker(cleanDate: $cleanDate, syncUp: $syncUp) }
+                    .clipped()
+                    
+                    Image(uiImage: (singleMedallion ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                        .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
+                        .containerRelativeFrame([.horizontal, .vertical], alignment: .center)
                 }
+                .background {
+                    Image("BackgroundGradient")
+                        .resizable(resizingMode: .stretch)
+                        .cornerRadius(8)
+                }
+                .onAppear {
+                    showCleanDatePicker = false
+                    if syncUp,
+                       !showCleanDatePicker {
+                        synchronize()
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle())
+                .onTapGesture(count: 2) { showCleanDatePicker = true }
+                .navigationDestination(isPresented: $showCleanDatePicker) { CleanDatePicker(cleanDate: $cleanDate, syncUp: $syncUp) }
             }
         }
     }

@@ -93,7 +93,8 @@ struct NACCWatchApp: App {
      - parameter inApplicationContext: The new context dictionary.
      */
     func updateApplicationContext(_ inApplicationContext: [String: Any]) {
-        if let cleanDateTemp = inApplicationContext["cleanDate"] as? String {
+        if !_showCleanDatePicker,
+           let cleanDateTemp = inApplicationContext["cleanDate"] as? String {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
             _cleanDate = dateFormatter.date(from: cleanDateTemp) ?? .now
@@ -101,6 +102,8 @@ struct NACCWatchApp: App {
             #if DEBUG
                 print("Cleandate: \(_cleanDate)")
             #endif
+            
+            _syncUp = true
         }
         
         if let watchFormatTemp = inApplicationContext["watchAppDisplayState"] as? Int,
@@ -112,8 +115,6 @@ struct NACCWatchApp: App {
                 print("WatchFormat: \(format)")
             #endif
         }
-        
-        _syncUp = true
     }
     
     /* ################################################################## */
@@ -140,9 +141,9 @@ struct NACCWatchApp: App {
                 NACCPersistentPrefs().cleanDate = _cleanDate
                 if _showCleanDatePicker {   // Only if we are changing it on the watch.
                     _wcSessionDelegateHandler?.sendApplicationContext()
+                    _syncUp = true
                 }
                 WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
-                _syncUp = true
             }
         }
         .onChange(of: _watchFormat) {
@@ -156,7 +157,6 @@ struct NACCWatchApp: App {
         .onChange(of: _scenePhase, initial: true) {
             if .active == _scenePhase {
                 WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
-                _syncUp = true
             }
         }
     }
