@@ -80,14 +80,16 @@ struct NACCWatchAppContentView: View {
     func synchronize() {
         if syncUp,
            !showCleanDatePicker {
+            NACCPersistentPrefs().flush()
+            
+            // get the text set, ASAP.
+            let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) ?? ""
+            text = textTemp
+            
             DispatchQueue.global().async {
                 #if DEBUG
                     print("Synchronizing (Global Thread)")
                 #endif
-                
-                NACCPersistentPrefs().flush()
-                
-                let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) ?? ""
                 
                 let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
                 
@@ -104,7 +106,7 @@ struct NACCWatchAppContentView: View {
                     let medallionView = (0 < calculator.years) ? LGV_MedallionImage(totalMonths: calculator.totalMonths).drawImage()
                     : LGV_KeytagImageGenerator(isRingClosed: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths).generatedImage
                     
-                    (syncUp, text, singleKeytag, singleMedallion) = (false, textTemp, keyTagImage, medallionView)
+                    (syncUp, singleKeytag, singleMedallion) = (false, keyTagImage, medallionView)
                 }
             }
         }

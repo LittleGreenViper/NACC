@@ -79,6 +79,10 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
         #if DEBUG
             print("The Watch session is\(.activated == inActivationState ? "" : " not") activated.")
         #endif
+        
+        #if !os(watchOS)    // Only necessary for iOS
+            sendApplicationContext()
+        #endif
     }
     
     /* ###################################################################### */
