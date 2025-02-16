@@ -78,31 +78,34 @@ struct NACCWatchAppContentView: View {
      This makes sure that the screen reflects the current state.
      */
     func synchronize() {
-        DispatchQueue.global().async {
-            #if DEBUG
-                print("Synchronizing (Global Thread)")
-            #endif
-
-            NACCPersistentPrefs().flush()
-
-            DispatchQueue.main.async {
+        if syncUp,
+           !showCleanDatePicker {
+            DispatchQueue.global().async {
                 #if DEBUG
-                    print("Synchronizing (Main Thread)")
+                    print("Synchronizing (Global Thread)")
                 #endif
+                
+                NACCPersistentPrefs().flush()
+                
                 let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) ?? ""
-
+                
                 let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
                 
-                let medallionView = (0 < calculator.years) ? LGV_MedallionImage(totalMonths: calculator.totalMonths).drawImage()
-                : LGV_KeytagImageGenerator(isRingClosed: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths).generatedImage
-                
-                let keyTagImage = LGV_MultiKeytagImageGenerator(isVerticalStrip: true,
-                                                                totalDays: calculator.totalDays,
-                                                                totalMonths: calculator.totalMonths,
-                                                                widestKeytagImageInDisplayUnits: 2 < calculator.years ? 64 : 128
-                ).generatedImage
-                syncUp = false
-                (text, singleKeytag, singleMedallion) = (textTemp, keyTagImage, medallionView)
+                DispatchQueue.main.async {
+                    #if DEBUG
+                        print("Synchronizing (Main Thread)")
+                    #endif
+                    let keyTagImage = LGV_MultiKeytagImageGenerator(isVerticalStrip: true,
+                                                                    totalDays: calculator.totalDays,
+                                                                    totalMonths: calculator.totalMonths,
+                                                                    widestKeytagImageInDisplayUnits: 2 < calculator.years ? 64 : 128
+                    ).generatedImage
+                    
+                    let medallionView = (0 < calculator.years) ? LGV_MedallionImage(totalMonths: calculator.totalMonths).drawImage()
+                    : LGV_KeytagImageGenerator(isRingClosed: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths).generatedImage
+                    
+                    (syncUp, text, singleKeytag, singleMedallion) = (false, textTemp, keyTagImage, medallionView)
+                }
             }
         }
     }
@@ -142,10 +145,10 @@ struct NACCWatchAppContentView: View {
                 }
                 .onAppear {
                     showCleanDatePicker = false
-                    if syncUp,
-                       !showCleanDatePicker {
-                        synchronize()
-                    }
+                    synchronize()
+                }
+                .onChange(of: syncUp) {
+                    synchronize()
                 }
                 .tabViewStyle(PageTabViewStyle())
                 .onTapGesture(count: 2) { showCleanDatePicker = true }
