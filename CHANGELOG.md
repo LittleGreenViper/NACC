@@ -1,4 +1,4 @@
-**6.1.0.3033** *TBD*
+**6.1.0.3043** *February 16, 2025*
 
 - The Watch app now displays the keytags as a scrollable vertical chain.
 
