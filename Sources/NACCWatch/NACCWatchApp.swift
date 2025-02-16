@@ -66,14 +66,7 @@ struct NACCWatchApp: App {
     /**
      This is a binding for a "trigger," that tells the screen to update to the latest values.
      */
-    @State private var _syncUp: Bool = true {
-        didSet {
-            if _syncUp {
-                _singleKeytag = nil
-                _singleMedallion = nil
-            }
-        }
-    }
+    @State private var _syncUp: Bool = true
 
     /* ################################################################## */
     /**
@@ -147,9 +140,9 @@ struct NACCWatchApp: App {
                 NACCPersistentPrefs().cleanDate = _cleanDate
                 if _showCleanDatePicker {   // Only if we are changing it on the watch.
                     _wcSessionDelegateHandler?.sendApplicationContext()
-                    _syncUp = true
-                    WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
                 }
+                WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
+                _syncUp = true
             }
         }
         .onChange(of: _watchFormat) {
@@ -163,6 +156,7 @@ struct NACCWatchApp: App {
         .onChange(of: _scenePhase, initial: true) {
             if .active == _scenePhase {
                 WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
+                _syncUp = true
             }
         }
     }
