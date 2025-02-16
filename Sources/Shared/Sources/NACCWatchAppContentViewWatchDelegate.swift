@@ -106,6 +106,39 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
         }
     }
     
+    #if !os(watchOS)    // Only necessary for iOS
+        /* ################################################################## */
+        /**
+         - parameter inSession: The session receiving the message.
+        */
+        func session(_ inSession: WCSession, didReceiveMessage inMessage: [String: Any]) {
+            #if DEBUG
+                print("Received Message From Watch: \(inMessage)")
+            #endif
+            if let messageType = inMessage["messageType"] as? String,
+               "requestContext" == messageType {
+                #if DEBUG
+                    print("Responding to context request from the watch")
+                #endif
+                sendApplicationContext()
+            }
+        }
+    #else
+        /* ################################################################## */
+        /**
+        */
+        func sendContextRequest() {
+            isUpdateInProgress = true
+            #if DEBUG
+                print("Sending context request to the phone")
+            #endif
+            if .activated == wcSession.activationState {
+                wcSession.sendMessage(["requestContext": "requestContext"], replyHandler: nil)
+            }
+            isUpdateInProgress = false
+        }
+    #endif
+    
     /* ################################################################## */
     /**
      This is called to send the current state of the prefs to the peer.
