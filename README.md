@@ -138,11 +138,12 @@ As of version 5.4, you can now add widgets to your iPhone, iPad, or Mac screens.
 
 As of version 6.0, there is now a companion Watch app, with complications.
 
+> NOTE: In order to set the date on the Watch app, double-tap in the app screen.
+
 ## Dependencies
 
-The app is dependent upon the following 5 [Great Rift Valley Software Company](https://riftvalleysoftware.com) SPM modules:
+The app is dependent upon the following 4 [Great Rift Valley Software Company](https://riftvalleysoftware.com) SPM modules:
 
-- [RVS_BasicGCDTimer](https://github.com/RiftValleySoftware/RVS_BasicGCDTimer)
 - [RVS_GeneralObserver](https://github.com/RiftValleySoftware/RVS_GeneralObserver)
 - [RVS_Generic_Swift_Toolbox](https://github.com/RiftValleySoftware/RVS_Generic_Swift_Toolbox)
 - [RVS_PersistentPrefs](https://github.com/RiftValleySoftware/RVS_PersistentPrefs)

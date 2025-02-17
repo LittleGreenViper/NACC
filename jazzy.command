@@ -23,7 +23,7 @@ echo "Creating Docs for the NACC Widget\n"
 rm -drf docs/widget/*
 
 jazzy  --readme ./Sources/NACCWidget/README.md \
-       --build-tool-arguments -scheme,"NACCWidgetExtension",-target,"NACCWidgetExtension" \
+       --build-tool-arguments -scheme,"NACCWidget",-target,"NACCWidget" \
        --github_url https://github.com/LittleGreenViper/NACC/tree/master/Sources/NACCWidget \
        --title "NACC Widget Doumentation" \
        --min_acl private \
