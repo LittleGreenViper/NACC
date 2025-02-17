@@ -67,7 +67,7 @@
 // MARK: ABOUT SCREEN
 
 "SLUG-ABOUT"                                    =   "About NACC";
-"SLUG-APP-INFO-TEXT"                            =   "This is a simple app for quantifying your cleantime.\n\nIt says nothing about qualifying your Recovery. That's between you and your sponsor.\nSimply set the wheels to your cleandate, and touch the report text.\n\nSelect the logo image above, to be taken to a Web page with detailed instructions.\n\nThis app uses the following open-source libraries:\n\n• https://github.com/LittleGreenViper/LGV_Cleantime\n\n• https://github.com/LittleGreenViper/LGV_UICleantime\n\n• https://github.com/RiftValleySoftware/RVS_GeneralObserver\n\n• https://github.com/RiftValleySoftware/RVS_Generic_Swift_Toolbox\n\n• https://github.com/RiftValleySoftware/RVS_PersistentPrefs";
+"SLUG-APP-INFO-TEXT"                            =   "This is a simple app for quantifying your cleantime.\n\nIt says nothing about qualifying your Recovery. That's between you and your sponsor.\nSimply set the wheels to your cleandate, and touch the report text.\n\nSelect the logo image above, to be taken to a Web page with detailed instructions.\n\nThis app uses the following open-source libraries:\n\n• https://github.com/LittleGreenViper/LGV_Cleantime\n\n• https://github.com/LittleGreenViper/LGV_UICleantime\n\n• https://github.com/RiftValleySoftware/RVS_GeneralObserver\n\n• https://github.com/RiftValleySoftware/RVS_Generic_Swift_Toolbox\n\n• https://github.com/RiftValleySoftware/RVS_PersistentPrefs\n\n• https://github.com/RiftValleySoftware/RVS_UIKit_Toolbox";
 
 "SLUG-OK-BUTTON-TEXT"                           =   "OK";
 "SLUG-APP-INFO-VERSION-FORMAT-SMALL"            =   "Version %@";
