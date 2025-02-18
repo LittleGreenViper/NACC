@@ -109,6 +109,7 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
     #if !os(watchOS)    // Only necessary for iOS
         /* ################################################################## */
         /**
+         Called when a context update request message from the watch, is received on the phone.
          - parameter inSession: The session receiving the message.
         */
         func session(_ inSession: WCSession, didReceiveMessage inMessage: [String: Any]) {
@@ -126,6 +127,7 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
     #else
         /* ################################################################## */
         /**
+         This sends a message to the phone (from the watch), that is interpreted as a request for a context update.
         */
         func sendContextRequest() {
             isUpdateInProgress = true
