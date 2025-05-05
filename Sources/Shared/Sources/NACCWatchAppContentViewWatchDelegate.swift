@@ -69,6 +69,12 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
     
     /* ###################################################################### */
     /**
+     This is used for trying to recover from Watch sync errors.
+     */
+    var retries: Int = 0
+    
+    /* ###################################################################### */
+    /**
      Called when an activation change occurs.
      
      - parameter inSession: The session experiencing the activation change.
@@ -82,6 +88,8 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
         
         #if !os(watchOS)    // Only necessary for iOS
             sendApplicationContext()
+        #else
+            _sendContextRequest()
         #endif
     }
     
@@ -125,17 +133,51 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
             }
         }
     #else
-        /* ################################################################## */
+        /* ############################################################## */
         /**
          This sends a message to the phone (from the watch), that is interpreted as a request for a context update.
         */
-        func sendContextRequest() {
+        func _sendContextRequest(_ inRetries: Int = 5) {
+            func _replyHandler(_ inReply: [String: Any]) {
+                #if DEBUG
+                    print("Received Reply from Phone: \(inReply)")
+                #endif
+                #if DEBUG
+                    print("Reply from peer: \(inReply)")
+                #endif
+                retries = 0
+                isUpdateInProgress = false
+                session(wcSession, didReceiveApplicationContext: inReply)
+            }
+            
+            func _errorHandler(_ inError: any Error) {
+                #if DEBUG
+                    print("Error Sending Message to Phone: \(inError.localizedDescription)")
+                #endif
+                isUpdateInProgress = false
+                let nsError = inError as NSError
+                if nsError.domain == "WCErrorDomain",
+                   7007 == nsError.code,
+                   0 < retries {
+                    #if DEBUG
+                        print("Connection failure. Retrying...")
+                    #endif
+                    let randomDelay = Double.random(in: (0.3...1.0))
+                    DispatchQueue.global().asyncAfter(deadline: .now() + randomDelay) { self._sendContextRequest(self.retries - 1) }
+                    return
+                } else {
+                    #if DEBUG
+                        print("Error Not Handled")
+                    #endif
+                }
+            }
+
             isUpdateInProgress = true
             #if DEBUG
                 print("Sending context request to the phone")
             #endif
             if .activated == wcSession.activationState {
-                wcSession.sendMessage(["requestContext": "requestContext"], replyHandler: nil)
+                wcSession.sendMessage(["requestContext": "requestContext"], replyHandler: _replyHandler, errorHandler: _errorHandler)
             }
             isUpdateInProgress = false
         }
