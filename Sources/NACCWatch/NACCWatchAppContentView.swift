@@ -159,6 +159,7 @@ struct NACCWatchAppContentView: View {
                 }
                 .onAppear {
                     showCleanDatePicker = false
+                    NACCPersistentPrefs().flush()
                     synchronize()
                 }
                 .onChange(of: syncUp) {
