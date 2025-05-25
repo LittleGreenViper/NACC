@@ -33,6 +33,12 @@ import RVS_UIKit_Toolbox
 struct NACCWatchAppContentView: View {
     /* ################################################################## */
     /**
+     Tracks scene activity.
+     */
+    @Environment(\.scenePhase) private var _scenePhase
+
+    /* ################################################################## */
+    /**
      The image that represents a keytag. May be nil.
      */
     @Binding var singleKeytag: UIImage?
@@ -157,6 +163,13 @@ struct NACCWatchAppContentView: View {
                 }
                 .onChange(of: syncUp) {
                     synchronize()
+                }
+                // Forces updates, whenever we become active.
+                .onChange(of: _scenePhase, initial: true) {
+                    if .active == _scenePhase {
+                        NACCPersistentPrefs().flush()
+                        synchronize()
+                    }
                 }
                 .tabViewStyle(PageTabViewStyle())
                 .onTapGesture(count: 2) { showCleanDatePicker = true }
