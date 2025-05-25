@@ -37,8 +37,6 @@
 		D48F812B27FCD36D001A0B87 /* NACCInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F812A27FCD36D001A0B87 /* NACCInitialViewController.swift */; };
 		D48F812D27FCD3FA001A0B87 /* NACCTabBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F812C27FCD3FA001A0B87 /* NACCTabBaseViewController.swift */; };
 		D49C9A7C280783C6008E9917 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D49C9A7A280783C6008E9917 /* InfoPlist.strings */; };
-		D4A420B22D4D5C7900E4AC1E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A420B12D4D5C7900E4AC1E /* WidgetKit.framework */; };
-		D4A420B32D4D5C7900E4AC1E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ED89912D48F9D9007E9D63 /* SwiftUI.framework */; };
 		D4A420BE2D4D5C7A00E4AC1E /* NACCWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4A420B02D4D5C7900E4AC1E /* NACCWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D4A420D22D4D5DFE00E4AC1E /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D4A420D52D4D5E7900E4AC1E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
@@ -70,8 +68,6 @@
 		D4F58DFA2D5FE4D90087C387 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4F58DF92D5FE4D90087C387 /* LGV_UICleantime */; };
 		D4F58E002D5FE5400087C387 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4F58DFF2D5FE5400087C387 /* LGV_UICleantime */; };
 		D4F945512D4E60620073AF8F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
-		D4F9DA962D5BA6A300FFC2DC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A420B12D4D5C7900E4AC1E /* WidgetKit.framework */; };
-		D4F9DA972D5BA6A300FFC2DC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ED89912D48F9D9007E9D63 /* SwiftUI.framework */; };
 		D4F9DAA02D5BA6A300FFC2DC /* NACCWatchComplicationExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4F9DA952D5BA6A300FFC2DC /* NACCWatchComplicationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D4F9DAA92D5BA6DE00FFC2DC /* NACCWatchComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9DAA72D5BA6DE00FFC2DC /* NACCWatchComplication.swift */; };
 		D4F9DAAA2D5BA6DE00FFC2DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F9DAA52D5BA6DE00FFC2DC /* Assets.xcassets */; };
@@ -111,14 +107,14 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		D45A93C82D4C4DEB008B2528 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
 				D45A93C42D4C4DEB008B2528 /* NACCWatch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 		D4882CC42D5BA1DB00FBF2EC /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -272,9 +268,7 @@
 			files = (
 				D462E4BC2D5D08C0001E2C0F /* RVS_Persistent_Prefs in Frameworks */,
 				D44690462D6135EF0079B36A /* RVS_UIKit_Toolbox in Frameworks */,
-				D4A420B32D4D5C7900E4AC1E /* SwiftUI.framework in Frameworks */,
 				D45240E32D620C3E000BD663 /* LGV_Cleantime in Frameworks */,
-				D4A420B22D4D5C7900E4AC1E /* WidgetKit.framework in Frameworks */,
 				D4F58DF62D5FE4C90087C387 /* LGV_UICleantime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,9 +289,7 @@
 			files = (
 				D462E4C02D5D09FF001E2C0F /* RVS_Persistent_Prefs in Frameworks */,
 				D44690442D6135E50079B36A /* RVS_UIKit_Toolbox in Frameworks */,
-				D4F9DA972D5BA6A300FFC2DC /* SwiftUI.framework in Frameworks */,
 				D45240E92D620C5A000BD663 /* LGV_Cleantime in Frameworks */,
-				D4F9DA962D5BA6A300FFC2DC /* WidgetKit.framework in Frameworks */,
 				D4F58DFA2D5FE4D90087C387 /* LGV_UICleantime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
