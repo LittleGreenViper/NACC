@@ -131,6 +131,7 @@ struct NACCWatchApp: App {
                                     watchFormat: $_watchFormat
             )
             .onAppear {
+                NACCPersistentPrefs().flush()
                 _watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue
                 _wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext)
             }
