@@ -1189,7 +1189,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Project-Meta/NACC.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3045;
+				CURRENT_PROJECT_VERSION = 3046;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/NACC/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
@@ -1224,7 +1224,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Project-Meta/NACC.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3045;
+				CURRENT_PROJECT_VERSION = 3046;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/NACC/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
@@ -1260,7 +1260,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatch/NACCWatch.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3045;
+				CURRENT_PROJECT_VERSION = 3046;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DRIVERKIT_DEPLOYMENT_TARGET = "";
 				ENABLE_PREVIEWS = YES;
@@ -1308,7 +1308,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatch/NACCWatch.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3045;
+				CURRENT_PROJECT_VERSION = 3046;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DRIVERKIT_DEPLOYMENT_TARGET = "";
 				ENABLE_PREVIEWS = YES;
@@ -1354,12 +1354,13 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWidget/NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3045;
+				CURRENT_PROJECT_VERSION = 3046;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/NACCWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACCWidget;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1390,12 +1391,13 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWidget/NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3045;
+				CURRENT_PROJECT_VERSION = 3046;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/NACCWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACCWidget;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1424,12 +1426,13 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3045;
+				CURRENT_PROJECT_VERSION = 3046;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/NACCIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACCIntents;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1463,12 +1466,13 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3045;
+				CURRENT_PROJECT_VERSION = 3046;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/NACCIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACCIntents;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1502,13 +1506,13 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatchComplication/NACCWatchComplicationExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3045;
+				CURRENT_PROJECT_VERSION = 3046;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/NACCWatchComplication/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACCWatchComplication;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1541,13 +1545,13 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatchComplication/NACCWatchComplicationExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3045;
+				CURRENT_PROJECT_VERSION = 3046;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sources/NACCWatchComplication/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACCWatchComplication;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
