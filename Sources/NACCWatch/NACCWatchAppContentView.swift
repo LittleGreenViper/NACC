@@ -83,9 +83,14 @@ struct NACCWatchAppContentView: View {
             NACCPersistentPrefs().flush()
             
             // get the text set, ASAP.
-            let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) ?? ""
-            text = textTemp
+            DispatchQueue.global().async {
+                let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) ?? ""
+                DispatchQueue.main.async {
+                    text = textTemp
+                }
+            }
             
+            // Update the keytags (could be slower)
             DispatchQueue.global().async {
                 #if DEBUG
                     print("Synchronizing (Global Thread)")
@@ -103,8 +108,9 @@ struct NACCWatchAppContentView: View {
                                                                     widestKeytagImageInDisplayUnits: 2 < calculator.years ? 64 : 128
                     ).generatedImage
                     
-                    let medallionView = (0 < calculator.years) ? LGV_MedallionImage(totalMonths: calculator.totalMonths).drawImage()
-                    : LGV_KeytagImageGenerator(isRingClosed: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths).generatedImage
+                    let medallionView = (0 < calculator.years)
+                        ? LGV_MedallionImage(totalMonths: calculator.totalMonths).drawImage()
+                            : LGV_KeytagImageGenerator(isRingClosed: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths).generatedImage
                     
                     (syncUp, singleKeytag, singleMedallion) = (false, keyTagImage, medallionView)
                 }
