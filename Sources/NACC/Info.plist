@@ -80,6 +80,8 @@
 	<array>
 		<string>fetch</string>
 	</array>
+	<key>UIDesignRequiresCompatibility</key>
+	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>NACC_LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

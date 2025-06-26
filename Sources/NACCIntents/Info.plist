@@ -25,6 +25,8 @@
 		<key>NSExtensionPrincipalClass</key>
 		<string>$(PRODUCT_MODULE_NAME).NACCShowCleantimeIntentHandler</string>
 	</dict>
+	<key>UIDesignRequiresCompatibility</key>
+	<true/>
 	<key>appGroup</key>
 	<string>group.P53V4JS928.org.magshare.NACC</string>
 </dict>
