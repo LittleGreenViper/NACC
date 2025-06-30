@@ -50,7 +50,7 @@ class NACCReportActivityItemSource: NSObject, UIActivityItemSource {
     /**
      The universal URL.
     */
-    let url: URL
+    let url: URL?
 
     /* ################################################################## */
     /**
@@ -61,7 +61,7 @@ class NACCReportActivityItemSource: NSObject, UIActivityItemSource {
         - inImage: The keytag/medallion image
         - inURL: The universal URL
     */
-    init(report inReport: String, image inImage: UIImage?, url inURL: URL) {
+    init(report inReport: String, image inImage: UIImage?, url inURL: URL?) {
         self.report = inReport
         self.image = inImage
         self.url = inURL
@@ -74,7 +74,7 @@ class NACCReportActivityItemSource: NSObject, UIActivityItemSource {
      - parameter: The activity controller (ignored).
      - returns: The default (universal URL).
     */
-    func activityViewControllerPlaceholderItem(_: UIActivityViewController) -> Any { self.url }
+    func activityViewControllerPlaceholderItem(_: UIActivityViewController) -> Any { self.image ?? self.url ?? (self.report as Any) }
 
     /* ################################################################## */
     /**
@@ -88,13 +88,13 @@ class NACCReportActivityItemSource: NSObject, UIActivityItemSource {
             return self.image
             
         case .message, .mail:
-            return self.report + "\n\n" + url.absoluteString
+            return self.report + "\n\n" + (url?.absoluteString ?? "")
             
-//        case .copyToPasteboard, .postToFacebook, .postToTwitter, .postToWeibo, .postToTencentWeibo, .collaborationCopyLink, .collaborationInviteWithLink, .addToHomeScreen, .addToReadingList:
-//            fallthrough
-            
+        case .copyToPasteboard, .postToFacebook, .postToTwitter, .postToWeibo, .postToTencentWeibo, .collaborationCopyLink, .collaborationInviteWithLink, .addToHomeScreen, .addToReadingList:
+            return self.url ?? self.report
+
         default:
-            return self.url
+            return self.image ?? self.url ?? self.report + "\n\n" + (url?.absoluteString ?? "")
         }
     }
 }
