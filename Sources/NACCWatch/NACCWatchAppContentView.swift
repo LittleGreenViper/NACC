@@ -84,13 +84,13 @@ struct NACCWatchAppContentView: View {
      This makes sure that the screen reflects the current state.
      */
     func synchronize() {
-        if syncUp,
-           !showCleanDatePicker {
+        if self.syncUp,
+           !self.showCleanDatePicker {
             NACCPersistentPrefs().flush()
             
             // get the text set, ASAP.
             DispatchQueue.global().async {
-                let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) ?? ""
+                let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: self.cleanDate, endDate: .now) ?? ""
                 DispatchQueue.main.async {
                     text = textTemp
                 }
@@ -102,7 +102,7 @@ struct NACCWatchAppContentView: View {
                     print("Synchronizing (Global Thread)")
                 #endif
                 
-                let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
+                let calculator = LGV_CleantimeDateCalc(startDate: self.cleanDate).cleanTime
                 
                 DispatchQueue.main.async {
                     #if DEBUG
@@ -118,7 +118,7 @@ struct NACCWatchAppContentView: View {
                         ? LGV_MedallionImage(totalMonths: calculator.totalMonths).drawImage()
                             : LGV_KeytagImageGenerator(isRingClosed: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths).generatedImage
                     
-                    (syncUp, singleKeytag, singleMedallion) = (false, keyTagImage, medallionView)
+                    (self.syncUp, self.singleKeytag, self.singleMedallion) = (false, keyTagImage, medallionView)
                 }
             }
         }
@@ -131,9 +131,9 @@ struct NACCWatchAppContentView: View {
      */
     var body: some View {
         GeometryReader { inGeom in
-            let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
+            let calculator = LGV_CleantimeDateCalc(startDate: self.cleanDate).cleanTime
             NavigationStack {
-                TabView(selection: $watchFormat) {
+                TabView(selection: self.$watchFormat) {
                     Text(text)
                         .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
                         .foregroundStyle(Color.black)
@@ -158,23 +158,23 @@ struct NACCWatchAppContentView: View {
                         .cornerRadius(8)
                 }
                 .onAppear {
-                    showCleanDatePicker = false
+                    self.showCleanDatePicker = false
                     NACCPersistentPrefs().flush()
-                    synchronize()
+                    self.synchronize()
                 }
-                .onChange(of: syncUp) {
-                    synchronize()
+                .onChange(of: self.syncUp) {
+                    self.synchronize()
                 }
                 // Forces updates, whenever we become active.
-                .onChange(of: _scenePhase, initial: true) {
-                    if .active == _scenePhase {
+                .onChange(of: self._scenePhase, initial: true) {
+                    if .active == self._scenePhase {
                         NACCPersistentPrefs().flush()
-                        synchronize()
+                        self.synchronize()
                     }
                 }
                 .tabViewStyle(PageTabViewStyle())
-                .onTapGesture(count: 2) { showCleanDatePicker = true }
-                .navigationDestination(isPresented: $showCleanDatePicker) { CleanDatePicker(cleanDate: $cleanDate, syncUp: $syncUp) }
+                .onTapGesture(count: 2) { self.showCleanDatePicker = true }
+                .navigationDestination(isPresented: self.$showCleanDatePicker) { CleanDatePicker(cleanDate: self.$cleanDate, syncUp: self.$syncUp) }
             }
         }
     }
@@ -208,8 +208,8 @@ struct CleanDatePicker: View {
         VStack {
             Spacer()
                 .frame(height: 4)
-            DatePicker(NSLocalizedString("SLUG-SELECT-DATE", tableName: "WatchStrings", comment: ""), selection: $cleanDate, in: minDate...Date.now)
-                .onAppear { cleanDate = min(.now, max(minDate, cleanDate)) }
+            DatePicker(NSLocalizedString("SLUG-SELECT-DATE", tableName: "WatchStrings", comment: ""), selection: self.$cleanDate, in: minDate...Date.now)
+                .onAppear { self.cleanDate = min(.now, max(minDate, self.cleanDate)) }
                 .foregroundStyle(.black)
             Spacer()
                 .frame(height: 4)

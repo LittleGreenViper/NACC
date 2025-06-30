@@ -96,18 +96,18 @@ struct NACCWatchApp: App {
         if let cleanDateTemp = inApplicationContext["cleanDate"] as? String {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
-            _cleanDate = dateFormatter.date(from: cleanDateTemp) ?? .now
-            NACCPersistentPrefs().cleanDate = _cleanDate
+            self._cleanDate = dateFormatter.date(from: cleanDateTemp) ?? .now
+            NACCPersistentPrefs().cleanDate = self._cleanDate
             #if DEBUG
-                print("Cleandate: \(_cleanDate)")
+                print("Cleandate: \(self._cleanDate)")
             #endif
             
-            _syncUp = true
+            self._syncUp = true
         }
         
         if let watchFormatTemp = inApplicationContext["watchAppDisplayState"] as? Int,
            let format = NACCPersistentPrefs.MainWatchState(rawValue: watchFormatTemp) {
-            _watchFormat = format.rawValue
+            self._watchFormat = format.rawValue
             NACCPersistentPrefs().watchAppDisplayState = format
             
             #if DEBUG
@@ -132,30 +132,30 @@ struct NACCWatchApp: App {
             )
             .onAppear {
                 NACCPersistentPrefs().flush()
-                _watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue
-                _wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext)
+                self._watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue
+                self._wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: self.updateApplicationContext)
             }
         }
-        .onChange(of: _cleanDate) {
-            if NACCPersistentPrefs().cleanDate != _cleanDate {
-                NACCPersistentPrefs().cleanDate = _cleanDate
-                if _showCleanDatePicker {   // Only if we are changing it on the watch.
-                    _wcSessionDelegateHandler?.sendApplicationContext()
-                    _syncUp = true
+        .onChange(of: self._cleanDate) {
+            if NACCPersistentPrefs().cleanDate != self._cleanDate {
+                NACCPersistentPrefs().cleanDate = self._cleanDate
+                if self._showCleanDatePicker {   // Only if we are changing it on the watch.
+                    self._wcSessionDelegateHandler?.sendApplicationContext()
+                    self._syncUp = true
                 }
                 WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
             }
         }
-        .onChange(of: _watchFormat) {
-            if let formatTemp = NACCPersistentPrefs.MainWatchState(rawValue: _watchFormat),
+        .onChange(of: self._watchFormat) {
+            if let formatTemp = NACCPersistentPrefs.MainWatchState(rawValue: self._watchFormat),
                formatTemp != NACCPersistentPrefs().watchAppDisplayState {   // We only send it, if we changed the screen that we're viewing.
                 NACCPersistentPrefs().watchAppDisplayState = formatTemp
-                _wcSessionDelegateHandler?.sendApplicationContext()
+                self._wcSessionDelegateHandler?.sendApplicationContext()
             }
         }
         // Forces updates, whenever we become active.
-        .onChange(of: _scenePhase, initial: true) {
-            if .active == _scenePhase {
+        .onChange(of: self._scenePhase, initial: true) {
+            if .active == self._scenePhase {
                 NACCPersistentPrefs().flush()
                 WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
             }

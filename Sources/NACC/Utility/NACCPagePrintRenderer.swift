@@ -57,8 +57,8 @@ class NACCPagePrintRenderer: UIPrintPageRenderer {
      - parameter image: The tag/medallion image displayed.
      */
     init(report inReportString: String, image inTagImage: UIImage?) {
-        cleantimeReport = inReportString
-        cleantimeImage = inTagImage
+        self.cleantimeReport = inReportString
+        self.cleantimeImage = inTagImage
         
         super.init()
 
@@ -93,13 +93,13 @@ extension NACCPagePrintRenderer {
         let reportRect = CGRect(origin: inContentRect.origin, size: CGSize(width: inContentRect.size.width, height: inContentRect.size.height * 0.25))
         let imageRect = CGRect(origin: CGPoint(x: inContentRect.origin.x, y: inContentRect.origin.y + inContentRect.size.height * 0.25),
                                size: CGSize(width: inContentRect.size.width, height: inContentRect.size.height * 0.75))
-        drawReport(in: reportRect)
+        self.drawReport(in: reportRect)
         
         guard !imageRect.isEmpty,
-              let imageToDraw = cleantimeImage?.resized(toMaximumSize: min(imageRect.size.height, imageRect.size.width))
+              let imageToDraw = self.cleantimeImage?.resized(toMaximumSize: min(imageRect.size.height, imageRect.size.width))
         else { return }
         
-        drawImage(imageToDraw, in: imageRect)
+        Self.drawImage(imageToDraw, in: imageRect)
     }
 }
 
@@ -128,7 +128,7 @@ extension NACCPagePrintRenderer {
             attributes[NSAttributedString.Key.foregroundColor] = UIColor.black
             attributes[NSAttributedString.Key.font] = UIFont.italicSystemFont(ofSize: fontSize)
             
-            descriptionString = NSAttributedString(string: cleantimeReport, attributes: attributes)
+            descriptionString = NSAttributedString(string: self.cleantimeReport, attributes: attributes)
 
             width = descriptionString.stringWidth
             height = descriptionString.stringHeight
@@ -148,7 +148,7 @@ extension NACCPagePrintRenderer {
      - parameter inImage: The image to be drawn.
      - parameter in: This is the display rect.
      */
-    func drawImage(_ inImage: UIImage, in inContentRect: CGRect) {
+    static func drawImage(_ inImage: UIImage, in inContentRect: CGRect) {
         let cRect = inContentRect.insetBy(dx: (inContentRect.size.width - inImage.size.width) / 2,
                                           dy: (inContentRect.size.height - inImage.size.height) / 2)
         inImage.draw(at: cRect.origin)

@@ -43,7 +43,7 @@ struct NACCWatchComplicationProvider: TimelineProvider {
      This returns a simple placeholder.
      */
     func placeholder(in context: Context) -> NACCWatchComplicationEntry {
-        NACCWatchComplicationEntry(date: .now, family: _family)
+        NACCWatchComplicationEntry(date: .now, family: self._family)
     }
 
     /* ################################################################## */
@@ -51,7 +51,7 @@ struct NACCWatchComplicationProvider: TimelineProvider {
      This sends a "live" snapshot to the completion.
      */
     func getSnapshot(in context: Context, completion: @escaping (NACCWatchComplicationEntry) -> Void) {
-        completion(NACCWatchComplicationEntry(date: .now, family: _family))
+        completion(NACCWatchComplicationEntry(date: .now, family: self._family))
     }
 
     /* ################################################################## */
@@ -60,7 +60,7 @@ struct NACCWatchComplicationProvider: TimelineProvider {
      */
     func getTimeline(in context: Context, completion: @escaping (Timeline<NACCWatchComplicationEntry>) -> Void) {
         NACCPersistentPrefs().flush()
-        completion(Timeline(entries: [NACCWatchComplicationEntry(date: .now, family: _family)], policy: .atEnd))
+        completion(Timeline(entries: [NACCWatchComplicationEntry(date: .now, family: self._family)], policy: .atEnd))
     }
 }
 
@@ -144,22 +144,22 @@ struct NACCWatchComplicationEntryView: View {
      */
     var body: some View {
         GeometryReader { inGeom in
-            if .accessoryCorner == _family || .accessoryCircular == _family {
-                Image(uiImage: entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
-                    .widgetLabel(entry.text)
-                    .onAppear { entry.family = _family }
-            } else if .accessoryInline == _family,
+            if .accessoryCorner == self._family || .accessoryCircular == self._family {
+                Image(uiImage: self.entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                    .widgetLabel(self.entry.text)
+                    .onAppear { self.entry.family = self._family }
+            } else if .accessoryInline == self._family,
                       !entry.text.isEmpty {
                 Text(entry.text)
-                    .onAppear { entry.family = _family }
+                    .onAppear { self.entry.family = self._family }
             } else {
                 HStack(alignment: .top) {
-                    Image(uiImage: entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
-                    if !entry.text.isEmpty {
-                        Text(entry.text)
+                    Image(uiImage: self.entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
+                    if !self.entry.text.isEmpty {
+                        Text(self.entry.text)
                     }
                 }
-                .onAppear { entry.family = _family }
+                .onAppear { self.entry.family = self._family }
             }
         }
     }

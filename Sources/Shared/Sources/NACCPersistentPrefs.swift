@@ -110,7 +110,7 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
      This is a list of the keys for our prefs.
      We should use the enum for the keys (rawValue).
      */
-    override var keys: [String] { Keys.allKeys }
+    override var keys: [String] { Self.Keys.allKeys }
 
     /* ################################################################################################################################## */
     // MARK: External Prefs Access Computed Properties
@@ -120,9 +120,9 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
      This stores the cleandate, as an instance of Date
      */
     var cleanDate: Date {
-        get { values[Keys.cleanDate.rawValue] as? Date ?? .now }
+        get { self.values[Self.Keys.cleanDate.rawValue] as? Date ?? .now }
         set {
-            values[Keys.cleanDate.rawValue] = newValue
+            self.values[Self.Keys.cleanDate.rawValue] = newValue
             WidgetCenter.shared.reloadAllTimelines()
         }
     }
@@ -132,23 +132,23 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
      This stores the last selected tab index (0-based).
      */
     var lastSelectedTabIndex: Int {
-        get { values[Keys.lastSelectedTabIndex.rawValue] as? Int ?? 0 }
-        set { values[Keys.lastSelectedTabIndex.rawValue] = newValue }
+        get { self.values[Self.Keys.lastSelectedTabIndex.rawValue] as? Int ?? 0 }
+        set { self.values[Self.Keys.lastSelectedTabIndex.rawValue] = newValue }
     }
 
     /* ################################################################## */
     /**
      This is set and read by the Watch app. It is not accessed by any of the other targets.
      */
-    var watchAppDisplayState: MainWatchState {
+    var watchAppDisplayState: NACCPersistentPrefs.MainWatchState {
         get {
-            guard let stateIndex = values[Keys.watchAppDisplayState.rawValue] as? Int,
-                  let ret = MainWatchState(rawValue: stateIndex)
+            guard let stateIndex = self.values[Self.Keys.watchAppDisplayState.rawValue] as? Int,
+                  let ret = Self.MainWatchState(rawValue: stateIndex)
             else { return .text }
             
             return ret
         }
-        set { values[Keys.watchAppDisplayState.rawValue] = newValue.rawValue }
+        set { self.values[Self.Keys.watchAppDisplayState.rawValue] = newValue.rawValue }
     }
 
     /* ################################################################## */

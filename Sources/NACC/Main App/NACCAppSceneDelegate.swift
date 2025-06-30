@@ -336,7 +336,7 @@ extension NACCAppSceneDelegate: UIApplicationDelegate {
         
         let tabIndex = NACCTabBarController.TabIndexes(rawValue: Int(parameters[Self.selectedTabUserDataID] ?? "-1") ?? -1) ?? .undefined
 
-        open(to: Calendar.current.dateComponents([.year, .month, .day], from: cleanDate), with: tabIndex)
+        self.open(to: Calendar.current.dateComponents([.year, .month, .day], from: cleanDate), with: tabIndex)
         
         return true
     }
@@ -354,7 +354,7 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
      - parameter openURLContexts: The Opening URL contexts (as a set).
      */
     func scene(_: UIScene, openURLContexts inURLContexts: Set<UIOpenURLContext>) {
-        inURLContexts.forEach { resolveURL($0.url) }
+        inURLContexts.forEach { self.resolveURL($0.url) }
     }
     
     /* ################################################################## */
@@ -366,7 +366,7 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
      */
     func scene(_ inScene: UIScene, willConnectTo: UISceneSession, options inConnectionOptions: UIScene.ConnectionOptions) {
         if let url = inConnectionOptions.userActivities.first?.webpageURL ?? inConnectionOptions.urlContexts.first?.url {
-            resolveURL(url)
+            self.resolveURL(url)
         }
     }
 
@@ -378,7 +378,7 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
      */
     func scene(_: UIScene, continue inUserActivity: NSUserActivity) {
         if let url = inUserActivity.webpageURL {
-            resolveURL(url)
+            self.resolveURL(url)
         }
     }
 
@@ -396,11 +396,11 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         #if DEBUG
             print("\n#### Scene Entering Foreground.\n####\n")
         #endif
-        if _resetScreen {
-            _navigationController?.popToRootViewController(animated: false)
-            _initialViewController?.setDate(NACCPersistentPrefs().cleanDate, tabIndex: _selectedTabFromURI)
+        if self._resetScreen {
+            self._navigationController?.popToRootViewController(animated: false)
+            self._initialViewController?.setDate(NACCPersistentPrefs().cleanDate, tabIndex: self._selectedTabFromURI)
         } else {
-            _initialViewController?.setDate()
+            self._initialViewController?.setDate()
         }
     }
 
@@ -418,9 +418,9 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         #if DEBUG
             print("\n#### Scene Becoming Active.\n####\n")
         #endif
-        if _resetScreen {
-            _navigationController?.popToRootViewController(animated: false)
-            _initialViewController?.setDate(NACCPersistentPrefs().cleanDate, tabIndex: _selectedTabFromURI)
+        if self._resetScreen {
+            self._navigationController?.popToRootViewController(animated: false)
+            self._initialViewController?.setDate(NACCPersistentPrefs().cleanDate, tabIndex: self._selectedTabFromURI)
         }
 
         _resetScreen = false
@@ -439,7 +439,7 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
             print("\n#### Scene Entered Background.\n####\n")
         #endif
         
-        _navigationController?.viewControllers.forEach {
+        self._navigationController?.viewControllers.forEach {
             // The first one, is in case we have a second modal over the main one (doesn't work for all of them).
             $0.presentedViewController?.presentedViewController?.dismiss(animated: false)
             $0.presentedViewController?.dismiss(animated: false)
@@ -448,7 +448,7 @@ extension NACCAppSceneDelegate: UIWindowSceneDelegate {
         if let originals = Self._originalPrefs {
             Self._originalPrefs = nil
             NACCPersistentPrefs().cleanDate = originals.cleanDate
-            NACCPersistentPrefs().lastSelectedTabIndex = _selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue
+            NACCPersistentPrefs().lastSelectedTabIndex = self._selectedTabFromURI?.rawValue ?? NACCTabBarController.TabIndexes.undefined.rawValue
         }
     }
 }

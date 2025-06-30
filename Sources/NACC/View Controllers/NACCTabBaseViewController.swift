@@ -81,8 +81,8 @@ extension NACCTabBaseViewController {
     */
     private func _showThrobber() {
         navigationController?.isNavigationBarHidden = true
-        throbber?.isHidden = false
-        cleantime?.isHidden = true
+        self.throbber?.isHidden = false
+        self.cleantime?.isHidden = true
     }
     
     /* ################################################################## */
@@ -91,8 +91,8 @@ extension NACCTabBaseViewController {
     */
     private func _hideThrobber() {
         navigationController?.isNavigationBarHidden = false
-        throbber?.isHidden = true
-        cleantime?.isHidden = false
+        self.throbber?.isHidden = true
+        self.cleantime?.isHidden = false
     }
 }
 
@@ -106,14 +106,13 @@ extension NACCTabBaseViewController {
     */
     override func viewDidLoad() {
         super.viewDidLoad()
-        _showThrobber()
-        cleantime?.subscribe(self)
+        self._showThrobber()
+        self.cleantime?.subscribe(self)
         let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate, calendar: Calendar.current).cleanTime
-        cleantime?.totalDays = calculator.totalDays
-        cleantime?.totalMonths = calculator.totalMonths
-        cleantime?.setNeedsLayout()
-        
-        scrollView?.accessibilityLabel = "SLUG-ACC-SCROLLVIEW".localizedVariant
+        self.cleantime?.totalDays = calculator.totalDays
+        self.cleantime?.totalMonths = calculator.totalMonths
+        self.cleantime?.setNeedsLayout()
+        self.scrollView?.accessibilityLabel = "SLUG-ACC-SCROLLVIEW".localizedVariant
     }
     
     /* ################################################################## */
@@ -124,11 +123,11 @@ extension NACCTabBaseViewController {
     */
     override func viewWillAppear(_ inIsAnimated: Bool) {
         super.viewWillAppear(inIsAnimated)
-        tabBarController?.navigationItem.title = tabBarItem.title
-        scrollView?.zoomScale = 1.0
+        self.tabBarController?.navigationItem.title = tabBarItem.title
+        self.scrollView?.zoomScale = 1.0
         
         // Just in case we show up, and everything is hidden...
-        if !(windowInterfaceOrientation?.isLandscape ?? false) {
+        if !(self.windowInterfaceOrientation?.isLandscape ?? false) {
             self.tabBarController?.tabBar.isHidden = false
             self.navigationController?.navigationBar.isHidden = false
         }
@@ -176,11 +175,11 @@ extension NACCTabBaseViewController: LGV_UICleantimeImageViewObserverProtocol {
      - parameter view: The completed UIImageView
      */
     func renderingComplete(view inImageView: LGV_UICleantimeImageViewBase) {
-        _hideThrobber()
-        guard let contentSize = scrollView?.contentSize,
+        self._hideThrobber()
+        guard let contentSize = self.scrollView?.contentSize,
               0 < contentSize.height
         else {
-            scrollView?.zoomScale = 1.0
+            self.scrollView?.zoomScale = 1.0
             return
         }
 
@@ -188,9 +187,9 @@ extension NACCTabBaseViewController: LGV_UICleantimeImageViewObserverProtocol {
         let intW = inImageView.intrinsicContentSize.width
         let dispW = inImageView.bounds.size.width
         let scale = max(1.0, intW / dispW)
-        scrollView?.minimumZoomScale = 1
-        scrollView?.maximumZoomScale = max(1.0, scale)
-        if let cleantime = cleantime,
+        self.scrollView?.minimumZoomScale = 1
+        self.scrollView?.maximumZoomScale = max(1.0, scale)
+        if let cleantime = self.cleantime,
            let imageSize = inImageView.image?.size {
             let aspect = imageSize.height / imageSize.width
             cleantime.heightAnchor.constraint(equalTo: cleantime.widthAnchor, multiplier: aspect).isActive = true
@@ -209,5 +208,5 @@ extension NACCTabBaseViewController: UIScrollViewDelegate {
      - parameter in: Ignored
      - returns: The cleantime view.
      */
-    func viewForZooming(in: UIScrollView) -> UIView? { cleantime }
+    func viewForZooming(in: UIScrollView) -> UIView? { self.cleantime }
 }

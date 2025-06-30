@@ -276,3 +276,77 @@ extension UIImage {
         return nil
     }
 }
+
+/* ###################################################################################################################################### */
+// MARK: - Special Class for Action Item Handling -
+/* ###################################################################################################################################### */
+/**
+ This class will return the appropriate type of data, depending on the destination.
+ 
+ It is instantiated in the "action item" handler.
+ */
+class NACCReportActivityItemSource: NSObject, UIActivityItemSource {
+    /* ################################################################## */
+    /**
+     The cleantime report (just a text string)
+    */
+    let report: String
+
+    /* ################################################################## */
+    /**
+     The medallion/keytag image
+    */
+    let image: UIImage?
+
+    /* ################################################################## */
+    /**
+     The universal URL.
+    */
+    let url: URL?
+
+    /* ################################################################## */
+    /**
+     Initializer
+     
+     - parameters:
+        - inReport: The cleantime report string
+        - inImage: The keytag/medallion image
+        - inURL: The universal URL
+    */
+    init(report inReport: String, image inImage: UIImage?, url inURL: URL?) {
+        self.report = inReport
+        self.image = inImage
+        self.url = inURL
+    }
+
+    /* ################################################################## */
+    /**
+     The default placeholder (just the URL)
+     
+     - parameter: The activity controller (ignored).
+     - returns: The default (universal URL).
+    */
+    func activityViewControllerPlaceholderItem(_: UIActivityViewController) -> Any { self.image ?? self.url ?? (self.report as Any) }
+
+    /* ################################################################## */
+    /**
+     - parameter: The activity controller (ignored).
+     - parameter inActivityType: The activity type
+     - returns: The proper data for the activity type.
+    */
+    func activityViewController(_: UIActivityViewController, itemForActivityType inActivityType: UIActivity.ActivityType?) -> Any? {
+        switch inActivityType {
+        case .saveToCameraRoll, .postToFlickr, .assignToContact, .print:
+            return self.image
+            
+        case .message, .mail:
+            return self.report + "\n\n" + (url?.absoluteString ?? "")
+            
+        case .copyToPasteboard, .postToFacebook, .postToTwitter, .postToWeibo, .postToTencentWeibo, .collaborationCopyLink, .collaborationInviteWithLink, .addToHomeScreen, .addToReadingList:
+            return self.url ?? self.report
+
+        default:
+            return self.image ?? self.url ?? self.report + "\n\n" + (url?.absoluteString ?? "")
+        }
+    }
+}

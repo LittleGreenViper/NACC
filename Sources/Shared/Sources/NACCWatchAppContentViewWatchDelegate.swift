@@ -87,9 +87,9 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
         #endif
         
         #if !os(watchOS)    // Only necessary for iOS
-            sendApplicationContext()
+            self.sendApplicationContext()
         #else
-            _sendContextRequest()
+            self._sendContextRequest()
         #endif
     }
     
@@ -101,8 +101,8 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
      - parameter didReceiveApplicationContext: The new context data.
     */
     func session(_ inSession: WCSession, didReceiveApplicationContext inApplicationContext: [String: Any]) {
-        guard !isUpdateInProgress else { return }
-        isUpdateInProgress = true
+        guard !self.isUpdateInProgress else { return }
+        self.isUpdateInProgress = true
         #if DEBUG && os(watchOS)
             print("Watch App Received Context Update: \(inApplicationContext)")
         #elseif DEBUG
@@ -129,7 +129,7 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
                 #if DEBUG
                     print("Responding to context request from the watch")
                 #endif
-                sendApplicationContext()
+                self.sendApplicationContext()
             }
         }
     #else
@@ -138,6 +138,12 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
          This sends a message to the phone (from the watch), that is interpreted as a request for a context update.
         */
         func _sendContextRequest(_ inRetries: Int = 5) {
+            /* ########################################################## */
+            /**
+             This handles a valid reply.
+             
+             - parameter inReply: A dictionary, containing the reply.
+            */
             func _replyHandler(_ inReply: [String: Any]) {
                 #if DEBUG
                     print("Received Reply from Phone: \(inReply)")
@@ -145,20 +151,26 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
                 #if DEBUG
                     print("Reply from peer: \(inReply)")
                 #endif
-                retries = 0
-                isUpdateInProgress = false
-                session(wcSession, didReceiveApplicationContext: inReply)
+                self.retries = 0
+                self.isUpdateInProgress = false
+                self.session(self.wcSession, didReceiveApplicationContext: inReply)
             }
             
+            /* ########################################################## */
+            /**
+             This is called for an error. We may retry the call.
+             
+            - parameter inError: Any error that occurred
+            */
             func _errorHandler(_ inError: any Error) {
                 #if DEBUG
                     print("Error Sending Message to Phone: \(inError.localizedDescription)")
                 #endif
-                isUpdateInProgress = false
+                self.isUpdateInProgress = false
                 let nsError = inError as NSError
                 if nsError.domain == "WCErrorDomain",
                    7007 == nsError.code,
-                   0 < retries {
+                   0 < self.retries {
                     #if DEBUG
                         print("Connection failure. Retrying...")
                     #endif
@@ -172,14 +184,14 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
                 }
             }
 
-            isUpdateInProgress = true
+            self.isUpdateInProgress = true
             #if DEBUG
                 print("Sending context request to the phone")
             #endif
-            if .activated == wcSession.activationState {
-                wcSession.sendMessage(["requestContext": "requestContext"], replyHandler: _replyHandler, errorHandler: _errorHandler)
+            if .activated == self.wcSession.activationState {
+                self.wcSession.sendMessage(["requestContext": "requestContext"], replyHandler: _replyHandler, errorHandler: _errorHandler)
             }
-            isUpdateInProgress = false
+            self.isUpdateInProgress = false
         }
     #endif
     
@@ -188,8 +200,8 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
      This is called to send the current state of the prefs to the peer.
      */
     func sendApplicationContext() {
-        guard !isUpdateInProgress else { return }
-        isUpdateInProgress = true
+        guard !self.isUpdateInProgress else { return }
+        self.isUpdateInProgress = true
         do {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -206,15 +218,15 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
                 #endif
             #endif
 
-            if .activated == wcSession.activationState {
-                try wcSession.updateApplicationContext(contextData)
+            if .activated == self.wcSession.activationState {
+                try self.wcSession.updateApplicationContext(contextData)
             }
         } catch {
             #if DEBUG
                 print("WC Session Error: \(error.localizedDescription)")
             #endif
         }
-        isUpdateInProgress = false
+        self.isUpdateInProgress = false
     }
 
     /* ###################################################################### */
@@ -225,8 +237,8 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
      */
     init(updateHandler inUpdateHandler: ApplicationContextHandler?) {
         super.init()
-        updateHandler = inUpdateHandler
-        wcSession.delegate = self
-        wcSession.activate()
+        self.updateHandler = inUpdateHandler
+        self.wcSession.delegate = self
+        self.wcSession.activate()
     }
 }

@@ -80,23 +80,23 @@ extension NACCAboutViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let aboutLogo = UIImage(named: "AboutLogo")?.withRenderingMode(.alwaysOriginal).resized(toMaximumSize: Self._iconSizeInDisplayUnits) {
-            appIconButton?.setImage(aboutLogo, for: .normal)
+            self.appIconButton?.setImage(aboutLogo, for: .normal)
         }
-        appIconButton?.imageView?.contentMode = .scaleAspectFit
-        versionLabelButton?.setTitle(String(format: "SLUG-APP-INFO-VERSION-FORMAT-SMALL".localizedVariant, Bundle.main.appVersionString), for: .normal)
-        helpView?.text = "SLUG-APP-INFO-TEXT".localizedVariant
+        self.appIconButton?.imageView?.contentMode = .scaleAspectFit
+        self.versionLabelButton?.setTitle(String(format: "SLUG-APP-INFO-VERSION-FORMAT-SMALL".localizedVariant, Bundle.main.appVersionString), for: .normal)
+        self.helpView?.text = "SLUG-APP-INFO-TEXT".localizedVariant
         
-        lgvButton?.setTitle((lgvButton?.title(for: .normal) ?? "ERROR").localizedVariant, for: .normal)
-        lgvButton?.titleLabel?.adjustsFontSizeToFitWidth = true
-        lgvButton?.titleLabel?.minimumScaleFactor = 0.5
-        privacyButton?.setTitle((privacyButton?.title(for: .normal) ?? "ERROR").localizedVariant, for: .normal)
-        privacyButton?.titleLabel?.adjustsFontSizeToFitWidth = true
-        privacyButton?.titleLabel?.minimumScaleFactor = 0.5
+        self.lgvButton?.setTitle((self.lgvButton?.title(for: .normal) ?? "ERROR").localizedVariant, for: .normal)
+        self.lgvButton?.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.lgvButton?.titleLabel?.minimumScaleFactor = 0.5
+        self.privacyButton?.setTitle((self.privacyButton?.title(for: .normal) ?? "ERROR").localizedVariant, for: .normal)
+        self.privacyButton?.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.privacyButton?.titleLabel?.minimumScaleFactor = 0.5
         
-        appIconButton?.accessibilityLabel = "SLUG-ACC-APPICON-BUTTON".localizedVariant
-        versionLabelButton?.accessibilityLabel = "SLUG-ACC-VERSION-BUTTON".localizedVariant
-        privacyButton?.accessibilityLabel = "SLUG-ACC-PRIVACY-BUTTON".localizedVariant
-        lgvButton?.accessibilityLabel = "SLUG-ACC-LGV-BUTTON".localizedVariant
+        self.appIconButton?.accessibilityLabel = "SLUG-ACC-APPICON-BUTTON".localizedVariant
+        self.versionLabelButton?.accessibilityLabel = "SLUG-ACC-VERSION-BUTTON".localizedVariant
+        self.privacyButton?.accessibilityLabel = "SLUG-ACC-PRIVACY-BUTTON".localizedVariant
+        self.lgvButton?.accessibilityLabel = "SLUG-ACC-LGV-BUTTON".localizedVariant
     }
 }
 
@@ -121,7 +121,7 @@ extension NACCAboutViewController {
         
         alertController.addAction(okAction)
         
-        present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
 
     /* ################################################################## */

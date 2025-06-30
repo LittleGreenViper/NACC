@@ -55,7 +55,7 @@ struct NACCGetCleantimeSummaryAppIntent: AppIntent {
      This calculates the cleantime, and creates a text string, with the summary.
      */
     func perform() async throws -> some ReturnsValue<String> & ProvidesDialog {
-        if let cleanDate = cleanDate {
+        if let cleanDate = self.cleanDate {
             if let minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5)),
                let currentDate = Calendar.current.date(from: cleanDate),
                (Calendar.current.startOfDay(for: minimumDate)..<Calendar.current.startOfDay(for: .now).addingTimeInterval(86400)).contains(currentDate),

@@ -97,19 +97,19 @@ extension NACCTabBarController {
             appearance.compactInlineLayoutAppearance.selected.titleTextAttributes = selectedTextAttributes
             appearance.backgroundColor = backGroundTabBarColor
 
-            tabBar.standardAppearance = appearance
-            tabBar.itemPositioning = .centered
-            tabBar.backgroundColor = backGroundTabBarColor
-            tabBar.barTintColor = backGroundTabBarColor
+            self.tabBar.standardAppearance = appearance
+            self.tabBar.itemPositioning = .centered
+            self.tabBar.backgroundColor = backGroundTabBarColor
+            self.tabBar.barTintColor = backGroundTabBarColor
         }
 
-        delegate = self
+        self.delegate = self
         let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate, calendar: Calendar.current).cleanTime
         
-        viewControllers?[TabIndexes.keytagStrip.rawValue].tabBarItem?.isEnabled = 29 < calculator.totalDays
-        viewControllers?[TabIndexes.medallions.rawValue].tabBarItem?.isEnabled = 0 < calculator.years
+        self.viewControllers?[TabIndexes.keytagStrip.rawValue].tabBarItem?.isEnabled = 29 < calculator.totalDays
+        self.viewControllers?[TabIndexes.medallions.rawValue].tabBarItem?.isEnabled = 0 < calculator.years
 
-        viewControllers?.forEach {
+        self.viewControllers?.forEach {
             if let tabBarItemTitle = $0.tabBarItem?.title?.localizedVariant,
                !tabBarItemTitle.isEmpty {
                 $0.tabBarItem?.title = tabBarItemTitle
@@ -119,18 +119,18 @@ extension NACCTabBarController {
         
         let lastSelectedTabIndex = NACCPersistentPrefs().lastSelectedTabIndex
         
-        if (0..<(viewControllers?.count ?? 0)).contains(lastSelectedTabIndex),
-           viewControllers?[lastSelectedTabIndex].tabBarItem?.isEnabled ?? false {
-            selectedViewController = viewControllers?[lastSelectedTabIndex]
-        } else if !(viewControllers?.isEmpty ?? true) {
-            selectedViewController = viewControllers?[TabIndexes.keytagArray.rawValue]
+        if (0..<(self.viewControllers?.count ?? 0)).contains(lastSelectedTabIndex),
+           self.viewControllers?[lastSelectedTabIndex].tabBarItem?.isEnabled ?? false {
+            self.selectedViewController = self.viewControllers?[lastSelectedTabIndex]
+        } else if !(self.viewControllers?.isEmpty ?? true) {
+            self.selectedViewController = self.viewControllers?[TabIndexes.keytagArray.rawValue]
         }
         
-        actionButton?.accessibilityLabel = "SLUG-ACC-TABS-ACTION-BUTTON".localizedVariant
+        self.actionButton?.accessibilityLabel = "SLUG-ACC-TABS-ACTION-BUTTON".localizedVariant
         
         if #available(iOS 18.0, *),
            .pad == UIDevice.current.userInterfaceIdiom {
-            traitOverrides.horizontalSizeClass = .compact
+            self.traitOverrides.horizontalSizeClass = .compact
         }
     }
 }
@@ -146,17 +146,18 @@ extension NACCTabBarController {
      - parameter inButton: The action item button.
     */
     @IBAction func actionItemHit(_ inButtonItem: UIBarButtonItem) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
         if let report = NACCAppSceneDelegate.appDelegateInstance?.report,
            let date = NACCAppSceneDelegate.appDelegateInstance?.date,
+           let url = URL(string: String(format: "SLUG-URL-STRING".localizedVariant, dateFormatter.string(from: date)) + "/\(self.selectedIndex)"),
            let image = (selectedViewController as? NACCTabBaseViewController)?.cleantime?.image {
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let url = URL(string: String(format: "SLUG-URL-STRING".localizedVariant, dateFormatter.string(from: date)) + "/\(selectedIndex)")
-            let viewController = UIActivityViewController(activityItems: [NACCPagePrintRenderer(report: report, image: image),
-                                                                          report,
-                                                                          image as Any, url as Any],
-                                                          applicationActivities: nil)
+            let activityItem = NACCReportActivityItemSource(report: report, image: image, url: url)
+
+            let viewController = UIActivityViewController(activityItems: [activityItem], applicationActivities: nil)
+
             if .pad == traitCollection.userInterfaceIdiom,
                let size = view?.bounds.size {
                 viewController.modalPresentationStyle = .popover
@@ -182,11 +183,11 @@ extension NACCTabBarController: UITabBarControllerDelegate {
      */
     func tabBarController(_ inTabBarController: UITabBarController, didSelect inViewController: UIViewController) {
         guard let controller = inViewController as? NACCBaseViewController,
-              let index = TabIndexes(rawValue: selectedIndex)
+              let index = TabIndexes(rawValue: self.selectedIndex)
         else { return }
         
         controller.myTabIndex = index
         
-        NACCPersistentPrefs().lastSelectedTabIndex = selectedIndex
+        NACCPersistentPrefs().lastSelectedTabIndex = index.rawValue
     }
 }

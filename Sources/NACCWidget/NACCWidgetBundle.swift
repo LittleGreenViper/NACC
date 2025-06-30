@@ -194,22 +194,22 @@ struct NACCWidgetEntryView: View {
      It is also possible to only display text, in `systemMedium`.
      */
     var body: some View {
-        let labelColor = (entry.dontShowBackground || entry.yellowTag) ? Color(UIColor.label.inverted) : .black
-        if .systemSmall == _family {
-            if let newGeneratedImage = entry.singleMedallion ?? entry.singleKeytag {
+        let labelColor = (self.entry.dontShowBackground || self.entry.yellowTag) ? Color(UIColor.label.inverted) : .black
+        if .systemSmall == self._family {
+            if let newGeneratedImage = self.entry.singleMedallion ?? self.entry.singleKeytag {
                 Image(uiImage: newGeneratedImage)
             } else {
-                Text(entry.text)
+                Text(self.entry.text)
                     .foregroundStyle(labelColor)
                     .minimumScaleFactor(0.5)
             }
         } else {
             HStack {
-                Text(entry.text)
+                Text(self.entry.text)
                     .foregroundStyle(labelColor)
                     .minimumScaleFactor(0.5)
                 
-                if let newGeneratedImage = entry.singleMedallion ?? entry.singleKeytag {
+                if let newGeneratedImage = self.entry.singleMedallion ?? self.entry.singleKeytag {
                     Image(uiImage: newGeneratedImage)
                 }
             }
@@ -269,9 +269,9 @@ struct NACCWidgetIntent: WidgetConfigurationIntent {
          onlyText inOnlyText: Bool,
          dontShowYellowBackground inDontShowYellowBackground: Bool
     ) {
-        forceKeytag = inForceKeytag
-        onlyText = inOnlyText
-        dontShowYellowBackground = inDontShowYellowBackground
+        self.forceKeytag = inForceKeytag
+        self.onlyText = inOnlyText
+        self.dontShowYellowBackground = inDontShowYellowBackground
     }
     
     /* ################################################################## */
@@ -279,9 +279,9 @@ struct NACCWidgetIntent: WidgetConfigurationIntent {
      Default initializer.
      */
     init() {
-        forceKeytag = false
-        onlyText = false
-        dontShowYellowBackground = false
+        self.forceKeytag = false
+        self.onlyText = false
+        self.dontShowYellowBackground = false
     }
 }
 
@@ -362,29 +362,29 @@ struct NACC_Entry: TimelineEntry {
         let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
         
         if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) {
-            text = textTemp
+            self.text = textTemp
         } else {
-            text = "ERROR"
+            self.text = "ERROR"
         }
         
-        singleKeytag = nil
-        singleMedallion = nil
+        self.singleKeytag = nil
+        self.singleMedallion = nil
         
-        guard !onlyText else { return }
+        guard !self.onlyText else { return }
         DispatchQueue.main.sync {
             if 0 < calculator.years,
-               !forceKeytag {
+               !self.forceKeytag {
                 let medallionView = LGV_UISingleCleantimeMedallionImageView()
                 medallionView.totalDays = calculator.totalDays
                 medallionView.totalMonths = calculator.totalMonths
                 
-                singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+                self.singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
             } else {
                 let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
                 keyTagImage.totalDays = calculator.totalDays
                 keyTagImage.totalMonths = calculator.totalMonths
-                yellowTag = dontShowBackground || (9..<12).contains(calculator.totalMonths) || (45..<50).contains(calculator.years)
-                singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+                self.yellowTag = self.dontShowBackground || (9..<12).contains(calculator.totalMonths) || (45..<50).contains(calculator.years)
+                self.singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
             }
         }
     }
@@ -406,10 +406,10 @@ struct NACC_Entry: TimelineEntry {
          onlyText inOnlyText: Bool = false,
          dontShowBackground inDontShowBackground: Bool = true
     ) {
-        date = inDate
-        cleanDate = inCleandate
-        forceKeytag = inForceKeytag
-        onlyText = inOnlyText
-        dontShowBackground = inDontShowBackground
+        self.date = inDate
+        self.cleanDate = inCleandate
+        self.forceKeytag = inForceKeytag
+        self.onlyText = inOnlyText
+        self.dontShowBackground = inDontShowBackground
     }
 }

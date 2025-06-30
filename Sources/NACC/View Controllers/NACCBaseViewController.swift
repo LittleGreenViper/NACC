@@ -84,17 +84,17 @@ extension NACCBaseViewController {
      - parameter with: The tab index of the page calling this.
      */
     func activateActivity(for inCleandate: DateComponents, with inTabIndex: NACCTabBarController.TabIndexes = .undefined) {
-        userActivity = NSUserActivity(activityType: NACCAppSceneDelegate.displayCleantimeID)
+        self.userActivity = NSUserActivity(activityType: NACCAppSceneDelegate.displayCleantimeID)
         let title = "SLUG-DISPLAY-CLEANTIME-ACTIVITY-TITLE".localizedVariant
-        userActivity?.title = title
+        self.userActivity?.title = title
         let stringData = String(format: "%04d-%02d-%02d", inCleandate.year ?? 0, inCleandate.month ?? 0, inCleandate.day ?? 0)
         var userInfo: [String: String] = [NACCAppSceneDelegate.cleanDateUserDataID: stringData]
         if .undefined != inTabIndex {
             userInfo[NACCAppSceneDelegate.selectedTabUserDataID] = String(inTabIndex.rawValue)
         }
-        userActivity?.userInfo = userInfo
-        userActivity?.isEligibleForPrediction = true
-        userActivity?.persistentIdentifier = String(inCleandate.hashValue)
+        self.userActivity?.userInfo = userInfo
+        self.userActivity?.isEligibleForPrediction = true
+        self.userActivity?.persistentIdentifier = String(inCleandate.hashValue)
     }
 }
 
@@ -109,17 +109,17 @@ extension NACCBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let tabBarItemTitle = tabBarItem?.title?.localizedVariant,
+        if let tabBarItemTitle = self.tabBarItem?.title?.localizedVariant,
            !tabBarItemTitle.isEmpty {
-            tabBarController?.navigationItem.title = tabBarItemTitle
+            self.tabBarController?.navigationItem.title = tabBarItemTitle
         } else {
-            navigationItem.title = (navigationItem.title ?? "ERROR").localizedVariant
+            self.navigationItem.title = (navigationItem.title ?? "ERROR").localizedVariant
         }
 
-        if let view = view {
-            _myBackgroundGradientView = UIImageView()
-            if let backgroundGradientView = _myBackgroundGradientView,
-               let backGroundImage = _backgroundGradientImage {
+        if let view = self.view {
+            self._myBackgroundGradientView = UIImageView()
+            if let backgroundGradientView = self._myBackgroundGradientView,
+               let backGroundImage = self._backgroundGradientImage {
                 backgroundGradientView.image = backGroundImage
                 backgroundGradientView.translatesAutoresizingMaskIntoConstraints = false
                 backgroundGradientView.contentMode = .scaleToFill
@@ -132,11 +132,11 @@ extension NACCBaseViewController {
                 backgroundGradientView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
                 
                 // No watermark for high contrast or reduced transparency mode.
-                if !isHighContrastMode,
-                   !isReducedTransparencyMode {
-                    _myCenterImageView = UIImageView()
-                    if let centerImageView = _myCenterImageView,
-                       let centerImage = _watermarkImage {
+                if !self.isHighContrastMode,
+                   !self.isReducedTransparencyMode {
+                    self._myCenterImageView = UIImageView()
+                    if let centerImageView = self._myCenterImageView,
+                       let centerImage = self._watermarkImage {
                         centerImageView.image = centerImage
                         centerImageView.alpha = Self._watermarkAlpha
                         centerImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -170,6 +170,6 @@ extension NACCBaseViewController {
     */
     override func viewDidAppear(_ inIsAnimated: Bool) {
         super.viewDidAppear(inIsAnimated)
-        activateActivity(for: Calendar.current.dateComponents([.year, .month, .day], from: NACCPersistentPrefs().cleanDate))
+        self.activateActivity(for: Calendar.current.dateComponents([.year, .month, .day], from: NACCPersistentPrefs().cleanDate))
     }
 }
