@@ -1,3 +1,8 @@
+**6.1.3.3054** *July 1, 2025*
+
+- Added a number of fixes to help ensure appropriate display in iOS26 (probably not done, though).
+- The "Action Item" handler is now smarter, and delivers data better crafterd to various apps.
+
 **6.1.0.3043** *February 16, 2025*
 
 - The Watch app now displays the keytags as a scrollable vertical chain.
