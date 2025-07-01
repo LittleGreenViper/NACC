@@ -150,11 +150,10 @@ extension NACCTabBarController {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd"
 
-        if let report = NACCAppSceneDelegate.appDelegateInstance?.report,
-           let date = NACCAppSceneDelegate.appDelegateInstance?.date,
+        if let date = NACCAppSceneDelegate.appDelegateInstance?.date,
            let url = URL(string: String(format: "SLUG-URL-STRING".localizedVariant, dateFormatter.string(from: date)) + "/\(self.selectedIndex)"),
            let image = (selectedViewController as? NACCTabBaseViewController)?.cleantime?.image {
-            let activityItem = NACCReportActivityItemSource(report: report, image: image, url: url)
+            let activityItem = NACCReportActivityItemSource(image: image, url: url)
 
             let viewController = UIActivityViewController(activityItems: [activityItem], applicationActivities: nil)
 

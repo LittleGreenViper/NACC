@@ -309,11 +309,11 @@ class NACCReportActivityItemSource: NSObject, UIActivityItemSource {
      Initializer
      
      - parameters:
-        - inReport: The cleantime report string
+        - inReport: The cleantime report string. Can be omitted (empty)
         - inImage: The keytag/medallion image
         - inURL: The universal URL
     */
-    init(report inReport: String, image inImage: UIImage?, url inURL: URL?) {
+    init(report inReport: String = "", image inImage: UIImage?, url inURL: URL?) {
         self.report = inReport
         self.image = inImage
         self.url = inURL
@@ -339,7 +339,7 @@ class NACCReportActivityItemSource: NSObject, UIActivityItemSource {
         case .saveToCameraRoll, .postToFlickr, .assignToContact, .print:
             return self.image
             
-        case .message, .mail:
+        case .message where !self.report.isEmpty, .mail where !self.report.isEmpty:
             return self.report + "\n\n" + (url?.absoluteString ?? "")
             
         case .copyToPasteboard, .postToFacebook, .postToTwitter, .postToWeibo, .postToTencentWeibo, .collaborationCopyLink, .collaborationInviteWithLink, .addToHomeScreen, .addToReadingList:
