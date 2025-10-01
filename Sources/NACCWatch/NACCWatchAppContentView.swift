@@ -28,30 +28,39 @@ import RVS_UIKit_Toolbox
 // MARK: - Observable Model -
 /* ###################################################################################################################################### */
 /**
+ This wraps the preferences in an observable wrapper.
  */
 final class WatchModel: NSObject, ObservableObject, WCSessionDelegate {
     /* ################################################################## */
     /**
-     */
-    @Published var text: String = ""
-
-    /* ################################################################## */
-    /**
-     */
-    @Published var cleanDate: Date = Date()
-
-    /* ################################################################## */
-    /**
-     */
-    @Published var watchFormat: Int = 0
-
-    /* ################################################################## */
-    /**
+     The Watchkit session, for communicating with the phone.
      */
     private var _session: WCSession?
 
     /* ################################################################## */
     /**
+     The cleantime report text. Observable.
+     */
+    @Published var text: String = ""
+
+    /* ################################################################## */
+    /**
+     The cleandate. Observable.
+     */
+    @Published var cleanDate: Date = Date()
+
+    /* ################################################################## */
+    /**
+     The selected watch screen. Observable.
+     - 0: Text
+     - 1: Keytga Strip
+     - 2: Medallion/Keytag
+     */
+    @Published var watchFormat: Int = 0
+
+    /* ################################################################## */
+    /**
+     Default initializer. We use it to set up the session, and refresh the prefs.
      */
     override init() {
         super.init()
@@ -66,6 +75,7 @@ final class WatchModel: NSObject, ObservableObject, WCSessionDelegate {
 
     /* ################################################################## */
     /**
+     This flushes the prefs, and reloads them. The observable properties will be affected.
      */
     @MainActor
     func reloadFromPrefs() {
@@ -83,11 +93,16 @@ final class WatchModel: NSObject, ObservableObject, WCSessionDelegate {
     // MARK: WCSessionDelegate
     /* ################################################################## */
     /**
+     This is an empty function. Just here to satisfy the protocol.
      */
     func session(_: WCSession, activationDidCompleteWith: WCSessionActivationState, error: Error?) {}
 
     /* ################################################################## */
     /**
+     Called when the context is updated by the phone.
+     
+     - parameter: The session (ignored)
+     - parameter inContext: The new context.
      */
     func session(_: WCSession, didReceiveApplicationContext inContext: [String: Any]) {
         Task { @MainActor in
