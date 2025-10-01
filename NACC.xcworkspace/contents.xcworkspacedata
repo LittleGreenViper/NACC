@@ -60,6 +60,9 @@
          location = "group:docs/index.html">
       </FileRef>
       <FileRef
+         location = "group:.swiftlint.yml">
+      </FileRef>
+      <FileRef
          location = "group:README.md">
       </FileRef>
    </Group>

@@ -162,6 +162,9 @@ struct NACCWatchComplicationEntryView: View {
                 .onAppear { self.entry.family = self._family }
             }
         }
+        .containerBackground(for: .widget) {
+            Color.clear
+        }
     }
 }
 

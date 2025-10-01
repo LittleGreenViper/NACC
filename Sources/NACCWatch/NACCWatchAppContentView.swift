@@ -25,6 +25,81 @@ import LGV_UICleantime
 import RVS_UIKit_Toolbox
 
 /* ###################################################################################################################################### */
+// MARK: - Observable Model -
+/* ###################################################################################################################################### */
+/**
+ */
+final class WatchModel: NSObject, ObservableObject, WCSessionDelegate {
+    /* ################################################################## */
+    /**
+     */
+    @Published var text: String = ""
+
+    /* ################################################################## */
+    /**
+     */
+    @Published var cleanDate: Date = Date()
+
+    /* ################################################################## */
+    /**
+     */
+    @Published var watchFormat: Int = 0
+
+    /* ################################################################## */
+    /**
+     */
+    private var _session: WCSession?
+
+    /* ################################################################## */
+    /**
+     */
+    override init() {
+        super.init()
+        if WCSession.isSupported() {
+            let session = WCSession.default
+            session.delegate = self
+            session.activate()
+            self._session = session
+        }
+        DispatchQueue.main.async { self.reloadFromPrefs() }
+    }
+
+    /* ################################################################## */
+    /**
+     */
+    @MainActor
+    func reloadFromPrefs() {
+        NACCPersistentPrefs().flush()
+        self.cleanDate   = NACCPersistentPrefs().cleanDate
+        self.watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue
+
+        Task.detached {
+            if let text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: self.cleanDate, endDate: .now) {
+                await MainActor.run { self.text = text }
+            }
+        }
+    }
+
+    // MARK: WCSessionDelegate
+    /* ################################################################## */
+    /**
+     */
+    func session(_: WCSession, activationDidCompleteWith: WCSessionActivationState, error: Error?) {}
+
+    /* ################################################################## */
+    /**
+     */
+    func session(_: WCSession, didReceiveApplicationContext inContext: [String: Any]) {
+        Task { @MainActor in
+            if let raw = inContext["watchFormat"] as? Int {
+                NACCPersistentPrefs().watchAppDisplayState = .init(rawValue: raw) ?? .init(rawValue: 0) ?? .text
+            }
+            self.reloadFromPrefs()
+        }
+    }
+}
+
+/* ###################################################################################################################################### */
 // MARK: - Watch App Content View -
 /* ###################################################################################################################################### */
 /**
@@ -36,6 +111,12 @@ struct NACCWatchAppContentView: View {
      Tracks scene activity.
      */
     @Environment(\.scenePhase) private var _scenePhase
+
+    /* ################################################################## */
+    /**
+     An instance of the observable model class.
+     */
+    @StateObject private var _model = WatchModel()
 
     /* ################################################################## */
     /**
@@ -168,8 +249,7 @@ struct NACCWatchAppContentView: View {
                 // Forces updates, whenever we become active.
                 .onChange(of: self._scenePhase, initial: true) {
                     if .active == self._scenePhase {
-                        NACCPersistentPrefs().flush()
-                        self.synchronize()
+                        self._model.reloadFromPrefs()
                     }
                 }
                 .tabViewStyle(PageTabViewStyle())
