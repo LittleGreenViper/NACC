@@ -14,17 +14,14 @@
 		D43730122D497E9C00592680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D43730112D497E9C00592680 /* Assets.xcassets */; };
 		D43C66D42694AC20007D5883 /* NACCAppSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */; };
 		D44690402D61358C0079B36A /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D446903F2D61358C0079B36A /* RVS_UIKit_Toolbox */; };
-		D44690422D6135DA0079B36A /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D44690412D6135DA0079B36A /* RVS_UIKit_Toolbox */; };
 		D44690442D6135E50079B36A /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D44690432D6135E50079B36A /* RVS_UIKit_Toolbox */; };
 		D44690462D6135EF0079B36A /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D44690452D6135EF0079B36A /* RVS_UIKit_Toolbox */; };
 		D45240E12D620C34000BD663 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D45240E02D620C34000BD663 /* LGV_Cleantime */; };
 		D45240E32D620C3E000BD663 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D45240E22D620C3E000BD663 /* LGV_Cleantime */; };
 		D45240E52D620C4B000BD663 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D45240E42D620C4B000BD663 /* LGV_Cleantime */; };
-		D45240E72D620C54000BD663 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D45240E62D620C54000BD663 /* LGV_Cleantime */; };
 		D45240E92D620C5A000BD663 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D45240E82D620C5A000BD663 /* LGV_Cleantime */; };
 		D45A93C42D4C4DEB008B2528 /* NACCWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D45A93B72D4C4DEA008B2528 /* NACCWatch.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D45A93CE2D4C5405008B2528 /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
-		D462E4BA2D5D08A3001E2C0F /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D462E4B92D5D08A3001E2C0F /* RVS_Persistent_Prefs */; };
 		D462E4BC2D5D08C0001E2C0F /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D462E4BB2D5D08C0001E2C0F /* RVS_Persistent_Prefs */; };
 		D462E4C02D5D09FF001E2C0F /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D462E4BF2D5D09FF001E2C0F /* RVS_Persistent_Prefs */; };
 		D462E4C22D5D0AB7001E2C0F /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
@@ -50,6 +47,15 @@
 		D4A420F02D4D607C00E4AC1E /* WidgetStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */; };
 		D4A420F12D4D607C00E4AC1E /* NACCWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A420E82D4D607C00E4AC1E /* NACCWidgetBundle.swift */; };
 		D4ACE7E22D584805006C00AD /* WatchStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */; };
+		D4B2C2762E8FFE5D009DD45D /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2752E8FFE5D009DD45D /* RVS_Persistent_Prefs */; };
+		D4B2C2782E8FFE62009DD45D /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2772E8FFE62009DD45D /* LGV_Cleantime */; };
+		D4B2C27B2E8FFEBB009DD45D /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C27A2E8FFEBB009DD45D /* LGV_UICleantime */; };
+		D4B2C27E2E8FFEE9009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C27D2E8FFEE9009DD45D /* RVS_Generic_Swift_Toolbox */; };
+		D4B2C2802E8FFEFC009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C27F2E8FFEFC009DD45D /* RVS_Generic_Swift_Toolbox */; };
+		D4B2C2822E8FFF0F009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2812E8FFF0F009DD45D /* RVS_Generic_Swift_Toolbox */; };
+		D4B2C2842E8FFF17009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2832E8FFF17009DD45D /* RVS_Generic_Swift_Toolbox */; };
+		D4B2C2862E8FFF1F009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2852E8FFF1F009DD45D /* RVS_Generic_Swift_Toolbox */; };
+		D4B2C2882E8FFF38009DD45D /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2872E8FFF38009DD45D /* RVS_UIKit_Toolbox */; };
 		D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D4BD88F1269E2FAA009015D1 /* NACCAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */; };
 		D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */; };
@@ -64,7 +70,6 @@
 		D4F46FE12C94669E0071D359 /* NACCIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D4F46FE02C94669E0071D359 /* NACCIntents.intentdefinition */; };
 		D4F58DF42D5FE4C00087C387 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4F58DF32D5FE4C00087C387 /* LGV_UICleantime */; };
 		D4F58DF62D5FE4C90087C387 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4F58DF52D5FE4C90087C387 /* LGV_UICleantime */; };
-		D4F58DF82D5FE4D30087C387 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4F58DF72D5FE4D30087C387 /* LGV_UICleantime */; };
 		D4F58DFA2D5FE4D90087C387 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4F58DF92D5FE4D90087C387 /* LGV_UICleantime */; };
 		D4F58E002D5FE5400087C387 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4F58DFF2D5FE5400087C387 /* LGV_UICleantime */; };
 		D4F945512D4E60620073AF8F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
@@ -241,6 +246,7 @@
 			files = (
 				D45240E12D620C34000BD663 /* LGV_Cleantime in Frameworks */,
 				D477647A2D3FFA2400DB748E /* RVS_Persistent_Prefs in Frameworks */,
+				D4B2C2802E8FFEFC009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */,
 				D4F58DF42D5FE4C00087C387 /* LGV_UICleantime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,10 +255,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D462E4BA2D5D08A3001E2C0F /* RVS_Persistent_Prefs in Frameworks */,
-				D44690422D6135DA0079B36A /* RVS_UIKit_Toolbox in Frameworks */,
-				D4F58DF82D5FE4D30087C387 /* LGV_UICleantime in Frameworks */,
-				D45240E72D620C54000BD663 /* LGV_Cleantime in Frameworks */,
+				D4B2C2762E8FFE5D009DD45D /* RVS_Persistent_Prefs in Frameworks */,
+				D4B2C2882E8FFF38009DD45D /* RVS_UIKit_Toolbox in Frameworks */,
+				D4B2C2782E8FFE62009DD45D /* LGV_Cleantime in Frameworks */,
+				D4B2C27E2E8FFEE9009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */,
+				D4B2C27B2E8FFEBB009DD45D /* LGV_UICleantime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +271,7 @@
 				D44690462D6135EF0079B36A /* RVS_UIKit_Toolbox in Frameworks */,
 				D45240E32D620C3E000BD663 /* LGV_Cleantime in Frameworks */,
 				D4F58DF62D5FE4C90087C387 /* LGV_UICleantime in Frameworks */,
+				D4B2C2822E8FFF0F009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +281,7 @@
 			files = (
 				D45240E52D620C4B000BD663 /* LGV_Cleantime in Frameworks */,
 				D4F58E002D5FE5400087C387 /* LGV_UICleantime in Frameworks */,
+				D4B2C2842E8FFF17009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */,
 				D44690402D61358C0079B36A /* RVS_UIKit_Toolbox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +294,7 @@
 				D44690442D6135E50079B36A /* RVS_UIKit_Toolbox in Frameworks */,
 				D45240E92D620C5A000BD663 /* LGV_Cleantime in Frameworks */,
 				D4F58DFA2D5FE4D90087C387 /* LGV_UICleantime in Frameworks */,
+				D4B2C2862E8FFF1F009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +311,7 @@
 				D45A93B72D4C4DEA008B2528 /* NACCWatch.app */,
 				D4A420B02D4D5C7900E4AC1E /* NACCWidget.appex */,
 				D4F9DA952D5BA6A300FFC2DC /* NACCWatchComplicationExtension.appex */,
+				D45315ED2E8FF6410019485D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -338,6 +349,13 @@
 				D43C66D82694AC33007D5883 /* Warnings.xcconfig */,
 			);
 			path = "Project-Meta";
+			sourceTree = "<group>";
+		};
+		D45315ED2E8FF6410019485D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D49F5F1F2C9075D20039A098 /* Intents */ = {
@@ -558,6 +576,7 @@
 				D47764792D3FFA2400DB748E /* RVS_Persistent_Prefs */,
 				D4F58DF32D5FE4C00087C387 /* LGV_UICleantime */,
 				D45240E02D620C34000BD663 /* LGV_Cleantime */,
+				D4B2C27F2E8FFEFC009DD45D /* RVS_Generic_Swift_Toolbox */,
 			);
 			productName = UICleantimeTestHarness;
 			productReference = D4C080612D4957B200299FBC /* NACC.app */;
@@ -580,10 +599,11 @@
 			);
 			name = NACCWatch;
 			packageProductDependencies = (
-				D462E4B92D5D08A3001E2C0F /* RVS_Persistent_Prefs */,
-				D4F58DF72D5FE4D30087C387 /* LGV_UICleantime */,
-				D44690412D6135DA0079B36A /* RVS_UIKit_Toolbox */,
-				D45240E62D620C54000BD663 /* LGV_Cleantime */,
+				D4B2C2752E8FFE5D009DD45D /* RVS_Persistent_Prefs */,
+				D4B2C2772E8FFE62009DD45D /* LGV_Cleantime */,
+				D4B2C27A2E8FFEBB009DD45D /* LGV_UICleantime */,
+				D4B2C27D2E8FFEE9009DD45D /* RVS_Generic_Swift_Toolbox */,
+				D4B2C2872E8FFF38009DD45D /* RVS_UIKit_Toolbox */,
 			);
 			productName = "NACCWatch Watch App";
 			productReference = D45A93B72D4C4DEA008B2528 /* NACCWatch.app */;
@@ -608,6 +628,7 @@
 				D4F58DF52D5FE4C90087C387 /* LGV_UICleantime */,
 				D44690452D6135EF0079B36A /* RVS_UIKit_Toolbox */,
 				D45240E22D620C3E000BD663 /* LGV_Cleantime */,
+				D4B2C2812E8FFF0F009DD45D /* RVS_Generic_Swift_Toolbox */,
 			);
 			productName = NACCWidgetExtension;
 			productReference = D4A420B02D4D5C7900E4AC1E /* NACCWidget.appex */;
@@ -630,6 +651,7 @@
 				D4F58DFF2D5FE5400087C387 /* LGV_UICleantime */,
 				D446903F2D61358C0079B36A /* RVS_UIKit_Toolbox */,
 				D45240E42D620C4B000BD663 /* LGV_Cleantime */,
+				D4B2C2832E8FFF17009DD45D /* RVS_Generic_Swift_Toolbox */,
 			);
 			productName = NACCIntents;
 			productReference = D4C080642D4957B200299FBC /* NACCIntents.appex */;
@@ -654,6 +676,7 @@
 				D4F58DF92D5FE4D90087C387 /* LGV_UICleantime */,
 				D44690432D6135E50079B36A /* RVS_UIKit_Toolbox */,
 				D45240E82D620C5A000BD663 /* LGV_Cleantime */,
+				D4B2C2852E8FFF1F009DD45D /* RVS_Generic_Swift_Toolbox */,
 			);
 			productName = NACCWatchComplicationExtension;
 			productReference = D4F9DA952D5BA6A300FFC2DC /* NACCWatchComplicationExtension.appex */;
@@ -699,10 +722,10 @@
 			packageReferences = (
 				D462E4AB2D5D07E6001E2C0F /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */,
 				D462E4AC2D5D07ED001E2C0F /* XCRemoteSwiftPackageReference "RVS_GeneralObserver" */,
-				D462E4AD2D5D07F6001E2C0F /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */,
 				D462E4AE2D5D0806001E2C0F /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */,
-				D47B92A82D6137B700524021 /* XCRemoteSwiftPackageReference "LGV_UICleantime" */,
 				D45240DF2D620C34000BD663 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */,
+				D4B2C2792E8FFEA1009DD45D /* XCRemoteSwiftPackageReference "LGV_UICleantime" */,
+				D4B2C27C2E8FFEDB009DD45D /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */,
 			);
 			productRefGroup = D43C667E2694AA88007D5883;
 			projectDirPath = "";
@@ -1639,7 +1662,7 @@
 			repositoryURL = "https://github.com/LittleGreenViper/LGV_Cleantime";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.3;
+				minimumVersion = 1.4.5;
 			};
 		};
 		D462E4AB2D5D07E6001E2C0F /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */ = {
@@ -1658,14 +1681,6 @@
 				minimumVersion = 1.1.3;
 			};
 		};
-		D462E4AD2D5D07F6001E2C0F /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RiftValleySoftware/RVS_Generic_Swift_Toolbox";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.15.6;
-			};
-		};
 		D462E4AE2D5D0806001E2C0F /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_PersistentPrefs";
@@ -1674,23 +1689,26 @@
 				minimumVersion = 1.5.0;
 			};
 		};
-		D47B92A82D6137B700524021 /* XCRemoteSwiftPackageReference "LGV_UICleantime" */ = {
+		D4B2C2792E8FFEA1009DD45D /* XCRemoteSwiftPackageReference "LGV_UICleantime" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/LittleGreenViper/LGV_UICleantime";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.4.1;
+				minimumVersion = 2.4.2;
+			};
+		};
+		D4B2C27C2E8FFEDB009DD45D /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RiftValleySoftware/RVS_Generic_Swift_Toolbox";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.15.7;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		D446903F2D61358C0079B36A /* RVS_UIKit_Toolbox */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D462E4AB2D5D07E6001E2C0F /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */;
-			productName = RVS_UIKit_Toolbox;
-		};
-		D44690412D6135DA0079B36A /* RVS_UIKit_Toolbox */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D462E4AB2D5D07E6001E2C0F /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */;
 			productName = RVS_UIKit_Toolbox;
@@ -1720,20 +1738,10 @@
 			package = D45240DF2D620C34000BD663 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */;
 			productName = LGV_Cleantime;
 		};
-		D45240E62D620C54000BD663 /* LGV_Cleantime */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D45240DF2D620C34000BD663 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */;
-			productName = LGV_Cleantime;
-		};
 		D45240E82D620C5A000BD663 /* LGV_Cleantime */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D45240DF2D620C34000BD663 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */;
 			productName = LGV_Cleantime;
-		};
-		D462E4B92D5D08A3001E2C0F /* RVS_Persistent_Prefs */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D462E4AE2D5D0806001E2C0F /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */;
-			productName = RVS_Persistent_Prefs;
 		};
 		D462E4BB2D5D08C0001E2C0F /* RVS_Persistent_Prefs */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1749,15 +1757,56 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = RVS_Persistent_Prefs;
 		};
+		D4B2C2752E8FFE5D009DD45D /* RVS_Persistent_Prefs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D462E4AE2D5D0806001E2C0F /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */;
+			productName = RVS_Persistent_Prefs;
+		};
+		D4B2C2772E8FFE62009DD45D /* LGV_Cleantime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D45240DF2D620C34000BD663 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */;
+			productName = LGV_Cleantime;
+		};
+		D4B2C27A2E8FFEBB009DD45D /* LGV_UICleantime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4B2C2792E8FFEA1009DD45D /* XCRemoteSwiftPackageReference "LGV_UICleantime" */;
+			productName = LGV_UICleantime;
+		};
+		D4B2C27D2E8FFEE9009DD45D /* RVS_Generic_Swift_Toolbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4B2C27C2E8FFEDB009DD45D /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */;
+			productName = RVS_Generic_Swift_Toolbox;
+		};
+		D4B2C27F2E8FFEFC009DD45D /* RVS_Generic_Swift_Toolbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4B2C27C2E8FFEDB009DD45D /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */;
+			productName = RVS_Generic_Swift_Toolbox;
+		};
+		D4B2C2812E8FFF0F009DD45D /* RVS_Generic_Swift_Toolbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4B2C27C2E8FFEDB009DD45D /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */;
+			productName = RVS_Generic_Swift_Toolbox;
+		};
+		D4B2C2832E8FFF17009DD45D /* RVS_Generic_Swift_Toolbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4B2C27C2E8FFEDB009DD45D /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */;
+			productName = RVS_Generic_Swift_Toolbox;
+		};
+		D4B2C2852E8FFF1F009DD45D /* RVS_Generic_Swift_Toolbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4B2C27C2E8FFEDB009DD45D /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */;
+			productName = RVS_Generic_Swift_Toolbox;
+		};
+		D4B2C2872E8FFF38009DD45D /* RVS_UIKit_Toolbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D462E4AB2D5D07E6001E2C0F /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */;
+			productName = RVS_UIKit_Toolbox;
+		};
 		D4F58DF32D5FE4C00087C387 /* LGV_UICleantime */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LGV_UICleantime;
 		};
 		D4F58DF52D5FE4C90087C387 /* LGV_UICleantime */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LGV_UICleantime;
-		};
-		D4F58DF72D5FE4D30087C387 /* LGV_UICleantime */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LGV_UICleantime;
 		};
