@@ -123,6 +123,42 @@ final class WatchModel: NSObject, ObservableObject, WCSessionDelegate {
 struct NACCWatchAppContentView: View {
     /* ################################################################## */
     /**
+     This is a threaded renderer
+     */
+    static func _renderAssets(for date: Date) async -> (keytag: UIImage?, medallion: UIImage?) {
+        // Bail out quickly if already cancelled.
+        if Task.isCancelled { return (nil, nil) }
+
+        // Heavy work off the main actor.
+        return await Task.detached(priority: .background) {
+            if Task.isCancelled { return (nil, nil) }
+
+            let calc = LGV_CleantimeDateCalc(startDate: date).cleanTime
+
+            let keytag = LGV_MultiKeytagImageGenerator(
+                isVerticalStrip: true,
+                totalDays: calc.totalDays,
+                totalMonths: calc.totalMonths,
+                widestKeytagImageInDisplayUnits: (calc.years > 2 ? 64 : 128)
+            ).generatedImage
+
+            let medallion: UIImage? = (calc.years > 0)
+                ? LGV_MedallionImage(totalMonths: calc.totalMonths).drawImage()
+                : LGV_KeytagImageGenerator(isRingClosed: true,
+                                           totalDays: calc.totalDays,
+                                           totalMonths: calc.totalMonths).generatedImage
+
+            return (keytag, medallion)
+        }.value // <-- await only, no try
+    }
+
+    /* ################################################################## */
+    /**
+     */
+    @State private var _syncTask: Task<Void, Never>?
+
+    /* ################################################################## */
+    /**
      Tracks scene activity.
      */
     @Environment(\.scenePhase) private var _scenePhase
@@ -182,39 +218,18 @@ struct NACCWatchAppContentView: View {
     func synchronize() {
         if self.syncUp,
            !self.showCleanDatePicker {
+            self.syncUp = false
             NACCPersistentPrefs().flush()
             
             // get the text set, ASAP.
-            DispatchQueue.global().async {
-                let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: self.cleanDate, endDate: .now) ?? ""
-                DispatchQueue.main.async {
-                    text = textTemp
-                }
-            }
-            
-            // Update the keytags (could be slower)
-            DispatchQueue.global().async {
-                #if DEBUG
-                    print("Synchronizing (Global Thread)")
-                #endif
-                
-                let calculator = LGV_CleantimeDateCalc(startDate: self.cleanDate).cleanTime
-                
-                DispatchQueue.main.async {
-                    #if DEBUG
-                        print("Synchronizing (Main Thread)")
-                    #endif
-                    let keyTagImage = LGV_MultiKeytagImageGenerator(isVerticalStrip: true,
-                                                                    totalDays: calculator.totalDays,
-                                                                    totalMonths: calculator.totalMonths,
-                                                                    widestKeytagImageInDisplayUnits: 2 < calculator.years ? 64 : 128
-                    ).generatedImage
-                    
-                    let medallionView = (0 < calculator.years)
-                        ? LGV_MedallionImage(totalMonths: calculator.totalMonths).drawImage()
-                            : LGV_KeytagImageGenerator(isRingClosed: true, totalDays: calculator.totalDays, totalMonths: calculator.totalMonths).generatedImage
-                    
-                    (self.syncUp, self.singleKeytag, self.singleMedallion) = (false, keyTagImage, medallionView)
+            DispatchQueue.main.async { text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: self.cleanDate, endDate: .now) ?? "" }
+            _syncTask?.cancel()
+            _syncTask = Task(priority: .userInitiated) { [cleanDate] in
+                let (keytag, medallion) = await Self._renderAssets(for: cleanDate)
+                if Task.isCancelled { return }
+                await MainActor.run {
+                    self.singleKeytag = keytag
+                    self.singleMedallion = medallion
                 }
             }
         }
