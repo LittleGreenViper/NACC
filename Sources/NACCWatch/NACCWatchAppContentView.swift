@@ -123,6 +123,42 @@ final class WatchModel: NSObject, ObservableObject, WCSessionDelegate {
 struct NACCWatchAppContentView: View {
     /* ################################################################## */
     /**
+     This is a threaded renderer
+     */
+    static func _renderAssets(for date: Date) async -> (keytag: UIImage?, medallion: UIImage?) {
+        // Bail out quickly if already cancelled.
+        if Task.isCancelled { return (nil, nil) }
+
+        // Heavy work off the main actor.
+        return await Task.detached(priority: .background) {
+            if Task.isCancelled { return (nil, nil) }
+
+            let calc = LGV_CleantimeDateCalc(startDate: date).cleanTime
+
+            let keytag = LGV_MultiKeytagImageGenerator(
+                isVerticalStrip: true,
+                totalDays: calc.totalDays,
+                totalMonths: calc.totalMonths,
+                widestKeytagImageInDisplayUnits: (calc.years > 2 ? 64 : 128)
+            ).generatedImage
+
+            let medallion: UIImage? = (calc.years > 0)
+                ? LGV_MedallionImage(totalMonths: calc.totalMonths).drawImage()
+                : LGV_KeytagImageGenerator(isRingClosed: true,
+                                           totalDays: calc.totalDays,
+                                           totalMonths: calc.totalMonths).generatedImage
+
+            return (keytag, medallion)
+        }.value // <-- await only, no try
+    }
+
+    /* ################################################################## */
+    /**
+     */
+    @State private var _syncTask: Task<Void, Never>?
+
+    /* ################################################################## */
+    /**
      Tracks scene activity.
      */
     @Environment(\.scenePhase) private var _scenePhase
@@ -226,6 +262,7 @@ struct NACCWatchAppContentView: View {
      This makes sure that the screen reflects the current state.
      */
     func synchronize() {
+<<<<<<< HEAD
         guard self.syncUp, !self.showCleanDatePicker else { return }
 
         self.syncUp = false
@@ -243,6 +280,24 @@ struct NACCWatchAppContentView: View {
             await MainActor.run {
                 self.singleKeytag = keytag
                 self.singleMedallion = medallion
+=======
+        if self.syncUp,
+           !self.showCleanDatePicker {
+            self.syncUp = false
+            NACCPersistentPrefs().flush()
+            self.singleKeytag = nil
+            self.singleMedallion = nil
+            // get the text set, ASAP.
+            DispatchQueue.main.async { text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: self.cleanDate, endDate: .now) ?? "" }
+            _syncTask?.cancel()
+            _syncTask = Task(priority: .userInitiated) {
+                let (keytag, medallion) = await Self._renderAssets(for: self.cleanDate)
+                if Task.isCancelled { return }
+                DispatchQueue.main.async {
+                    self.singleKeytag = keytag
+                    self.singleMedallion = medallion
+                }
+>>>>>>> threaded-render
             }
         }
     }
@@ -262,18 +317,22 @@ struct NACCWatchAppContentView: View {
                         .foregroundStyle(Color.black)
                         .padding()
                     
-                    ScrollView {
-                        let image = (singleKeytag ?? UIImage(systemName: "nosign"))?.resized(toNewWidth: 2 < calculator.years ? 64 : 128) ?? UIImage()
-                        Spacer()
-                            .frame(height: 8)
-                        Image(uiImage: image)
-                            .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
+                    if let singleKeytag = self.singleKeytag?.resized(toNewWidth: 2 < calculator.years ? 64 : 128) {
+                        ScrollView {
+                            let image = singleKeytag
+                            Spacer()
+                                .frame(height: 8)
+                            Image(uiImage: image)
+                                .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
+                        }
+                        .clipped()
                     }
-                    .clipped()
                     
-                    Image(uiImage: (singleMedallion ?? UIImage(systemName: "nosign"))?.resized(toNewHeight: inGeom.size.height) ?? UIImage())
-                        .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
-                        .containerRelativeFrame([.horizontal, .vertical], alignment: .center)
+                    if let singleMedallion = self.singleMedallion?.resized(toNewHeight: inGeom.size.height) {
+                        Image(uiImage: singleMedallion)
+                            .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
+                            .containerRelativeFrame([.horizontal, .vertical], alignment: .center)
+                    }
                 }
                 .background {
                     Image("BackgroundGradient")
