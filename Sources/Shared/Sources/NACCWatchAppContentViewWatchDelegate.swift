@@ -59,7 +59,7 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
     /**
      This maintains a reference to the session.
      */
-    var wcSession = WCSession.default
+    static private var _wcSession = WCSession.default
     
     /* ###################################################################### */
     /**
@@ -114,6 +114,18 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
         }
     }
     
+    /* ###################################################################### */
+    /**
+     Called when the session deactivates.
+     
+     - parameter inSession: The session being deactivated.
+    */
+    func wcSessionDidBecomeInactive(_ inSession: WCSession) {
+        #if DEBUG
+            print("Session is inactive.")
+        #endif
+    }
+    
     #if !os(watchOS)    // Only necessary for iOS
         /* ################################################################## */
         /**
@@ -148,12 +160,9 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
                 #if DEBUG
                     print("Received Reply from Phone: \(inReply)")
                 #endif
-                #if DEBUG
-                    print("Reply from peer: \(inReply)")
-                #endif
                 self.retries = 0
                 self.isUpdateInProgress = false
-                self.session(self.wcSession, didReceiveApplicationContext: inReply)
+                self.session(Self._wcSession, didReceiveApplicationContext: inReply)
             }
             
             /* ########################################################## */
@@ -185,11 +194,11 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
             }
 
             self.isUpdateInProgress = true
-            #if DEBUG
-                print("Sending context request to the phone")
-            #endif
-            if .activated == self.wcSession.activationState {
-                self.wcSession.sendMessage(["requestContext": "requestContext"], replyHandler: _replyHandler, errorHandler: _errorHandler)
+            if .activated == Self._wcSession.activationState {
+                #if DEBUG
+                    print("Sending context request to the phone")
+                #endif
+                Self._wcSession.sendMessage(["requestContext": "requestContext"], replyHandler: _replyHandler, errorHandler: _errorHandler)
             }
             self.isUpdateInProgress = false
         }
@@ -218,8 +227,8 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
                 #endif
             #endif
 
-            if .activated == self.wcSession.activationState {
-                try self.wcSession.updateApplicationContext(contextData)
+            if .activated == Self._wcSession.activationState {
+                try Self._wcSession.updateApplicationContext(contextData)
             }
         } catch {
             #if DEBUG
@@ -236,9 +245,9 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
      - parameter updateHandler: The function that will be called with any updates.
      */
     init(updateHandler inUpdateHandler: ApplicationContextHandler?) {
-        super.init()
         self.updateHandler = inUpdateHandler
-        self.wcSession.delegate = self
-        self.wcSession.activate()
+        super.init()
+        Self._wcSession.delegate = self
+        Self._wcSession.activate()
     }
 }

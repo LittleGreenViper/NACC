@@ -65,12 +65,10 @@ final class WatchModel: NSObject, ObservableObject, WCSessionDelegate {
     override init() {
         super.init()
         if WCSession.isSupported() {
-            let session = WCSession.default
-            session.delegate = self
-            session.activate()
-            self._session = session
+            self._session = WCSession.default
+            self._session?.delegate = self
+            self._session?.activate()
         }
-        DispatchQueue.main.async { self.reloadFromPrefs() }
     }
 
     /* ################################################################## */
@@ -85,7 +83,7 @@ final class WatchModel: NSObject, ObservableObject, WCSessionDelegate {
 
         Task.detached {
             if let text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: self.cleanDate, endDate: .now) {
-                await MainActor.run { self.text = text }
+                DispatchQueue.main.async { self.text = text }
             }
         }
     }
@@ -149,11 +147,12 @@ struct NACCWatchAppContentView: View {
                                            totalMonths: calc.totalMonths).generatedImage
 
             return (keytag, medallion)
-        }.value // <-- await only, no try
+        }.value
     }
 
     /* ################################################################## */
     /**
+     Task used to render keytags in a separate thread.
      */
     @State private var _syncTask: Task<Void, Never>?
 
@@ -167,7 +166,7 @@ struct NACCWatchAppContentView: View {
     /**
      An instance of the observable model class.
      */
-    @StateObject private var _model = WatchModel()
+    @Binding var model: WatchModel
 
     /* ################################################################## */
     /**
@@ -219,18 +218,20 @@ struct NACCWatchAppContentView: View {
         if self.syncUp,
            !self.showCleanDatePicker {
             self.syncUp = false
-            NACCPersistentPrefs().flush()
-            self.singleKeytag = nil
-            self.singleMedallion = nil
-            // get the text set, ASAP.
-            DispatchQueue.main.async { text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: self.cleanDate, endDate: .now) ?? "" }
-            _syncTask?.cancel()
-            _syncTask = Task(priority: .userInitiated) {
-                let (keytag, medallion) = await Self._renderAssets(for: self.cleanDate)
-                if Task.isCancelled { return }
-                DispatchQueue.main.async {
-                    self.singleKeytag = keytag
-                    self.singleMedallion = medallion
+            DispatchQueue.main.async {
+                NACCPersistentPrefs().flush()
+                // get the text set, ASAP.
+                text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: self.cleanDate, endDate: .now) ?? ""
+                self.singleKeytag = nil
+                self.singleMedallion = nil
+                self._syncTask?.cancel()
+                self._syncTask = Task(priority: .userInitiated) {
+                    let (keytag, medallion) = await Self._renderAssets(for: self.cleanDate)
+                    if Task.isCancelled { return }
+                    DispatchQueue.main.async {
+                        self.singleKeytag = keytag
+                        self.singleMedallion = medallion
+                    }
                 }
             }
         }
@@ -275,17 +276,14 @@ struct NACCWatchAppContentView: View {
                 }
                 .onAppear {
                     self.showCleanDatePicker = false
-                    NACCPersistentPrefs().flush()
                     self.synchronize()
                 }
-                .onDisappear { _syncTask?.cancel() }
-                .onChange(of: self.syncUp) {
-                    self.synchronize()
-                }
+                .onDisappear { self._syncTask?.cancel() }
+                .onChange(of: self.syncUp, initial: true) { self.synchronize() }
                 // Forces updates, whenever we become active.
                 .onChange(of: self._scenePhase, initial: true) {
                     if .active == self._scenePhase {
-                        self._model.reloadFromPrefs()
+                        self.model.reloadFromPrefs()
                     }
                 }
                 .tabViewStyle(PageTabViewStyle())

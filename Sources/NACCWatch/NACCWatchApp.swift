@@ -42,8 +42,14 @@ struct NACCWatchApp: App {
     /**
      This handles the session delegate.
      */
-    @State private var _wcSessionDelegateHandler: NACCWatchAppContentViewWatchDelegate?
+    static private var _wcSessionDelegateHandler: NACCWatchAppContentViewWatchDelegate?
     
+    /* ################################################################## */
+    /**
+     An instance of the observable model class.
+     */
+    @State private var _watchModel = WatchModel()
+
     /* ################################################################## */
     /**
      The image that represents a keytag. May be nil.
@@ -122,7 +128,8 @@ struct NACCWatchApp: App {
      */
     var body: some Scene {
         WindowGroup {
-            NACCWatchAppContentView(singleKeytag: $_singleKeytag,
+            NACCWatchAppContentView(model: self.$_watchModel,
+                                    singleKeytag: $_singleKeytag,
                                     singleMedallion: $_singleMedallion,
                                     text: $_text,
                                     showCleanDatePicker: $_showCleanDatePicker,
@@ -133,14 +140,13 @@ struct NACCWatchApp: App {
             .onAppear {
                 NACCPersistentPrefs().flush()
                 self._watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue
-                self._wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: self.updateApplicationContext)
             }
         }
         .onChange(of: self._cleanDate) {
             if NACCPersistentPrefs().cleanDate != self._cleanDate {
                 NACCPersistentPrefs().cleanDate = self._cleanDate
                 if self._showCleanDatePicker {   // Only if we are changing it on the watch.
-                    self._wcSessionDelegateHandler?.sendApplicationContext()
+                    Self._wcSessionDelegateHandler?.sendApplicationContext()
                     self._syncUp = true
                 }
                 WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
@@ -150,13 +156,14 @@ struct NACCWatchApp: App {
             if let formatTemp = NACCPersistentPrefs.MainWatchState(rawValue: self._watchFormat),
                formatTemp != NACCPersistentPrefs().watchAppDisplayState {   // We only send it, if we changed the screen that we're viewing.
                 NACCPersistentPrefs().watchAppDisplayState = formatTemp
-                self._wcSessionDelegateHandler?.sendApplicationContext()
+                Self._wcSessionDelegateHandler?.sendApplicationContext()
             }
         }
         // Forces updates, whenever we become active.
         .onChange(of: self._scenePhase, initial: true) {
             if .active == self._scenePhase {
                 NACCPersistentPrefs().flush()
+                Self._wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: self.updateApplicationContext)
                 WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
             }
         }

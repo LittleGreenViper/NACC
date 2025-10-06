@@ -85,7 +85,7 @@ class NACCInitialViewController: NACCBaseViewController {
     /**
      This handles the session delegate.
      */
-    private var _wcSessionDelegateHandler: NACCWatchAppContentViewWatchDelegate?
+    private static var _wcSessionDelegateHandler: NACCWatchAppContentViewWatchDelegate?
     
     /* ################################################################################################################################## */
     // MARK: Internal Instance IBOutlet Properties
@@ -165,12 +165,12 @@ extension NACCInitialViewController {
      - parameter tabIndex: The tab index to choose. This is optional. If not specified, we do not open a tab.
     */
     func setDate(_ inDate: Date? = nil, tabIndex inTabIndex: NACCTabBarController.TabIndexes? = nil) {
-        if let dateSelector = dateSelector,
+        if let dateSelector = self.dateSelector,
            let minDate = dateSelector.minimumDate {
             let newDateValue = inDate ?? NACCPersistentPrefs().cleanDate
             if (minDate...Date()).contains(newDateValue) {
                 dateSelector.date = newDateValue
-                newDate()
+                self.newDate()
                 navigationController?.popToRootViewController(animated: false)
                 if let tabIndex = inTabIndex,
                    .undefined != tabIndex {  // We only open to a tab, if it was explicitly requested, by indicating a tab number.
@@ -187,15 +187,15 @@ extension NACCInitialViewController {
      */
     func fadeInAnimation() {
         view.layoutIfNeeded()
-        if let startupLogo = startupLogo {
+        if let startupLogo = self.startupLogo {
             startupLogo.alpha = 1.0
-            logoContainerView?.alpha = 0.0
-            dateSelector?.alpha = 0.0
-            cleantimeReportLabel?.alpha = 0.0
-            infoButton?.customView?.alpha = 0.0
-            actionButton?.customView?.alpha = 0.0
-            calendarButton?.customView?.alpha = 0.0
-            _cleantimeDisplayView?.alpha = 0
+            self.logoContainerView?.alpha = 0.0
+            self.dateSelector?.alpha = 0.0
+            self.cleantimeReportLabel?.alpha = 0.0
+            self.infoButton?.customView?.alpha = 0.0
+            self.actionButton?.customView?.alpha = 0.0
+            self.calendarButton?.customView?.alpha = 0.0
+            self._cleantimeDisplayView?.alpha = 0
             view.layoutIfNeeded()
             UIView.animate(withDuration: Self._fadeAnimationPeriod, animations: { [weak self] in
                                                                                     startupLogo.alpha = 0.0
@@ -224,7 +224,7 @@ extension NACCInitialViewController {
     */
     func updateScreen() {
         if let tab = NACCTabBarController.TabIndexes(rawValue: NACCPersistentPrefs().lastSelectedTabIndex) {
-            setDate(NACCPersistentPrefs().cleanDate, tabIndex: tab)
+            self.setDate(NACCPersistentPrefs().cleanDate, tabIndex: tab)
         }
     }
 }
@@ -239,15 +239,15 @@ extension NACCInitialViewController {
     */
     override func viewDidLoad() {
         super.viewDidLoad()
-        _wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext)
-        _originalLogoHeight = logoHeightConstraint?.constant ?? 0
-        dateSelector?.accessibilityLabel = "SLUG-ACC-DATEPICKER".localizedVariant
-        logoContainerView?.accessibilityLabel = "SLUG-ACC-LOGO".localizedVariant
-        actionButton?.accessibilityLabel = "SLUG-ACC-ACTION-BUTTON".localizedVariant
-        calendarButton?.accessibilityLabel = "SLUG-ACC-CALENDAR-BUTTON".localizedVariant
-        infoButton?.accessibilityLabel = "SLUG-ACC-INFO-BUTTON".localizedVariant
-        cleantimeReportLabel?.accessibilityLabel = "SLUG-ACC-REPORT-BUTTON".localizedVariant
-        cleantimeViewContainer?.accessibilityLabel = "SLUG-ACC-IMAGE".localizedVariant
+        Self._wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: updateApplicationContext)
+        self._originalLogoHeight = logoHeightConstraint?.constant ?? 0
+        self.dateSelector?.accessibilityLabel = "SLUG-ACC-DATEPICKER".localizedVariant
+        self.logoContainerView?.accessibilityLabel = "SLUG-ACC-LOGO".localizedVariant
+        self.actionButton?.accessibilityLabel = "SLUG-ACC-ACTION-BUTTON".localizedVariant
+        self.calendarButton?.accessibilityLabel = "SLUG-ACC-CALENDAR-BUTTON".localizedVariant
+        self.infoButton?.accessibilityLabel = "SLUG-ACC-INFO-BUTTON".localizedVariant
+        self.cleantimeReportLabel?.accessibilityLabel = "SLUG-ACC-REPORT-BUTTON".localizedVariant
+        self.cleantimeViewContainer?.accessibilityLabel = "SLUG-ACC-IMAGE".localizedVariant
     }
     
     /* ################################################################## */
@@ -258,15 +258,15 @@ extension NACCInitialViewController {
     */
     override func viewWillAppear(_ inIsAnimated: Bool) {
         super.viewWillAppear(inIsAnimated)
-        navigationController?.navigationBar.isHidden = false    // Just in case...
+        self.navigationController?.navigationBar.isHidden = false    // Just in case...
         if inIsAnimated {
-            fadeInAnimation()
+            self.fadeInAnimation()
         } else {
-            startupLogo?.removeFromSuperview()  // Should never happen, but what the hell...
-            startupLogo = nil
+            self.startupLogo?.removeFromSuperview()  // Should never happen, but what the hell...
+            self.startupLogo = nil
         }
-        setDate()
-        _wcSessionDelegateHandler?.sendApplicationContext()
+        self.setDate()
+        Self._wcSessionDelegateHandler?.sendApplicationContext()
     }
 
     /* ################################################################## */
@@ -278,11 +278,11 @@ extension NACCInitialViewController {
         if let view = view {
             if 0 < view.bounds.size.height {
                 if Self._minimumScreenHeight > view.bounds.size.height {
-                    cleantimeDisplayHeightConstraint?.isActive = true
-                    logoHeightConstraint?.constant = 0
+                    self.cleantimeDisplayHeightConstraint?.isActive = true
+                    self.logoHeightConstraint?.constant = 0
                 } else {
-                    cleantimeDisplayHeightConstraint?.isActive = false
-                    logoHeightConstraint?.constant = _originalLogoHeight
+                    self.cleantimeDisplayHeightConstraint?.isActive = false
+                    self.logoHeightConstraint?.constant = _originalLogoHeight
                 }
             }
         }
@@ -364,7 +364,7 @@ extension NACCInitialViewController {
      - parameter inDatePicker: The picker instance. This can be ignored (in which case we try the date selector).
     */
     @IBAction func newDate(_ inDatePicker: UIDatePicker! = nil) {
-        NACCAppSceneDelegate.appDelegateInstance?.date = inDatePicker?.date ?? dateSelector?.date ?? NACCPersistentPrefs().cleanDate
+        NACCAppSceneDelegate.appDelegateInstance?.date = inDatePicker?.date ?? self.dateSelector?.date ?? NACCPersistentPrefs().cleanDate
         
         // If this actually came from the date selector changing (as opposed to the screen being initialized), we clear the stored prefs.
         if nil != inDatePicker {
@@ -372,46 +372,46 @@ extension NACCInitialViewController {
         }
         
         if let date = NACCAppSceneDelegate.appDelegateInstance?.date {
-            _cleantimeDisplayView?.removeFromSuperview()
-            _cleantimeDisplayView = nil
+            self._cleantimeDisplayView?.removeFromSuperview()
+            self._cleantimeDisplayView = nil
 
             NACCPersistentPrefs().cleanDate = date
             
             if nil != inDatePicker {
-                _wcSessionDelegateHandler?.sendApplicationContext()
+                Self._wcSessionDelegateHandler?.sendApplicationContext()
             }
 
             if let text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: date, endDate: Date(), calendar: Calendar.current) {
                 NACCAppSceneDelegate.appDelegateInstance?.report = text
-                cleantimeReportLabel?.text = text
+                self.cleantimeReportLabel?.text = text
             }
             
             // The text is set to the action color, if it is selectable (valid date).
             let calculator = LGV_CleantimeDateCalc(startDate: date, calendar: Calendar.current).cleanTime
             if 0 < calculator.totalDays {
-                logoContainerView?.isUserInteractionEnabled = true
-                cleantimeViewContainer?.isUserInteractionEnabled = true
-                cleantimeReportLabel?.isUserInteractionEnabled = true
-                cleantimeReportLabel?.textColor = UIColor(named: "SelectionTintColor")
+                self.logoContainerView?.isUserInteractionEnabled = true
+                self.cleantimeViewContainer?.isUserInteractionEnabled = true
+                self.cleantimeReportLabel?.isUserInteractionEnabled = true
+                self.cleantimeReportLabel?.textColor = UIColor(named: "SelectionTintColor")
             } else {
-                logoContainerView?.isUserInteractionEnabled = false
-                cleantimeViewContainer?.isUserInteractionEnabled = false
-                cleantimeReportLabel?.isUserInteractionEnabled = false
-                cleantimeReportLabel?.textColor = .label
+                self.logoContainerView?.isUserInteractionEnabled = false
+                self.cleantimeViewContainer?.isUserInteractionEnabled = false
+                self.cleantimeReportLabel?.isUserInteractionEnabled = false
+                self.cleantimeReportLabel?.textColor = .label
             }
             
             // Have to have at least one day, for a tag.
             if 0 < calculator.totalDays {
-                actionButton?.isEnabled = true
-                calendarButton?.isEnabled = true
+                self.actionButton?.isEnabled = true
+                self.calendarButton?.isEnabled = true
                 if 0 < calculator.years {
-                    _cleantimeDisplayView = LGV_UISingleCleantimeMedallionImageView()
+                    self._cleantimeDisplayView = LGV_UISingleCleantimeMedallionImageView()
                 } else {
-                    _cleantimeDisplayView = LGV_UISingleCleantimeKeytagImageView()
+                    self._cleantimeDisplayView = LGV_UISingleCleantimeKeytagImageView()
                 }
                 
-                guard let cleantimeDisplayView = _cleantimeDisplayView,
-                      let cleantimeViewContainer = cleantimeViewContainer
+                guard let cleantimeDisplayView = self._cleantimeDisplayView,
+                      let cleantimeViewContainer = self.cleantimeViewContainer
                 else { return }
                 
                 cleantimeDisplayView.translatesAutoresizingMaskIntoConstraints = false
@@ -428,8 +428,8 @@ extension NACCInitialViewController {
                 cleantimeDisplayView.contentMode = .scaleAspectFit
                 cleantimeDisplayView.setNeedsLayout()
             } else {
-                actionButton?.isEnabled = false
-                calendarButton?.isEnabled = false
+                self.actionButton?.isEnabled = false
+                self.calendarButton?.isEnabled = false
             }
         }
    }
