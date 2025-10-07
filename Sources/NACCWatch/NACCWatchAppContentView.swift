@@ -261,12 +261,20 @@ struct NACCWatchAppContentView: View {
                                 .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
                         }
                         .clipped()
+                    } else {
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                            .tint(.black)
                     }
                     
                     if let singleMedallion = self.singleMedallion?.resized(toNewHeight: inGeom.size.height) {
                         Image(uiImage: singleMedallion)
                             .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
                             .containerRelativeFrame([.horizontal, .vertical], alignment: .center)
+                    } else {
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                            .tint(.black)
                     }
                 }
                 .background {

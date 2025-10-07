@@ -107,14 +107,14 @@ struct NACCWatchComplicationEntry: TimelineEntry {
             if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: NACCPersistentPrefs().cleanDate, endDate: .now, short: true) {
                 return textTemp
             }
-            return "ERROR"
+            return ""
 
         default:
             let totalDays = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.totalDays
             if 0 < totalDays {
                 return 1 == totalDays ? "SLUG-PREFIX-CLEANTIME-DAY".localizedVariant : String(format: "SLUG-PREFIX-CLEANTIME-DAYS".localizedVariant, totalDays)
             }
-            return "ERROR"
+            return ""
         }
     }
 }
