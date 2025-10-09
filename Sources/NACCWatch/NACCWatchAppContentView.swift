@@ -123,13 +123,13 @@ struct NACCWatchAppContentView: View {
     /**
      This is a threaded renderer
      */
-    static func _renderAssets(for date: Date) async -> (keytag: UIImage?, medallion: UIImage?) {
+    static func _renderAssets(for date: Date) async -> UIImage? {
         // Bail out quickly if already cancelled.
-        if Task.isCancelled { return (nil, nil) }
+        if Task.isCancelled { return nil }
 
         // Heavy work off the main actor.
         return await Task.detached(priority: .background) {
-            if Task.isCancelled { return (nil, nil) }
+            if Task.isCancelled { return nil }
 
             let calc = LGV_CleantimeDateCalc(startDate: date).cleanTime
 
@@ -140,13 +140,7 @@ struct NACCWatchAppContentView: View {
                 widestKeytagImageInDisplayUnits: (calc.years > 2 ? 64 : 128)
             ).generatedImage
 
-            let medallion: UIImage? = (calc.years > 0)
-                ? LGV_MedallionImage(totalMonths: calc.totalMonths).drawImage()
-                : LGV_KeytagImageGenerator(isRingClosed: true,
-                                           totalDays: calc.totalDays,
-                                           totalMonths: calc.totalMonths).generatedImage
-
-            return (keytag, medallion)
+            return keytag
         }.value
     }
 
@@ -222,16 +216,19 @@ struct NACCWatchAppContentView: View {
                 NACCPersistentPrefs().flush()
                 // get the text set, ASAP.
                 text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: self.cleanDate, endDate: .now) ?? ""
+                let calc = LGV_CleantimeDateCalc(startDate: self.cleanDate).cleanTime
+
+                self.singleMedallion = (calc.years > 0)
+                    ? LGV_MedallionImage(totalMonths: calc.totalMonths).drawImage()
+                    : LGV_KeytagImageGenerator(isRingClosed: true,
+                                               totalDays: calc.totalDays,
+                                               totalMonths: calc.totalMonths).generatedImage
                 self.singleKeytag = nil
-                self.singleMedallion = nil
                 self._syncTask?.cancel()
                 self._syncTask = Task(priority: .userInitiated) {
-                    let (keytag, medallion) = await Self._renderAssets(for: self.cleanDate)
+                    let keytag = await Self._renderAssets(for: self.cleanDate)
                     if Task.isCancelled { return }
-                    DispatchQueue.main.async {
-                        self.singleKeytag = keytag
-                        self.singleMedallion = medallion
-                    }
+                    DispatchQueue.main.async { self.singleKeytag = keytag }
                 }
             }
         }
@@ -252,25 +249,25 @@ struct NACCWatchAppContentView: View {
                         .foregroundStyle(Color.black)
                         .padding()
                     
-                    if let singleKeytag = self.singleKeytag?.resized(toNewWidth: 2 < calculator.years ? 64 : 128) {
+                    if let singleMedallion = self.singleMedallion?.resized(toNewHeight: inGeom.size.height) {
+                        Image(uiImage: singleMedallion)
+                            .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
+                            .containerRelativeFrame([.horizontal, .vertical], alignment: .center)
+                    } else {
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                            .tint(.black)
+                    }
+
+                    if let keytagStrip = self.singleKeytag?.resized(toNewWidth: 2 < calculator.years ? 64 : 128) {
                         ScrollView {
-                            let image = singleKeytag
+                            let image = keytagStrip
                             Spacer()
                                 .frame(height: 8)
                             Image(uiImage: image)
                                 .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
                         }
                         .clipped()
-                    } else {
-                        ProgressView()
-                            .progressViewStyle(.circular)
-                            .tint(.black)
-                    }
-                    
-                    if let singleMedallion = self.singleMedallion?.resized(toNewHeight: inGeom.size.height) {
-                        Image(uiImage: singleMedallion)
-                            .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
-                            .containerRelativeFrame([.horizontal, .vertical], alignment: .center)
                     } else {
                         ProgressView()
                             .progressViewStyle(.circular)
