@@ -128,7 +128,7 @@ struct NACCWatchAppContentView: View {
         if Task.isCancelled { return nil }
 
         // Heavy work off the main actor.
-        return await Task.detached(priority: .background) {
+        return await Task.detached(priority: .userInitiated) {
             if Task.isCancelled { return nil }
 
             let calc = LGV_CleantimeDateCalc(startDate: date).cleanTime
@@ -209,20 +209,20 @@ struct NACCWatchAppContentView: View {
      This makes sure that the screen reflects the current state.
      */
     func synchronize() {
-        if self.syncUp,
-           !self.showCleanDatePicker {
-            self.syncUp = false
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            if self.syncUp,
+               !self.showCleanDatePicker {
+                self.syncUp = false
                 NACCPersistentPrefs().flush()
                 // get the text set, ASAP.
                 text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: self.cleanDate, endDate: .now) ?? ""
                 let calc = LGV_CleantimeDateCalc(startDate: self.cleanDate).cleanTime
-
+                
                 self.singleMedallion = (calc.years > 0)
-                    ? LGV_MedallionImage(totalMonths: calc.totalMonths).drawImage()
-                    : LGV_KeytagImageGenerator(isRingClosed: true,
-                                               totalDays: calc.totalDays,
-                                               totalMonths: calc.totalMonths).generatedImage
+                ? LGV_MedallionImage(totalMonths: calc.totalMonths).drawImage()
+                : LGV_KeytagImageGenerator(isRingClosed: true,
+                                           totalDays: calc.totalDays,
+                                           totalMonths: calc.totalMonths).generatedImage
                 self.singleKeytag = nil
                 self._syncTask?.cancel()
                 self._syncTask = Task(priority: .userInitiated) {
