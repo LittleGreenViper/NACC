@@ -52,9 +52,9 @@ struct NACCWatchApp: App {
 
     /* ################################################################## */
     /**
-     The image that represents a keytag. May be nil.
+     The image that represents the keytag chain.
      */
-    @State private var _singleKeytag: UIImage?
+    @State private var _keytagChain: UIImage?
     
     /* ################################################################## */
     /**
@@ -129,7 +129,7 @@ struct NACCWatchApp: App {
     var body: some Scene {
         WindowGroup {
             NACCWatchAppContentView(model: self.$_watchModel,
-                                    singleKeytag: $_singleKeytag,
+                                    keytagChain: $_keytagChain,
                                     singleMedallion: $_singleMedallion,
                                     text: $_text,
                                     showCleanDatePicker: $_showCleanDatePicker,

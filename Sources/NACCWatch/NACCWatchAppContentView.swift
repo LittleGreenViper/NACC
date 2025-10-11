@@ -164,9 +164,9 @@ struct NACCWatchAppContentView: View {
 
     /* ################################################################## */
     /**
-     The image that represents a keytag. May be nil.
+     The image that represents the keytag chain. May be nil.
      */
-    @Binding var singleKeytag: UIImage?
+    @Binding var keytagChain: UIImage?
     
     /* ################################################################## */
     /**
@@ -223,12 +223,12 @@ struct NACCWatchAppContentView: View {
                 : LGV_KeytagImageGenerator(isRingClosed: true,
                                            totalDays: calc.totalDays,
                                            totalMonths: calc.totalMonths).generatedImage
-                self.singleKeytag = nil
+                self.keytagChain = nil
                 self._syncTask?.cancel()
                 self._syncTask = Task(priority: .userInitiated) {
                     let keytag = await Self._renderAssets(for: self.cleanDate)
                     if Task.isCancelled { return }
-                    DispatchQueue.main.async { self.singleKeytag = keytag }
+                    DispatchQueue.main.async { self.keytagChain = keytag }
                 }
             }
         }
@@ -259,9 +259,9 @@ struct NACCWatchAppContentView: View {
                             .tint(.black)
                     }
 
-                    if let keytagStrip = self.singleKeytag?.resized(toNewWidth: 2 < calculator.years ? 64 : 128) {
+                    if let keytagChain = self.keytagChain?.resized(toNewWidth: 2 < calculator.years ? 64 : 128) {
                         ScrollView {
-                            let image = keytagStrip
+                            let image = keytagChain
                             Spacer()
                                 .frame(height: 8)
                             Image(uiImage: image)
@@ -285,7 +285,6 @@ struct NACCWatchAppContentView: View {
                 }
                 .onDisappear { self._syncTask?.cancel() }
                 .onChange(of: self.syncUp, initial: true) { self.synchronize() }
-                // Forces updates, whenever we become active.
                 .onChange(of: self._scenePhase, initial: true) {
                     if .active == self._scenePhase {
                         self.model.reloadFromPrefs()

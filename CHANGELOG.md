@@ -1,3 +1,8 @@
+**6.1.6.3060** *October 11, 2025*
+
+- iOS-only. Fixes an issue with the Watch app.
+- Improves Watch app responsiveness, and switches the order of the screens, because the medallion is now immediately rendered.
+
 **6.1.5.3056** *October 7, 2025*
 
 - Some iOS 26 Fixes

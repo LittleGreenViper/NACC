@@ -90,16 +90,16 @@ class NACCPersistentPrefs: RVS_PersistentPrefs {
 
         /* ############################################################## */
         /**
-         Only display the highest achieved keytag.
-         */
-        case keytag
-
-        /* ############################################################## */
-        /**
          Only display the highest achieved keytag (if less than a year), or the last medallion (if a year or more).
          This is the default.
          */
         case medallion
+
+        /* ############################################################## */
+        /**
+         Displays the keytag chain.
+         */
+        case keytag
     }
     
     /* ################################################################################################################################## */
