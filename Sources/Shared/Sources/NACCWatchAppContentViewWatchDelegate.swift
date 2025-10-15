@@ -101,14 +101,14 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
      - parameter didReceiveApplicationContext: The new context data.
     */
     func session(_ inSession: WCSession, didReceiveApplicationContext inApplicationContext: [String: Any]) {
-        guard !self.isUpdateInProgress else { return }
-        self.isUpdateInProgress = true
-        #if DEBUG && os(watchOS)
-            print("Watch App Received Context Update: \(inApplicationContext)")
-        #elseif DEBUG
-            print("iOS App Received Context Update: \(inApplicationContext)")
-        #endif
         DispatchQueue.main.async {
+            guard !self.isUpdateInProgress else { return }
+            self.isUpdateInProgress = true
+            #if DEBUG && os(watchOS)
+                print("Watch App Received Context Update: \(inApplicationContext)")
+            #elseif DEBUG
+                print("iOS App Received Context Update: \(inApplicationContext)")
+            #endif
             self.updateHandler?(inApplicationContext)
             self.isUpdateInProgress = false
         }
