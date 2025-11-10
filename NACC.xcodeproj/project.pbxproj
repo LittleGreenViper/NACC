@@ -335,7 +335,6 @@
 				D4B247C2269F0C76004D8D1E /* View Controllers */,
 				D4F54A192809B27200F175C4 /* Utility */,
 				D4B247C0269F0C52004D8D1E /* Resources */,
-				D4B247C1269F0C65004D8D1E /* Meta */,
 				D41657122C4846990015DDFD /* NACC.docc */,
 			);
 			path = NACC;
@@ -397,6 +396,7 @@
 				D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */,
 				D49C9A7A280783C6008E9917 /* InfoPlist.strings */,
 				D48C496C2C9372C5007E87C3 /* AppShortcuts.strings */,
+				D4B247C1269F0C65004D8D1E /* Meta */,
 				D43730112D497E9C00592680 /* Assets.xcassets */,
 				D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */,
 				D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */,
@@ -1694,7 +1694,7 @@
 			repositoryURL = "https://github.com/LittleGreenViper/LGV_UICleantime";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.4.2;
+				minimumVersion = 2.4.3;
 			};
 		};
 		D4B2C27C2E8FFEDB009DD45D /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */ = {
@@ -1702,7 +1702,7 @@
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_Generic_Swift_Toolbox";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.15.7;
+				minimumVersion = 1.16.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
