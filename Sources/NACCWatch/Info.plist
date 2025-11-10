@@ -5,7 +5,7 @@
 	<key>LSApplicationCategory</key>
 	<string>Lifestyle</string>
 	<key>UIDesignRequiresCompatibility</key>
-	<true/>
+	<false/>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIImageName</key>
