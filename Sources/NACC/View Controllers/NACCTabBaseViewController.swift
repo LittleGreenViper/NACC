@@ -193,6 +193,7 @@ extension NACCTabBaseViewController: LGV_UICleantimeImageViewObserverProtocol {
            let imageSize = inImageView.image?.size {
             let aspect = imageSize.height / imageSize.width
             cleantime.heightAnchor.constraint(equalTo: cleantime.widthAnchor, multiplier: aspect).isActive = true
+//            cleantime.topAnchor.constraint(greaterThanOrEqualTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         }
     }
 }

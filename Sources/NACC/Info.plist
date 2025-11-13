@@ -81,7 +81,7 @@
 		<string>fetch</string>
 	</array>
 	<key>UIDesignRequiresCompatibility</key>
-	<true/>
+	<false/>
 	<key>UILaunchStoryboardName</key>
 	<string>NACC_LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
