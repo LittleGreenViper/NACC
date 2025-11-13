@@ -63,6 +63,12 @@ class NACCTabBaseViewController: NACCBaseViewController {
      This is the cleantime keytag or medallion image.
     */
     @IBOutlet var cleantime: LGV_UICleantimeImageViewBase?
+    
+    /* ################################################################## */
+    /**
+     The top constraint for the scroller contents.
+    */
+    @IBOutlet weak var cleantimeTopConstraint: NSLayoutConstraint?
 
     /* ################################################################## */
     /**
@@ -193,7 +199,6 @@ extension NACCTabBaseViewController: LGV_UICleantimeImageViewObserverProtocol {
            let imageSize = inImageView.image?.size {
             let aspect = imageSize.height / imageSize.width
             cleantime.heightAnchor.constraint(equalTo: cleantime.widthAnchor, multiplier: aspect).isActive = true
-//            cleantime.topAnchor.constraint(greaterThanOrEqualTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         }
     }
 }

@@ -402,6 +402,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="cleantime" destination="JrZ-cY-Xxh" id="d8N-up-GsH"/>
+                        <outlet property="cleantimeTopConstraint" destination="IdF-2T-vQ1" id="bXo-Zc-mvq"/>
                         <outlet property="scrollView" destination="gcx-fi-5tv" id="XBu-wi-TtX"/>
                         <outlet property="throbber" destination="YDQ-XI-E8H" id="aGg-3p-ahI"/>
                     </connections>
@@ -496,6 +497,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="cleantime" destination="0y2-lW-2GJ" id="8Tw-Se-frr"/>
+                        <outlet property="cleantimeTopConstraint" destination="xcq-ll-DPf" id="CfT-wM-Uuv"/>
                         <outlet property="scrollView" destination="EvK-Sc-3NK" id="2pO-QM-puf"/>
                         <outlet property="throbber" destination="p4t-uc-LYL" id="8gB-pP-FoE"/>
                     </connections>
@@ -614,6 +616,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="cleantime" destination="3e0-wz-1xh" id="nCx-It-D9E"/>
+                        <outlet property="cleantimeTopConstraint" destination="VPd-XG-UtS" id="Yez-HU-0BP"/>
                         <outlet property="scrollView" destination="WdQ-Nu-H9j" id="QuF-XI-eps"/>
                         <outlet property="throbber" destination="SFy-51-jzK" id="eip-gb-wAY"/>
                     </connections>
