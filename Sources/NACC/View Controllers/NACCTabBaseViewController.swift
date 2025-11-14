@@ -25,6 +25,21 @@ import RVS_GeneralObserver
 import RVS_Generic_Swift_Toolbox
 
 /* ###################################################################################################################################### */
+// MARK: - Special Extension to ScrollView -
+/* ###################################################################################################################################### */
+fileprivate extension UIScrollView {
+    /* ################################################################## */
+    /**
+     Returns true, if the scroller needs to be scrolled vertically (we don't care about horizontal).
+     */
+    var _needsVerticalScroll: Bool {
+        let visibleHeight = self.bounds.height - (self.adjustedContentInset.top + self.adjustedContentInset.bottom)
+
+        return self.contentSize.height > (visibleHeight + 0.5) // The 0.5 is for float stuff.
+    }
+}
+
+/* ###################################################################################################################################### */
 // MARK: - Cleantime Display View Controller -
 /* ###################################################################################################################################### */
 /**
@@ -86,9 +101,9 @@ extension NACCTabBaseViewController {
      This will show a "busy throbber," while the images are being composited.
     */
     private func _showThrobber() {
-        navigationController?.isNavigationBarHidden = true
-        self.throbber?.isHidden = false
         self.cleantime?.isHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        self.throbber?.isHidden = false
     }
     
     /* ################################################################## */
@@ -96,8 +111,8 @@ extension NACCTabBaseViewController {
      This will hide the "busy throbber," after the images were composited.
     */
     private func _hideThrobber() {
-        navigationController?.isNavigationBarHidden = false
         self.throbber?.isHidden = true
+        navigationController?.setNavigationBarHidden(false, animated: false)
         self.cleantime?.isHidden = false
     }
 }
@@ -131,14 +146,20 @@ extension NACCTabBaseViewController {
         super.viewWillAppear(inIsAnimated)
         self.tabBarController?.navigationItem.title = tabBarItem.title
         self.scrollView?.zoomScale = 1.0
-        
+
         // Just in case we show up, and everything is hidden...
         if !(self.windowInterfaceOrientation?.isLandscape ?? false) {
             self.tabBarController?.tabBar.isHidden = false
             self.navigationController?.navigationBar.isHidden = false
         }
+        
+        if !(self.scrollView?._needsVerticalScroll ?? false) {
+            self.cleantimeTopConstraint?.constant = self.view?.safeAreaInsets.top ?? 0
+        } else {
+            self.cleantimeTopConstraint?.constant = 0
+        }
     }
-    
+
     /* ################################################################## */
     /**
      This was inspired by [this SO answer](https://stackoverflow.com/a/60577486/879365).
@@ -199,6 +220,10 @@ extension NACCTabBaseViewController: LGV_UICleantimeImageViewObserverProtocol {
            let imageSize = inImageView.image?.size {
             let aspect = imageSize.height / imageSize.width
             cleantime.heightAnchor.constraint(equalTo: cleantime.widthAnchor, multiplier: aspect).isActive = true
+        }
+
+        if !(self.scrollView?._needsVerticalScroll ?? false) {
+            self.cleantimeTopConstraint?.constant = self.view?.safeAreaInsets.top ?? 0
         }
     }
 }
