@@ -108,14 +108,6 @@ extension NACCTabBarController {
         
         self.viewControllers?[TabIndexes.keytagStrip.rawValue].tabBarItem?.isEnabled = 29 < calculator.totalDays
         self.viewControllers?[TabIndexes.medallions.rawValue].tabBarItem?.isEnabled = 0 < calculator.years
-
-        self.viewControllers?.forEach {
-            if let tabBarItemTitle = $0.tabBarItem?.title?.localizedVariant,
-               !tabBarItemTitle.isEmpty {
-                $0.tabBarItem?.title = tabBarItemTitle
-                $0.accessibilityLabel = "SLUG-ACC-\(tabBarItemTitle)".localizedVariant
-            }
-        }
         
         let lastSelectedTabIndex = NACCPersistentPrefs().lastSelectedTabIndex
         
@@ -126,12 +118,12 @@ extension NACCTabBarController {
             self.selectedViewController = self.viewControllers?[TabIndexes.keytagArray.rawValue]
         }
         
-        self.actionButton?.accessibilityLabel = "SLUG-ACC-TABS-ACTION-BUTTON".localizedVariant
-        
         if #available(iOS 18.0, *),
            .pad == UIDevice.current.userInterfaceIdiom {
-            self.traitOverrides.horizontalSizeClass = .compact
+            traitOverrides.horizontalSizeClass = .compact
         }
+        
+        self.actionButton?.accessibilityLabel = "SLUG-ACC-TABS-ACTION-BUTTON".localizedVariant
     }
 }
 
@@ -186,7 +178,7 @@ extension NACCTabBarController: UITabBarControllerDelegate {
         else { return }
         
         controller.myTabIndex = index
-        
+        self.navigationItem.title = "SLUG-TAB-\(controller.view.tag)".localizedVariant
         NACCPersistentPrefs().lastSelectedTabIndex = index.rawValue
     }
 }

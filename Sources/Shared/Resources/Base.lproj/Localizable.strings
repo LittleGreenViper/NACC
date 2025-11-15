@@ -78,15 +78,15 @@
 
 // MARK: HORIZONTAL KEYTAGS SCREEN
 
-"SLUG-HORIZONTAL-TAGS"                          =   "Keytag Array";
+"SLUG-TAB-0"                                    =   "Keytag Array";
 
 // MARK: VERTICAL KEYTAGS SCREEN
 
-"SLUG-VERTICAL-TAGS"                            =   "Keytag Strip";
+"SLUG-TAB-1"                                    =   "Keytag Strip";
 
 // MARK: MEDALLIONS SCREEN
 
-"SLUG-MEDALLIONS"                               =   "Medallions";
+"SLUG-TAB-2"                                    =   "Medallions";
 
 // MARK: -
 // MARK: - ACCESSIBILITY -

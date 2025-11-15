@@ -108,13 +108,7 @@ extension NACCBaseViewController {
     */
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let tabBarItemTitle = self.tabBarItem?.title?.localizedVariant,
-           !tabBarItemTitle.isEmpty {
-            self.tabBarController?.navigationItem.title = tabBarItemTitle
-        } else {
-            self.navigationItem.title = (navigationItem.title ?? "ERROR").localizedVariant
-        }
+        self.navigationItem.title = self.navigationItem.title?.localizedVariant
 
         if let view = self.view {
             self._myBackgroundGradientView = UIImageView()

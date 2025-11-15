@@ -102,7 +102,6 @@ extension NACCTabBaseViewController {
     */
     private func _showThrobber() {
         self.cleantime?.isHidden = true
-        navigationController?.setNavigationBarHidden(true, animated: false)
         self.throbber?.isHidden = false
     }
     
@@ -112,7 +111,6 @@ extension NACCTabBaseViewController {
     */
     private func _hideThrobber() {
         self.throbber?.isHidden = true
-        navigationController?.setNavigationBarHidden(false, animated: false)
         self.cleantime?.isHidden = false
     }
 }
@@ -144,8 +142,8 @@ extension NACCTabBaseViewController {
     */
     override func viewWillAppear(_ inIsAnimated: Bool) {
         super.viewWillAppear(inIsAnimated)
-        self.tabBarController?.navigationItem.title = tabBarItem.title
         self.scrollView?.zoomScale = 1.0
+        self.tabBarController?.navigationItem.title = "SLUG-TAB-\(self.view.tag)".localizedVariant
 
         // Just in case we show up, and everything is hidden...
         if !(self.windowInterfaceOrientation?.isLandscape ?? false) {

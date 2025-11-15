@@ -324,11 +324,11 @@
             </objects>
             <point key="canvasLocation" x="-719" y="117"/>
         </scene>
-        <!--SLUG-MEDALLIONS-->
+        <!--Tab Base View Controller-->
         <scene sceneID="j24-BH-WSs">
             <objects>
                 <viewController id="FYt-bP-Kw1" customClass="NACCTabBaseViewController" customModule="NACC" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5k4-pn-52d">
+                    <view key="view" tag="2" contentMode="scaleToFill" id="5k4-pn-52d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -397,7 +397,7 @@
                             <constraint firstItem="YgI-mE-gMX" firstAttribute="leading" secondItem="t39-yH-CZK" secondAttribute="leading" constant="20" id="lLu-Qe-Vcd"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="SLUG-MEDALLIONS" id="w4C-aR-UIP">
+                    <tabBarItem key="tabBarItem" title="" id="w4C-aR-UIP">
                         <imageReference key="image" image="circle.grid.3x3.fill" catalog="system" symbolScale="large" renderingMode="template"/>
                     </tabBarItem>
                     <connections>
@@ -415,7 +415,7 @@
         <scene sceneID="r4x-Ca-ifI">
             <objects>
                 <viewController id="Bgv-IP-lSn" userLabel="Keytags (Vertical)" customClass="NACCTabBaseViewController" customModule="NACC" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2wy-eh-dHW">
+                    <view key="view" tag="1" contentMode="scaleToFill" id="2wy-eh-dHW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -492,7 +492,7 @@
                             <constraint firstItem="EdS-5L-HmY" firstAttribute="trailing" secondItem="Nf1-hQ-XCk" secondAttribute="trailing" constant="20" id="pGn-L3-eZR"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="SLUG-VERTICAL-TAGS" id="wRf-zW-GPe" userLabel="Keytags (Vertical)">
+                    <tabBarItem key="tabBarItem" title="" id="wRf-zW-GPe" userLabel="Keytags (Vertical)">
                         <imageReference key="image" image="SingleKeytag" symbolScale="large" renderingMode="template"/>
                     </tabBarItem>
                     <connections>
@@ -612,8 +612,8 @@
                             <constraint firstItem="eAh-kt-2ZM" firstAttribute="top" secondItem="mrU-1k-RAR" secondAttribute="top" id="nFL-P8-V9p"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="SLUG-HORIZONTAL-TAGS" id="FCY-ty-EJV" userLabel="Keytags (Horizontal)">
-                        <imageReference key="image" image="ThreeKeytags" symbolScale="large" renderingMode="template"/>
+                    <tabBarItem key="tabBarItem" title="" id="FCY-ty-EJV" userLabel="Keytags (Horizontal)">
+                        <imageReference key="image" image="KeytagArray" symbolScale="large" renderingMode="template"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="cleantime" destination="9bU-xr-w9u" id="HUK-Ka-P1C"/>
@@ -629,10 +629,10 @@
     </scenes>
     <color key="tintColor" name="SelectionTintColor"/>
     <resources>
+        <image name="KeytagArray" width="26" height="26"/>
         <image name="Logo" width="612" height="612"/>
         <image name="SingleKeytag" width="26" height="26"/>
         <image name="StartupLogo" width="280" height="612"/>
-        <image name="ThreeKeytags" width="26" height="26"/>
         <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="circle.grid.3x3.fill" catalog="system" width="128" height="110"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
