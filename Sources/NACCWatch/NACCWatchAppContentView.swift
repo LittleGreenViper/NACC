@@ -225,7 +225,7 @@ struct NACCWatchAppContentView: View {
                                            totalMonths: calc.totalMonths).generatedImage
                 self.keytagChain = nil
                 self._syncTask?.cancel()
-                self._syncTask = Task(priority: .userInitiated) {
+                self._syncTask = Task.detached(priority: .userInitiated) {
                     let keytag = await Self._renderAssets(for: self.cleanDate)
                     if Task.isCancelled { return }
                     DispatchQueue.main.async { self.keytagChain = keytag }
@@ -258,7 +258,7 @@ struct NACCWatchAppContentView: View {
                             .progressViewStyle(.circular)
                             .tint(.black)
                     }
-
+                    
                     if let keytagChain = self.keytagChain?.resized(toNewWidth: 2 < calculator.years ? 64 : 128) {
                         ScrollView {
                             let image = keytagChain
@@ -278,6 +278,20 @@ struct NACCWatchAppContentView: View {
                     Image("BackgroundGradient")
                         .resizable(resizingMode: .stretch)
                         .cornerRadius(8)
+                }
+                .overlay(alignment: .topTrailing) {
+                    if !showCleanDatePicker {
+                        Button {
+                            showCleanDatePicker = true
+                        } label: {
+                            Image(systemName: "gearshape")
+                                .font(.system(size: 11, weight: .regular))
+                                .foregroundColor(.black)   // black gear
+                                .padding(3)                // tiny hit area
+                        }
+                        .buttonStyle(.borderless)
+                        .padding(3)                    // jam into top-right of card
+                    }
                 }
                 .onAppear {
                     self.showCleanDatePicker = false
