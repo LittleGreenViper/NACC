@@ -305,7 +305,7 @@ struct NACCWatchAppContentView: View {
                     }
                 }
                 .tabViewStyle(PageTabViewStyle())
-                .onTapGesture(count: 2) { self.showCleanDatePicker = true }
+                .simultaneousGesture(TapGesture(count: 2).onEnded { self.showCleanDatePicker = true })
                 .navigationDestination(isPresented: self.$showCleanDatePicker) { CleanDatePicker(cleanDate: self.$cleanDate, syncUp: self.$syncUp) }
             }
         }
