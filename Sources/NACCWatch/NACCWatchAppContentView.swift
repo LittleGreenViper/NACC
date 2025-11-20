@@ -279,24 +279,6 @@ struct NACCWatchAppContentView: View {
                         .resizable(resizingMode: .stretch)
                         .cornerRadius(8)
                 }
-                .overlay(alignment: .topTrailing) {
-                    if !showCleanDatePicker {
-                        Button {
-                            showCleanDatePicker = true
-                        } label: {
-                            Image(systemName: "gearshape")
-                                .font(.system(size: 11, weight: .regular))
-                                .foregroundColor(.black)   // black gear
-                                .padding(3)                // tiny hit area
-                        }
-                        .buttonStyle(.borderless)
-                        .padding(3)                    // jam into top-right of card
-                    }
-                }
-                .onAppear {
-                    self.showCleanDatePicker = false
-                    self.synchronize()
-                }
                 .onDisappear { self._syncTask?.cancel() }
                 .onChange(of: self.syncUp, initial: true) { self.synchronize() }
                 .onChange(of: self._scenePhase, initial: true) {
@@ -305,8 +287,25 @@ struct NACCWatchAppContentView: View {
                     }
                 }
                 .tabViewStyle(PageTabViewStyle())
-                .simultaneousGesture(TapGesture(count: 2).onEnded { self.showCleanDatePicker = true })
                 .navigationDestination(isPresented: self.$showCleanDatePicker) { CleanDatePicker(cleanDate: self.$cleanDate, syncUp: self.$syncUp) }
+                .overlay(alignment: .topTrailing) {
+                    if !showCleanDatePicker {
+                        Button {
+                            showCleanDatePicker = true
+                        } label: {
+                            Image(systemName: "gearshape")
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundColor(.black)   // black gear
+                                .padding(4)                // tiny hit area
+                        }
+                        .buttonStyle(.borderless)
+                        .padding(4)                    // jam into top-right of card
+                    }
+                }
+                .onAppear {
+                    self.showCleanDatePicker = false
+                    self.synchronize()
+                }
             }
         }
     }
