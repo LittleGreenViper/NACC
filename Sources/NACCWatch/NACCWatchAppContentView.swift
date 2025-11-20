@@ -288,23 +288,25 @@ struct NACCWatchAppContentView: View {
                 }
                 .tabViewStyle(PageTabViewStyle())
                 .navigationDestination(isPresented: self.$showCleanDatePicker) { CleanDatePicker(cleanDate: self.$cleanDate, syncUp: self.$syncUp) }
-                .overlay(alignment: .topTrailing) {
-                    if !showCleanDatePicker {
-                        Button {
-                            showCleanDatePicker = true
-                        } label: {
-                            Image(systemName: "gearshape")
-                                .font(.system(size: 14, weight: .regular))
-                                .foregroundColor(.black)   // black gear
-                                .padding(4)                // tiny hit area
-                        }
-                        .buttonStyle(.borderless)
-                        .padding(4)                    // jam into top-right of card
-                    }
-                }
                 .onAppear {
                     self.showCleanDatePicker = false
                     self.synchronize()
+                }
+            }
+            .padding(0)
+            .overlay(alignment: .topTrailing) {
+                if !showCleanDatePicker {
+                    Button {
+                        showCleanDatePicker = true
+                    } label: {
+                        Image(systemName: "gearshape")
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundColor(.black)
+                            .padding(8)
+                    }
+                    .buttonStyle(.borderless)
+                    .padding(.top, -12)
+                    .padding(.trailing, -4)
                 }
             }
         }
