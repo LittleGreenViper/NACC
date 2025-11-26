@@ -1,3 +1,8 @@
+**6.2.3.0002** *November 20, 2025*
+
+- Bunch of improvements to the Watch app.
+- Now fully "Liquid Glass-Native."
+
 **6.1.6.3060** *October 11, 2025*
 
 - iOS-only. Fixes an issue with the Watch app.
