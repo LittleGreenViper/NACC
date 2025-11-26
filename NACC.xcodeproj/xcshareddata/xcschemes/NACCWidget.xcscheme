@@ -31,8 +31,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D43C66B02694ABFF007D5883"
-               BuildableName = "NACC.app"
-               BlueprintName = "NACC"
+               BuildableName = "UIKit App.app"
+               BlueprintName = "UIKit App"
                ReferencedContainer = "container:NACC.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D43C66B02694ABFF007D5883"
-            BuildableName = "NACC.app"
-            BlueprintName = "NACC"
+            BuildableName = "UIKit App.app"
+            BlueprintName = "UIKit App"
             ReferencedContainer = "container:NACC.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -98,8 +98,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D43C66B02694ABFF007D5883"
-            BuildableName = "NACC.app"
-            BlueprintName = "NACC"
+            BuildableName = "UIKit App.app"
+            BlueprintName = "UIKit App"
             ReferencedContainer = "container:NACC.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
