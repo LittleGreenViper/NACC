@@ -12,6 +12,7 @@
 		D41361C027F8D80B00DA1AD4 /* NACCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */; };
 		D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42314F527FE150E00C5E5FC /* NACCTabBarController.swift */; };
 		D43730122D497E9C00592680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D43730112D497E9C00592680 /* Assets.xcassets */; };
+		D43BAAA72ED8E73E00B58900 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */; };
 		D43C66D42694AC20007D5883 /* NACCAppSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */; };
 		D44690402D61358C0079B36A /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D446903F2D61358C0079B36A /* RVS_UIKit_Toolbox */; };
 		D44690442D6135E50079B36A /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D44690432D6135E50079B36A /* RVS_UIKit_Toolbox */; };
@@ -426,7 +427,6 @@
 				D48C496C2C9372C5007E87C3 /* AppShortcuts.strings */,
 				D4B247C1269F0C65004D8D1E /* Meta */,
 				D43730112D497E9C00592680 /* Assets.xcassets */,
-				D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */,
 				D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */,
 			);
 			path = Resources;
@@ -540,6 +540,7 @@
 		D4E9103F2D497FEE0036F641 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */,
 				D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */,
 				D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */,
 				D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */,
@@ -824,6 +825,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4A0C1612ED78C6700F77D56 /* Assets.xcassets in Resources */,
+				D43BAAA72ED8E73E00B58900 /* Theme.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1445,6 +1447,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1485,6 +1488,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
