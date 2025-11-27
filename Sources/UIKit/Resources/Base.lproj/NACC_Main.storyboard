@@ -29,7 +29,7 @@
         <!--SLUG-ABOUT-->
         <scene sceneID="yTI-CC-UOq">
             <objects>
-                <viewController id="oY9-N7-njW" customClass="NACCAboutViewController" customModule="NACC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oY9-N7-njW" customClass="NACCAboutViewController" customModule="UIKit_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jj2-PE-SeP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,7 +147,7 @@
         <!--SLUG-INITIAL-TITLE-->
         <scene sceneID="WZH-Dg-DZt">
             <objects>
-                <viewController id="UXV-2X-dsd" customClass="NACCInitialViewController" customModule="NACC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="UXV-2X-dsd" customClass="NACCInitialViewController" customModule="UIKit_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yLY-Yv-YNj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -298,7 +298,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="mc5-Do-gLD">
             <objects>
-                <tabBarController modalTransitionStyle="flipHorizontal" id="NfT-p7-QCK" customClass="NACCTabBarController" customModule="NACC" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController modalTransitionStyle="flipHorizontal" id="NfT-p7-QCK" customClass="NACCTabBarController" customModule="UIKit_App" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="cGV-or-KZI">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="ocd-iY-hRN">
                             <connections>
@@ -327,7 +327,7 @@
         <!--Tab Base View Controller-->
         <scene sceneID="j24-BH-WSs">
             <objects>
-                <viewController id="FYt-bP-Kw1" customClass="NACCTabBaseViewController" customModule="NACC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FYt-bP-Kw1" customClass="NACCTabBaseViewController" customModule="UIKit_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" tag="2" contentMode="scaleToFill" id="5k4-pn-52d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -414,7 +414,7 @@
         <!--Keytags (Vertical)-->
         <scene sceneID="r4x-Ca-ifI">
             <objects>
-                <viewController id="Bgv-IP-lSn" userLabel="Keytags (Vertical)" customClass="NACCTabBaseViewController" customModule="NACC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Bgv-IP-lSn" userLabel="Keytags (Vertical)" customClass="NACCTabBaseViewController" customModule="UIKit_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" tag="1" contentMode="scaleToFill" id="2wy-eh-dHW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -534,7 +534,7 @@
         <!--Keytags (Horizontal)-->
         <scene sceneID="8c7-Kv-a0J">
             <objects>
-                <viewController id="Gj1-up-Mgj" userLabel="Keytags (Horizontal)" customClass="NACCTabBaseViewController" customModule="NACC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Gj1-up-Mgj" userLabel="Keytags (Horizontal)" customClass="NACCTabBaseViewController" customModule="UIKit_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mrU-1k-RAR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -20,8 +20,45 @@
 
 import SwiftUI
 
+/* ###################################################################################################################################### */
+// MARK: - Background Container View -
+/* ###################################################################################################################################### */
+/**
+ This is a general-purpose View that displays the background gradient, under the contained View.
+ */
+struct AppBackground<Content: View>: View {
+    /* ################################################################## */
+    /**
+     This is the content function. It simply uses the contained View.
+     */
+    let content: () -> Content
+
+    /* ################################################################## */
+    /**
+     The returned View contains the background in an image, with the content presented over it.
+     */
+    var body: some View {
+        ZStack {
+            Image("Background-Gradient")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            content()
+        }
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: - Main App -
+/* ###################################################################################################################################### */
+/**
+ */
 @main
 struct NACC_App: App {
+    /* ################################################################## */
+    /**
+     This is the main application.
+     */
     var body: some Scene {
         WindowGroup {
             NACC_MainContentView()

@@ -20,14 +20,27 @@
 
 import SwiftUI
 
+/* ###################################################################################################################################### */
+// MARK: - Main App View -
+/* ###################################################################################################################################### */
+/**
+ The initial app container View.
+ */
 struct NACC_MainContentView: View {
+    /* ################################################################## */
+    /**
+     */
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            AppBackground {
+                VStack {
+                    Image(systemName: "globe")
+                        .imageScale(.large)
+                        .foregroundStyle(.tint)
+                    Text("Hello, world!")
+                }
+                .padding()
+            }
         }
-        .padding()
     }
 }
