@@ -31,13 +31,15 @@ struct NACC_MainContentView: View {
 
     /* ################################################################## */
     /**
+     This returns a View, containing the main date display, and keytag/medallion display.
+     The user can change the date.
      */
     var body: some View {
         NavigationStack {
             AppBackground {
                 VStack {
                     Button {
-
+                        
                     } label: {
                         Image("Logo")
                             .resizable()
@@ -45,14 +47,15 @@ struct NACC_MainContentView: View {
                     }
                     
                     DatePicker(
-                                "",
-                                selection: $selectedDate,
-                                displayedComponents: [.date]
-                            )
-                    .datePickerStyle(.automatic)
-                    .labelsHidden()
+                        "",
+                        selection: $selectedDate,
+                        displayedComponents: [.date]
+                    )
                     .datePickerStyle(.compact)
-                    .frame(maxWidth: .infinity, alignment: .center)                }
+                    .labelsHidden()
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .environment(\.sizeCategory, .extraExtraExtraLarge)
+                }
                 .padding()
             }
         }
