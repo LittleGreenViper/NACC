@@ -27,6 +27,8 @@ import SwiftUI
  The initial app container View.
  */
 struct NACC_MainContentView: View {
+    @State private var selectedDate = Date()
+
     /* ################################################################## */
     /**
      */
@@ -34,11 +36,23 @@ struct NACC_MainContentView: View {
         NavigationStack {
             AppBackground {
                 VStack {
-                    Image(systemName: "globe")
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
-                    Text("Hello, world!")
-                }
+                    Button {
+
+                    } label: {
+                        Image("Logo")
+                            .resizable()
+                            .frame(width: 80, height: 80)
+                    }
+                    
+                    DatePicker(
+                                "",
+                                selection: $selectedDate,
+                                displayedComponents: [.date]
+                            )
+                    .datePickerStyle(.automatic)
+                    .labelsHidden()
+                    .datePickerStyle(.compact)
+                    .frame(maxWidth: .infinity, alignment: .center)                }
                 .padding()
             }
         }
