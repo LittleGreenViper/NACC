@@ -19,6 +19,8 @@
  */
 
 import SwiftUI
+import LGV_UICleantime
+import RVS_Generic_Swift_Toolbox
 
 /* ###################################################################################################################################### */
 // MARK: - Main App View -
@@ -27,7 +29,31 @@ import SwiftUI
  The initial app container View.
  */
 struct NACC_MainContentView: View {
-    @State private var selectedDate = Date()
+    /* ################################################################## */
+    /**
+     */
+    let prefs = NACCPersistentPrefs()
+    
+    /* ################################################################## */
+    /**
+     */
+    private let _reportString = LGV_UICleantimeDateReportString()
+    
+    /* ################################################################## */
+    /**
+     This is how big to make the top icon button.
+     */
+    private static let _iconSizeInDisplayUnits = 80.0
+    
+    /* ################################################################## */
+    /**
+     This contains the cleandate.
+     */
+    @State private var _selectedDate = NACCPersistentPrefs().cleanDate {
+        didSet {
+            self.prefs.cleanDate = self._selectedDate
+        }
+    }
 
     /* ################################################################## */
     /**
@@ -39,22 +65,24 @@ struct NACC_MainContentView: View {
             AppBackground {
                 VStack {
                     Button {
-                        
+                        // TBD - This will call in the keytag array display.
                     } label: {
                         Image("Logo")
                             .resizable()
-                            .frame(width: 80, height: 80)
+                            .frame(width: Self._iconSizeInDisplayUnits, height: Self._iconSizeInDisplayUnits)
                     }
                     
                     DatePicker(
                         "",
-                        selection: $selectedDate,
+                        selection: self.$_selectedDate,
                         displayedComponents: [.date]
                     )
-                    .datePickerStyle(.compact)
                     .labelsHidden()
+                    .datePickerStyle(.compact)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .environment(\.sizeCategory, .extraExtraExtraLarge)
+                    
+                    Text(self._reportString.naCleantimeText(beginDate: self._selectedDate, endDate: Date(), calendar: Calendar.current)?.localizedVariant ?? "ERROR")
                 }
                 .padding()
             }

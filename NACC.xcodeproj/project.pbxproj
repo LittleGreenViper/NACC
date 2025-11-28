@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D40F87CD2EDA47AA00E4B09B /* NACCWatchAppContentViewWatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D412D8E12D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift */; };
+		D40F87CE2EDA47AA00E4B09B /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
+		D40F87D02EDA4A8400E4B09B /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D40F87CF2EDA4A8400E4B09B /* RVS_Persistent_Prefs */; };
+		D40F87D22EDA4A8400E4B09B /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D40F87D12EDA4A8400E4B09B /* LGV_Cleantime */; };
+		D40F87D42EDA4A8400E4B09B /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D40F87D32EDA4A8400E4B09B /* LGV_UICleantime */; };
+		D40F87D62EDA4A8400E4B09B /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D40F87D52EDA4A8400E4B09B /* RVS_Generic_Swift_Toolbox */; };
+		D40F87D72EDA4AF100E4B09B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 		D412D8E22D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D412D8E12D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift */; };
 		D412D8E32D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D412D8E12D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift */; };
 		D41361C027F8D80B00DA1AD4 /* NACCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */; };
@@ -276,6 +283,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D40F87D02EDA4A8400E4B09B /* RVS_Persistent_Prefs in Frameworks */,
+				D40F87D22EDA4A8400E4B09B /* LGV_Cleantime in Frameworks */,
+				D40F87D62EDA4A8400E4B09B /* RVS_Generic_Swift_Toolbox in Frameworks */,
+				D40F87D42EDA4A8400E4B09B /* LGV_UICleantime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +663,10 @@
 			);
 			name = "SwiftUI App";
 			packageProductDependencies = (
+				D40F87CF2EDA4A8400E4B09B /* RVS_Persistent_Prefs */,
+				D40F87D12EDA4A8400E4B09B /* LGV_Cleantime */,
+				D40F87D32EDA4A8400E4B09B /* LGV_UICleantime */,
+				D40F87D52EDA4A8400E4B09B /* RVS_Generic_Swift_Toolbox */,
 			);
 			productName = NACC_App;
 			productReference = D4A0C1502ED78C3800F77D56 /* SwiftUI App.app */;
@@ -825,6 +840,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4A0C1612ED78C6700F77D56 /* Assets.xcassets in Resources */,
+				D40F87D72EDA4AF100E4B09B /* Localizable.strings in Resources */,
 				D43BAAA72ED8E73E00B58900 /* Theme.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -986,6 +1002,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D40F87CD2EDA47AA00E4B09B /* NACCWatchAppContentViewWatchDelegate.swift in Sources */,
+				D40F87CE2EDA47AA00E4B09B /* NACCPersistentPrefs.swift in Sources */,
 				D4A0C15F2ED78C6700F77D56 /* NACC_MainContentView.swift in Sources */,
 				D4A0C1602ED78C6700F77D56 /* NACC_App.swift in Sources */,
 			);
@@ -1874,6 +1892,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D40F87CF2EDA4A8400E4B09B /* RVS_Persistent_Prefs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D462E4AE2D5D0806001E2C0F /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */;
+			productName = RVS_Persistent_Prefs;
+		};
+		D40F87D12EDA4A8400E4B09B /* LGV_Cleantime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D45240DF2D620C34000BD663 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */;
+			productName = LGV_Cleantime;
+		};
+		D40F87D32EDA4A8400E4B09B /* LGV_UICleantime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4B2C2792E8FFEA1009DD45D /* XCRemoteSwiftPackageReference "LGV_UICleantime" */;
+			productName = LGV_UICleantime;
+		};
+		D40F87D52EDA4A8400E4B09B /* RVS_Generic_Swift_Toolbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4B2C27C2E8FFEDB009DD45D /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */;
+			productName = RVS_Generic_Swift_Toolbox;
+		};
 		D446903F2D61358C0079B36A /* RVS_UIKit_Toolbox */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D462E4AB2D5D07E6001E2C0F /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */;

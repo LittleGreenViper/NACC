@@ -42,7 +42,7 @@ import WidgetKit
 // MARK: - The Persistent Prefs Subclass -
 /* ###################################################################################################################################### */
 /// This is the subclass of the preferences type that will provide our persistent app settings.
-class NACCPersistentPrefs: RVS_PersistentPrefs {
+nonisolated class NACCPersistentPrefs: RVS_PersistentPrefs {
     /* ################################################################################################################################## */
     // MARK: Preference Keys
     /* ################################################################################################################################## */
