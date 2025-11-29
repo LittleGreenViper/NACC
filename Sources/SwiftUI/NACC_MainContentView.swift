@@ -121,6 +121,31 @@ struct NACC_MainContentView: View {
                 }
                 .padding()
             }
+            .navigationTitle("SLUG-INITIAL-TITLE".localizedVariant)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        // TBD - This will show the action sheet.
+                    } label: {
+                        Image(systemName: "square.and.arrow.up")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        // TBD - This will show the calendar event creation sheet.
+                    } label: {
+                        Image(systemName: "calendar")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        // TBD - This will show the info screen.
+                    } label: {
+                        Image(systemName: "info.circle")
+                    }
+                }
+            }
         }
         .onAppear { self._selectedDate = self.prefs.cleanDate }
         .onChange(of: self._selectedDate) { _, selectedDate in
