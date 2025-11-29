@@ -79,9 +79,8 @@ struct NACC_MainContentView: View {
                     } label: {
                         Image("Logo")
                             .resizable()
-                            .frame(width: Self._iconSizeInDisplayUnits,
-                                   height: Self._iconSizeInDisplayUnits
-                            )
+                            .scaledToFit()
+                            .frame(width: Self._iconSizeInDisplayUnits)
                     }
                     .accessibilityHint("SLUG-ACC-LOGO".localizedVariant)
                     
@@ -101,9 +100,9 @@ struct NACC_MainContentView: View {
                     .accessibilityHint("SLUG-ACC-DATEPICKER".localizedVariant)
                     
                     if let report = self._reportString.naCleantimeText(beginDate: self._selectedDate,
-                                                                       endDate: .now,
-                                                                       calendar: .current
-                    )?.localizedVariant {
+                                                                       endDate: .now
+                    )?.localizedVariant,
+                       !report.isEmpty {
                         Text(report)
                     }
                     
@@ -123,14 +122,10 @@ struct NACC_MainContentView: View {
                 .padding()
             }
         }
-        .onAppear {
-            self._selectedDate = self.prefs.cleanDate
-        }
-        .onChange(of: self._selectedDate) { oldValue, newValue in
-            self.prefs.cleanDate = newValue
-            let calculator = LGV_CleantimeDateCalc(startDate: newValue,
-                                                   calendar: .current
-            ).cleanTime
+        .onAppear { self._selectedDate = self.prefs.cleanDate }
+        .onChange(of: self._selectedDate) { _, selectedDate in
+            self.prefs.cleanDate = selectedDate
+            let calculator = LGV_CleantimeDateCalc(startDate: selectedDate).cleanTime
             let cleantimeDisplayImage = 0 < calculator.years ? LGV_UISingleCleantimeMedallionImageView() : LGV_UISingleCleantimeKeytagImageView()
             cleantimeDisplayImage.totalDays = calculator.totalDays
             cleantimeDisplayImage.totalMonths = calculator.totalMonths
