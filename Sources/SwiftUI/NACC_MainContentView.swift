@@ -44,10 +44,16 @@ struct NACC_MainContentView: View {
     
     /* ################################################################## */
     /**
+     This denotes the padding around the text display.
+     */
+    private static let _buttonPaddingInDisplayUnits = 8.0
+    
+    /* ################################################################## */
+    /**
      This is how big to make the top icon button.
      */
     private static let _iconSizeInDisplayUnits = 80.0
-    
+
     /* ################################################################## */
     /**
      This is how wide to make the displayed image.
@@ -105,15 +111,26 @@ struct NACC_MainContentView: View {
                        !report.isEmpty {
                         let calculator = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime
                         if calculator.isThirtyDaysOrMore {
-                            Button {
-                                // TBD - This will call in the keytag array display or the medallion display.
-                            } label: {
+                            HStack {
                                 Text(report)
+                                    .textSelection(.enabled)
                             }
+                            .padding(Self._buttonPaddingInDisplayUnits)
+                            .frame(maxWidth: .infinity,
+                                   alignment: .center)
+                            .background(.thinMaterial)
+                            .clipShape(RoundedRectangle(cornerRadius: Self._buttonPaddingInDisplayUnits))
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                // TBD - This will call in the keytag array display or the medallion display.
+                            }
+                            .accessibilityAddTraits(.isButton)
                             .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
-                        } else {
-                            Text(report)
-                        }
+                            } else {
+                                Text(report)
+                                    .textSelection(.enabled)
+                                    .padding(Self._buttonPaddingInDisplayUnits)
+                            }
                     }
                     
                     if let image = self._displayedImage {
