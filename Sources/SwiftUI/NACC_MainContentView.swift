@@ -19,6 +19,7 @@
  */
 
 import SwiftUI
+import LGV_Cleantime
 import LGV_UICleantime
 import RVS_Generic_Swift_Toolbox
 
@@ -31,11 +32,13 @@ import RVS_Generic_Swift_Toolbox
 struct NACC_MainContentView: View {
     /* ################################################################## */
     /**
+     This is the local instance of the persistent prefs for the app.
      */
     let prefs = NACCPersistentPrefs()
     
     /* ################################################################## */
     /**
+     This is the string that displays the "cleantime report."
      */
     private let _reportString = LGV_UICleantimeDateReportString()
     
@@ -47,13 +50,20 @@ struct NACC_MainContentView: View {
     
     /* ################################################################## */
     /**
+     This is how wide to make the displayed image.
+     */
+    private static let _mainImageWidthInDisplayUnits = 128.0
+    
+    /* ################################################################## */
+    /**
      This contains the cleandate.
      */
-    @State private var _selectedDate = NACCPersistentPrefs().cleanDate {
-        didSet {
-            self.prefs.cleanDate = self._selectedDate
-        }
-    }
+    @State private var _selectedDate = Date()
+    
+    /* ################################################################## */
+    /**
+     */
+    @State private var _displayedImage: UIImage?
 
     /* ################################################################## */
     /**
@@ -69,8 +79,11 @@ struct NACC_MainContentView: View {
                     } label: {
                         Image("Logo")
                             .resizable()
-                            .frame(width: Self._iconSizeInDisplayUnits, height: Self._iconSizeInDisplayUnits)
+                            .frame(width: Self._iconSizeInDisplayUnits,
+                                   height: Self._iconSizeInDisplayUnits
+                            )
                     }
+                    .accessibilityHint("SLUG-ACC-LOGO".localizedVariant)
                     
                     DatePicker(
                         "",
@@ -79,13 +92,55 @@ struct NACC_MainContentView: View {
                     )
                     .labelsHidden()
                     .datePickerStyle(.compact)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .environment(\.sizeCategory, .extraExtraExtraLarge)
+                    .frame(maxWidth: .infinity,
+                           alignment: .center
+                    )
+                    .environment(\.sizeCategory,
+                                  .extraExtraExtraLarge
+                    )
+                    .accessibilityHint("SLUG-ACC-DATEPICKER".localizedVariant)
                     
-                    Text(self._reportString.naCleantimeText(beginDate: self._selectedDate, endDate: Date(), calendar: Calendar.current)?.localizedVariant ?? "ERROR")
+                    if let report = self._reportString.naCleantimeText(beginDate: self._selectedDate,
+                                                                       endDate: .now,
+                                                                       calendar: .current
+                    )?.localizedVariant {
+                        Text(report)
+                    }
+                    
+                    if let image = self._displayedImage {
+                        Button {
+                            // TBD - This will call in the keytag array display or the medallion display.
+                        } label: {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: Self._mainImageWidthInDisplayUnits)
+                        }
+                        .accessibilityHint("SLUG-ACC-IMAGE".localizedVariant)
+                        
+                    }
                 }
                 .padding()
             }
+        }
+        .onAppear {
+            self._selectedDate = self.prefs.cleanDate
+        }
+        .onChange(of: self._selectedDate) { oldValue, newValue in
+            self.prefs.cleanDate = newValue
+            let calculator = LGV_CleantimeDateCalc(startDate: newValue,
+                                                   calendar: .current
+            ).cleanTime
+            let cleantimeDisplayImage = 0 < calculator.years ? LGV_UISingleCleantimeMedallionImageView() : LGV_UISingleCleantimeKeytagImageView()
+            cleantimeDisplayImage.totalDays = calculator.totalDays
+            cleantimeDisplayImage.totalMonths = calculator.totalMonths
+            guard 0 < calculator.totalDays,
+                  let generatedImage = cleantimeDisplayImage.generatedImage
+            else {
+                self._displayedImage = nil
+                return
+            }
+            self._displayedImage = generatedImage
         }
     }
 }

@@ -58,6 +58,7 @@
 		D4A420F02D4D607C00E4AC1E /* WidgetStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */; };
 		D4A420F12D4D607C00E4AC1E /* NACCWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A420E82D4D607C00E4AC1E /* NACCWidgetBundle.swift */; };
 		D4ACE7E22D584805006C00AD /* WatchStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */; };
+		D4B0857A2EDB7CA0007C536C /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */; };
 		D4B2C2762E8FFE5D009DD45D /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2752E8FFE5D009DD45D /* RVS_Persistent_Prefs */; };
 		D4B2C2782E8FFE62009DD45D /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2772E8FFE62009DD45D /* LGV_Cleantime */; };
 		D4B2C27B2E8FFEBB009DD45D /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C27A2E8FFEBB009DD45D /* LGV_UICleantime */; };
@@ -839,6 +840,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4B0857A2EDB7CA0007C536C /* LGV_UICleantime.xcassets in Resources */,
 				D4A0C1612ED78C6700F77D56 /* Assets.xcassets in Resources */,
 				D40F87D72EDA4AF100E4B09B /* Localizable.strings in Resources */,
 				D43BAAA72ED8E73E00B58900 /* Theme.xcassets in Resources */,
