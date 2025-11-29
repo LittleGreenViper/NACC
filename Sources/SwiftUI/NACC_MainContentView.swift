@@ -103,7 +103,17 @@ struct NACC_MainContentView: View {
                                                                        endDate: .now
                     )?.localizedVariant,
                        !report.isEmpty {
-                        Text(report)
+                        let calculator = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime
+                        if calculator.isThirtyDaysOrMore {
+                            Button {
+                                // TBD - This will call in the keytag array display or the medallion display.
+                            } label: {
+                                Text(report)
+                            }
+                            .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
+                        } else {
+                            Text(report)
+                        }
                     }
                     
                     if let image = self._displayedImage {
@@ -130,6 +140,7 @@ struct NACC_MainContentView: View {
                     } label: {
                         Image(systemName: "square.and.arrow.up")
                     }
+                    .accessibilityHint("SLUG-ACC-ACTION-BUTTON".localizedVariant)
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
@@ -137,6 +148,7 @@ struct NACC_MainContentView: View {
                     } label: {
                         Image(systemName: "calendar")
                     }
+                    .accessibilityHint("SLUG-ACC-CALENDAR-BUTTON".localizedVariant)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -144,6 +156,7 @@ struct NACC_MainContentView: View {
                     } label: {
                         Image(systemName: "info.circle")
                     }
+                    .accessibilityHint("SLUG-ACC-INFO-BUTTON".localizedVariant)
                 }
             }
         }
