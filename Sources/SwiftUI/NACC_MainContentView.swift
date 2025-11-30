@@ -68,8 +68,21 @@ struct NACC_MainContentView: View {
     
     /* ################################################################## */
     /**
+     This displays the last keytag or medallion earned.
      */
     @State private var _displayedImage: UIImage?
+    
+    /* ################################################################## */
+    /**
+     If true, then the NavigationStack will bring in the results screen.
+     */
+    @State private var _showResult = false
+    
+    /* ################################################################## */
+    /**
+     If true, then the NavigationStack will bring in the info screen.
+     */
+    @State private var _showInfo = false
 
     /* ################################################################## */
     /**
@@ -81,7 +94,9 @@ struct NACC_MainContentView: View {
             AppBackground {
                 VStack {
                     Button {
-                        // TBD - This will call in the keytag array display.
+                        // This will call in the keytag array display.
+                        self.prefs.lastSelectedTabIndex = 0
+                        self._showResult = true
                     } label: {
                         Image("Logo")
                             .resizable()
@@ -122,7 +137,9 @@ struct NACC_MainContentView: View {
                             .clipShape(RoundedRectangle(cornerRadius: Self._buttonPaddingInDisplayUnits))
                             .contentShape(Rectangle())
                             .onTapGesture {
-                                // TBD - This will call in the keytag array display or the medallion display.
+                                // This will call in the medallion array (if more than a year), or the keytag strip display.
+                                self.prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? 2 : 1
+                                self._showResult = true
                             }
                             .accessibilityAddTraits(.isButton)
                             .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
@@ -135,7 +152,9 @@ struct NACC_MainContentView: View {
                     
                     if let image = self._displayedImage {
                         Button {
-                            // TBD - This will call in the keytag array display or the medallion display.
+                            // This will call in the keytag strip display or the medallion display.
+                            self.prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? 1 : 0
+                            self._showResult = true
                         } label: {
                             Image(uiImage: image)
                                 .resizable()
@@ -169,13 +188,16 @@ struct NACC_MainContentView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        // TBD - This will show the info screen.
+                        // This will show the info screen.
+                        self._showInfo = true
                     } label: {
                         Image(systemName: "info.circle")
                     }
                     .accessibilityHint("SLUG-ACC-INFO-BUTTON".localizedVariant)
                 }
             }
+            .navigationDestination(isPresented: self.$_showResult) { NACC_ResultDisplayView() }
+            .navigationDestination(isPresented: self.$_showInfo) { NACC_InfoDisplayView() }
         }
         .onAppear { self._selectedDate = self.prefs.cleanDate }
         .onChange(of: self._selectedDate) { _, selectedDate in
