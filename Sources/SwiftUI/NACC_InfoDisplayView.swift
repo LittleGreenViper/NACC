@@ -22,6 +22,50 @@ import SwiftUI
 import RVS_Generic_Swift_Toolbox
 
 /* ###################################################################################################################################### */
+// MARK: - Bundle Extension -
+/* ###################################################################################################################################### */
+/**
+ This extension adds a few simple accessors for some of the more common bundle items.
+ */
+extension Bundle {
+    /* ################################################################## */
+    /**
+     If there is a copyright site URI, it is returned here as a String. It may be nil.
+     */
+    var siteURIAsString: String? { object(forInfoDictionaryKey: "InfoScreenCopyrightSiteURL") as? String }
+
+    /* ################################################################## */
+    /**
+     If there is a help site URI, it is returned here as a String. It may be nil.
+     */
+    var helpURIAsString: String? { object(forInfoDictionaryKey: "InfoScreenHelpSiteURL") as? String }
+
+    /* ################################################################## */
+    /**
+     If there is a privacy site URI, it is returned here as a String. It may be nil.
+     */
+    var privacyURIAsString: String? { object(forInfoDictionaryKey: "InfoScreenPrivacySiteURL") as? String }
+    
+    /* ################################################################## */
+    /**
+     If there is a copyright site URI, it is returned here as a URL. It may be nil.
+     */
+    var siteURI: URL? { URL(string: siteURIAsString ?? "") }
+    
+    /* ################################################################## */
+    /**
+     If there is a help site URI, it is returned here as a URL. It may be nil.
+     */
+    var helpURI: URL? { URL(string: helpURIAsString ?? "") }
+
+    /* ################################################################## */
+    /**
+     If there is a privacy site URI, it is returned here as a URL. It may be nil.
+     */
+    var privacyURI: URL? { URL(string: privacyURIAsString ?? "") }
+}
+
+/* ###################################################################################################################################### */
 // MARK: - Info Screen Display View -
 /* ###################################################################################################################################### */
 /**
@@ -30,16 +74,52 @@ import RVS_Generic_Swift_Toolbox
 struct NACC_InfoDisplayView: View {
     /* ################################################################## */
     /**
+     */
+    @Environment(\.openURL) private var openURL
+    
+    /* ################################################################## */
+    /**
+     This denotes the padding around the text display.
+     */
+    private static let _edgePaddingInDisplayUnits = 16.0
+    
+    /* ################################################################## */
+    /**
+     This is how big to make the top icon button.
+     */
+    private static let _iconSizeInDisplayUnits = 80.0
+    
+    /* ################################################################## */
+    /**
      This is the local instance of the persistent prefs for the app.
      */
     let prefs = NACCPersistentPrefs()
-
+    
     /* ################################################################## */
     /**
      */
     var body: some View {
         AppBackground {
-            Text("INFO")
+            ScrollView {
+                VStack(alignment: .center, spacing: 16) {
+                    Image("AboutLogo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: Self._iconSizeInDisplayUnits)
+                        .onTapGesture {
+                            if let url = Bundle.main.helpURI {
+                                openURL(url)
+                            }
+                        }
+                    
+                    Text("SLUG-APP-INFO-TEXT".localizedVariant)
+                        .padding(.horizontal, Self._edgePaddingInDisplayUnits)
+                }
+                .frame(maxWidth: .infinity, alignment: .top)
+                .padding(.top, 16)
+            }
         }
+        .navigationTitle("SLUG-ABOUT".localizedVariant)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }

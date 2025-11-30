@@ -27,24 +27,19 @@ import SwiftUI
  This is a general-purpose View that displays the background gradient, under the contained View.
  */
 struct AppBackground<Content: View>: View {
-    /* ################################################################## */
-    /**
-     This is the content function. It simply uses the contained View.
-     */
-    let content: () -> Content
+    @ViewBuilder let content: () -> Content
 
-    /* ################################################################## */
-    /**
-     The returned View contains the background in an image, with the content presented over it.
-     */
     var body: some View {
-        ZStack {
-            Image("Background-Gradient")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
-            content()
-        }
+        content()
+            .frame(maxWidth: .infinity,
+                   maxHeight: .infinity,
+                   alignment: .top)         // you want everything top-aligned
+            .background(
+                Image("Background-Gradient")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+            )
     }
 }
 

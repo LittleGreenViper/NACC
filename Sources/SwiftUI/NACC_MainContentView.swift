@@ -80,6 +80,12 @@ struct NACC_MainContentView: View {
     
     /* ################################################################## */
     /**
+     This shows a date picker in a modal sheet. If the user taps on the date, they get the sheet.
+     */
+    @State private var _showingPicker = false
+    
+    /* ################################################################## */
+    /**
      If true, then the NavigationStack will bring in the info screen.
      */
     @State private var _showInfo = false
@@ -93,76 +99,90 @@ struct NACC_MainContentView: View {
         NavigationStack {
             AppBackground {
                 VStack {
-                    Button {
-                        // This will call in the keytag array display.
-                        self.prefs.lastSelectedTabIndex = 0
-                        self._showResult = true
-                    } label: {
+                    if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
+                        Button {
+                            // This will call in the keytag array display.
+                            self.prefs.lastSelectedTabIndex = 0
+                            self._showResult = true
+                        } label: {
+                            Image("Logo")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: Self._iconSizeInDisplayUnits)
+                        }
+                        .accessibilityHint("SLUG-ACC-LOGO".localizedVariant)
+                    } else {
                         Image("Logo")
                             .resizable()
                             .scaledToFit()
                             .frame(width: Self._iconSizeInDisplayUnits)
                     }
-                    .accessibilityHint("SLUG-ACC-LOGO".localizedVariant)
                     
-                    DatePicker(
-                        "",
-                        selection: self.$_selectedDate,
-                        displayedComponents: [.date]
-                    )
-                    .labelsHidden()
-                    .datePickerStyle(.compact)
-                    .frame(maxWidth: .infinity,
-                           alignment: .center
-                    )
-                    .environment(\.sizeCategory,
-                                  .extraExtraExtraLarge
-                    )
-                    .accessibilityHint("SLUG-ACC-DATEPICKER".localizedVariant)
+                    Button {
+                        _showingPicker = true
+                    } label: {
+                        Text(_selectedDate.formatted(date: .abbreviated, time: .omitted))
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 8)
+                            .background(.thinMaterial)
+                            .clipShape(Capsule())
+                    }
+                    .sheet(isPresented: $_showingPicker) {
+                        DatePicker(
+                            "Clean Date",
+                            selection: self.$_selectedDate,
+                            displayedComponents: [.date]
+                        )
+                        .datePickerStyle(.graphical)
+                        .padding()
+                    }
                     
                     if let report = self._reportString.naCleantimeText(beginDate: self._selectedDate,
                                                                        endDate: .now
                     )?.localizedVariant,
                        !report.isEmpty {
-                        let calculator = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime
-                        if calculator.isThirtyDaysOrMore {
-                            HStack {
-                                Text(report)
-                                    .textSelection(.enabled)
-                            }
-                            .padding(Self._buttonPaddingInDisplayUnits)
-                            .frame(maxWidth: .infinity,
-                                   alignment: .center)
-                            .background(.thinMaterial)
-                            .clipShape(RoundedRectangle(cornerRadius: Self._buttonPaddingInDisplayUnits))
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                // This will call in the medallion array (if more than a year), or the keytag strip display.
-                                self.prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? 2 : 1
-                                self._showResult = true
-                            }
-                            .accessibilityAddTraits(.isButton)
-                            .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
-                            } else {
-                                Text(report)
-                                    .textSelection(.enabled)
-                                    .padding(Self._buttonPaddingInDisplayUnits)
-                            }
+                        if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
+                            Text(report)
+                                .textSelection(.enabled)
+                                .padding(Self._buttonPaddingInDisplayUnits)
+                                .frame(maxWidth: .infinity,
+                                       alignment: .center)
+                                .background(.thinMaterial)
+                                .clipShape(RoundedRectangle(cornerRadius: Self._buttonPaddingInDisplayUnits))
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    // This will call in the medallion array (if more than a year), or the keytag strip display.
+                                    self.prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? 2 : 1
+                                    self._showResult = true
+                                }
+                                .accessibilityAddTraits(.isButton)
+                                .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
+                        } else {
+                            Text(report)
+                                .textSelection(.enabled)
+                                .padding(Self._buttonPaddingInDisplayUnits)
+                        }
                     }
                     
                     if let image = self._displayedImage {
-                        Button {
-                            // This will call in the keytag strip display or the medallion display.
-                            self.prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? 1 : 0
-                            self._showResult = true
-                        } label: {
+                        if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
+                            Button {
+                                // This will call in the keytag strip display or the medallion display.
+                                self.prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? 1 : 0
+                                self._showResult = true
+                            } label: {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: Self._mainImageWidthInDisplayUnits)
+                            }
+                            .accessibilityHint("SLUG-ACC-IMAGE".localizedVariant)
+                        } else {
                             Image(uiImage: image)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: Self._mainImageWidthInDisplayUnits)
                         }
-                        .accessibilityHint("SLUG-ACC-IMAGE".localizedVariant)
-                        
                     }
                 }
                 .padding()

@@ -170,6 +170,7 @@
 		D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAppSceneDelegate.swift; sourceTree = "<group>"; };
 		D43C66CE2694AC20007D5883 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D43C66D82694AC33007D5883 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
+		D456591C2EDCCB130010C38A /* SwiftUI-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "SwiftUI-App-Info.plist"; sourceTree = "<group>"; };
 		D45A93B72D4C4DEA008B2528 /* NACCWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NACCWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D45CF3632809AB4500065E87 /* NACC.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
 		D45F07442D429ABC00D6939A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -336,6 +337,7 @@
 		D43C667E2694AA88007D5883 = {
 			isa = PBXGroup;
 			children = (
+				D456591C2EDCCB130010C38A /* SwiftUI-App-Info.plist */,
 				D43C66C52694AC20007D5883 /* Sources */,
 				D43C66D72694AC33007D5883 /* Project-Meta */,
 				D4C080612D4957B200299FBC /* UIKit App.app */,
@@ -406,8 +408,8 @@
 				D4A0C15B2ED78C6700F77D56 /* Assets.xcassets */,
 				D4A0C15D2ED78C6700F77D56 /* NACC_App.swift */,
 				D4A0C15C2ED78C6700F77D56 /* NACC_MainContentView.swift */,
-				D489D35C2EDC8EC900A86A6B /* NACC_ResultDisplayView.swift */,
 				D489D35E2EDC91F600A86A6B /* NACC_InfoDisplayView.swift */,
+				D489D35C2EDC8EC900A86A6B /* NACC_ResultDisplayView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -1473,9 +1475,12 @@
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "SwiftUI-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSContactsUsageDescription = "This app needs access to your contacts, in order to fill out an anniversary event.  This information is never sent outside of your computer, and is not directly used by this app.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app allows you to save images of keytags or medallions to your Photo Library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1514,9 +1519,12 @@
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "SwiftUI-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSContactsUsageDescription = "This app needs access to your contacts, in order to fill out an anniversary event.  This information is never sent outside of your computer, and is not directly used by this app.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app allows you to save images of keytags or medallions to your Photo Library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
