@@ -32,12 +32,6 @@ import RVS_Generic_Swift_Toolbox
 struct NACC_MainContentView: View {
     /* ################################################################## */
     /**
-     This is the local instance of the persistent prefs for the app.
-     */
-    let prefs = NACCPersistentPrefs()
-    
-    /* ################################################################## */
-    /**
      This is the string that displays the "cleantime report."
      */
     private let _reportString = LGV_UICleantimeDateReportString()
@@ -71,6 +65,18 @@ struct NACC_MainContentView: View {
      This is how wide to make the displayed image.
      */
     private static let _mainImageWidthInDisplayUnits = 128.0
+    
+    /* ################################################################## */
+    /**
+     This is the local instance of the persistent prefs for the app.
+     */
+    private let _prefs = NACCPersistentPrefs()
+
+    /* ################################################################## */
+    /**
+     This handles interaction with the Watch.
+     */
+    @State private var _watchDelegateObject: NACCWatchAppContentViewWatchDelegate?
     
     /* ################################################################## */
     /**
@@ -113,8 +119,7 @@ struct NACC_MainContentView: View {
                 VStack {
                     if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
                         Button {
-                            // This will call in the keytag array display.
-                            self.prefs.lastSelectedTabIndex = TabInexes.keytagArray.rawValue
+                            self._prefs.lastSelectedTabIndex = TabInexes.keytagArray.rawValue
                             self._showResult = true
                         } label: {
                             Image("Logo")
@@ -130,69 +135,48 @@ struct NACC_MainContentView: View {
                             .frame(width: Self._iconSizeInDisplayUnits)
                     }
                     
-                    Button {
-                        _showingPicker = true
-                    } label: {
-                        Text(_selectedDate.formatted(date: .abbreviated,
-                                                     time: .omitted)
-                        )
-                        .font(.largeTitle)
-                        .foregroundStyle(Color(.label))
-                        .padding(.horizontal, Self._horizontalPaddingInDisplayUnits)
-                        .padding(.vertical, Self._buttonPaddingInDisplayUnits)
-                        .background(.thinMaterial)
-                        .clipShape(Capsule())
-                    }
-                    .popover(isPresented: $_showingPicker) {
-                        AppBackground {
-                            Text("SLUG-CLEANDATE-PICKER-TITLE".localizedVariant)
-                                .font(.largeTitle)
-                                .padding(.top, Self._cleandatePickerTitlePaddingInDisplayUnits)
-                                .padding([.leading, .trailing], Self._cleandatePickerTitlePaddingInDisplayUnits)
-                            
-                            DatePicker(
-                                "Clean Date",
-                                selection: self.$_selectedDate,
-                                displayedComponents: [.date]
-                            )
-                            .datePickerStyle(.graphical)
-                            .padding()
-                        }
+                    if !LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneDayOrMore {
+                        Text("NO CLEANDATE YET")
                     }
                     
                     if let report = self._reportString.naCleantimeText(beginDate: self._selectedDate,
                                                                        endDate: .now
                     )?.localizedVariant,
                        !report.isEmpty {
-                        if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
-                            Text(report)
-                                .textSelection(.enabled)
+                        Text(report)
+                            .textSelection(.enabled)
                                 .padding(Self._buttonPaddingInDisplayUnits)
-                                .frame(maxWidth: .infinity,
-                                       alignment: .center
-                                )
-                                .background(.thinMaterial)
-                                .clipShape(Capsule())
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .foregroundStyle(!LGV_CleantimeDateCalc(startDate: _selectedDate).cleanTime.isOneDayOrMore ? Color("SelectionTintColor") : .primary)
+                                .background(.thickMaterial, in: Capsule())
                                 .contentShape(Rectangle())
-                                .onTapGesture {
-                                    // This will call in the medallion array (if more than a year), or the keytag strip display.
-                                    self.prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? TabInexes.medallionArray.rawValue : TabInexes.keytagStrip.rawValue
-                                    self._showResult = true
+                            .onTapGesture {
+                                _showingPicker = true
+                            }
+                            .popover(isPresented: $_showingPicker) {
+                                AppBackground {
+                                    Text("SLUG-CLEANDATE-PICKER-TITLE".localizedVariant)
+                                        .font(.largeTitle)
+                                        .padding(.top, Self._cleandatePickerTitlePaddingInDisplayUnits)
+                                        .padding([.leading, .trailing], Self._cleandatePickerTitlePaddingInDisplayUnits)
+                                    
+                                    DatePicker(
+                                        "Clean Date",
+                                        selection: self.$_selectedDate,
+                                        displayedComponents: [.date]
+                                    )
+                                    .datePickerStyle(.graphical)
+                                    .padding()
                                 }
-                                .accessibilityAddTraits(.isButton)
-                                .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
-                        } else {
-                            Text(report)
-                                .textSelection(.enabled)
-                                .padding(Self._buttonPaddingInDisplayUnits)
-                        }
+                            }
+                            .accessibilityAddTraits(.isButton)
+                            .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
                     }
                     
                     if let image = self._displayedImage {
                         if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
                             Button {
-                                // This will call in the keytag strip display or the medallion display.
-                                self.prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? TabInexes.medallionArray.rawValue : TabInexes.keytagStrip.rawValue
+                                self._prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? TabInexes.medallionArray.rawValue : TabInexes.keytagStrip.rawValue
                                 self._showResult = true
                             } label: {
                                 Image(uiImage: image)
@@ -232,7 +216,6 @@ struct NACC_MainContentView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        // This will show the info screen.
                         self._showInfo = true
                     } label: {
                         Image(systemName: "info.circle")
@@ -243,9 +226,13 @@ struct NACC_MainContentView: View {
             .navigationDestination(isPresented: self.$_showResult) { NACC_ResultDisplayView() }
             .navigationDestination(isPresented: self.$_showInfo) { NACC_InfoDisplayView() }
         }
-        .onAppear { self._selectedDate = self.prefs.cleanDate }
+        .onAppear {
+            self._watchDelegateObject = self._watchDelegateObject ?? NACCWatchAppContentViewWatchDelegate(updateHandler: self.updateApplicationContext)
+            self._selectedDate = self._prefs.cleanDate
+        }
         .onChange(of: self._selectedDate) { _, inSelectedDate in
-            self.prefs.cleanDate = inSelectedDate
+            self._prefs.cleanDate = inSelectedDate
+            self._watchDelegateObject?.sendApplicationContext()
             let calculator = LGV_CleantimeDateCalc(startDate: inSelectedDate).cleanTime
             let cleantimeDisplayImage = calculator.isOneYearOrMore ? LGV_UISingleCleantimeMedallionImageView() : LGV_UISingleCleantimeKeytagImageView()
             cleantimeDisplayImage.totalDays = calculator.totalDays
@@ -257,6 +244,34 @@ struct NACC_MainContentView: View {
                 return
             }
             self._displayedImage = generatedImage
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     This will update our internal state, to match the new application context that we received from the Watch.
+     
+     - parameter inApplicationContext: The new context dictionary.
+     */
+    func updateApplicationContext(_ inApplicationContext: [String: Any]) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        if let watchFormatTemp = inApplicationContext["watchAppDisplayState"] as? Int,
+           let watchFormatType = NACCPersistentPrefs.MainWatchState(rawValue: watchFormatTemp) {
+            let watchFormat = watchFormatType.rawValue
+            #if DEBUG
+                print("WatchFormat: \(watchFormat)")
+            #endif
+            self._prefs.watchAppDisplayState = watchFormatType
+        }
+        
+        if let cleanDateTemp = inApplicationContext["cleanDate"] as? String,
+           let cleanDate = dateFormatter.date(from: cleanDateTemp) {
+            #if DEBUG
+                print("Cleandate: \(cleanDate)")
+            #endif
+            DispatchQueue.main.async { self._selectedDate = cleanDate }
         }
     }
 }
