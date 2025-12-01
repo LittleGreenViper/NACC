@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D4F9DA942D5BA6A300FFC2DC"
-               BuildableName = "NACCWatchComplicationExtension.appex"
-               BlueprintName = "NACCWatchComplicationExtension"
+               BuildableName = "Complications Target.appex"
+               BlueprintName = "Complications Target"
                ReferencedContainer = "container:NACC.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -30,8 +30,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D43C66B02694ABFF007D5883"
-               BuildableName = "UIKit App.app"
-               BlueprintName = "UIKit App"
+               BuildableName = "UIKit App Target.app"
+               BlueprintName = "UIKit App Target"
                ReferencedContainer = "container:NACC.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,8 +44,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D45A93B62D4C4DEA008B2528"
-               BuildableName = "NACCWatch.app"
-               BlueprintName = "NACCWatch"
+               BuildableName = "Watch Target.app"
+               BlueprintName = "Watch Target"
                ReferencedContainer = "container:NACC.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -75,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D4F9DA942D5BA6A300FFC2DC"
-            BuildableName = "NACCWatchComplicationExtension.appex"
-            BlueprintName = "NACCWatchComplicationExtension"
+            BuildableName = "Complications Target.appex"
+            BlueprintName = "Complications Target"
             ReferencedContainer = "container:NACC.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -84,8 +84,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D45A93B62D4C4DEA008B2528"
-            BuildableName = "NACCWatch.app"
-            BlueprintName = "NACCWatch"
+            BuildableName = "Watch Target.app"
+            BlueprintName = "Watch Target"
             ReferencedContainer = "container:NACC.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -118,8 +118,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D4F9DA942D5BA6A300FFC2DC"
-            BuildableName = "NACCWatchComplicationExtension.appex"
-            BlueprintName = "NACCWatchComplicationExtension"
+            BuildableName = "Complications Target.appex"
+            BlueprintName = "Complications Target"
             ReferencedContainer = "container:NACC.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

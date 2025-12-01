@@ -28,7 +28,7 @@
 		D45240E32D620C3E000BD663 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D45240E22D620C3E000BD663 /* LGV_Cleantime */; };
 		D45240E52D620C4B000BD663 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D45240E42D620C4B000BD663 /* LGV_Cleantime */; };
 		D45240E92D620C5A000BD663 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D45240E82D620C5A000BD663 /* LGV_Cleantime */; };
-		D45A93C42D4C4DEB008B2528 /* NACCWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D45A93B72D4C4DEA008B2528 /* NACCWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D45A93C42D4C4DEB008B2528 /* Watch Target.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D45A93B72D4C4DEA008B2528 /* Watch Target.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D45A93CE2D4C5405008B2528 /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D462E4BC2D5D08C0001E2C0F /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D462E4BB2D5D08C0001E2C0F /* RVS_Persistent_Prefs */; };
 		D462E4C02D5D09FF001E2C0F /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D462E4BF2D5D09FF001E2C0F /* RVS_Persistent_Prefs */; };
@@ -36,6 +36,8 @@
 		D462E4C32D5D0B17001E2C0F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 		D474789F28073D5400212919 /* NACCPagePrintRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */; };
 		D477647A2D3FFA2400DB748E /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D47764792D3FFA2400DB748E /* RVS_Persistent_Prefs */; };
+		D48285732EDE47A100721EA0 /* Watch Target.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D45A93B72D4C4DEA008B2528 /* Watch Target.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D48285792EDE4A5900721EA0 /* Widget Target.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4A420B02D4D5C7900E4AC1E /* Widget Target.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D485259627FDBD2E002EE3E3 /* NACCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */; };
 		D489D35D2EDC8EC900A86A6B /* NACC_ResultDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D489D35C2EDC8EC900A86A6B /* NACC_ResultDisplayView.swift */; };
 		D489D35F2EDC91F600A86A6B /* NACC_InfoDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D489D35E2EDC91F600A86A6B /* NACC_InfoDisplayView.swift */; };
@@ -47,7 +49,7 @@
 		D4A0C15F2ED78C6700F77D56 /* NACC_MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A0C15C2ED78C6700F77D56 /* NACC_MainContentView.swift */; };
 		D4A0C1602ED78C6700F77D56 /* NACC_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A0C15D2ED78C6700F77D56 /* NACC_App.swift */; };
 		D4A0C1612ED78C6700F77D56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A0C15B2ED78C6700F77D56 /* Assets.xcassets */; };
-		D4A420BE2D4D5C7A00E4AC1E /* NACCWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4A420B02D4D5C7900E4AC1E /* NACCWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D4A420BE2D4D5C7A00E4AC1E /* Widget Target.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4A420B02D4D5C7900E4AC1E /* Widget Target.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D4A420D22D4D5DFE00E4AC1E /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D4A420D52D4D5E7900E4AC1E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 		D4A420D62D4D5E9B00E4AC1E /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */; };
@@ -87,7 +89,7 @@
 		D4F58DFA2D5FE4D90087C387 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4F58DF92D5FE4D90087C387 /* LGV_UICleantime */; };
 		D4F58E002D5FE5400087C387 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4F58DFF2D5FE5400087C387 /* LGV_UICleantime */; };
 		D4F945512D4E60620073AF8F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
-		D4F9DAA02D5BA6A300FFC2DC /* NACCWatchComplicationExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4F9DA952D5BA6A300FFC2DC /* NACCWatchComplicationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D4F9DAA02D5BA6A300FFC2DC /* Complications Target.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4F9DA952D5BA6A300FFC2DC /* Complications Target.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D4F9DAA92D5BA6DE00FFC2DC /* NACCWatchComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9DAA72D5BA6DE00FFC2DC /* NACCWatchComplication.swift */; };
 		D4F9DAAA2D5BA6DE00FFC2DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F9DAA52D5BA6DE00FFC2DC /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -99,6 +101,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = D45A93B62D4C4DEA008B2528;
 			remoteInfo = NACCWatch;
+		};
+		D48285742EDE47A100721EA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D45A93B62D4C4DEA008B2528;
+			remoteInfo = NACCWatch;
+		};
+		D48285772EDE47B800721EA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D45A93B62D4C4DEA008B2528;
+			remoteInfo = NACCWatch;
+		};
+		D482857A2EDE4A5900721EA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4A420AF2D4D5C7900E4AC1E;
+			remoteInfo = NACCWidget;
 		};
 		D4A420BC2D4D5C7A00E4AC1E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -130,9 +153,31 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				D45A93C42D4C4DEB008B2528 /* NACCWatch.app in Embed Watch Content */,
+				D45A93C42D4C4DEB008B2528 /* Watch Target.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D48285762EDE47A100721EA0 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				D48285732EDE47A100721EA0 /* Watch Target.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D482857C2EDE4A5900721EA0 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D48285792EDE4A5900721EA0 /* Widget Target.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D4882CC42D5BA1DB00FBF2EC /* Embed Foundation Extensions */ = {
@@ -141,7 +186,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				D4F9DAA02D5BA6A300FFC2DC /* NACCWatchComplicationExtension.appex in Embed Foundation Extensions */,
+				D4F9DAA02D5BA6A300FFC2DC /* Complications Target.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,7 +197,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				D4A420BE2D4D5C7A00E4AC1E /* NACCWidget.appex in Embed Foundation Extensions */,
+				D4A420BE2D4D5C7A00E4AC1E /* Widget Target.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,8 +215,8 @@
 		D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAppSceneDelegate.swift; sourceTree = "<group>"; };
 		D43C66CE2694AC20007D5883 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D43C66D82694AC33007D5883 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
-		D456591C2EDCCB130010C38A /* SwiftUI-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "SwiftUI-App-Info.plist"; sourceTree = "<group>"; };
-		D45A93B72D4C4DEA008B2528 /* NACCWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NACCWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D456591C2EDCCB130010C38A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D45A93B72D4C4DEA008B2528 /* Watch Target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Watch Target.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D45CF3632809AB4500065E87 /* NACC.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
 		D45F07442D429ABC00D6939A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D462E4C12D5D0A27001E2C0F /* NACCWatchComplicationExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCWatchComplicationExtension.entitlements; sourceTree = "<group>"; };
@@ -185,12 +230,12 @@
 		D48F812A27FCD36D001A0B87 /* NACCInitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCInitialViewController.swift; sourceTree = "<group>"; };
 		D48F812C27FCD3FA001A0B87 /* NACCTabBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCTabBaseViewController.swift; sourceTree = "<group>"; };
 		D49C9A7B280783C6008E9917 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D4A0C1502ED78C3800F77D56 /* SwiftUI App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4A0C1502ED78C3800F77D56 /* SwiftUI App Target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI App Target.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A0C15B2ED78C6700F77D56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4A0C15C2ED78C6700F77D56 /* NACC_MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACC_MainContentView.swift; sourceTree = "<group>"; };
 		D4A0C15D2ED78C6700F77D56 /* NACC_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACC_App.swift; sourceTree = "<group>"; };
-		D4A0C1632ED78E9E00F77D56 /* NACC_App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACC_App.entitlements; sourceTree = "<group>"; };
-		D4A420B02D4D5C7900E4AC1E /* NACCWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NACCWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4A0C1632ED78E9E00F77D56 /* SwiftUITarget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftUITarget.entitlements; sourceTree = "<group>"; };
+		D4A420B02D4D5C7900E4AC1E /* Widget Target.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widget Target.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A420D82D4D607800E4AC1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4A420D92D4D607800E4AC1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4A420DB2D4D607800E4AC1E /* NACCWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCWatch.entitlements; sourceTree = "<group>"; };
@@ -206,8 +251,8 @@
 		D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = WatchStrings.xcstrings; sourceTree = "<group>"; };
 		D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPersistentPrefs.swift; sourceTree = "<group>"; };
 		D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAboutViewController.swift; sourceTree = "<group>"; };
-		D4C080612D4957B200299FBC /* UIKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4C080642D4957B200299FBC /* NACCIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NACCIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4C080612D4957B200299FBC /* UIKit App Target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIKit App Target.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4C080642D4957B200299FBC /* Intents Target.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Intents Target.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4C1579B2C4926FC00D82CBA /* bodyBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bodyBlack.png; sourceTree = "<group>"; };
 		D4C1579C2C4926FC00D82CBA /* bodyBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bodyBlue.png; sourceTree = "<group>"; };
 		D4C1579D2C4926FC00D82CBA /* bodyBurntOrange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bodyBurntOrange.png; sourceTree = "<group>"; };
@@ -255,7 +300,7 @@
 		D4EB29AE2D5D4CFE00D40106 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D4F46FDB2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCShowCleantimeIntentHandler.swift; sourceTree = "<group>"; };
 		D4F46FDF2C94669E0071D359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/NACCIntents.intentdefinition; sourceTree = "<group>"; };
-		D4F9DA952D5BA6A300FFC2DC /* NACCWatchComplicationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NACCWatchComplicationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4F9DA952D5BA6A300FFC2DC /* Complications Target.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Complications Target.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F9DAA52D5BA6DE00FFC2DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4F9DAA62D5BA6DE00FFC2DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4F9DAA72D5BA6DE00FFC2DC /* NACCWatchComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWatchComplication.swift; sourceTree = "<group>"; };
@@ -337,16 +382,15 @@
 		D43C667E2694AA88007D5883 = {
 			isa = PBXGroup;
 			children = (
-				D456591C2EDCCB130010C38A /* SwiftUI-App-Info.plist */,
 				D43C66C52694AC20007D5883 /* Sources */,
 				D43C66D72694AC33007D5883 /* Project-Meta */,
-				D4C080612D4957B200299FBC /* UIKit App.app */,
-				D4C080642D4957B200299FBC /* NACCIntents.appex */,
-				D45A93B72D4C4DEA008B2528 /* NACCWatch.app */,
-				D4A420B02D4D5C7900E4AC1E /* NACCWidget.appex */,
-				D4F9DA952D5BA6A300FFC2DC /* NACCWatchComplicationExtension.appex */,
+				D4C080612D4957B200299FBC /* UIKit App Target.app */,
+				D4C080642D4957B200299FBC /* Intents Target.appex */,
+				D45A93B72D4C4DEA008B2528 /* Watch Target.app */,
+				D4A420B02D4D5C7900E4AC1E /* Widget Target.appex */,
+				D4F9DA952D5BA6A300FFC2DC /* Complications Target.appex */,
 				D45315ED2E8FF6410019485D /* Frameworks */,
-				D4A0C1502ED78C3800F77D56 /* SwiftUI App.app */,
+				D4A0C1502ED78C3800F77D56 /* SwiftUI App Target.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -381,7 +425,7 @@
 			children = (
 				D4C157C22C4926FC00D82CBA /* Web */,
 				D45CF3632809AB4500065E87 /* NACC.entitlements */,
-				D4A0C1632ED78E9E00F77D56 /* NACC_App.entitlements */,
+				D4A0C1632ED78E9E00F77D56 /* SwiftUITarget.entitlements */,
 				D43C66D82694AC33007D5883 /* Warnings.xcconfig */,
 			);
 			path = "Project-Meta";
@@ -406,6 +450,7 @@
 			isa = PBXGroup;
 			children = (
 				D4A0C15B2ED78C6700F77D56 /* Assets.xcassets */,
+				D456591C2EDCCB130010C38A /* Info.plist */,
 				D4A0C15D2ED78C6700F77D56 /* NACC_App.swift */,
 				D4A0C15C2ED78C6700F77D56 /* NACC_MainContentView.swift */,
 				D489D35E2EDC91F600A86A6B /* NACC_InfoDisplayView.swift */,
@@ -602,9 +647,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D43C66B02694ABFF007D5883 /* UIKit App */ = {
+		D43C66B02694ABFF007D5883 /* UIKit App Target */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D43C66C22694AC00007D5883 /* Build configuration list for PBXNativeTarget "UIKit App" */;
+			buildConfigurationList = D43C66C22694AC00007D5883 /* Build configuration list for PBXNativeTarget "UIKit App Target" */;
 			buildPhases = (
 				D4C5413C2D43BFC200F62EBF /* SwiftLint */,
 				D43C66AD2694ABFF007D5883 /* Sources */,
@@ -620,7 +665,7 @@
 				D4A420BD2D4D5C7A00E4AC1E /* PBXTargetDependency */,
 				D45BE02E2D56B8ED003F4CB0 /* PBXTargetDependency */,
 			);
-			name = "UIKit App";
+			name = "UIKit App Target";
 			packageProductDependencies = (
 				D47764792D3FFA2400DB748E /* RVS_Persistent_Prefs */,
 				D4F58DF32D5FE4C00087C387 /* LGV_UICleantime */,
@@ -628,12 +673,12 @@
 				D4B2C27F2E8FFEFC009DD45D /* RVS_Generic_Swift_Toolbox */,
 			);
 			productName = UICleantimeTestHarness;
-			productReference = D4C080612D4957B200299FBC /* UIKit App.app */;
+			productReference = D4C080612D4957B200299FBC /* UIKit App Target.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D45A93B62D4C4DEA008B2528 /* NACCWatch */ = {
+		D45A93B62D4C4DEA008B2528 /* Watch Target */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D45A93C52D4C4DEB008B2528 /* Build configuration list for PBXNativeTarget "NACCWatch" */;
+			buildConfigurationList = D45A93C52D4C4DEB008B2528 /* Build configuration list for PBXNativeTarget "Watch Target" */;
 			buildPhases = (
 				D4EC72212D4C55D5008ED9D8 /* SwiftLint */,
 				D45A93B32D4C4DEA008B2528 /* Sources */,
@@ -646,7 +691,7 @@
 			dependencies = (
 				D4F9DA9F2D5BA6A300FFC2DC /* PBXTargetDependency */,
 			);
-			name = NACCWatch;
+			name = "Watch Target";
 			packageProductDependencies = (
 				D4B2C2752E8FFE5D009DD45D /* RVS_Persistent_Prefs */,
 				D4B2C2772E8FFE62009DD45D /* LGV_Cleantime */,
@@ -655,22 +700,28 @@
 				D4B2C2872E8FFF38009DD45D /* RVS_UIKit_Toolbox */,
 			);
 			productName = "NACCWatch Watch App";
-			productReference = D45A93B72D4C4DEA008B2528 /* NACCWatch.app */;
+			productReference = D45A93B72D4C4DEA008B2528 /* Watch Target.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D4A0C14F2ED78C3800F77D56 /* SwiftUI App */ = {
+		D4A0C14F2ED78C3800F77D56 /* SwiftUI App Target */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D4A0C15A2ED78C3900F77D56 /* Build configuration list for PBXNativeTarget "SwiftUI App" */;
+			buildConfigurationList = D4A0C15A2ED78C3900F77D56 /* Build configuration list for PBXNativeTarget "SwiftUI App Target" */;
 			buildPhases = (
+				D482857D2EDE4D6E00721EA0 /* SwiftLint */,
 				D4A0C14C2ED78C3800F77D56 /* Sources */,
 				D4A0C14D2ED78C3800F77D56 /* Frameworks */,
 				D4A0C14E2ED78C3800F77D56 /* Resources */,
+				D48285762EDE47A100721EA0 /* Embed Watch Content */,
+				D482857C2EDE4A5900721EA0 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D48285752EDE47A100721EA0 /* PBXTargetDependency */,
+				D48285782EDE47B800721EA0 /* PBXTargetDependency */,
+				D482857B2EDE4A5900721EA0 /* PBXTargetDependency */,
 			);
-			name = "SwiftUI App";
+			name = "SwiftUI App Target";
 			packageProductDependencies = (
 				D40F87CF2EDA4A8400E4B09B /* RVS_Persistent_Prefs */,
 				D40F87D12EDA4A8400E4B09B /* LGV_Cleantime */,
@@ -678,12 +729,12 @@
 				D40F87D52EDA4A8400E4B09B /* RVS_Generic_Swift_Toolbox */,
 			);
 			productName = NACC_App;
-			productReference = D4A0C1502ED78C3800F77D56 /* SwiftUI App.app */;
+			productReference = D4A0C1502ED78C3800F77D56 /* SwiftUI App Target.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D4A420AF2D4D5C7900E4AC1E /* NACCWidget */ = {
+		D4A420AF2D4D5C7900E4AC1E /* Widget Target */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D4A420C12D4D5C7A00E4AC1E /* Build configuration list for PBXNativeTarget "NACCWidget" */;
+			buildConfigurationList = D4A420C12D4D5C7A00E4AC1E /* Build configuration list for PBXNativeTarget "Widget Target" */;
 			buildPhases = (
 				D4EB29AF2D5D4D6000D40106 /* SwiftLint */,
 				D4A420AC2D4D5C7900E4AC1E /* Sources */,
@@ -694,7 +745,7 @@
 			);
 			dependencies = (
 			);
-			name = NACCWidget;
+			name = "Widget Target";
 			packageProductDependencies = (
 				D462E4BB2D5D08C0001E2C0F /* RVS_Persistent_Prefs */,
 				D4F58DF52D5FE4C90087C387 /* LGV_UICleantime */,
@@ -703,12 +754,12 @@
 				D4B2C2812E8FFF0F009DD45D /* RVS_Generic_Swift_Toolbox */,
 			);
 			productName = NACCWidgetExtension;
-			productReference = D4A420B02D4D5C7900E4AC1E /* NACCWidget.appex */;
+			productReference = D4A420B02D4D5C7900E4AC1E /* Widget Target.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		D4E43A4C2C937FDF00535CDD /* NACCIntents */ = {
+		D4E43A4C2C937FDF00535CDD /* Intents Target */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D4E43A702C937FDF00535CDD /* Build configuration list for PBXNativeTarget "NACCIntents" */;
+			buildConfigurationList = D4E43A702C937FDF00535CDD /* Build configuration list for PBXNativeTarget "Intents Target" */;
 			buildPhases = (
 				D4C5413D2D43BFD600F62EBF /* SwiftLint */,
 				D4E43A492C937FDF00535CDD /* Sources */,
@@ -718,7 +769,7 @@
 			);
 			dependencies = (
 			);
-			name = NACCIntents;
+			name = "Intents Target";
 			packageProductDependencies = (
 				D4F58DFF2D5FE5400087C387 /* LGV_UICleantime */,
 				D446903F2D61358C0079B36A /* RVS_UIKit_Toolbox */,
@@ -726,12 +777,12 @@
 				D4B2C2832E8FFF17009DD45D /* RVS_Generic_Swift_Toolbox */,
 			);
 			productName = NACCIntents;
-			productReference = D4C080642D4957B200299FBC /* NACCIntents.appex */;
+			productReference = D4C080642D4957B200299FBC /* Intents Target.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		D4F9DA942D5BA6A300FFC2DC /* NACCWatchComplicationExtension */ = {
+		D4F9DA942D5BA6A300FFC2DC /* Complications Target */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D4F9DAA22D5BA6A300FFC2DC /* Build configuration list for PBXNativeTarget "NACCWatchComplicationExtension" */;
+			buildConfigurationList = D4F9DAA22D5BA6A300FFC2DC /* Build configuration list for PBXNativeTarget "Complications Target" */;
 			buildPhases = (
 				D4EB29B02D5D4D7B00D40106 /* SwiftLint */,
 				D4F9DA912D5BA6A300FFC2DC /* Sources */,
@@ -742,7 +793,7 @@
 			);
 			dependencies = (
 			);
-			name = NACCWatchComplicationExtension;
+			name = "Complications Target";
 			packageProductDependencies = (
 				D462E4BF2D5D09FF001E2C0F /* RVS_Persistent_Prefs */,
 				D4F58DF92D5FE4D90087C387 /* LGV_UICleantime */,
@@ -751,7 +802,7 @@
 				D4B2C2852E8FFF1F009DD45D /* RVS_Generic_Swift_Toolbox */,
 			);
 			productName = NACCWatchComplicationExtension;
-			productReference = D4F9DA952D5BA6A300FFC2DC /* NACCWatchComplicationExtension.appex */;
+			productReference = D4F9DA952D5BA6A300FFC2DC /* Complications Target.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -806,12 +857,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D4A0C14F2ED78C3800F77D56 /* SwiftUI App */,
-				D43C66B02694ABFF007D5883 /* UIKit App */,
-				D4A420AF2D4D5C7900E4AC1E /* NACCWidget */,
-				D4E43A4C2C937FDF00535CDD /* NACCIntents */,
-				D45A93B62D4C4DEA008B2528 /* NACCWatch */,
-				D4F9DA942D5BA6A300FFC2DC /* NACCWatchComplicationExtension */,
+				D4A0C14F2ED78C3800F77D56 /* SwiftUI App Target */,
+				D45A93B62D4C4DEA008B2528 /* Watch Target */,
+				D4A420AF2D4D5C7900E4AC1E /* Widget Target */,
+				D4E43A4C2C937FDF00535CDD /* Intents Target */,
+				D4F9DA942D5BA6A300FFC2DC /* Complications Target */,
+				D43C66B02694ABFF007D5883 /* UIKit App Target */,
 			);
 		};
 /* End PBXProject section */
@@ -881,6 +932,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		D482857D2EDE4D6E00721EA0 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if command -v swiftlint 2>&1 >/dev/null\nthen\n    cd ${PROJECT_DIR}\n    swiftlint\nfi\n";
+		};
 		D4C5413C2D43BFC200F62EBF /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -1053,22 +1123,37 @@
 /* Begin PBXTargetDependency section */
 		D45BE02E2D56B8ED003F4CB0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D45A93B62D4C4DEA008B2528 /* NACCWatch */;
+			target = D45A93B62D4C4DEA008B2528 /* Watch Target */;
 			targetProxy = D45BE02D2D56B8ED003F4CB0 /* PBXContainerItemProxy */;
+		};
+		D48285752EDE47A100721EA0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D45A93B62D4C4DEA008B2528 /* Watch Target */;
+			targetProxy = D48285742EDE47A100721EA0 /* PBXContainerItemProxy */;
+		};
+		D48285782EDE47B800721EA0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D45A93B62D4C4DEA008B2528 /* Watch Target */;
+			targetProxy = D48285772EDE47B800721EA0 /* PBXContainerItemProxy */;
+		};
+		D482857B2EDE4A5900721EA0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4A420AF2D4D5C7900E4AC1E /* Widget Target */;
+			targetProxy = D482857A2EDE4A5900721EA0 /* PBXContainerItemProxy */;
 		};
 		D4A420BD2D4D5C7A00E4AC1E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D4A420AF2D4D5C7900E4AC1E /* NACCWidget */;
+			target = D4A420AF2D4D5C7900E4AC1E /* Widget Target */;
 			targetProxy = D4A420BC2D4D5C7A00E4AC1E /* PBXContainerItemProxy */;
 		};
 		D4E43A672C937FDF00535CDD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D4E43A4C2C937FDF00535CDD /* NACCIntents */;
+			target = D4E43A4C2C937FDF00535CDD /* Intents Target */;
 			targetProxy = D4E43A662C937FDF00535CDD /* PBXContainerItemProxy */;
 		};
 		D4F9DA9F2D5BA6A300FFC2DC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D4F9DA942D5BA6A300FFC2DC /* NACCWatchComplicationExtension */;
+			target = D4F9DA942D5BA6A300FFC2DC /* Complications Target */;
 			targetProxy = D4F9DA9E2D5BA6A300FFC2DC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1286,7 +1371,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Project-Meta/NACC.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_RESOURCE_ACCESS_CALENDARS = YES;
@@ -1306,7 +1391,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 6.2.3;
+				MARKETING_VERSION = 7.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1330,7 +1415,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Project-Meta/NACC.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_RESOURCE_ACCESS_CALENDARS = YES;
@@ -1350,7 +1435,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 6.2.3;
+				MARKETING_VERSION = 7.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1375,7 +1460,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatch/NACCWatch.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DRIVERKIT_DEPLOYMENT_TARGET = "";
 				ENABLE_PREVIEWS = YES;
@@ -1398,7 +1483,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
 				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 6.2.3;
+				MARKETING_VERSION = 7.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1424,7 +1509,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatch/NACCWatch.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DRIVERKIT_DEPLOYMENT_TARGET = "";
 				ENABLE_PREVIEWS = YES;
@@ -1447,7 +1532,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
 				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 6.2.3;
+				MARKETING_VERSION = 7.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1468,14 +1553,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "Project-Meta/NACC_App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Project-Meta/SwiftUITarget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0000;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SwiftUI-App-Info.plist";
+				INFOPLIST_FILE = Sources/SwiftUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
@@ -1484,8 +1570,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1512,14 +1597,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "Project-Meta/NACC_App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Project-Meta/SwiftUITarget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0000;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SwiftUI-App-Info.plist";
+				INFOPLIST_FILE = Sources/SwiftUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
@@ -1528,8 +1614,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1558,7 +1643,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWidget/NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1576,7 +1661,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 6.2.3;
+				MARKETING_VERSION = 7.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1599,7 +1684,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWidget/NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1617,7 +1702,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 6.2.3;
+				MARKETING_VERSION = 7.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1638,7 +1723,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1656,7 +1741,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 6.2.3;
+				MARKETING_VERSION = 7.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1680,7 +1765,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1698,7 +1783,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 6.2.3;
+				MARKETING_VERSION = 7.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1722,7 +1807,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatchComplication/NACCWatchComplicationExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1738,7 +1823,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 6.2.3;
+				MARKETING_VERSION = 7.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp.NACCWatchComplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1761,7 +1846,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatchComplication/NACCWatchComplicationExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1777,7 +1862,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 6.2.3;
+				MARKETING_VERSION = 7.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp.NACCWatchComplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1802,7 +1887,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D43C66C22694AC00007D5883 /* Build configuration list for PBXNativeTarget "UIKit App" */ = {
+		D43C66C22694AC00007D5883 /* Build configuration list for PBXNativeTarget "UIKit App Target" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D43C66C32694AC00007D5883 /* Debug */,
@@ -1811,7 +1896,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D45A93C52D4C4DEB008B2528 /* Build configuration list for PBXNativeTarget "NACCWatch" */ = {
+		D45A93C52D4C4DEB008B2528 /* Build configuration list for PBXNativeTarget "Watch Target" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D45A93C62D4C4DEB008B2528 /* Debug */,
@@ -1820,7 +1905,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4A0C15A2ED78C3900F77D56 /* Build configuration list for PBXNativeTarget "SwiftUI App" */ = {
+		D4A0C15A2ED78C3900F77D56 /* Build configuration list for PBXNativeTarget "SwiftUI App Target" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4A0C1582ED78C3900F77D56 /* Debug */,
@@ -1829,7 +1914,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4A420C12D4D5C7A00E4AC1E /* Build configuration list for PBXNativeTarget "NACCWidget" */ = {
+		D4A420C12D4D5C7A00E4AC1E /* Build configuration list for PBXNativeTarget "Widget Target" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4A420C22D4D5C7A00E4AC1E /* Debug */,
@@ -1838,7 +1923,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4E43A702C937FDF00535CDD /* Build configuration list for PBXNativeTarget "NACCIntents" */ = {
+		D4E43A702C937FDF00535CDD /* Build configuration list for PBXNativeTarget "Intents Target" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4E43A6B2C937FDF00535CDD /* Debug */,
@@ -1847,7 +1932,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4F9DAA22D5BA6A300FFC2DC /* Build configuration list for PBXNativeTarget "NACCWatchComplicationExtension" */ = {
+		D4F9DAA22D5BA6A300FFC2DC /* Build configuration list for PBXNativeTarget "Complications Target" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4F9DAA32D5BA6A300FFC2DC /* Debug */,
