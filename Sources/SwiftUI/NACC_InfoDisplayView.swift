@@ -101,23 +101,44 @@ struct NACC_InfoDisplayView: View {
     var body: some View {
         AppBackground {
             ScrollView {
-                VStack(alignment: .center, spacing: 16) {
+                VStack(alignment: .center,
+                       spacing: Self._edgePaddingInDisplayUnits
+                ) {
                     Image("AboutLogo")
                         .resizable()
                         .scaledToFit()
                         .frame(width: Self._iconSizeInDisplayUnits)
                         .onTapGesture {
                             if let url = Bundle.main.helpURI {
-                                openURL(url)
+                                self.openURL(url)
                             }
                         }
                     
+                    let displayString = String(format: "SLUG-APP-INFO-VERSION-FORMAT".localizedVariant,
+                                               Bundle.main.appDisplayName,
+                                               Bundle.main.appVersionString,
+                                               Bundle.main.appVersionBuildString)
+                    
+                    Text(displayString)
+                        .textSelection(.enabled)
+                        .font(.caption)
+                        .italic()
+                    
                     Text("SLUG-APP-INFO-TEXT".localizedVariant)
-                        .padding(.horizontal, Self._edgePaddingInDisplayUnits)
+                        .padding(.horizontal,
+                                 Self._edgePaddingInDisplayUnits
+                        )
+                        .textSelection(.enabled)
+                        .font(.footnote)
                 }
-                .frame(maxWidth: .infinity, alignment: .top)
-                .padding(.top, 16)
+                .frame(maxWidth: .infinity,
+                       alignment: .top
+                )
+                .padding(.top,
+                         Self._edgePaddingInDisplayUnits
+                )
             }
+            .scrollBounceBehavior(.basedOnSize)
         }
         .navigationTitle("SLUG-ABOUT".localizedVariant)
         .navigationBarTitleDisplayMode(.inline)

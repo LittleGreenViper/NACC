@@ -27,13 +27,22 @@ import SwiftUI
  This is a general-purpose View that displays the background gradient, under the contained View.
  */
 struct AppBackground<Content: View>: View {
+    /* ################################################################## */
+    /**
+     The content Viewbuilder.
+     */
     @ViewBuilder let content: () -> Content
 
+    /* ################################################################## */
+    /**
+     This simply adds a gradient background that adjusts for mode and accessibility to the content.
+     */
     var body: some View {
         content()
             .frame(maxWidth: .infinity,
                    maxHeight: .infinity,
-                   alignment: .top)         // you want everything top-aligned
+                   alignment: .top
+            )
             .background(
                 Image("Background-Gradient")
                     .resizable()
@@ -47,16 +56,15 @@ struct AppBackground<Content: View>: View {
 // MARK: - Main App -
 /* ###################################################################################################################################### */
 /**
+ The main app wrapper.
  */
 @main
 struct NACC_App: App {
     /* ################################################################## */
     /**
-     This is the main application.
+     This is the main application window.
      */
     var body: some Scene {
-        WindowGroup {
-            NACC_MainContentView()
-        }
+        WindowGroup { NACC_MainContentView() }
     }
 }

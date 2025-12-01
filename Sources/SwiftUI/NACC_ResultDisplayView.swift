@@ -23,6 +23,14 @@ import LGV_Cleantime
 import LGV_UICleantime
 import RVS_Generic_Swift_Toolbox
 
+enum TabInexes: Int {
+    case keytagArray
+    
+    case keytagStrip
+    
+    case medallionArray
+}
+
 /* ###################################################################################################################################### */
 // MARK: - Result Display View -
 /* ###################################################################################################################################### */

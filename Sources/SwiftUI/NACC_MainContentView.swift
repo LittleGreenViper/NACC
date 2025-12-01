@@ -44,10 +44,16 @@ struct NACC_MainContentView: View {
     
     /* ################################################################## */
     /**
-     This denotes the padding around the text display.
+     This denotes the padding around the date display.
      */
     private static let _buttonPaddingInDisplayUnits = 8.0
     
+    /* ################################################################## */
+    /**
+     This denotes the horizontal padding around the text display.
+     */
+    private static let _horizontalPaddingInDisplayUnits = 20.0
+
     /* ################################################################## */
     /**
      This is how big to make the top icon button.
@@ -102,7 +108,7 @@ struct NACC_MainContentView: View {
                     if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
                         Button {
                             // This will call in the keytag array display.
-                            self.prefs.lastSelectedTabIndex = 0
+                            self.prefs.lastSelectedTabIndex = TabInexes.keytagArray.rawValue
                             self._showResult = true
                         } label: {
                             Image("Logo")
@@ -121,20 +127,25 @@ struct NACC_MainContentView: View {
                     Button {
                         _showingPicker = true
                     } label: {
-                        Text(_selectedDate.formatted(date: .abbreviated, time: .omitted))
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 8)
-                            .background(.thinMaterial)
-                            .clipShape(Capsule())
+                        Text(_selectedDate.formatted(date: .abbreviated,
+                                                     time: .omitted)
+                        )
+                        .font(.largeTitle)
+                        .padding(.horizontal, Self._horizontalPaddingInDisplayUnits)
+                        .padding(.vertical, Self._buttonPaddingInDisplayUnits)
+                        .background(.thinMaterial)
+                        .clipShape(Capsule())
                     }
                     .sheet(isPresented: $_showingPicker) {
-                        DatePicker(
-                            "Clean Date",
-                            selection: self.$_selectedDate,
-                            displayedComponents: [.date]
-                        )
-                        .datePickerStyle(.graphical)
-                        .padding()
+                        AppBackground {
+                            DatePicker(
+                                "Clean Date",
+                                selection: self.$_selectedDate,
+                                displayedComponents: [.date]
+                            )
+                            .datePickerStyle(.graphical)
+                            .padding()
+                        }
                     }
                     
                     if let report = self._reportString.naCleantimeText(beginDate: self._selectedDate,
@@ -146,13 +157,14 @@ struct NACC_MainContentView: View {
                                 .textSelection(.enabled)
                                 .padding(Self._buttonPaddingInDisplayUnits)
                                 .frame(maxWidth: .infinity,
-                                       alignment: .center)
+                                       alignment: .center
+                                )
                                 .background(.thinMaterial)
-                                .clipShape(RoundedRectangle(cornerRadius: Self._buttonPaddingInDisplayUnits))
+                                .clipShape(Capsule())
                                 .contentShape(Rectangle())
                                 .onTapGesture {
                                     // This will call in the medallion array (if more than a year), or the keytag strip display.
-                                    self.prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? 2 : 1
+                                    self.prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? TabInexes.medallionArray.rawValue : TabInexes.keytagStrip.rawValue
                                     self._showResult = true
                                 }
                                 .accessibilityAddTraits(.isButton)
@@ -168,7 +180,7 @@ struct NACC_MainContentView: View {
                         if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
                             Button {
                                 // This will call in the keytag strip display or the medallion display.
-                                self.prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? 1 : 0
+                                self.prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? TabInexes.medallionArray.rawValue : TabInexes.keytagStrip.rawValue
                                 self._showResult = true
                             } label: {
                                 Image(uiImage: image)
@@ -192,7 +204,7 @@ struct NACC_MainContentView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        // TBD - This will show the action sheet.
+                        // TODO: This will show the action sheet.
                     } label: {
                         Image(systemName: "square.and.arrow.up")
                     }
@@ -200,7 +212,7 @@ struct NACC_MainContentView: View {
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        // TBD - This will show the calendar event creation sheet.
+                        // TODO: This will show the calendar event creation sheet.
                     } label: {
                         Image(systemName: "calendar")
                     }
@@ -220,13 +232,13 @@ struct NACC_MainContentView: View {
             .navigationDestination(isPresented: self.$_showInfo) { NACC_InfoDisplayView() }
         }
         .onAppear { self._selectedDate = self.prefs.cleanDate }
-        .onChange(of: self._selectedDate) { _, selectedDate in
-            self.prefs.cleanDate = selectedDate
-            let calculator = LGV_CleantimeDateCalc(startDate: selectedDate).cleanTime
-            let cleantimeDisplayImage = 0 < calculator.years ? LGV_UISingleCleantimeMedallionImageView() : LGV_UISingleCleantimeKeytagImageView()
+        .onChange(of: self._selectedDate) { _, inSelectedDate in
+            self.prefs.cleanDate = inSelectedDate
+            let calculator = LGV_CleantimeDateCalc(startDate: inSelectedDate).cleanTime
+            let cleantimeDisplayImage = calculator.isOneYearOrMore ? LGV_UISingleCleantimeMedallionImageView() : LGV_UISingleCleantimeKeytagImageView()
             cleantimeDisplayImage.totalDays = calculator.totalDays
             cleantimeDisplayImage.totalMonths = calculator.totalMonths
-            guard 0 < calculator.totalDays,
+            guard calculator.isOneDayOrMore,
                   let generatedImage = cleantimeDisplayImage.generatedImage
             else {
                 self._displayedImage = nil
