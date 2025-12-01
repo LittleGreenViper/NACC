@@ -57,6 +57,7 @@
 
 // MARK: CLEANDATE SCREEN
 
+"SLUG-CLEANDATE-PICKER-TITLE"                   =   "Select Your Cleandate";
 "SLUG-INITIAL-TITLE"                            =   "NACC";
 "SLUG-URL-STRING"                               =   "https://nacc.littlegreenviper.com/?%@";
 
@@ -74,7 +75,7 @@
 "SLUG-APP-INFO-VERSION-FORMAT"                  =   "%@ Version: %@ (%@)";
 "SLUG-COPYRIGHT-BUTTON"                         =   "©2022-2024 Little Green Viper Software Development LLC";
 "SLUG-PRIVACY-BUTTON"                           =   "Privacy";
-"SLUG-LGV-BUTTON"                               =   "Little Green Viper Web Site";
+"SLUG-LGV-BUTTON"                               =   "Web Site";
 
 // MARK: HORIZONTAL KEYTAGS SCREEN
 

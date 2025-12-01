@@ -29,10 +29,16 @@ import SwiftUI
 struct AppBackground<Content: View>: View {
     /* ################################################################## */
     /**
+     We can provide a different alignment. The default is top.
+     */
+    @State var alignment: Alignment = .top
+
+    /* ################################################################## */
+    /**
      The content Viewbuilder.
      */
     @ViewBuilder let content: () -> Content
-
+    
     /* ################################################################## */
     /**
      This simply adds a gradient background that adjusts for mode and accessibility to the content.
@@ -41,7 +47,7 @@ struct AppBackground<Content: View>: View {
         content()
             .frame(maxWidth: .infinity,
                    maxHeight: .infinity,
-                   alignment: .top
+                   alignment: self.alignment
             )
             .background(
                 Image("Background-Gradient")

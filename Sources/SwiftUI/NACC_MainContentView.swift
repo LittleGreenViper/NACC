@@ -44,6 +44,12 @@ struct NACC_MainContentView: View {
     
     /* ################################################################## */
     /**
+     This denotes the padding above the cleandate picker.
+     */
+    private static let _cleandatePickerTitlePaddingInDisplayUnits = 20.0
+    
+    /* ################################################################## */
+    /**
      This denotes the padding around the date display.
      */
     private static let _buttonPaddingInDisplayUnits = 8.0
@@ -103,7 +109,7 @@ struct NACC_MainContentView: View {
      */
     var body: some View {
         NavigationStack {
-            AppBackground {
+            AppBackground(alignment: .center) {
                 VStack {
                     if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
                         Button {
@@ -131,13 +137,19 @@ struct NACC_MainContentView: View {
                                                      time: .omitted)
                         )
                         .font(.largeTitle)
+                        .foregroundStyle(Color(.label))
                         .padding(.horizontal, Self._horizontalPaddingInDisplayUnits)
                         .padding(.vertical, Self._buttonPaddingInDisplayUnits)
                         .background(.thinMaterial)
                         .clipShape(Capsule())
                     }
-                    .sheet(isPresented: $_showingPicker) {
+                    .popover(isPresented: $_showingPicker) {
                         AppBackground {
+                            Text("SLUG-CLEANDATE-PICKER-TITLE".localizedVariant)
+                                .font(.largeTitle)
+                                .padding(.top, Self._cleandatePickerTitlePaddingInDisplayUnits)
+                                .padding([.leading, .trailing], Self._cleandatePickerTitlePaddingInDisplayUnits)
+                            
                             DatePicker(
                                 "Clean Date",
                                 selection: self.$_selectedDate,

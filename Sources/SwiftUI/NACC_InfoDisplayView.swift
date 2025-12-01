@@ -100,45 +100,71 @@ struct NACC_InfoDisplayView: View {
      */
     var body: some View {
         AppBackground {
-            ScrollView {
-                VStack(alignment: .center,
-                       spacing: Self._edgePaddingInDisplayUnits
-                ) {
-                    Image("AboutLogo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: Self._iconSizeInDisplayUnits)
-                        .onTapGesture {
-                            if let url = Bundle.main.helpURI {
-                                self.openURL(url)
+            VStack(spacing: 0) {
+                ScrollView {
+                    VStack(alignment: .center,
+                           spacing: Self._edgePaddingInDisplayUnits
+                    ) {
+                        Image("AboutLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: Self._iconSizeInDisplayUnits)
+                            .onTapGesture {
+                                if let url = Bundle.main.helpURI {
+                                    self.openURL(url)
+                                }
                             }
-                        }
-                    
-                    let displayString = String(format: "SLUG-APP-INFO-VERSION-FORMAT".localizedVariant,
-                                               Bundle.main.appDisplayName,
-                                               Bundle.main.appVersionString,
-                                               Bundle.main.appVersionBuildString)
-                    
-                    Text(displayString)
-                        .textSelection(.enabled)
-                        .font(.caption)
-                        .italic()
-                    
-                    Text("SLUG-APP-INFO-TEXT".localizedVariant)
-                        .padding(.horizontal,
-                                 Self._edgePaddingInDisplayUnits
-                        )
-                        .textSelection(.enabled)
-                        .font(.footnote)
+                        
+                        let displayString = String(format: "SLUG-APP-INFO-VERSION-FORMAT".localizedVariant,
+                                                   Bundle.main.appDisplayName,
+                                                   Bundle.main.appVersionString,
+                                                   Bundle.main.appVersionBuildString)
+                        
+                        Text(displayString)
+                            .textSelection(.enabled)
+                            .font(.caption)
+                            .italic()
+                        
+                        Text("SLUG-APP-INFO-TEXT".localizedVariant)
+                            .padding(.horizontal,
+                                     Self._edgePaddingInDisplayUnits
+                            )
+                            .textSelection(.enabled)
+                            .font(.footnote)
+                    }
+                    .frame(maxWidth: .infinity,
+                           alignment: .top
+                    )
+                    .padding(.top,
+                             Self._edgePaddingInDisplayUnits
+                    )
                 }
-                .frame(maxWidth: .infinity,
-                       alignment: .top
-                )
-                .padding(.top,
-                         Self._edgePaddingInDisplayUnits
-                )
+                .scrollBounceBehavior(.basedOnSize)
+                HStack {
+                    Button("SLUG-PRIVACY-BUTTON".localizedVariant) {
+                        if let url = Bundle.main.privacyURI {
+                            self.openURL(url)
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    
+                    Button("SLUG-LGV-BUTTON".localizedVariant) {
+                        if let url = Bundle.main.siteURI {
+                            self.openURL(url)
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                }
+                .padding()
             }
-            .scrollBounceBehavior(.basedOnSize)
+            .frame(maxWidth: .infinity,
+                   maxHeight: .infinity,
+                   alignment: .top
+            )
         }
         .navigationTitle("SLUG-ABOUT".localizedVariant)
         .navigationBarTitleDisplayMode(.inline)
