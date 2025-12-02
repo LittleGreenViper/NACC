@@ -24,14 +24,87 @@ import LGV_UICleantime
 import RVS_Generic_Swift_Toolbox
 
 /* ###################################################################################################################################### */
+// MARK: - Special View Modifier for the Date Picker -
+/* ###################################################################################################################################### */
+/**
+ This ViewModifier will present a body containing our special DatePicker.
+ */
+struct AdaptivePickerPresentation: ViewModifier {
+    /* ################################################################## */
+    /**
+     Set to true, if we are to be showing.
+     */
+    @Binding var isPresented: Bool
+    
+    /* ################################################################## */
+    /**
+     The date that we are reprsenting/changing.
+     */
+    @Binding var selectedDate: Date
+    
+    /* ################################################################## */
+    /**
+     This returns the appropriate body for the type of device we're on.
+     */
+    func body(content: Content) -> some View {
+        Group {
+            #if os(iOS)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    // iPad: Use a popover
+                    content
+                        .popover(isPresented: $isPresented) {
+                            PickerPopoverContent(selectedDate: $selectedDate)
+                        }
+                } else {
+                    // iPhone: Use a “half-height” sheet with detents
+                    content
+                        .sheet(isPresented: $isPresented) {
+                            PickerPopoverContent(selectedDate: $selectedDate)
+                                .presentationDetents([.medium, .large])
+                                .presentationDragIndicator(.visible)
+                        }
+                }
+            #else
+                // fallback for other platforms
+                content
+                    .popover(isPresented: $isPresented) {
+                        PickerPopoverContent(selectedDate: $selectedDate)
+                    }
+            #endif
+        }
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: - View Extension for the Date Picker -
+/* ###################################################################################################################################### */
+extension View {
+    func adaptivePickerPresentation(
+        isPresented: Binding<Bool>,
+        selectedDate: Binding<Date>
+    ) -> some View {
+        /* ################################################################## */
+        /**
+         This modifies the view to contain our special DatePicker, selected for the platform.
+         */
+        modifier(AdaptivePickerPresentation(isPresented: isPresented,
+                                            selectedDate: selectedDate
+                                           )
+        )
+    }
+}
+
+/* ###################################################################################################################################### */
 // MARK: - Date Picker View -
 /* ###################################################################################################################################### */
 /**
  This is a view that we use to allow the user to select a new cleandate.
  
- It shows a standard "graphical" date picker (calendar-style), along with a "Today" button (sets the calendar to today), and a "DONE" button.
+ It shows a standard "graphical" date picker (calendar-style), along with a "DONE" button (dismisses the modal).
  
- If the user has changed the date since invoking the screen, a "CANCEL" button also appears, allowing the user to discard any changes.
+ It shows a a "Today" button (sets the calendar to today), if the selected day is not today.
+ 
+ If the user has changed the date since invoking the screen, a "Reset" button also appears, allowing the user to discard any changes.
  */
 struct PickerPopoverContent: View {
     /* ################################################################## */
@@ -45,12 +118,24 @@ struct PickerPopoverContent: View {
      This stores the initial date, upon invoking the sheet/popover.
      */
     private static var _originalDate: Date = .now
+    
+    /* ################################################################## */
+    /**
+     The birthdate of NA is a hard minimum.
+     */
+    private static let _minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5))
 
     /* ################################################################## */
     /**
      This is used to dismiss the modal.
      */
     @Environment(\.dismiss) private var _dismiss
+
+    /* ################################################################## */
+    /**
+     Used to detect whether or not we are landscape.
+     */
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
 
     /* ################################################################## */
     /**
@@ -61,42 +146,63 @@ struct PickerPopoverContent: View {
     /* ################################################################## */
     /**
      This returns the DatePicker screen.
+     
+     If the device is landscape, we use wheels, instead of graphical, as it is more vertically compact.
      */
     var body: some View {
         AppBackground {
             VStack {
-                Text("SLUG-CLEANDATE-PICKER-TITLE".localizedVariant)
-                    .font(.largeTitle)
-                    .padding(.top, Self._cleandatePickerTitlePaddingInDisplayUnits)
-                    .padding(.horizontal, Self._cleandatePickerTitlePaddingInDisplayUnits)
-
-                DatePicker("Clean Date",
-                           selection: self.$selectedDate,
-                           in: ...Date(),
-                           displayedComponents: [.date]
-                )
-                .datePickerStyle(.graphical)
-                
-                HStack {
-                    if !Calendar.current.isDate(self.selectedDate, inSameDayAs: .now) {
-                        Button("SLUG-TODAY".localizedVariant) {
-                            self.selectedDate = Date()
-                        }
-                        .frame(maxWidth: .infinity)
+                if let minimumDate = Self._minimumDate {
+                    // The sheet title
+                    Text("SLUG-CLEANDATE-PICKER-TITLE".localizedVariant)
+                        .font(.largeTitle)
+                        .padding(.top, Self._cleandatePickerTitlePaddingInDisplayUnits)
+                        .padding(.horizontal, Self._cleandatePickerTitlePaddingInDisplayUnits)
+                    
+                    // The date picker
+                    // If we are landscape, we use wheels.
+                    if .compact == self.verticalSizeClass {
+                        DatePicker("",
+                                   selection: self.$selectedDate,
+                                   in: minimumDate...Date(),
+                                   displayedComponents: [.date]
+                        )
+                        .datePickerStyle(.wheel)
+                        .labelsHidden()
+                    } else {
+                        DatePicker("",
+                                   selection: self.$selectedDate,
+                                   in: minimumDate...Date(),
+                                   displayedComponents: [.date]
+                        )
+                        .datePickerStyle(.graphical)
                     }
                     
-                    if self.selectedDate != Self._originalDate {
-                        Button("SLUG-RESET".localizedVariant) {
-                            self.selectedDate = Self._originalDate
+                    // The buttons under the picker
+                    HStack {
+                        // If we are not at today, we provide a "Today" button, that sets the date to today (no cleandate).
+                        if !Calendar.current.isDate(self.selectedDate, inSameDayAs: .now) {
+                            Button("SLUG-TODAY".localizedVariant) {
+                                self.selectedDate = Date()
+                            }
+                            .frame(maxWidth: .infinity)
                         }
+                        
+                        // If we have a different date from the one we started with, we show a "Reset" button, that discards the changes.
+                        if self.selectedDate != Self._originalDate {
+                            Button("SLUG-RESET".localizedVariant) {
+                                self.selectedDate = Self._originalDate
+                            }
+                            .frame(maxWidth: .infinity)
+                        }
+                        
+                        // This dismisses the screen (as does tapping outside, or swiping down).
+                        Button("SLUG-DONE".localizedVariant) {
+                            self._dismiss()
+                        }
+                        .buttonStyle(.borderedProminent)
                         .frame(maxWidth: .infinity)
                     }
-                    
-                    Button("SLUG-DONE".localizedVariant) {
-                        self._dismiss()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
                 }
             }
         }
@@ -202,8 +308,7 @@ struct NACC_MainContentView: View {
             return self._reportString
                 .naCleantimeText(beginDate: self._selectedDate,
                                  endDate: .now
-                )?
-                .localizedVariant ?? "ERROR"
+                )?.localizedVariant ?? "ERROR"
         } else {
             return "SLUG-CLEANDATE-PICKER-TITLE".localizedVariant
         }
@@ -248,21 +353,25 @@ struct NACC_MainContentView: View {
                     Text(self._report)
                         .textSelection(.enabled)
                             .padding(Self._buttonPaddingInDisplayUnits)
-                            .frame(maxWidth: .infinity, alignment: .center)
+                            .frame(maxWidth: .infinity,
+                                   alignment: .center
+                            )
                             .foregroundStyle(!LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneDayOrMore ? Color("SelectionTintColor") : .primary)
-                            .background(.thickMaterial, in: Capsule())
+                            .background(.thickMaterial,
+                                        in: Capsule()
+                            )
                             .contentShape(Rectangle())
                         .onTapGesture {
                             self._showingPicker = true
                         }
-                        .popover(isPresented: $_showingPicker) {
-                            PickerPopoverContent(selectedDate: $_selectedDate)
-                        }
+                        .adaptivePickerPresentation(isPresented: $_showingPicker,
+                                                    selectedDate: $_selectedDate
+                        )
                         .accessibilityAddTraits(.isButton)
                         .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
                     
                     // If the user has set a cleandate, then the following is an image, with the user's last earned keytag (under a year), or medallion.
-                    // Tapping on the image brings in the results screen.
+                    // If the user has thirty days or more, tapping on the image brings in the results screen.
                     if let image = self._displayedImage {
                         if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
                             Button {
@@ -319,6 +428,7 @@ struct NACC_MainContentView: View {
         .onAppear {
             self._watchDelegateObject = self._watchDelegateObject ?? NACCWatchAppContentViewWatchDelegate(updateHandler: self.updateApplicationContext)
             self._selectedDate = self._prefs.cleanDate
+            self._watchDelegateObject?.sendApplicationContext()
         }
         .onChange(of: self._selectedDate) { _, inSelectedDate in
             self._prefs.cleanDate = inSelectedDate
