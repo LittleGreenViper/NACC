@@ -44,6 +44,19 @@ struct AdaptivePickerPresentation: ViewModifier {
     
     /* ################################################################## */
     /**
+     This returns the detents to use for the modal sheet, containing the DatePicker. Thos only applies to portrait mode.
+     */
+    private var _screenDetents: Set<PresentationDetent> {
+        var ret: Set<PresentationDetent> = [PresentationDetent.medium, PresentationDetent.large]
+        if UIScreen.main.bounds.size.height < 1024 {
+            ret = [.large]
+        }
+        
+        return ret
+    }
+
+    /* ################################################################## */
+    /**
      This returns the appropriate body for the type of device we're on.
      */
     func body(content: Content) -> some View {
@@ -60,7 +73,7 @@ struct AdaptivePickerPresentation: ViewModifier {
                     content
                         .sheet(isPresented: $isPresented) {
                             PickerPopoverContent(selectedDate: $selectedDate)
-                                .presentationDetents([.medium, .large])
+                                .presentationDetents(self._screenDetents)
                                 .presentationDragIndicator(.visible)
                         }
                 }
