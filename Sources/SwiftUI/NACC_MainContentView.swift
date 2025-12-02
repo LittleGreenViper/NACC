@@ -47,8 +47,8 @@ struct AdaptivePickerPresentation: ViewModifier {
      This returns the detents to use for the modal sheet, containing the DatePicker. Thos only applies to portrait mode.
      */
     private var _screenDetents: Set<PresentationDetent> {
-        var ret: Set<PresentationDetent> = [PresentationDetent.medium, PresentationDetent.large]
-        if UIScreen.main.bounds.size.height < 1024 {
+        var ret: Set<PresentationDetent> = [.medium, .large]
+        if 900 > UIScreen.main.bounds.size.height {
             ret = [.large]
         }
         
@@ -66,7 +66,7 @@ struct AdaptivePickerPresentation: ViewModifier {
                     // iPad: Use a popover
                     content
                         .popover(isPresented: $isPresented) {
-                            PickerPopoverContent(selectedDate: $selectedDate)
+                            PickerPopoverContent(selectedDate: $selectedDate, isInPopover: true)
                         }
                 } else {
                     // iPhone: Use a “half-height” sheet with detents
@@ -122,104 +122,111 @@ extension View {
 struct PickerPopoverContent: View {
     /* ################################################################## */
     /**
-     This denotes the padding above the cleandate picker.
      */
     private static let _cleandatePickerTitlePaddingInDisplayUnits = 20.0
-    
-    /* ################################################################## */
-    /**
-     This stores the initial date, upon invoking the sheet/popover.
-     */
-    private static var _originalDate: Date = .now
-    
-    /* ################################################################## */
-    /**
-     The birthdate of NA is a hard minimum.
-     */
-    private static let _minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5))
 
     /* ################################################################## */
     /**
-     This is used to dismiss the modal.
+     */
+    private static var _originalDate: Date = .now
+
+    /* ################################################################## */
+    /**
+     */
+    private static let _minimumDate = Calendar.current.date(from: DateComponents(year: 1953,
+                                                                                 month: 10,
+                                                                                 day: 5))
+
+    /* ################################################################## */
+    /**
      */
     @Environment(\.dismiss) private var _dismiss
 
     /* ################################################################## */
     /**
-     Used to detect whether or not we are landscape.
      */
-    @Environment(\.verticalSizeClass) private var verticalSizeClass
+    @Environment(\.horizontalSizeClass) private var _horizontalSizeClass
 
     /* ################################################################## */
     /**
-     This connects to the main selected date.
      */
     @Binding var selectedDate: Date
 
     /* ################################################################## */
     /**
-     This returns the DatePicker screen.
-     
-     If the device is landscape, we use wheels, instead of graphical, as it is more vertically compact.
+     */
+    @State var isInPopover: Bool = false
+    
+    /* ################################################################## */
+    /**
      */
     var body: some View {
         AppBackground {
-            VStack {
-                if let minimumDate = Self._minimumDate {
-                    // The sheet title
-                    Text("SLUG-CLEANDATE-PICKER-TITLE".localizedVariant)
-                        .font(.largeTitle)
-                        .padding(.top, Self._cleandatePickerTitlePaddingInDisplayUnits)
-                        .padding(.horizontal, Self._cleandatePickerTitlePaddingInDisplayUnits)
+            if let minimumDate = Self._minimumDate {
+                let range = minimumDate...Date()
+                
+                VStack(spacing: 16) {
+                    if !self.isInPopover {
+                        // Title
+                        Text("SLUG-CLEANDATE-PICKER-TITLE".localizedVariant)
+                            .font(.largeTitle)
+                            .padding(.top, Self._cleandatePickerTitlePaddingInDisplayUnits)
+                            .padding(.horizontal, Self._cleandatePickerTitlePaddingInDisplayUnits)
+                    }
                     
-                    // The date picker
-                    // If we are landscape, we use wheels.
-                    if .compact == self.verticalSizeClass {
+                    // Graphical if it fits; otherwise wheel
+                    ViewThatFits(in: .vertical) {
+                        // 1) Preferred: graphical
                         DatePicker("",
-                                   selection: self.$selectedDate,
-                                   in: minimumDate...Date(),
+                                   selection: $selectedDate,
+                                   in: range,
+                                   displayedComponents: [.date]
+                        )
+                        .datePickerStyle(.graphical)
+                        // Optional: tweak this to control when it "stops fitting"
+                        .frame(minHeight: 300)
+                        
+                        // 2) Fallback: wheel (more compact)
+                        DatePicker("",
+                                   selection: $selectedDate,
+                                   in: range,
                                    displayedComponents: [.date]
                         )
                         .datePickerStyle(.wheel)
                         .labelsHidden()
-                    } else {
-                        DatePicker("",
-                                   selection: self.$selectedDate,
-                                   in: minimumDate...Date(),
-                                   displayedComponents: [.date]
-                        )
-                        .datePickerStyle(.graphical)
                     }
                     
-                    // The buttons under the picker
+                    // Buttons
                     HStack {
-                        // If we are not at today, we provide a "Today" button, that sets the date to today (no cleandate).
-                        if !Calendar.current.isDate(self.selectedDate, inSameDayAs: .now) {
+                        if !Calendar.current.isDate(selectedDate, inSameDayAs: .now) {
                             Button("SLUG-TODAY".localizedVariant) {
-                                self.selectedDate = Date()
+                                selectedDate = Date()
                             }
                             .frame(maxWidth: .infinity)
                         }
                         
-                        // If we have a different date from the one we started with, we show a "Reset" button, that discards the changes.
-                        if self.selectedDate != Self._originalDate {
+                        if selectedDate != Self._originalDate {
                             Button("SLUG-RESET".localizedVariant) {
-                                self.selectedDate = Self._originalDate
+                                selectedDate = Self._originalDate
                             }
                             .frame(maxWidth: .infinity)
                         }
                         
-                        // This dismisses the screen (as does tapping outside, or swiping down).
                         Button("SLUG-DONE".localizedVariant) {
-                            self._dismiss()
+                            _dismiss()
                         }
                         .buttonStyle(.borderedProminent)
                         .frame(maxWidth: .infinity)
                     }
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 16)
                 }
             }
         }
-        .onAppear { Self._originalDate = self.selectedDate }
+        .frame(minWidth: isInPopover ? 420 : nil)   // tweak 420 to taste
+        .onAppear {
+            Self._originalDate = selectedDate
+        }
     }
 }
 
