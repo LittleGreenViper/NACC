@@ -24,6 +24,153 @@ import LGV_UICleantime
 import RVS_Generic_Swift_Toolbox
 
 /* ###################################################################################################################################### */
+// MARK: - Date Picker View -
+/* ###################################################################################################################################### */
+/**
+ This is a view that we use to allow the user to select a new cleandate.
+ 
+ It shows a standard "graphical" date picker (calendar-style), along with a "DONE" button (dismisses the modal).
+ 
+ It shows a a "Today" button (sets the calendar to today), if the selected day is not today.
+ 
+ If the user has changed the date since invoking the screen, a "Reset" button also appears, allowing the user to discard any changes.
+ */
+struct PickerPopoverContent: View {
+    /* ################################################################## */
+    /**
+     This is how much padding is given the top title (on iPhone).
+     */
+    private static let _cleandatePickerTitlePaddingInDisplayUnits = CGFloat(4)
+
+    /* ################################################################## */
+    /**
+     The spacing to use for VStacks
+     */
+    private static let _verticalSpacingInDisplayUnits = CGFloat(8)
+
+    /* ################################################################## */
+    /**
+     The spacing to use for the horizontal axis
+     */
+    private static let _horizontalSpacingInDisplayUnits = CGFloat(8)
+
+    /* ################################################################## */
+    /**
+     The minimum width, for popovers.
+     */
+    private static let _miniumHorizontalWidthInDisplayUnits = CGFloat(400)
+
+    /* ################################################################## */
+    /**
+     This will have the original date, from when the screen was opened.
+     */
+    private static var _originalDate: Date?
+
+    /* ################################################################## */
+    /**
+     We can't start before NA was founded.
+     */
+    private static let _minimumDate = Calendar.current.date(from: DateComponents(year: 1953, month: 10, day: 5))
+
+    /* ################################################################## */
+    /**
+     This allows us to dismiss the popover/sheet.
+     */
+    @Environment(\.dismiss) private var _dismiss
+
+    /* ################################################################## */
+    /**
+     Binds to the main cleandate storage.
+     */
+    @Binding var selectedDate: Date
+
+    /* ################################################################## */
+    /**
+     Set to true, if the screen is being presented in a popover.
+     */
+    @State var isInPopover: Bool = false
+    
+    /* ################################################################## */
+    /**
+     This returns the whole DatePicker screen.
+     */
+    var body: some View {
+        AppBackground {
+            if let minimumDate = Self._minimumDate {
+                let validDateRange = minimumDate...Date()
+                
+                VStack(spacing: Self._verticalSpacingInDisplayUnits) {
+                    if !self.isInPopover {
+                        // Title
+                        Text("SLUG-CLEANDATE-PICKER-TITLE".localizedVariant)
+                            .font(.largeTitle)
+                            .padding(.top, Self._cleandatePickerTitlePaddingInDisplayUnits)
+                            .padding(.horizontal, Self._cleandatePickerTitlePaddingInDisplayUnits)
+                    }
+                    
+                    // Graphical if it fits; otherwise wheel
+                    ViewThatFits(in: .vertical) {
+                        // Preferred: graphical
+                        DatePicker("",
+                                   selection: self.$selectedDate,
+                                   in: validDateRange,
+                                   displayedComponents: [.date]
+                        )
+                        .datePickerStyle(.graphical)
+                        
+                        // Fallback: wheel (more compact)
+                        DatePicker("",
+                                   selection: self.$selectedDate,
+                                   in: validDateRange,
+                                   displayedComponents: [.date]
+                        )
+                        .datePickerStyle(.wheel)
+                        .labelsHidden()
+                    }
+                    
+                    // Buttons
+                    HStack {
+                        if !Calendar.current.isDate(selectedDate, inSameDayAs: .now) {
+                            Button("SLUG-TODAY".localizedVariant) {
+                                self.selectedDate = Date()
+                            }
+                            .frame(maxWidth: .infinity)
+                        }
+                        if let origDate = Self._originalDate,
+                           self.selectedDate != origDate {
+                            Button("SLUG-RESET".localizedVariant) {
+                                self.selectedDate = origDate
+                            }
+                            .frame(maxWidth: .infinity)
+                        }
+                        
+                        Button("SLUG-DONE".localizedVariant) {
+                            self._dismiss()
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .frame(maxWidth: .infinity)
+                    }
+                    .padding(.horizontal, Self._horizontalSpacingInDisplayUnits)
+                    .padding(.bottom, Self._verticalSpacingInDisplayUnits)
+                }
+            }
+        }
+        .frame(minWidth: isInPopover ? Self._miniumHorizontalWidthInDisplayUnits : nil)
+        .onChange(of: self.selectedDate) { _, inNewValue in
+            Self._originalDate = Self._originalDate ?? inNewValue
+        }
+        .onAppear {
+            if .now > self.selectedDate {
+                Self._originalDate = self.selectedDate
+            }
+        }
+        .onDisappear {
+            Self._originalDate = nil
+        }
+    }
+}
+
+/* ###################################################################################################################################### */
 // MARK: - Special View Modifier for the Date Picker -
 /* ###################################################################################################################################### */
 /**
@@ -110,155 +257,6 @@ extension View {
                                             selectedDate: selectedDate
                                            )
         )
-    }
-}
-
-/* ###################################################################################################################################### */
-// MARK: - Date Picker View -
-/* ###################################################################################################################################### */
-/**
- This is a view that we use to allow the user to select a new cleandate.
- 
- It shows a standard "graphical" date picker (calendar-style), along with a "DONE" button (dismisses the modal).
- 
- It shows a a "Today" button (sets the calendar to today), if the selected day is not today.
- 
- If the user has changed the date since invoking the screen, a "Reset" button also appears, allowing the user to discard any changes.
- */
-struct PickerPopoverContent: View {
-    /* ################################################################## */
-    /**
-     This is how much padding is given the top title (on iPhone).
-     */
-    private static let _cleandatePickerTitlePaddingInDisplayUnits = CGFloat(4)
-
-    /* ################################################################## */
-    /**
-     The spacing to use for VStacks
-     */
-    private static let _verticalSpacingInDisplayUnits = CGFloat(8)
-
-    /* ################################################################## */
-    /**
-     The spacing to use for the horizontal axis
-     */
-    private static let _horizontalSpacingInDisplayUnits = CGFloat(8)
-
-    /* ################################################################## */
-    /**
-     The minimum width, for popovers.
-     */
-    private static let _miniumHorizontalWidthInDisplayUnits = CGFloat(400)
-
-    /* ################################################################## */
-    /**
-     This will have the original date, from when the screen was opened.
-     */
-    private static var _originalDate: Date?
-
-    /* ################################################################## */
-    /**
-     We can't start before NA was founded.
-     */
-    private static let _minimumDate = Calendar.current.date(from: DateComponents(year: 1953,
-                                                                                 month: 10,
-                                                                                 day: 5))
-
-    /* ################################################################## */
-    /**
-     This allows us to dismiss the popover/sheet.
-     */
-    @Environment(\.dismiss) private var _dismiss
-
-    /* ################################################################## */
-    /**
-     Binds to the main cleandate storage.
-     */
-    @Binding var selectedDate: Date
-
-    /* ################################################################## */
-    /**
-     Set to true, if the screen is being presented in a popover.
-     */
-    @State var isInPopover: Bool = false
-    
-    /* ################################################################## */
-    /**
-     This returns the whole DatePicker screen.
-     */
-    var body: some View {
-        AppBackground {
-            if let minimumDate = Self._minimumDate {
-                let validDateRange = minimumDate...Date()
-                
-                VStack(spacing: Self._verticalSpacingInDisplayUnits) {
-                    if !self.isInPopover {
-                        // Title
-                        Text("SLUG-CLEANDATE-PICKER-TITLE".localizedVariant)
-                            .font(.largeTitle)
-                            .padding(.top, Self._cleandatePickerTitlePaddingInDisplayUnits)
-                            .padding(.horizontal, Self._cleandatePickerTitlePaddingInDisplayUnits)
-                    }
-                    
-                    // Graphical if it fits; otherwise wheel
-                    ViewThatFits(in: .vertical) {
-                        // Preferred: graphical
-                        DatePicker("",
-                                   selection: self.$selectedDate,
-                                   in: validDateRange,
-                                   displayedComponents: [.date]
-                        )
-                        .datePickerStyle(.graphical)
-                        
-                        // Fallback: wheel (more compact)
-                        DatePicker("",
-                                   selection: self.$selectedDate,
-                                   in: validDateRange,
-                                   displayedComponents: [.date]
-                        )
-                        .datePickerStyle(.wheel)
-                        .labelsHidden()
-                    }
-                    
-                    // Buttons
-                    HStack {
-                        if !Calendar.current.isDate(selectedDate, inSameDayAs: .now) {
-                            Button("SLUG-TODAY".localizedVariant) {
-                                self.selectedDate = Date()
-                            }
-                            .frame(maxWidth: .infinity)
-                        }
-                        if let origDate = Self._originalDate,
-                           self.selectedDate != origDate {
-                            Button("SLUG-RESET".localizedVariant) {
-                                self.selectedDate = origDate
-                            }
-                            .frame(maxWidth: .infinity)
-                        }
-                        
-                        Button("SLUG-DONE".localizedVariant) {
-                            self._dismiss()
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .frame(maxWidth: .infinity)
-                    }
-                    .padding(.horizontal, Self._horizontalSpacingInDisplayUnits)
-                    .padding(.bottom, Self._verticalSpacingInDisplayUnits)
-                }
-            }
-        }
-        .frame(minWidth: isInPopover ? Self._miniumHorizontalWidthInDisplayUnits : nil)
-        .onChange(of: selectedDate) { _, inNewValue in
-            Self._originalDate = Self._originalDate ?? inNewValue
-        }
-        .onAppear {
-            if .now > self.selectedDate {
-                Self._originalDate = self.selectedDate
-            }
-        }
-        .onDisappear {
-            Self._originalDate = nil
-        }
     }
 }
 
@@ -378,7 +376,7 @@ struct NACC_MainContentView: View {
                     // This is the top logo. If the user has thirty days or more, tapping on it will bring in the results screen.
                     if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
                         Button {
-                            self._prefs.lastSelectedTabIndex = TabInexes.keytagArray.rawValue
+                            self._prefs.lastSelectedTabIndex = TabIndexes.keytagArray.rawValue
                             self._showResult = true
                         } label: {
                             Image("Logo")
@@ -427,7 +425,7 @@ struct NACC_MainContentView: View {
                     if let image = self._displayedImage {
                         if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
                             Button {
-                                self._prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? TabInexes.medallionArray.rawValue : TabInexes.keytagStrip.rawValue
+                                self._prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? TabIndexes.medallionArray.rawValue : TabIndexes.keytagStrip.rawValue
                                 self._showResult = true
                             } label: {
                                 Image(uiImage: image)

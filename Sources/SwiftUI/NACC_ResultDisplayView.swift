@@ -23,11 +23,26 @@ import LGV_Cleantime
 import LGV_UICleantime
 import RVS_Generic_Swift_Toolbox
 
-enum TabInexes: Int {
+/* ###################################################################################################################################### */
+// MARK: - Tab Index Enum -
+/* ###################################################################################################################################### */
+/**
+ This provides numerical indexes for each of the image display tabs.
+ */
+enum TabIndexes: Int {
+    /* ################################################################## */
+    /**
+     */
     case keytagArray
     
+    /* ################################################################## */
+    /**
+     */
     case keytagStrip
     
+    /* ################################################################## */
+    /**
+     */
     case medallionArray
 }
 
@@ -46,15 +61,79 @@ struct NACC_ResultDisplayView: View {
     
     /* ################################################################## */
     /**
+     This will have whatever image is being displayed.
      */
     @State private var _displayedImage: UIImage?
+    
+    /* ################################################################## */
+    /**
+     The currently selected tab.
+     */
+    @State private var _selectedTab: TabIndexes = .keytagArray
 
     /* ################################################################## */
     /**
      */
     var body: some View {
         AppBackground {
-            Text("HI")
+            TabView {
+                FirstTabView()
+                    .tabItem {
+                        Label("", image: "KeytagArray")
+                    }
+
+                SecondTabView()
+                    .tabItem {
+                        Label("", image: "SingleKeytag")
+                    }
+
+                ThirdTabView()
+                    .tabItem {
+                        Label("", systemImage: "circle.fill")
+                    }
+            }
+        }
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: -  -
+/* ###################################################################################################################################### */
+/**
+ */
+struct FirstTabView: View {
+    var body: some View {
+        NavigationStack {
+            Text("Keytag Array")
+                .navigationTitle("Keytag Array")
+        }
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: -  -
+/* ###################################################################################################################################### */
+/**
+ */
+struct SecondTabView: View {
+    var body: some View {
+        NavigationStack {
+            Text("Keytag Strip")
+                .navigationTitle("Keytag Strip")
+        }
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: -  -
+/* ###################################################################################################################################### */
+/**
+ */
+struct ThirdTabView: View {
+    var body: some View {
+        NavigationStack {
+            Text("Medallions")
+                .navigationTitle("Medallions")
         }
     }
 }
