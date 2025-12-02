@@ -32,6 +32,12 @@ import RVS_Generic_Swift_Toolbox
 struct AdaptivePickerPresentation: ViewModifier {
     /* ################################################################## */
     /**
+     This is used to determine whether or not to present the iPhone sheet as "half-height," or "full-height."
+     */
+    private static let _screenDetentThresholdInDisplayUnits = CGFloat(900)
+    
+    /* ################################################################## */
+    /**
      Set to true, if we are to be showing.
      */
     @Binding var isPresented: Bool
@@ -47,8 +53,8 @@ struct AdaptivePickerPresentation: ViewModifier {
      This returns the detents to use for the modal sheet, containing the DatePicker. Thos only applies to portrait mode.
      */
     private var _screenDetents: Set<PresentationDetent> {
-        var ret: Set<PresentationDetent> = [.medium, .large]
-        if 900 > UIScreen.main.bounds.size.height {
+        var ret: Set<PresentationDetent> = [.medium]
+        if Self._screenDetentThresholdInDisplayUnits > UIScreen.main.bounds.size.height {
             ret = [.large]
         }
         
@@ -122,16 +128,37 @@ extension View {
 struct PickerPopoverContent: View {
     /* ################################################################## */
     /**
+     This is how much padding is given the top title (on iPhone).
      */
-    private static let _cleandatePickerTitlePaddingInDisplayUnits = 20.0
+    private static let _cleandatePickerTitlePaddingInDisplayUnits = CGFloat(4)
 
     /* ################################################################## */
     /**
+     The spacing to use for VStacks
      */
-    private static var _originalDate: Date = .now
+    private static let _verticalSpacingInDisplayUnits = CGFloat(8)
 
     /* ################################################################## */
     /**
+     The spacing to use for the horizontal axis
+     */
+    private static let _horizontalSpacingInDisplayUnits = CGFloat(8)
+
+    /* ################################################################## */
+    /**
+     The minimum width, for popovers.
+     */
+    private static let _miniumHorizontalWidthInDisplayUnits = CGFloat(400)
+
+    /* ################################################################## */
+    /**
+     This will have the original date, from when the screen was opened.
+     */
+    private static var _originalDate: Date?
+
+    /* ################################################################## */
+    /**
+     We can't start before NA was founded.
      */
     private static let _minimumDate = Calendar.current.date(from: DateComponents(year: 1953,
                                                                                  month: 10,
@@ -139,33 +166,32 @@ struct PickerPopoverContent: View {
 
     /* ################################################################## */
     /**
+     This allows us to dismiss the popover/sheet.
      */
     @Environment(\.dismiss) private var _dismiss
 
     /* ################################################################## */
     /**
-     */
-    @Environment(\.horizontalSizeClass) private var _horizontalSizeClass
-
-    /* ################################################################## */
-    /**
+     Binds to the main cleandate storage.
      */
     @Binding var selectedDate: Date
 
     /* ################################################################## */
     /**
+     Set to true, if the screen is being presented in a popover.
      */
     @State var isInPopover: Bool = false
     
     /* ################################################################## */
     /**
+     This returns the whole DatePicker screen.
      */
     var body: some View {
         AppBackground {
             if let minimumDate = Self._minimumDate {
-                let range = minimumDate...Date()
+                let validDateRange = minimumDate...Date()
                 
-                VStack(spacing: 16) {
+                VStack(spacing: Self._verticalSpacingInDisplayUnits) {
                     if !self.isInPopover {
                         // Title
                         Text("SLUG-CLEANDATE-PICKER-TITLE".localizedVariant)
@@ -176,20 +202,18 @@ struct PickerPopoverContent: View {
                     
                     // Graphical if it fits; otherwise wheel
                     ViewThatFits(in: .vertical) {
-                        // 1) Preferred: graphical
+                        // Preferred: graphical
                         DatePicker("",
-                                   selection: $selectedDate,
-                                   in: range,
+                                   selection: self.$selectedDate,
+                                   in: validDateRange,
                                    displayedComponents: [.date]
                         )
                         .datePickerStyle(.graphical)
-                        // Optional: tweak this to control when it "stops fitting"
-                        .frame(minHeight: 300)
                         
-                        // 2) Fallback: wheel (more compact)
+                        // Fallback: wheel (more compact)
                         DatePicker("",
-                                   selection: $selectedDate,
-                                   in: range,
+                                   selection: self.$selectedDate,
+                                   in: validDateRange,
                                    displayedComponents: [.date]
                         )
                         .datePickerStyle(.wheel)
@@ -200,32 +224,40 @@ struct PickerPopoverContent: View {
                     HStack {
                         if !Calendar.current.isDate(selectedDate, inSameDayAs: .now) {
                             Button("SLUG-TODAY".localizedVariant) {
-                                selectedDate = Date()
+                                self.selectedDate = Date()
                             }
                             .frame(maxWidth: .infinity)
                         }
-                        
-                        if selectedDate != Self._originalDate {
+                        if let origDate = Self._originalDate,
+                           self.selectedDate != origDate {
                             Button("SLUG-RESET".localizedVariant) {
-                                selectedDate = Self._originalDate
+                                self.selectedDate = origDate
                             }
                             .frame(maxWidth: .infinity)
                         }
                         
                         Button("SLUG-DONE".localizedVariant) {
-                            _dismiss()
+                            self._dismiss()
                         }
                         .buttonStyle(.borderedProminent)
                         .frame(maxWidth: .infinity)
                     }
-                    .padding(.horizontal, 16)
-                    .padding(.bottom, 16)
+                    .padding(.horizontal, Self._horizontalSpacingInDisplayUnits)
+                    .padding(.bottom, Self._verticalSpacingInDisplayUnits)
                 }
             }
         }
-        .frame(minWidth: isInPopover ? 420 : nil)   // tweak 420 to taste
+        .frame(minWidth: isInPopover ? Self._miniumHorizontalWidthInDisplayUnits : nil)
+        .onChange(of: selectedDate) { _, inNewValue in
+            Self._originalDate = Self._originalDate ?? inNewValue
+        }
         .onAppear {
-            Self._originalDate = selectedDate
+            if .now > self.selectedDate {
+                Self._originalDate = self.selectedDate
+            }
+        }
+        .onDisappear {
+            Self._originalDate = nil
         }
     }
 }
