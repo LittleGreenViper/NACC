@@ -57,9 +57,13 @@
 
 // MARK: CLEANDATE SCREEN
 
+"SLUG-NO-CLEANDATE-YET"                         =   "No Cleandate Has Been Set.";
 "SLUG-CLEANDATE-PICKER-TITLE"                   =   "Select Your Cleandate";
 "SLUG-INITIAL-TITLE"                            =   "NACC";
 "SLUG-URL-STRING"                               =   "https://nacc.littlegreenviper.com/?%@";
+"SLUG-TODAY"                                    =   "Today";
+"SLUG-CANCEL"                                   =   "CANCEL";
+"SLUG-DONE"                                     =   "DONE";
 
 // MARK: CALENDAR EVENT
 
