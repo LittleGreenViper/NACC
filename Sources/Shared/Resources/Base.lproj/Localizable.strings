@@ -62,7 +62,7 @@
 "SLUG-INITIAL-TITLE"                            =   "NACC";
 "SLUG-URL-STRING"                               =   "https://nacc.littlegreenviper.com/?%@";
 "SLUG-TODAY"                                    =   "Today";
-"SLUG-CANCEL"                                   =   "CANCEL";
+"SLUG-RESET"                                    =   "Reset";
 "SLUG-DONE"                                     =   "DONE";
 
 // MARK: CALENDAR EVENT

@@ -29,7 +29,7 @@ import RVS_Generic_Swift_Toolbox
 /**
  This is a view that we use to allow the user to select a new cleandate.
  
- It shows a standard date picker (calendar-style), along with a "Today" button (sets the calendar to today), and a "DONE" button.
+ It shows a standard "graphical" date picker (calendar-style), along with a "Today" button (sets the calendar to today), and a "DONE" button.
  
  If the user has changed the date since invoking the screen, a "CANCEL" button also appears, allowing the user to discard any changes.
  */
@@ -70,12 +70,6 @@ struct PickerPopoverContent: View {
                     .padding(.top, Self._cleandatePickerTitlePaddingInDisplayUnits)
                     .padding(.horizontal, Self._cleandatePickerTitlePaddingInDisplayUnits)
 
-                Button("SLUG-TODAY".localizedVariant) {
-                    self.selectedDate = Date()
-                }
-                .disabled(Calendar.current.isDate(self.selectedDate, inSameDayAs: .now))
-                .padding(0)
-
                 DatePicker("Clean Date",
                            selection: self.$selectedDate,
                            in: ...Date(),
@@ -84,12 +78,17 @@ struct PickerPopoverContent: View {
                 .datePickerStyle(.graphical)
                 
                 HStack {
-                    if self.selectedDate != Self._originalDate {
-                        Button("SLUG-CANCEL".localizedVariant) {
-                            self.selectedDate = Self._originalDate
-                            self._dismiss()
+                    if !Calendar.current.isDate(self.selectedDate, inSameDayAs: .now) {
+                        Button("SLUG-TODAY".localizedVariant) {
+                            self.selectedDate = Date()
                         }
-                        .buttonStyle(.bordered)
+                        .frame(maxWidth: .infinity)
+                    }
+                    
+                    if self.selectedDate != Self._originalDate {
+                        Button("SLUG-RESET".localizedVariant) {
+                            self.selectedDate = Self._originalDate
+                        }
                         .frame(maxWidth: .infinity)
                     }
                     
