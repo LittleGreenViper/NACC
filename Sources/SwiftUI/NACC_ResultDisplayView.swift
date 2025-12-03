@@ -139,12 +139,7 @@ struct NACC_ResultDisplayView: View {
 /* ###################################################################################################################################### */
 /**
  */
-protocol TabViewProtocol: View {
-    /* ################################################################## */
-    /**
-     */
-    var displayImage: Image? { get }
-
+protocol TabViewProtocol {
     /* ################################################################## */
     /**
      */
@@ -154,6 +149,17 @@ protocol TabViewProtocol: View {
     /**
      */
     static var tabImageName: String { get }
+    
+    /* ################################################################## */
+    /**
+     This is the cleantime keytag or medallion image.
+    */
+    var cleantime: LGV_UICleantimeImageViewBase? { get }
+    
+    /* ################################################################## */
+    /**
+     */
+    var displayImage: Image? { get }
 }
 
 /* ###################################################################################################################################### */
@@ -161,12 +167,7 @@ protocol TabViewProtocol: View {
 /* ###################################################################################################################################### */
 /**
  */
-struct NACC_KeytagArrayTabView: TabViewProtocol {
-    /* ################################################################## */
-    /**
-     */
-    var displayImage: Image?
-
+struct NACC_KeytagArrayTabView: View, TabViewProtocol {
     /* ################################################################## */
     /**
      */
@@ -176,12 +177,35 @@ struct NACC_KeytagArrayTabView: TabViewProtocol {
     /**
      */
     static var tabImageName = "KeytagArray"
+    
+    /* ################################################################## */
+    /**
+    */
+    var cleantime: LGV_UICleantimeImageViewBase? = LGV_UIMultipleCleantimeKeytagImageView()
+
+    /* ################################################################## */
+    /**
+     */
+    @State var displayImage: Image?
 
     /* ################################################################## */
     /**
      */
     var body: some View {
         Text(Self.tabName)
+            .onAppear {
+                let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime
+                self.cleantime?.totalDays = calculator.totalDays
+                self.cleantime?.totalMonths = calculator.totalMonths
+                self.cleantime?.renderingCallback = { inImage in
+                    #if DEBUG
+                        print("Keytag Array View Callback")
+                    #endif
+                    guard let image = inImage else { return }
+                    DispatchQueue.main.async { self.displayImage = Image(uiImage: image) }
+                }
+                self.cleantime?.layoutSubviews()
+            }
     }
 }
 
@@ -190,12 +214,7 @@ struct NACC_KeytagArrayTabView: TabViewProtocol {
 /* ###################################################################################################################################### */
 /**
  */
-struct NACC_KeytagStripTabView: TabViewProtocol {
-    /* ################################################################## */
-    /**
-     */
-    var displayImage: Image?
-
+struct NACC_KeytagStripTabView: View, TabViewProtocol {
     /* ################################################################## */
     /**
      */
@@ -205,12 +224,35 @@ struct NACC_KeytagStripTabView: TabViewProtocol {
     /**
      */
     static var tabImageName = "SingleKeytag"
+    
+    /* ################################################################## */
+    /**
+    */
+    var cleantime: LGV_UICleantimeImageViewBase? = LGV_UIMultipleCleantimeKeytagImageView()
+
+    /* ################################################################## */
+    /**
+     */
+    @State var displayImage: Image?
 
     /* ################################################################## */
     /**
      */
     var body: some View {
         Text(Self.tabName)
+            .onAppear {
+                let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime
+                self.cleantime?.totalDays = calculator.totalDays
+                self.cleantime?.totalMonths = calculator.totalMonths
+                self.cleantime?.renderingCallback = { inImage in
+                    #if DEBUG
+                        print("Keytag Strip View Callback")
+                    #endif
+                    guard let image = inImage else { return }
+                    DispatchQueue.main.async { self.displayImage = Image(uiImage: image) }
+                }
+                self.cleantime?.layoutSubviews()
+            }
     }
 }
 
@@ -219,12 +261,7 @@ struct NACC_KeytagStripTabView: TabViewProtocol {
 /* ###################################################################################################################################### */
 /**
  */
-struct NACC_MedallionTabView: TabViewProtocol {
-    /* ################################################################## */
-    /**
-     */
-    var displayImage: Image?
-
+struct NACC_MedallionTabView: View, TabViewProtocol {
     /* ################################################################## */
     /**
      */
@@ -234,11 +271,34 @@ struct NACC_MedallionTabView: TabViewProtocol {
     /**
      */
     static var tabImageName = "Medallion"
+    
+    /* ################################################################## */
+    /**
+    */
+    var cleantime: LGV_UICleantimeImageViewBase? = LGV_UICleantimeMultipleMedallionsImageView()
+
+    /* ################################################################## */
+    /**
+     */
+    @State var displayImage: Image?
 
     /* ################################################################## */
     /**
      */
     var body: some View {
         Text(Self.tabName)
+            .onAppear {
+                let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime
+                self.cleantime?.totalDays = calculator.totalDays
+                self.cleantime?.totalMonths = calculator.totalMonths
+                self.cleantime?.renderingCallback = { inImage in
+                    #if DEBUG
+                        print("Medallion View Callback")
+                    #endif
+                    guard let image = inImage else { return }
+                    DispatchQueue.main.async { self.displayImage = Image(uiImage: image) }
+                }
+                self.cleantime?.layoutSubviews()
+            }
     }
 }
