@@ -1981,7 +1981,7 @@
 			repositoryURL = "https://github.com/LittleGreenViper/LGV_UICleantime";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.4.3;
+				minimumVersion = 2.5.0;
 			};
 		};
 		D4B2C27C2E8FFEDB009DD45D /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */ = {
