@@ -159,7 +159,7 @@ protocol TabViewProtocol {
     /* ################################################################## */
     /**
      */
-    var displayImage: Image? { get }
+    var displayImage: UIImage? { get }
 }
 
 /* ###################################################################################################################################### */
@@ -186,26 +186,40 @@ struct NACC_KeytagArrayTabView: View, TabViewProtocol {
     /* ################################################################## */
     /**
      */
-    @State var displayImage: Image?
+    @State var displayImage: UIImage?
 
     /* ################################################################## */
     /**
      */
     var body: some View {
-        Text(Self.tabName)
-            .onAppear {
-                let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime
-                self.cleantime?.totalDays = calculator.totalDays
-                self.cleantime?.totalMonths = calculator.totalMonths
-                self.cleantime?.renderingCallback = { inImage in
-                    #if DEBUG
-                        print("Keytag Array View Callback")
-                    #endif
-                    guard let image = inImage else { return }
-                    DispatchQueue.main.async { self.displayImage = Image(uiImage: image) }
-                }
-                self.cleantime?.layoutSubviews()
+        if let image = self.displayImage {
+            ScrollView {
+                     Image(uiImage: image)
+                         .resizable()
+                         .scaledToFit()
+                         .padding([.leading, .trailing], 20)
             }
+        } else {
+            ProgressView()
+                .progressViewStyle(.circular)
+                .tint(.black)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                        let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime
+                        self.cleantime?.totalDays = calculator.totalDays
+                        self.cleantime?.totalMonths = calculator.totalMonths
+                        (self.cleantime as? LGV_UIMultipleCleantimeKeytagImageView)?.keytagsAreAVerticalStrip = false
+                        self.cleantime?.renderingCallback = { inImage in
+                            #if DEBUG
+                                print("Keytag Array View Callback")
+                            #endif
+                            guard let image = inImage else { return }
+                            DispatchQueue.main.async { self.displayImage = image }
+                        }
+                        self.cleantime?.layoutSubviews()
+                    }
+                }
+         }
     }
 }
 
@@ -233,26 +247,40 @@ struct NACC_KeytagStripTabView: View, TabViewProtocol {
     /* ################################################################## */
     /**
      */
-    @State var displayImage: Image?
+    @State var displayImage: UIImage?
 
     /* ################################################################## */
     /**
      */
     var body: some View {
-        Text(Self.tabName)
-            .onAppear {
-                let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime
-                self.cleantime?.totalDays = calculator.totalDays
-                self.cleantime?.totalMonths = calculator.totalMonths
-                self.cleantime?.renderingCallback = { inImage in
-                    #if DEBUG
-                        print("Keytag Strip View Callback")
-                    #endif
-                    guard let image = inImage else { return }
-                    DispatchQueue.main.async { self.displayImage = Image(uiImage: image) }
-                }
-                self.cleantime?.layoutSubviews()
+        if let image = self.displayImage {
+            ScrollView {
+                     Image(uiImage: image)
+                         .resizable()
+                         .scaledToFit()
+                         .padding([.leading, .trailing], 20)
             }
+        } else {
+            ProgressView()
+                .progressViewStyle(.circular)
+                .tint(.black)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                        let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime
+                        self.cleantime?.totalDays = calculator.totalDays
+                        self.cleantime?.totalMonths = calculator.totalMonths
+                        (self.cleantime as? LGV_UIMultipleCleantimeKeytagImageView)?.keytagsAreAVerticalStrip = true
+                        self.cleantime?.renderingCallback = { inImage in
+                            #if DEBUG
+                                print("Keytag Strip View Callback")
+                            #endif
+                            guard let image = inImage else { return }
+                            DispatchQueue.main.async { self.displayImage = image }
+                        }
+                        self.cleantime?.layoutSubviews()
+                    }
+                }
+         }
     }
 }
 
@@ -280,25 +308,38 @@ struct NACC_MedallionTabView: View, TabViewProtocol {
     /* ################################################################## */
     /**
      */
-    @State var displayImage: Image?
+    @State var displayImage: UIImage?
 
     /* ################################################################## */
     /**
      */
     var body: some View {
-        Text(Self.tabName)
-            .onAppear {
-                let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime
-                self.cleantime?.totalDays = calculator.totalDays
-                self.cleantime?.totalMonths = calculator.totalMonths
-                self.cleantime?.renderingCallback = { inImage in
-                    #if DEBUG
-                        print("Medallion View Callback")
-                    #endif
-                    guard let image = inImage else { return }
-                    DispatchQueue.main.async { self.displayImage = Image(uiImage: image) }
-                }
-                self.cleantime?.layoutSubviews()
+        if let image = self.displayImage {
+            ScrollView {
+                     Image(uiImage: image)
+                         .resizable()
+                         .scaledToFit()
+                         .padding([.leading, .trailing], 20)
             }
+        } else {
+            ProgressView()
+                .progressViewStyle(.circular)
+                .tint(.black)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                        let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime
+                        self.cleantime?.totalDays = calculator.totalDays
+                        self.cleantime?.totalMonths = calculator.totalMonths
+                        self.cleantime?.renderingCallback = { inImage in
+                            #if DEBUG
+                                print("Medallion View Callback")
+                            #endif
+                            guard let image = inImage else { return }
+                            DispatchQueue.main.async { self.displayImage = image }
+                        }
+                        self.cleantime?.layoutSubviews()
+                    }
+                }
+         }
     }
 }
