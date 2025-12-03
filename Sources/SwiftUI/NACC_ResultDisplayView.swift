@@ -57,11 +57,11 @@ extension TabIndexes {
     var navigationTitle: String {
         switch self {
         case .keytagArray:
-            return FirstTabView.tabName
+            return NACC_KeytagArrayTabView.tabName
         case .keytagStrip:
-            return SecondTabView.tabName
+            return NACC_KeytagStripTabView.tabName
         case .medallionArray:
-            return ThirdTabView.tabName
+            return NACC_MedallionTabView.tabName
         }
     }
     /* ################################################################## */
@@ -71,11 +71,11 @@ extension TabIndexes {
     var imageName: String {
         switch self {
         case .keytagArray:
-            return FirstTabView.tabImageName
+            return NACC_KeytagArrayTabView.tabImageName
         case .keytagStrip:
-            return SecondTabView.tabImageName
+            return NACC_KeytagStripTabView.tabImageName
         case .medallionArray:
-            return ThirdTabView.tabImageName
+            return NACC_MedallionTabView.tabImageName
         }
     }
 }
@@ -87,12 +87,6 @@ extension TabIndexes {
  The image results View.
  */
 struct NACC_ResultDisplayView: View {
-    /* ################################################################## */
-    /**
-     This is the local instance of the persistent prefs for the app.
-     */
-    let prefs = NACCPersistentPrefs()
-    
     /* ################################################################## */
     /**
      This will have whatever image is being displayed.
@@ -111,21 +105,27 @@ struct NACC_ResultDisplayView: View {
     var body: some View {
         AppBackground {
             TabView(selection: self.$selectedTab) {
-                FirstTabView()
+                NACC_KeytagArrayTabView()
                     .tabItem {
-                        Label(TabIndexes.keytagArray.navigationTitle, image: TabIndexes.keytagArray.imageName)
+                        Label(TabIndexes.keytagArray.navigationTitle,
+                              image: TabIndexes.keytagArray.imageName
+                        )
                     }
                     .tag(TabIndexes.keytagArray)
                 
-                SecondTabView()
+                NACC_KeytagStripTabView()
                     .tabItem {
-                        Label(TabIndexes.keytagStrip.navigationTitle, image: TabIndexes.keytagStrip.imageName)
+                        Label(TabIndexes.keytagStrip.navigationTitle,
+                              image: TabIndexes.keytagStrip.imageName
+                        )
                     }
                     .tag(TabIndexes.keytagStrip)
 
-                ThirdTabView()
+                NACC_MedallionTabView()
                     .tabItem {
-                        Label(TabIndexes.medallionArray.navigationTitle, image: TabIndexes.medallionArray.imageName)
+                        Label(TabIndexes.medallionArray.navigationTitle,
+                              image: TabIndexes.medallionArray.imageName
+                        )
                     }
                     .tag(TabIndexes.medallionArray)
             }
@@ -143,6 +143,11 @@ protocol TabViewProtocol: View {
     /* ################################################################## */
     /**
      */
+    var displayImage: Image? { get }
+
+    /* ################################################################## */
+    /**
+     */
     static var tabName: String { get }
 
     /* ################################################################## */
@@ -156,7 +161,12 @@ protocol TabViewProtocol: View {
 /* ###################################################################################################################################### */
 /**
  */
-struct FirstTabView: TabViewProtocol {
+struct NACC_KeytagArrayTabView: TabViewProtocol {
+    /* ################################################################## */
+    /**
+     */
+    var displayImage: Image?
+
     /* ################################################################## */
     /**
      */
@@ -180,7 +190,12 @@ struct FirstTabView: TabViewProtocol {
 /* ###################################################################################################################################### */
 /**
  */
-struct SecondTabView: TabViewProtocol {
+struct NACC_KeytagStripTabView: TabViewProtocol {
+    /* ################################################################## */
+    /**
+     */
+    var displayImage: Image?
+
     /* ################################################################## */
     /**
      */
@@ -204,7 +219,12 @@ struct SecondTabView: TabViewProtocol {
 /* ###################################################################################################################################### */
 /**
  */
-struct ThirdTabView: TabViewProtocol {
+struct NACC_MedallionTabView: TabViewProtocol {
+    /* ################################################################## */
+    /**
+     */
+    var displayImage: Image?
+
     /* ################################################################## */
     /**
      */
