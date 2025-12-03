@@ -319,6 +319,11 @@ struct NACC_MainContentView: View {
     
     /* ################################################################## */
     /**
+     */
+    @State private var _selectedTab = TabIndexes(rawValue: NACCPersistentPrefs().lastSelectedTabIndex) ?? .keytagStrip
+
+    /* ################################################################## */
+    /**
      This contains the cleandate.
      */
     @State private var _selectedDate = Date()
@@ -376,7 +381,7 @@ struct NACC_MainContentView: View {
                     // This is the top logo. If the user has thirty days or more, tapping on it will bring in the results screen.
                     if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
                         Button {
-                            self._prefs.lastSelectedTabIndex = TabIndexes.keytagArray.rawValue
+                            self._selectedTab = .keytagArray
                             self._showResult = true
                         } label: {
                             Image("Logo")
@@ -425,7 +430,7 @@ struct NACC_MainContentView: View {
                     if let image = self._displayedImage {
                         if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
                             Button {
-                                self._prefs.lastSelectedTabIndex = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? TabIndexes.medallionArray.rawValue : TabIndexes.keytagStrip.rawValue
+                                self._selectedTab = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? .medallionArray : .keytagStrip
                                 self._showResult = true
                             } label: {
                                 Image(uiImage: image)
@@ -472,13 +477,16 @@ struct NACC_MainContentView: View {
                     .accessibilityHint("SLUG-ACC-INFO-BUTTON".localizedVariant)
                 }
             }
-            .navigationDestination(isPresented: self.$_showResult) { NACC_ResultDisplayView() }
+            .navigationDestination(isPresented: self.$_showResult) { NACC_ResultDisplayView(selectedTab: self.$_selectedTab) }
             .navigationDestination(isPresented: self.$_showInfo) { NACC_InfoDisplayView() }
         }
         .onAppear {
             self._watchDelegateObject = self._watchDelegateObject ?? NACCWatchAppContentViewWatchDelegate(updateHandler: self.updateApplicationContext)
             self._selectedDate = self._prefs.cleanDate
             self._watchDelegateObject?.sendApplicationContext()
+        }
+        .onChange(of: self._selectedTab) { _, inNewValue in
+            NACCPersistentPrefs().lastSelectedTabIndex = inNewValue.rawValue
         }
         .onChange(of: self._selectedDate) { _, inSelectedDate in
             self._prefs.cleanDate = inSelectedDate

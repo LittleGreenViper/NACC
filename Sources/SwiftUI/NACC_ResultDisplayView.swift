@@ -47,6 +47,40 @@ enum TabIndexes: Int {
 }
 
 /* ###################################################################################################################################### */
+// MARK: - Extension To Add NavBar Names -
+/* ###################################################################################################################################### */
+extension TabIndexes {
+    /* ################################################################## */
+    /**
+     This returns a string, containing a name to use for the tab.
+     */
+    var navigationTitle: String {
+        switch self {
+        case .keytagArray:
+            return FirstTabView.tabName
+        case .keytagStrip:
+            return SecondTabView.tabName
+        case .medallionArray:
+            return ThirdTabView.tabName
+        }
+    }
+    /* ################################################################## */
+    /**
+     This returns a string, containing a name to use for the image.
+     */
+    var imageName: String {
+        switch self {
+        case .keytagArray:
+            return FirstTabView.tabImageName
+        case .keytagStrip:
+            return SecondTabView.tabImageName
+        case .medallionArray:
+            return ThirdTabView.tabImageName
+        }
+    }
+}
+
+/* ###################################################################################################################################### */
 // MARK: - Result Display View -
 /* ###################################################################################################################################### */
 /**
@@ -69,71 +103,122 @@ struct NACC_ResultDisplayView: View {
     /**
      The currently selected tab.
      */
-    @State private var _selectedTab: TabIndexes = .keytagArray
-
+    @Binding var selectedTab: TabIndexes
+    
     /* ################################################################## */
     /**
      */
     var body: some View {
         AppBackground {
-            TabView {
+            TabView(selection: self.$selectedTab) {
                 FirstTabView()
                     .tabItem {
-                        Label("", image: "KeytagArray")
+                        Label(TabIndexes.keytagArray.navigationTitle, image: TabIndexes.keytagArray.imageName)
                     }
-
+                    .tag(TabIndexes.keytagArray)
+                
                 SecondTabView()
                     .tabItem {
-                        Label("", image: "SingleKeytag")
+                        Label(TabIndexes.keytagStrip.navigationTitle, image: TabIndexes.keytagStrip.imageName)
                     }
+                    .tag(TabIndexes.keytagStrip)
 
                 ThirdTabView()
                     .tabItem {
-                        Label("", systemImage: "circle.fill")
+                        Label(TabIndexes.medallionArray.navigationTitle, image: TabIndexes.medallionArray.imageName)
                     }
+                    .tag(TabIndexes.medallionArray)
             }
         }
+        .navigationTitle(self.selectedTab.navigationTitle)
     }
 }
 
 /* ###################################################################################################################################### */
-// MARK: -  -
+// MARK: - Common Base Protocol For All Views -
 /* ###################################################################################################################################### */
 /**
  */
-struct FirstTabView: View {
+protocol TabViewProtocol: View {
+    /* ################################################################## */
+    /**
+     */
+    static var tabName: String { get }
+
+    /* ################################################################## */
+    /**
+     */
+    static var tabImageName: String { get }
+}
+
+/* ###################################################################################################################################### */
+// MARK: - Keytag Array View -
+/* ###################################################################################################################################### */
+/**
+ */
+struct FirstTabView: TabViewProtocol {
+    /* ################################################################## */
+    /**
+     */
+    static var tabName = "SLUG-TAB-0".localizedVariant
+
+    /* ################################################################## */
+    /**
+     */
+    static var tabImageName = "KeytagArray"
+
+    /* ################################################################## */
+    /**
+     */
     var body: some View {
-        NavigationStack {
-            Text("Keytag Array")
-                .navigationTitle("Keytag Array")
-        }
+        Text(Self.tabName)
     }
 }
 
 /* ###################################################################################################################################### */
-// MARK: -  -
+// MARK: - Keytag Strip View -
 /* ###################################################################################################################################### */
 /**
  */
-struct SecondTabView: View {
+struct SecondTabView: TabViewProtocol {
+    /* ################################################################## */
+    /**
+     */
+    static var tabName = "SLUG-TAB-1".localizedVariant
+
+    /* ################################################################## */
+    /**
+     */
+    static var tabImageName = "SingleKeytag"
+
+    /* ################################################################## */
+    /**
+     */
     var body: some View {
-        NavigationStack {
-            Text("Keytag Strip")
-                .navigationTitle("Keytag Strip")
-        }
+        Text(Self.tabName)
     }
 }
 
 /* ###################################################################################################################################### */
-// MARK: -  -
+// MARK: - Medallion Array View -
 /* ###################################################################################################################################### */
 /**
  */
-struct ThirdTabView: View {
+struct ThirdTabView: TabViewProtocol {
+    /* ################################################################## */
+    /**
+     */
+    static var tabName = "SLUG-TAB-2".localizedVariant
+
+    /* ################################################################## */
+    /**
+     */
+    static var tabImageName = "Medallion"
+
+    /* ################################################################## */
+    /**
+     */
     var body: some View {
-        NavigationStack {
-            Text("Medallions")
-                .navigationTitle("Medallions")
-        }
+        Text(Self.tabName)
     }
 }
