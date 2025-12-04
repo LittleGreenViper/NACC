@@ -32,16 +32,19 @@ import RVS_Generic_Swift_Toolbox
 enum TabIndexes: Int {
     /* ################################################################## */
     /**
+     Shows a horizontally-arrayed image of all earned keytags.
      */
     case keytagArray
     
     /* ################################################################## */
     /**
+     Shows a scrollable vertical strip of all earned keytags.
      */
     case keytagStrip
     
     /* ################################################################## */
     /**
+     Shows a horizontally-arrayed image of all the earned medallions.
      */
     case medallionArray
 }
@@ -101,6 +104,7 @@ struct NACC_ResultDisplayView: View {
     
     /* ################################################################## */
     /**
+     This returns the entire screen, with the tabs.
      */
     var body: some View {
         AppBackground {
@@ -120,14 +124,16 @@ struct NACC_ResultDisplayView: View {
                         )
                     }
                     .tag(TabIndexes.keytagStrip)
-
-                NACC_MedallionTabView()
-                    .tabItem {
-                        Label(TabIndexes.medallionArray.navigationTitle,
-                              image: TabIndexes.medallionArray.imageName
-                        )
-                    }
-                    .tag(TabIndexes.medallionArray)
+                
+                if LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.isOneYearOrMore {
+                    NACC_MedallionTabView()
+                        .tabItem {
+                            Label(TabIndexes.medallionArray.navigationTitle,
+                                  image: TabIndexes.medallionArray.imageName
+                            )
+                        }
+                        .tag(TabIndexes.medallionArray)
+                }
             }
         }
         .navigationTitle(self.selectedTab.navigationTitle)
@@ -142,84 +148,148 @@ struct NACC_ResultDisplayView: View {
 protocol TabViewProtocol {
     /* ################################################################## */
     /**
+     The name for this TabView
      */
     static var tabName: String { get }
 
     /* ################################################################## */
     /**
+     The name for this TabView's icon image.
      */
     static var tabImageName: String { get }
-    
+}
+
+/* ###################################################################################################################################### */
+// MARK: - Shared Cleantime Image View -
+/* ###################################################################################################################################### */
+/**
+ A reusable View that:
+
+ - Configures an `LGV_UICleantimeImageViewBase` subclass
+ - Waits for it to render into a `UIImage`
+ - Shows a spinner until the image is ready
+ */
+struct CleantimeRenderedImageView: View {
     /* ################################################################## */
     /**
-     This is the cleantime keytag or medallion image.
-    */
-    var cleantime: LGV_UICleantimeImageViewBase? { get }
-    
-    /* ################################################################## */
-    /**
+     The indenting, on either side of the displayed image.
      */
-    var displayImage: UIImage? { get }
+    private static let _sideInsetsInDisplayUnits = CGFloat(20)
+    
+    /* ################################################################## */
+    /**
+     The underlying UIKit cleantime view that does the actual drawing.
+     */
+    private let cleantimeView: LGV_UICleantimeImageViewBase
+
+    /* ################################################################## */
+    /**
+     The image that we will display once rendering is complete.
+     */
+    @State private var displayImage: UIImage?
+
+    /* ################################################################## */
+    /**
+     We accept a builder closure that returns a fully-configured cleantime view.
+     */
+    init(makeCleantimeView: () -> LGV_UICleantimeImageViewBase) {
+        self.cleantimeView = makeCleantimeView()
+    }
+
+    /* ################################################################## */
+    /**
+     This returns the rendered image, in a ScrollView, or presents a ProgressView.
+     */
+    var body: some View {
+        Group {
+            if let image = self.displayImage {
+                GeometryReader { proxy in
+                    let availableWidth = proxy.size.width - (Self._sideInsetsInDisplayUnits * 2)
+                    let naturalWidth = image.size.width
+                    let naturalHeight = image.size.height
+
+                    // Don't go wider than the image's natural width
+                    let targetWidth = min(availableWidth, naturalWidth)
+                    let aspectRatio = naturalHeight / naturalWidth
+                    let targetHeight = targetWidth * aspectRatio
+
+                    ScrollView(.vertical) {
+                        HStack {
+                            Spacer()
+                            Image(uiImage: image)
+                                .resizable()
+                                .interpolation(.high)
+                                .frame(width: targetWidth,
+                                       height: targetHeight
+                                )
+                                .padding(.horizontal,
+                                         Self._sideInsetsInDisplayUnits
+                                )
+                            Spacer()
+                        }
+                        .padding(.horizontal,
+                                 Self._sideInsetsInDisplayUnits
+                        )
+                        .frame(width: proxy.size.width)
+                    }
+                    .scrollBounceBehavior(.basedOnSize)
+                }
+            } else {
+                ProgressView()
+                    .progressViewStyle(.circular)
+                    // Make sure the ProgressView has a chance to show.
+                    .onAppear { DispatchQueue.main.async { self.prepareRenderer() } }
+            }
+        }
+    }
+
+    /* ################################################################## */
+    /**
+     Sets up the LGV renderer and hooks the callback into our `displayImage` state.
+     */
+    private func prepareRenderer() {
+        let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime
+
+        cleantimeView.totalDays = calculator.totalDays
+        cleantimeView.totalMonths = calculator.totalMonths
+        cleantimeView.renderingCallback = { inImage in
+            guard let image = inImage else { return }
+            DispatchQueue.main.async { self.displayImage = image }
+        }
+
+        cleantimeView.layoutSubviews()
+    }
 }
 
 /* ###################################################################################################################################### */
 // MARK: - Keytag Array View -
 /* ###################################################################################################################################### */
 /**
+ Displays a horizontally-oriented array of earned keytags
  */
 struct NACC_KeytagArrayTabView: View, TabViewProtocol {
     /* ################################################################## */
     /**
+     The tab name.
      */
     static var tabName = "SLUG-TAB-0".localizedVariant
 
     /* ################################################################## */
     /**
+     The name of the image to show for the tab icon.
      */
     static var tabImageName = "KeytagArray"
-    
-    /* ################################################################## */
-    /**
-    */
-    var cleantime: LGV_UICleantimeImageViewBase? = LGV_UIMultipleCleantimeKeytagImageView()
 
     /* ################################################################## */
     /**
-     */
-    @State var displayImage: UIImage?
-
-    /* ################################################################## */
-    /**
+     Returns the image in a scroller, or a progress view, if still rendering.
      */
     var body: some View {
-        if let image = self.displayImage {
-            ScrollView {
-                     Image(uiImage: image)
-                         .resizable()
-                         .scaledToFit()
-                         .padding([.leading, .trailing], 20)
-            }
-        } else {
-            ProgressView()
-                .progressViewStyle(.circular)
-                .tint(.black)
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                        let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime
-                        self.cleantime?.totalDays = calculator.totalDays
-                        self.cleantime?.totalMonths = calculator.totalMonths
-                        (self.cleantime as? LGV_UIMultipleCleantimeKeytagImageView)?.keytagsAreAVerticalStrip = false
-                        self.cleantime?.renderingCallback = { inImage in
-                            #if DEBUG
-                                print("Keytag Array View Callback")
-                            #endif
-                            guard let image = inImage else { return }
-                            DispatchQueue.main.async { self.displayImage = image }
-                        }
-                        self.cleantime?.layoutSubviews()
-                    }
-                }
-         }
+        CleantimeRenderedImageView {
+            let view = LGV_UIMultipleCleantimeKeytagImageView()
+            view.keytagsAreAVerticalStrip = false
+            return view
+        }
     }
 }
 
@@ -227,60 +297,31 @@ struct NACC_KeytagArrayTabView: View, TabViewProtocol {
 // MARK: - Keytag Strip View -
 /* ###################################################################################################################################### */
 /**
+ Displays a vertically-oriented strip of earned keytags
  */
 struct NACC_KeytagStripTabView: View, TabViewProtocol {
     /* ################################################################## */
     /**
+     The tab name.
      */
     static var tabName = "SLUG-TAB-1".localizedVariant
 
     /* ################################################################## */
     /**
+     The name of the image to show for the tab icon.
      */
     static var tabImageName = "SingleKeytag"
-    
-    /* ################################################################## */
-    /**
-    */
-    var cleantime: LGV_UICleantimeImageViewBase? = LGV_UIMultipleCleantimeKeytagImageView()
 
     /* ################################################################## */
     /**
-     */
-    @State var displayImage: UIImage?
-
-    /* ################################################################## */
-    /**
+     Returns the image in a scroller, or a progress view, if still rendering.
      */
     var body: some View {
-        if let image = self.displayImage {
-            ScrollView {
-                     Image(uiImage: image)
-                         .resizable()
-                         .scaledToFit()
-                         .padding([.leading, .trailing], 20)
-            }
-        } else {
-            ProgressView()
-                .progressViewStyle(.circular)
-                .tint(.black)
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                        let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime
-                        self.cleantime?.totalDays = calculator.totalDays
-                        self.cleantime?.totalMonths = calculator.totalMonths
-                        (self.cleantime as? LGV_UIMultipleCleantimeKeytagImageView)?.keytagsAreAVerticalStrip = true
-                        self.cleantime?.renderingCallback = { inImage in
-                            #if DEBUG
-                                print("Keytag Strip View Callback")
-                            #endif
-                            guard let image = inImage else { return }
-                            DispatchQueue.main.async { self.displayImage = image }
-                        }
-                        self.cleantime?.layoutSubviews()
-                    }
-                }
-         }
+        CleantimeRenderedImageView {
+            let view = LGV_UIMultipleCleantimeKeytagImageView()
+            view.keytagsAreAVerticalStrip = true
+            return view
+        }
     }
 }
 
@@ -288,58 +329,28 @@ struct NACC_KeytagStripTabView: View, TabViewProtocol {
 // MARK: - Medallion Array View -
 /* ###################################################################################################################################### */
 /**
+ Displays a horizontally-oriented array of earned medallions
  */
 struct NACC_MedallionTabView: View, TabViewProtocol {
     /* ################################################################## */
     /**
+     The tab name.
      */
     static var tabName = "SLUG-TAB-2".localizedVariant
 
     /* ################################################################## */
     /**
+     The name of the image to show for the tab icon.
      */
     static var tabImageName = "Medallion"
-    
-    /* ################################################################## */
-    /**
-    */
-    var cleantime: LGV_UICleantimeImageViewBase? = LGV_UICleantimeMultipleMedallionsImageView()
 
     /* ################################################################## */
     /**
-     */
-    @State var displayImage: UIImage?
-
-    /* ################################################################## */
-    /**
+     Returns the image in a scroller, or a progress view, if still rendering.
      */
     var body: some View {
-        if let image = self.displayImage {
-            ScrollView {
-                     Image(uiImage: image)
-                         .resizable()
-                         .scaledToFit()
-                         .padding([.leading, .trailing], 20)
-            }
-        } else {
-            ProgressView()
-                .progressViewStyle(.circular)
-                .tint(.black)
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                        let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime
-                        self.cleantime?.totalDays = calculator.totalDays
-                        self.cleantime?.totalMonths = calculator.totalMonths
-                        self.cleantime?.renderingCallback = { inImage in
-                            #if DEBUG
-                                print("Medallion View Callback")
-                            #endif
-                            guard let image = inImage else { return }
-                            DispatchQueue.main.async { self.displayImage = image }
-                        }
-                        self.cleantime?.layoutSubviews()
-                    }
-                }
-         }
+        CleantimeRenderedImageView {
+            LGV_UICleantimeMultipleMedallionsImageView()
+        }
     }
 }
