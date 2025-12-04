@@ -22,6 +22,55 @@ import SwiftUI
 import LGV_Cleantime
 import LGV_UICleantime
 import RVS_Generic_Swift_Toolbox
+import EventKit
+import EventKitUI
+
+/* ###################################################################################################################################### */
+// MARK: - Calendar Event Maker View -
+/* ###################################################################################################################################### */
+/**
+ Ugh. I hate using UIViewControllerRepresentable, but we need it for this.
+ */
+struct EventEditView: UIViewControllerRepresentable {
+    struct EditableEvent: Identifiable {
+        let id = UUID()
+        let eventStore: EKEventStore
+        let event: EKEvent
+    }
+
+    let eventStore: EKEventStore
+    let event: EKEvent
+    var onComplete: ((EKEventEditViewAction) -> Void)?
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    func makeUIViewController(context: Context) -> EKEventEditViewController {
+        let controller = EKEventEditViewController()
+        controller.eventStore = self.eventStore
+        controller.event = self.event   // now guaranteed to belong to this store
+        controller.editViewDelegate = context.coordinator
+        return controller
+    }
+
+    func updateUIViewController(_ uiViewController: EKEventEditViewController, context: Context) { }
+
+    final class Coordinator: NSObject, EKEventEditViewDelegate {
+        let parent: EventEditView
+
+        init(_ parent: EventEditView) {
+            self.parent = parent
+        }
+
+        func eventEditViewController(_ controller: EKEventEditViewController,
+                                     didCompleteWith action: EKEventEditViewAction) {
+            controller.dismiss(animated: true) {
+                self.parent.onComplete?(action)
+            }
+        }
+    }
+}
 
 /* ###################################################################################################################################### */
 // MARK: - Date Picker View -
@@ -277,12 +326,6 @@ extension View {
 struct NACC_MainContentView: View {
     /* ################################################################## */
     /**
-     This is the string that displays the "cleantime report."
-     */
-    private let _reportString = LGV_UICleantimeDateReportString()
-    
-    /* ################################################################## */
-    /**
      This denotes the padding around the date display.
      */
     private static let _buttonPaddingInDisplayUnits = 8.0
@@ -292,13 +335,13 @@ struct NACC_MainContentView: View {
      This denotes the horizontal padding around the text display.
      */
     private static let _horizontalPaddingInDisplayUnits = 20.0
-
+    
     /* ################################################################## */
     /**
      This is how big to make the top icon button.
      */
     private static let _iconSizeInDisplayUnits = 80.0
-
+    
     /* ################################################################## */
     /**
      This is how wide to make the displayed image.
@@ -307,9 +350,45 @@ struct NACC_MainContentView: View {
     
     /* ################################################################## */
     /**
+     This will allow us to add events to the Calendar, without leaving this app.
+     */
+    private let _eventStore = EKEventStore()
+    
+    /* ################################################################## */
+    /**
+     This is the string that displays the "cleantime report."
+     */
+    private let _reportString = LGV_UICleantimeDateReportString()
+    
+    /* ################################################################## */
+    /**
      This is the local instance of the persistent prefs for the app.
      */
     private let _prefs = NACCPersistentPrefs()
+    
+    /* ################################################################## */
+    /**
+     This shows a date picker in a modal sheet. If the user taps on the date, they get the sheet.
+     */
+    private var _calendarIsEnabled: Bool { LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore }
+    
+    /* ################################################################## */
+    /**
+     This shows a date picker in a modal sheet. If the user taps on the date, they get the sheet.
+     */
+    @State private var _showingPicker = false
+
+    /* ################################################################## */
+    /**
+     If true, then the NavigationStack will bring in the info screen.
+     */
+    @State private var _showInfo = false
+    
+    /* ################################################################## */
+    /**
+     When non-nil, we present the calendar event editor for this event.
+     */
+    @State private var _eventToEdit: EventEditView.EditableEvent?
 
     /* ################################################################## */
     /**
@@ -328,37 +407,25 @@ struct NACC_MainContentView: View {
      If true, then the NavigationStack will bring in the results screen.
      */
     @Binding var showResult: Bool
-    
-    /* ################################################################## */
-    /**
-     This shows a date picker in a modal sheet. If the user taps on the date, they get the sheet.
-     */
-    @State private var _showingPicker = false
-    
-    /* ################################################################## */
-    /**
-     If true, then the NavigationStack will bring in the info screen.
-     */
-    @State private var _showInfo = false
-    
+
     /* ################################################################## */
     /**
      */
     @Binding var selectedTab: TabIndexes
-
+    
     /* ################################################################## */
     /**
      This contains the cleandate.
      */
     @Binding var selectedDate: Date
-
+    
     /* ################################################################## */
     /**
      This returns the contents of the textual report.
      */
     private var _report: String {
         let calculator = LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime
-
+        
         if calculator.isOneDayOrMore {
             return self._reportString
                 .naCleantimeText(beginDate: self.selectedDate,
@@ -368,7 +435,54 @@ struct NACC_MainContentView: View {
             return "SLUG-CLEANDATE-PICKER-TITLE".localizedVariant
         }
     }
+    
+    func calendarButtonHit() {
+        // Create a fresh store only when we need it
+        let eventStore = EKEventStore()
 
+        func makeAnniversaryEvent(in store: EKEventStore) -> EKEvent? {
+            let date = self.selectedDate
+
+            guard let year = Calendar.current.dateComponents([.year], from: date).year else { return nil }
+
+            let event = EKEvent(eventStore: store)
+
+            event.startDate = Calendar.current.startOfDay(for: date)
+            event.endDate = event.startDate.addingTimeInterval((60 * 60 * 24) - 1) // 23:59:59
+            event.title = String(format: "SLUG-CAL-ANNIVERSARY".localizedVariant, year)
+            event.isAllDay = true
+            event.addRecurrenceRule(
+                EKRecurrenceRule(recurrenceWith: .yearly, interval: 1, end: nil)
+            )
+            event.addAlarm(EKAlarm(relativeOffset: 60 * 60 * 9))  // 9 AM
+
+            if let defaultCal = store.defaultCalendarForNewEvents {
+                event.calendar = defaultCal
+            } else if let firstCal = store.calendars(for: .event).first {
+                event.calendar = firstCal
+            } else {
+                // No calendars available to add events to
+                return nil
+            }
+
+            return event
+        }
+
+        eventStore.requestFullAccessToEvents { isGranted, error in
+            guard error == nil,
+                  isGranted,
+                  let event = makeAnniversaryEvent(in: eventStore)
+            else { return }
+
+            DispatchQueue.main.async {
+                self._eventToEdit = EventEditView.EditableEvent(
+                    eventStore: eventStore,
+                    event: event
+                )
+            }
+        }
+    }
+    
     /* ################################################################## */
     /**
      This returns a View, containing the main date display, and keytag/medallion display.
@@ -462,10 +576,11 @@ struct NACC_MainContentView: View {
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        // TODO: This will show the calendar event creation sheet.
+                        self.calendarButtonHit()
                     } label: {
                         Image(systemName: "calendar")
                     }
+                    .disabled(!self._calendarIsEnabled)
                     .accessibilityHint("SLUG-ACC-CALENDAR-BUTTON".localizedVariant)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -475,6 +590,14 @@ struct NACC_MainContentView: View {
                         Image(systemName: "info.circle")
                     }
                     .accessibilityHint("SLUG-ACC-INFO-BUTTON".localizedVariant)
+                }
+            }
+            .sheet(item: self.$_eventToEdit) { inEditableEvent in
+                EventEditView(
+                    eventStore: inEditableEvent.eventStore,
+                    event: inEditableEvent.event
+                ) { _ in
+                    self._eventToEdit = nil
                 }
             }
             .navigationDestination(isPresented: self.$showResult) { NACC_ResultDisplayView(selectedTab: self.$selectedTab) }
