@@ -19,6 +19,7 @@
  */
 
 import SwiftUI
+import LGV_Cleantime
 
 /* ###################################################################################################################################### */
 // MARK: - Background Container View -
@@ -41,7 +42,7 @@ struct AppBackground<Content: View>: View {
     
     /* ################################################################## */
     /**
-     This simply adds a gradient background that adjusts for mode and accessibility to the content.
+     This simply adds a gradient background to the contained View.
      */
     var body: some View {
         content()
@@ -110,7 +111,16 @@ struct NACC_App: App {
             dateString = String(splitter[0])
             if 1 < splitter.count,
                let tabInt = Int(splitter[1]),
-               let tab = TabIndexes(rawValue: tabInt) {
+               var tab = TabIndexes(rawValue: tabInt) {
+                // We don't have a medallion array, if we are less than a year.
+                if !LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.isOneYearOrMore,
+                   .medallionArray == tab {
+                    tab = .keytagArray
+                }
+                // We don't show the results screen for less than thirty days.
+                if !LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.isThirtyDaysOrMore {
+                    tab = .undefined
+                }
                 selectedTab = tab
             }
             
@@ -118,9 +128,6 @@ struct NACC_App: App {
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.dateFormat = "yyyy-MM-dd"
             if let date = dateFormatter.date(from: dateString) {
-                #if DEBUG
-                    print("URI Open.\n\tDate: \(date), Tab: \(selectedTab)")
-                #endif
                 NACCPersistentPrefs().cleanDate = date
                 NACCPersistentPrefs().lastSelectedTabIndex = selectedTab.rawValue
 
@@ -142,15 +149,15 @@ struct NACC_App: App {
                                  selectedTab: self.$_selectedTab,
                                  selectedDate: self.$_selectedDate
             )
-            .onOpenURL { inURL in
-                self.handleOpenWithURL(inURL)
-            }
+            // If we are being opened by a Universal or Deep link, we handle that here.
+            .onOpenURL { inURL in self.handleOpenWithURL(inURL) }
         }
         .onChange(of: self.scenePhase) { _, newPhase in
             if newPhase == .active {
+                // If the change was from being opened by a URL, we say so, and leave the selected tab alone (as it may have been set by the URL).
                 if self._wasOpenedViaURL {
                     self._wasOpenedViaURL = false
-                } else {
+                } else {    // Otherwise, we make sure to not force open the results screen.
                     self._selectedTab = .undefined
                 }
             }
