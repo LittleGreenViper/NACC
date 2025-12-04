@@ -2,12 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>NACC</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>nacc</string>
+			</array>
+		</dict>
+	</array>
 	<key>InfoScreenCopyrightSiteURL</key>
 	<string>https://littlegreenviper.com</string>
 	<key>InfoScreenHelpSiteURL</key>
 	<string>https://littlegreenviper.com/portfolio/nacc/</string>
 	<key>InfoScreenPrivacySiteURL</key>
 	<string>https://littlegreenviper.com/welcome-to-little-green-viper/privacy/app-privacy/</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>DisplayCleantime</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

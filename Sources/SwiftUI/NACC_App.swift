@@ -68,9 +68,92 @@ struct AppBackground<Content: View>: View {
 struct NACC_App: App {
     /* ################################################################## */
     /**
+     Scene phase, so we know when the app becomes active.
+     */
+    @Environment(\.scenePhase) private var scenePhase
+
+    /* ################################################################## */
+    /**
+     The tab to be shown.
+     */
+    @State private var _selectedTab = TabIndexes.undefined
+
+    /* ################################################################## */
+    /**
+     This contains the cleandate.
+     */
+    @State private var _selectedDate = Date()
+    
+    /* ################################################################## */
+    /**
+     If true, then the NavigationStack will bring in the results screen.
+     */
+    @State private var _showResult = false
+
+    /* ################################################################## */
+    /**
+     Flag indicating that the most recent activation came from a URL.
+     */
+    @State private var _wasOpenedViaURL = false
+
+    /* ################################################################## */
+    /**
+     Handles opening the app through a URL or a URL scheme.
+     
+     - parameter inURL: The URL query string (for both a Universal and a Deep link).
+     */
+    func handleOpenWithURL(_ inURL: URL) {
+        if var dateString = inURL.query() {
+            var selectedTab = TabIndexes.undefined
+            let splitter = dateString.split(separator: "/")
+            guard !splitter.isEmpty else { return }
+            dateString = String(splitter[0])
+            if 1 < splitter.count,
+               let tabInt = Int(splitter[1]),
+               let tab = TabIndexes(rawValue: tabInt) {
+                selectedTab = tab
+            }
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            if let date = dateFormatter.date(from: dateString) {
+                #if DEBUG
+                    print("URI Open.\n\tDate: \(date), Tab: \(selectedTab)")
+                #endif
+                NACCPersistentPrefs().cleanDate = date
+                NACCPersistentPrefs().lastSelectedTabIndex = selectedTab.rawValue
+
+                DispatchQueue.main.async {
+                    self._wasOpenedViaURL = true
+                    (self._selectedDate, self._selectedTab, self._showResult) = (date, selectedTab, .undefined != selectedTab)
+                }
+            }
+        }
+    }
+    
+    /* ################################################################## */
+    /**
      This is the main application window.
      */
     var body: some Scene {
-        WindowGroup { NACC_MainContentView() }
+        WindowGroup {
+            NACC_MainContentView(showResult: self.$_showResult,
+                                 selectedTab: self.$_selectedTab,
+                                 selectedDate: self.$_selectedDate
+            )
+            .onOpenURL { inURL in
+                self.handleOpenWithURL(inURL)
+            }
+        }
+        .onChange(of: self.scenePhase) { _, newPhase in
+            if newPhase == .active {
+                if self._wasOpenedViaURL {
+                    self._wasOpenedViaURL = false
+                } else {
+                    self._selectedTab = .undefined
+                }
+            }
+        }
     }
 }

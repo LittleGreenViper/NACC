@@ -319,17 +319,6 @@ struct NACC_MainContentView: View {
     
     /* ################################################################## */
     /**
-     */
-    @State private var _selectedTab = TabIndexes(rawValue: NACCPersistentPrefs().lastSelectedTabIndex) ?? .keytagStrip
-
-    /* ################################################################## */
-    /**
-     This contains the cleandate.
-     */
-    @State private var _selectedDate = Date()
-    
-    /* ################################################################## */
-    /**
      This displays the last keytag or medallion earned.
      */
     @State private var _displayedImage: UIImage?
@@ -338,7 +327,7 @@ struct NACC_MainContentView: View {
     /**
      If true, then the NavigationStack will bring in the results screen.
      */
-    @State private var _showResult = false
+    @Binding var showResult: Bool
     
     /* ################################################################## */
     /**
@@ -354,14 +343,25 @@ struct NACC_MainContentView: View {
     
     /* ################################################################## */
     /**
+     */
+    @Binding var selectedTab: TabIndexes
+
+    /* ################################################################## */
+    /**
+     This contains the cleandate.
+     */
+    @Binding var selectedDate: Date
+
+    /* ################################################################## */
+    /**
      This returns the contents of the textual report.
      */
     private var _report: String {
-        let calculator = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime
+        let calculator = LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime
 
         if calculator.isOneDayOrMore {
             return self._reportString
-                .naCleantimeText(beginDate: self._selectedDate,
+                .naCleantimeText(beginDate: self.selectedDate,
                                  endDate: .now
                 )?.localizedVariant ?? "ERROR"
         } else {
@@ -379,10 +379,10 @@ struct NACC_MainContentView: View {
             AppBackground(alignment: .center) {
                 VStack {
                     // This is the top logo. If the user has thirty days or more, tapping on it will bring in the results screen.
-                    if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
+                    if LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isThirtyDaysOrMore {
                         Button {
-                            self._selectedTab = .keytagArray
-                            self._showResult = true
+                            self.selectedTab = .keytagArray
+                            self.showResult = true
                         } label: {
                             Image("Logo")
                                 .resizable()
@@ -398,7 +398,7 @@ struct NACC_MainContentView: View {
                     }
                     
                     // If the user has not specified a cleandate, this text item displays a message to that effect.
-                    if !LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneDayOrMore {
+                    if !LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore {
                         Text("SLUG-NO-CLEANDATE-YET".localizedVariant)
                     }
                     
@@ -411,7 +411,7 @@ struct NACC_MainContentView: View {
                             .frame(maxWidth: .infinity,
                                    alignment: .center
                             )
-                            .foregroundStyle(!LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneDayOrMore ? Color("SelectionTintColor") : .primary)
+                            .foregroundStyle(!LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore ? Color("SelectionTintColor") : .primary)
                             .background(.thickMaterial,
                                         in: Capsule()
                             )
@@ -420,7 +420,7 @@ struct NACC_MainContentView: View {
                             self._showingPicker = true
                         }
                         .adaptivePickerPresentation(isPresented: $_showingPicker,
-                                                    selectedDate: $_selectedDate
+                                                    selectedDate: $selectedDate
                         )
                         .accessibilityAddTraits(.isButton)
                         .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
@@ -428,10 +428,10 @@ struct NACC_MainContentView: View {
                     // If the user has set a cleandate, then the following is an image, with the user's last earned keytag (under a year), or medallion.
                     // If the user has thirty days or more, tapping on the image brings in the results screen.
                     if let image = self._displayedImage {
-                        if LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isThirtyDaysOrMore {
+                        if LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isThirtyDaysOrMore {
                             Button {
-                                self._selectedTab = LGV_CleantimeDateCalc(startDate: self._selectedDate).cleanTime.isOneYearOrMore ? .medallionArray : .keytagStrip
-                                self._showResult = true
+                                self.selectedTab = LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneYearOrMore ? .medallionArray : .keytagStrip
+                                self.showResult = true
                             } label: {
                                 Image(uiImage: image)
                                     .resizable()
@@ -477,18 +477,21 @@ struct NACC_MainContentView: View {
                     .accessibilityHint("SLUG-ACC-INFO-BUTTON".localizedVariant)
                 }
             }
-            .navigationDestination(isPresented: self.$_showResult) { NACC_ResultDisplayView(selectedTab: self.$_selectedTab) }
+            .navigationDestination(isPresented: self.$showResult) { NACC_ResultDisplayView(selectedTab: self.$selectedTab) }
             .navigationDestination(isPresented: self.$_showInfo) { NACC_InfoDisplayView() }
         }
         .onAppear {
             self._watchDelegateObject = self._watchDelegateObject ?? NACCWatchAppContentViewWatchDelegate(updateHandler: self.updateApplicationContext)
-            self._selectedDate = self._prefs.cleanDate
+            self.selectedDate = self._prefs.cleanDate
             self._watchDelegateObject?.sendApplicationContext()
+            if .undefined != self.selectedTab {
+                self.showResult = true
+            }
         }
-        .onChange(of: self._selectedTab) { _, inNewValue in
+        .onChange(of: self.selectedTab) { _, inNewValue in
             NACCPersistentPrefs().lastSelectedTabIndex = inNewValue.rawValue
         }
-        .onChange(of: self._selectedDate) { _, inSelectedDate in
+        .onChange(of: self.selectedDate) { _, inSelectedDate in
             self._prefs.cleanDate = inSelectedDate
             self._watchDelegateObject?.sendApplicationContext()
             let calculator = LGV_CleantimeDateCalc(startDate: inSelectedDate).cleanTime
@@ -529,7 +532,7 @@ struct NACC_MainContentView: View {
             #if DEBUG
                 print("Cleandate: \(cleanDate)")
             #endif
-            DispatchQueue.main.async { self._selectedDate = cleanDate }
+            DispatchQueue.main.async { self.selectedDate = cleanDate }
         }
     }
 }

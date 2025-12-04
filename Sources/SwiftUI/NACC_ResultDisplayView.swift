@@ -32,6 +32,12 @@ import RVS_Generic_Swift_Toolbox
 enum TabIndexes: Int {
     /* ################################################################## */
     /**
+     Undefined (no tab selected).
+     */
+    case undefined = -1
+    
+    /* ################################################################## */
+    /**
      Shows a horizontally-arrayed image of all earned keytags.
      */
     case keytagArray
@@ -59,6 +65,8 @@ extension TabIndexes {
      */
     var navigationTitle: String {
         switch self {
+        case .undefined:
+            return "ERROR"
         case .keytagArray:
             return NACC_KeytagArrayTabView.tabName
         case .keytagStrip:
@@ -73,6 +81,8 @@ extension TabIndexes {
      */
     var imageName: String {
         switch self {
+        case .undefined:
+            return "ERROR"
         case .keytagArray:
             return NACC_KeytagArrayTabView.tabImageName
         case .keytagStrip:
