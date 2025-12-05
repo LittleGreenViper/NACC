@@ -26,6 +26,24 @@ import EventKit
 import EventKitUI
 
 /* ###################################################################################################################################### */
+// MARK: - Activity (Share) View -
+/* ###################################################################################################################################### */
+/**
+ Simple wrapper around UIActivityViewController so we can use it from SwiftUI.
+ */
+struct ActivityView: UIViewControllerRepresentable {
+    let activityItems: [Any]
+    var applicationActivities: [UIActivity] = []
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: activityItems,
+                                 applicationActivities: applicationActivities)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) { }
+}
+
+/* ###################################################################################################################################### */
 // MARK: - Calendar Event Maker View -
 /* ###################################################################################################################################### */
 /**
@@ -400,6 +418,10 @@ extension View {
  At the top, is the app logo. Tapping on it (or the keytag/medallion logo) will show another screen, with images displaying multiple keytags or medalliuons.
  */
 struct NACC_MainContentView: View {
+    @State private var _showingActions = false
+    @State private var _showingShareSheet = false
+    @State private var _activityItems: [Any] = []
+    
     /* ################################################################## */
     /**
      This denotes the padding around the date display.
@@ -520,6 +542,17 @@ struct NACC_MainContentView: View {
     
     /* ################################################################## */
     /**
+     This returns a URL string, with a universal URL that will open the app to this date, without invoking the report.
+     */
+    private var _urlString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return String(format: "SLUG-URL-STRING".localizedVariant, dateFormatter.string(from: NACCPersistentPrefs().cleanDate))
+    }
+    
+    /* ################################################################## */
+    /**
      Called when the NavBar calendar button is hit.
      We present a custom Calendar Date Entry screen, with a pre-populated state for a yearly repeating all-day event, starting on the cleandate.
      We always use a sheet, becaue it's kind of a "fully modal" screen, and a popover dismisses too easily.
@@ -583,6 +616,53 @@ struct NACC_MainContentView: View {
                 )
             }
         }
+    }
+    
+    /* ################################################################## */
+    /**
+     Prepares the items to be shared in the share sheet.
+     We add a Report String, Universal URL, and Medallion/Keytag Image.
+     */
+    func _prepareActivityItems() {
+        var items: [Any] = []
+
+        if let url = URL(string: self._urlString) {
+            items.append(url)
+        }
+
+        if let image = self._displayedImage {
+            items.append(image)
+        }
+
+        items.append(self._report)
+
+        self._activityItems = items
+    }
+    
+    /* ################################################################## */
+    /**
+     Creates the main screen print renderer.
+     */
+    func _makePrintRenderer() -> UIPrintPageRenderer? {
+        let renderer = NACCPagePrintRenderer(report: self._report, image: self._displayedImage)
+
+        return renderer
+    }
+
+    /* ################################################################## */
+    /**
+     Uses a UIPrintPageRenderer to present the standard print UI.
+     */
+    func _print(using renderer: UIPrintPageRenderer) {
+        let printInfo = UIPrintInfo(dictionary: nil)
+        printInfo.outputType = .photo
+        printInfo.jobName = "Cleantime Report"
+
+        let controller = UIPrintInteractionController.shared
+        controller.printInfo = printInfo
+        controller.printPageRenderer = renderer
+
+        controller.present(animated: true, completionHandler: nil)
     }
     
     /* ################################################################## */
@@ -670,7 +750,8 @@ struct NACC_MainContentView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        // TODO: This will show the action sheet.
+                        self._prepareActivityItems()
+                        self._showingActions = true
                     } label: {
                         Image(systemName: "square.and.arrow.up")
                     }
@@ -744,6 +825,27 @@ struct NACC_MainContentView: View {
                 return
             }
             self._displayedImage = generatedImage
+        }
+        .confirmationDialog("SLUG-ACTIONS-TITLE".localizedVariant,
+                            isPresented: self.$_showingActions,
+                            titleVisibility: .visible) {
+            // Share…
+            Button("SLUG-ACTIONS-SHARE".localizedVariant) {
+                self._showingShareSheet = true
+            }
+
+            // Print… (only if we can actually print something)
+            Button("SLUG-ACTIONS-PRINT".localizedVariant) {
+                // You said you'll have a Print Renderer; plug it in here.
+                if let renderer = self._makePrintRenderer() {
+                    self._print(using: renderer)
+                }
+            }
+
+            Button("SLUG-CANCEL".localizedVariant, role: .cancel) { }
+        }
+        .sheet(isPresented: self.$_showingShareSheet) {
+            ActivityView(activityItems: self._activityItems)
         }
     }
     

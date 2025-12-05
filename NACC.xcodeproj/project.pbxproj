@@ -21,6 +21,8 @@
 		D43730122D497E9C00592680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D43730112D497E9C00592680 /* Assets.xcassets */; };
 		D43BAAA72ED8E73E00B58900 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */; };
 		D43C66D42694AC20007D5883 /* NACCAppSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */; };
+		D43EF21F2EE3046D00709D39 /* NACCPagePrintRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */; };
+		D43EF2212EE3059700709D39 /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D43EF2202EE3059700709D39 /* RVS_UIKit_Toolbox */; };
 		D44690402D61358C0079B36A /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D446903F2D61358C0079B36A /* RVS_UIKit_Toolbox */; };
 		D44690442D6135E50079B36A /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D44690432D6135E50079B36A /* RVS_UIKit_Toolbox */; };
 		D44690462D6135EF0079B36A /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D44690452D6135EF0079B36A /* RVS_UIKit_Toolbox */; };
@@ -336,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D40F87D02EDA4A8400E4B09B /* RVS_Persistent_Prefs in Frameworks */,
+				D43EF2212EE3059700709D39 /* RVS_UIKit_Toolbox in Frameworks */,
 				D40F87D22EDA4A8400E4B09B /* LGV_Cleantime in Frameworks */,
 				D40F87D62EDA4A8400E4B09B /* RVS_Generic_Swift_Toolbox in Frameworks */,
 				D40F87D42EDA4A8400E4B09B /* LGV_UICleantime in Frameworks */,
@@ -620,6 +623,7 @@
 			children = (
 				D412D8E12D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift */,
 				D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */,
+				D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -628,7 +632,6 @@
 			isa = PBXGroup;
 			children = (
 				D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */,
-				D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				D40F87D12EDA4A8400E4B09B /* LGV_Cleantime */,
 				D40F87D32EDA4A8400E4B09B /* LGV_UICleantime */,
 				D40F87D52EDA4A8400E4B09B /* RVS_Generic_Swift_Toolbox */,
+				D43EF2202EE3059700709D39 /* RVS_UIKit_Toolbox */,
 			);
 			productName = NACC_App;
 			productReference = D4A0C1502ED78C3800F77D56 /* SwiftUI App Target.app */;
@@ -1085,6 +1089,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D40F87CD2EDA47AA00E4B09B /* NACCWatchAppContentViewWatchDelegate.swift in Sources */,
+				D43EF21F2EE3046D00709D39 /* NACCPagePrintRenderer.swift in Sources */,
 				D40F87CE2EDA47AA00E4B09B /* NACCPersistentPrefs.swift in Sources */,
 				D489D35F2EDC91F600A86A6B /* NACC_InfoDisplayView.swift in Sources */,
 				D489D35D2EDC8EC900A86A6B /* NACC_ResultDisplayView.swift in Sources */,
@@ -2020,6 +2025,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D4B2C27C2E8FFEDB009DD45D /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */;
 			productName = RVS_Generic_Swift_Toolbox;
+		};
+		D43EF2202EE3059700709D39 /* RVS_UIKit_Toolbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D462E4AB2D5D07E6001E2C0F /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */;
+			productName = RVS_UIKit_Toolbox;
 		};
 		D446903F2D61358C0079B36A /* RVS_UIKit_Toolbox */ = {
 			isa = XCSwiftPackageProductDependency;

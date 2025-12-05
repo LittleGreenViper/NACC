@@ -20,8 +20,37 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 
 import UIKit
 import RVS_Generic_Swift_Toolbox
+import RVS_UIKit_Toolbox
 import LGV_Cleantime
 import LGV_UICleantime
+
+/* ###################################################################################################################################### */
+// MARK: - Attributed String Extension -
+/* ###################################################################################################################################### */
+/**
+ This extension allows us to get the displayed height and width (given a full-sized canvas -so no wrapping or truncating) of an attributed string.
+ */
+fileprivate extension NSAttributedString {
+    /* ################################################################## */
+    /**
+     - returns: The height required to display the string, in display units.
+     */
+    var _stringHeight: CGFloat {
+        let rect = self.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude),
+                                     options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
+        return ceil(rect.size.height)
+    }
+    
+    /* ################################################################## */
+    /**
+     - returns: The width required to display the string, in display units.
+     */
+    var _stringWidth: CGFloat {
+        let rect = self.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude),
+                                     options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
+        return ceil(rect.size.width)
+    }
+}
 
 /* ###################################################################################################################################### */
 // MARK: - Initial Screen Print Renderer -
@@ -130,8 +159,8 @@ extension NACCPagePrintRenderer {
             
             descriptionString = NSAttributedString(string: self.cleantimeReport, attributes: attributes)
 
-            width = descriptionString.stringWidth
-            height = descriptionString.stringHeight
+            width = descriptionString._stringWidth
+            height = descriptionString._stringHeight
             
             fontSize -= 0.25
         } while (width > cRect.size.width) || (height > cRect.size.height)

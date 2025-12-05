@@ -87,7 +87,7 @@
 
 // MARK: THE MAIN RESULTS SCREEN
 
-"SLUG-RESULTS-TITLE"                            =   "Cleantime Awards";
+"SLUG-RESULTS-TITLE"                            =   "Cleantime Recognition";
 
 // MARK: HORIZONTAL KEYTAGS SCREEN
 
@@ -100,6 +100,12 @@
 // MARK: MEDALLIONS SCREEN
 
 "SLUG-TAB-2"                                    =   "Medallions";
+
+// MARK: ACTION SHEET
+
+"SLUG-ACTIONS-TITLE"                            =   "What Do You Want to Do?";
+"SLUG-ACTIONS-SHARE"                            =   "Share My Cleantime";
+"SLUG-ACTIONS-PRINT"                            =   "Print My Cleantime";
 
 // MARK: -
 // MARK: - ACCESSIBILITY -
