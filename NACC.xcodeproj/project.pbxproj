@@ -64,6 +64,7 @@
 		D4A420EF2D4D607C00E4AC1E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D4A420EA2D4D607C00E4AC1E /* README.md */; };
 		D4A420F02D4D607C00E4AC1E /* WidgetStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */; };
 		D4A420F12D4D607C00E4AC1E /* NACCWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A420E82D4D607C00E4AC1E /* NACCWidgetBundle.swift */; };
+		D4A8AD042EE32EF700979987 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4A8AD032EE32EF700979987 /* Settings.bundle */; };
 		D4ACE7E22D584805006C00AD /* WatchStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */; };
 		D4B0857A2EDB7CA0007C536C /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */; };
 		D4B2C2762E8FFE5D009DD45D /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2752E8FFE5D009DD45D /* RVS_Persistent_Prefs */; };
@@ -251,6 +252,7 @@
 		D4A420E92D4D607C00E4AC1E /* NACCWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D4A420EA2D4D607C00E4AC1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = WidgetStrings.xcstrings; sourceTree = "<group>"; };
+		D4A8AD032EE32EF700979987 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = WatchStrings.xcstrings; sourceTree = "<group>"; };
 		D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPersistentPrefs.swift; sourceTree = "<group>"; };
 		D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAboutViewController.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				D4A0C15B2ED78C6700F77D56 /* Assets.xcassets */,
+				D4A8AD032EE32EF700979987 /* Settings.bundle */,
 				D456591C2EDCCB130010C38A /* Info.plist */,
 				D4A0C15D2ED78C6700F77D56 /* NACC_App.swift */,
 				D4A0C15C2ED78C6700F77D56 /* NACC_MainContentView.swift */,
@@ -908,6 +911,7 @@
 				D4A0C1612ED78C6700F77D56 /* Assets.xcassets in Resources */,
 				D40F87D72EDA4AF100E4B09B /* Localizable.strings in Resources */,
 				D43BAAA72ED8E73E00B58900 /* Theme.xcassets in Resources */,
+				D4A8AD042EE32EF700979987 /* Settings.bundle in Resources */,
 				D4A3F7C52EE22425004992A8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

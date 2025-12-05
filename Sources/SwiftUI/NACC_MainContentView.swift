@@ -32,14 +32,34 @@ import EventKitUI
  Simple wrapper around UIActivityViewController so we can use it from SwiftUI.
  */
 struct ActivityView: UIViewControllerRepresentable {
+    /* ############################################################## */
+    /**
+     The activity items that we're giving to the controller.
+     */
     let activityItems: [Any]
+
+    /* ############################################################## */
+    /**
+     The activities that we're giving to the controller.
+     */
     var applicationActivities: [UIActivity] = []
 
+    /* ############################################################## */
+    /**
+     Returns our various activity sheet items.
+     - parameter context: ignored.
+     - returns: A general-purpose activity controller, with our items.
+     */
     func makeUIViewController(context: Context) -> UIActivityViewController {
         UIActivityViewController(activityItems: activityItems,
-                                 applicationActivities: applicationActivities)
+                                 applicationActivities: applicationActivities
+        )
     }
 
+    /* ############################################################## */
+    /**
+     No-Op. Satisfies the protocol.
+     */
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) { }
 }
 
@@ -272,12 +292,14 @@ struct PickerPopoverContent: View {
                     
                     // Buttons
                     HStack {
+                        // We only show today, if we are not at today.
                         if !Calendar.current.isDate(selectedDate, inSameDayAs: .now) {
                             Button("SLUG-TODAY".localizedVariant) {
                                 self.selectedDate = Date()
                             }
                             .frame(maxWidth: .infinity)
                         }
+                        // We only show reset, if we have changed from the initial date.
                         if let origDate = Self._originalDate,
                            self.selectedDate != origDate {
                             Button("SLUG-RESET".localizedVariant) {
@@ -285,7 +307,7 @@ struct PickerPopoverContent: View {
                             }
                             .frame(maxWidth: .infinity)
                         }
-                        
+                        // We always show the dismiss button.
                         Button("SLUG-DONE".localizedVariant) {
                             self._dismiss()
                         }
@@ -298,17 +320,15 @@ struct PickerPopoverContent: View {
             }
         }
         .frame(minWidth: isInPopover ? Self._miniumHorizontalWidthInDisplayUnits : nil)
-        .onChange(of: self.selectedDate) { _, inNewValue in
-            Self._originalDate = Self._originalDate ?? inNewValue
-        }
+        .onChange(of: self.selectedDate) { _, inNewValue in Self._originalDate = Self._originalDate ?? inNewValue }
         .onAppear {
-            if .now > self.selectedDate {
-                Self._originalDate = self.selectedDate
+            guard .now > self.selectedDate else {
+                Self._originalDate = nil
+                return
             }
+            Self._originalDate = self.selectedDate
         }
-        .onDisappear {
-            Self._originalDate = nil
-        }
+        .onDisappear { Self._originalDate = nil }
     }
 }
 
@@ -418,10 +438,6 @@ extension View {
  At the top, is the app logo. Tapping on it (or the keytag/medallion logo) will show another screen, with images displaying multiple keytags or medalliuons.
  */
 struct NACC_MainContentView: View {
-    @State private var _showingActions = false
-    @State private var _showingShareSheet = false
-    @State private var _activityItems: [Any] = []
-    
     /* ################################################################## */
     /**
      This denotes the padding around the date display.
@@ -463,6 +479,24 @@ struct NACC_MainContentView: View {
      This shows a date picker in a modal sheet. If the user taps on the date, they get the sheet.
      */
     private var _calendarIsEnabled: Bool { LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore }
+    
+    /* ################################################################## */
+    /**
+     This is set to true, when we want to show the action sheet.
+     */
+    @State private var _showingActions = false
+    
+    /* ################################################################## */
+    /**
+     This is set to true, when we want to show the share sheet.
+     */
+    @State private var _showingShareSheet = false
+    
+    /* ################################################################## */
+    /**
+     These are the items that we'll be sending to the activity sheet.
+     */
+    @State private var _activityItems: [Any] = []
     
     /* ################################################################## */
     /**
@@ -557,11 +591,11 @@ struct NACC_MainContentView: View {
      We present a custom Calendar Date Entry screen, with a pre-populated state for a yearly repeating all-day event, starting on the cleandate.
      We always use a sheet, becaue it's kind of a "fully modal" screen, and a popover dismisses too easily.
      */
-    func calendarButtonHit() {
+    private func _calendarButtonHit() {
         /* ############################################################## */
         /**
          This creates a new calendar event, based on the event in the stor.
-         - parameter inStore: The store for the even we are creating.
+         - parameter inStore: The store for the event we are creating.
          */
         func makeAnniversaryEvent(in inStore: EKEventStore) -> EKEvent? {
             let date = self.selectedDate
@@ -623,7 +657,7 @@ struct NACC_MainContentView: View {
      Prepares the items to be shared in the share sheet.
      We add a Report String, Universal URL, and Medallion/Keytag Image.
      */
-    func _prepareActivityItems() {
+    private func _prepareActivityItems() {
         var items: [Any] = []
 
         if let url = URL(string: self._urlString) {
@@ -643,24 +677,25 @@ struct NACC_MainContentView: View {
     /**
      Creates the main screen print renderer.
      */
-    func _makePrintRenderer() -> UIPrintPageRenderer? {
-        let renderer = NACCPagePrintRenderer(report: self._report, image: self._displayedImage)
-
-        return renderer
+    private func _makePrintRenderer() -> UIPrintPageRenderer? {
+        return NACCPagePrintRenderer(report: self._report,
+                                     image: self._displayedImage
+        )
     }
 
     /* ################################################################## */
     /**
      Uses a UIPrintPageRenderer to present the standard print UI.
+     - parameter inRenderer: The custom renderer we're using.
      */
-    func _print(using renderer: UIPrintPageRenderer) {
+    private func _print(using inRenderer: UIPrintPageRenderer) {
         let printInfo = UIPrintInfo(dictionary: nil)
         printInfo.outputType = .photo
         printInfo.jobName = "Cleantime Report"
 
         let controller = UIPrintInteractionController.shared
         controller.printInfo = printInfo
-        controller.printPageRenderer = renderer
+        controller.printPageRenderer = inRenderer
 
         controller.present(animated: true, completionHandler: nil)
     }
@@ -747,7 +782,9 @@ struct NACC_MainContentView: View {
             }
             .navigationTitle("SLUG-INITIAL-TITLE".localizedVariant)
             .navigationBarTitleDisplayMode(.inline)
+            // Create the various NavBar items.
             .toolbar {
+                // The "Action" button
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         self._prepareActivityItems()
@@ -757,15 +794,17 @@ struct NACC_MainContentView: View {
                     }
                     .accessibilityHint("SLUG-ACC-ACTION-BUTTON".localizedVariant)
                 }
+                // The calendar button (create an event)
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        self.calendarButtonHit()
+                        self._calendarButtonHit()
                     } label: {
                         Image(systemName: "calendar")
                     }
                     .disabled(!self._calendarIsEnabled)
                     .accessibilityHint("SLUG-ACC-CALENDAR-BUTTON".localizedVariant)
                 }
+                // The info screen button
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         self._showInfo = true
@@ -804,6 +843,7 @@ struct NACC_MainContentView: View {
             self._watchDelegateObject = self._watchDelegateObject ?? NACCWatchAppContentViewWatchDelegate(updateHandler: self.updateApplicationContext)
             self.selectedDate = self._prefs.cleanDate
             self._watchDelegateObject?.sendApplicationContext()
+            // If we were opened from a URL that specified a tab, then we immediately open the report screen.
             if .undefined != self.selectedTab {
                 self.showResult = true
             }
@@ -826,13 +866,12 @@ struct NACC_MainContentView: View {
             }
             self._displayedImage = generatedImage
         }
+        // When the action button is hit, we ask the user if they want to share, or print.
         .confirmationDialog("SLUG-ACTIONS-TITLE".localizedVariant,
                             isPresented: self.$_showingActions,
                             titleVisibility: .visible) {
             // Share…
-            Button("SLUG-ACTIONS-SHARE".localizedVariant) {
-                self._showingShareSheet = true
-            }
+            Button("SLUG-ACTIONS-SHARE".localizedVariant) { self._showingShareSheet = true }
 
             // Print… (only if we can actually print something)
             Button("SLUG-ACTIONS-PRINT".localizedVariant) {
@@ -844,6 +883,7 @@ struct NACC_MainContentView: View {
 
             Button("SLUG-CANCEL".localizedVariant, role: .cancel) { }
         }
+        // If we are shoing the share (activity) sheet, then we set the appropriate state property.
         .sheet(isPresented: self.$_showingShareSheet) {
             ActivityView(activityItems: self._activityItems)
         }

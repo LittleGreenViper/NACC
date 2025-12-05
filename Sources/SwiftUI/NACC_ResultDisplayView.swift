@@ -147,6 +147,7 @@ struct NACC_ResultDisplayView: View {
             }
         }
         .navigationTitle("SLUG-RESULTS-TITLE".localizedVariant)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

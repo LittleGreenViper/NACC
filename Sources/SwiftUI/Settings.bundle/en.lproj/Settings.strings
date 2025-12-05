@@ -1,0 +1,29 @@
+/*
+Copyright 2020-2025, Little Green Viper Software Development LLC
+*/
+
+//**********************************************    **********************************************************
+// --------------------------------------------      ------------------------------------------------------- *
+//|  DO NOT MODIFY ON THIS SIDE OF THE EQUALS  |    |   MODIFY THE TEXT ON THIS SIDE TO THE LOCAL LANGUAGE  |*
+// --------------------------------------------      ------------------------------------------------------- *
+//**********************************************    **********************************************************
+// MARK: OSS TEXT
+// The section text for the app information section.
+"SLUG-APP-INFO-HEADER"                      =   "NACC App Information";
+// The button name for the OSS dependency list
+"SLUG-OSS-HEADER"                           =   "Software Dependencies";
+
+// MARK: -
+// MARK: - DO NOT TRANSLATE BELOW THIS LINE -
+// MARK: -
+
+// MARK: COPYRIGHT
+"SLUG-COPYRIGHT"                            =   "©2012-2025, Little Green Viper Software Development LLC";
+
+// MARK: VERSIONS
+"SLUG-VERSION-LGVCLEANTIME"                 =   "LGV_Cleantime: 1.4.5";
+"SLUG-VERSION-UICLEANTIME"                  =   "LGV_UICleantime: 2.5.0";
+"SLUG-VERSION-OBSERVER"                     =   "RVS_GeneralObserver 1.1.3";
+"SLUG-VERSION-GST"                          =   "RVS_Generic_Swift_Toolbox: 1.16.1";
+"SLUG-VERSION-PP"                           =   "RVS_Persistent_Prefs: 1.5.0";
+"SLUG-VERSION-UKT"                          =   "RVS_UIKit_Toolbox: 1.7.1";
