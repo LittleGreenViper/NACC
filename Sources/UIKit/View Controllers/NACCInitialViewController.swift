@@ -488,7 +488,7 @@ extension NACCInitialViewController {
             let event = EKEvent(eventStore: _eventStore)
             event.startDate = Calendar.current.startOfDay(for: date)
             event.endDate = event.startDate.addingTimeInterval((60 * 60 * 24) - 1) // A full 23:59:59 hours, makes a day.
-            event.title = String(format: "SLUG-CAL-ANNIVERSARY".localizedVariant, year)
+            event.title = String(format: "SLUG-CAL-ANNIVERSARY-FORMAT".localizedVariant, year)
             event.isAllDay = true
             event.addRecurrenceRule(EKRecurrenceRule(recurrenceWith: .yearly, interval: 1, end: nil))
             event.addAlarm(EKAlarm(relativeOffset: (60 * 60 * 9)))  // Adds an extra alarm for the date, itself, at 9AM.

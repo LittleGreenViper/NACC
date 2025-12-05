@@ -106,6 +106,8 @@ struct NACC_ResultDisplayView: View {
      */
     @State private var _displayedImage: UIImage?
     
+    @State private var _navTitle: String = ""
+
     /* ################################################################## */
     /**
      The currently selected tab.
@@ -117,36 +119,34 @@ struct NACC_ResultDisplayView: View {
      This returns the entire screen, with the tabs.
      */
     var body: some View {
-        AppBackground {
-            TabView(selection: self.$selectedTab) {
-                NACC_KeytagArrayTabView()
-                    .tabItem {
-                        Label(TabIndexes.keytagArray.navigationTitle,
-                              image: TabIndexes.keytagArray.imageName
-                        )
-                    }
-                    .tag(TabIndexes.keytagArray)
-                
-                NACC_KeytagStripTabView()
-                    .tabItem {
-                        Label(TabIndexes.keytagStrip.navigationTitle,
-                              image: TabIndexes.keytagStrip.imageName
-                        )
-                    }
-                    .tag(TabIndexes.keytagStrip)
-                
-                if LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.isOneYearOrMore {
-                    NACC_MedallionTabView()
-                        .tabItem {
-                            Label(TabIndexes.medallionArray.navigationTitle,
-                                  image: TabIndexes.medallionArray.imageName
-                            )
-                        }
-                        .tag(TabIndexes.medallionArray)
+        TabView(selection: self.$selectedTab) {
+            NACC_KeytagArrayTabView()
+                .tabItem {
+                    Label(TabIndexes.keytagArray.navigationTitle,
+                          image: TabIndexes.keytagArray.imageName
+                    )
                 }
+                .tag(TabIndexes.keytagArray)
+            
+            NACC_KeytagStripTabView()
+                .tabItem {
+                    Label(TabIndexes.keytagStrip.navigationTitle,
+                          image: TabIndexes.keytagStrip.imageName
+                    )
+                }
+                .tag(TabIndexes.keytagStrip)
+            
+            if LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.isOneYearOrMore {
+                NACC_MedallionTabView()
+                    .tabItem {
+                        Label(TabIndexes.medallionArray.navigationTitle,
+                              image: TabIndexes.medallionArray.imageName
+                        )
+                    }
+                    .tag(TabIndexes.medallionArray)
             }
         }
-        .navigationTitle(self.selectedTab.navigationTitle)
+        .navigationTitle("SLUG-RESULTS-TITLE".localizedVariant)
     }
 }
 
@@ -211,44 +211,49 @@ struct CleantimeRenderedImageView: View {
      This returns the rendered image, in a ScrollView, or presents a ProgressView.
      */
     var body: some View {
-        Group {
-            if let image = self.displayImage {
-                GeometryReader { proxy in
-                    let availableWidth = proxy.size.width - (Self._sideInsetsInDisplayUnits * 2)
-                    let naturalWidth = image.size.width
-                    let naturalHeight = image.size.height
-
-                    // Don't go wider than the image's natural width
-                    let targetWidth = min(availableWidth, naturalWidth)
-                    let aspectRatio = naturalHeight / naturalWidth
-                    let targetHeight = targetWidth * aspectRatio
-
-                    ScrollView(.vertical) {
-                        HStack {
-                            Spacer()
-                            Image(uiImage: image)
-                                .resizable()
-                                .interpolation(.high)
-                                .frame(width: targetWidth,
-                                       height: targetHeight
-                                )
-                                .padding(.horizontal,
-                                         Self._sideInsetsInDisplayUnits
-                                )
-                            Spacer()
+        AppBackground(alignment: nil == self.displayImage ? .center : .top) {
+            Group {
+                if let image = self.displayImage {
+                    GeometryReader { proxy in
+                        let availableWidth = proxy.size.width - (Self._sideInsetsInDisplayUnits * 2)
+                        let naturalWidth = image.size.width
+                        let naturalHeight = image.size.height
+                        
+                        // Don't go wider than the image's natural width
+                        let targetWidth = min(availableWidth, naturalWidth)
+                        let aspectRatio = naturalHeight / naturalWidth
+                        let targetHeight = targetWidth * aspectRatio
+                        
+                        ScrollView(.vertical) {
+                            HStack {
+                                Spacer()
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .interpolation(.high)
+                                    .frame(width: targetWidth,
+                                           height: targetHeight
+                                    )
+                                    .padding(.horizontal,
+                                             Self._sideInsetsInDisplayUnits
+                                    )
+                                Spacer()
+                            }
+                            .padding(.horizontal,
+                                     Self._sideInsetsInDisplayUnits
+                            )
+                            .frame(width: proxy.size.width)
                         }
-                        .padding(.horizontal,
-                                 Self._sideInsetsInDisplayUnits
-                        )
-                        .frame(width: proxy.size.width)
+                        .scrollBounceBehavior(.basedOnSize)
                     }
-                    .scrollBounceBehavior(.basedOnSize)
+                } else {
+                    ProgressView()
+                        .progressViewStyle(.circular)
                 }
-            } else {
-                ProgressView()
-                    .progressViewStyle(.circular)
-                    // Make sure the ProgressView has a chance to show.
-                    .onAppear { DispatchQueue.main.async { self.prepareRenderer() } }
+            }
+        }
+        .onAppear {
+            if nil == self.displayImage {
+                self.prepareRenderer()
             }
         }
     }

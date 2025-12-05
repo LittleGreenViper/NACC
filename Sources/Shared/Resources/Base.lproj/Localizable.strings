@@ -67,7 +67,11 @@
 
 // MARK: CALENDAR EVENT
 
-"SLUG-CAL-ANNIVERSARY"                          =   "NA Anniversary (%d)";
+"SLUG-CAL-ANNIVERSARY-FORMAT"                   =   "NA Anniversary (%d)";
+"SLUR-ERR-CALENDAR-DENY-ALERT-TITLE"            =   "Calendar Access Needed";
+"SLUR-ERR-CALENDAR-DENY-ALERT-MESSAGE"          =   "To add your anniversary to the Calendar, please allow this app to access your calendars in Settings.";
+"SLUR-ERR-CALENDAR-DENY-ALERT-CANCEL"           =   "Not Now";
+"SLUR-ERR-CALENDAR-DENY-ALERT-SETTINGS"         =   "Open Settings";
 
 // MARK: ABOUT SCREEN
 
@@ -80,6 +84,10 @@
 "SLUG-COPYRIGHT-BUTTON"                         =   "©2022-2024 Little Green Viper Software Development LLC";
 "SLUG-PRIVACY-BUTTON"                           =   "Privacy";
 "SLUG-LGV-BUTTON"                               =   "Web Site";
+
+// MARK: THE MAIN RESULTS SCREEN
+
+"SLUG-RESULTS-TITLE"                            =   "Cleantime Awards";
 
 // MARK: HORIZONTAL KEYTAGS SCREEN
 

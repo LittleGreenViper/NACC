@@ -30,46 +30,121 @@ import EventKitUI
 /* ###################################################################################################################################### */
 /**
  Ugh. I hate using UIViewControllerRepresentable, but we need it for this.
+ 
+ This is how the Event editor is implemented.
  */
 struct EventEditView: UIViewControllerRepresentable {
+    /* ################################################################################################################################## */
+    // MARK: This simply controls display of the event add sheet.
+    /* ################################################################################################################################## */
+    /**
+     We need to be able to allow the user to create reminder events, based on the cleandate.
+     This handles the wrapped display of the Calendar Entry Edit sheet.
+     */
+    final class Coordinator: NSObject, EKEventEditViewDelegate {
+        /* ############################################################## */
+        /**
+         The View that contains this wrapper.
+         */
+        let parent: EventEditView
+
+        /* ############################################################## */
+        /**
+         Default initializer. The parent is passed in.
+         - parameter inParent: The parent (container) View.
+         */
+        init(_ inParent: EventEditView) {
+            self.parent = inParent
+        }
+
+        /* ############################################################## */
+        /**
+         The callback, for when the calendar entry edit is complete.
+         - parameter inController: The controller for this session.
+         - parameter inAction: The action used to complete.
+         */
+        func eventEditViewController(_ inController: EKEventEditViewController, didCompleteWith inAction: EKEventEditViewAction) {
+            inController.dismiss(animated: true) {
+                self.parent.onComplete?(inAction)
+            }
+        }
+    }
+
+    /* ################################################################################################################################## */
+    // MARK: Identifiable Composition Struct
+    /* ################################################################################################################################## */
+    /**
+     This allows us to treat Event records as identifiable.
+     */
     struct EditableEvent: Identifiable {
+        /* ############################################################## */
+        /**
+         This is why we're identifiable.
+         */
         let id = UUID()
+
+        /* ############################################################## */
+        /**
+         The event store that goes with the event.
+         We need to hang onto it, because, upon first time called after giving permission, the event store may be different.
+         */
         let eventStore: EKEventStore
+
+        /* ############################################################## */
+        /**
+         The even we want to use as the basis for this calendar entry.
+         */
         let event: EKEvent
     }
 
+    /* ################################################################## */
+    /**
+     The event store that handles the event.
+     */
     let eventStore: EKEventStore
+
+    /* ################################################################## */
+    /**
+     The even we want to make a calendar entry for.
+     */
     let event: EKEvent
+
+    /* ################################################################## */
+    /**
+     The callback, for when we're done.
+     */
     var onComplete: ((EKEventEditViewAction) -> Void)?
 
+    /* ################################################################## */
+    /**
+     This simply instantiates a new coordinator instance
+     - returns: A new Coorcinator instance.
+     */
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
 
+    /* ################################################################## */
+    /**
+     This creates our controller.
+     - parameter context: The context for the controller.
+     - returns: An event view controller, ready to be shown.
+     */
     func makeUIViewController(context: Context) -> EKEventEditViewController {
         let controller = EKEventEditViewController()
         controller.eventStore = self.eventStore
-        controller.event = self.event   // now guaranteed to belong to this store
+        controller.event = self.event
         controller.editViewDelegate = context.coordinator
         return controller
     }
 
-    func updateUIViewController(_ uiViewController: EKEventEditViewController, context: Context) { }
-
-    final class Coordinator: NSObject, EKEventEditViewDelegate {
-        let parent: EventEditView
-
-        init(_ parent: EventEditView) {
-            self.parent = parent
-        }
-
-        func eventEditViewController(_ controller: EKEventEditViewController,
-                                     didCompleteWith action: EKEventEditViewAction) {
-            controller.dismiss(animated: true) {
-                self.parent.onComplete?(action)
-            }
-        }
-    }
+    /* ################################################################## */
+    /**
+     This is a NOP function, here to satisfy the type.
+     - parameter _: The event (ignored)
+     - parameter context: The context (also ignored)
+     */
+    func updateUIViewController(_: EKEventEditViewController, context: Context) { }
 }
 
 /* ###################################################################################################################################### */
@@ -294,17 +369,18 @@ struct AdaptivePickerPresentation: ViewModifier {
 // MARK: - View Extension for the Date Picker -
 /* ###################################################################################################################################### */
 extension View {
-    func adaptivePickerPresentation(
-        isPresented: Binding<Bool>,
-        selectedDate: Binding<Date>
-    ) -> some View {
-        /* ################################################################## */
-        /**
-         This modifies the view to contain our special DatePicker, selected for the platform.
-         */
-        modifier(AdaptivePickerPresentation(isPresented: isPresented,
-                                            selectedDate: selectedDate
-                                           )
+    /* ################################################################## */
+    /**
+     Called to create our custom picker.
+     - parameter inIsPresented: True, if we are presenting the date picker sheet/popover
+     - parameter inSelectedDate: The date being show/changed
+     - returns: The custom date picker view
+     */
+    func adaptivePickerPresentation(isPresented inIsPresented: Binding<Bool>, selectedDate inSelectedDate: Binding<Date>) -> some View {
+        // This modifies the view to contain our special DatePicker, selected for the platform.
+        self.modifier(AdaptivePickerPresentation(isPresented: inIsPresented,
+                                                 selectedDate: inSelectedDate
+                                                )
         )
     }
 }
@@ -350,12 +426,6 @@ struct NACC_MainContentView: View {
     
     /* ################################################################## */
     /**
-     This will allow us to add events to the Calendar, without leaving this app.
-     */
-    private let _eventStore = EKEventStore()
-    
-    /* ################################################################## */
-    /**
      This is the string that displays the "cleantime report."
      */
     private let _reportString = LGV_UICleantimeDateReportString()
@@ -384,6 +454,12 @@ struct NACC_MainContentView: View {
      */
     @State private var _showInfo = false
     
+    /* ################################################################## */
+    /**
+     If true, then the event edit was denied permission, and we need to inform the user.
+     */
+    @State private var _showCalendarAccessAlert = false
+
     /* ################################################################## */
     /**
      When non-nil, we present the calendar event editor for this event.
@@ -421,6 +497,12 @@ struct NACC_MainContentView: View {
     
     /* ################################################################## */
     /**
+     Allows us to access the openURL capability.
+     */
+    @Environment(\.openURL) private var openURL
+    
+    /* ################################################################## */
+    /**
      This returns the contents of the textual report.
      */
     private var _report: String {
@@ -436,48 +518,68 @@ struct NACC_MainContentView: View {
         }
     }
     
+    /* ################################################################## */
+    /**
+     Called when the NavBar calendar button is hit.
+     We present a custom Calendar Date Entry screen, with a pre-populated state for a yearly repeating all-day event, starting on the cleandate.
+     We always use a sheet, becaue it's kind of a "fully modal" screen, and a popover dismisses too easily.
+     */
     func calendarButtonHit() {
-        // Create a fresh store only when we need it
-        let eventStore = EKEventStore()
-
-        func makeAnniversaryEvent(in store: EKEventStore) -> EKEvent? {
+        /* ############################################################## */
+        /**
+         This creates a new calendar event, based on the event in the stor.
+         - parameter inStore: The store for the even we are creating.
+         */
+        func makeAnniversaryEvent(in inStore: EKEventStore) -> EKEvent? {
             let date = self.selectedDate
 
             guard let year = Calendar.current.dateComponents([.year], from: date).year else { return nil }
 
-            let event = EKEvent(eventStore: store)
+            let event = EKEvent(eventStore: inStore)
 
             event.startDate = Calendar.current.startOfDay(for: date)
             event.endDate = event.startDate.addingTimeInterval((60 * 60 * 24) - 1) // 23:59:59
-            event.title = String(format: "SLUG-CAL-ANNIVERSARY".localizedVariant, year)
+            event.title = String(format: "SLUG-CAL-ANNIVERSARY-FORMAT".localizedVariant,
+                                 year
+            )
             event.isAllDay = true
             event.addRecurrenceRule(
-                EKRecurrenceRule(recurrenceWith: .yearly, interval: 1, end: nil)
+                EKRecurrenceRule(recurrenceWith: .yearly,
+                                 interval: 1,
+                                 end: nil
+                                )
             )
             event.addAlarm(EKAlarm(relativeOffset: 60 * 60 * 9))  // 9 AM
 
-            if let defaultCal = store.defaultCalendarForNewEvents {
+            if let defaultCal = inStore.defaultCalendarForNewEvents {
                 event.calendar = defaultCal
-            } else if let firstCal = store.calendars(for: .event).first {
+            } else if let firstCal = inStore.calendars(for: .event).first {
                 event.calendar = firstCal
             } else {
-                // No calendars available to add events to
                 return nil
             }
 
             return event
         }
 
-        eventStore.requestFullAccessToEvents { isGranted, error in
-            guard error == nil,
+        // Create a fresh store
+        let eventStore = EKEventStore()
+
+        eventStore.requestWriteOnlyAccessToEvents { isGranted, inError in
+            guard nil == inError,
                   isGranted,
                   let event = makeAnniversaryEvent(in: eventStore)
-            else { return }
+            else {
+                if nil == inError,
+                   !isGranted {
+                    DispatchQueue.main.async { self._showCalendarAccessAlert = true }
+                }
+                return
+            }
 
             DispatchQueue.main.async {
-                self._eventToEdit = EventEditView.EditableEvent(
-                    eventStore: eventStore,
-                    event: event
+                self._eventToEdit = EventEditView.EditableEvent(eventStore: eventStore,
+                                                                event: event
                 )
             }
         }
@@ -521,15 +623,15 @@ struct NACC_MainContentView: View {
                     // The text is surrounded by a capsule, indicating that it can be tapped. If no date is set, the color of the text is a button color.
                     Text(self._report)
                         .textSelection(.enabled)
-                            .padding(Self._buttonPaddingInDisplayUnits)
-                            .frame(maxWidth: .infinity,
-                                   alignment: .center
-                            )
-                            .foregroundStyle(!LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore ? Color("SelectionTintColor") : .primary)
-                            .background(.thickMaterial,
-                                        in: Capsule()
-                            )
-                            .contentShape(Rectangle())
+                        .padding(Self._buttonPaddingInDisplayUnits)
+                        .frame(maxWidth: .infinity,
+                               alignment: .center
+                        )
+                        .foregroundStyle(!LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore ? Color("SelectionTintColor") : .primary)
+                        .background(.thickMaterial,
+                                    in: Capsule()
+                        )
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             self._showingPicker = true
                         }
@@ -592,6 +694,7 @@ struct NACC_MainContentView: View {
                     .accessibilityHint("SLUG-ACC-INFO-BUTTON".localizedVariant)
                 }
             }
+            // This presents a modal sheet, with an event add screen. We always use a sheet, because the process is quite modal.
             .sheet(item: self.$_eventToEdit) { inEditableEvent in
                 EventEditView(
                     eventStore: inEditableEvent.eventStore,
@@ -599,6 +702,19 @@ struct NACC_MainContentView: View {
                 ) { _ in
                     self._eventToEdit = nil
                 }
+            }
+            // Called when the Calendar does not have permission to add events.
+            .alert("SLUR-ERR-CALENDAR-DENY-ALERT-TITLE".localizedVariant,
+                   isPresented: $_showCalendarAccessAlert) {
+                Button("SLUR-ERR-CALENDAR-DENY-ALERT-CANCEL".localizedVariant, role: .cancel) { }
+                
+                Button("SLUR-ERR-CALENDAR-DENY-ALERT-SETTINGS".localizedVariant) {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        openURL(url)
+                    }
+                }
+            } message: {
+                Text("SLUR-ERR-CALENDAR-DENY-ALERT-MESSAGE".localizedVariant)
             }
             .navigationDestination(isPresented: self.$showResult) { NACC_ResultDisplayView(selectedTab: self.$selectedTab) }
             .navigationDestination(isPresented: self.$_showInfo) { NACC_InfoDisplayView() }

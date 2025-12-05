@@ -1567,6 +1567,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = ERROR;
+				INFOPLIST_KEY_NSCalendarsWriteOnlyAccessUsageDescription = ERROR;
 				INFOPLIST_KEY_NSContactsUsageDescription = "This app needs access to your contacts, in order to fill out an anniversary event.  This information is never sent outside of your computer, and is not directly used by this app.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app allows you to save images of keytags or medallions to your Photo Library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1611,6 +1613,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = ERROR;
+				INFOPLIST_KEY_NSCalendarsWriteOnlyAccessUsageDescription = ERROR;
 				INFOPLIST_KEY_NSContactsUsageDescription = "This app needs access to your contacts, in order to fill out an anniversary event.  This information is never sent outside of your computer, and is not directly used by this app.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app allows you to save images of keytags or medallions to your Photo Library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
