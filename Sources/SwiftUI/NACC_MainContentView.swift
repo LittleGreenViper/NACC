@@ -848,7 +848,7 @@ struct NACC_MainContentView: View {
 
             // Print… (only if we can actually print something)
             Button("SLUG-ACTIONS-PRINT".localizedVariant) {
-                // You said you'll have a Print Renderer; plug it in here.
+                // Add our custom print renderer.
                 if let renderer = self._makePrintRenderer() {
                     self._print(using: renderer)
                 }

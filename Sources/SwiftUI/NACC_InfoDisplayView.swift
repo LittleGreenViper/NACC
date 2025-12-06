@@ -141,8 +141,17 @@ struct NACC_InfoDisplayView: View {
                 }
                 .scrollBounceBehavior(.basedOnSize)
                 HStack {
+                    Button("SLUG-SETTINGS-BUTTON".localizedVariant) {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            openURL(url)
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    
                     Button("SLUG-PRIVACY-BUTTON".localizedVariant) {
-                        if let url = Bundle.main.privacyURI {
+                        if let url = Bundle.main.siteURI {
                             self.openURL(url)
                         }
                     }

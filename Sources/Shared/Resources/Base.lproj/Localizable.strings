@@ -76,13 +76,14 @@
 // MARK: ABOUT SCREEN
 
 "SLUG-ABOUT"                                    =   "About NACC";
-"SLUG-APP-INFO-TEXT"                            =   "This is a simple app for quantifying your cleantime.\n\nIt says nothing about qualifying your Recovery; That's between you and your sponsor.\n\nSimply set the cleandate to your first day clean, and touch the keytag or medallion image to see all the keytags and medallions that you've earned.\n\nSelect the logo image above, to be taken to a Web page with detailed instructions on using this app.\n\nThe links below, go to our Privacy page, and the main Little Green Viper LLC Web site.";
+"SLUG-APP-INFO-TEXT"                            =   "This is a simple app for quantifying your cleantime.\n\nIt says nothing about qualifying your Recovery; That's between you and your sponsor.\n\nSimply set the cleandate to your first day clean, and touch the keytag or medallion image to see all the keytags and medallions that you've earned.\n\nSelect the logo image above, to be taken to a Web page with detailed instructions on using this app.\n\nThe links below, go to the app settings screen, our Privacy page, and the main Little Green Viper LLC Web site.";
 
 "SLUG-OK-BUTTON-TEXT"                           =   "OK";
 "SLUG-APP-INFO-VERSION-FORMAT-SMALL"            =   "Version %@";
 "SLUG-APP-INFO-VERSION-FORMAT"                  =   "%@ Version: %@ (%@)";
 "SLUG-COPYRIGHT-BUTTON"                         =   "©2022-2024 Little Green Viper Software Development LLC";
 "SLUG-PRIVACY-BUTTON"                           =   "Privacy";
+"SLUG-SETTINGS-BUTTON"                          =   "App Settings";
 "SLUG-LGV-BUTTON"                               =   "Web Site";
 
 // MARK: THE MAIN RESULTS SCREEN
@@ -129,10 +130,10 @@
 
 // MARK: Tabs
 
-"SLUG-ACC-Keytag Array"                         =   "This tab displays an array of keytags, arranged in horizontal rows.";
-"SLUG-ACC-Keytag Strip"                         =   "This tab displays a vertical strip of linked keytags.";
+"SLUG-ACC-Keytag-Array"                         =   "This tab displays an array of keytags, arranged in horizontal rows.";
+"SLUG-ACC-Keytag-Strip"                         =   "This tab displays a vertical strip of linked keytags.";
 "SLUG-ACC-Medallions"                           =   "This tab displays an array of medallions, arranged in horizontal rows.";
-"SLUG-ACC-TABS-ACTION-BUTTON"                   =   "This allows you to share the report and the cleantime images. It will bring up a screen, allowing you to send them to other apps or people (like messages and email). You can also print the report, or save the image in your Photo Library.";
+"SLUG-ACC-TABS-ACTION-BUTTON"                   =   "This allows you to share this image. It will bring up a screen, allowing you to send it to other apps or people (like messages and email). You can also print the report, or save the image in your Photo Library.";
 
 // MARK: App Intents
 

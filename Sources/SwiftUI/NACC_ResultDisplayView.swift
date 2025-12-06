@@ -71,7 +71,8 @@ struct NACC_ResultDisplayView: View {
                     )
                 }
                 .tag(NACC_TabIndexes.keytagArray)
-            
+                .accessibilityHint("SLUG-ACC-Keytag-Array".localizedVariant)
+
             NACC_KeytagStripTabView()
                 .tabItem {
                     Label(NACC_TabIndexes.keytagStrip.navigationTitle,
@@ -79,7 +80,8 @@ struct NACC_ResultDisplayView: View {
                     )
                 }
                 .tag(NACC_TabIndexes.keytagStrip)
-            
+                .accessibilityHint("SLUG-ACC-Keytag-Strip".localizedVariant)
+
             if LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.isOneYearOrMore {
                 NACC_MedallionTabView()
                     .tabItem {
@@ -88,6 +90,7 @@ struct NACC_ResultDisplayView: View {
                         )
                     }
                     .tag(NACC_TabIndexes.medallionArray)
+                    .accessibilityHint("SLUG-ACC-Medallions".localizedVariant)
             }
         }
         .navigationTitle("SLUG-RESULTS-TITLE".localizedVariant)
@@ -100,7 +103,7 @@ struct NACC_ResultDisplayView: View {
                 } label: {
                     Image(systemName: "square.and.arrow.up")
                 }
-                .accessibilityHint("SLUG-ACC-ACTION-BUTTON".localizedVariant)
+                .accessibilityHint("SLUG-ACC-TABS-ACTION-BUTTON".localizedVariant)
             }
         }
         // If we are shoing the share (activity) sheet, then we set the appropriate state property.
