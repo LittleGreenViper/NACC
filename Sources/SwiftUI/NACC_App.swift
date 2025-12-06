@@ -77,7 +77,7 @@ struct NACC_App: App {
     /**
      The tab to be shown.
      */
-    @State private var _selectedTab = TabIndexes.undefined
+    @State private var _selectedTab = NACC_TabIndexes.undefined
 
     /* ################################################################## */
     /**
@@ -105,13 +105,13 @@ struct NACC_App: App {
      */
     func handleOpenWithURL(_ inURL: URL) {
         if var dateString = inURL.query() {
-            var selectedTab = TabIndexes.undefined
+            var selectedTab = NACC_TabIndexes.undefined
             let splitter = dateString.split(separator: "/")
             guard !splitter.isEmpty else { return }
             dateString = String(splitter[0])
             if 1 < splitter.count,
                let tabInt = Int(splitter[1]),
-               var tab = TabIndexes(rawValue: tabInt) {
+               var tab = NACC_TabIndexes(rawValue: tabInt) {
                 // We don't have a medallion array, if we are less than a year.
                 if !LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.isOneYearOrMore,
                    .medallionArray == tab {

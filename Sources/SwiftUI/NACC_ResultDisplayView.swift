@@ -22,6 +22,113 @@ import SwiftUI
 import LGV_Cleantime
 import LGV_UICleantime
 import RVS_Generic_Swift_Toolbox
+import Combine
+
+/* ###################################################################################################################################### */
+// MARK: - Result Display View -
+/* ###################################################################################################################################### */
+/**
+ The image results View.
+ */
+struct NACC_ResultDisplayView: View {
+    /* ################################################################## */
+    /**
+     Shared observable image store.
+     */
+    @StateObject private var imageStore = NACC_ResultDisplayImageStore.shared
+
+    /* ################################################################## */
+    /**
+     This is set to true, when we want to show the action sheet.
+     */
+    @State private var _showingShareSheet = false
+    
+    /* ################################################################## */
+    /**
+     The currently selected tab.
+     */
+    @Binding var selectedTab: NACC_TabIndexes
+    
+    /* ################################################################## */
+    /**
+     Returns the items to be shared in the share sheet.
+     */
+    private var _myActivityItems: [Any] {
+        guard let image = imageStore.image else { return [] }
+        return [image]
+    }
+
+    /* ################################################################## */
+    /**
+     This returns the entire screen, with the tabs.
+     */
+    var body: some View {
+        TabView(selection: self.$selectedTab) {
+            NACC_KeytagArrayTabView()
+                .tabItem {
+                    Label(NACC_TabIndexes.keytagArray.navigationTitle,
+                          image: NACC_TabIndexes.keytagArray.imageName
+                    )
+                }
+                .tag(NACC_TabIndexes.keytagArray)
+            
+            NACC_KeytagStripTabView()
+                .tabItem {
+                    Label(NACC_TabIndexes.keytagStrip.navigationTitle,
+                          image: NACC_TabIndexes.keytagStrip.imageName
+                    )
+                }
+                .tag(NACC_TabIndexes.keytagStrip)
+            
+            if LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.isOneYearOrMore {
+                NACC_MedallionTabView()
+                    .tabItem {
+                        Label(NACC_TabIndexes.medallionArray.navigationTitle,
+                              image: NACC_TabIndexes.medallionArray.imageName
+                        )
+                    }
+                    .tag(NACC_TabIndexes.medallionArray)
+            }
+        }
+        .navigationTitle("SLUG-RESULTS-TITLE".localizedVariant)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            // The "Action" button
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    self._showingShareSheet = true
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                }
+                .accessibilityHint("SLUG-ACC-ACTION-BUTTON".localizedVariant)
+            }
+        }
+        // If we are shoing the share (activity) sheet, then we set the appropriate state property.
+        .sheet(isPresented: self.$_showingShareSheet) {
+            NACC_ActivityView(activityItems: self._myActivityItems)
+        }
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: - Shared Observable Image Store Class -
+/* ###################################################################################################################################### */
+/**
+ This allows us to store the currently displayed image into a place where it can be shared to the wrapper.
+ */
+fileprivate final class NACC_ResultDisplayImageStore: ObservableObject {
+    /* ################################################################## */
+    /**
+     We have a singleton.
+     */
+    static let shared = NACC_ResultDisplayImageStore()
+    
+    /* ################################################################## */
+    /**
+     That singleton has an optional image.
+     */
+    @Published var image: UIImage?
+}
 
 /* ###################################################################################################################################### */
 // MARK: - Tab Index Enum -
@@ -29,7 +136,7 @@ import RVS_Generic_Swift_Toolbox
 /**
  This provides numerical indexes for each of the image display tabs.
  */
-enum TabIndexes: Int {
+enum NACC_TabIndexes: Int {
     /* ################################################################## */
     /**
      Undefined (no tab selected).
@@ -58,7 +165,7 @@ enum TabIndexes: Int {
 /* ###################################################################################################################################### */
 // MARK: - Extension To Add NavBar Names -
 /* ###################################################################################################################################### */
-extension TabIndexes {
+extension NACC_TabIndexes {
     /* ################################################################## */
     /**
      This returns a string, containing a name to use for the tab.
@@ -94,69 +201,11 @@ extension TabIndexes {
 }
 
 /* ###################################################################################################################################### */
-// MARK: - Result Display View -
-/* ###################################################################################################################################### */
-/**
- The image results View.
- */
-struct NACC_ResultDisplayView: View {
-    /* ################################################################## */
-    /**
-     This will have whatever image is being displayed.
-     */
-    @State private var _displayedImage: UIImage?
-    
-    @State private var _navTitle: String = ""
-
-    /* ################################################################## */
-    /**
-     The currently selected tab.
-     */
-    @Binding var selectedTab: TabIndexes
-    
-    /* ################################################################## */
-    /**
-     This returns the entire screen, with the tabs.
-     */
-    var body: some View {
-        TabView(selection: self.$selectedTab) {
-            NACC_KeytagArrayTabView()
-                .tabItem {
-                    Label(TabIndexes.keytagArray.navigationTitle,
-                          image: TabIndexes.keytagArray.imageName
-                    )
-                }
-                .tag(TabIndexes.keytagArray)
-            
-            NACC_KeytagStripTabView()
-                .tabItem {
-                    Label(TabIndexes.keytagStrip.navigationTitle,
-                          image: TabIndexes.keytagStrip.imageName
-                    )
-                }
-                .tag(TabIndexes.keytagStrip)
-            
-            if LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.isOneYearOrMore {
-                NACC_MedallionTabView()
-                    .tabItem {
-                        Label(TabIndexes.medallionArray.navigationTitle,
-                              image: TabIndexes.medallionArray.imageName
-                        )
-                    }
-                    .tag(TabIndexes.medallionArray)
-            }
-        }
-        .navigationTitle("SLUG-RESULTS-TITLE".localizedVariant)
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-/* ###################################################################################################################################### */
 // MARK: - Common Base Protocol For All Views -
 /* ###################################################################################################################################### */
 /**
  */
-protocol TabViewProtocol {
+fileprivate protocol NACC_TabViewProtocol {
     /* ################################################################## */
     /**
      The name for this TabView
@@ -180,7 +229,7 @@ protocol TabViewProtocol {
  - Waits for it to render into a `UIImage`
  - Shows a spinner until the image is ready
  */
-struct CleantimeRenderedImageView: View {
+fileprivate struct NACC_CleantimeRenderedImageView: View {
     /* ################################################################## */
     /**
      The indenting, on either side of the displayed image.
@@ -197,7 +246,7 @@ struct CleantimeRenderedImageView: View {
     /**
      The image that we will display once rendering is complete.
      */
-    @State private var displayImage: UIImage?
+    @State private var _displayedImage: UIImage?
 
     /* ################################################################## */
     /**
@@ -212,9 +261,9 @@ struct CleantimeRenderedImageView: View {
      This returns the rendered image, in a ScrollView, or presents a ProgressView.
      */
     var body: some View {
-        AppBackground(alignment: nil == self.displayImage ? .center : .top) {
+        AppBackground(alignment: nil == self._displayedImage ? .center : .top) {
             Group {
-                if let image = self.displayImage {
+                if let image = self._displayedImage {
                     GeometryReader { proxy in
                         let availableWidth = proxy.size.width - (Self._sideInsetsInDisplayUnits * 2)
                         let naturalWidth = image.size.width
@@ -253,8 +302,8 @@ struct CleantimeRenderedImageView: View {
             }
         }
         .onAppear {
-            if nil == self.displayImage {
-                self.prepareRenderer()
+            if nil == self._displayedImage {
+                self._prepareRenderer()
             }
         }
     }
@@ -263,14 +312,16 @@ struct CleantimeRenderedImageView: View {
     /**
      Sets up the LGV renderer and hooks the callback into our `displayImage` state.
      */
-    private func prepareRenderer() {
+    private func _prepareRenderer() {
         let calculator = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime
-
         cleantimeView.totalDays = calculator.totalDays
         cleantimeView.totalMonths = calculator.totalMonths
         cleantimeView.renderingCallback = { inImage in
             guard let image = inImage else { return }
-            DispatchQueue.main.async { self.displayImage = image }
+            DispatchQueue.main.async {
+                self._displayedImage = image
+                NACC_ResultDisplayImageStore.shared.image = image
+            }
         }
 
         cleantimeView.layoutSubviews()
@@ -283,7 +334,7 @@ struct CleantimeRenderedImageView: View {
 /**
  Displays a horizontally-oriented array of earned keytags
  */
-struct NACC_KeytagArrayTabView: View, TabViewProtocol {
+fileprivate struct NACC_KeytagArrayTabView: View, NACC_TabViewProtocol {
     /* ################################################################## */
     /**
      The tab name.
@@ -301,7 +352,7 @@ struct NACC_KeytagArrayTabView: View, TabViewProtocol {
      Returns the image in a scroller, or a progress view, if still rendering.
      */
     var body: some View {
-        CleantimeRenderedImageView {
+        NACC_CleantimeRenderedImageView {
             let view = LGV_UIMultipleCleantimeKeytagImageView()
             view.keytagsAreAVerticalStrip = false
             return view
@@ -315,7 +366,7 @@ struct NACC_KeytagArrayTabView: View, TabViewProtocol {
 /**
  Displays a vertically-oriented strip of earned keytags
  */
-struct NACC_KeytagStripTabView: View, TabViewProtocol {
+fileprivate struct NACC_KeytagStripTabView: View, NACC_TabViewProtocol {
     /* ################################################################## */
     /**
      The tab name.
@@ -333,7 +384,7 @@ struct NACC_KeytagStripTabView: View, TabViewProtocol {
      Returns the image in a scroller, or a progress view, if still rendering.
      */
     var body: some View {
-        CleantimeRenderedImageView {
+        NACC_CleantimeRenderedImageView {
             let view = LGV_UIMultipleCleantimeKeytagImageView()
             view.keytagsAreAVerticalStrip = true
             return view
@@ -347,7 +398,7 @@ struct NACC_KeytagStripTabView: View, TabViewProtocol {
 /**
  Displays a horizontally-oriented array of earned medallions
  */
-struct NACC_MedallionTabView: View, TabViewProtocol {
+fileprivate struct NACC_MedallionTabView: View, NACC_TabViewProtocol {
     /* ################################################################## */
     /**
      The tab name.
@@ -365,8 +416,6 @@ struct NACC_MedallionTabView: View, TabViewProtocol {
      Returns the image in a scroller, or a progress view, if still rendering.
      */
     var body: some View {
-        CleantimeRenderedImageView {
-            LGV_UICleantimeMultipleMedallionsImageView()
-        }
+        NACC_CleantimeRenderedImageView { LGV_UICleantimeMultipleMedallionsImageView() }
     }
 }

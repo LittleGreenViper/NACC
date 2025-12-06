@@ -26,12 +26,32 @@ import EventKit
 import EventKitUI
 
 /* ###################################################################################################################################### */
+// MARK: - View Extension for the Date Picker -
+/* ###################################################################################################################################### */
+fileprivate extension View {
+    /* ################################################################## */
+    /**
+     Called to create our custom picker.
+     - parameter inIsPresented: True, if we are presenting the date picker sheet/popover
+     - parameter inSelectedDate: The date being show/changed
+     - returns: The custom date picker view
+     */
+    func _adaptivePickerPresentation(isPresented inIsPresented: Binding<Bool>, selectedDate inSelectedDate: Binding<Date>) -> some View {
+        // This modifies the view to contain our special DatePicker, selected for the platform.
+        self.modifier(NACC_AdaptivePickerPresentation(isPresented: inIsPresented,
+                                                 selectedDate: inSelectedDate
+                                                )
+        )
+    }
+}
+
+/* ###################################################################################################################################### */
 // MARK: - Activity (Share) View -
 /* ###################################################################################################################################### */
 /**
  Simple wrapper around UIActivityViewController so we can use it from SwiftUI.
  */
-struct ActivityView: UIViewControllerRepresentable {
+struct NACC_ActivityView: UIViewControllerRepresentable {
     /* ############################################################## */
     /**
      The activity items that we're giving to the controller.
@@ -71,7 +91,7 @@ struct ActivityView: UIViewControllerRepresentable {
  
  This is how the Event editor is implemented.
  */
-struct EventEditView: UIViewControllerRepresentable {
+struct NACC_EventEditView: UIViewControllerRepresentable {
     /* ################################################################################################################################## */
     // MARK: This simply controls display of the event add sheet.
     /* ################################################################################################################################## */
@@ -84,14 +104,14 @@ struct EventEditView: UIViewControllerRepresentable {
         /**
          The View that contains this wrapper.
          */
-        let parent: EventEditView
+        let parent: NACC_EventEditView
 
         /* ############################################################## */
         /**
          Default initializer. The parent is passed in.
          - parameter inParent: The parent (container) View.
          */
-        init(_ inParent: EventEditView) {
+        init(_ inParent: NACC_EventEditView) {
             self.parent = inParent
         }
 
@@ -197,7 +217,7 @@ struct EventEditView: UIViewControllerRepresentable {
  
  If the user has changed the date since invoking the screen, a "Reset" button also appears, allowing the user to discard any changes.
  */
-struct PickerPopoverContent: View {
+struct NACC_PickerPopoverContent: View {
     /* ################################################################## */
     /**
      This is how much padding is given the top title (on iPhone).
@@ -338,7 +358,7 @@ struct PickerPopoverContent: View {
 /**
  This ViewModifier will present a body containing our special DatePicker.
  */
-struct AdaptivePickerPresentation: ViewModifier {
+struct NACC_AdaptivePickerPresentation: ViewModifier {
     /* ################################################################## */
     /**
      This is used to determine whether or not to present the iPhone sheet as "half-height," or "full-height."
@@ -381,13 +401,13 @@ struct AdaptivePickerPresentation: ViewModifier {
                     // iPad: Use a popover
                     content
                         .popover(isPresented: $isPresented) {
-                            PickerPopoverContent(selectedDate: $selectedDate, isInPopover: true)
+                            NACC_PickerPopoverContent(selectedDate: $selectedDate, isInPopover: true)
                         }
                 } else {
                     // iPhone: Use a “half-height” sheet with detents
                     content
                         .sheet(isPresented: $isPresented) {
-                            PickerPopoverContent(selectedDate: $selectedDate)
+                            NACC_PickerPopoverContent(selectedDate: $selectedDate)
                                 .presentationDetents(self._screenDetents)
                                 .presentationDragIndicator(.visible)
                         }
@@ -400,26 +420,6 @@ struct AdaptivePickerPresentation: ViewModifier {
                     }
             #endif
         }
-    }
-}
-
-/* ###################################################################################################################################### */
-// MARK: - View Extension for the Date Picker -
-/* ###################################################################################################################################### */
-extension View {
-    /* ################################################################## */
-    /**
-     Called to create our custom picker.
-     - parameter inIsPresented: True, if we are presenting the date picker sheet/popover
-     - parameter inSelectedDate: The date being show/changed
-     - returns: The custom date picker view
-     */
-    func adaptivePickerPresentation(isPresented inIsPresented: Binding<Bool>, selectedDate inSelectedDate: Binding<Date>) -> some View {
-        // This modifies the view to contain our special DatePicker, selected for the platform.
-        self.modifier(AdaptivePickerPresentation(isPresented: inIsPresented,
-                                                 selectedDate: inSelectedDate
-                                                )
-        )
     }
 }
 
@@ -520,7 +520,7 @@ struct NACC_MainContentView: View {
     /**
      When non-nil, we present the calendar event editor for this event.
      */
-    @State private var _eventToEdit: EventEditView.EditableEvent?
+    @State private var _eventToEdit: NACC_EventEditView.EditableEvent?
 
     /* ################################################################## */
     /**
@@ -543,7 +543,7 @@ struct NACC_MainContentView: View {
     /* ################################################################## */
     /**
      */
-    @Binding var selectedTab: TabIndexes
+    @Binding var selectedTab: NACC_TabIndexes
     
     /* ################################################################## */
     /**
@@ -645,7 +645,7 @@ struct NACC_MainContentView: View {
             }
 
             DispatchQueue.main.async {
-                self._eventToEdit = EventEditView.EditableEvent(eventStore: eventStore,
+                self._eventToEdit = NACC_EventEditView.EditableEvent(eventStore: eventStore,
                                                                 event: event
                 )
             }
@@ -750,7 +750,7 @@ struct NACC_MainContentView: View {
                         .onTapGesture {
                             self._showingPicker = true
                         }
-                        .adaptivePickerPresentation(isPresented: $_showingPicker,
+                        ._adaptivePickerPresentation(isPresented: $_showingPicker,
                                                     selectedDate: $selectedDate
                         )
                         .accessibilityAddTraits(.isButton)
@@ -816,7 +816,7 @@ struct NACC_MainContentView: View {
             }
             // This presents a modal sheet, with an event add screen. We always use a sheet, because the process is quite modal.
             .sheet(item: self.$_eventToEdit) { inEditableEvent in
-                EventEditView(
+                NACC_EventEditView(
                     eventStore: inEditableEvent.eventStore,
                     event: inEditableEvent.event
                 ) { _ in
@@ -838,6 +838,27 @@ struct NACC_MainContentView: View {
             }
             .navigationDestination(isPresented: self.$showResult) { NACC_ResultDisplayView(selectedTab: self.$selectedTab) }
             .navigationDestination(isPresented: self.$_showInfo) { NACC_InfoDisplayView() }
+        }
+        // When the action button is hit, we ask the user if they want to share, or print.
+        .confirmationDialog("SLUG-ACTIONS-TITLE".localizedVariant,
+                            isPresented: self.$_showingActions,
+                            titleVisibility: .visible) {
+            // Share…
+            Button("SLUG-ACTIONS-SHARE".localizedVariant) { self._showingShareSheet = true }
+
+            // Print… (only if we can actually print something)
+            Button("SLUG-ACTIONS-PRINT".localizedVariant) {
+                // You said you'll have a Print Renderer; plug it in here.
+                if let renderer = self._makePrintRenderer() {
+                    self._print(using: renderer)
+                }
+            }
+
+            Button("SLUG-CANCEL".localizedVariant, role: .cancel) { }
+        }
+        // If we are shoing the share (activity) sheet, then we set the appropriate state property.
+        .sheet(isPresented: self.$_showingShareSheet) {
+            NACC_ActivityView(activityItems: self._activityItems)
         }
         .onAppear {
             self._watchDelegateObject = self._watchDelegateObject ?? NACCWatchAppContentViewWatchDelegate(updateHandler: self.updateApplicationContext)
@@ -865,27 +886,6 @@ struct NACC_MainContentView: View {
                 return
             }
             self._displayedImage = generatedImage
-        }
-        // When the action button is hit, we ask the user if they want to share, or print.
-        .confirmationDialog("SLUG-ACTIONS-TITLE".localizedVariant,
-                            isPresented: self.$_showingActions,
-                            titleVisibility: .visible) {
-            // Share…
-            Button("SLUG-ACTIONS-SHARE".localizedVariant) { self._showingShareSheet = true }
-
-            // Print… (only if we can actually print something)
-            Button("SLUG-ACTIONS-PRINT".localizedVariant) {
-                // You said you'll have a Print Renderer; plug it in here.
-                if let renderer = self._makePrintRenderer() {
-                    self._print(using: renderer)
-                }
-            }
-
-            Button("SLUG-CANCEL".localizedVariant, role: .cancel) { }
-        }
-        // If we are shoing the share (activity) sheet, then we set the appropriate state property.
-        .sheet(isPresented: self.$_showingShareSheet) {
-            ActivityView(activityItems: self._activityItems)
         }
     }
     
