@@ -21,9 +21,9 @@ Copyright 2020-2025, Little Green Viper Software Development LLC
 "SLUG-COPYRIGHT"                            =   "©2012-2025, Little Green Viper Software Development LLC";
 
 // MARK: VERSIONS
-"SLUG-VERSION-LGVCLEANTIME"                 =   "LGV_Cleantime: 1.4.5";
-"SLUG-VERSION-UICLEANTIME"                  =   "LGV_UICleantime: 2.5.0";
-"SLUG-VERSION-OBSERVER"                     =   "RVS_GeneralObserver 1.1.3";
-"SLUG-VERSION-GST"                          =   "RVS_Generic_Swift_Toolbox: 1.16.1";
-"SLUG-VERSION-PP"                           =   "RVS_Persistent_Prefs: 1.5.0";
-"SLUG-VERSION-UKT"                          =   "RVS_UIKit_Toolbox: 1.7.1";
+"SLUG-VERSION-LGVCLEANTIME"                 =   "https://github.com/LittleGreenViper/LGV_Cleantime";
+"SLUG-VERSION-UICLEANTIME"                  =   "https://github.com/LittleGreenViper/LGV_UICleantime";
+"SLUG-VERSION-OBSERVER"                     =   "https://github.com/RiftValleySoftware/RVS_GeneralObserver";
+"SLUG-VERSION-GST"                          =   "https://github.com/RiftValleySoftware/RVS_Generic_Swift_Toolbox";
+"SLUG-VERSION-PP"                           =   "https://github.com/RiftValleySoftware/RVS_PersistentPrefs";
+"SLUG-VERSION-UKT"                          =   "https://github.com/RiftValleySoftware/RVS_UIKit_Toolbox";

@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D4A0C14F2ED78C3800F77D56"
-               BuildableName = "SwiftUI App Target.app"
-               BlueprintName = "SwiftUI App Target"
+               BuildableName = "Main App Target.app"
+               BlueprintName = "Main App Target"
                ReferencedContainer = "container:NACC.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D4A0C14F2ED78C3800F77D56"
-            BuildableName = "SwiftUI App Target.app"
-            BlueprintName = "SwiftUI App Target"
+            BuildableName = "Main App Target.app"
+            BlueprintName = "Main App Target"
             ReferencedContainer = "container:NACC.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D4A0C14F2ED78C3800F77D56"
-            BuildableName = "SwiftUI App Target.app"
-            BlueprintName = "SwiftUI App Target"
+            BuildableName = "Main App Target.app"
+            BlueprintName = "Main App Target"
             ReferencedContainer = "container:NACC.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

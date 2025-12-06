@@ -14,45 +14,29 @@
 		D40F87D42EDA4A8400E4B09B /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D40F87D32EDA4A8400E4B09B /* LGV_UICleantime */; };
 		D40F87D62EDA4A8400E4B09B /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D40F87D52EDA4A8400E4B09B /* RVS_Generic_Swift_Toolbox */; };
 		D40F87D72EDA4AF100E4B09B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
-		D412D8E22D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D412D8E12D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift */; };
 		D412D8E32D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D412D8E12D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift */; };
-		D41361C027F8D80B00DA1AD4 /* NACCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */; };
-		D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42314F527FE150E00C5E5FC /* NACCTabBarController.swift */; };
-		D43730122D497E9C00592680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D43730112D497E9C00592680 /* Assets.xcassets */; };
 		D43BAAA72ED8E73E00B58900 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */; };
-		D43C66D42694AC20007D5883 /* NACCAppSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */; };
 		D43EF21F2EE3046D00709D39 /* NACCPagePrintRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */; };
 		D43EF2212EE3059700709D39 /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D43EF2202EE3059700709D39 /* RVS_UIKit_Toolbox */; };
 		D44690402D61358C0079B36A /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D446903F2D61358C0079B36A /* RVS_UIKit_Toolbox */; };
 		D44690442D6135E50079B36A /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D44690432D6135E50079B36A /* RVS_UIKit_Toolbox */; };
 		D44690462D6135EF0079B36A /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D44690452D6135EF0079B36A /* RVS_UIKit_Toolbox */; };
-		D45240E12D620C34000BD663 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D45240E02D620C34000BD663 /* LGV_Cleantime */; };
 		D45240E32D620C3E000BD663 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D45240E22D620C3E000BD663 /* LGV_Cleantime */; };
 		D45240E52D620C4B000BD663 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D45240E42D620C4B000BD663 /* LGV_Cleantime */; };
 		D45240E92D620C5A000BD663 /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D45240E82D620C5A000BD663 /* LGV_Cleantime */; };
-		D45A93C42D4C4DEB008B2528 /* Watch Target.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D45A93B72D4C4DEA008B2528 /* Watch Target.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D45A93CE2D4C5405008B2528 /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D462E4BC2D5D08C0001E2C0F /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D462E4BB2D5D08C0001E2C0F /* RVS_Persistent_Prefs */; };
 		D462E4C02D5D09FF001E2C0F /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D462E4BF2D5D09FF001E2C0F /* RVS_Persistent_Prefs */; };
 		D462E4C22D5D0AB7001E2C0F /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D462E4C32D5D0B17001E2C0F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
-		D474789F28073D5400212919 /* NACCPagePrintRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */; };
-		D477647A2D3FFA2400DB748E /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D47764792D3FFA2400DB748E /* RVS_Persistent_Prefs */; };
 		D48285732EDE47A100721EA0 /* Watch Target.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D45A93B72D4C4DEA008B2528 /* Watch Target.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D48285792EDE4A5900721EA0 /* Widget Target.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4A420B02D4D5C7900E4AC1E /* Widget Target.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D485259627FDBD2E002EE3E3 /* NACCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */; };
 		D489D35D2EDC8EC900A86A6B /* NACC_ResultDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D489D35C2EDC8EC900A86A6B /* NACC_ResultDisplayView.swift */; };
 		D489D35F2EDC91F600A86A6B /* NACC_InfoDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D489D35E2EDC91F600A86A6B /* NACC_InfoDisplayView.swift */; };
-		D48C496B2C9372AA007E87C3 /* NACCGetCleantimeSummaryAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48C496A2C9372AA007E87C3 /* NACCGetCleantimeSummaryAppIntent.swift */; };
-		D48C496E2C9372C5007E87C3 /* AppShortcuts.strings in Resources */ = {isa = PBXBuildFile; fileRef = D48C496C2C9372C5007E87C3 /* AppShortcuts.strings */; };
-		D48F812B27FCD36D001A0B87 /* NACCInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F812A27FCD36D001A0B87 /* NACCInitialViewController.swift */; };
-		D48F812D27FCD3FA001A0B87 /* NACCTabBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48F812C27FCD3FA001A0B87 /* NACCTabBaseViewController.swift */; };
-		D49C9A7C280783C6008E9917 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D49C9A7A280783C6008E9917 /* InfoPlist.strings */; };
 		D4A0C15F2ED78C6700F77D56 /* NACC_MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A0C15C2ED78C6700F77D56 /* NACC_MainContentView.swift */; };
 		D4A0C1602ED78C6700F77D56 /* NACC_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A0C15D2ED78C6700F77D56 /* NACC_App.swift */; };
 		D4A0C1612ED78C6700F77D56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A0C15B2ED78C6700F77D56 /* Assets.xcassets */; };
 		D4A3F7C52EE22425004992A8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D49C9A7A280783C6008E9917 /* InfoPlist.strings */; };
-		D4A420BE2D4D5C7A00E4AC1E /* Widget Target.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4A420B02D4D5C7900E4AC1E /* Widget Target.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D4A420D22D4D5DFE00E4AC1E /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D4A420D52D4D5E7900E4AC1E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 		D4A420D62D4D5E9B00E4AC1E /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */; };
@@ -71,24 +55,15 @@
 		D4B2C2782E8FFE62009DD45D /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2772E8FFE62009DD45D /* LGV_Cleantime */; };
 		D4B2C27B2E8FFEBB009DD45D /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C27A2E8FFEBB009DD45D /* LGV_UICleantime */; };
 		D4B2C27E2E8FFEE9009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C27D2E8FFEE9009DD45D /* RVS_Generic_Swift_Toolbox */; };
-		D4B2C2802E8FFEFC009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C27F2E8FFEFC009DD45D /* RVS_Generic_Swift_Toolbox */; };
 		D4B2C2822E8FFF0F009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2812E8FFF0F009DD45D /* RVS_Generic_Swift_Toolbox */; };
 		D4B2C2842E8FFF17009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2832E8FFF17009DD45D /* RVS_Generic_Swift_Toolbox */; };
 		D4B2C2862E8FFF1F009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2852E8FFF1F009DD45D /* RVS_Generic_Swift_Toolbox */; };
 		D4B2C2882E8FFF38009DD45D /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2872E8FFF38009DD45D /* RVS_UIKit_Toolbox */; };
-		D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
-		D4BD88F1269E2FAA009015D1 /* NACCAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */; };
-		D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */; };
-		D4C79A2127F9189800FBB7D3 /* NACC_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */; };
-		D4E2F96927FCCA3200457AD4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
-		D4E2F96B27FCCD3400457AD4 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */; };
-		D4E9103C2D497FAD0036F641 /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */; };
+		D4B63FF82EE48E8400E81EF7 /* NACC_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */; };
 		D4EB29AB2D5D47EF00D40106 /* WatchStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */; };
 		D4EB29AC2D5D47EF00D40106 /* WatchStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */; };
-		D4EB29AD2D5D484400D40106 /* WatchStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */; };
 		D4F46FDC2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F46FDB2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift */; };
 		D4F46FE12C94669E0071D359 /* NACCIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D4F46FE02C94669E0071D359 /* NACCIntents.intentdefinition */; };
-		D4F58DF42D5FE4C00087C387 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4F58DF32D5FE4C00087C387 /* LGV_UICleantime */; };
 		D4F58DF62D5FE4C90087C387 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4F58DF52D5FE4C90087C387 /* LGV_UICleantime */; };
 		D4F58DFA2D5FE4D90087C387 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4F58DF92D5FE4D90087C387 /* LGV_UICleantime */; };
 		D4F58E002D5FE5400087C387 /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4F58DFF2D5FE5400087C387 /* LGV_UICleantime */; };
@@ -99,13 +74,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D45BE02D2D56B8ED003F4CB0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D45A93B62D4C4DEA008B2528;
-			remoteInfo = NACCWatch;
-		};
 		D48285742EDE47A100721EA0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
@@ -127,20 +95,6 @@
 			remoteGlobalIDString = D4A420AF2D4D5C7900E4AC1E;
 			remoteInfo = NACCWidget;
 		};
-		D4A420BC2D4D5C7A00E4AC1E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D4A420AF2D4D5C7900E4AC1E;
-			remoteInfo = NACCWidgetExtension;
-		};
-		D4E43A662C937FDF00535CDD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D4E43A4C2C937FDF00535CDD;
-			remoteInfo = NACCIntents;
-		};
 		D4F9DA9E2D5BA6A300FFC2DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
@@ -151,17 +105,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D45A93C82D4C4DEB008B2528 /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
-				D45A93C42D4C4DEB008B2528 /* Watch Target.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D48285762EDE47A100721EA0 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -195,29 +138,13 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D4A420C42D4D5C7A00E4AC1E /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				D4A420BE2D4D5C7A00E4AC1E /* Widget Target.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D412D8E12D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWatchAppContentViewWatchDelegate.swift; sourceTree = "<group>"; };
-		D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCBaseViewController.swift; sourceTree = "<group>"; };
 		D41657122C4846990015DDFD /* NACC.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NACC.docc; sourceTree = "<group>"; };
 		D41AC87D2C49813200C79B8C /* index.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
 		D41AC87E2C4981B500C79B8C /* apple-app-site-association */ = {isa = PBXFileReference; lastKnownFileType = text; path = "apple-app-site-association"; sourceTree = "<group>"; };
-		D42314F527FE150E00C5E5FC /* NACCTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCTabBarController.swift; sourceTree = "<group>"; };
-		D43730112D497E9C00592680 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAppSceneDelegate.swift; sourceTree = "<group>"; };
-		D43C66CE2694AC20007D5883 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D43C66D82694AC33007D5883 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		D456591C2EDCCB130010C38A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D45A93B72D4C4DEA008B2528 /* Watch Target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Watch Target.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,16 +152,11 @@
 		D45F07442D429ABC00D6939A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D462E4C12D5D0A27001E2C0F /* NACCWatchComplicationExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCWatchComplicationExtension.entitlements; sourceTree = "<group>"; };
 		D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPagePrintRenderer.swift; sourceTree = "<group>"; };
-		D477647F2D40026E00DB748E /* NACC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
-		D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCExtensions.swift; sourceTree = "<group>"; };
 		D489D35C2EDC8EC900A86A6B /* NACC_ResultDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACC_ResultDisplayView.swift; sourceTree = "<group>"; };
 		D489D35E2EDC91F600A86A6B /* NACC_InfoDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACC_InfoDisplayView.swift; sourceTree = "<group>"; };
-		D48C496A2C9372AA007E87C3 /* NACCGetCleantimeSummaryAppIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCGetCleantimeSummaryAppIntent.swift; sourceTree = "<group>"; };
 		D48C496D2C9372C5007E87C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
-		D48F812A27FCD36D001A0B87 /* NACCInitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCInitialViewController.swift; sourceTree = "<group>"; };
-		D48F812C27FCD3FA001A0B87 /* NACCTabBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCTabBaseViewController.swift; sourceTree = "<group>"; };
 		D49C9A7B280783C6008E9917 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D4A0C1502ED78C3800F77D56 /* SwiftUI App Target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI App Target.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4A0C1502ED78C3800F77D56 /* Main App Target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Main App Target.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A0C15B2ED78C6700F77D56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4A0C15C2ED78C6700F77D56 /* NACC_MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACC_MainContentView.swift; sourceTree = "<group>"; };
 		D4A0C15D2ED78C6700F77D56 /* NACC_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACC_App.swift; sourceTree = "<group>"; };
@@ -255,8 +177,6 @@
 		D4A8AD032EE32EF700979987 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = WatchStrings.xcstrings; sourceTree = "<group>"; };
 		D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCPersistentPrefs.swift; sourceTree = "<group>"; };
-		D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCAboutViewController.swift; sourceTree = "<group>"; };
-		D4C080612D4957B200299FBC /* UIKit App Target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIKit App Target.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4C080642D4957B200299FBC /* Intents Target.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Intents Target.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4C1579B2C4926FC00D82CBA /* bodyBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bodyBlack.png; sourceTree = "<group>"; };
 		D4C1579C2C4926FC00D82CBA /* bodyBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bodyBlue.png; sourceTree = "<group>"; };
@@ -296,7 +216,6 @@
 		D4C157BE2C4926FC00D82CBA /* textTwentyYears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textTwentyYears.png; sourceTree = "<group>"; };
 		D4C157BF2C4926FC00D82CBA /* textWelcomeBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textWelcomeBack.png; sourceTree = "<group>"; };
 		D4C79A1A27F9189800FBB7D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NACC_LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D4C79A1C27F9189800FBB7D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NACC_Main.storyboard; sourceTree = "<group>"; };
 		D4E2F96827FCCA3200457AD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Theme.xcassets; sourceTree = "<group>"; };
 		D4E43A532C937FDF00535CDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -312,17 +231,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D42491CA2695F44C0094C15F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D45240E12D620C34000BD663 /* LGV_Cleantime in Frameworks */,
-				D477647A2D3FFA2400DB748E /* RVS_Persistent_Prefs in Frameworks */,
-				D4B2C2802E8FFEFC009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */,
-				D4F58DF42D5FE4C00087C387 /* LGV_UICleantime in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D45A93B42D4C4DEA008B2528 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -390,40 +298,27 @@
 			children = (
 				D43C66C52694AC20007D5883 /* Sources */,
 				D43C66D72694AC33007D5883 /* Project-Meta */,
-				D4C080612D4957B200299FBC /* UIKit App Target.app */,
 				D4C080642D4957B200299FBC /* Intents Target.appex */,
 				D45A93B72D4C4DEA008B2528 /* Watch Target.app */,
 				D4A420B02D4D5C7900E4AC1E /* Widget Target.appex */,
 				D4F9DA952D5BA6A300FFC2DC /* Complications Target.appex */,
 				D45315ED2E8FF6410019485D /* Frameworks */,
-				D4A0C1502ED78C3800F77D56 /* SwiftUI App Target.app */,
+				D4A0C1502ED78C3800F77D56 /* Main App Target.app */,
 			);
 			sourceTree = "<group>";
 		};
 		D43C66C52694AC20007D5883 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D41657122C4846990015DDFD /* NACC.docc */,
 				D4B396112D49156100CB5501 /* Shared */,
 				D4A0C15E2ED78C6700F77D56 /* SwiftUI */,
-				D43C66C62694AC20007D5883 /* UIKit */,
 				D4A420EC2D4D607C00E4AC1E /* NACCWidget */,
 				D4A420DF2D4D607800E4AC1E /* NACCWatch */,
 				D4F9DAA82D5BA6DE00FFC2DC /* NACCWatchComplication */,
 				D4E43A502C937FDF00535CDD /* NACCIntents */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		D43C66C62694AC20007D5883 /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				D4B247C3269F0C83004D8D1E /* Main App */,
-				D4B247C2269F0C76004D8D1E /* View Controllers */,
-				D4F54A192809B27200F175C4 /* Utility */,
-				D4B247C0269F0C52004D8D1E /* Resources */,
-				D41657122C4846990015DDFD /* NACC.docc */,
-			);
-			path = UIKit;
 			sourceTree = "<group>";
 		};
 		D43C66D72694AC33007D5883 /* Project-Meta */ = {
@@ -444,20 +339,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D49F5F1F2C9075D20039A098 /* Intents */ = {
-			isa = PBXGroup;
-			children = (
-				D48C496A2C9372AA007E87C3 /* NACCGetCleantimeSummaryAppIntent.swift */,
-			);
-			path = Intents;
-			sourceTree = "<group>";
-		};
 		D4A0C15E2ED78C6700F77D56 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
 				D4A0C15B2ED78C6700F77D56 /* Assets.xcassets */,
-				D4A8AD032EE32EF700979987 /* Settings.bundle */,
 				D456591C2EDCCB130010C38A /* Info.plist */,
+				D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */,
 				D4A0C15D2ED78C6700F77D56 /* NACC_App.swift */,
 				D4A0C15C2ED78C6700F77D56 /* NACC_MainContentView.swift */,
 				D489D35E2EDC91F600A86A6B /* NACC_InfoDisplayView.swift */,
@@ -489,49 +376,6 @@
 				D4A420EA2D4D607C00E4AC1E /* README.md */,
 			);
 			path = NACCWidget;
-			sourceTree = "<group>";
-		};
-		D4B247C0269F0C52004D8D1E /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */,
-				D49C9A7A280783C6008E9917 /* InfoPlist.strings */,
-				D48C496C2C9372C5007E87C3 /* AppShortcuts.strings */,
-				D4B247C1269F0C65004D8D1E /* Meta */,
-				D43730112D497E9C00592680 /* Assets.xcassets */,
-				D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		D4B247C1269F0C65004D8D1E /* Meta */ = {
-			isa = PBXGroup;
-			children = (
-				D43C66CE2694AC20007D5883 /* Info.plist */,
-				D477647F2D40026E00DB748E /* NACC.entitlements */,
-			);
-			name = Meta;
-			sourceTree = "<group>";
-		};
-		D4B247C2269F0C76004D8D1E /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				D41361BF27F8D80B00DA1AD4 /* NACCBaseViewController.swift */,
-				D48F812A27FCD36D001A0B87 /* NACCInitialViewController.swift */,
-				D4BD88F0269E2FAA009015D1 /* NACCAboutViewController.swift */,
-				D42314F527FE150E00C5E5FC /* NACCTabBarController.swift */,
-				D48F812C27FCD3FA001A0B87 /* NACCTabBaseViewController.swift */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		D4B247C3269F0C83004D8D1E /* Main App */ = {
-			isa = PBXGroup;
-			children = (
-				D43C66CD2694AC20007D5883 /* NACCAppSceneDelegate.swift */,
-				D49F5F1F2C9075D20039A098 /* Intents */,
-			);
-			path = "Main App";
 			sourceTree = "<group>";
 		};
 		D4B396112D49156100CB5501 /* Shared */ = {
@@ -612,11 +456,14 @@
 		D4E9103F2D497FEE0036F641 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D4A8AD032EE32EF700979987 /* Settings.bundle */,
 				D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */,
 				D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */,
 				D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */,
 				D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */,
 				D4E2F96727FCCA3200457AD4 /* Localizable.strings */,
+				D49C9A7A280783C6008E9917 /* InfoPlist.strings */,
+				D48C496C2C9372C5007E87C3 /* AppShortcuts.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -629,14 +476,6 @@
 				D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		D4F54A192809B27200F175C4 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				D485259527FDBD2E002EE3E3 /* NACCExtensions.swift */,
-			);
-			path = Utility;
 			sourceTree = "<group>";
 		};
 		D4F9DAA82D5BA6DE00FFC2DC /* NACCWatchComplication */ = {
@@ -654,35 +493,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D43C66B02694ABFF007D5883 /* UIKit App Target */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D43C66C22694AC00007D5883 /* Build configuration list for PBXNativeTarget "UIKit App Target" */;
-			buildPhases = (
-				D4C5413C2D43BFC200F62EBF /* SwiftLint */,
-				D43C66AD2694ABFF007D5883 /* Sources */,
-				D43C66AF2694ABFF007D5883 /* Resources */,
-				D42491CA2695F44C0094C15F /* Frameworks */,
-				D45A93C82D4C4DEB008B2528 /* Embed Watch Content */,
-				D4A420C42D4D5C7A00E4AC1E /* Embed Foundation Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D4E43A672C937FDF00535CDD /* PBXTargetDependency */,
-				D4A420BD2D4D5C7A00E4AC1E /* PBXTargetDependency */,
-				D45BE02E2D56B8ED003F4CB0 /* PBXTargetDependency */,
-			);
-			name = "UIKit App Target";
-			packageProductDependencies = (
-				D47764792D3FFA2400DB748E /* RVS_Persistent_Prefs */,
-				D4F58DF32D5FE4C00087C387 /* LGV_UICleantime */,
-				D45240E02D620C34000BD663 /* LGV_Cleantime */,
-				D4B2C27F2E8FFEFC009DD45D /* RVS_Generic_Swift_Toolbox */,
-			);
-			productName = UICleantimeTestHarness;
-			productReference = D4C080612D4957B200299FBC /* UIKit App Target.app */;
-			productType = "com.apple.product-type.application";
-		};
 		D45A93B62D4C4DEA008B2528 /* Watch Target */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D45A93C52D4C4DEB008B2528 /* Build configuration list for PBXNativeTarget "Watch Target" */;
@@ -710,9 +520,9 @@
 			productReference = D45A93B72D4C4DEA008B2528 /* Watch Target.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D4A0C14F2ED78C3800F77D56 /* SwiftUI App Target */ = {
+		D4A0C14F2ED78C3800F77D56 /* Main App Target */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D4A0C15A2ED78C3900F77D56 /* Build configuration list for PBXNativeTarget "SwiftUI App Target" */;
+			buildConfigurationList = D4A0C15A2ED78C3900F77D56 /* Build configuration list for PBXNativeTarget "Main App Target" */;
 			buildPhases = (
 				D482857D2EDE4D6E00721EA0 /* SwiftLint */,
 				D4A0C14C2ED78C3800F77D56 /* Sources */,
@@ -728,7 +538,7 @@
 				D48285782EDE47B800721EA0 /* PBXTargetDependency */,
 				D482857B2EDE4A5900721EA0 /* PBXTargetDependency */,
 			);
-			name = "SwiftUI App Target";
+			name = "Main App Target";
 			packageProductDependencies = (
 				D40F87CF2EDA4A8400E4B09B /* RVS_Persistent_Prefs */,
 				D40F87D12EDA4A8400E4B09B /* LGV_Cleantime */,
@@ -737,7 +547,7 @@
 				D43EF2202EE3059700709D39 /* RVS_UIKit_Toolbox */,
 			);
 			productName = NACC_App;
-			productReference = D4A0C1502ED78C3800F77D56 /* SwiftUI App Target.app */;
+			productReference = D4A0C1502ED78C3800F77D56 /* Main App Target.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D4A420AF2D4D5C7900E4AC1E /* Widget Target */ = {
@@ -823,9 +633,6 @@
 				LastSwiftUpdateCheck = 2610;
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
-					D43C66B02694ABFF007D5883 = {
-						CreatedOnToolsVersion = 12.5.1;
-					};
 					D45A93B62D4C4DEA008B2528 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -865,33 +672,16 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D4A0C14F2ED78C3800F77D56 /* SwiftUI App Target */,
+				D4A0C14F2ED78C3800F77D56 /* Main App Target */,
 				D45A93B62D4C4DEA008B2528 /* Watch Target */,
 				D4A420AF2D4D5C7900E4AC1E /* Widget Target */,
 				D4E43A4C2C937FDF00535CDD /* Intents Target */,
 				D4F9DA942D5BA6A300FFC2DC /* Complications Target */,
-				D43C66B02694ABFF007D5883 /* UIKit App Target */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D43C66AF2694ABFF007D5883 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D4E2F96927FCCA3200457AD4 /* Localizable.strings in Resources */,
-				D49C9A7C280783C6008E9917 /* InfoPlist.strings in Resources */,
-				D4E9103C2D497FAD0036F641 /* LGV_UICleantime.xcassets in Resources */,
-				D48C496E2C9372C5007E87C3 /* AppShortcuts.strings in Resources */,
-				D4E2F96B27FCCD3400457AD4 /* Theme.xcassets in Resources */,
-				D4C79A2127F9189800FBB7D3 /* NACC_Main.storyboard in Resources */,
-				D4EB29AD2D5D484400D40106 /* WatchStrings.xcstrings in Resources */,
-				D43730122D497E9C00592680 /* Assets.xcassets in Resources */,
-				D4C79A2027F9189800FBB7D3 /* NACC_LaunchScreen.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D45A93B52D4C4DEA008B2528 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -913,6 +703,7 @@
 				D43BAAA72ED8E73E00B58900 /* Theme.xcassets in Resources */,
 				D4A8AD042EE32EF700979987 /* Settings.bundle in Resources */,
 				D4A3F7C52EE22425004992A8 /* InfoPlist.strings in Resources */,
+				D4B63FF82EE48E8400E81EF7 /* NACC_LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -943,25 +734,6 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 		D482857D2EDE4D6E00721EA0 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if command -v swiftlint 2>&1 >/dev/null\nthen\n    cd ${PROJECT_DIR}\n    swiftlint\nfi\n";
-		};
-		D4C5413C2D43BFC200F62EBF /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -1059,24 +831,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D43C66AD2694ABFF007D5883 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D412D8E22D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift in Sources */,
-				D43C66D42694AC20007D5883 /* NACCAppSceneDelegate.swift in Sources */,
-				D48F812D27FCD3FA001A0B87 /* NACCTabBaseViewController.swift in Sources */,
-				D42314F627FE150E00C5E5FC /* NACCTabBarController.swift in Sources */,
-				D48C496B2C9372AA007E87C3 /* NACCGetCleantimeSummaryAppIntent.swift in Sources */,
-				D41361C027F8D80B00DA1AD4 /* NACCBaseViewController.swift in Sources */,
-				D4B80C7F27FCF1B400401F72 /* NACCPersistentPrefs.swift in Sources */,
-				D4BD88F1269E2FAA009015D1 /* NACCAboutViewController.swift in Sources */,
-				D48F812B27FCD36D001A0B87 /* NACCInitialViewController.swift in Sources */,
-				D474789F28073D5400212919 /* NACCPagePrintRenderer.swift in Sources */,
-				D485259627FDBD2E002EE3E3 /* NACCExtensions.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D45A93B32D4C4DEA008B2528 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1132,11 +886,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D45BE02E2D56B8ED003F4CB0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D45A93B62D4C4DEA008B2528 /* Watch Target */;
-			targetProxy = D45BE02D2D56B8ED003F4CB0 /* PBXContainerItemProxy */;
-		};
 		D48285752EDE47A100721EA0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D45A93B62D4C4DEA008B2528 /* Watch Target */;
@@ -1151,16 +900,6 @@
 			isa = PBXTargetDependency;
 			target = D4A420AF2D4D5C7900E4AC1E /* Widget Target */;
 			targetProxy = D482857A2EDE4A5900721EA0 /* PBXContainerItemProxy */;
-		};
-		D4A420BD2D4D5C7A00E4AC1E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D4A420AF2D4D5C7900E4AC1E /* Widget Target */;
-			targetProxy = D4A420BC2D4D5C7A00E4AC1E /* PBXContainerItemProxy */;
-		};
-		D4E43A672C937FDF00535CDD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D4E43A4C2C937FDF00535CDD /* Intents Target */;
-			targetProxy = D4E43A662C937FDF00535CDD /* PBXContainerItemProxy */;
 		};
 		D4F9DA9F2D5BA6A300FFC2DC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1192,14 +931,6 @@
 				D4C79A1A27F9189800FBB7D3 /* Base */,
 			);
 			name = NACC_LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		D4C79A1B27F9189800FBB7D3 /* NACC_Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D4C79A1C27F9189800FBB7D3 /* Base */,
-			);
-			name = NACC_Main.storyboard;
 			sourceTree = "<group>";
 		};
 		D4E2F96727FCCA3200457AD4 /* Localizable.strings */ = {
@@ -1373,94 +1104,6 @@
 			};
 			name = Release;
 		};
-		D43C66C32694AC00007D5883 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Project-Meta/NACC.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0003;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
-				ENABLE_RESOURCE_ACCESS_CALENDARS = YES;
-				ENABLE_RESOURCE_ACCESS_CONTACTS = YES;
-				ENABLE_RESOURCE_ACCESS_LOCATION = YES;
-				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = YES;
-				ENABLE_RESOURCE_ACCESS_PRINTING = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				ENABLE_USER_SELECTED_FILES = readwrite;
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/UIKit/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = NACC;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
-				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 7.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,4";
-				TVOS_DEPLOYMENT_TARGET = 17.6;
-				WATCHOS_DEPLOYMENT_TARGET = 9.6;
-			};
-			name = Debug;
-		};
-		D43C66C42694AC00007D5883 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Project-Meta/NACC.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0003;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
-				ENABLE_RESOURCE_ACCESS_CALENDARS = YES;
-				ENABLE_RESOURCE_ACCESS_CONTACTS = YES;
-				ENABLE_RESOURCE_ACCESS_LOCATION = YES;
-				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = YES;
-				ENABLE_RESOURCE_ACCESS_PRINTING = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				ENABLE_USER_SELECTED_FILES = readwrite;
-				INFOPLIST_FILE = "$(SRCROOT)/Sources/UIKit/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = NACC;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
-				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 7.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,4";
-				TVOS_DEPLOYMENT_TARGET = 17.6;
-				WATCHOS_DEPLOYMENT_TARGET = 9.6;
-			};
-			name = Release;
-		};
 		D45A93C62D4C4DEB008B2528 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1584,6 +1227,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = NACC_LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1636,6 +1280,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = NACC_LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1914,15 +1559,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D43C66C22694AC00007D5883 /* Build configuration list for PBXNativeTarget "UIKit App Target" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D43C66C32694AC00007D5883 /* Debug */,
-				D43C66C42694AC00007D5883 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		D45A93C52D4C4DEB008B2528 /* Build configuration list for PBXNativeTarget "Watch Target" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1932,7 +1568,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4A0C15A2ED78C3900F77D56 /* Build configuration list for PBXNativeTarget "SwiftUI App Target" */ = {
+		D4A0C15A2ED78C3900F77D56 /* Build configuration list for PBXNativeTarget "Main App Target" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4A0C1582ED78C3900F77D56 /* Debug */,
@@ -2062,11 +1698,6 @@
 			package = D462E4AB2D5D07E6001E2C0F /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */;
 			productName = RVS_UIKit_Toolbox;
 		};
-		D45240E02D620C34000BD663 /* LGV_Cleantime */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D45240DF2D620C34000BD663 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */;
-			productName = LGV_Cleantime;
-		};
 		D45240E22D620C3E000BD663 /* LGV_Cleantime */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D45240DF2D620C34000BD663 /* XCRemoteSwiftPackageReference "LGV_Cleantime" */;
@@ -2092,10 +1723,6 @@
 			package = D462E4AE2D5D0806001E2C0F /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */;
 			productName = RVS_Persistent_Prefs;
 		};
-		D47764792D3FFA2400DB748E /* RVS_Persistent_Prefs */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = RVS_Persistent_Prefs;
-		};
 		D4B2C2752E8FFE5D009DD45D /* RVS_Persistent_Prefs */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D462E4AE2D5D0806001E2C0F /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */;
@@ -2112,11 +1739,6 @@
 			productName = LGV_UICleantime;
 		};
 		D4B2C27D2E8FFEE9009DD45D /* RVS_Generic_Swift_Toolbox */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D4B2C27C2E8FFEDB009DD45D /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */;
-			productName = RVS_Generic_Swift_Toolbox;
-		};
-		D4B2C27F2E8FFEFC009DD45D /* RVS_Generic_Swift_Toolbox */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D4B2C27C2E8FFEDB009DD45D /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */;
 			productName = RVS_Generic_Swift_Toolbox;
@@ -2140,10 +1762,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D462E4AB2D5D07E6001E2C0F /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */;
 			productName = RVS_UIKit_Toolbox;
-		};
-		D4F58DF32D5FE4C00087C387 /* LGV_UICleantime */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LGV_UICleantime;
 		};
 		D4F58DF52D5FE4C90087C387 /* LGV_UICleantime */ = {
 			isa = XCSwiftPackageProductDependency;

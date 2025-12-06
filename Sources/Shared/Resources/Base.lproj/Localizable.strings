@@ -76,7 +76,7 @@
 // MARK: ABOUT SCREEN
 
 "SLUG-ABOUT"                                    =   "About NACC";
-"SLUG-APP-INFO-TEXT"                            =   "This is a simple app for quantifying your cleantime.\n\nIt says nothing about qualifying your Recovery. That's between you and your sponsor.\nSimply set the wheels to your cleandate, and touch the report text.\n\nSelect the logo image above, to be taken to a Web page with detailed instructions.\n\nThis app uses the following open-source libraries:\n\n• https://github.com/LittleGreenViper/LGV_Cleantime\n\n• https://github.com/LittleGreenViper/LGV_UICleantime\n\n• https://github.com/RiftValleySoftware/RVS_GeneralObserver\n\n• https://github.com/RiftValleySoftware/RVS_Generic_Swift_Toolbox\n\n• https://github.com/RiftValleySoftware/RVS_PersistentPrefs\n\n• https://github.com/RiftValleySoftware/RVS_UIKit_Toolbox";
+"SLUG-APP-INFO-TEXT"                            =   "This is a simple app for quantifying your cleantime.\n\nIt says nothing about qualifying your Recovery; That's between you and your sponsor.\n\nSimply set the cleandate to your first day clean, and touch the keytag or medallion image to see all the keytags and medallions that you've earned.\n\nSelect the logo image above, to be taken to a Web page with detailed instructions on using this app.\n\nThe links below, go to our Privacy page, and the main Little Green Viper LLC Web site.";
 
 "SLUG-OK-BUTTON-TEXT"                           =   "OK";
 "SLUG-APP-INFO-VERSION-FORMAT-SMALL"            =   "Version %@";
@@ -114,17 +114,16 @@
 // MARK: Cleandate Screen
 
 "SLUG-ACC-LOGO"                                 =   "This is the NACC logo. If you select this, the app will display the results of the calculation. If you have one day or more, you will be able to select it, and be taken to the cleantime display tabs.";
-"SLUG-ACC-DATEPICKER"                           =   "This is where you enter your cleandate. Set this picker to your cleandate, and everything else will be automatically calculated.";
-"SLUG-ACC-REPORT-BUTTON"                        =   "This label will display the results of the calculation. If you have one day or more, you will be able to select it, and be taken to the cleantime display tabs.";
-"SLUG-ACC-CALENDAR-BUTTON"                      =   "This allows you to create a repeating event from the cleandate (alarms every year).";
+"SLUG-ACC-DATEPICKER"                           =   "This is where you enter your cleandate. Set the date picker to your cleandate, and everything else will be automatically calculated.";
+"SLUG-ACC-REPORT-BUTTON"                        =   "This label will display the results of the calculation. Select it, to change the cleandate.";
+"SLUG-ACC-CALENDAR-BUTTON"                      =   "This allows you to create a repeating calendar event from the cleandate (repeats every year).";
 "SLUG-ACC-ACTION-BUTTON"                        =   "This allows you to share the report. It will bring up a screen, allowing you to send the report to other apps or people (like messages and email). You can also print the report, or save the image in your Photo Library.";
 "SLUG-ACC-INFO-BUTTON"                          =   "If you select this button, you will be taken to a screen with information about this app.";
-"SLUG-ACC-IMAGE"                                =   "This image displays the last keytag or medallion that you should have receieved for your cleantime. If you have one day or more, you can select it, and be taken to the cleantime display tabs.";
+"SLUG-ACC-IMAGE"                                =   "This image displays the last keytag or medallion that you should have receieved for your cleantime. If you have thirty days or more, you can select it, and be taken to the cleantime recognition tabs.";
 
 // MARK: About Screen
 
 "SLUG-ACC-APPICON-BUTTON"                       =   "This button will take you to the Little Green Viper Software Development LLC Web site, on the page that is assigned to this app.";
-"SLUG-ACC-VERSION-BUTTON"                       =   "This button will pop up an alert, with the exact build version of this app.";
 "SLUG-ACC-PRIVACY-BUTTON"                       =   "This button will take you to the Little Green Viper Software Development LLC Web site, on the page that defines our privacy policy.";
 "SLUG-ACC-LGV-BUTTON"                           =   "This button will take you to the Little Green Viper Software Development LLC main Web site.";
 
@@ -134,10 +133,6 @@
 "SLUG-ACC-Keytag Strip"                         =   "This tab displays a vertical strip of linked keytags.";
 "SLUG-ACC-Medallions"                           =   "This tab displays an array of medallions, arranged in horizontal rows.";
 "SLUG-ACC-TABS-ACTION-BUTTON"                   =   "This allows you to share the report and the cleantime images. It will bring up a screen, allowing you to send them to other apps or people (like messages and email). You can also print the report, or save the image in your Photo Library.";
-
-// MARK: Individual Tab View
-
-"SLUG-ACC-SCROLLVIEW"                           =   "This will display the cleantime commemoration. It can be scrolled and zoomed.";
 
 // MARK: App Intents
 
