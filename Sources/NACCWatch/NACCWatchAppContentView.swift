@@ -23,6 +23,7 @@ import WatchConnectivity
 import LGV_Cleantime
 import LGV_UICleantime
 import RVS_UIKit_Toolbox
+import WidgetKit
 
 /* ###################################################################################################################################### */
 // MARK: - Observable Model -
@@ -100,12 +101,15 @@ final class WatchModel: NSObject, ObservableObject, @preconcurrency WCSessionDel
 
     /* ################################################################## */
     /**
-     NOP to satisfy protocol.
-     - parameter _: ignored
+     We just do a "belt and suspenders" reload.
+     - parameter _: The session. ignored
      - parameter activationDidCompleteWith: ignored
      - parameter error: ignored
      */
-    func session(_: WCSession, activationDidCompleteWith: WCSessionActivationState, error: (any Error)?) { }
+    func session(_: WCSession, activationDidCompleteWith: WCSessionActivationState, error: (any Error)?) {
+        self.reloadFromPrefs()
+        WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
+    }
 }
 
 /* ###################################################################################################################################### */
