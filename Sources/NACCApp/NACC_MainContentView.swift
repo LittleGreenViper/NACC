@@ -22,6 +22,7 @@ import SwiftUI
 import LGV_Cleantime
 import LGV_UICleantime
 import RVS_Generic_Swift_Toolbox
+import RVS_UIKit_Toolbox
 import EventKit
 import EventKitUI
 
@@ -709,135 +710,139 @@ struct NACC_MainContentView: View {
         NavigationStack {
             AppBackground(alignment: .center) {
                 VStack {
-                    // This is the top logo. If the user has thirty days or more, tapping on it will bring in the results screen.
-                    if LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isThirtyDaysOrMore {
-                        Button {
-                            self.selectedTab = .keytagArray
-                            self.showResult = true
-                        } label: {
-                            Image("Logo")
+                    if let appIcon = Bundle.main.appIcon {
+                        // This is the top logo. If the user has thirty days or more, tapping on it will bring in the results screen.
+                        if LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isThirtyDaysOrMore {
+                            Button {
+                                self.selectedTab = .keytagArray
+                                self.showResult = true
+                            } label: {
+                                Image(uiImage: appIcon)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: Self._iconSizeInDisplayUnits)
+                                    .cornerRadius(Self._iconSizeInDisplayUnits / 2)
+                            }
+                            .accessibilityHint("SLUG-ACC-LOGO".localizedVariant)
+                        } else {
+                            Image(uiImage: appIcon)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: Self._iconSizeInDisplayUnits)
+                                .cornerRadius(Self._iconSizeInDisplayUnits / 2)
                         }
-                        .accessibilityHint("SLUG-ACC-LOGO".localizedVariant)
-                    } else {
-                        Image("Logo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: Self._iconSizeInDisplayUnits)
-                    }
-                    
-                    // If the user has not specified a cleandate, this text item displays a message to that effect.
-                    if !LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore {
-                        Text("SLUG-NO-CLEANDATE-YET".localizedVariant)
-                    }
-                    
-                    // If there has been a cleandate set, the following displays a text item, with the textual report. If no cleandate, then it prompts the user to set one.
-                    // Tapping on the report brings up a date picker, allowing the user to set/change the cleandate.
-                    // The text is surrounded by a capsule, indicating that it can be tapped. If no date is set, the color of the text is a button color.
-                    Text(self._report)
-                        .textSelection(.enabled)
-                        .padding(Self._buttonPaddingInDisplayUnits)
-                        .frame(maxWidth: .infinity,
-                               alignment: .center
-                        )
-                        .foregroundStyle(!LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore ? Color("SelectionTintColor") : .primary)
-                        .background(.thickMaterial,
-                                    in: Capsule()
-                        )
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            self._showingPicker = true
+                        
+                        // If the user has not specified a cleandate, this text item displays a message to that effect.
+                        if !LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore {
+                            Text("SLUG-NO-CLEANDATE-YET".localizedVariant)
                         }
-                        ._adaptivePickerPresentation(isPresented: $_showingPicker,
-                                                    selectedDate: $selectedDate
-                        )
-                        .accessibilityAddTraits(.isButton)
-                        .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
-                    
-                    // If the user has set a cleandate, then the following is an image, with the user's last earned keytag (under a year), or medallion.
-                    // If the user has thirty days or more, tapping on the image brings in the results screen.
-                    if let image = self._displayedImage {
-                        if LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isThirtyDaysOrMore {
-                            Button {
-                                self.selectedTab = LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneYearOrMore ? .medallionArray : .keytagStrip
-                                self.showResult = true
-                            } label: {
+                        
+                        // If there has been a cleandate set, the following displays a text item, with the textual report. If no cleandate, then it prompts the user to set one.
+                        // Tapping on the report brings up a date picker, allowing the user to set/change the cleandate.
+                        // The text is surrounded by a capsule, indicating that it can be tapped. If no date is set, the color of the text is a button color.
+                        Text(self._report)
+                            .textSelection(.enabled)
+                            .padding(Self._buttonPaddingInDisplayUnits)
+                            .frame(maxWidth: .infinity,
+                                   alignment: .center
+                            )
+                            .foregroundStyle(!LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore ? Color("SelectionTintColor") : .primary)
+                            .background(.thickMaterial,
+                                        in: Capsule()
+                            )
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                self._showingPicker = true
+                            }
+                            ._adaptivePickerPresentation(isPresented: $_showingPicker,
+                                                         selectedDate: $selectedDate
+                            )
+                            .accessibilityAddTraits(.isButton)
+                            .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
+                        
+                        // If the user has set a cleandate, then the following is an image, with the user's last earned keytag (under a year), or medallion.
+                        // If the user has thirty days or more, tapping on the image brings in the results screen.
+                        if let image = self._displayedImage {
+                            if LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isThirtyDaysOrMore {
+                                Button {
+                                    self.selectedTab = LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneYearOrMore ? .medallionArray : .keytagStrip
+                                    self.showResult = true
+                                } label: {
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: Self._mainImageWidthInDisplayUnits)
+                                }
+                                .accessibilityHint("SLUG-ACC-IMAGE".localizedVariant)
+                            } else {
                                 Image(uiImage: image)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: Self._mainImageWidthInDisplayUnits)
                             }
-                            .accessibilityHint("SLUG-ACC-IMAGE".localizedVariant)
-                        } else {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: Self._mainImageWidthInDisplayUnits)
                         }
                     }
                 }
                 .padding()
-            }
-            .navigationTitle("SLUG-INITIAL-TITLE".localizedVariant)
-            .navigationBarTitleDisplayMode(.inline)
-            // Create the various NavBar items.
-            .toolbar {
-                // The "Action" button
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        self._prepareActivityItems()
-                        self._showingActions = true
-                    } label: {
-                        Image(systemName: "square.and.arrow.up")
+                .navigationTitle("SLUG-INITIAL-TITLE".localizedVariant)
+                .navigationBarTitleDisplayMode(.inline)
+                // Create the various NavBar items.
+                .toolbar {
+                    // The "Action" button
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            self._prepareActivityItems()
+                            self._showingActions = true
+                        } label: {
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                        .accessibilityHint("SLUG-ACC-ACTION-BUTTON".localizedVariant)
                     }
-                    .accessibilityHint("SLUG-ACC-ACTION-BUTTON".localizedVariant)
-                }
-                // The calendar button (create an event)
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        self._calendarButtonHit()
-                    } label: {
-                        Image(systemName: "calendar")
+                    // The calendar button (create an event)
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            self._calendarButtonHit()
+                        } label: {
+                            Image(systemName: "calendar")
+                        }
+                        .disabled(!self._calendarIsEnabled)
+                        .accessibilityHint("SLUG-ACC-CALENDAR-BUTTON".localizedVariant)
                     }
-                    .disabled(!self._calendarIsEnabled)
-                    .accessibilityHint("SLUG-ACC-CALENDAR-BUTTON".localizedVariant)
-                }
-                // The info screen button
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        self._showInfo = true
-                    } label: {
-                        Image(systemName: "info.circle")
-                    }
-                    .accessibilityHint("SLUG-ACC-INFO-BUTTON".localizedVariant)
-                }
-            }
-            // This presents a modal sheet, with an event add screen. We always use a sheet, because the process is quite modal.
-            .sheet(item: self.$_eventToEdit) { inEditableEvent in
-                NACC_EventEditView(
-                    eventStore: inEditableEvent.eventStore,
-                    event: inEditableEvent.event
-                ) { _ in
-                    self._eventToEdit = nil
-                }
-            }
-            // Called when the Calendar does not have permission to add events.
-            .alert("SLUR-ERR-CALENDAR-DENY-ALERT-TITLE".localizedVariant,
-                   isPresented: $_showCalendarAccessAlert) {
-                Button("SLUR-ERR-CALENDAR-DENY-ALERT-CANCEL".localizedVariant, role: .cancel) { }
-                
-                Button("SLUR-ERR-CALENDAR-DENY-ALERT-SETTINGS".localizedVariant) {
-                    if let url = URL(string: UIApplication.openSettingsURLString) {
-                        openURL(url)
+                    // The info screen button
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            self._showInfo = true
+                        } label: {
+                            Image(systemName: "info.circle")
+                        }
+                        .accessibilityHint("SLUG-ACC-INFO-BUTTON".localizedVariant)
                     }
                 }
-            } message: {
-                Text("SLUR-ERR-CALENDAR-DENY-ALERT-MESSAGE".localizedVariant)
+                // This presents a modal sheet, with an event add screen. We always use a sheet, because the process is quite modal.
+                .sheet(item: self.$_eventToEdit) { inEditableEvent in
+                    NACC_EventEditView(
+                        eventStore: inEditableEvent.eventStore,
+                        event: inEditableEvent.event
+                    ) { _ in
+                        self._eventToEdit = nil
+                    }
+                }
+                // Called when the Calendar does not have permission to add events.
+                .alert("SLUR-ERR-CALENDAR-DENY-ALERT-TITLE".localizedVariant,
+                       isPresented: $_showCalendarAccessAlert) {
+                    Button("SLUR-ERR-CALENDAR-DENY-ALERT-CANCEL".localizedVariant, role: .cancel) { }
+                    
+                    Button("SLUR-ERR-CALENDAR-DENY-ALERT-SETTINGS".localizedVariant) {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            openURL(url)
+                        }
+                    }
+                } message: {
+                    Text("SLUR-ERR-CALENDAR-DENY-ALERT-MESSAGE".localizedVariant)
+                }
+                .navigationDestination(isPresented: self.$showResult) { NACC_ResultDisplayView(selectedTab: self.$selectedTab) }
+                .navigationDestination(isPresented: self.$_showInfo) { NACC_InfoDisplayView() }
             }
-            .navigationDestination(isPresented: self.$showResult) { NACC_ResultDisplayView(selectedTab: self.$selectedTab) }
-            .navigationDestination(isPresented: self.$_showInfo) { NACC_InfoDisplayView() }
         }
         // When the action button is hit, we ask the user if they want to share, or print.
         .confirmationDialog("SLUG-ACTIONS-TITLE".localizedVariant,
@@ -887,6 +892,7 @@ struct NACC_MainContentView: View {
             }
             self._displayedImage = generatedImage
         }
+            
     }
     
     /* ################################################################## */

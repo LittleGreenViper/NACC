@@ -94,7 +94,7 @@ struct NACC_InfoDisplayView: View {
     /**
      This is the size of the rounded corners.
      */
-    private static let _iconCornerRadiusInDisplayUnits = 20.0
+    private static let _iconCornerRadiusInDisplayUnits = 16.0
 
     /* ################################################################## */
     /**

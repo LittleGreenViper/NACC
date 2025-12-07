@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "StartupLogo.pdf",
+      "filename" : "BlackTag.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "YellowTag.pdf",
       "idiom" : "universal"
     }
   ],
