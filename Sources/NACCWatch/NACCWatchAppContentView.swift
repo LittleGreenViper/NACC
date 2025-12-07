@@ -32,10 +32,28 @@ import RVS_UIKit_Toolbox
  */
 @MainActor
 final class WatchModel: NSObject, ObservableObject, @preconcurrency WCSessionDelegate {
+    /* ################################################################## */
+    /**
+     The text report.
+     */
     @Published var text: String = ""
+
+    /* ################################################################## */
+    /**
+     The actual cleandate
+     */
     @Published var cleanDate: Date = NACCPersistentPrefs().cleanDate
+
+    /* ################################################################## */
+    /**
+     Which screen to show
+     */
     @Published var watchFormat: Int = NACCPersistentPrefs().watchAppDisplayState.rawValue
 
+    /* ################################################################## */
+    /**
+     The task for rendering the text report
+     */
     private var textTask: Task<Void, Never>?
 
     /* ################################################################## */
@@ -99,14 +117,15 @@ final class WatchModel: NSObject, ObservableObject, @preconcurrency WCSessionDel
 struct NACCWatchAppContentView: View {
     /* ################################################################## */
     /**
-     This is a threaded renderer
+     This is a threaded image renderer for the keytags
+     - parameter inDate: The new date that requires an update.
      */
-    private static func _renderAssets(for date: Date) async -> UIImage? {
+    private static func _renderAssets(for inDate: Date) async -> UIImage? {
         await Task.detached(priority: .userInitiated) { () -> UIImage? in
             // Bail out quickly if already cancelled.
             if Task.isCancelled { return nil }
 
-            let calc = LGV_CleantimeDateCalc(startDate: date).cleanTime
+            let calc = LGV_CleantimeDateCalc(startDate: inDate).cleanTime
 
             let keytag = LGV_MultiKeytagImageGenerator(
                 isVerticalStrip: true,
