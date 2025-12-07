@@ -20,6 +20,7 @@
 
 import SwiftUI
 import RVS_Generic_Swift_Toolbox
+import RVS_UIKit_Toolbox
 
 /* ###################################################################################################################################### */
 // MARK: - Bundle Extension -
@@ -91,6 +92,12 @@ struct NACC_InfoDisplayView: View {
     
     /* ################################################################## */
     /**
+     This is the size of the rounded corners.
+     */
+    private static let _iconCornerRadiusInDisplayUnits = 20.0
+
+    /* ################################################################## */
+    /**
      This is the local instance of the persistent prefs for the app.
      */
     let prefs = NACCPersistentPrefs()
@@ -105,26 +112,33 @@ struct NACC_InfoDisplayView: View {
                     VStack(alignment: .center,
                            spacing: Self._edgePaddingInDisplayUnits
                     ) {
-                        Image("AboutLogo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: Self._iconSizeInDisplayUnits)
-                            .onTapGesture {
-                                if let url = Bundle.main.helpURI {
-                                    self.openURL(url)
+                        // The app icon button, at the top.
+                        if let appIcon = Bundle.main.appIcon {
+                            Image(uiImage: appIcon)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: Self._iconSizeInDisplayUnits)
+                                .cornerRadius(Self._iconCornerRadiusInDisplayUnits)
+                                .onTapGesture {
+                                    if let url = Bundle.main.helpURI {
+                                        self.openURL(url)
+                                    }
                                 }
-                            }
+                                .accessibilityHint("SLUG-ACC-APPICON-BUTTON".localizedVariant)
+                        }
                         
                         let displayString = String(format: "SLUG-APP-INFO-VERSION-FORMAT".localizedVariant,
                                                    Bundle.main.appDisplayName,
                                                    Bundle.main.appVersionString,
                                                    Bundle.main.appVersionBuildString)
                         
+                        // The version string.
                         Text(displayString)
                             .textSelection(.enabled)
                             .font(.caption)
                             .italic()
                         
+                        // The main text display.
                         Text("SLUG-APP-INFO-TEXT".localizedVariant)
                             .padding(.horizontal,
                                      Self._edgePaddingInDisplayUnits
@@ -140,6 +154,8 @@ struct NACC_InfoDisplayView: View {
                     )
                 }
                 .scrollBounceBehavior(.basedOnSize)
+                
+                // The three buttons along the bottom.
                 HStack {
                     Button("SLUG-SETTINGS-BUTTON".localizedVariant) {
                         if let url = URL(string: UIApplication.openSettingsURLString) {
@@ -149,7 +165,8 @@ struct NACC_InfoDisplayView: View {
                     .frame(maxWidth: .infinity)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
-                    
+                    .accessibilityHint("SLUG-ACC-SETTINGS-BUTTON".localizedVariant)
+
                     Button("SLUG-PRIVACY-BUTTON".localizedVariant) {
                         if let url = Bundle.main.siteURI {
                             self.openURL(url)
@@ -158,7 +175,8 @@ struct NACC_InfoDisplayView: View {
                     .frame(maxWidth: .infinity)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
-                    
+                    .accessibilityHint("SLUG-ACC-PRIVACY-BUTTON".localizedVariant)
+
                     Button("SLUG-LGV-BUTTON".localizedVariant) {
                         if let url = Bundle.main.siteURI {
                             self.openURL(url)
@@ -167,6 +185,7 @@ struct NACC_InfoDisplayView: View {
                     .frame(maxWidth: .infinity)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
+                    .accessibilityHint("SLUG-ACC-LGV-BUTTON".localizedVariant)
                 }
                 .padding()
             }

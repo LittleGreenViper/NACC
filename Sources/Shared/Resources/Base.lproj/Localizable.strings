@@ -125,6 +125,7 @@
 // MARK: About Screen
 
 "SLUG-ACC-APPICON-BUTTON"                       =   "This button will take you to the Little Green Viper Software Development LLC Web site, on the page that is assigned to this app.";
+"SLUG-ACC-SETTINGS-BUTTON"                      =   "This button will take you to the app settings screen for this app.";
 "SLUG-ACC-PRIVACY-BUTTON"                       =   "This button will take you to the Little Green Viper Software Development LLC Web site, on the page that defines our privacy policy.";
 "SLUG-ACC-LGV-BUTTON"                           =   "This button will take you to the Little Green Viper Software Development LLC main Web site.";
 
