@@ -99,28 +99,18 @@ struct NACCWatchApp: App {
      - parameter inApplicationContext: The new context dictionary.
      */
     func updateApplicationContext(_ inApplicationContext: [String: Any]) {
-        DispatchQueue.main.async {  // Just in case...
-            if let cleanDateTemp = inApplicationContext["cleanDate"] as? String {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd"
-                self._cleanDate = dateFormatter.date(from: cleanDateTemp) ?? .now
-                NACCPersistentPrefs().cleanDate = self._cleanDate
-                #if DEBUG
-                    print("Cleandate: \(self._cleanDate)")
-                #endif
-                
-                self._syncUp = true
-            }
-            
-            if let watchFormatTemp = inApplicationContext["watchAppDisplayState"] as? Int,
-               let format = NACCPersistentPrefs.MainWatchState(rawValue: watchFormatTemp) {
-                self._watchFormat = format.rawValue
-                NACCPersistentPrefs().watchAppDisplayState = format
-                
-                #if DEBUG
-                    print("WatchFormat: \(format)")
-                #endif
-            }
+        if let cleanDateTemp = inApplicationContext["cleanDate"] as? String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            _cleanDate = dateFormatter.date(from: cleanDateTemp) ?? .now
+            NACCPersistentPrefs().cleanDate = _cleanDate
+            _syncUp = true
+        }
+
+        if let watchFormatTemp = inApplicationContext["watchAppDisplayState"] as? Int,
+           let format = NACCPersistentPrefs.MainWatchState(rawValue: watchFormatTemp) {
+            _watchFormat = format.rawValue
+            NACCPersistentPrefs().watchAppDisplayState = format
         }
     }
     

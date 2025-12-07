@@ -30,86 +30,64 @@ import RVS_UIKit_Toolbox
 /**
  This wraps the preferences in an observable wrapper.
  */
-final class WatchModel: NSObject, ObservableObject, WCSessionDelegate {
-    /* ################################################################## */
-    /**
-     The Watchkit session, for communicating with the phone.
-     */
-    private var _session: WCSession?
-
-    /* ################################################################## */
-    /**
-     The cleantime report text. Observable.
-     */
+@MainActor
+final class WatchModel: NSObject, ObservableObject, @preconcurrency WCSessionDelegate {
     @Published var text: String = ""
+    @Published var cleanDate: Date = NACCPersistentPrefs().cleanDate
+    @Published var watchFormat: Int = NACCPersistentPrefs().watchAppDisplayState.rawValue
+
+    private var textTask: Task<Void, Never>?
 
     /* ################################################################## */
     /**
-     The cleandate. Observable.
-     */
-    @Published var cleanDate: Date = Date()
-
-    /* ################################################################## */
-    /**
-     The selected watch screen. Observable.
-     - 0: Text
-     - 1: Keytga Strip
-     - 2: Medallion/Keytag
-     */
-    @Published var watchFormat: Int = 0
-
-    /* ################################################################## */
-    /**
-     Default initializer. We use it to set up the session, and refresh the prefs.
-     */
-    override init() {
-        super.init()
-        if WCSession.isSupported() {
-            self._session = WCSession.default
-            self._session?.delegate = self
-            self._session?.activate()
-        }
-    }
-
-    /* ################################################################## */
-    /**
-     This flushes the prefs, and reloads them. The observable properties will be affected.
+     Tells the app to reload itself from the stored prefs.
+     It does this in a separate thread, as rendering the keytags can take a while.
      */
     @MainActor
     func reloadFromPrefs() {
         NACCPersistentPrefs().flush()
-        self.cleanDate   = NACCPersistentPrefs().cleanDate
-        self.watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue
+        cleanDate   = NACCPersistentPrefs().cleanDate
+        watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue
 
-        Task.detached {
-            if let text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: self.cleanDate, endDate: .now) {
-                DispatchQueue.main.async { self.text = text }
-            }
+        // Cancel any in-flight text generation
+        textTask?.cancel()
+        let date = cleanDate   // capture value
+
+        textTask = Task { @MainActor in
+            guard !Task.isCancelled else { return }
+            let generated = LGV_UICleantimeDateReportString()
+                .naCleantimeText(beginDate: date, endDate: .now) ?? ""
+
+            guard !Task.isCancelled else { return }
+
+            self.text = generated
         }
     }
 
-    // MARK: WCSessionDelegate
     /* ################################################################## */
     /**
-     This is an empty function. Just here to satisfy the protocol.
-     */
-    func session(_: WCSession, activationDidCompleteWith: WCSessionActivationState, error: Error?) {}
-
-    /* ################################################################## */
-    /**
-     Called when the context is updated by the phone.
+     Called when the app gets its context.
      
-     - parameter: The session (ignored)
-     - parameter inContext: The new context.
+     - parameter _: Session. ignored
+     - parameter didReceiveApplicationContext: the app context
      */
     func session(_: WCSession, didReceiveApplicationContext inContext: [String: Any]) {
         Task { @MainActor in
             if let raw = inContext["watchFormat"] as? Int {
-                NACCPersistentPrefs().watchAppDisplayState = .init(rawValue: raw) ?? .init(rawValue: 0) ?? .text
+                NACCPersistentPrefs().watchAppDisplayState = NACCPersistentPrefs.MainWatchState(rawValue: raw) ?? NACCPersistentPrefs.MainWatchState(rawValue: 0) ?? .text
             }
             self.reloadFromPrefs()
         }
     }
+
+    /* ################################################################## */
+    /**
+     NOP to satisfy protocol.
+     - parameter _: ignored
+     - parameter activationDidCompleteWith: ignored
+     - parameter error: ignored
+     */
+    func session(_: WCSession, activationDidCompleteWith: WCSessionActivationState, error: (any Error)?) { }
 }
 
 /* ###################################################################################################################################### */
@@ -123,12 +101,9 @@ struct NACCWatchAppContentView: View {
     /**
      This is a threaded renderer
      */
-    static func _renderAssets(for date: Date) async -> UIImage? {
-        // Bail out quickly if already cancelled.
-        if Task.isCancelled { return nil }
-
-        // Heavy work off the main actor.
-        return await Task.detached(priority: .userInitiated) {
+    private static func _renderAssets(for date: Date) async -> UIImage? {
+        await Task.detached(priority: .userInitiated) { () -> UIImage? in
+            // Bail out quickly if already cancelled.
             if Task.isCancelled { return nil }
 
             let calc = LGV_CleantimeDateCalc(startDate: date).cleanTime
@@ -139,6 +114,9 @@ struct NACCWatchAppContentView: View {
                 totalMonths: calc.totalMonths,
                 widestKeytagImageInDisplayUnits: (calc.years > 2 ? 64 : 128)
             ).generatedImage
+
+            // One last cancellation check before returning.
+            if Task.isCancelled { return nil }
 
             return keytag
         }.value
@@ -208,28 +186,40 @@ struct NACCWatchAppContentView: View {
     /**
      This makes sure that the screen reflects the current state.
      */
-    func synchronize() {
-        DispatchQueue.main.async {
-            if self.syncUp,
-               !self.showCleanDatePicker {
-                self.syncUp = false
-                NACCPersistentPrefs().flush()
-                // get the text set, ASAP.
-                text = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: self.cleanDate, endDate: .now) ?? ""
-                let calc = LGV_CleantimeDateCalc(startDate: self.cleanDate).cleanTime
-                
-                self.singleMedallion = (calc.years > 0)
-                ? LGV_MedallionImage(totalMonths: calc.totalMonths).drawImage()
-                : LGV_KeytagImageGenerator(isRingClosed: true,
-                                           totalDays: calc.totalDays,
-                                           totalMonths: calc.totalMonths).generatedImage
-                self.keytagChain = nil
-                self._syncTask?.cancel()
-                self._syncTask = Task.detached(priority: .userInitiated) {
-                    let keytag = await Self._renderAssets(for: self.cleanDate)
-                    if Task.isCancelled { return }
-                    DispatchQueue.main.async { self.keytagChain = keytag }
-                }
+    private func _synchronize() {
+        // We’re on the main actor (SwiftUI), so no need for DispatchQueue.main.async
+        guard syncUp, !showCleanDatePicker else { return }
+
+        syncUp = false
+        NACCPersistentPrefs().flush()
+
+        // Update text and medallion synchronously on main
+        text = LGV_UICleantimeDateReportString()
+            .naCleantimeText(beginDate: cleanDate, endDate: .now) ?? ""
+
+        let calc = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
+
+        singleMedallion = (calc.years > 0)
+            ? LGV_MedallionImage(totalMonths: calc.totalMonths).drawImage()
+            : LGV_KeytagImageGenerator(
+                isRingClosed: true,
+                totalDays: calc.totalDays,
+                totalMonths: calc.totalMonths
+            ).generatedImage
+
+        keytagChain = nil
+
+        // Cancel any previous render
+        _syncTask?.cancel()
+        let date = cleanDate  // capture value so it doesn't change under us
+
+        // Use a *structured* Task, not Task.detached
+        _syncTask = Task {
+            let keytag = await Self._renderAssets(for: date)
+            guard !Task.isCancelled else { return }
+
+            await MainActor.run {
+                self.keytagChain = keytag
             }
         }
     }
@@ -280,7 +270,7 @@ struct NACCWatchAppContentView: View {
                         .cornerRadius(8)
                 }
                 .onDisappear { self._syncTask?.cancel() }
-                .onChange(of: self.syncUp, initial: true) { self.synchronize() }
+                .onChange(of: self.syncUp, initial: true) { self._synchronize() }
                 .onChange(of: self._scenePhase, initial: true) {
                     if .active == self._scenePhase {
                         self.model.reloadFromPrefs()
@@ -290,14 +280,14 @@ struct NACCWatchAppContentView: View {
                 .navigationDestination(isPresented: self.$showCleanDatePicker) { CleanDatePicker(cleanDate: self.$cleanDate, syncUp: self.$syncUp) }
                 .onAppear {
                     self.showCleanDatePicker = false
-                    self.synchronize()
+                    self._synchronize()
                 }
             }
             .padding(0)
             .overlay(alignment: .topTrailing) {
-                if !showCleanDatePicker {
+                if !self.showCleanDatePicker {
                     Button {
-                        showCleanDatePicker = true
+                        self.showCleanDatePicker = true
                     } label: {
                         Image(systemName: "gearshape")
                             .font(.system(size: 14, weight: .regular))
