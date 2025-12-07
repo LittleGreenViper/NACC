@@ -104,6 +104,7 @@ struct NACC_InfoDisplayView: View {
     
     /* ################################################################## */
     /**
+     This returns the screen structure.
      */
     var body: some View {
         AppBackground {
@@ -127,12 +128,11 @@ struct NACC_InfoDisplayView: View {
                                 .accessibilityHint("SLUG-ACC-APPICON-BUTTON".localizedVariant)
                         }
                         
+                        // The app name and version string.
                         let displayString = String(format: "SLUG-APP-INFO-VERSION-FORMAT".localizedVariant,
                                                    Bundle.main.appDisplayName,
                                                    Bundle.main.appVersionString,
                                                    Bundle.main.appVersionBuildString)
-                        
-                        // The version string.
                         Text(displayString)
                             .textSelection(.enabled)
                             .font(.caption)
@@ -157,6 +157,7 @@ struct NACC_InfoDisplayView: View {
                 
                 // The three buttons along the bottom.
                 HStack {
+                    // The app settings button
                     Button("SLUG-SETTINGS-BUTTON".localizedVariant) {
                         if let url = URL(string: UIApplication.openSettingsURLString) {
                             openURL(url)
@@ -167,6 +168,7 @@ struct NACC_InfoDisplayView: View {
                     .minimumScaleFactor(0.5)
                     .accessibilityHint("SLUG-ACC-SETTINGS-BUTTON".localizedVariant)
 
+                    // The privacy link button
                     Button("SLUG-PRIVACY-BUTTON".localizedVariant) {
                         if let url = Bundle.main.siteURI {
                             self.openURL(url)
@@ -177,6 +179,7 @@ struct NACC_InfoDisplayView: View {
                     .minimumScaleFactor(0.5)
                     .accessibilityHint("SLUG-ACC-PRIVACY-BUTTON".localizedVariant)
 
+                    // The main Web site button
                     Button("SLUG-LGV-BUTTON".localizedVariant) {
                         if let url = Bundle.main.siteURI {
                             self.openURL(url)
