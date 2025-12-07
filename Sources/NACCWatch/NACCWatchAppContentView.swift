@@ -121,6 +121,32 @@ final class WatchModel: NSObject, ObservableObject, @preconcurrency WCSessionDel
 struct NACCWatchAppContentView: View {
     /* ################################################################## */
     /**
+     This is a threaded image renderer for the keytags
+     - parameter inDate: The new date that requires an update.
+     */
+    private static func _renderAssets(for inDate: Date) async -> UIImage? {
+        await Task.detached(priority: .userInitiated) { () -> UIImage? in
+            // Bail out quickly if already cancelled.
+            if Task.isCancelled { return nil }
+
+            let calc = LGV_CleantimeDateCalc(startDate: inDate).cleanTime
+
+            let keytag = LGV_MultiKeytagImageGenerator(
+                isVerticalStrip: true,
+                totalDays: calc.totalDays,
+                totalMonths: calc.totalMonths,
+                widestKeytagImageInDisplayUnits: (calc.years > 2 ? 64 : 128)
+            ).generatedImage
+
+            // One last cancellation check before returning.
+            if Task.isCancelled { return nil }
+
+            return keytag
+        }.value
+    }
+
+    /* ################################################################## */
+    /**
      Task used to render keytags in a separate thread.
      */
     @State private var _syncTask: Task<Void, Never>?
@@ -181,52 +207,22 @@ struct NACCWatchAppContentView: View {
     
     /* ################################################################## */
     /**
-     This is a threaded image renderer for the keytags
-     - parameter inDate: The new date that requires an update.
-     */
-    private static func _renderAssets(for inDate: Date) async -> UIImage? {
-        // Bail out quickly if already cancelled.
-        if Task.isCancelled { return nil }
-
-        let calc = LGV_CleantimeDateCalc(startDate: inDate).cleanTime
-
-        let keytag = LGV_MultiKeytagImageGenerator(
-            isVerticalStrip: true,
-            totalDays: calc.totalDays,
-            totalMonths: calc.totalMonths,
-            widestKeytagImageInDisplayUnits: (calc.years > 2 ? 64 : 128)
-        ).generatedImage
-
-        // One last cancellation check before returning.
-        if Task.isCancelled { return nil }
-
-        return keytag
-    }
-
-    /* ################################################################## */
-    /**
      This makes sure that the screen reflects the current state.
      */
     private func _synchronize() {
-        // Cancel any previous render
-        self._syncTask?.cancel()
-        let date = self.cleanDate  // capture value so it doesn't change under us
+        // We’re on the main actor (SwiftUI), so no need for DispatchQueue.main.async
+        guard syncUp, !showCleanDatePicker else { return }
 
-        guard self.syncUp,
-              !self.showCleanDatePicker
-        else { return }
-
-        self.syncUp = false
-        
+        syncUp = false
         NACCPersistentPrefs().flush()
 
         // Update text and medallion synchronously on main
-        self.text = LGV_UICleantimeDateReportString()
-            .naCleantimeText(beginDate: date, endDate: .now) ?? ""
+        text = LGV_UICleantimeDateReportString()
+            .naCleantimeText(beginDate: cleanDate, endDate: .now) ?? ""
 
-        let calc = LGV_CleantimeDateCalc(startDate: self.cleanDate).cleanTime
+        let calc = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
 
-        self.singleMedallion = (calc.years > 0)
+        singleMedallion = (calc.years > 0)
             ? LGV_MedallionImage(totalMonths: calc.totalMonths).drawImage()
             : LGV_KeytagImageGenerator(
                 isRingClosed: true,
@@ -234,9 +230,14 @@ struct NACCWatchAppContentView: View {
                 totalMonths: calc.totalMonths
             ).generatedImage
 
-        self.keytagChain = nil
+        keytagChain = nil
 
-        self._syncTask = Task {
+        // Cancel any previous render
+        _syncTask?.cancel()
+        let date = cleanDate  // capture value so it doesn't change under us
+
+        // Use a *structured* Task, not Task.detached
+        _syncTask = Task {
             let keytag = await Self._renderAssets(for: date)
             guard !Task.isCancelled else { return }
 
