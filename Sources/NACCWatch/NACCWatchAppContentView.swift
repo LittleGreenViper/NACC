@@ -65,12 +65,12 @@ final class WatchModel: NSObject, ObservableObject, @preconcurrency WCSessionDel
     @MainActor
     func reloadFromPrefs() {
         NACCPersistentPrefs().flush()
-        cleanDate   = NACCPersistentPrefs().cleanDate
-        watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue
+        self.cleanDate = NACCPersistentPrefs().cleanDate
+        self.watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue
 
         // Cancel any in-flight text generation
-        textTask?.cancel()
-        let date = cleanDate   // capture value
+        self.textTask?.cancel()
+        let date = self.cleanDate   // capture value
 
         textTask = Task { @MainActor in
             guard !Task.isCancelled else { return }
@@ -101,15 +101,12 @@ final class WatchModel: NSObject, ObservableObject, @preconcurrency WCSessionDel
 
     /* ################################################################## */
     /**
-     We just do a "belt and suspenders" reload.
+     NOP
      - parameter _: The session. ignored
      - parameter activationDidCompleteWith: ignored
      - parameter error: ignored
      */
-    func session(_: WCSession, activationDidCompleteWith: WCSessionActivationState, error: (any Error)?) {
-        self.reloadFromPrefs()
-        WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
-    }
+    func session(_: WCSession, activationDidCompleteWith: WCSessionActivationState, error: (any Error)?) { }
 }
 
 /* ###################################################################################################################################### */
@@ -121,35 +118,33 @@ final class WatchModel: NSObject, ObservableObject, @preconcurrency WCSessionDel
 struct NACCWatchAppContentView: View {
     /* ################################################################## */
     /**
-     This is a threaded image renderer for the keytags
+     This is a thread-safe image renderer for the keytags
      - parameter inDate: The new date that requires an update.
      */
     private static func _renderAssets(for inDate: Date) async -> UIImage? {
-        await Task.detached(priority: .userInitiated) { () -> UIImage? in
-            // Bail out quickly if already cancelled.
-            if Task.isCancelled { return nil }
+        // Bail out quickly if already cancelled.
+        if Task.isCancelled { return nil }
 
-            let calc = LGV_CleantimeDateCalc(startDate: inDate).cleanTime
+        let calc = LGV_CleantimeDateCalc(startDate: inDate).cleanTime
 
-            let keytag = LGV_MultiKeytagImageGenerator(
-                isVerticalStrip: true,
-                totalDays: calc.totalDays,
-                totalMonths: calc.totalMonths,
-                widestKeytagImageInDisplayUnits: (calc.years > 2 ? 64 : 128)
-            ).generatedImage
+        let keytag = LGV_MultiKeytagImageGenerator(
+            isVerticalStrip: true,
+            totalDays: calc.totalDays,
+            totalMonths: calc.totalMonths,
+            widestKeytagImageInDisplayUnits: (calc.years > 2 ? 64 : 128)
+        ).generatedImage
 
-            // One last cancellation check before returning.
-            if Task.isCancelled { return nil }
+        // One last cancellation check before returning.
+        if Task.isCancelled { return nil }
 
-            return keytag
-        }.value
+        return keytag
     }
 
     /* ################################################################## */
     /**
      Task used to render keytags in a separate thread.
      */
-    @State private var _syncTask: Task<Void, Never>?
+    static private var _syncTask: Task<Void, Never>?
 
     /* ################################################################## */
     /**
@@ -211,18 +206,20 @@ struct NACCWatchAppContentView: View {
      */
     private func _synchronize() {
         // We’re on the main actor (SwiftUI), so no need for DispatchQueue.main.async
-        guard syncUp, !showCleanDatePicker else { return }
+        guard self.syncUp,
+              !self.showCleanDatePicker
+        else { return }
 
-        syncUp = false
+        self.syncUp = false
         NACCPersistentPrefs().flush()
 
         // Update text and medallion synchronously on main
-        text = LGV_UICleantimeDateReportString()
+        self.text = LGV_UICleantimeDateReportString()
             .naCleantimeText(beginDate: cleanDate, endDate: .now) ?? ""
 
         let calc = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
 
-        singleMedallion = (calc.years > 0)
+        self.singleMedallion = (calc.years > 0)
             ? LGV_MedallionImage(totalMonths: calc.totalMonths).drawImage()
             : LGV_KeytagImageGenerator(
                 isRingClosed: true,
@@ -230,20 +227,18 @@ struct NACCWatchAppContentView: View {
                 totalMonths: calc.totalMonths
             ).generatedImage
 
-        keytagChain = nil
+        self.keytagChain = nil
 
         // Cancel any previous render
-        _syncTask?.cancel()
-        let date = cleanDate  // capture value so it doesn't change under us
+        Self._syncTask?.cancel()
+        Self._syncTask = nil
+        
+        let date = self.cleanDate  // capture value so it doesn't change under us
 
-        // Use a *structured* Task, not Task.detached
-        _syncTask = Task {
+        Self._syncTask = Task {
             let keytag = await Self._renderAssets(for: date)
-            guard !Task.isCancelled else { return }
-
-            await MainActor.run {
-                self.keytagChain = keytag
-            }
+            Self._syncTask = nil
+            await MainActor.run { self.keytagChain = keytag }
         }
     }
 
@@ -257,7 +252,7 @@ struct NACCWatchAppContentView: View {
             let calculator = LGV_CleantimeDateCalc(startDate: self.cleanDate).cleanTime
             NavigationStack {
                 TabView(selection: self.$watchFormat) {
-                    Text(text)
+                    Text(self.text)
                         .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
                         .foregroundStyle(Color.black)
                         .padding()
@@ -292,7 +287,10 @@ struct NACCWatchAppContentView: View {
                         .resizable(resizingMode: .stretch)
                         .cornerRadius(8)
                 }
-                .onDisappear { self._syncTask?.cancel() }
+                .onDisappear {
+                    Self._syncTask?.cancel()
+                    Self._syncTask = nil
+                }
                 .onChange(of: self.syncUp, initial: true) { self._synchronize() }
                 .onChange(of: self._scenePhase, initial: true) {
                     if .active == self._scenePhase {
