@@ -107,6 +107,7 @@
 "SLUG-ACTIONS-TITLE"                            =   "What Do You Want to Do?";
 "SLUG-ACTIONS-SHARE"                            =   "Share My Cleantime";
 "SLUG-ACTIONS-PRINT"                            =   "Print My Cleantime";
+"SLUG-CANCEL"                                   =   "Cancel";
 
 // MARK: -
 // MARK: - ACCESSIBILITY -

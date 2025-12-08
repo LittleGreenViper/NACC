@@ -853,9 +853,8 @@ struct NACC_MainContentView: View {
             }
         }
         // When the action button is hit, we ask the user if they want to share, or print.
-        .confirmationDialog("SLUG-ACTIONS-TITLE".localizedVariant,
-                            isPresented: self.$_showingActions,
-                            titleVisibility: .visible) {
+        .alert("SLUG-ACTIONS-TITLE".localizedVariant,
+                            isPresented: self.$_showingActions) {
             // Share…
             Button("SLUG-ACTIONS-SHARE".localizedVariant) { self._showingShareSheet = true }
 
