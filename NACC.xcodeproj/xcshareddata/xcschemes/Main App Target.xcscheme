@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D4A0C14F2ED78C3800F77D56"
-               BuildableName = "Main App Target.app"
+               BuildableName = "NACC.app"
                BlueprintName = "Main App Target"
                ReferencedContainer = "container:NACC.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D4A0C14F2ED78C3800F77D56"
-            BuildableName = "Main App Target.app"
+            BuildableName = "NACC.app"
             BlueprintName = "Main App Target"
             ReferencedContainer = "container:NACC.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D4A0C14F2ED78C3800F77D56"
-            BuildableName = "Main App Target.app"
+            BuildableName = "NACC.app"
             BlueprintName = "Main App Target"
             ReferencedContainer = "container:NACC.xcodeproj">
          </BuildableReference>

@@ -1631,7 +1631,7 @@
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_GeneralObserver";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.3;
+				minimumVersion = 1.1.4;
 			};
 		};
 		D462E4AE2D5D0806001E2C0F /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */ = {
