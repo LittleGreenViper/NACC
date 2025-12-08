@@ -1,4 +1,4 @@
-# ``NACC``
+# ``NACCApp``
 
 ![The Project Icon](icon.png)
 

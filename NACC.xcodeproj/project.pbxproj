@@ -142,10 +142,10 @@
 
 /* Begin PBXFileReference section */
 		D412D8E12D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWatchAppContentViewWatchDelegate.swift; sourceTree = "<group>"; };
-		D41657122C4846990015DDFD /* NACC.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NACC.docc; sourceTree = "<group>"; };
 		D41AC87D2C49813200C79B8C /* index.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
 		D41AC87E2C4981B500C79B8C /* apple-app-site-association */ = {isa = PBXFileReference; lastKnownFileType = text; path = "apple-app-site-association"; sourceTree = "<group>"; };
 		D43C66D82694AC33007D5883 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
+		D44D34062EE72F240040DB48 /* NACCApp.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NACCApp.docc; sourceTree = "<group>"; };
 		D456591C2EDCCB130010C38A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D45A93B72D4C4DEA008B2528 /* Watch Target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Watch Target.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D45CF3632809AB4500065E87 /* NACC.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
@@ -310,7 +310,6 @@
 		D43C66C52694AC20007D5883 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				D41657122C4846990015DDFD /* NACC.docc */,
 				D4B396112D49156100CB5501 /* Shared */,
 				D4A0C15E2ED78C6700F77D56 /* NACCApp */,
 				D4A420DF2D4D607800E4AC1E /* NACCWatch */,
@@ -342,6 +341,7 @@
 		D4A0C15E2ED78C6700F77D56 /* NACCApp */ = {
 			isa = PBXGroup;
 			children = (
+				D44D34062EE72F240040DB48 /* NACCApp.docc */,
 				D4A0C15B2ED78C6700F77D56 /* Assets.xcassets */,
 				D456591C2EDCCB130010C38A /* Info.plist */,
 				D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */,
