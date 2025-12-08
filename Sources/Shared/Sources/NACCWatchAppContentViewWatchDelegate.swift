@@ -89,7 +89,7 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
         #if !os(watchOS)    // Only necessary for iOS
             self.sendApplicationContext()
         #else
-            self._sendContextRequest()
+            self.sendContextRequest()
         #endif
     }
     
@@ -149,7 +149,7 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
         /**
          This sends a message to the phone (from the watch), that is interpreted as a request for a context update.
         */
-        func _sendContextRequest(_ inRetries: Int = 5) {
+        func sendContextRequest(_ inRetries: Int = 5) {
             /* ########################################################## */
             /**
              This handles a valid reply.
@@ -184,7 +184,7 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
                         print("Connection failure. Retrying...")
                     #endif
                     let randomDelay = Double.random(in: (0.3...1.0))
-                    DispatchQueue.global().asyncAfter(deadline: .now() + randomDelay) { self._sendContextRequest(self.retries - 1) }
+                    DispatchQueue.global().asyncAfter(deadline: .now() + randomDelay) { self.sendContextRequest(self.retries - 1) }
                     return
                 } else {
                     #if DEBUG

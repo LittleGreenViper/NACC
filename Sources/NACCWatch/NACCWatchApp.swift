@@ -156,6 +156,7 @@ struct NACCWatchApp: App {
             if .active == self._scenePhase {
                 NACCPersistentPrefs().flush()
                 Self._wcSessionDelegateHandler = NACCWatchAppContentViewWatchDelegate(updateHandler: self.updateApplicationContext)
+                Self._wcSessionDelegateHandler?.sendContextRequest()
                 WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
             }
         }

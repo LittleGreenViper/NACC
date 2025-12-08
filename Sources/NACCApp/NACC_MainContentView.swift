@@ -341,7 +341,9 @@ struct NACC_PickerPopoverContent: View {
             }
         }
         .frame(minWidth: isInPopover ? Self._miniumHorizontalWidthInDisplayUnits : nil)
-        .onChange(of: self.selectedDate) { _, inNewValue in Self._originalDate = Self._originalDate ?? inNewValue }
+        .onChange(of: self.selectedDate) { _, inNewValue in
+            Self._originalDate = Self._originalDate ?? inNewValue
+        }
         .onAppear {
             guard .now > self.selectedDate else {
                 Self._originalDate = nil
@@ -481,6 +483,12 @@ struct NACC_MainContentView: View {
      */
     private var _calendarIsEnabled: Bool { LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore }
     
+    /* ################################################################## */
+    /**
+     Scene phase, so we know when the app becomes active.
+     */
+    @Environment(\.scenePhase) private var scenePhase
+
     /* ################################################################## */
     /**
      This is set to true, when we want to show the action sheet.
@@ -868,7 +876,6 @@ struct NACC_MainContentView: View {
         .onAppear {
             self._watchDelegateObject = self._watchDelegateObject ?? NACCWatchAppContentViewWatchDelegate(updateHandler: self.updateApplicationContext)
             self.selectedDate = self._prefs.cleanDate
-            self._watchDelegateObject?.sendApplicationContext()
             // If we were opened from a URL that specified a tab, then we immediately open the report screen.
             if .undefined != self.selectedTab {
                 self.showResult = true
@@ -879,7 +886,6 @@ struct NACC_MainContentView: View {
         }
         .onChange(of: self.selectedDate) { _, inSelectedDate in
             self._prefs.cleanDate = inSelectedDate
-            self._watchDelegateObject?.sendApplicationContext()
             let calculator = LGV_CleantimeDateCalc(startDate: inSelectedDate).cleanTime
             let cleantimeDisplayImage = calculator.isOneYearOrMore ? LGV_UISingleCleantimeMedallionImageView() : LGV_UISingleCleantimeKeytagImageView()
             cleantimeDisplayImage.totalDays = calculator.totalDays
@@ -892,7 +898,16 @@ struct NACC_MainContentView: View {
             }
             self._displayedImage = generatedImage
         }
-            
+        .onChange(of: self._showingPicker) { _, inIsShowing in
+            if !inIsShowing {
+                self._watchDelegateObject?.sendApplicationContext()
+            }
+        }
+        .onChange(of: self.scenePhase) { _, newPhase in
+            if newPhase == .active {
+                self._watchDelegateObject?.sendApplicationContext()
+           }
+        }
     }
     
     /* ################################################################## */
