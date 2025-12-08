@@ -24,6 +24,26 @@
             </dict>
             <dict>
                 <key>Type</key>
+                <string>PSTitleValueSpecifier</string>
+                <key>Title</key>
+                <string>SLUG-REPO-HEADER</string>
+                <key>Key</key>
+                <string>Source Repo</string>
+                <key>DefaultValue</key>
+                <string></string>
+            </dict>
+            <dict>
+                <key>Type</key>
+                <string>PSTitleValueSpecifier</string>
+                <key>Title</key>
+                <string>SLUG-SOURCE-REPO</string>
+                <key>Key</key>
+                <string>LGV Repo</string>
+                <key>DefaultValue</key>
+                <string></string>
+            </dict>
+            <dict>
+                <key>Type</key>
                 <string>PSChildPaneSpecifier</string>
                 <key>Title</key>
                 <string>SLUG-OSS-HEADER</string>

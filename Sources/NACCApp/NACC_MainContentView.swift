@@ -291,17 +291,7 @@ struct NACC_PickerPopoverContent: View {
                             .padding(.horizontal, Self._cleandatePickerTitlePaddingInDisplayUnits)
                     }
                     
-                    // Graphical if it fits; otherwise wheel
-                    ViewThatFits(in: .vertical) {
-                        // Preferred: graphical
-                        DatePicker("",
-                                   selection: self.$selectedDate,
-                                   in: validDateRange,
-                                   displayedComponents: [.date]
-                        )
-                        .datePickerStyle(.graphical)
-                        
-                        // Fallback: wheel (more compact)
+                    if ProcessInfo.processInfo.isiOSAppOnMac {
                         DatePicker("",
                                    selection: self.$selectedDate,
                                    in: validDateRange,
@@ -309,6 +299,26 @@ struct NACC_PickerPopoverContent: View {
                         )
                         .datePickerStyle(.wheel)
                         .labelsHidden()
+                    } else {
+                        // Graphical if it fits; otherwise wheel
+                        ViewThatFits(in: .vertical) {
+                            // Preferred: graphical
+                            DatePicker("",
+                                       selection: self.$selectedDate,
+                                       in: validDateRange,
+                                       displayedComponents: [.date]
+                            )
+                            .datePickerStyle(.graphical)
+                            
+                            // Fallback: wheel (more compact)
+                            DatePicker("",
+                                       selection: self.$selectedDate,
+                                       in: validDateRange,
+                                       displayedComponents: [.date]
+                            )
+                            .datePickerStyle(.wheel)
+                            .labelsHidden()
+                        }
                     }
                     
                     // Buttons

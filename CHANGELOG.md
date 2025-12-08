@@ -1,3 +1,12 @@
+**7.0.1.0000** *December 8, 2025*
+
+- Added a URL to the Results Display action sheet.
+- Fixed an issue with Mac (Designed for iPad). The date picker needs to always be wheels.
+
+**7.0.0.0010** *December 7, 2025*
+
+- Introduced a complete rewrite (into SwiftUI).
+
 **6.2.3.0002** *November 20, 2025*
 
 - Bunch of improvements to the Watch app.

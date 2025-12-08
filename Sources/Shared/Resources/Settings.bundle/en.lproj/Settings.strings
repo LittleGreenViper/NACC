@@ -12,6 +12,8 @@ Copyright 2020-2025, Little Green Viper Software Development LLC
 "SLUG-APP-INFO-HEADER"                      =   "NACC App Information";
 // The button name for the OSS dependency list
 "SLUG-OSS-HEADER"                           =   "Software Dependencies";
+// The header for the source repo link.
+"SLUG-REPO-HEADER"                          =   "App Source Code Repo";
 
 // MARK: -
 // MARK: - DO NOT TRANSLATE BELOW THIS LINE -
@@ -27,3 +29,6 @@ Copyright 2020-2025, Little Green Viper Software Development LLC
 "SLUG-VERSION-GST"                          =   "https://github.com/RiftValleySoftware/RVS_Generic_Swift_Toolbox";
 "SLUG-VERSION-PP"                           =   "https://github.com/RiftValleySoftware/RVS_PersistentPrefs";
 "SLUG-VERSION-UKT"                          =   "https://github.com/RiftValleySoftware/RVS_UIKit_Toolbox";
+
+// MARK: SOURCE REPO
+"SLUG-SOURCE-REPO"                          =   "https://github.com/LittleGreenViper/NACC";
