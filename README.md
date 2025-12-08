@@ -45,7 +45,7 @@ The initial screen that you see, upon starting the app, has a basic "cleantime r
 > NOTE: On some screens, or if the device is rotated, the date picker may show up as "wheels."
 
 |Figure 5: The Picker As "Wheels"|
-|:----:|:----:|
+|:----:|
 |![Figure 5](img/Image05.png)|
 
 The app remembers the last date entered.
@@ -201,11 +201,11 @@ _Will work on any device, but will open the NACC, if it is installed. If not, a 
 
 ## Widgets
 
-As of version 5.4, you can add widgets to your iPhone, iPad, or Mac screens.
+You can add widgets to your device screens.
 
 ## Watch App
 
-As of version 6.0, there is a companion Watch app, with complications.
+The iOS app has a companion Watch app, with complications.
 
 ## Dependencies
 

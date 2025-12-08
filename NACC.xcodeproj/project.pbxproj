@@ -15,6 +15,7 @@
 		D40F87D62EDA4A8400E4B09B /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D40F87D52EDA4A8400E4B09B /* RVS_Generic_Swift_Toolbox */; };
 		D40F87D72EDA4AF100E4B09B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 		D412D8E32D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D412D8E12D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift */; };
+		D4145FFB2EE751B000E4B4CF /* NACC.docc in Sources */ = {isa = PBXBuildFile; fileRef = D44D34062EE72F240040DB48 /* NACC.docc */; };
 		D43BAAA72ED8E73E00B58900 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */; };
 		D43EF21F2EE3046D00709D39 /* NACCPagePrintRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */; };
 		D43EF2212EE3059700709D39 /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D43EF2202EE3059700709D39 /* RVS_UIKit_Toolbox */; };
@@ -145,7 +146,7 @@
 		D41AC87D2C49813200C79B8C /* index.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
 		D41AC87E2C4981B500C79B8C /* apple-app-site-association */ = {isa = PBXFileReference; lastKnownFileType = text; path = "apple-app-site-association"; sourceTree = "<group>"; };
 		D43C66D82694AC33007D5883 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
-		D44D34062EE72F240040DB48 /* NACCApp.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NACCApp.docc; sourceTree = "<group>"; };
+		D44D34062EE72F240040DB48 /* NACC.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NACC.docc; sourceTree = "<group>"; };
 		D456591C2EDCCB130010C38A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D45A93B72D4C4DEA008B2528 /* Watch Target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Watch Target.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D45CF3632809AB4500065E87 /* NACC.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NACC.entitlements; sourceTree = "<group>"; };
@@ -156,7 +157,7 @@
 		D489D35E2EDC91F600A86A6B /* NACC_InfoDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACC_InfoDisplayView.swift; sourceTree = "<group>"; };
 		D48C496D2C9372C5007E87C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
 		D49C9A7B280783C6008E9917 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D4A0C1502ED78C3800F77D56 /* Main App Target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Main App Target.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4A0C1502ED78C3800F77D56 /* NACC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NACC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A0C15B2ED78C6700F77D56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4A0C15C2ED78C6700F77D56 /* NACC_MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACC_MainContentView.swift; sourceTree = "<group>"; };
 		D4A0C15D2ED78C6700F77D56 /* NACC_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACC_App.swift; sourceTree = "<group>"; };
@@ -303,7 +304,7 @@
 				D4A420B02D4D5C7900E4AC1E /* Widget Target.appex */,
 				D4F9DA952D5BA6A300FFC2DC /* Complications Target.appex */,
 				D45315ED2E8FF6410019485D /* Frameworks */,
-				D4A0C1502ED78C3800F77D56 /* Main App Target.app */,
+				D4A0C1502ED78C3800F77D56 /* NACC.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -311,7 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				D4B396112D49156100CB5501 /* Shared */,
-				D4A0C15E2ED78C6700F77D56 /* NACCApp */,
+				D4A0C15E2ED78C6700F77D56 /* NACC */,
 				D4A420DF2D4D607800E4AC1E /* NACCWatch */,
 				D4F9DAA82D5BA6DE00FFC2DC /* NACCWatchComplication */,
 				D4A420EC2D4D607C00E4AC1E /* NACCWidget */,
@@ -338,10 +339,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D4A0C15E2ED78C6700F77D56 /* NACCApp */ = {
+		D4A0C15E2ED78C6700F77D56 /* NACC */ = {
 			isa = PBXGroup;
 			children = (
-				D44D34062EE72F240040DB48 /* NACCApp.docc */,
+				D44D34062EE72F240040DB48 /* NACC.docc */,
 				D4A0C15B2ED78C6700F77D56 /* Assets.xcassets */,
 				D456591C2EDCCB130010C38A /* Info.plist */,
 				D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */,
@@ -350,7 +351,7 @@
 				D489D35E2EDC91F600A86A6B /* NACC_InfoDisplayView.swift */,
 				D489D35C2EDC8EC900A86A6B /* NACC_ResultDisplayView.swift */,
 			);
-			path = NACCApp;
+			path = NACC;
 			sourceTree = "<group>";
 		};
 		D4A420DF2D4D607800E4AC1E /* NACCWatch */ = {
@@ -547,7 +548,7 @@
 				D43EF2202EE3059700709D39 /* RVS_UIKit_Toolbox */,
 			);
 			productName = NACC_App;
-			productReference = D4A0C1502ED78C3800F77D56 /* Main App Target.app */;
+			productReference = D4A0C1502ED78C3800F77D56 /* NACC.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D4A420AF2D4D5C7900E4AC1E /* Widget Target */ = {
@@ -851,6 +852,7 @@
 				D40F87CE2EDA47AA00E4B09B /* NACCPersistentPrefs.swift in Sources */,
 				D489D35F2EDC91F600A86A6B /* NACC_InfoDisplayView.swift in Sources */,
 				D489D35D2EDC8EC900A86A6B /* NACC_ResultDisplayView.swift in Sources */,
+				D4145FFB2EE751B000E4B4CF /* NACC.docc in Sources */,
 				D4A0C15F2ED78C6700F77D56 /* NACC_MainContentView.swift in Sources */,
 				D4A0C1602ED78C6700F77D56 /* NACC_App.swift in Sources */,
 			);
@@ -1115,7 +1117,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatch/NACCWatch.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0000;
+				CURRENT_PROJECT_VERSION = 0001;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DRIVERKIT_DEPLOYMENT_TARGET = "";
 				ENABLE_PREVIEWS = YES;
@@ -1164,7 +1166,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatch/NACCWatch.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0000;
+				CURRENT_PROJECT_VERSION = 0001;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DRIVERKIT_DEPLOYMENT_TARGET = "";
 				ENABLE_PREVIEWS = YES;
@@ -1211,13 +1213,13 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "Project-Meta/SwiftUITarget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0000;
+				CURRENT_PROJECT_VERSION = 0001;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Sources/NACCApp/Info.plist;
+				INFOPLIST_FILE = Sources/NACC/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
@@ -1239,7 +1241,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11;
 				MARKETING_VERSION = 7.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = NACC;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1264,13 +1266,13 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "Project-Meta/SwiftUITarget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0000;
+				CURRENT_PROJECT_VERSION = 0001;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Sources/NACCApp/Info.plist;
+				INFOPLIST_FILE = Sources/NACC/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NACC;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
@@ -1292,7 +1294,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11;
 				MARKETING_VERSION = 7.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = NACC;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1316,7 +1318,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWidget/NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0000;
+				CURRENT_PROJECT_VERSION = 0001;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1357,7 +1359,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWidget/NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0000;
+				CURRENT_PROJECT_VERSION = 0001;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1396,7 +1398,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0000;
+				CURRENT_PROJECT_VERSION = 0001;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1438,7 +1440,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0000;
+				CURRENT_PROJECT_VERSION = 0001;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1480,7 +1482,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatchComplication/NACCWatchComplicationExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0000;
+				CURRENT_PROJECT_VERSION = 0001;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1519,7 +1521,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatchComplication/NACCWatchComplicationExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0000;
+				CURRENT_PROJECT_VERSION = 0001;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -1,4 +1,4 @@
-# ``NACCApp``
+# ``NACC``
 
 ![The Project Icon](icon.png)
 
@@ -10,7 +10,7 @@ This is a simple "cleantime calculator" app, for NA members (It is not associate
 
 ### Get the application, itself
 
-|The app is available for free, from the iOS/iPadOS/MacOS Apple App Store|
+|The app is available for free, from the iOS/iPadOS Apple App Store|
 |:--:|
 |[![Apple App Store Badge](Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg)](https://apps.apple.com/us/app/nacc/id452299196)|
 
@@ -45,7 +45,7 @@ The initial screen that you see, upon starting the app, has a basic "cleantime r
 > NOTE: On some screens, or if the device is rotated, the date picker may show up as "wheels."
 
 |Figure 5: The Picker As "Wheels"|
-|:----:|:----:|
+|:----:|
 |![Figure 5](Image05.png)|
 
 The app remembers the last date entered.
@@ -88,7 +88,7 @@ If you select "Print My Cleantime," you will be presented with a Print Screen.
 
 
 |Figure 14: The Print Preview|
-|:----:|:----:|
+|:----:|
 |![Figure 14](Image14.png)|
 
 #### Setting a Calendar Event
@@ -201,11 +201,11 @@ _Will work on any device, but will open the NACC, if it is installed. If not, a 
 
 ## Widgets
 
-As of version 5.4, you can add widgets to your iPhone, iPad, or Mac screens.
+You can add widgets to your device screens.
 
 ## Watch App
 
-As of version 6.0, there is a companion Watch app, with complications.
+The iOS app has a companion Watch app, with complications.
 
 ## Dependencies
 
