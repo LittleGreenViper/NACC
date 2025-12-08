@@ -51,11 +51,24 @@ struct NACC_ResultDisplayView: View {
     
     /* ################################################################## */
     /**
+     This returns a URL string, with a universal URL that will open the app to this date, without invoking the report.
+     */
+    private var _urlString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return String(format: "SLUG-URL-STRING".localizedVariant, dateFormatter.string(from: NACCPersistentPrefs().cleanDate)) + "/\(self.selectedTab.rawValue)"
+    }
+    
+    /* ################################################################## */
+    /**
      Returns the items to be shared in the share sheet.
      */
     private var _myActivityItems: [Any] {
-        guard let image = imageStore.image else { return [] }
-        return [image]
+        guard let image = imageStore.image,
+              let url = URL(string: self._urlString)
+        else { return [] }
+        return [image, url]
     }
 
     /* ################################################################## */
