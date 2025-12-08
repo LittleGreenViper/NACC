@@ -88,7 +88,7 @@ If you select "Print My Cleantime," you will be presented with a Print Screen.
 
 
 |Figure 14: The Print Preview|
-|:----:|:----:|
+|:----:|
 |![Figure 14](img/Image14.png)|
 
 #### Setting a Calendar Event
