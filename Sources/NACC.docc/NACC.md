@@ -201,13 +201,11 @@ _Will work on any device, but will open the NACC, if it is installed. If not, a 
 
 ## Widgets
 
-As of version 5.4, you can now add widgets to your iPhone, iPad, or Mac screens.
+As of version 5.4, you can add widgets to your iPhone, iPad, or Mac screens.
 
 ## Watch App
 
-As of version 6.0, there is now a companion Watch app, with complications.
-
-> NOTE: In order to set the date on the Watch app, double-tap in the app screen.
+As of version 6.0, there is a companion Watch app, with complications.
 
 ## Dependencies
 

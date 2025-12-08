@@ -46,7 +46,7 @@
       <img class="carat" src="../img/carat.png" alt=""/>
       <a class="breadcrumb" href="../Structs.html">Structures</a>
       <img class="carat" src="../img/carat.png" alt=""/>
-      NACCWatch.NACCWatchAppContentView Structure Reference
+      Watch_Target.NACCWatchAppContentView Structure Reference
     </p>
 
     <div class="content-wrapper">
@@ -68,7 +68,13 @@
                 <a class="nav-group-task-link" href="../Classes/NACCWatchAppContentViewWatchDelegate.html">NACCWatchAppContentViewWatchDelegate</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes.html#/s:9NACCWatch19ResourceBundleClass014_2A9E9EF277856F17C709BA14F13A1A833LLC">ResourceBundleClass</a>
+                <a class="nav-group-task-link" href="../Classes.html#/s:12Watch_Target19ResourceBundleClass33_937C0905DEE5BCC35136243FC43681F3LLC">ResourceBundleClass</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes.html#/s:12Watch_Target19ResourceBundleClass33_A7E65A5B06D6ACDDF16D820E788FDA96LLC">ResourceBundleClass</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/WatchModel.html">WatchModel</a>
               </li>
             </ul>
           </li>
@@ -79,7 +85,10 @@
                 <a class="nav-group-task-link" href="../Global%20Variables.html#/resourceBundle">resourceBundle</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Global%20Variables.html#/s:9NACCWatch14resourceBundle014_2A9E9EF277856E17C709BA14F13A1A833LLSo8NSBundleCvp">resourceBundle</a>
+                <a class="nav-group-task-link" href="../Global%20Variables.html#/s:12Watch_Target14resourceBundle33_937C0905DEE5BCC35136243FC43681F3LLSo8NSBundleCvp">resourceBundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Global%20Variables.html#/s:12Watch_Target25resourceBundleDescription33_A7E65A5B06D6ACDDF16D820E788FDA96LL10Foundation23LocalizedStringResourceV0dE0Ovp">resourceBundleDescription</a>
               </li>
             </ul>
           </li>
@@ -94,6 +103,12 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/DeveloperToolsSupport/ColorResource.html">– ColorResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/LocalizedStringResource.html">LocalizedStringResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/LocalizedStringResource/WatchStrings.html">– WatchStrings</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/SwiftUI.html">SwiftUI</a>
@@ -153,9 +168,59 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9NACCWatch0A14AppContentViewV12singleKeytagSo7UIImageCSgvp"></a>
-                    <a name="//apple_ref/swift/Property/singleKeytag" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9NACCWatch0A14AppContentViewV12singleKeytagSo7UIImageCSgvp">singleKeytag</a>
+                    <a name="/s:12Watch_Target23NACCWatchAppContentViewV13_renderAssets031_C7722677394EDDF04A41AD849173F9M0LL3forSo7UIImageCSg10Foundation4DateV_tYaFZ"></a>
+                    <a name="//apple_ref/swift/Method/_renderAssets(for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Watch_Target23NACCWatchAppContentViewV13_renderAssets031_C7722677394EDDF04A41AD849173F9M0LL3forSo7UIImageCSg10Foundation4DateV_tYaFZ">_renderAssets(for:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is a thread-safe image renderer for the keytags</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">_renderAssets</span><span class="p">(</span><span class="k">for</span> <span class="nv">inDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">)</span> <span class="n">async</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inDate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The new date that requires an update.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Watch_Target23NACCWatchAppContentViewV9_syncTask031_C7722677394EDDF04A41AD849173F9M0LLScTyyts5NeverOGSgvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/_syncTask" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Watch_Target23NACCWatchAppContentViewV9_syncTask031_C7722677394EDDF04A41AD849173F9M0LLScTyyts5NeverOGSgvpZ">_syncTask</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -163,16 +228,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The image that represents a keytag. May be nil.</p>
+                        <p>Task used to render keytags in a separate thread.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@Binding</span>
-<span class="kd">@MainActor</span>
-<span class="k">var</span> <span class="nv">singleKeytag</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">_syncTask</span><span class="p">:</span> <span class="kt">Task</span><span class="o">&lt;</span><span class="kt">Void</span><span class="p">,</span> <span class="kt">Never</span><span class="o">&gt;</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -182,9 +246,96 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9NACCWatch0A14AppContentViewV15singleMedallionSo7UIImageCSgvp"></a>
+                    <a name="/s:12Watch_Target23NACCWatchAppContentViewV11_scenePhase031_C7722677394EDDF04A41AD849173F9M0LL7SwiftUI05SceneH0Ovp"></a>
+                    <a name="//apple_ref/swift/Property/_scenePhase" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Watch_Target23NACCWatchAppContentViewV11_scenePhase031_C7722677394EDDF04A41AD849173F9M0LL7SwiftUI05SceneH0Ovp">_scenePhase</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tracks scene activity.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Environment</span>
+<span class="kd">@MainActor</span>
+<span class="kd">private</span> <span class="k">var</span> <span class="nv">_scenePhase</span><span class="p">:</span> <span class="kt">ScenePhase</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Watch_Target23NACCWatchAppContentViewV5modelAA0A5ModelCvp"></a>
+                    <a name="//apple_ref/swift/Property/model" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Watch_Target23NACCWatchAppContentViewV5modelAA0A5ModelCvp">model</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An instance of the observable model class.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Binding</span>
+<span class="kd">@MainActor</span>
+<span class="k">var</span> <span class="nv">model</span><span class="p">:</span> <span class="kt"><a href="../Classes/WatchModel.html">WatchModel</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Watch_Target23NACCWatchAppContentViewV11keytagChainSo7UIImageCSgvp"></a>
+                    <a name="//apple_ref/swift/Property/keytagChain" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Watch_Target23NACCWatchAppContentViewV11keytagChainSo7UIImageCSgvp">keytagChain</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The image that represents the keytag chain. May be nil.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Binding</span>
+<span class="kd">@MainActor</span>
+<span class="k">var</span> <span class="nv">keytagChain</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Watch_Target23NACCWatchAppContentViewV15singleMedallionSo7UIImageCSgvp"></a>
                     <a name="//apple_ref/swift/Property/singleMedallion" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9NACCWatch0A14AppContentViewV15singleMedallionSo7UIImageCSgvp">singleMedallion</a>
+                    <a class="token" href="#/s:12Watch_Target23NACCWatchAppContentViewV15singleMedallionSo7UIImageCSgvp">singleMedallion</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -211,9 +362,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9NACCWatch0A14AppContentViewV4textSSvp"></a>
+                    <a name="/s:12Watch_Target23NACCWatchAppContentViewV4textSSvp"></a>
                     <a name="//apple_ref/swift/Property/text" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9NACCWatch0A14AppContentViewV4textSSvp">text</a>
+                    <a class="token" href="#/s:12Watch_Target23NACCWatchAppContentViewV4textSSvp">text</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -240,9 +391,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9NACCWatch0A14AppContentViewV19showCleanDatePickerSbvp"></a>
+                    <a name="/s:12Watch_Target23NACCWatchAppContentViewV19showCleanDatePickerSbvp"></a>
                     <a name="//apple_ref/swift/Property/showCleanDatePicker" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9NACCWatch0A14AppContentViewV19showCleanDatePickerSbvp">showCleanDatePicker</a>
+                    <a class="token" href="#/s:12Watch_Target23NACCWatchAppContentViewV19showCleanDatePickerSbvp">showCleanDatePicker</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -269,9 +420,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9NACCWatch0A14AppContentViewV6syncUpSbvp"></a>
+                    <a name="/s:12Watch_Target23NACCWatchAppContentViewV6syncUpSbvp"></a>
                     <a name="//apple_ref/swift/Property/syncUp" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9NACCWatch0A14AppContentViewV6syncUpSbvp">syncUp</a>
+                    <a class="token" href="#/s:12Watch_Target23NACCWatchAppContentViewV6syncUpSbvp">syncUp</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -298,9 +449,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9NACCWatch0A14AppContentViewV9cleanDate10Foundation0F0Vvp"></a>
+                    <a name="/s:12Watch_Target23NACCWatchAppContentViewV9cleanDate10Foundation0H0Vvp"></a>
                     <a name="//apple_ref/swift/Property/cleanDate" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9NACCWatch0A14AppContentViewV9cleanDate10Foundation0F0Vvp">cleanDate</a>
+                    <a class="token" href="#/s:12Watch_Target23NACCWatchAppContentViewV9cleanDate10Foundation0H0Vvp">cleanDate</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -327,9 +478,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9NACCWatch0A14AppContentViewV11watchFormatSivp"></a>
+                    <a name="/s:12Watch_Target23NACCWatchAppContentViewV11watchFormatSivp"></a>
                     <a name="//apple_ref/swift/Property/watchFormat" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9NACCWatch0A14AppContentViewV11watchFormatSivp">watchFormat</a>
+                    <a class="token" href="#/s:12Watch_Target23NACCWatchAppContentViewV11watchFormatSivp">watchFormat</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -356,9 +507,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9NACCWatch0A14AppContentViewV11synchronizeyyF"></a>
-                    <a name="//apple_ref/swift/Method/synchronize()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9NACCWatch0A14AppContentViewV11synchronizeyyF">synchronize()</a>
+                    <a name="/s:12Watch_Target23NACCWatchAppContentViewV12_synchronize031_C7722677394EDDF04A41AD849173F9L0LLyyF"></a>
+                    <a name="//apple_ref/swift/Method/_synchronize()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Watch_Target23NACCWatchAppContentViewV12_synchronize031_C7722677394EDDF04A41AD849173F9L0LLyyF">_synchronize()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -374,7 +525,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@MainActor</span>
-<span class="kd">func</span> <span class="nf">synchronize</span><span class="p">()</span></code></pre>
+<span class="kd">private</span> <span class="kd">func</span> <span class="nf">_synchronize</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -384,9 +535,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9NACCWatch0A14AppContentViewV4bodyQrvp"></a>
+                    <a name="/s:12Watch_Target23NACCWatchAppContentViewV4bodyQrvp"></a>
                     <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9NACCWatch0A14AppContentViewV4bodyQrvp">body</a>
+                    <a class="token" href="#/s:12Watch_Target23NACCWatchAppContentViewV4bodyQrvp">body</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -418,7 +569,7 @@ The user can double-tap on it, to change the cleandate.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2025 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2025-02-17)</p>
+      <p>&copy; 2025 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2025-12-08)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>

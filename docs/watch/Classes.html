@@ -66,7 +66,13 @@
                 <a class="nav-group-task-link" href="Classes/NACCWatchAppContentViewWatchDelegate.html">NACCWatchAppContentViewWatchDelegate</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes.html#/s:9NACCWatch19ResourceBundleClass014_2A9E9EF277856F17C709BA14F13A1A833LLC">ResourceBundleClass</a>
+                <a class="nav-group-task-link" href="Classes.html#/s:12Watch_Target19ResourceBundleClass33_937C0905DEE5BCC35136243FC43681F3LLC">ResourceBundleClass</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes.html#/s:12Watch_Target19ResourceBundleClass33_A7E65A5B06D6ACDDF16D820E788FDA96LLC">ResourceBundleClass</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/WatchModel.html">WatchModel</a>
               </li>
             </ul>
           </li>
@@ -77,7 +83,10 @@
                 <a class="nav-group-task-link" href="Global%20Variables.html#/resourceBundle">resourceBundle</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Global%20Variables.html#/s:9NACCWatch14resourceBundle014_2A9E9EF277856E17C709BA14F13A1A833LLSo8NSBundleCvp">resourceBundle</a>
+                <a class="nav-group-task-link" href="Global%20Variables.html#/s:12Watch_Target14resourceBundle33_937C0905DEE5BCC35136243FC43681F3LLSo8NSBundleCvp">resourceBundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Global%20Variables.html#/s:12Watch_Target25resourceBundleDescription33_A7E65A5B06D6ACDDF16D820E788FDA96LL10Foundation23LocalizedStringResourceV0dE0Ovp">resourceBundleDescription</a>
               </li>
             </ul>
           </li>
@@ -92,6 +101,12 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/DeveloperToolsSupport/ColorResource.html">– ColorResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/LocalizedStringResource.html">LocalizedStringResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/LocalizedStringResource/WatchStrings.html">– WatchStrings</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/SwiftUI.html">SwiftUI</a>
@@ -139,13 +154,22 @@
         <section class="section">
           <div class="section-content">
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Observable%20Model"></a>
+                <a name="//apple_ref/swift/Section/Observable Model" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Observable%20Model"></a>
+                  <h3 class="section-name"><span>Observable Model</span>
+</h3>
+                </div>
+              </div>
               <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9NACCWatch19ResourceBundleClass014_2A9E9EF277856F17C709BA14F13A1A833LLC"></a>
-                    <a name="//apple_ref/swift/Class/ResourceBundleClass" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9NACCWatch19ResourceBundleClass014_2A9E9EF277856F17C709BA14F13A1A833LLC">ResourceBundleClass</a>
+                    <a name="/c:@M@Watch_Target@objc(cs)WatchModel"></a>
+                    <a name="//apple_ref/swift/Class/WatchModel" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Watch_Target@objc(cs)WatchModel">WatchModel</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -153,13 +177,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>This wraps the preferences in an observable wrapper.</p>
+
+                        <a href="Classes/WatchModel.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">class</span> <span class="kt">ResourceBundleClass</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@MainActor</span>
+<span class="kd">final</span> <span class="kd">class</span> <span class="kt">WatchModel</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">ObservableObject</span><span class="p">,</span> <span class="kd">@preconcurrency</span> <span class="kt">WCSessionDelegate</span></code></pre>
 
                         </div>
                       </div>
@@ -182,9 +209,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@NACCWatch@objc(cs)NACCPersistentPrefs"></a>
+                    <a name="/c:@M@Watch_Target@objc(cs)NACCPersistentPrefs"></a>
                     <a name="//apple_ref/swift/Class/NACCPersistentPrefs" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@NACCWatch@objc(cs)NACCPersistentPrefs">NACCPersistentPrefs</a>
+                    <a class="token" href="#/c:@M@Watch_Target@objc(cs)NACCPersistentPrefs">NACCPersistentPrefs</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -200,7 +227,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">NACCPersistentPrefs</span> <span class="p">:</span> <span class="kt">RVS_PersistentPrefs</span></code></pre>
+                          <pre class="highlight swift"><code><span class="n">nonisolated</span> <span class="kd">class</span> <span class="kt">NACCPersistentPrefs</span> <span class="p">:</span> <span class="kt">RVS_PersistentPrefs</span></code></pre>
 
                         </div>
                       </div>
@@ -223,9 +250,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@NACCWatch@objc(cs)NACCWatchAppContentViewWatchDelegate"></a>
+                    <a name="/c:@M@Watch_Target@objc(cs)NACCWatchAppContentViewWatchDelegate"></a>
                     <a name="//apple_ref/swift/Class/NACCWatchAppContentViewWatchDelegate" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@NACCWatch@objc(cs)NACCWatchAppContentViewWatchDelegate">NACCWatchAppContentViewWatchDelegate</a>
+                    <a class="token" href="#/c:@M@Watch_Target@objc(cs)NACCWatchAppContentViewWatchDelegate">NACCWatchAppContentViewWatchDelegate</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -248,6 +275,58 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Watch_Target19ResourceBundleClass33_937C0905DEE5BCC35136243FC43681F3LLC"></a>
+                    <a name="//apple_ref/swift/Class/ResourceBundleClass" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Watch_Target19ResourceBundleClass33_937C0905DEE5BCC35136243FC43681F3LLC">ResourceBundleClass</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">class</span> <span class="kt">ResourceBundleClass</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Watch_Target19ResourceBundleClass33_A7E65A5B06D6ACDDF16D820E788FDA96LLC"></a>
+                    <a name="//apple_ref/swift/Class/ResourceBundleClass" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Watch_Target19ResourceBundleClass33_A7E65A5B06D6ACDDF16D820E788FDA96LLC">ResourceBundleClass</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">class</span> <span class="kt"><a href="Classes.html#/s:12Watch_Target19ResourceBundleClass33_937C0905DEE5BCC35136243FC43681F3LLC">ResourceBundleClass</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -256,7 +335,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2025 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2025-02-17)</p>
+      <p>&copy; 2025 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2025-12-08)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
