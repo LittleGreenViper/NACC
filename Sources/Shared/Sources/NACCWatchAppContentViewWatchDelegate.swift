@@ -78,8 +78,8 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
      Called when an activation change occurs.
      
      - parameter inSession: The session experiencing the activation change.
-     - parameter activationDidCompleteWith: The new state.
-     - parameter error: If there was an error, it is sent in here.
+     - parameter inActivationState: The new state.
+     - parameter inError: If there was an error, it is sent in here.
      */
     func session(_ inSession: WCSession, activationDidCompleteWith inActivationState: WCSessionActivationState, error inError: (any Error)?) {
         #if DEBUG
@@ -98,7 +98,7 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
      Called when the application context is updated from the peer.
      
      - parameter inSession: The session receiving the context update.
-     - parameter didReceiveApplicationContext: The new context data.
+     - parameter inApplicationContext: The new context data.
     */
     func session(_ inSession: WCSession, didReceiveApplicationContext inApplicationContext: [String: Any]) {
         DispatchQueue.main.async {
@@ -131,6 +131,7 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
         /**
          Called when a context update request message from the watch, is received on the phone.
          - parameter inSession: The session receiving the message.
+         - parameter inMessage: The message that we received from the phone.
         */
         func session(_ inSession: WCSession, didReceiveMessage inMessage: [String: Any]) {
             #if DEBUG
@@ -241,7 +242,7 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
     /**
      Initializer
      
-     - parameter updateHandler: The function that will be called with any updates.
+     - parameter inUpdateHandler: The function that will be called with any updates.
      */
     init(updateHandler inUpdateHandler: ApplicationContextHandler?) {
         self.updateHandler = inUpdateHandler

@@ -82,8 +82,8 @@ class NACCPagePrintRenderer: UIPrintPageRenderer {
     /**
      Initializer with the string and the image.
      
-     - parameter report: The string, containing the cleantime report.
-     - parameter image: The tag/medallion image displayed.
+     - parameter inReportString: The string, containing the cleantime report.
+     - parameter inTagImage: The tag/medallion image displayed.
      */
     init(report inReportString: String, image inTagImage: UIImage?) {
         self.cleantimeReport = inReportString
@@ -116,7 +116,7 @@ extension NACCPagePrintRenderer {
      This will draw out the report page, with the report in the top quarter, and the image in the bottom.
      
      - parameter at: The page number (ignored).
-     - parameter in: The content destination context rect.
+     - parameter inContentRect: The content destination context rect.
      */
     override func drawContentForPage(at: Int, in inContentRect: CGRect) {
         let reportRect = CGRect(origin: inContentRect.origin, size: CGSize(width: inContentRect.size.width, height: inContentRect.size.height * 0.25))
@@ -140,7 +140,7 @@ extension NACCPagePrintRenderer {
     /**
      Draw the text report.
      
-     - parameter in: This is the display rect.
+     - parameter inContentRect: This is the display rect.
      */
     func drawReport(in inContentRect: CGRect) {
         let cRect = inContentRect.insetBy(dx: 4, dy: 4)
@@ -175,7 +175,7 @@ extension NACCPagePrintRenderer {
      Draw the image
      
      - parameter inImage: The image to be drawn.
-     - parameter in: This is the display rect.
+     - parameter inContentRect: This is the display rect.
      */
     static func drawImage(_ inImage: UIImage, in inContentRect: CGRect) {
         let cRect = inContentRect.insetBy(dx: (inContentRect.size.width - inImage.size.width) / 2,

@@ -88,7 +88,7 @@ final class WatchModel: NSObject, ObservableObject, @preconcurrency WCSessionDel
      Called when the app gets its context.
      
      - parameter _: Session. ignored
-     - parameter didReceiveApplicationContext: the app context
+     - parameter inContext: the app context
      */
     func session(_: WCSession, didReceiveApplicationContext inContext: [String: Any]) {
         Task { @MainActor in

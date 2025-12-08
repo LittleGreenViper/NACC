@@ -261,9 +261,9 @@ struct NACCWidgetIntent: WidgetConfigurationIntent {
     /**
      Parameterized initializer.
      
-     - parameter forceKeytag: If true, then medallions will not be displayed.
-     - parameter onlyText: If true, then no image is shown; only the text report.
-     - parameter dontShowYellowBackground: If true, then the yellow gradient background will NOT be shown.
+     - parameter inForceKeytag: If true, then medallions will not be displayed.
+     - parameter inOnlyText: If true, then no image is shown; only the text report.
+     - parameter inDontShowYellowBackground: If true, then the yellow gradient background will NOT be shown.
      */
     init(forceKeytag inForceKeytag: Bool,
          onlyText inOnlyText: Bool,
@@ -393,11 +393,11 @@ struct NACC_Entry: TimelineEntry {
     /**
      Default initializer
      
-     - parameter date: The entry date (used to determine whether or not to display). This is always set to `Date.now`
-     - parameter cleanDate: The cleandate. This should reflect the date selected in the main app, and is used to determine the display.
-     - parameter forceKeytag: If true, then medallions will not be displayed.
-     - parameter onlyText: If true, then no image is shown; only the text report.
-     - parameter dontShowBackground: If true, then the yellow gradient background will NOT be shown.
+     - parameter inDate: The entry date (used to determine whether or not to display). This is always set to `Date.now`
+     - parameter inCleandate: The cleandate. This should reflect the date selected in the main app, and is used to determine the display.
+     - parameter inForceKeytag: If true, then medallions will not be displayed.
+     - parameter inOnlyText: If true, then no image is shown; only the text report.
+     - parameter inDontShowBackground: If true, then the yellow gradient background will NOT be shown.
 
      */
     init(date inDate: Date = .now,
