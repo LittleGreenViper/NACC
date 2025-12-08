@@ -28,43 +28,112 @@ This is a simple "cleantime calculator" app, for NA members (It is not associate
 
 ## Basic Operation
 
-> NOTE: As of version 5.4.0, there is now a widget available. This can be configured to display the latest keytag, medallion, text report, or all of the above.
-
 ### The Initial ("My Cleantime") Screen
 
-The initial screen that you see, upon starting the app, has a basic "wheel-style" date entry that allows you to enter a cleandate. Once you have entered a date, the label below the date entry changes into a report of the cleantime, and also becomes a "selectable" button.
+The initial screen that you see, upon starting the app, has a basic "cleantime report" text button. If you select it, a date picker will appear, allowing you to enter a cleandate. Once you have entered a date, the report updates to reflect the new cleandate.
 
-|Figure 1: The Initial Screen|Figure 2: After Changing the Date|Figure 3: Dark Mode|
-|:----:|:----:|:----:|
-|![Figure 1](img/Figure-01.png)|![Figure 2](img/Figure-02.png)|![Figure 3](img/Figure-03.png)|
+|Figure 1: The Initial Screen|Figure 2: Dark Mode|
+|:----:|:----:|
+|![Figure 1](img/Image01.png)|![Figure 2](img/Image02.png)|
 
-Tapping on the "Info" button will bring in a screen, displaying information about the app.
+#### Setting A Cleandate
 
-Tapping on the "action" button will allow you to share the report with others, using different apps, like [Messages](https://apps.apple.com/us/app/messages/id1146560473), or [Mail](https://apps.apple.com/us/app/mail/id1108187098).
+|Figure 3: The Date Picker|Figure 4: Dark Mode|
+|:----:|:----:|
+|![Figure 3](img/Image03.png)|![Figure 4](img/Image04.png)|
 
-Tapping on the "calendar" button will allow you to create calendar reminders, every year, starting from the cleandate.
+> NOTE: On some screens, or if the device is rotated, the date picker may show up as "wheels."
 
-|Figure 4: Action Screen|Figure 5: Calendar Screen|Figure 6: Print Screen|
-|:----:|:----:|:----:|
-|![Figure 4](img/Figure-04.png)|![Figure 5](img/Figure-05.png)|![Figure 6](img/Figure-06.png)|
+|Figure 5: The Picker As "Wheels"|
+|:----:|:----:|
+|![Figure 5](img/Image05.png)|
+
+The app remembers the last date entered.
+
+|Figure 6: After Changing the Date|Figure 7: Dark Mode|
+|:----:|:----:|
+|![Figure 6](img/Image06.png)|![Figure 7](img/Image07.png)|
+
+#### Sharing Your Cleandate
+
+Selecting the "action" button (upper left of the Initial Screen) will allow you to share the report with others, using different apps, like [Messages](https://apps.apple.com/us/app/messages/id1146560473), or [Mail](https://apps.apple.com/us/app/mail/id1108187098), or print out the report.
+
+Upon first selecting the button, you will be presented with an alert, asking you to select what you wish to do.
+
+|Figure 8: The Action Selection Alert|Figure 9: Dark Mode|
+|:----:|:----:|
+|![Figure 8](img/Image08.png)|![Figure 9](img/Image09.png)|
+
+##### Sharing Your Cleantime
+
+If you select "Share My Cleantime," you will be presented with a classic Share Sheet.
+
+|Figure 10: The Share Sheet|Figure 11: Dark Mode|
+|:----:|:----:|
+|![Figure 10](img/Image10.png)|![Figure 12](img/Image11.png)|
+
+This will include [a Universal Link](https://developer.apple.com/documentation/xcode/supporting-universal-links-in-your-app) to the report. This link will either take you to a Web page, showing keytags, or will open the app, setting the date.
+
+[Here is an example _(`https://nacc.littlegreenviper.com/?2010-03-17`)_](https://nacc.littlegreenviper.com/?2010-03-17)
+
+If you have the app, it will open the app, and set the date to March 17, 2010. If you do not have the app, it will take you to a Web page, showing a keytag strip, denoting the cleantime, and with links to [the app in the App Store](https://littlegreenviper.com/portfolio/nacc/).
+
+##### Printing the Report
+
+If you select "Print My Cleantime," you will be presented with a Print Screen.
+
+|Figure 12: The Print Screen|Figure 13: Dark Mode|
+|:----:|:----:|
+|![Figure 12](img/Image12.png)|![Figure 13](img/Image13.png)|
+
+
+|Figure 14: The Print Preview|
+|:----:|:----:|
+|![Figure 14](img/Image14.png)|
+
+#### Setting a Calendar Event
+
+Selecting the "calendar" button (just to the right of the Action Button) will allow you to create calendar reminders, every year, starting from the cleandate.
+
+It will "pre-populate" an event, with the date as an "all day" starting date, and yearly repeats.
+
+|Figure 15: The Calendar Entry Screen|Figure 16: Dark Mode|
+|:----:|:----:|
+|![Figure 15](img/Image15.png)|![Figure 16](img/Image16.png)|
+
+### The App Information Screen
+
+Selecting the "Info" button (upper right of the Initial Screen) will bring in a screen, displaying information about the app.
+
+|Figure 17: App Information Screen|Figure 18: Dark Mode|
+|:----:|:----:|
+|![Figure 17](img/Image17.png)|![Figure 18](img/Image18.png)|
+
+The three buttons along the bottom will take you to the app settings panel, in the device's Settings app, the Web site Privacy Policy Page (in Safari), and the main Little Green Viper Software Development LLC Web site, respectively.
 
 ### The Cleantime Commemoration Tab Screen
 
-If you select the cleantime report, it will bring in another screen, that will have three tabs. These tabs will display the cleantime, using keytags or medallions:
+If you select the cleantime report, it will bring in another screen, that will have three tabs. These tabs will display the cleantime, using keytags or medallions.
 
-Tapping on the logo will take you to the results, as an array of keytags.
+If you have entered a date less than 1 year in the past, then the Medallions tab is not available.
 
-Tapping on the keytag (or medallion) will take you to the results as either medallions, or as the array of keytags.
+|Figure 19: Keytag Array Tab|Figure 20: Dark Mode|
+|:----:|:----:|
+|![Figure 19](img/Image19.png)|![Figure 20](img/Image20.png)|
 
-|Figure 6: Keytags in an Array|Figure 7: Keytags in a Vertical Strip|Figure 8: Medallions in an Array|
-|:----:|:----:|:----:|
-|![Figure 7](img/Figure-07.png)|![Figure 8](img/Figure-08.png)|![Figure 9](img/Figure-09.png)|
+|Figure 21: Keytag Strip Tab|Figure 22: Dark Mode|
+|:----:|:----:|
+|![Figure 21](img/Image21.png)|![Figure 22](img/Image22.png)|
 
-You can scroll these displays, and also do a pinch-to-zoom.
+|Figure 23: Medallion Array Tab|Figure 24: Dark Mode|
+|:----:|:----:|
+|![Figure 23](img/Image23.png)|![Figure 24](img/Image24.png)|
+
+Selecting the logo (above the report) will take you to the Keytag Array Tab.
+
+Selecting the keytag/medallion (under the report) will take you to the results as either medallions, or as the array of keytags.
 
 If you select the action button, you will now be able to print the display, share it (and the report), via [Messages](https://apps.apple.com/us/app/messages/id1146560473), or [Mail](https://apps.apple.com/us/app/mail/id1108187098), or save the image into your Photo Library.
-
-The app remembers the last date entered, and the last tab selected. In some cases, tabs may not be enabled (If you have entered a date less than 30 days in the past, then only the Keytag Array tab is enabled. If less than 1 year, then the Medallions tab is disabled).
 
 ## URL Scheme
 
@@ -88,9 +157,9 @@ _N_ is the numerical index of a tab:
 - 1 is Keytag Strip
 - 2 is Medallions
 
-|Figure 10: URL Entry In Safari|Figure 11: Permission Alert|
+|Figure 25: URL Entry In Safari|Figure 26: Permission Alert|
 |:----:|:----:|
-|![img/Figure 10](img/Figure-10.png)|![img/Figure 11](img/Figure-11.png)|
+|![Figure 25](img/Image25.png)|![Figure 26](img/Image26.png)|
 
 ### Example URL Scheme URLs
 
