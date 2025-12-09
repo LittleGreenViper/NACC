@@ -1,3 +1,8 @@
+**7.0.1.0001** *December 9, 2025*
+
+- Updated some dependencies to the latest versions.
+- Updated the documentation generator.
+
 **7.0.1.0000** *December 8, 2025*
 
 - Added a URL to the Results Display action sheet.
