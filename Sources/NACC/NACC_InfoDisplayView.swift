@@ -170,7 +170,7 @@ struct NACC_InfoDisplayView: View {
 
                     // The privacy link button
                     Button("SLUG-PRIVACY-BUTTON".localizedVariant) {
-                        if let url = Bundle.main.siteURI {
+                        if let url = Bundle.main.privacyURI {
                             self.openURL(url)
                         }
                     }
