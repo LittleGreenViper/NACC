@@ -1,3 +1,11 @@
+**7.0.3.0000** *December 17, 2025*
+
+- The string displayed when asking for photo permission was wrong. That's been fixed.
+
+**7.0.2.0000** *December 10, 2025*
+
+- The URL to the Privacy Page was wrong. That's been fixed.'
+
 **7.0.1.0001** *December 9, 2025*
 
 - Updated some dependencies to the latest versions.
