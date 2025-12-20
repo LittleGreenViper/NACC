@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D40D7E002EF6D1E200869069 /* NACCWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A420E82D4D607C00E4AC1E /* NACCWidgetBundle.swift */; };
 		D40F87CD2EDA47AA00E4B09B /* NACCWatchAppContentViewWatchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D412D8E12D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift */; };
 		D40F87CE2EDA47AA00E4B09B /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D40F87D02EDA4A8400E4B09B /* RVS_Persistent_Prefs in Frameworks */ = {isa = PBXBuildFile; productRef = D40F87CF2EDA4A8400E4B09B /* RVS_Persistent_Prefs */; };
@@ -31,7 +32,6 @@
 		D462E4C22D5D0AB7001E2C0F /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D462E4C32D5D0B17001E2C0F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
 		D48285732EDE47A100721EA0 /* Watch Target.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D45A93B72D4C4DEA008B2528 /* Watch Target.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D48285792EDE4A5900721EA0 /* Widget Target.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4A420B02D4D5C7900E4AC1E /* Widget Target.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D489D35D2EDC8EC900A86A6B /* NACC_ResultDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D489D35C2EDC8EC900A86A6B /* NACC_ResultDisplayView.swift */; };
 		D489D35F2EDC91F600A86A6B /* NACC_InfoDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D489D35E2EDC91F600A86A6B /* NACC_InfoDisplayView.swift */; };
 		D4A0C15F2ED78C6700F77D56 /* NACC_MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A0C15C2ED78C6700F77D56 /* NACC_MainContentView.swift */; };
@@ -48,7 +48,6 @@
 		D4A420ED2D4D607C00E4AC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A420E62D4D607C00E4AC1E /* Assets.xcassets */; };
 		D4A420EF2D4D607C00E4AC1E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D4A420EA2D4D607C00E4AC1E /* README.md */; };
 		D4A420F02D4D607C00E4AC1E /* WidgetStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */; };
-		D4A420F12D4D607C00E4AC1E /* NACCWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A420E82D4D607C00E4AC1E /* NACCWidgetBundle.swift */; };
 		D4A8AD042EE32EF700979987 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4A8AD032EE32EF700979987 /* Settings.bundle */; };
 		D4ACE7E22D584805006C00AD /* WatchStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */; };
 		D4B0857A2EDB7CA0007C536C /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */; };
@@ -89,13 +88,6 @@
 			remoteGlobalIDString = D45A93B62D4C4DEA008B2528;
 			remoteInfo = NACCWatch;
 		};
-		D482857A2EDE4A5900721EA0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D4A420AF2D4D5C7900E4AC1E;
-			remoteInfo = NACCWidget;
-		};
 		D4F9DA9E2D5BA6A300FFC2DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
@@ -115,17 +107,6 @@
 				D48285732EDE47A100721EA0 /* Watch Target.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D482857C2EDE4A5900721EA0 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				D48285792EDE4A5900721EA0 /* Widget Target.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D4882CC42D5BA1DB00FBF2EC /* Embed Foundation Extensions */ = {
@@ -350,6 +331,7 @@
 				D4A0C15C2ED78C6700F77D56 /* NACC_MainContentView.swift */,
 				D489D35E2EDC91F600A86A6B /* NACC_InfoDisplayView.swift */,
 				D489D35C2EDC8EC900A86A6B /* NACC_ResultDisplayView.swift */,
+				D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */,
 			);
 			path = NACC;
 			sourceTree = "<group>";
@@ -474,7 +456,6 @@
 			children = (
 				D412D8E12D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift */,
 				D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */,
-				D474789E28073D5400212919 /* NACCPagePrintRenderer.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -530,14 +511,12 @@
 				D4A0C14D2ED78C3800F77D56 /* Frameworks */,
 				D4A0C14E2ED78C3800F77D56 /* Resources */,
 				D48285762EDE47A100721EA0 /* Embed Watch Content */,
-				D482857C2EDE4A5900721EA0 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				D48285752EDE47A100721EA0 /* PBXTargetDependency */,
 				D48285782EDE47B800721EA0 /* PBXTargetDependency */,
-				D482857B2EDE4A5900721EA0 /* PBXTargetDependency */,
 			);
 			name = "Main App Target";
 			packageProductDependencies = (
@@ -862,7 +841,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4A420F12D4D607C00E4AC1E /* NACCWidgetBundle.swift in Sources */,
+				D40D7E002EF6D1E200869069 /* NACCWidgetBundle.swift in Sources */,
 				D4A420D22D4D5DFE00E4AC1E /* NACCPersistentPrefs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -898,11 +877,6 @@
 			isa = PBXTargetDependency;
 			target = D45A93B62D4C4DEA008B2528 /* Watch Target */;
 			targetProxy = D48285772EDE47B800721EA0 /* PBXContainerItemProxy */;
-		};
-		D482857B2EDE4A5900721EA0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D4A420AF2D4D5C7900E4AC1E /* Widget Target */;
-			targetProxy = D482857A2EDE4A5900721EA0 /* PBXContainerItemProxy */;
 		};
 		D4F9DA9F2D5BA6A300FFC2DC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1140,7 +1114,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
 				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.3;
+				MARKETING_VERSION = 7.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1189,7 +1163,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
 				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.3;
+				MARKETING_VERSION = 7.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1239,7 +1213,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11;
-				MARKETING_VERSION = 7.0.3;
+				MARKETING_VERSION = 7.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
 				PRODUCT_NAME = NACC;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -1292,7 +1266,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11;
-				MARKETING_VERSION = 7.0.3;
+				MARKETING_VERSION = 7.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
 				PRODUCT_NAME = NACC;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -1336,7 +1310,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.3;
+				MARKETING_VERSION = 7.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1377,7 +1351,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.3;
+				MARKETING_VERSION = 7.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1416,7 +1390,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.3;
+				MARKETING_VERSION = 7.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1458,7 +1432,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.3;
+				MARKETING_VERSION = 7.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1498,7 +1472,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.3;
+				MARKETING_VERSION = 7.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp.NACCWatchComplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1537,7 +1511,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.3;
+				MARKETING_VERSION = 7.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp.NACCWatchComplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1639,7 +1613,7 @@
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_PersistentPrefs";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.0;
+				minimumVersion = 1.5.1;
 			};
 		};
 		D4B2C2792E8FFEA1009DD45D /* XCRemoteSwiftPackageReference "LGV_UICleantime" */ = {

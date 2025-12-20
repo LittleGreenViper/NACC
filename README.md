@@ -199,10 +199,6 @@ _Will work on any device, but will open the NACC, if it is installed. If not, a 
 - [`https://nacc.littlegreenviper.com/?2020-03-17/2`](https://nacc.littlegreenviper.com/?2020-03-17/2)
   This opens the app, and sets the cleantime to March 17th, 2020. It will open the commemoration tab screen, to the Medallions tab.
 
-## Widgets
-
-You can add widgets to your device screens.
-
 ## Watch App
 
 The iOS app has a companion Watch app, with complications.

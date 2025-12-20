@@ -20,6 +20,8 @@
 
 import SwiftUI
 import LGV_Cleantime
+import WidgetKit
+import RVS_Persistent_Prefs
 
 /* ###################################################################################################################################### */
 // MARK: - Background Container View -
@@ -69,9 +71,15 @@ struct AppBackground<Content: View>: View {
 struct NACC_App: App {
     /* ################################################################## */
     /**
-     Scene phase, so we know when the app becomes active.
+     This is our "kind" tag.
      */
-    @Environment(\.scenePhase) private var scenePhase
+    static private let _widgetKind: String = "NACCWidget"
+
+    /* ################################################################## */
+    /**
+     Tracks scene activity.
+     */
+    @Environment(\.scenePhase) private var _scenePhase
 
     /* ################################################################## */
     /**
@@ -152,15 +160,27 @@ struct NACC_App: App {
             // If we are being opened by a Universal or Deep link, we handle that here.
             .onOpenURL { inURL in self.handleOpenWithURL(inURL) }
         }
-        .onChange(of: self.scenePhase) { _, newPhase in
-            if newPhase == .active {
+        // Forces updates, whenever we become active.
+        .onChange(of: self._scenePhase, initial: true) {
+            if .active == self._scenePhase {
                 // If the change was from being opened by a URL, we say so, and leave the selected tab alone (as it may have been set by the URL).
                 if self._wasOpenedViaURL {
                     self._wasOpenedViaURL = false
                 } else {    // Otherwise, we make sure to not force open the results screen.
                     self._selectedTab = .undefined
                 }
+                let prefs = NACCPersistentPrefs()
+                prefs.flush()
+
+                WidgetCenter.shared.reloadTimelines(ofKind: Self._widgetKind)
             }
+        }
+        .onChange(of: self._selectedDate) { _, newValue in
+            let prefs = NACCPersistentPrefs()
+            prefs.cleanDate = newValue
+            prefs.flush()
+
+            WidgetCenter.shared.reloadTimelines(ofKind: Self._widgetKind)
         }
     }
 }

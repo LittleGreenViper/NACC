@@ -38,6 +38,7 @@ import LGV_UICleantime
 import LGV_Cleantime
 import RVS_Persistent_Prefs
 import RVS_UIKit_Toolbox
+import RVS_Generic_Swift_Toolbox
 import WidgetKit
 import AppIntents
 import SwiftUI
@@ -140,7 +141,7 @@ struct NACC_IntentProvider: AppIntentTimelineProvider {
                                dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
         )
         
-        entry.synchronize()
+        await entry.synchronize()
         return entry
     }
     
@@ -155,7 +156,7 @@ struct NACC_IntentProvider: AppIntentTimelineProvider {
                                onlyText: inConfiguration.onlyText ?? false,
                                dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
         )
-        entry.synchronize()
+        await entry.synchronize()
         return Timeline(entries: [entry], policy: .atEnd)
     }
 }
@@ -358,7 +359,7 @@ struct NACC_Entry: TimelineEntry {
      
      This should be called on the main thread.
      */
-    mutating func synchronize() {
+    mutating func synchronize() async {
         let calculator = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
         
         if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) {
@@ -366,27 +367,43 @@ struct NACC_Entry: TimelineEntry {
         } else {
             self.text = "ERROR"
         }
-        
-        self.singleKeytag = nil
-        self.singleMedallion = nil
-        
-        guard !self.onlyText else { return }
-        DispatchQueue.main.sync {
-            if 0 < calculator.years,
-               !self.forceKeytag {
-                let medallionView = LGV_UISingleCleantimeMedallionImageView()
-                medallionView.totalDays = calculator.totalDays
-                medallionView.totalMonths = calculator.totalMonths
-                
-                self.singleMedallion = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
-            } else {
-                let keyTagImage = LGV_UISingleCleantimeKeytagImageView()
-                keyTagImage.totalDays = calculator.totalDays
-                keyTagImage.totalMonths = calculator.totalMonths
-                self.yellowTag = self.dontShowBackground || (9..<12).contains(calculator.totalMonths) || (45..<50).contains(calculator.years)
-                self.singleKeytag = keyTagImage.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+
+        let forceKeytagLocal = self.forceKeytag
+        let onlyTextLocal = self.onlyText
+        let dontShowBackgroundLocal = self.dontShowBackground
+
+        var keytagImage: UIImage?
+        var medallionImage: UIImage?
+        var yellowTagValue = false
+
+        if !onlyTextLocal {
+            let produced = await MainActor.run { () -> (UIImage?, UIImage?, Bool) in
+                if 0 < calculator.years, !forceKeytagLocal {
+                    let medallionView = LGV_UISingleCleantimeMedallionImageView()
+                    medallionView.totalDays = calculator.totalDays
+                    medallionView.totalMonths = calculator.totalMonths
+                    let img = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+                    return (nil, img, false)
+                } else {
+                    let keyTagView = LGV_UISingleCleantimeKeytagImageView()
+                    keyTagView.totalDays = calculator.totalDays
+                    keyTagView.totalMonths = calculator.totalMonths
+
+                    let yellow = dontShowBackgroundLocal
+                        || (9..<12).contains(calculator.totalMonths)
+                        || (45..<50).contains(calculator.years)
+
+                    let img = keyTagView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
+                    return (img, nil, yellow)
+                }
             }
+
+            (keytagImage, medallionImage, yellowTagValue) = produced
         }
+
+        self.singleKeytag = keytagImage
+        self.singleMedallion = medallionImage
+        self.yellowTag = yellowTagValue
     }
 
     /* ################################################################## */
