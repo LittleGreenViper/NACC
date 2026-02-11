@@ -43,6 +43,16 @@ import WidgetKit
 /* ###################################################################################################################################### */
 /// This is the subclass of the preferences type that will provide our persistent app settings.
 nonisolated class NACCPersistentPrefs: RVS_PersistentPrefs {
+    /* ###################################################################################################################################### */
+    // MARK: - Used to track the app group -
+    /* ###################################################################################################################################### */
+    /**
+     Yeah, it's hardcoded, but everything syncs properly.
+     */
+    enum NACCAppGroup {
+        static let id = "group.P53V4JS928.org.magshare.NACC"
+    }
+
     /* ################################################################################################################################## */
     // MARK: Preference Keys
     /* ################################################################################################################################## */
@@ -55,13 +65,13 @@ nonisolated class NACCPersistentPrefs: RVS_PersistentPrefs {
          This stores the cleandate, as an instance of Date
          */
         case cleanDate
-
+        
         /* ############################################################## */
         /**
          This stores the last selected tab index (0-based).
          */
         case lastSelectedTabIndex
-
+        
         /* ############################################################## */
         /**
          The Watch app screen display selection.
@@ -87,14 +97,14 @@ nonisolated class NACCPersistentPrefs: RVS_PersistentPrefs {
          Only display the text report of the cleantime.
          */
         case text
-
+        
         /* ############################################################## */
         /**
          Only display the highest achieved keytag (if less than a year), or the last medallion (if a year or more).
          This is the default.
          */
         case medallion
-
+        
         /* ############################################################## */
         /**
          Displays the keytag chain.
@@ -111,7 +121,7 @@ nonisolated class NACCPersistentPrefs: RVS_PersistentPrefs {
      We should use the enum for the keys (rawValue).
      */
     override var keys: [String] { Self.Keys.allKeys }
-
+    
     /* ################################################################################################################################## */
     // MARK: External Prefs Access Computed Properties
     /* ################################################################################################################################## */
@@ -126,7 +136,7 @@ nonisolated class NACCPersistentPrefs: RVS_PersistentPrefs {
             WidgetCenter.shared.reloadAllTimelines()
         }
     }
-
+    
     /* ################################################################## */
     /**
      This stores the last selected tab index (0-based).
@@ -135,7 +145,7 @@ nonisolated class NACCPersistentPrefs: RVS_PersistentPrefs {
         get { self.values[Self.Keys.lastSelectedTabIndex.rawValue] as? Int ?? 0 }
         set { self.values[Self.Keys.lastSelectedTabIndex.rawValue] = newValue }
     }
-
+    
     /* ################################################################## */
     /**
      This is set and read by the Watch app. It is not accessed by any of the other targets.
@@ -150,7 +160,7 @@ nonisolated class NACCPersistentPrefs: RVS_PersistentPrefs {
         }
         set { self.values[Self.Keys.watchAppDisplayState.rawValue] = newValue.rawValue }
     }
-
+    
     /* ################################################################## */
     /**
      We just make sure that we use the shared group for our prefs.
@@ -158,12 +168,9 @@ nonisolated class NACCPersistentPrefs: RVS_PersistentPrefs {
      We extract the group string from our info.plist.
      */
     override init() {
-        if Self.groupID?.isEmpty ?? true,
-           let appGroupString = Bundle.main.infoDictionary?["appGroup"] as? String,
-           !appGroupString.isEmpty {
-            Self.groupID = appGroupString
+        if Self.groupID?.isEmpty ?? true {
+            Self.groupID = NACCAppGroup.id
         }
-        
         super.init()
     }
 }

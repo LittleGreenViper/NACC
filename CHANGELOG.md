@@ -1,3 +1,11 @@
+**7.0.5.0000** *February 11, 2026*
+
+- The widget is back. Improved inter-app synchronizing.
+
+**7.0.4.0000** *December 20, 2025*
+
+- Was forced to remove the widget, as it wasn't synchronizing properly.
+
 **7.0.3.0000** *December 17, 2025*
 
 - The string displayed when asking for photo permission was wrong. That's been fixed.
