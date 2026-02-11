@@ -35,7 +35,7 @@
 */
 
 import Foundation
-import RVS_Persistent_Prefs
+import RVS_PersistentPrefs
 import WidgetKit
 
 /* ###################################################################################################################################### */

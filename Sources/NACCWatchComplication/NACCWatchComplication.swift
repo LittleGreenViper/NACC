@@ -23,7 +23,7 @@ import SwiftUI
 import RVS_UIKit_Toolbox
 import LGV_UICleantime
 import LGV_Cleantime
-import RVS_Persistent_Prefs
+import RVS_PersistentPrefs
 
 /* ###################################################################################################################################### */
 // MARK: - Timeline Provider -

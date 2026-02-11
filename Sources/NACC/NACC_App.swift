@@ -21,7 +21,7 @@
 import SwiftUI
 import LGV_Cleantime
 import WidgetKit
-import RVS_Persistent_Prefs
+import RVS_PersistentPrefs
 
 /* ###################################################################################################################################### */
 // MARK: - Background Container View -
