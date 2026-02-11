@@ -60,6 +60,7 @@
 		D4B2C2862E8FFF1F009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2852E8FFF1F009DD45D /* RVS_Generic_Swift_Toolbox */; };
 		D4B2C2882E8FFF38009DD45D /* RVS_UIKit_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2872E8FFF38009DD45D /* RVS_UIKit_Toolbox */; };
 		D4B63FF82EE48E8400E81EF7 /* NACC_LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */; };
+		D4C2BCA72F3CD23400C2D1BA /* Widget Target.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D4A420B02D4D5C7900E4AC1E /* Widget Target.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D4EB29AB2D5D47EF00D40106 /* WatchStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */; };
 		D4EB29AC2D5D47EF00D40106 /* WatchStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */; };
 		D4F46FDC2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F46FDB2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift */; };
@@ -87,6 +88,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D45A93B62D4C4DEA008B2528;
 			remoteInfo = NACCWatch;
+		};
+		D4C2BCA82F3CD23400C2D1BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D43C667F2694AA88007D5883 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4A420AF2D4D5C7900E4AC1E;
+			remoteInfo = "Widget Target";
 		};
 		D4F9DA9E2D5BA6A300FFC2DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -116,6 +124,17 @@
 			dstSubfolderSpec = 13;
 			files = (
 				D4F9DAA02D5BA6A300FFC2DC /* Complications Target.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4C2BCAA2F3CD23400C2D1BA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D4C2BCA72F3CD23400C2D1BA /* Widget Target.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,12 +530,14 @@
 				D4A0C14D2ED78C3800F77D56 /* Frameworks */,
 				D4A0C14E2ED78C3800F77D56 /* Resources */,
 				D48285762EDE47A100721EA0 /* Embed Watch Content */,
+				D4C2BCAA2F3CD23400C2D1BA /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				D48285752EDE47A100721EA0 /* PBXTargetDependency */,
 				D48285782EDE47B800721EA0 /* PBXTargetDependency */,
+				D4C2BCA92F3CD23400C2D1BA /* PBXTargetDependency */,
 			);
 			name = "Main App Target";
 			packageProductDependencies = (
@@ -877,6 +898,11 @@
 			isa = PBXTargetDependency;
 			target = D45A93B62D4C4DEA008B2528 /* Watch Target */;
 			targetProxy = D48285772EDE47B800721EA0 /* PBXContainerItemProxy */;
+		};
+		D4C2BCA92F3CD23400C2D1BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4A420AF2D4D5C7900E4AC1E /* Widget Target */;
+			targetProxy = D4C2BCA82F3CD23400C2D1BA /* PBXContainerItemProxy */;
 		};
 		D4F9DA9F2D5BA6A300FFC2DC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

@@ -1,5 +1,5 @@
 /*
- © Copyright 2012-2025, Little Green Viper Software Development LLC
+ © Copyright 2012-2026, Little Green Viper Software Development LLC
  
  LICENSE:
  
@@ -36,7 +36,7 @@
 
 import LGV_UICleantime
 import LGV_Cleantime
-import RVS_Persistent_Prefs
+import RVS_PersistentPrefs
 import RVS_UIKit_Toolbox
 import RVS_Generic_Swift_Toolbox
 import WidgetKit
