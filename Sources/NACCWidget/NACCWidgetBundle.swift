@@ -86,17 +86,9 @@ struct NACCWidget: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: Self.kind, intent: NACCWidgetIntent.self, provider: NACC_IntentProvider()) { entry in
             NACCWidgetEntryView(entry: entry)
-                // The background is built, according to the settings in the intent.
                 .containerBackground(for: .widget) {
-                    if !entry.dontShowBackground,
-                       !entry.yellowTag {
-                        Image("BackgroundGradient")
-                            .resizable(resizingMode: .stretch)
-                    } else {
-                        Rectangle()
-                            .containerBackground(.fill.tertiary, for: .widget)
-                            .contentShape(Rectangle())
-                    }
+                    Image("BackgroundGradient")
+                        .resizable(resizingMode: .stretch)
                 }
         }
         .configurationDisplayName("SLUG-WIDGET-NAME".localizedVariant)
@@ -137,8 +129,7 @@ struct NACC_IntentProvider: AppIntentTimelineProvider {
     func snapshot(for inConfiguration: NACCWidgetIntent, in: Context) async -> NACC_Entry {
         var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate,
                                forceKeytag: inConfiguration.forceKeytag ?? false,
-                               onlyText: inConfiguration.onlyText ?? false,
-                               dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
+                               onlyText: inConfiguration.onlyText ?? false
         )
         
         await entry.synchronize()
@@ -153,8 +144,7 @@ struct NACC_IntentProvider: AppIntentTimelineProvider {
         NACCPersistentPrefs().flush()
         var entry = NACC_Entry(cleanDate: NACCPersistentPrefs().cleanDate,
                                forceKeytag: inConfiguration.forceKeytag ?? false,
-                               onlyText: inConfiguration.onlyText ?? false,
-                               dontShowBackground: inConfiguration.dontShowYellowBackground ?? false
+                               onlyText: inConfiguration.onlyText ?? false
         )
         await entry.synchronize()
         return Timeline(entries: [entry], policy: .atEnd)
@@ -195,23 +185,26 @@ struct NACCWidgetEntryView: View {
      It is also possible to only display text, in `systemMedium`.
      */
     var body: some View {
-        let labelColor = (self.entry.dontShowBackground || self.entry.yellowTag) ? Color(UIColor.label.inverted) : .black
         if .systemSmall == self._family {
             if let newGeneratedImage = self.entry.singleMedallion ?? self.entry.singleKeytag {
                 Image(uiImage: newGeneratedImage)
+                    .padding(6)
+                    .shadow(color: .black.opacity(0.45), radius: 6, x: 0, y: 0)
             } else {
                 Text(self.entry.text)
-                    .foregroundStyle(labelColor)
+                    .foregroundStyle(.black)
                     .minimumScaleFactor(0.5)
             }
         } else {
             HStack {
                 Text(self.entry.text)
-                    .foregroundStyle(labelColor)
+                    .foregroundStyle(.black)
                     .minimumScaleFactor(0.5)
                 
                 if let newGeneratedImage = self.entry.singleMedallion ?? self.entry.singleKeytag {
                     Image(uiImage: newGeneratedImage)
+                        .padding(6)
+                        .shadow(color: .black.opacity(0.45), radius: 6, x: 0, y: 0)
                 }
             }
         }
@@ -250,13 +243,6 @@ struct NACCWidgetIntent: WidgetConfigurationIntent {
      */
     @Parameter(title: LocalizedStringResource("SLUG-ONLY-SHOW-KEYTAGS", table: "WidgetStrings"))
     var forceKeytag: Bool?
-
-    /* ################################################################## */
-    /**
-     A simple switch. If on (default is off), then the yellow background gradient will not be shown.
-     */
-    @Parameter(title: LocalizedStringResource("SLUG-YELLOW-BACKGROUND", table: "WidgetStrings"))
-    var dontShowYellowBackground: Bool?
     
     /* ################################################################## */
     /**
@@ -272,7 +258,6 @@ struct NACCWidgetIntent: WidgetConfigurationIntent {
     ) {
         self.forceKeytag = inForceKeytag
         self.onlyText = inOnlyText
-        self.dontShowYellowBackground = inDontShowYellowBackground
     }
     
     /* ################################################################## */
@@ -282,7 +267,6 @@ struct NACCWidgetIntent: WidgetConfigurationIntent {
     init() {
         self.forceKeytag = false
         self.onlyText = false
-        self.dontShowYellowBackground = false
     }
 }
 
@@ -331,18 +315,6 @@ struct NACC_Entry: TimelineEntry {
 
     /* ################################################################## */
     /**
-     If true, then the keytag is yellow, and the gradient is not shown.
-     */
-    var yellowTag = false
-
-    /* ################################################################## */
-    /**
-     If true, the gradient is not shown (regardless of the selected tag).
-     */
-    var dontShowBackground = false
-
-    /* ################################################################## */
-    /**
      The image that represents a keytag. May be nil. Mutually exclusive with `singleMedallion`.
      */
     var singleKeytag: UIImage?
@@ -352,7 +324,7 @@ struct NACC_Entry: TimelineEntry {
      The image that represents a medallion. May be nil. Mutually exclusive with `singleKeytag`.
      */
     var singleMedallion: UIImage?
-    
+
     /* ################################################################## */
     /**
      This renders the images and text.
@@ -370,40 +342,33 @@ struct NACC_Entry: TimelineEntry {
 
         let forceKeytagLocal = self.forceKeytag
         let onlyTextLocal = self.onlyText
-        let dontShowBackgroundLocal = self.dontShowBackground
 
         var keytagImage: UIImage?
         var medallionImage: UIImage?
-        var yellowTagValue = false
 
         if !onlyTextLocal {
-            let produced = await MainActor.run { () -> (UIImage?, UIImage?, Bool) in
+            let produced = await MainActor.run { () -> (UIImage?, UIImage?) in
                 if 0 < calculator.years, !forceKeytagLocal {
                     let medallionView = LGV_UISingleCleantimeMedallionImageView()
                     medallionView.totalDays = calculator.totalDays
                     medallionView.totalMonths = calculator.totalMonths
                     let img = medallionView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
-                    return (nil, img, false)
+                    return (nil, img)
                 } else {
                     let keyTagView = LGV_UISingleCleantimeKeytagImageView()
                     keyTagView.totalDays = calculator.totalDays
                     keyTagView.totalMonths = calculator.totalMonths
 
-                    let yellow = dontShowBackgroundLocal
-                        || (9..<12).contains(calculator.totalMonths)
-                        || (45..<50).contains(calculator.years)
-
                     let img = keyTagView.generatedImage?.resized(toMaximumSize: Self._imageSizeInDisplayUnits)
-                    return (img, nil, yellow)
+                    return (img, nil)
                 }
             }
 
-            (keytagImage, medallionImage, yellowTagValue) = produced
+            (keytagImage, medallionImage) = produced
         }
 
         self.singleKeytag = keytagImage
         self.singleMedallion = medallionImage
-        self.yellowTag = yellowTagValue
     }
 
     /* ################################################################## */
@@ -420,13 +385,11 @@ struct NACC_Entry: TimelineEntry {
     init(date inDate: Date = .now,
          cleanDate inCleandate: Date = .now.addingTimeInterval(-86400), // Give them a day
          forceKeytag inForceKeytag: Bool = true,
-         onlyText inOnlyText: Bool = false,
-         dontShowBackground inDontShowBackground: Bool = true
+         onlyText inOnlyText: Bool = false
     ) {
         self.date = inDate
         self.cleanDate = inCleandate
         self.forceKeytag = inForceKeytag
         self.onlyText = inOnlyText
-        self.dontShowBackground = inDontShowBackground
     }
 }
