@@ -81,20 +81,24 @@ struct NACCWatchComplicationEntry: TimelineEntry {
     /**
      This is the display family variant for this complication.
      */
-    var family: WidgetFamily = .accessoryCircular
+    @State var family: WidgetFamily = .accessoryCircular
+    
+    /* ################################################################## */
+    /**
+     The mode being used to render the complication (so we can decide on which asset to supply).
+     */
+    @State var renderingMode: WidgetRenderingMode = .accented
     
     /* ################################################################## */
     /**
      The image to be displayed (based upon the family)
      */
     var image: UIImage {
-        switch family {
-        case .accessoryRectangular:
-            return UIImage(named: "VectorLogo") ?? UIImage()
+        guard .fullColor == renderingMode,
+              .accessoryRectangular != family
+        else { return UIImage(named: "VectorLogo") ?? UIImage() }
 
-        default:
-            return UIImage(named: "LogoMask") ?? UIImage()
-        }
+        return UIImage(named: "LogoMask") ?? UIImage()
     }
     
     /* ################################################################## */
@@ -131,6 +135,12 @@ struct NACCWatchComplicationEntryView: View {
      This is the display family variant for this complication.
      */
     @Environment(\.widgetFamily) private var _family
+    
+    /* ################################################################## */
+    /**
+     The rendering mode for the complication.
+     */
+    @Environment(\.widgetRenderingMode) private var _renderingMode
 
     /* ################################################################## */
     /**
@@ -147,24 +157,28 @@ struct NACCWatchComplicationEntryView: View {
             if .accessoryCorner == self._family || .accessoryCircular == self._family {
                 Image(uiImage: self.entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
                     .widgetLabel(self.entry.text)
-                    .onAppear { self.entry.family = self._family }
-            } else if .accessoryInline == self._family,
-                      !entry.text.isEmpty {
+                    .onAppear {
+                        self.entry.family = self._family
+                        self.entry.renderingMode = self._renderingMode
+                    }
+            } else if .accessoryInline == self._family, !entry.text.isEmpty {
                 Text(entry.text)
-                    .onAppear { self.entry.family = self._family }
+                    .onAppear {
+                        self.entry.family = self._family
+                        self.entry.renderingMode = self._renderingMode
+                    }
             } else {
                 HStack(alignment: .top) {
                     Image(uiImage: self.entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
-                    if !self.entry.text.isEmpty {
-                        Text(self.entry.text)
-                    }
+                    if !self.entry.text.isEmpty { Text(self.entry.text) }
                 }
-                .onAppear { self.entry.family = self._family }
+                .onAppear {
+                    self.entry.family = self._family
+                    self.entry.renderingMode = self._renderingMode
+                }
             }
         }
-        .containerBackground(for: .widget) {
-            Color.clear
-        }
+        .containerBackground(for: .widget) { Color.clear }
     }
 }
 
