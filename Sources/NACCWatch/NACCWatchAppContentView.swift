@@ -121,23 +121,36 @@ struct NACCWatchAppContentView: View {
      This is a thread-safe image renderer for the keytags
      - parameter inDate: The new date that requires an update.
      */
-    private static func _renderAssets(for inDate: Date) async -> UIImage? {
-        // Bail out quickly if already cancelled.
-        if Task.isCancelled { return nil }
+    private static func _renderAssets(for inDate: Date) async -> (keytagChain: UIImage?, singleMedallion: UIImage?) {
+        await Task.detached(priority: .userInitiated) {
+            // Bail out quickly if already cancelled.
+            guard !Task.isCancelled else { return (nil, nil) }
 
-        let calc = LGV_CleantimeDateCalc(startDate: inDate).cleanTime
+            let calc = LGV_CleantimeDateCalc(startDate: inDate).cleanTime
 
-        let keytag = LGV_MultiKeytagImageGenerator(
-            isVerticalStrip: true,
-            totalDays: calc.totalDays,
-            totalMonths: calc.totalMonths,
-            widestKeytagImageInDisplayUnits: (calc.years > 2 ? 64 : 128)
-        ).generatedImage
+            guard !Task.isCancelled else { return (nil, nil) }
 
-        // One last cancellation check before returning.
-        if Task.isCancelled { return nil }
+            let singleMedallion = (calc.years > 0)
+                ? LGV_MedallionImage(totalMonths: calc.totalMonths).drawImage()
+                : LGV_KeytagImageGenerator(
+                    isRingClosed: true,
+                    totalDays: calc.totalDays,
+                    totalMonths: calc.totalMonths
+                ).generatedImage
 
-        return keytag
+            guard !Task.isCancelled else { return (nil, singleMedallion) }
+
+            let keytagChain = LGV_MultiKeytagImageGenerator(
+                isVerticalStrip: true,
+                totalDays: calc.totalDays,
+                totalMonths: calc.totalMonths,
+                widestKeytagImageInDisplayUnits: (calc.years > 2 ? 64 : 128)
+            ).generatedImage
+
+            guard !Task.isCancelled else { return (nil, singleMedallion) }
+
+            return (keytagChain, singleMedallion)
+        }.value
     }
 
     /* ################################################################## */
@@ -213,20 +226,7 @@ struct NACCWatchAppContentView: View {
         self.syncUp = false
         NACCPersistentPrefs().flush()
 
-        // Update text and medallion synchronously on main
-        self.text = LGV_UICleantimeDateReportString()
-            .naCleantimeText(beginDate: cleanDate, endDate: .now) ?? ""
-
-        let calc = LGV_CleantimeDateCalc(startDate: cleanDate).cleanTime
-
-        self.singleMedallion = (calc.years > 0)
-            ? LGV_MedallionImage(totalMonths: calc.totalMonths).drawImage()
-            : LGV_KeytagImageGenerator(
-                isRingClosed: true,
-                totalDays: calc.totalDays,
-                totalMonths: calc.totalMonths
-            ).generatedImage
-
+        self.singleMedallion = nil
         self.keytagChain = nil
 
         // Cancel any previous render
@@ -236,9 +236,16 @@ struct NACCWatchAppContentView: View {
         let date = self.cleanDate  // capture value so it doesn't change under us
 
         Self._syncTask = Task {
-            let keytag = await Self._renderAssets(for: date)
-            Self._syncTask = nil
-            await MainActor.run { self.keytagChain = keytag }
+            let assets = await Self._renderAssets(for: date)
+
+            guard !Task.isCancelled else { return }
+
+            await MainActor.run {
+                guard self.cleanDate == date else { return }
+                self.singleMedallion = assets.singleMedallion
+                self.keytagChain = assets.keytagChain
+                Self._syncTask = nil
+            }
         }
     }
 

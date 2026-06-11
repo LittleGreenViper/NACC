@@ -1,3 +1,7 @@
+**7.0.8.0000** *June 11, 2026*
+
+- Improved the performance of the Watch app.
+
 **7.0.5.0000** *February 11, 2026*
 
 - The widget is back. Improved inter-app synchronizing.
