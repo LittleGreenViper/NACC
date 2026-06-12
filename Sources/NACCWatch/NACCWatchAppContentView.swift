@@ -72,14 +72,19 @@ final class WatchModel: NSObject, ObservableObject, @preconcurrency WCSessionDel
         self.textTask?.cancel()
         let date = self.cleanDate   // capture value
 
-        textTask = Task { @MainActor in
-            guard !Task.isCancelled else { return }
-            let generated = LGV_UICleantimeDateReportString()
-                .naCleantimeText(beginDate: date, endDate: .now) ?? ""
+        textTask = Task {
+            let generated = await Task.detached(priority: .userInitiated) {
+                guard !Task.isCancelled else { return "" }
+                return LGV_UICleantimeDateReportString()
+                    .naCleantimeText(beginDate: date, endDate: .now) ?? ""
+            }.value
 
             guard !Task.isCancelled else { return }
 
-            self.text = generated
+            await MainActor.run {
+                guard !Task.isCancelled else { return }
+                self.text = generated
+            }
         }
     }
 
@@ -161,6 +166,12 @@ struct NACCWatchAppContentView: View {
 
     /* ################################################################## */
     /**
+     Task used to render the text report in a separate thread.
+     */
+    static private var _textSyncTask: Task<Void, Never>?
+
+    /* ################################################################## */
+    /**
      Tracks scene activity.
      */
     @Environment(\.scenePhase) private var _scenePhase
@@ -188,6 +199,12 @@ struct NACCWatchAppContentView: View {
      The text report.
      */
     @Binding var text: String
+
+    /* ################################################################## */
+    /**
+     The text report to display.
+     */
+    private var _displayText: String { self.model.text.isEmpty ? self.text : self.model.text }
 
     /* ################################################################## */
     /**
@@ -229,11 +246,32 @@ struct NACCWatchAppContentView: View {
         self.singleMedallion = nil
         self.keytagChain = nil
 
-        // Cancel any previous render
+        // Cancel any previous text render.
+        Self._textSyncTask?.cancel()
+        Self._textSyncTask = nil
+
+        // Cancel any previous image render.
         Self._syncTask?.cancel()
         Self._syncTask = nil
         
         let date = self.cleanDate  // capture value so it doesn't change under us
+
+        Self._textSyncTask = Task {
+            let generated = await Task.detached(priority: .userInitiated) {
+                guard !Task.isCancelled else { return "" }
+                return LGV_UICleantimeDateReportString()
+                    .naCleantimeText(beginDate: date, endDate: .now) ?? ""
+            }.value
+
+            guard !Task.isCancelled else { return }
+
+            await MainActor.run {
+                guard self.cleanDate == date else { return }
+                self.text = generated
+                self.model.text = generated
+                Self._textSyncTask = nil
+            }
+        }
 
         Self._syncTask = Task {
             let assets = await Self._renderAssets(for: date)
@@ -259,10 +297,14 @@ struct NACCWatchAppContentView: View {
             let calculator = LGV_CleantimeDateCalc(startDate: self.cleanDate).cleanTime
             NavigationStack {
                 TabView(selection: self.$watchFormat) {
-                    Text(self.text)
-                        .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
-                        .foregroundStyle(Color.black)
-                        .padding()
+                    ScrollView {
+                        Text(self._displayText)
+                            .foregroundStyle(Color.black)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding()
+                    }
+                    .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
                     
                     if let singleMedallion = self.singleMedallion?.resized(toNewHeight: inGeom.size.height) {
                         Image(uiImage: singleMedallion)
@@ -295,6 +337,8 @@ struct NACCWatchAppContentView: View {
                         .cornerRadius(8)
                 }
                 .onDisappear {
+                    Self._textSyncTask?.cancel()
+                    Self._textSyncTask = nil
                     Self._syncTask?.cancel()
                     Self._syncTask = nil
                 }
