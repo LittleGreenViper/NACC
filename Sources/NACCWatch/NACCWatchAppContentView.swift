@@ -305,31 +305,35 @@ struct NACCWatchAppContentView: View {
                             .padding()
                     }
                     .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
-                    
-                    if let singleMedallion = self.singleMedallion?.resized(toNewHeight: inGeom.size.height) {
-                        Image(uiImage: singleMedallion)
-                            .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
-                            .containerRelativeFrame([.horizontal, .vertical], alignment: .center)
-                    } else {
-                        ProgressView()
-                            .progressViewStyle(.circular)
-                            .tint(.black)
-                    }
-                    
-                    if let keytagChain = self.keytagChain?.resized(toNewWidth: 2 < calculator.years ? 64 : 128) {
-                        ScrollView {
-                            let image = keytagChain
-                            Spacer()
-                                .frame(height: 8)
-                            Image(uiImage: image)
-                                .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
+
+                    Group {
+                        if let singleMedallion = self.singleMedallion?.resized(toNewHeight: inGeom.size.height) {
+                            Image(uiImage: singleMedallion)
+                                .containerRelativeFrame([.horizontal, .vertical], alignment: .center)
+                        } else {
+                            ProgressView()
+                                .progressViewStyle(.circular)
+                                .tint(.black)
                         }
-                        .clipped()
-                    } else {
-                        ProgressView()
-                            .progressViewStyle(.circular)
-                            .tint(.black)
                     }
+                    .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
+
+                    Group {
+                        if let keytagChain = self.keytagChain?.resized(toNewWidth: 2 < calculator.years ? 64 : 128) {
+                            ScrollView {
+                                let image = keytagChain
+                                Spacer()
+                                    .frame(height: 8)
+                                Image(uiImage: image)
+                            }
+                            .clipped()
+                        } else {
+                            ProgressView()
+                                .progressViewStyle(.circular)
+                                .tint(.black)
+                        }
+                    }
+                    .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
                 }
                 .background {
                     Image("BackgroundGradient")
