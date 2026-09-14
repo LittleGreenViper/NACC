@@ -69,12 +69,6 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
     
     /* ###################################################################### */
     /**
-     This is used for trying to recover from Watch sync errors.
-     */
-    var retries: Int = 0
-    
-    /* ###################################################################### */
-    /**
      Called when an activation change occurs.
      
      - parameter inSession: The session experiencing the activation change.
@@ -86,11 +80,14 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
             print("The Watch session is\(.activated == inActivationState ? "" : " not") activated.")
         #endif
         
-        #if !os(watchOS)    // Only necessary for iOS
-            self.sendApplicationContext()
-        #else
-            self.sendContextRequest()
-        #endif
+        guard .activated == inActivationState else { return }
+        DispatchQueue.main.async {
+            #if !os(watchOS)    // Only necessary for iOS
+                self.sendApplicationContext()
+            #else
+                self.sendContextRequest()
+            #endif
+        }
     }
     
     /* ###################################################################### */
@@ -142,7 +139,26 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
                 #if DEBUG
                     print("Responding to context request from the watch")
                 #endif
-                self.sendApplicationContext()
+                DispatchQueue.main.async { self.sendApplicationContext() }
+            }
+        }
+
+        /* ################################################################## */
+        /**
+         Returns the current context when the watch requests a reply.
+
+         - parameter inSession: The session receiving the message.
+         - parameter inMessage: The request from the watch.
+         - parameter inReplyHandler: The callback that receives the current context.
+         */
+        func session(_ inSession: WCSession, didReceiveMessage inMessage: [String: Any], replyHandler inReplyHandler: @escaping ([String: Any]) -> Void) {
+            DispatchQueue.main.async {
+                // Accept the original request key as well, for watches running an older build.
+                guard "requestContext" == inMessage["messageType"] as? String || "requestContext" == inMessage["requestContext"] as? String else {
+                    inReplyHandler([:])
+                    return
+                }
+                inReplyHandler(self._applicationContext())
             }
         }
     #else
@@ -161,8 +177,6 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
                 #if DEBUG
                     print("Received Reply from Phone: \(inReply)")
                 #endif
-                self.retries = 0
-                self.isUpdateInProgress = false
                 self.session(Self._wcSession, didReceiveApplicationContext: inReply)
             }
             
@@ -176,16 +190,15 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
                 #if DEBUG
                     print("Error Sending Message to Phone: \(inError.localizedDescription)")
                 #endif
-                self.isUpdateInProgress = false
                 let nsError = inError as NSError
                 if nsError.domain == "WCErrorDomain",
                    7007 == nsError.code,
-                   0 < self.retries {
+                   0 < inRetries {
                     #if DEBUG
                         print("Connection failure. Retrying...")
                     #endif
                     let randomDelay = Double.random(in: (0.3...1.0))
-                    DispatchQueue.global().asyncAfter(deadline: .now() + randomDelay) { self.sendContextRequest(self.retries - 1) }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + randomDelay) { self.sendContextRequest(inRetries - 1) }
                     return
                 } else {
                     #if DEBUG
@@ -194,16 +207,27 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
                 }
             }
 
-            self.isUpdateInProgress = true
             if .activated == Self._wcSession.activationState {
                 #if DEBUG
                     print("Sending context request to the phone")
                 #endif
-                Self._wcSession.sendMessage(["requestContext": "requestContext"], replyHandler: _replyHandler, errorHandler: _errorHandler)
+                Self._wcSession.sendMessage(["messageType": "requestContext"], replyHandler: _replyHandler, errorHandler: _errorHandler)
             }
-            self.isUpdateInProgress = false
         }
     #endif
+
+    /* ################################################################## */
+    /**
+     Builds the same state snapshot for queued updates and immediate replies.
+     */
+    private func _applicationContext() -> [String: Any] {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let prefs = NACCPersistentPrefs()
+        return ["cleanDate": dateFormatter.string(from: prefs.cleanDate),
+                "watchAppDisplayState": prefs.watchAppDisplayState.rawValue]
+    }
     
     /* ################################################################## */
     /**
@@ -213,11 +237,7 @@ class NACCWatchAppContentViewWatchDelegate: NSObject, WCSessionDelegate {
         guard !self.isUpdateInProgress else { return }
         self.isUpdateInProgress = true
         do {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            var contextData: [String: Any] = ["cleanDate": dateFormatter.string(from: NACCPersistentPrefs().cleanDate),
-                                              "watchAppDisplayState": NACCPersistentPrefs().watchAppDisplayState.rawValue
-            ]
+            let contextData = self._applicationContext()
             
             #if DEBUG
                 #if os(watchOS)

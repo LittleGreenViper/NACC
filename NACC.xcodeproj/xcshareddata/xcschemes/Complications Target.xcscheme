@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "2650"
+   LastUpgradeVersion = "2700"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -76,7 +76,6 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D4F9DA942D5BA6A300FFC2DC"
             BuildableName = "Complications Target.appex"
-            BlueprintName = "Complications Target"
             ReferencedContainer = "container:NACC.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -119,7 +118,6 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D4F9DA942D5BA6A300FFC2DC"
             BuildableName = "Complications Target.appex"
-            BlueprintName = "Complications Target"
             ReferencedContainer = "container:NACC.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

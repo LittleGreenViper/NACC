@@ -25,26 +25,6 @@
 //********************************************** **********************************************************
 
 // MARK: -
-// MARK: - LGV_UICLEANTIME STRINGS -
-// MARK: -
-"SLUG-STATEMENT-IN-RECOVERY-SINCE"              =   "In Recovery since ";
-"SLUG-STATEMENT-CLEANDATE-SEPARATOR"            =   "\nWhich amounts to ";
-"SLUG-STATEMENT-NO-CLEANTIME"                   =   "We support you in attaining Recovery.";
-"SLUG-PREFIX-CLEANTIME-DAY"                     =   "You have been clean for one day.";
-"SLUG-PREFIX-CLEANTIME-DAYS"                    =   "You have been clean for %d days.";
-"SLUG-CLEANTIME-DIVIDER"                        =   "\nThis is ";
-"SLUG-PREFIX-CLEANTIME-YEAR-EXACT"              =   "exactly one year.";
-"SLUG-PREFIX-CLEANTIME-YEARS-EXACT"             =   "exactly %d years.";
-"SLUG-PREFIX-CLEANTIME-YEAR"                    =   "one year";
-"SLUG-PREFIX-CLEANTIME-YEARS"                   =   "%d years";
-"SLUG-PREFIX-CLEANTIME-MONTH"                   =   "one month";
-"SLUG-PREFIX-CLEANTIME-MONTHS"                  =   "%d months";
-"SLUG-PREFIX-CLEANTIME-DAY"                     =   "one day";
-"SLUG-PREFIX-CLEANTIME-DAYS"                    =   "%d days";
-"SLUG-JOINING-CHAR"                             =   ", ";
-"SLUG-ENDING-CHAR"                              =   ".";
-
-// MARK: -
 // MARK: - MAIN INTERFACE -
 // MARK: -
 
@@ -54,6 +34,11 @@
 "SLUG-WIDGET-DESCRIPTION"                       =   "Returns a summary of your cleantime";
 "SLUG-WIDGET-ENTRY-PROMPT"                      =   "Enter Your Clean Date";
 "SLUG-WIDGET-ENTRY-INVALID"                     =   "You must enter a valid clean date!";
+
+// MARK: WATCH COMPLICATION DAY COUNTS
+
+"SLUG-COMPLICATION-CLEANTIME-DAY"              =   "one day";
+"SLUG-COMPLICATION-CLEANTIME-DAYS"             =   "%d days";
 
 // MARK: CLEANDATE SCREEN
 

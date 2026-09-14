@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "2650"
+   LastUpgradeVersion = "2700"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -29,9 +29,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D43C66B02694ABFF007D5883"
-               BuildableName = "UIKit App Target.app"
-               BlueprintName = "UIKit App Target"
+               BlueprintIdentifier = "D4A0C14F2ED78C3800F77D56"
+               BuildableName = "NACC.app"
+               BlueprintName = "Main App Target"
                ReferencedContainer = "container:NACC.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -60,7 +60,6 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D45A93B62D4C4DEA008B2528"
             BuildableName = "Watch Target.app"
-            BlueprintName = "Watch Target"
             ReferencedContainer = "container:NACC.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -77,7 +76,6 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D45A93B62D4C4DEA008B2528"
             BuildableName = "Watch Target.app"
-            BlueprintName = "Watch Target"
             ReferencedContainer = "container:NACC.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

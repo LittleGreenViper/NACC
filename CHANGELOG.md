@@ -1,3 +1,10 @@
+**Unreleased**
+
+- Updated all Swift package dependencies to their latest releases.
+- Uses RVS_UIKit_Toolbox 1.7.5, including its watchOS image-rendering compatibility fix.
+- Removed the app's duplicate cleantime artwork and report strings. These now come from the resource bundle supplied by LGV_UICleantime 2.6.0.
+- Kept compact Watch complication day-count strings under app-specific localization keys.
+
 **7.0.8.0000** *June 11, 2026*
 
 - Improved the performance of the Watch app.

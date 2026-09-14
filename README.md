@@ -217,6 +217,10 @@ It is also dependent upon the following 2 [Little Green Viper Software Developme
 - [LGV_Cleantime](https://github.com/LittleGreenViper/LGV_Cleantime)
 - [LGV_UICleantime](https://github.com/LittleGreenViper/LGV_UICleantime)
 
+The minimum package versions are `LGV_Cleantime` 1.5.0, `LGV_UICleantime` 2.6.0, `RVS_GeneralObserver` 1.1.5, `RVS_Generic_Swift_Toolbox` 1.18.0, `RVS_PersistentPrefs` 1.17.0, and `RVS_UIKit_Toolbox` 1.7.5.
+
+`LGV_UICleantime` supplies its own artwork, report strings, and privacy manifest through its Swift package resource bundle. Do not copy the library's asset catalog or report strings into NACC: app resources with matching names override the package resources. NACC retains its own icons, theme, interface strings, and compact Watch complication day-count strings.
+
 ## License And Copyright
 
 The code and keytag images are [MIT license](https://opensource.org/licenses/MIT). Use them as you will.
@@ -224,4 +228,3 @@ The code and keytag images are [MIT license](https://opensource.org/licenses/MIT
 However, the medallion images are renderings of the standard bronze [NA World Services](https://na.org) (NAWS, Inc.) [cleantime commemoration medallions](https://cart-us.na.org/2-keytags-medallions/medallions-bronze/bronze-medallions-bronze). The design of those medallions is copyrighted by NA World Services.
 
 It is important to treat the intellectual property of NA with respect.
-

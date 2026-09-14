@@ -116,7 +116,7 @@ struct NACCWatchComplicationEntry: TimelineEntry {
         default:
             let totalDays = LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.totalDays
             if 0 < totalDays {
-                return 1 == totalDays ? "SLUG-PREFIX-CLEANTIME-DAY".localizedVariant : String(format: "SLUG-PREFIX-CLEANTIME-DAYS".localizedVariant, totalDays)
+                return 1 == totalDays ? "SLUG-COMPLICATION-CLEANTIME-DAY".localizedVariant : String(format: "SLUG-COMPLICATION-CLEANTIME-DAYS".localizedVariant, totalDays)
             }
             return ""
         }

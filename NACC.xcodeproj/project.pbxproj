@@ -41,8 +41,6 @@
 		D4A3F7C52EE22425004992A8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D49C9A7A280783C6008E9917 /* InfoPlist.strings */; };
 		D4A420D22D4D5DFE00E4AC1E /* NACCPersistentPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B80C7E27FCF1B400401F72 /* NACCPersistentPrefs.swift */; };
 		D4A420D52D4D5E7900E4AC1E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4E2F96727FCCA3200457AD4 /* Localizable.strings */; };
-		D4A420D62D4D5E9B00E4AC1E /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */; };
-		D4A420D72D4D5E9B00E4AC1E /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */; };
 		D4A420E02D4D607800E4AC1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4A420D82D4D607800E4AC1E /* Assets.xcassets */; };
 		D4A420E42D4D607800E4AC1E /* NACCWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A420DC2D4D607800E4AC1E /* NACCWatchApp.swift */; };
 		D4A420E52D4D607800E4AC1E /* NACCWatchAppContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A420DD2D4D607800E4AC1E /* NACCWatchAppContentView.swift */; };
@@ -51,7 +49,6 @@
 		D4A420F02D4D607C00E4AC1E /* WidgetStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */; };
 		D4A8AD042EE32EF700979987 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4A8AD032EE32EF700979987 /* Settings.bundle */; };
 		D4ACE7E22D584805006C00AD /* WatchStrings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */; };
-		D4B0857A2EDB7CA0007C536C /* LGV_UICleantime.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */; };
 		D4B2C2782E8FFE62009DD45D /* LGV_Cleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C2772E8FFE62009DD45D /* LGV_Cleantime */; };
 		D4B2C27B2E8FFEBB009DD45D /* LGV_UICleantime in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C27A2E8FFEBB009DD45D /* LGV_UICleantime */; };
 		D4B2C27E2E8FFEE9009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */ = {isa = PBXBuildFile; productRef = D4B2C27D2E8FFEE9009DD45D /* RVS_Generic_Swift_Toolbox */; };
@@ -221,7 +218,6 @@
 		D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Theme.xcassets; sourceTree = "<group>"; };
 		D4E43A532C937FDF00535CDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4E43A692C937FDF00535CDD /* NACCIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NACCIntents.entitlements; sourceTree = "<group>"; };
-		D4E9103B2D497FAD0036F641 /* Base */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Base; path = Base.lproj/LGV_UICleantime.xcassets; sourceTree = "<group>"; };
 		D4EB29AE2D5D4CFE00D40106 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D4F46FDB2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NACCShowCleantimeIntentHandler.swift; sourceTree = "<group>"; };
 		D4F46FDF2C94669E0071D359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/NACCIntents.intentdefinition; sourceTree = "<group>"; };
@@ -460,7 +456,6 @@
 			children = (
 				D4A8AD032EE32EF700979987 /* Settings.bundle */,
 				D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */,
-				D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */,
 				D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */,
 				D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */,
 				D4E2F96727FCCA3200457AD4 /* Localizable.strings */,
@@ -632,7 +627,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 2610;
-				LastUpgradeCheck = 2650;
+				LastUpgradeCheck = 2700;
 				TargetAttributes = {
 					D45A93B62D4C4DEA008B2528 = {
 						CreatedOnToolsVersion = 16.2;
@@ -690,7 +685,6 @@
 				D4A420E02D4D607800E4AC1E /* Assets.xcassets in Resources */,
 				D4F945512D4E60620073AF8F /* Localizable.strings in Resources */,
 				D4ACE7E22D584805006C00AD /* WatchStrings.xcstrings in Resources */,
-				D4A420D62D4D5E9B00E4AC1E /* LGV_UICleantime.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,7 +692,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4B0857A2EDB7CA0007C536C /* LGV_UICleantime.xcassets in Resources */,
 				D4A0C1612ED78C6700F77D56 /* Assets.xcassets in Resources */,
 				D40F87D72EDA4AF100E4B09B /* Localizable.strings in Resources */,
 				D43BAAA72ED8E73E00B58900 /* Theme.xcassets in Resources */,
@@ -716,7 +709,6 @@
 				D4A420ED2D4D607C00E4AC1E /* Assets.xcassets in Resources */,
 				D4A420EF2D4D607C00E4AC1E /* README.md in Resources */,
 				D4A420F02D4D607C00E4AC1E /* WidgetStrings.xcstrings in Resources */,
-				D4A420D72D4D5E9B00E4AC1E /* LGV_UICleantime.xcassets in Resources */,
 				D4A420D52D4D5E7900E4AC1E /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -944,14 +936,6 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		D4E9103A2D497FAD0036F641 /* LGV_UICleantime.xcassets */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D4E9103B2D497FAD0036F641 /* Base */,
-			);
-			name = LGV_UICleantime.xcassets;
-			sourceTree = "<group>";
-		};
 		D4F46FE02C94669E0071D359 /* NACCIntents.intentdefinition */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1117,9 +1101,9 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatch/NACCWatch.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DRIVERKIT_DEPLOYMENT_TARGET = "";
+				DRIVERKIT_DEPLOYMENT_TARGET = "$(RECOMMENDED_DRIVERKIT_DEPLOYMENT_TARGET)";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1139,8 +1123,8 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
 				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.8;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 7.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1150,9 +1134,9 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "4,1";
-				TVOS_DEPLOYMENT_TARGET = "";
+				TVOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_TVOS_DEPLOYMENT_TARGET)";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
-				XROS_DEPLOYMENT_TARGET = "";
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Debug;
 		};
@@ -1166,9 +1150,9 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatch/NACCWatch.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DRIVERKIT_DEPLOYMENT_TARGET = "";
+				DRIVERKIT_DEPLOYMENT_TARGET = "$(RECOMMENDED_DRIVERKIT_DEPLOYMENT_TARGET)";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1188,8 +1172,8 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
 				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.8;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 7.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1198,9 +1182,9 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "4,1";
-				TVOS_DEPLOYMENT_TARGET = "";
+				TVOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_TVOS_DEPLOYMENT_TARGET)";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
-				XROS_DEPLOYMENT_TARGET = "";
+				XROS_DEPLOYMENT_TARGET = "$(RECOMMENDED_XROS_DEPLOYMENT_TARGET)";
 			};
 			name = Release;
 		};
@@ -1213,7 +1197,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "Project-Meta/SwiftUITarget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1238,8 +1222,8 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11;
-				MARKETING_VERSION = 7.0.8;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 7.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
 				PRODUCT_NAME = NACC;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -1266,7 +1250,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "Project-Meta/SwiftUITarget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				DEVELOPMENT_TEAM = P53V4JS928;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1291,8 +1275,8 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11;
-				MARKETING_VERSION = 7.0.8;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 7.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
 				PRODUCT_NAME = NACC;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -1318,7 +1302,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWidget/NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1335,8 +1319,8 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.8;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 7.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1359,7 +1343,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWidget/NACCWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1376,8 +1360,8 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.8;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 7.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1398,7 +1382,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1415,8 +1399,8 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.8;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 7.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1440,7 +1424,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCIntents/NACCIntents.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1457,8 +1441,8 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.8;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 7.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1482,7 +1466,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatchComplication/NACCWatchComplicationExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1490,6 +1474,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = NACCWatchComplication;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_IPHONEOS_DEPLOYMENT_TARGET)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1497,8 +1482,8 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.8;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 7.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp.NACCWatchComplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1521,7 +1506,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sources/NACCWatchComplication/NACCWatchComplicationExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0002;
+				CURRENT_PROJECT_VERSION = 0000;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1529,6 +1514,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = NACCWatchComplication;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_IPHONEOS_DEPLOYMENT_TARGET)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1536,8 +1522,8 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.8;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 7.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp.NACCWatchComplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1615,7 +1601,7 @@
 			repositoryURL = "https://github.com/LittleGreenViper/LGV_Cleantime";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.9;
+				minimumVersion = 1.5.0;
 			};
 		};
 		D462E4AB2D5D07E6001E2C0F /* XCRemoteSwiftPackageReference "RVS_UIKit_Toolbox" */ = {
@@ -1623,7 +1609,7 @@
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_UIKit_Toolbox";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.7.2;
+				minimumVersion = 1.7.5;
 			};
 		};
 		D462E4AC2D5D07ED001E2C0F /* XCRemoteSwiftPackageReference "RVS_GeneralObserver" */ = {
@@ -1639,7 +1625,7 @@
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_PersistentPrefs";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.6.0;
+				minimumVersion = 1.17.0;
 			};
 		};
 		D4B2C2792E8FFEA1009DD45D /* XCRemoteSwiftPackageReference "LGV_UICleantime" */ = {
@@ -1647,7 +1633,7 @@
 			repositoryURL = "https://github.com/LittleGreenViper/LGV_UICleantime";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.5.6;
+				minimumVersion = 2.6.0;
 			};
 		};
 		D4B2C27C2E8FFEDB009DD45D /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */ = {
@@ -1655,7 +1641,7 @@
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_Generic_Swift_Toolbox";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.16.4;
+				minimumVersion = 1.18.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
