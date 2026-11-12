@@ -141,11 +141,11 @@ The app can be opened from other apps (like [Safari](https://apps.apple.com/us/a
 
 The URL scheme is thus:
 
-**`nacc://`**_[?YYYY-MM-DD[/N]]_
+**`nacc://`**_[?YYYY-MM-DD[/N][&temp]]_
 
 The Universal Link Scheme is:
 
-**`https://nacc.littlegreenviper.com/`**_[?YYYY-MM-DD[/N]]_
+**`https://nacc.littlegreenviper.com/`**_[?YYYY-MM-DD[/N][&temp]]_
 
 _YYYY-MM-DD_ is a standard [ISO 8601 calendar date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (For example, September first, 1980, is 1980-09-01).
 
@@ -160,6 +160,18 @@ _N_ is the numerical index of a tab:
 |Figure 25: URL Entry In Safari|Figure 26: Permission Alert|
 |:----:|:----:|
 |![Figure 25](img/Image25.png)|![Figure 26](img/Image26.png)|
+
+### Temporary Cleandates
+
+Append `&temp` after the date (and optional tab index) to view someone else's cleantime without replacing your saved cleandate:
+
+- [`nacc://?1980-09-01&temp`](nacc://?1980-09-01&temp) opens a temporary report on the main screen.
+- [`nacc://?2020-03-17/1&temp`](nacc://?2020-03-17/1&temp) opens a temporary report on the Keytag Strip tab.
+- [`https://nacc.littlegreenviper.com/?2020-03-17/2&temp`](https://nacc.littlegreenviper.com/?2020-03-17/2&temp) opens a temporary report on the Medallions tab when NACC handles the Universal Link.
+
+The temporary date applies throughout the foreground session, including navigation, date-picker edits, reports, printing, sharing, and saving images. Opening a share or print sheet does not end the temporary session. Your saved cleandate continues to be used by widgets and the Watch.
+
+When the app enters the background or quits, the temporary session ends. Returning to the app restores your own saved cleandate. Opening another dated link without `&temp` ends temporary mode and saves that link's date normally. The `temp` flag requires a valid cleandate; it does nothing by itself.
 
 ### Example URL Scheme URLs
 

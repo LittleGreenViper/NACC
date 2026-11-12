@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7C913F62FA3000100000001 /* NACC_CleandateSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C913F62FA3000100000002 /* NACC_CleandateSession.swift */; };
 		D40D7E002EF6D1E200869069 /* NACCWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A420E82D4D607C00E4AC1E /* NACCWidgetBundle.swift */; };
 		D40F08A12F3BEDE000BBD5C8 /* RVS_PersistentPrefs in Frameworks */ = {isa = PBXBuildFile; productRef = D40F08A02F3BEDE000BBD5C8 /* RVS_PersistentPrefs */; };
 		D40F08A32F3BEDE800BBD5C8 /* RVS_PersistentPrefs in Frameworks */ = {isa = PBXBuildFile; productRef = D40F08A22F3BEDE800BBD5C8 /* RVS_PersistentPrefs */; };
@@ -139,6 +140,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A7C913F62FA3000100000002 /* NACC_CleandateSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACC_CleandateSession.swift; sourceTree = "<group>"; };
 		D412D8E12D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWatchAppContentViewWatchDelegate.swift; sourceTree = "<group>"; };
 		D41AC87D2C49813200C79B8C /* index.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
 		D41AC87E2C4981B500C79B8C /* apple-app-site-association */ = {isa = PBXFileReference; lastKnownFileType = text; path = "apple-app-site-association"; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				D456591C2EDCCB130010C38A /* Info.plist */,
 				D4C79A1927F9189800FBB7D3 /* NACC_LaunchScreen.storyboard */,
 				D4A0C15D2ED78C6700F77D56 /* NACC_App.swift */,
+				A7C913F62FA3000100000002 /* NACC_CleandateSession.swift */,
 				D4A0C15C2ED78C6700F77D56 /* NACC_MainContentView.swift */,
 				D489D35E2EDC91F600A86A6B /* NACC_InfoDisplayView.swift */,
 				D489D35C2EDC8EC900A86A6B /* NACC_ResultDisplayView.swift */,
@@ -627,7 +630,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 2610;
-				LastUpgradeCheck = 2700;
+				LastUpgradeCheck = 2720;
 				TargetAttributes = {
 					D45A93B62D4C4DEA008B2528 = {
 						CreatedOnToolsVersion = 16.2;
@@ -847,6 +850,7 @@
 				D4145FFB2EE751B000E4B4CF /* NACC.docc in Sources */,
 				D4A0C15F2ED78C6700F77D56 /* NACC_MainContentView.swift in Sources */,
 				D4A0C1602ED78C6700F77D56 /* NACC_App.swift in Sources */,
+				A7C913F62FA3000100000001 /* NACC_CleandateSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1124,7 +1128,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
 				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 7.1.0;
+				MARKETING_VERSION = 8.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1173,7 +1177,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
 				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 7.1.0;
+				MARKETING_VERSION = 8.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1223,7 +1227,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 7.1.0;
+				MARKETING_VERSION = 8.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
 				PRODUCT_NAME = NACC;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -1276,7 +1280,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 7.1.0;
+				MARKETING_VERSION = 8.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC;
 				PRODUCT_NAME = NACC;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -1320,7 +1324,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 7.1.0;
+				MARKETING_VERSION = 8.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1361,7 +1365,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 7.1.0;
+				MARKETING_VERSION = 8.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1400,7 +1404,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 7.1.0;
+				MARKETING_VERSION = 8.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1442,7 +1446,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 7.1.0;
+				MARKETING_VERSION = 8.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.NACCIntents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1483,7 +1487,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 7.1.0;
+				MARKETING_VERSION = 8.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp.NACCWatchComplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1523,7 +1527,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 7.1.0;
+				MARKETING_VERSION = 8.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.magshare.NACC.watchkitapp.NACCWatchComplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1609,7 +1613,7 @@
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_UIKit_Toolbox";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.7.5;
+				minimumVersion = 1.7.6;
 			};
 		};
 		D462E4AC2D5D07ED001E2C0F /* XCRemoteSwiftPackageReference "RVS_GeneralObserver" */ = {
@@ -1617,7 +1621,7 @@
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_GeneralObserver";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.5;
+				minimumVersion = 1.1.6;
 			};
 		};
 		D462E4AE2D5D0806001E2C0F /* XCRemoteSwiftPackageReference "RVS_PersistentPrefs" */ = {
@@ -1641,7 +1645,7 @@
 			repositoryURL = "https://github.com/RiftValleySoftware/RVS_Generic_Swift_Toolbox";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.18.0;
+				minimumVersion = 1.18.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

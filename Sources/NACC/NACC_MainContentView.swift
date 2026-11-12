@@ -569,6 +569,12 @@ struct NACC_MainContentView: View {
      This contains the cleandate.
      */
     @Binding var selectedDate: Date
+
+    /* ################################################################## */
+    /**
+     Updates the user's saved date when it is received from the Watch.
+     */
+    var updateSavedDate: (Date) -> Void
     
     /* ################################################################## */
     /**
@@ -601,7 +607,7 @@ struct NACC_MainContentView: View {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        return String(format: "SLUG-URL-STRING".localizedVariant, dateFormatter.string(from: NACCPersistentPrefs().cleanDate))
+        return String(format: "SLUG-URL-STRING".localizedVariant, dateFormatter.string(from: self.selectedDate))
     }
     
     /* ################################################################## */
@@ -858,7 +864,10 @@ struct NACC_MainContentView: View {
                 } message: {
                     Text("SLUR-ERR-CALENDAR-DENY-ALERT-MESSAGE".localizedVariant)
                 }
-                .navigationDestination(isPresented: self.$showResult) { NACC_ResultDisplayView(selectedTab: self.$selectedTab) }
+                .navigationDestination(isPresented: self.$showResult) {
+                    NACC_ResultDisplayView(selectedTab: self.$selectedTab, selectedDate: self.selectedDate)
+                        .id(self.selectedDate)
+                }
                 .navigationDestination(isPresented: self.$_showInfo) { NACC_InfoDisplayView() }
             }
         }
@@ -884,7 +893,6 @@ struct NACC_MainContentView: View {
         }
         .onAppear {
             self._watchDelegateObject = self._watchDelegateObject ?? NACCWatchAppContentViewWatchDelegate(updateHandler: self.updateApplicationContext)
-            self.selectedDate = self._prefs.cleanDate
             // If we were opened from a URL that specified a tab, then we immediately open the report screen.
             if .undefined != self.selectedTab {
                 self.showResult = true
@@ -893,8 +901,7 @@ struct NACC_MainContentView: View {
         .onChange(of: self.selectedTab) { _, inNewValue in
             NACCPersistentPrefs().lastSelectedTabIndex = inNewValue.rawValue
         }
-        .onChange(of: self.selectedDate) { _, inSelectedDate in
-            self._prefs.cleanDate = inSelectedDate
+        .onChange(of: self.selectedDate, initial: true) { _, inSelectedDate in
             let calculator = LGV_CleantimeDateCalc(startDate: inSelectedDate).cleanTime
             let cleantimeDisplayImage = calculator.isOneYearOrMore ? LGV_UISingleCleantimeMedallionImageView() : LGV_UISingleCleantimeKeytagImageView()
             cleantimeDisplayImage.totalDays = calculator.totalDays
@@ -943,7 +950,7 @@ struct NACC_MainContentView: View {
             #if DEBUG
                 print("Cleandate: \(cleanDate)")
             #endif
-            DispatchQueue.main.async { self.selectedDate = cleanDate }
+            DispatchQueue.main.async { self.updateSavedDate(cleanDate) }
         }
     }
 }

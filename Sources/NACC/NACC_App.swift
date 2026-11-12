@@ -91,7 +91,7 @@ struct NACC_App: App {
     /**
      This contains the cleandate.
      */
-    @State private var _selectedDate = Date()
+    @State private var _dateSession = NACC_CleandateSession(savedDate: NACCPersistentPrefs().cleanDate)
     
     /* ################################################################## */
     /**
@@ -112,39 +112,52 @@ struct NACC_App: App {
      - parameter inURL: The URL query string (for both a Universal and a Deep link).
      */
     func handleOpenWithURL(_ inURL: URL) {
-        if var dateString = inURL.query() {
-            var selectedTab = NACC_TabIndexes.undefined
-            let splitter = dateString.split(separator: "/")
-            guard !splitter.isEmpty else { return }
-            dateString = String(splitter[0])
-            if 1 < splitter.count,
-               let tabInt = Int(splitter[1]),
-               var tab = NACC_TabIndexes(rawValue: tabInt) {
-                // We don't have a medallion array, if we are less than a year.
-                if !LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.isOneYearOrMore,
-                   .medallionArray == tab {
-                    tab = .keytagArray
-                }
-                // We don't show the results screen for less than thirty days.
-                if !LGV_CleantimeDateCalc(startDate: NACCPersistentPrefs().cleanDate).cleanTime.isThirtyDaysOrMore {
-                    tab = .undefined
-                }
-                selectedTab = tab
-            }
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            if let date = dateFormatter.date(from: dateString) {
-                NACCPersistentPrefs().cleanDate = date
-                NACCPersistentPrefs().lastSelectedTabIndex = selectedTab.rawValue
+        guard let link = NACC_DeepLink(url: inURL) else { return }
 
-                DispatchQueue.main.async {
-                    self._wasOpenedViaURL = true
-                    (self._selectedDate, self._selectedTab, self._showResult) = (date, selectedTab, .undefined != selectedTab)
-                }
-            }
+        self._dateSession.open(link)
+        self._persistSessionDate()
+
+        var selectedTab = link.tabIndex.flatMap(NACC_TabIndexes.init(rawValue:)) ?? .undefined
+        let calculator = LGV_CleantimeDateCalc(startDate: link.date).cleanTime
+        // Tab availability is based on the incoming date, including temporary dates.
+        if !calculator.isOneYearOrMore, .medallionArray == selectedTab {
+            selectedTab = .keytagArray
         }
+        if !calculator.isThirtyDaysOrMore {
+            selectedTab = .undefined
+        }
+
+        self._wasOpenedViaURL = true
+        (self._selectedTab, self._showResult) = (selectedTab, .undefined != selectedTab)
+    }
+
+    /* ################################################################## */
+    /**
+     Saves only permanent session dates. All date edits go through this one persistence path.
+     */
+    private func _persistSessionDate() {
+        guard let date = self._dateSession.dateToSave else { return }
+        self._saveDate(date)
+    }
+
+    /* ################################################################## */
+    /**
+     Stores the user's own date and refreshes widgets.
+     */
+    private func _saveDate(_ inDate: Date) {
+        let prefs = NACCPersistentPrefs()
+        prefs.cleanDate = inDate
+        prefs.flush()
+        WidgetCenter.shared.reloadTimelines(ofKind: Self._widgetKind)
+    }
+
+    /* ################################################################## */
+    /**
+     Watch updates still change the user's saved date, while a temporary report stays on screen.
+     */
+    private func _receiveSavedDate(_ inDate: Date) {
+        self._saveDate(inDate)
+        self._dateSession.receiveSavedDate(inDate)
     }
     
     /* ################################################################## */
@@ -155,18 +168,28 @@ struct NACC_App: App {
         WindowGroup {
             NACC_MainContentView(showResult: self.$_showResult,
                                  selectedTab: self.$_selectedTab,
-                                 selectedDate: self.$_selectedDate
+                                 selectedDate: Binding(get: { self._dateSession.selectedDate },
+                                                       set: {
+                                                           self._dateSession.selectDate($0)
+                                                           self._persistSessionDate()
+                                                       }),
+                                 updateSavedDate: self._receiveSavedDate
             )
             // If we are being opened by a Universal or Deep link, we handle that here.
             .onOpenURL { inURL in self.handleOpenWithURL(inURL) }
         }
         // Forces updates, whenever we become active.
         .onChange(of: self._scenePhase, initial: true) {
-            if .active == self._scenePhase {
+            if .background == self._scenePhase, self._dateSession.isTemporary {
+                self._dateSession.endTemporarySession(savedDate: NACCPersistentPrefs().cleanDate)
+                self._showResult = false
+                self._selectedTab = .undefined
+                self._wasOpenedViaURL = false
+            } else if .active == self._scenePhase {
                 // If the change was from being opened by a URL, we say so, and leave the selected tab alone (as it may have been set by the URL).
                 if self._wasOpenedViaURL {
                     self._wasOpenedViaURL = false
-                } else {    // Otherwise, we make sure to not force open the results screen.
+                } else if !self._dateSession.isTemporary {    // Temporary reports survive share/print interruptions.
                     self._selectedTab = .undefined
                 }
                 let prefs = NACCPersistentPrefs()
@@ -174,13 +197,6 @@ struct NACC_App: App {
 
                 WidgetCenter.shared.reloadTimelines(ofKind: Self._widgetKind)
             }
-        }
-        .onChange(of: self._selectedDate) { _, newValue in
-            let prefs = NACCPersistentPrefs()
-            prefs.cleanDate = newValue
-            prefs.flush()
-
-            WidgetCenter.shared.reloadTimelines(ofKind: Self._widgetKind)
         }
     }
 }
