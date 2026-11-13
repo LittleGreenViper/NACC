@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 110;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -110,36 +110,30 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		D48285762EDE47A100721EA0 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
+			dstSubfolder = Product;
 			files = (
 				D48285732EDE47A100721EA0 /* Watch Target.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D4882CC42D5BA1DB00FBF2EC /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 13;
+			dstSubfolder = PlugIns;
 			files = (
 				D4F9DAA02D5BA6A300FFC2DC /* Complications Target.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D4C2BCAA2F3CD23400C2D1BA /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 13;
+			dstSubfolder = PlugIns;
 			files = (
 				D4C2BCA72F3CD23400C2D1BA /* Widget Target.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -237,7 +231,6 @@
 /* Begin PBXFrameworksBuildPhase section */
 		D45A93B42D4C4DEA008B2528 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D4B2C2882E8FFF38009DD45D /* RVS_UIKit_Toolbox in Frameworks */,
 				D4B2C2782E8FFE62009DD45D /* LGV_Cleantime in Frameworks */,
@@ -245,11 +238,9 @@
 				D4B2C27B2E8FFEBB009DD45D /* LGV_UICleantime in Frameworks */,
 				D40F08A32F3BEDE800BBD5C8 /* RVS_PersistentPrefs in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D4A0C14D2ED78C3800F77D56 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D43EF2212EE3059700709D39 /* RVS_UIKit_Toolbox in Frameworks */,
 				D40F87D22EDA4A8400E4B09B /* LGV_Cleantime in Frameworks */,
@@ -257,11 +248,9 @@
 				D40F87D42EDA4A8400E4B09B /* LGV_UICleantime in Frameworks */,
 				D40F08A12F3BEDE000BBD5C8 /* RVS_PersistentPrefs in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D4A420AD2D4D5C7900E4AC1E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D44690462D6135EF0079B36A /* RVS_UIKit_Toolbox in Frameworks */,
 				D45240E32D620C3E000BD663 /* LGV_Cleantime in Frameworks */,
@@ -269,22 +258,18 @@
 				D4B2C2822E8FFF0F009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */,
 				D40F08A72F3BEDF900BBD5C8 /* RVS_PersistentPrefs in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D4E43A4A2C937FDF00535CDD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D45240E52D620C4B000BD663 /* LGV_Cleantime in Frameworks */,
 				D4F58E002D5FE5400087C387 /* LGV_UICleantime in Frameworks */,
 				D4B2C2842E8FFF17009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */,
 				D44690402D61358C0079B36A /* RVS_UIKit_Toolbox in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D4F9DA922D5BA6A300FFC2DC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D44690442D6135E50079B36A /* RVS_UIKit_Toolbox in Frameworks */,
 				D45240E92D620C5A000BD663 /* LGV_Cleantime in Frameworks */,
@@ -292,7 +277,6 @@
 				D4B2C2862E8FFF1F009DD45D /* RVS_Generic_Swift_Toolbox in Frameworks */,
 				D40F08A52F3BEDF000BBD5C8 /* RVS_PersistentPrefs in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -566,8 +550,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = "Widget Target";
 			packageProductDependencies = (
 				D4F58DF52D5FE4C90087C387 /* LGV_UICleantime */,
@@ -590,8 +572,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = "Intents Target";
 			packageProductDependencies = (
 				D4F58DFF2D5FE5400087C387 /* LGV_UICleantime */,
@@ -613,8 +593,6 @@
 				D4F9DA932D5BA6A300FFC2DC /* Resources */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = "Complications Target";
 			packageProductDependencies = (
@@ -657,7 +635,6 @@
 				};
 			};
 			buildConfigurationList = D43C66822694AA88007D5883 /* Build configuration list for PBXProject "NACC" */;
-			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -673,6 +650,7 @@
 				D4B2C2792E8FFEA1009DD45D /* XCRemoteSwiftPackageReference "LGV_UICleantime" */,
 				D4B2C27C2E8FFEDB009DD45D /* XCRemoteSwiftPackageReference "RVS_Generic_Swift_Toolbox" */,
 			);
+			preferredProjectObjectVersion = 110;
 			productRefGroup = D43C667E2694AA88007D5883;
 			projectDirPath = "";
 			projectRoot = "";
@@ -689,18 +667,15 @@
 /* Begin PBXResourcesBuildPhase section */
 		D45A93B52D4C4DEA008B2528 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A8C0A11E2FA5000000000002 /* Palette.xcassets in Resources */,
 				D4A420E02D4D607800E4AC1E /* Assets.xcassets in Resources */,
 				D4F945512D4E60620073AF8F /* Localizable.strings in Resources */,
 				D4ACE7E22D584805006C00AD /* WatchStrings.xcstrings in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D4A0C14E2ED78C3800F77D56 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A8C0A11E2FA5000000000003 /* Palette.xcassets in Resources */,
 				D4A0C1612ED78C6700F77D56 /* Assets.xcassets in Resources */,
@@ -710,11 +685,9 @@
 				D4A3F7C52EE22425004992A8 /* InfoPlist.strings in Resources */,
 				D4B63FF82EE48E8400E81EF7 /* NACC_LaunchScreen.storyboard in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D4A420AE2D4D5C7900E4AC1E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A8C0A11E2FA5000000000004 /* Palette.xcassets in Resources */,
 				D4EB29AB2D5D47EF00D40106 /* WatchStrings.xcstrings in Resources */,
@@ -723,18 +696,15 @@
 				D4A420F02D4D607C00E4AC1E /* WidgetStrings.xcstrings in Resources */,
 				D4A420D52D4D5E7900E4AC1E /* Localizable.strings in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D4F9DA932D5BA6A300FFC2DC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A8C0A11E2FA5000000000005 /* Palette.xcassets in Resources */,
 				D4EB29AC2D5D47EF00D40106 /* WatchStrings.xcstrings in Resources */,
 				D4F9DAAA2D5BA6DE00FFC2DC /* Assets.xcassets in Resources */,
 				D462E4C32D5D0B17001E2C0F /* Localizable.strings in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
@@ -742,115 +712,87 @@
 		D482857D2EDE4D6E00721EA0 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
 			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if command -v swiftlint 2>&1 >/dev/null\nthen\n    cd ${PROJECT_DIR}\n    swiftlint\nfi\n";
+			shellScript = (
+				"if command -v swiftlint 2>&1 >/dev/null",
+				"then",
+				"    cd ${PROJECT_DIR}",
+				"    swiftlint",
+				"fi",
+				"",
+			);
 		};
 		D4C5413D2D43BFD600F62EBF /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
 			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if command -v swiftlint 2>&1 >/dev/null\nthen\n    cd ${PROJECT_DIR}\n    swiftlint\nfi\n";
+			shellScript = (
+				"if command -v swiftlint 2>&1 >/dev/null",
+				"then",
+				"    cd ${PROJECT_DIR}",
+				"    swiftlint",
+				"fi",
+				"",
+			);
 		};
 		D4EB29AF2D5D4D6000D40106 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
 			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if command -v swiftlint 2>&1 >/dev/null\nthen\n    cd ${PROJECT_DIR}\n    swiftlint\nfi\n";
+			shellScript = (
+				"if command -v swiftlint 2>&1 >/dev/null",
+				"then",
+				"    cd ${PROJECT_DIR}",
+				"    swiftlint",
+				"fi",
+				"",
+			);
 		};
 		D4EB29B02D5D4D7B00D40106 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
 			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if command -v swiftlint 2>&1 >/dev/null\nthen\n    cd ${PROJECT_DIR}\n    swiftlint\nfi\n";
+			shellScript = (
+				"if command -v swiftlint 2>&1 >/dev/null",
+				"then",
+				"    cd ${PROJECT_DIR}",
+				"    swiftlint",
+				"fi",
+				"",
+			);
 		};
 		D4EC72212D4C55D5008ED9D8 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
 			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if command -v swiftlint 2>&1 >/dev/null\nthen\n    cd ${PROJECT_DIR}\n    swiftlint\nfi\n";
+			shellScript = (
+				"if command -v swiftlint 2>&1 >/dev/null",
+				"then",
+				"    cd ${PROJECT_DIR}",
+				"    swiftlint",
+				"fi",
+				"",
+			);
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D45A93B32D4C4DEA008B2528 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D45A93CE2D4C5405008B2528 /* NACCPersistentPrefs.swift in Sources */,
 				D4A420E42D4D607800E4AC1E /* NACCWatchApp.swift in Sources */,
 				D412D8E32D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift in Sources */,
 				D4A420E52D4D607800E4AC1E /* NACCWatchAppContentView.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D4A0C14C2ED78C3800F77D56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D40F87CD2EDA47AA00E4B09B /* NACCWatchAppContentViewWatchDelegate.swift in Sources */,
 				D43EF21F2EE3046D00709D39 /* NACCPagePrintRenderer.swift in Sources */,
@@ -862,34 +804,27 @@
 				D4A0C1602ED78C6700F77D56 /* NACC_App.swift in Sources */,
 				A7C913F62FA3000100000001 /* NACC_CleandateSession.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D4A420AC2D4D5C7900E4AC1E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D40D7E002EF6D1E200869069 /* NACCWidgetBundle.swift in Sources */,
 				D4A420D22D4D5DFE00E4AC1E /* NACCPersistentPrefs.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D4E43A492C937FDF00535CDD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D4F46FDC2C94654F0071D359 /* NACCShowCleantimeIntentHandler.swift in Sources */,
 				D4F46FE12C94669E0071D359 /* NACCIntents.intentdefinition in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D4F9DA912D5BA6A300FFC2DC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				D462E4C22D5D0AB7001E2C0F /* NACCPersistentPrefs.swift in Sources */,
 				D4F9DAA92D5BA6DE00FFC2DC /* NACCWatchComplication.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -961,7 +896,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		D43C668C2694AA88007D5883 /* Debug */ = {
+		D43C668C2694AA88007D5883 /* Debug configuration for PBXProject "NACC" */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D43C66D82694AC33007D5883 /* Warnings.xcconfig */;
 			buildSettings = {
@@ -1036,7 +971,7 @@
 			};
 			name = Debug;
 		};
-		D43C668D2694AA88007D5883 /* Release */ = {
+		D43C668D2694AA88007D5883 /* Release configuration for PBXProject "NACC" */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D43C66D82694AC33007D5883 /* Warnings.xcconfig */;
 			buildSettings = {
@@ -1105,7 +1040,7 @@
 			};
 			name = Release;
 		};
-		D45A93C62D4C4DEB008B2528 /* Debug */ = {
+		D45A93C62D4C4DEB008B2528 /* Debug configuration for PBXNativeTarget "Watch Target" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1154,7 +1089,7 @@
 			};
 			name = Debug;
 		};
-		D45A93C72D4C4DEB008B2528 /* Release */ = {
+		D45A93C72D4C4DEB008B2528 /* Release configuration for PBXNativeTarget "Watch Target" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1202,7 +1137,7 @@
 			};
 			name = Release;
 		};
-		D4A0C1582ED78C3900F77D56 /* Debug */ = {
+		D4A0C1582ED78C3900F77D56 /* Debug configuration for PBXNativeTarget "Main App Target" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
@@ -1255,7 +1190,7 @@
 			};
 			name = Debug;
 		};
-		D4A0C1592ED78C3900F77D56 /* Release */ = {
+		D4A0C1592ED78C3900F77D56 /* Release configuration for PBXNativeTarget "Main App Target" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
@@ -1307,7 +1242,7 @@
 			};
 			name = Release;
 		};
-		D4A420C22D4D5C7A00E4AC1E /* Debug */ = {
+		D4A420C22D4D5C7A00E4AC1E /* Debug configuration for PBXNativeTarget "Widget Target" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1348,7 +1283,7 @@
 			};
 			name = Debug;
 		};
-		D4A420C32D4D5C7A00E4AC1E /* Release */ = {
+		D4A420C32D4D5C7A00E4AC1E /* Release configuration for PBXNativeTarget "Widget Target" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1388,7 +1323,7 @@
 			};
 			name = Release;
 		};
-		D4E43A6B2C937FDF00535CDD /* Debug */ = {
+		D4E43A6B2C937FDF00535CDD /* Debug configuration for PBXNativeTarget "Intents Target" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1430,7 +1365,7 @@
 			};
 			name = Debug;
 		};
-		D4E43A6C2C937FDF00535CDD /* Release */ = {
+		D4E43A6C2C937FDF00535CDD /* Release configuration for PBXNativeTarget "Intents Target" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1471,7 +1406,7 @@
 			};
 			name = Release;
 		};
-		D4F9DAA32D5BA6A300FFC2DC /* Debug */ = {
+		D4F9DAA32D5BA6A300FFC2DC /* Debug configuration for PBXNativeTarget "Complications Target" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1511,7 +1446,7 @@
 			};
 			name = Debug;
 		};
-		D4F9DAA42D5BA6A300FFC2DC /* Release */ = {
+		D4F9DAA42D5BA6A300FFC2DC /* Release configuration for PBXNativeTarget "Complications Target" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1556,55 +1491,49 @@
 		D43C66822694AA88007D5883 /* Build configuration list for PBXProject "NACC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D43C668C2694AA88007D5883 /* Debug */,
-				D43C668D2694AA88007D5883 /* Release */,
+				D43C668C2694AA88007D5883 /* Debug configuration for PBXProject "NACC" */,
+				D43C668D2694AA88007D5883 /* Release configuration for PBXProject "NACC" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		D45A93C52D4C4DEB008B2528 /* Build configuration list for PBXNativeTarget "Watch Target" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D45A93C62D4C4DEB008B2528 /* Debug */,
-				D45A93C72D4C4DEB008B2528 /* Release */,
+				D45A93C62D4C4DEB008B2528 /* Debug configuration for PBXNativeTarget "Watch Target" */,
+				D45A93C72D4C4DEB008B2528 /* Release configuration for PBXNativeTarget "Watch Target" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		D4A0C15A2ED78C3900F77D56 /* Build configuration list for PBXNativeTarget "Main App Target" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D4A0C1582ED78C3900F77D56 /* Debug */,
-				D4A0C1592ED78C3900F77D56 /* Release */,
+				D4A0C1582ED78C3900F77D56 /* Debug configuration for PBXNativeTarget "Main App Target" */,
+				D4A0C1592ED78C3900F77D56 /* Release configuration for PBXNativeTarget "Main App Target" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		D4A420C12D4D5C7A00E4AC1E /* Build configuration list for PBXNativeTarget "Widget Target" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D4A420C22D4D5C7A00E4AC1E /* Debug */,
-				D4A420C32D4D5C7A00E4AC1E /* Release */,
+				D4A420C22D4D5C7A00E4AC1E /* Debug configuration for PBXNativeTarget "Widget Target" */,
+				D4A420C32D4D5C7A00E4AC1E /* Release configuration for PBXNativeTarget "Widget Target" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		D4E43A702C937FDF00535CDD /* Build configuration list for PBXNativeTarget "Intents Target" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D4E43A6B2C937FDF00535CDD /* Debug */,
-				D4E43A6C2C937FDF00535CDD /* Release */,
+				D4E43A6B2C937FDF00535CDD /* Debug configuration for PBXNativeTarget "Intents Target" */,
+				D4E43A6C2C937FDF00535CDD /* Release configuration for PBXNativeTarget "Intents Target" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		D4F9DAA22D5BA6A300FFC2DC /* Build configuration list for PBXNativeTarget "Complications Target" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D4F9DAA32D5BA6A300FFC2DC /* Debug */,
-				D4F9DAA42D5BA6A300FFC2DC /* Release */,
+				D4F9DAA32D5BA6A300FFC2DC /* Debug configuration for PBXNativeTarget "Complications Target" */,
+				D4F9DAA42D5BA6A300FFC2DC /* Release configuration for PBXNativeTarget "Complications Target" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
