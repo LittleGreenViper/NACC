@@ -77,6 +77,12 @@ struct NACC_InfoDisplayView: View {
     /**
      */
     @Environment(\.openURL) private var openURL
+
+    /* ################################################################## */
+    /**
+     The phone appearance, used to display the opposite app icon variant.
+     */
+    @Environment(\.colorScheme) private var _colorScheme
     
     /* ################################################################## */
     /**
@@ -92,9 +98,9 @@ struct NACC_InfoDisplayView: View {
     
     /* ################################################################## */
     /**
-     This is the size of the rounded corners.
+     This matches the continuous rounded corners of a Home Screen app icon.
      */
-    private static let _iconCornerRadiusInDisplayUnits = 16.0
+    private static let _iconCornerRadiusInDisplayUnits = 18.0
 
     /* ################################################################## */
     /**
@@ -117,8 +123,11 @@ struct NACC_InfoDisplayView: View {
                         Image("BrandLogo")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: Self._iconSizeInDisplayUnits)
-                            .cornerRadius(Self._iconCornerRadiusInDisplayUnits)
+                            .frame(width: Self._iconSizeInDisplayUnits,
+                                   height: Self._iconSizeInDisplayUnits)
+                            .clipShape(RoundedRectangle(cornerRadius: Self._iconCornerRadiusInDisplayUnits,
+                                                        style: .continuous))
+                            .environment(\.colorScheme, .dark == _colorScheme ? .light : .dark)
                             .onTapGesture {
                                 if let url = Bundle.main.helpURI {
                                     self.openURL(url)
