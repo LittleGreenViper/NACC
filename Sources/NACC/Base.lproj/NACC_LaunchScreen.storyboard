@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BrandLogo" translatesAutoresizingMaskIntoConstraints="NO" id="bme-BH-8xr">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="bme-BH-8xr">
                                 <rect key="frame" x="83" y="324" width="248" height="248"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bme-BH-8xr" secondAttribute="height" multiplier="1:1" id="rph-Ri-bQT"/>
@@ -42,7 +42,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BrandLogo" width="1024" height="1024"/>
+        <image name="LaunchLogo" width="1024" height="1024"/>
         <namedColor name="BackgroundColor-Main">
             <color red="0.9647058823529412" green="0.9647058823529412" blue="0.9647058823529412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

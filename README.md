@@ -235,7 +235,7 @@ The minimum package versions are `LGV_Cleantime` 1.5.0, `LGV_UICleantime` 2.6.0,
 
 ## Appearance
 
-`Sources/Shared/Resources/Palette.xcassets` supplies the Recovrr background and accent colors to the iPhone/iPad app, Watch app, widgets, and complications. The background includes light, dark, and increased-contrast variants; text uses adaptive system colors and the standard Apple system font. Watch surfaces use Recovrr's dark palette to match watchOS's light text. `BrandLogo` reuses the revised app icon artwork for launch screens and full-color complications. Tinted Watch faces use the monochrome template and the face's chosen color.
+`Sources/Shared/Resources/Palette.xcassets` supplies the Recovrr background and accent colors to the iPhone/iPad app, Watch app, widgets, and complications. The background includes light, dark, and increased-contrast variants; text uses adaptive system colors and the standard Apple system font. Watch surfaces use Recovrr's dark palette to match watchOS's light text. `BrandLogo` reuses the revised app icon artwork inside the app and in full-color complications. Launch screens use `LaunchLogo`, derived from `spec/Logo.pdf` with the opaque background fill removed and PDF vector rendering preserved. Tinted Watch faces use the monochrome template and the face's chosen color.
 
 ## License And Copyright
 
