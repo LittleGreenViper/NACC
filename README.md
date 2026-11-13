@@ -233,6 +233,10 @@ The minimum package versions are `LGV_Cleantime` 1.5.0, `LGV_UICleantime` 2.6.0,
 
 `LGV_UICleantime` supplies its own artwork, report strings, and privacy manifest through its Swift package resource bundle. Do not copy the library's asset catalog or report strings into NACC: app resources with matching names override the package resources. NACC retains its own icons, theme, interface strings, and compact Watch complication day-count strings.
 
+## Appearance
+
+`Sources/Shared/Resources/Palette.xcassets` supplies the Recovrr background and accent colors to the iPhone/iPad app, Watch app, widgets, and complications. The background includes light, dark, and increased-contrast variants; text uses adaptive system colors and the standard Apple system font. Watch surfaces use Recovrr's dark palette to match watchOS's light text. `BrandLogo` reuses the revised app icon artwork for launch screens and full-color complications. Tinted Watch faces use the monochrome template and the face's chosen color.
+
 ## License And Copyright
 
 The code and keytag images are [MIT license](https://opensource.org/licenses/MIT). Use them as you will.

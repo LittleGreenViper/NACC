@@ -9,7 +9,9 @@
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIImageName</key>
-		<string>LaunchImage</string>
+		<string>BrandLogo</string>
+		<key>UIColorName</key>
+		<string>BackgroundColor-Main</string>
 	</dict>
 	<key>appGroup</key>
 	<string>group.P53V4JS928.org.magshare.NACC</string>

@@ -129,6 +129,8 @@ struct NACCWatchApp: App {
                                     cleanDate: $_cleanDate,
                                     watchFormat: $_watchFormat
             )
+            .fontDesign(.default)
+            .tint(.accentColor)
             .onAppear {
                 NACCPersistentPrefs().flush()
                 self._watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue

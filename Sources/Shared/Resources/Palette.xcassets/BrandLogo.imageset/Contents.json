@@ -1,0 +1,29 @@
+{
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "images": [
+    {
+      "filename": "Logo-Light.png",
+      "idiom": "universal"
+    },
+    {
+      "filename": "Logo.png",
+      "idiom": "universal",
+      "appearances": [
+        {
+          "appearance": "luminosity",
+          "value": "dark"
+        }
+      ]
+    },
+    {
+      "filename": "Logo.png",
+      "idiom": "watch"
+    }
+  ],
+  "properties": {
+    "template-rendering-intent": "original"
+  }
+}

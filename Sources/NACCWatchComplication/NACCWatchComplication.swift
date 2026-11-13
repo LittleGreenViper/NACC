@@ -34,16 +34,10 @@ import RVS_PersistentPrefs
 struct NACCWatchComplicationProvider: TimelineProvider {
     /* ################################################################## */
     /**
-     This is the display family variant for this complication.
-     */
-    @Environment(\.widgetFamily) private var _family
-    
-    /* ################################################################## */
-    /**
      This returns a simple placeholder.
      */
     func placeholder(in context: Context) -> NACCWatchComplicationEntry {
-        NACCWatchComplicationEntry(date: .now, family: self._family)
+        NACCWatchComplicationEntry(date: .now)
     }
 
     /* ################################################################## */
@@ -51,7 +45,7 @@ struct NACCWatchComplicationProvider: TimelineProvider {
      This sends a "live" snapshot to the completion.
      */
     func getSnapshot(in context: Context, completion: @escaping (NACCWatchComplicationEntry) -> Void) {
-        completion(NACCWatchComplicationEntry(date: .now, family: self._family))
+        completion(NACCWatchComplicationEntry(date: .now))
     }
 
     /* ################################################################## */
@@ -60,7 +54,7 @@ struct NACCWatchComplicationProvider: TimelineProvider {
      */
     func getTimeline(in context: Context, completion: @escaping (Timeline<NACCWatchComplicationEntry>) -> Void) {
         NACCPersistentPrefs().flush()
-        completion(Timeline(entries: [NACCWatchComplicationEntry(date: .now, family: self._family)], policy: .atEnd))
+        completion(Timeline(entries: [NACCWatchComplicationEntry(date: .now)], policy: .atEnd))
     }
 }
 
@@ -79,34 +73,19 @@ struct NACCWatchComplicationEntry: TimelineEntry {
 
     /* ################################################################## */
     /**
-     This is the display family variant for this complication.
+     Uses the current colored logo on full-color faces and a template on tinted faces.
+     Rendering follows the environment directly so gallery snapshots use the right artwork.
      */
-    @State var family: WidgetFamily = .accessoryCircular
-    
-    /* ################################################################## */
-    /**
-     The mode being used to render the complication (so we can decide on which asset to supply).
-     */
-    @State var renderingMode: WidgetRenderingMode = .accented
-    
-    /* ################################################################## */
-    /**
-     The image to be displayed (based upon the family)
-     */
-    var image: UIImage {
-        guard .fullColor == renderingMode,
-              .accessoryRectangular != family
-        else { return UIImage(named: "VectorLogo") ?? UIImage() }
-
-        return UIImage(named: "LogoMask") ?? UIImage()
+    func image(for inRenderingMode: WidgetRenderingMode) -> UIImage {
+        UIImage(named: .fullColor == inRenderingMode ? "BrandLogo" : "VectorLogo") ?? UIImage()
     }
-    
+
     /* ################################################################## */
     /**
      The text to be displayed (based upon the family)
      */
-    var text: String {
-        switch family {
+    func text(for inFamily: WidgetFamily) -> String {
+        switch inFamily {
         case .accessoryRectangular, .accessoryInline:
             if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: NACCPersistentPrefs().cleanDate, endDate: .now, short: true) {
                 return textTemp
@@ -146,7 +125,7 @@ struct NACCWatchComplicationEntryView: View {
     /**
      The timeline entry to be displayed by this view.
      */
-    @State var entry: NACCWatchComplicationProvider.Entry
+    let entry: NACCWatchComplicationProvider.Entry
 
     /* ################################################################## */
     /**
@@ -154,31 +133,33 @@ struct NACCWatchComplicationEntryView: View {
      */
     var body: some View {
         GeometryReader { inGeom in
+            let text = self.entry.text(for: self._family)
             if .accessoryCorner == self._family || .accessoryCircular == self._family {
-                Image(uiImage: self.entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
-                    .widgetLabel(self.entry.text)
-                    .onAppear {
-                        self.entry.family = self._family
-                        self.entry.renderingMode = self._renderingMode
-                    }
-            } else if .accessoryInline == self._family, !entry.text.isEmpty {
-                Text(entry.text)
-                    .onAppear {
-                        self.entry.family = self._family
-                        self.entry.renderingMode = self._renderingMode
-                    }
+                self._logo(height: inGeom.size.height)
+                    .widgetLabel(text)
+            } else if .accessoryInline == self._family {
+                if !text.isEmpty { Text(text) }
             } else {
                 HStack(alignment: .top) {
-                    Image(uiImage: self.entry.image.resized(toNewHeight: inGeom.size.height) ?? UIImage())
-                    if !self.entry.text.isEmpty { Text(self.entry.text) }
-                }
-                .onAppear {
-                    self.entry.family = self._family
-                    self.entry.renderingMode = self._renderingMode
+                    self._logo(height: inGeom.size.height)
+                    if !text.isEmpty { Text(text) }
                 }
             }
         }
-        .containerBackground(for: .widget) { Color.clear }
+        .fontDesign(.default)
+        .tint(.accentColor)
+        .containerBackground(Color("WidgetBackground"), for: .widget)
+    }
+
+    /* ################################################################## */
+    /**
+     Lets the Watch face tint template artwork while preserving the full-color logo.
+     */
+    private func _logo(height inHeight: CGFloat) -> some View {
+        Image(uiImage: self.entry.image(for: self._renderingMode).resized(toNewHeight: inHeight) ?? UIImage())
+            .renderingMode(.fullColor == self._renderingMode ? .original : .template)
+            .foregroundStyle(.tint)
+            .widgetAccentable()
     }
 }
 

@@ -27,7 +27,7 @@ import RVS_PersistentPrefs
 // MARK: - Background Container View -
 /* ###################################################################################################################################### */
 /**
- This is a general-purpose View that displays the background gradient, under the contained View.
+ This is a general-purpose View that displays the shared Recovrr background under the contained View.
  */
 struct AppBackground<Content: View>: View {
     /* ################################################################## */
@@ -44,7 +44,7 @@ struct AppBackground<Content: View>: View {
     
     /* ################################################################## */
     /**
-     This simply adds a gradient background to the contained View.
+     Applies the shared adaptive background, system typography, and accent color.
      */
     var body: some View {
         content()
@@ -52,12 +52,9 @@ struct AppBackground<Content: View>: View {
                    maxHeight: .infinity,
                    alignment: self.alignment
             )
-            .background(
-                Image("Background-Gradient")
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-            )
+            .fontDesign(.default)
+            .tint(.accentColor)
+            .background(Color("BackgroundColor-Main").ignoresSafeArea())
     }
 }
 
@@ -175,6 +172,8 @@ struct NACC_App: App {
                                                        }),
                                  updateSavedDate: self._receiveSavedDate
             )
+            .fontDesign(.default)
+            .tint(.accentColor)
             // If we are being opened by a Universal or Deep link, we handle that here.
             .onOpenURL { inURL in self.handleOpenWithURL(inURL) }
         }

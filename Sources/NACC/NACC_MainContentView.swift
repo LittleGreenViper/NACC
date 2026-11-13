@@ -734,14 +734,14 @@ struct NACC_MainContentView: View {
         NavigationStack {
             AppBackground(alignment: .center) {
                 VStack {
-                    if let appIcon = Bundle.main.appIcon {
+                    Group {
                         // This is the top logo. If the user has thirty days or more, tapping on it will bring in the results screen.
                         if LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isThirtyDaysOrMore {
                             Button {
                                 self.selectedTab = .keytagArray
                                 self.showResult = true
                             } label: {
-                                Image(uiImage: appIcon)
+                                Image("BrandLogo")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: Self._iconSizeInDisplayUnits)
@@ -749,7 +749,7 @@ struct NACC_MainContentView: View {
                             }
                             .accessibilityHint("SLUG-ACC-LOGO".localizedVariant)
                         } else {
-                            Image(uiImage: appIcon)
+                            Image("BrandLogo")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: Self._iconSizeInDisplayUnits)
@@ -770,7 +770,7 @@ struct NACC_MainContentView: View {
                             .frame(maxWidth: .infinity,
                                    alignment: .center
                             )
-                            .foregroundStyle(!LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore ? Color("SelectionTintColor") : .primary)
+                            .foregroundStyle(!LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore ? Color.accentColor : .primary)
                             .background(.thickMaterial,
                                         in: Capsule()
                             )

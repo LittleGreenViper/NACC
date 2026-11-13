@@ -55,7 +55,7 @@ import SwiftUI
  
  The widget dynamically adjusts to whatever cleantime is set in the main app, and updates in realtime.
  
- The widget will, by default, display against a yellow gradient (the same one in the app icon), but that can be switched off, in the widget configuration, to use the standard color theme.
+ The widget uses the shared Recovrr palette, with adaptive light, dark, and high-contrast backgrounds and system typography.
  */
 @main
 struct NACCWidgetBundle: WidgetBundle {
@@ -86,10 +86,9 @@ struct NACCWidget: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: Self.kind, intent: NACCWidgetIntent.self, provider: NACC_IntentProvider()) { entry in
             NACCWidgetEntryView(entry: entry)
-                .containerBackground(for: .widget) {
-                    Image("BackgroundGradient")
-                        .resizable(resizingMode: .stretch)
-                }
+                .fontDesign(.default)
+                .tint(.accentColor)
+                .containerBackground(Color("WidgetBackground"), for: .widget)
         }
         .configurationDisplayName("SLUG-WIDGET-NAME".localizedVariant)
         .description("SLUG-WIDGET-DESCRIPTION".localizedVariant)
@@ -172,12 +171,6 @@ struct NACCWidgetEntryView: View {
 
     /* ################################################################## */
     /**
-     This is used to set the dynamic light mode/dark mode screen, if we are not displaying our yellow background.
-     */
-    @Environment(\.colorScheme) private var _colorScheme
-
-    /* ################################################################## */
-    /**
      If the family variant is `systemSmall`, then we display one thing: either the text report, or a keytag/medallion.
      
      If the family variant is `systemMedium`, then we display the text report on the left, and the keytag or medallion on the right.
@@ -192,13 +185,13 @@ struct NACCWidgetEntryView: View {
                     .shadow(color: .black.opacity(0.45), radius: 6, x: 0, y: 0)
             } else {
                 Text(self.entry.text)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.primary)
                     .minimumScaleFactor(0.5)
             }
         } else {
             HStack {
                 Text(self.entry.text)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.primary)
                     .minimumScaleFactor(0.5)
                 
                 if let newGeneratedImage = self.entry.singleMedallion ?? self.entry.singleKeytag {
@@ -250,7 +243,6 @@ struct NACCWidgetIntent: WidgetConfigurationIntent {
      
      - parameter inForceKeytag: If true, then medallions will not be displayed.
      - parameter inOnlyText: If true, then no image is shown; only the text report.
-     - parameter inDontShowYellowBackground: If true, then the yellow gradient background will NOT be shown.
      */
     init(forceKeytag inForceKeytag: Bool,
          onlyText inOnlyText: Bool,
@@ -379,7 +371,6 @@ struct NACC_Entry: TimelineEntry {
      - parameter inCleandate: The cleandate. This should reflect the date selected in the main app, and is used to determine the display.
      - parameter inForceKeytag: If true, then medallions will not be displayed.
      - parameter inOnlyText: If true, then no image is shown; only the text report.
-     - parameter inDontShowBackground: If true, then the yellow gradient background will NOT be shown.
 
      */
     init(date inDate: Date = .now,

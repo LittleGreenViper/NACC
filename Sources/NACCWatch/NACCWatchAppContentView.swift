@@ -290,91 +290,93 @@ struct NACCWatchAppContentView: View {
     /* ################################################################## */
     /**
      The main view. It's a swiped-tab view (page selector), with text, keytag, and medallion as choices. The choice is saved persistently.
-     The user can double-tap on it, to change the cleandate.
+     A separate settings row opens the cleandate picker without covering the pages.
      */
     var body: some View {
-        GeometryReader { inGeom in
-            let calculator = LGV_CleantimeDateCalc(startDate: self.cleanDate).cleanTime
-            NavigationStack {
-                TabView(selection: self.$watchFormat) {
-                    ScrollView {
-                        Text(self._displayText)
-                            .foregroundStyle(Color.black)
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding()
-                    }
-                    .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
-
-                    Group {
-                        if let singleMedallion = self.singleMedallion?.resized(toNewHeight: inGeom.size.height) {
-                            Image(uiImage: singleMedallion)
-                                .containerRelativeFrame([.horizontal, .vertical], alignment: .center)
-                        } else {
-                            ProgressView()
-                                .progressViewStyle(.circular)
-                                .tint(.black)
-                        }
-                    }
-                    .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
-
-                    Group {
-                        if let keytagChain = self.keytagChain?.resized(toNewWidth: 2 < calculator.years ? 64 : 128) {
-                            ScrollView {
-                                let image = keytagChain
-                                Spacer()
-                                    .frame(height: 8)
-                                Image(uiImage: image)
-                            }
-                            .clipped()
-                        } else {
-                            ProgressView()
-                                .progressViewStyle(.circular)
-                                .tint(.black)
-                        }
-                    }
-                    .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
-                }
-                .background {
-                    Image("BackgroundGradient")
-                        .resizable(resizingMode: .stretch)
-                        .cornerRadius(8)
-                }
-                .onDisappear {
-                    Self._textSyncTask?.cancel()
-                    Self._textSyncTask = nil
-                    Self._syncTask?.cancel()
-                    Self._syncTask = nil
-                }
-                .onChange(of: self.syncUp, initial: true) { self._synchronize() }
-                .onChange(of: self._scenePhase, initial: true) {
-                    if .active == self._scenePhase {
-                        self.model.reloadFromPrefs()
-                    }
-                }
-                .tabViewStyle(PageTabViewStyle())
-                .navigationDestination(isPresented: self.$showCleanDatePicker) { CleanDatePicker(cleanDate: self.$cleanDate, syncUp: self.$syncUp) }
-                .onAppear {
-                    self.showCleanDatePicker = false
-                    self._synchronize()
-                }
-            }
-            .padding(0)
-            .overlay(alignment: .topTrailing) {
-                if !self.showCleanDatePicker {
+        NavigationStack {
+            VStack(spacing: 0) {
+                HStack {
+                    Spacer()
                     Button {
                         self.showCleanDatePicker = true
                     } label: {
                         Image(systemName: "gearshape")
                             .font(.system(size: 14, weight: .regular))
-                            .foregroundColor(.black)
-                            .padding(8)
+                            .foregroundStyle(.tint)
+                            .frame(minWidth: 44, minHeight: 44)
+                            .contentShape(Rectangle())
                     }
                     .buttonStyle(.borderless)
-                    .padding(.top, -12)
-                    .padding(.trailing, -4)
+                    .accessibilityLabel(NSLocalizedString("SLUG-SELECT-DATE", tableName: "WatchStrings", comment: ""))
+                }
+                .padding(.horizontal, 4)
+
+                GeometryReader { inGeom in
+                    let calculator = LGV_CleantimeDateCalc(startDate: self.cleanDate).cleanTime
+                    TabView(selection: self.$watchFormat) {
+                        ScrollView {
+                            Text(self._displayText)
+                                .foregroundStyle(.primary)
+                                .multilineTextAlignment(.leading)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding()
+                        }
+                        .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
+
+                        Group {
+                            if let singleMedallion = self.singleMedallion {
+                                Image(uiImage: singleMedallion)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .padding(.bottom, 20)
+                                    .frame(width: inGeom.size.width, height: inGeom.size.height)
+                            } else {
+                                ProgressView()
+                                    .progressViewStyle(.circular)
+                                    .tint(.accentColor)
+                            }
+                        }
+                        .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
+
+                        Group {
+                            if let keytagChain = self.keytagChain?.resized(toNewWidth: 2 < calculator.years ? 64 : 128) {
+                                ScrollView {
+                                    let image = keytagChain
+                                    Spacer()
+                                        .frame(height: 8)
+                                    Image(uiImage: image)
+                                }
+                                .clipped()
+                            } else {
+                                ProgressView()
+                                    .progressViewStyle(.circular)
+                                    .tint(.accentColor)
+                            }
+                        }
+                        .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
+                    }
+                    .background(Color("BackgroundColor-Main").ignoresSafeArea())
+                    .onDisappear {
+                        Self._textSyncTask?.cancel()
+                        Self._textSyncTask = nil
+                        Self._syncTask?.cancel()
+                        Self._syncTask = nil
+                    }
+                    .onChange(of: self.syncUp, initial: true) { self._synchronize() }
+                    .onChange(of: self._scenePhase, initial: true) {
+                        if .active == self._scenePhase {
+                            self.model.reloadFromPrefs()
+                        }
+                    }
+                    .tabViewStyle(PageTabViewStyle())
+                    .navigationDestination(isPresented: self.$showCleanDatePicker) { CleanDatePicker(cleanDate: self.$cleanDate, syncUp: self.$syncUp) }
+                    .onAppear {
+                        self.showCleanDatePicker = false
+                        self._synchronize()
+                    }
                 }
             }
+            .background(Color("BackgroundColor-Main").ignoresSafeArea())
         }
     }
 }
@@ -409,14 +411,10 @@ struct CleanDatePicker: View {
                 .frame(height: 4)
             DatePicker(NSLocalizedString("SLUG-SELECT-DATE", tableName: "WatchStrings", comment: ""), selection: self.$cleanDate, in: minDate...Date.now)
                 .onAppear { self.cleanDate = min(.now, max(minDate, self.cleanDate)) }
-                .foregroundStyle(.black)
+                .foregroundStyle(.primary)
             Spacer()
                 .frame(height: 4)
         }
-        .background {
-            Image("BackgroundGradient")
-                .resizable(resizingMode: .stretch)
-                .cornerRadius(8)
-        }
+        .background(Color("BackgroundColor-Main").ignoresSafeArea())
     }
 }

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8C0A11E2FA5000000000005 /* Palette.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8C0A11E2FA5000000000001 /* Palette.xcassets */; };
+		A8C0A11E2FA5000000000004 /* Palette.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8C0A11E2FA5000000000001 /* Palette.xcassets */; };
+		A8C0A11E2FA5000000000003 /* Palette.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8C0A11E2FA5000000000001 /* Palette.xcassets */; };
+		A8C0A11E2FA5000000000002 /* Palette.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8C0A11E2FA5000000000001 /* Palette.xcassets */; };
 		A7C913F62FA3000100000001 /* NACC_CleandateSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C913F62FA3000100000002 /* NACC_CleandateSession.swift */; };
 		D40D7E002EF6D1E200869069 /* NACCWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A420E82D4D607C00E4AC1E /* NACCWidgetBundle.swift */; };
 		D40F08A12F3BEDE000BBD5C8 /* RVS_PersistentPrefs in Frameworks */ = {isa = PBXBuildFile; productRef = D40F08A02F3BEDE000BBD5C8 /* RVS_PersistentPrefs */; };
@@ -140,6 +144,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A8C0A11E2FA5000000000001 /* Palette.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Palette.xcassets; sourceTree = "<group>"; };
 		A7C913F62FA3000100000002 /* NACC_CleandateSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACC_CleandateSession.swift; sourceTree = "<group>"; };
 		D412D8E12D5A46F80041648C /* NACCWatchAppContentViewWatchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NACCWatchAppContentViewWatchDelegate.swift; sourceTree = "<group>"; };
 		D41AC87D2C49813200C79B8C /* index.php */ = {isa = PBXFileReference; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
@@ -459,6 +464,7 @@
 			children = (
 				D4A8AD032EE32EF700979987 /* Settings.bundle */,
 				D4E2F96A27FCCD3400457AD4 /* Theme.xcassets */,
+				A8C0A11E2FA5000000000001 /* Palette.xcassets */,
 				D4ACE7E12D584805006C00AD /* WatchStrings.xcstrings */,
 				D4A420EB2D4D607C00E4AC1E /* WidgetStrings.xcstrings */,
 				D4E2F96727FCCA3200457AD4 /* Localizable.strings */,
@@ -685,6 +691,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8C0A11E2FA5000000000002 /* Palette.xcassets in Resources */,
 				D4A420E02D4D607800E4AC1E /* Assets.xcassets in Resources */,
 				D4F945512D4E60620073AF8F /* Localizable.strings in Resources */,
 				D4ACE7E22D584805006C00AD /* WatchStrings.xcstrings in Resources */,
@@ -695,6 +702,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8C0A11E2FA5000000000003 /* Palette.xcassets in Resources */,
 				D4A0C1612ED78C6700F77D56 /* Assets.xcassets in Resources */,
 				D40F87D72EDA4AF100E4B09B /* Localizable.strings in Resources */,
 				D43BAAA72ED8E73E00B58900 /* Theme.xcassets in Resources */,
@@ -708,6 +716,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8C0A11E2FA5000000000004 /* Palette.xcassets in Resources */,
 				D4EB29AB2D5D47EF00D40106 /* WatchStrings.xcstrings in Resources */,
 				D4A420ED2D4D607C00E4AC1E /* Assets.xcassets in Resources */,
 				D4A420EF2D4D607C00E4AC1E /* README.md in Resources */,
@@ -720,6 +729,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8C0A11E2FA5000000000005 /* Palette.xcassets in Resources */,
 				D4EB29AC2D5D47EF00D40106 /* WatchStrings.xcstrings in Resources */,
 				D4F9DAAA2D5BA6DE00FFC2DC /* Assets.xcassets in Resources */,
 				D462E4C32D5D0B17001E2C0F /* Localizable.strings in Resources */,

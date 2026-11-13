@@ -114,19 +114,17 @@ struct NACC_InfoDisplayView: View {
                            spacing: Self._edgePaddingInDisplayUnits
                     ) {
                         // The app icon button, at the top.
-                        if let appIcon = Bundle.main.appIcon {
-                            Image(uiImage: appIcon)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: Self._iconSizeInDisplayUnits)
-                                .cornerRadius(Self._iconCornerRadiusInDisplayUnits)
-                                .onTapGesture {
-                                    if let url = Bundle.main.helpURI {
-                                        self.openURL(url)
-                                    }
+                        Image("BrandLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: Self._iconSizeInDisplayUnits)
+                            .cornerRadius(Self._iconCornerRadiusInDisplayUnits)
+                            .onTapGesture {
+                                if let url = Bundle.main.helpURI {
+                                    self.openURL(url)
                                 }
-                                .accessibilityHint("SLUG-ACC-APPICON-BUTTON".localizedVariant)
-                        }
+                            }
+                            .accessibilityHint("SLUG-ACC-APPICON-BUTTON".localizedVariant)
                         
                         // The app name and version string.
                         let displayString = String(format: "SLUG-APP-INFO-VERSION-FORMAT".localizedVariant,
