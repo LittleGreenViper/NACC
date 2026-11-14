@@ -55,7 +55,7 @@ import SwiftUI
  
  The widget dynamically adjusts to whatever cleantime is set in the main app, and updates in realtime.
  
- The widget uses the shared Recovrr palette, with adaptive light, dark, and high-contrast backgrounds and system typography.
+ The widget uses the same system container background as Recovrr's widgets, with adaptive appearance and system typography.
  */
 @main
 struct NACCWidgetBundle: WidgetBundle {
@@ -88,7 +88,7 @@ struct NACCWidget: Widget {
             NACCWidgetEntryView(entry: entry)
                 .fontDesign(.default)
                 .tint(.accentColor)
-                .containerBackground(Color("WidgetBackground"), for: .widget)
+                .containerBackground(.background, for: .widget)
         }
         .configurationDisplayName("SLUG-WIDGET-NAME".localizedVariant)
         .description("SLUG-WIDGET-DESCRIPTION".localizedVariant)
