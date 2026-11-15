@@ -1,0 +1,9 @@
+// Localized Siri intent titles, parameters, and prompts.
+
+"JIIOVV"                                             = "Affiche ton temps d’abstinence à partir de ta date de début.";
+"PSX6yz"                                             = "Afficher mon temps d’abstinence pour ${cleandate}";
+"trmFCl"                                             = "Afficher mon temps d’abstinence pour ${cleandate}";
+"WQ0Lno"                                             = "Date de début d’abstinence";
+"P2qwDt"                                             = "Indique une date postérieure au 5 octobre 1953.";
+"AK3YI7"                                             = "Rapport";
+"oaSRoe"                                             = "Afficher le temps d’abstinence";

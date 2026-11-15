@@ -207,6 +207,60 @@ struct NACC_EventEditView: UIViewControllerRepresentable {
 }
 
 /* ###################################################################################################################################### */
+// MARK: - Accessible Action Choices -
+/* ###################################################################################################################################### */
+/** SwiftUI alert actions discard accessibility hints. A sheet keeps the native button semantics and hints. */
+private struct NACC_ChoiceSheet<Actions: View>: View {
+    let title: String
+    var message: String?
+    @ViewBuilder var actions: () -> Actions
+
+    var body: some View {
+        AppBackground {
+            ScrollView {
+                VStack(spacing: 20) {
+                    Text(self.title)
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                        .accessibilityAddTraits(.isHeader)
+                    if let message = self.message {
+                        Text(message)
+                            .multilineTextAlignment(.center)
+                    }
+                    self.actions()
+                }
+                .padding(24)
+            }
+            .accessibilityLabel(self.title)
+            .accessibilityHint("SLUG-ACC-OPTIONS-SCROLL-HINT".localizedVariant)
+        }
+        .presentationDetents([.medium, .large])
+        .presentationDragIndicator(.visible)
+    }
+}
+
+/** The visible title is also the spoken label; hints explain the resulting action. */
+private struct NACC_ChoiceButton: View {
+    let title: String
+    let hint: String
+    var role: ButtonRole?
+    let action: () -> Void
+
+    var body: some View {
+        Button(role: self.role, action: self.action) {
+            Text(self.title)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 4)
+        }
+        .buttonStyle(.bordered)
+        .controlSize(.large)
+        .accessibilityLabel(self.title)
+        .accessibilityHint(self.hint)
+    }
+}
+
+/* ###################################################################################################################################### */
 // MARK: - Date Picker View -
 /* ###################################################################################################################################### */
 /**
@@ -299,6 +353,8 @@ struct NACC_PickerPopoverContent: View {
                         )
                         .datePickerStyle(.wheel)
                         .labelsHidden()
+                        .accessibilityLabel("SLUG-ACC-DATEPICKER-LABEL".localizedVariant)
+                        .accessibilityHint("SLUG-ACC-DATEPICKER".localizedVariant)
                     } else {
                         // Graphical if it fits; otherwise wheel
                         ViewThatFits(in: .vertical) {
@@ -309,6 +365,9 @@ struct NACC_PickerPopoverContent: View {
                                        displayedComponents: [.date]
                             )
                             .datePickerStyle(.graphical)
+                            .labelsHidden()
+                            .accessibilityLabel("SLUG-ACC-DATEPICKER-LABEL".localizedVariant)
+                            .accessibilityHint("SLUG-ACC-DATEPICKER".localizedVariant)
                             
                             // Fallback: wheel (more compact)
                             DatePicker("",
@@ -318,6 +377,8 @@ struct NACC_PickerPopoverContent: View {
                             )
                             .datePickerStyle(.wheel)
                             .labelsHidden()
+                            .accessibilityLabel("SLUG-ACC-DATEPICKER-LABEL".localizedVariant)
+                            .accessibilityHint("SLUG-ACC-DATEPICKER".localizedVariant)
                         }
                     }
                     
@@ -328,6 +389,8 @@ struct NACC_PickerPopoverContent: View {
                             Button("SLUG-TODAY".localizedVariant) {
                                 self.selectedDate = Date()
                             }
+                            .accessibilityLabel("SLUG-TODAY".localizedVariant)
+                            .accessibilityHint("SLUG-ACC-TODAY-HINT".localizedVariant)
                             .frame(maxWidth: .infinity)
                         }
                         // We only show reset, if we have changed from the initial date.
@@ -336,12 +399,16 @@ struct NACC_PickerPopoverContent: View {
                             Button("SLUG-RESET".localizedVariant) {
                                 self.selectedDate = origDate
                             }
+                            .accessibilityLabel("SLUG-RESET".localizedVariant)
+                            .accessibilityHint("SLUG-ACC-RESET-HINT".localizedVariant)
                             .frame(maxWidth: .infinity)
                         }
                         // We always show the dismiss button.
                         Button("SLUG-DONE".localizedVariant) {
                             self._dismiss()
                         }
+                        .accessibilityLabel("SLUG-DONE".localizedVariant)
+                        .accessibilityHint("SLUG-ACC-DONE-HINT".localizedVariant)
                         .buttonStyle(.borderedProminent)
                         .frame(maxWidth: .infinity)
                     }
@@ -517,6 +584,14 @@ struct NACC_MainContentView: View {
      */
     @State private var _activityItems: [Any] = []
     
+    /** The report action to perform after the choice sheet closes. */
+    private enum _ReportAction {
+        case share
+        case print
+    }
+
+    @State private var _pendingReportAction: _ReportAction?
+
     /* ################################################################## */
     /**
      This shows a date picker in a modal sheet. If the user taps on the date, they get the sheet.
@@ -593,7 +668,7 @@ struct NACC_MainContentView: View {
             return self._reportString
                 .naCleantimeText(beginDate: self.selectedDate,
                                  endDate: .now
-                )?.localizedVariant ?? "ERROR"
+                ) ?? "SLUG-REPORT-UNAVAILABLE".localizedVariant
         } else {
             return "SLUG-CLEANDATE-PICKER-TITLE".localizedVariant
         }
@@ -708,6 +783,22 @@ struct NACC_MainContentView: View {
         )
     }
 
+    /** Waits for the choices sheet to close before presenting the share or print controller. */
+    private func _performPendingReportAction() {
+        let action = self._pendingReportAction
+        self._pendingReportAction = nil
+        switch action {
+        case .share:
+            self._showingShareSheet = true
+        case .print:
+            if let renderer = self._makePrintRenderer() {
+                self._print(using: renderer)
+            }
+        case nil:
+            break
+        }
+    }
+
     /* ################################################################## */
     /**
      Uses a UIPrintPageRenderer to present the standard print UI.
@@ -716,7 +807,7 @@ struct NACC_MainContentView: View {
     private func _print(using inRenderer: UIPrintPageRenderer) {
         let printInfo = UIPrintInfo(dictionary: nil)
         printInfo.outputType = .photo
-        printInfo.jobName = "Cleantime Report"
+        printInfo.jobName = "SLUG-ACC-REPORT-LABEL".localizedVariant
 
         let controller = UIPrintInteractionController.shared
         controller.printInfo = printInfo
@@ -747,6 +838,7 @@ struct NACC_MainContentView: View {
                                     .frame(width: Self._iconSizeInDisplayUnits)
                                     .cornerRadius(Self._iconSizeInDisplayUnits / 2)
                             }
+                            .accessibilityLabel("SLUG-ACC-LOGO-LABEL".localizedVariant)
                             .accessibilityHint("SLUG-ACC-LOGO".localizedVariant)
                         } else {
                             Image("BrandLogo")
@@ -764,25 +856,28 @@ struct NACC_MainContentView: View {
                         // If there has been a cleandate set, the following displays a text item, with the textual report. If no cleandate, then it prompts the user to set one.
                         // Tapping on the report brings up a date picker, allowing the user to set/change the cleandate.
                         // The text is surrounded by a capsule, indicating that it can be tapped. If no date is set, the color of the text is a button color.
-                        Text(self._report)
-                            .textSelection(.enabled)
-                            .padding(Self._buttonPaddingInDisplayUnits)
-                            .frame(maxWidth: .infinity,
-                                   alignment: .center
-                            )
-                            .foregroundStyle(!LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore ? Color.accentColor : .primary)
-                            .background(.thickMaterial,
-                                        in: Capsule()
-                            )
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                self._showingPicker = true
+                        Button {
+                            self._showingPicker = true
+                        } label: {
+                            Text(self._report)
+                                .padding(Self._buttonPaddingInDisplayUnits)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .foregroundStyle(!LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore ? Color.accentColor : .primary)
+                                .background(.thickMaterial, in: Capsule())
+                                .contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                        .contextMenu {
+                            Button("SLUG-COPY-REPORT".localizedVariant, systemImage: "doc.on.doc") {
+                                UIPasteboard.general.string = self._report
                             }
-                            ._adaptivePickerPresentation(isPresented: $_showingPicker,
-                                                         selectedDate: $selectedDate
-                            )
-                            .accessibilityAddTraits(.isButton)
-                            .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
+                            .accessibilityLabel("SLUG-COPY-REPORT".localizedVariant)
+                            .accessibilityHint("SLUG-ACC-COPY-REPORT-HINT".localizedVariant)
+                        }
+                        ._adaptivePickerPresentation(isPresented: $_showingPicker, selectedDate: $selectedDate)
+                        .accessibilityLabel("SLUG-ACC-REPORT-LABEL".localizedVariant)
+                        .accessibilityValue(self._report)
+                        .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
                         
                         // If the user has set a cleandate, then the following is an image, with the user's last earned keytag (under a year), or medallion.
                         // If the user has thirty days or more, tapping on the image brings in the results screen.
@@ -797,6 +892,8 @@ struct NACC_MainContentView: View {
                                         .scaledToFit()
                                         .frame(width: Self._mainImageWidthInDisplayUnits)
                                 }
+                                .accessibilityLabel("SLUG-ACC-IMAGE-LABEL".localizedVariant)
+                                .accessibilityValue(self._report)
                                 .accessibilityHint("SLUG-ACC-IMAGE".localizedVariant)
                             } else {
                                 Image(uiImage: image)
@@ -812,34 +909,46 @@ struct NACC_MainContentView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 // Create the various NavBar items.
                 .toolbar {
-                    // The "Action" button
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                            self._prepareActivityItems()
-                            self._showingActions = true
-                        } label: {
-                            Image(systemName: "square.and.arrow.up")
+                    // Clear the main-screen actions as soon as results navigation begins.
+                    if !self.showResult {
+                        // The "Action" button
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button {
+                                self._prepareActivityItems()
+                                self._showingActions = true
+                            } label: {
+                                Image(systemName: "square.and.arrow.up")
+                                    .fontWeight(.light)
+                            }
+                            .accessibilityLabel("SLUG-ACC-ACTION-LABEL".localizedVariant)
+                            .accessibilityHint("SLUG-ACC-ACTION-BUTTON".localizedVariant)
                         }
-                        .accessibilityHint("SLUG-ACC-ACTION-BUTTON".localizedVariant)
-                    }
-                    // The calendar button (create an event)
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                            self._calendarButtonHit()
-                        } label: {
-                            Image(systemName: "calendar")
+                        .naccWithoutSharedBackground()
+                        // The calendar button (create an event)
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button {
+                                self._calendarButtonHit()
+                            } label: {
+                                Image(systemName: "calendar")
+                                    .fontWeight(.light)
+                            }
+                            .disabled(!self._calendarIsEnabled)
+                            .accessibilityLabel("SLUG-ACC-CALENDAR-LABEL".localizedVariant)
+                            .accessibilityHint("SLUG-ACC-CALENDAR-BUTTON".localizedVariant)
                         }
-                        .disabled(!self._calendarIsEnabled)
-                        .accessibilityHint("SLUG-ACC-CALENDAR-BUTTON".localizedVariant)
-                    }
-                    // The info screen button
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            self._showInfo = true
-                        } label: {
-                            Image(systemName: "info.circle")
+                        .naccWithoutSharedBackground()
+                        // The info screen button
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button {
+                                self._showInfo = true
+                            } label: {
+                                Image(systemName: "info.circle")
+                                    .fontWeight(.light)
+                            }
+                            .accessibilityLabel("SLUG-ABOUT".localizedVariant)
+                            .accessibilityHint("SLUG-ACC-INFO-BUTTON".localizedVariant)
                         }
-                        .accessibilityHint("SLUG-ACC-INFO-BUTTON".localizedVariant)
+                        .naccWithoutSharedBackground()
                     }
                 }
                 // This presents a modal sheet, with an event add screen. We always use a sheet, because the process is quite modal.
@@ -852,17 +961,22 @@ struct NACC_MainContentView: View {
                     }
                 }
                 // Called when the Calendar does not have permission to add events.
-                .alert("SLUR-ERR-CALENDAR-DENY-ALERT-TITLE".localizedVariant,
-                       isPresented: $_showCalendarAccessAlert) {
-                    Button("SLUR-ERR-CALENDAR-DENY-ALERT-CANCEL".localizedVariant, role: .cancel) { }
-                    
-                    Button("SLUR-ERR-CALENDAR-DENY-ALERT-SETTINGS".localizedVariant) {
-                        if let url = URL(string: UIApplication.openSettingsURLString) {
-                            openURL(url)
+                .sheet(isPresented: $_showCalendarAccessAlert) {
+                    NACC_ChoiceSheet(title: "SLUR-ERR-CALENDAR-DENY-ALERT-TITLE".localizedVariant,
+                                     message: "SLUR-ERR-CALENDAR-DENY-ALERT-MESSAGE".localizedVariant) {
+                        NACC_ChoiceButton(title: "SLUR-ERR-CALENDAR-DENY-ALERT-SETTINGS".localizedVariant,
+                                          hint: "SLUG-ACC-SETTINGS-BUTTON".localizedVariant) {
+                            self._showCalendarAccessAlert = false
+                            if let url = URL(string: UIApplication.openSettingsURLString) {
+                                openURL(url)
+                            }
+                        }
+                        NACC_ChoiceButton(title: "SLUR-ERR-CALENDAR-DENY-ALERT-CANCEL".localizedVariant,
+                                          hint: "SLUG-ACC-DEFER-CALENDAR-HINT".localizedVariant,
+                                          role: .cancel) {
+                            self._showCalendarAccessAlert = false
                         }
                     }
-                } message: {
-                    Text("SLUR-ERR-CALENDAR-DENY-ALERT-MESSAGE".localizedVariant)
                 }
                 .navigationDestination(isPresented: self.$showResult) {
                     NACC_ResultDisplayView(selectedTab: self.$selectedTab, selectedDate: self.selectedDate)
@@ -872,20 +986,24 @@ struct NACC_MainContentView: View {
             }
         }
         // When the action button is hit, we ask the user if they want to share, or print.
-        .alert("SLUG-ACTIONS-TITLE".localizedVariant,
-                            isPresented: self.$_showingActions) {
-            // Share…
-            Button("SLUG-ACTIONS-SHARE".localizedVariant) { self._showingShareSheet = true }
-
-            // Print… (only if we can actually print something)
-            Button("SLUG-ACTIONS-PRINT".localizedVariant) {
-                // Add our custom print renderer.
-                if let renderer = self._makePrintRenderer() {
-                    self._print(using: renderer)
+        .sheet(isPresented: self.$_showingActions, onDismiss: self._performPendingReportAction) {
+            NACC_ChoiceSheet(title: "SLUG-ACTIONS-TITLE".localizedVariant) {
+                NACC_ChoiceButton(title: "SLUG-ACTIONS-SHARE".localizedVariant,
+                                  hint: "SLUG-ACC-SHARE-HINT".localizedVariant) {
+                    self._pendingReportAction = .share
+                    self._showingActions = false
+                }
+                NACC_ChoiceButton(title: "SLUG-ACTIONS-PRINT".localizedVariant,
+                                  hint: "SLUG-ACC-PRINT-HINT".localizedVariant) {
+                    self._pendingReportAction = .print
+                    self._showingActions = false
+                }
+                NACC_ChoiceButton(title: "SLUG-CANCEL".localizedVariant,
+                                  hint: "SLUG-ACC-CANCEL-HINT".localizedVariant,
+                                  role: .cancel) {
+                    self._showingActions = false
                 }
             }
-
-            Button("SLUG-CANCEL".localizedVariant, role: .cancel) { }
         }
         // If we are shoing the share (activity) sheet, then we set the appropriate state property.
         .sheet(isPresented: self.$_showingShareSheet) {

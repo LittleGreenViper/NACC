@@ -1,0 +1,9 @@
+// Localized Siri intent titles, parameters, and prompts.
+
+"JIIOVV"                                             = "Exibe seu tempo limpo com base na sua data de início.";
+"PSX6yz"                                             = "Mostrar meu tempo limpo para ${cleandate}";
+"trmFCl"                                             = "Mostrar meu tempo limpo para ${cleandate}";
+"WQ0Lno"                                             = "Data de início do tempo limpo";
+"P2qwDt"                                             = "Informe uma data posterior a 5 de outubro de 1953.";
+"AK3YI7"                                             = "Relatório";
+"oaSRoe"                                             = "Mostrar tempo limpo";

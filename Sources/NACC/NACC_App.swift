@@ -22,6 +22,7 @@ import SwiftUI
 import LGV_Cleantime
 import WidgetKit
 import RVS_PersistentPrefs
+import RVS_Generic_Swift_Toolbox
 
 /* ###################################################################################################################################### */
 // MARK: - Background Container View -
@@ -55,6 +56,134 @@ struct AppBackground<Content: View>: View {
             .fontDesign(.default)
             .tint(.accentColor)
             .background(Color("BackgroundColor-Main").ignoresSafeArea())
+    }
+}
+
+/* ###################################################################################################################################### */
+// MARK: - Navigation Appearance -
+/* ###################################################################################################################################### */
+/** A plain action-colored Back button, shared by the pushed screens. */
+struct NACC_PlainBackButton: ViewModifier {
+    @Environment(\.dismiss) private var _dismiss
+
+    func body(content: Content) -> some View {
+        content
+            .navigationBarBackButtonHidden()
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        self._dismiss()
+                    } label: {
+                        Image(systemName: "chevron.backward")
+                            .font(.system(size: 17, weight: .light))
+                            .frame(minWidth: 44, minHeight: 44)
+                            .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundStyle(Color.accentColor)
+                    .accessibilityLabel("SLUG-BACK".localizedVariant)
+                }
+                .naccWithoutSharedBackground()
+            }
+            .background(NACC_BackNavigationGestures())
+    }
+}
+
+/** Keeps UIKit's interactive navigation when the system Back button is replaced. */
+private struct NACC_BackNavigationGestures: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> Controller { Controller() }
+
+    func updateUIViewController(_ controller: Controller, context: Context) {
+        controller.installGestures()
+    }
+
+    static func dismantleUIViewController(_ controller: Controller, coordinator: ()) {
+        controller.restoreGestures()
+    }
+
+    final class Controller: UIViewController {
+        private var _gestures: [(UIGestureRecognizer, PopGestureDelegate)] = []
+        private var _isVisible = false
+
+        override func viewDidAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
+            self._isVisible = true
+            self.installGestures()
+        }
+
+        override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            self._isVisible = false
+        }
+
+        override func viewDidDisappear(_ animated: Bool) {
+            super.viewDidDisappear(animated)
+            self.restoreGestures()
+        }
+
+        func installGestures() {
+            guard self._isVisible, let navigationController = self.navigationController,
+                  navigationController.viewControllers.count > 1,
+                  self.viewIfLoaded?.window != nil else { return }
+            var gestures = [navigationController.interactivePopGestureRecognizer]
+            if #available(iOS 26.0, *) {
+                gestures.append(navigationController.interactiveContentPopGestureRecognizer)
+            }
+            for gesture in gestures.compactMap({ $0 }) {
+                if self._gestures.contains(where: { $0.0 === gesture && gesture.delegate === $0.1 }) { continue }
+                let delegate = PopGestureDelegate(navigationController: navigationController,
+                                                  original: gesture.delegate,
+                                                  wasEnabled: gesture.isEnabled)
+                self._gestures.append((gesture, delegate))
+                gesture.delegate = delegate
+                gesture.isEnabled = true
+            }
+        }
+
+        func restoreGestures() {
+            for (gesture, delegate) in self._gestures where gesture.delegate === delegate {
+                gesture.delegate = delegate.original
+                gesture.isEnabled = delegate.wasEnabled
+            }
+            self._gestures.removeAll()
+        }
+    }
+
+    /** Allows back navigation only in the correct direction, with a destination and no active transition. */
+    final class PopGestureDelegate: NSObject, UIGestureRecognizerDelegate {
+        private weak var _navigationController: UINavigationController?
+        weak var original: UIGestureRecognizerDelegate?
+        let wasEnabled: Bool
+
+        init(navigationController: UINavigationController, original: UIGestureRecognizerDelegate?, wasEnabled: Bool) {
+            self._navigationController = navigationController
+            self.original = original
+            self.wasEnabled = wasEnabled
+        }
+
+        func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+            guard let navigationController = self._navigationController else { return false }
+            guard navigationController.viewControllers.count > 1,
+                  navigationController.transitionCoordinator == nil else { return false }
+            if let pan = gestureRecognizer as? UIPanGestureRecognizer {
+                let velocity = pan.velocity(in: navigationController.view)
+                let direction: CGFloat = navigationController.view.effectiveUserInterfaceLayoutDirection == .rightToLeft ? -1 : 1
+                return velocity.x * direction > abs(velocity.y)
+            }
+            return true
+        }
+    }
+}
+
+/** Removes shared glass backgrounds on iOS 26 while retaining the earlier toolbar appearance. */
+extension ToolbarContent {
+    @ToolbarContentBuilder
+    func naccWithoutSharedBackground() -> some ToolbarContent {
+        if #available(iOS 26.0, *) {
+            self.sharedBackgroundVisibility(.hidden)
+        } else {
+            self
+        }
     }
 }
 

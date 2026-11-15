@@ -87,18 +87,20 @@ struct NACC_ResultDisplayView: View {
                     Label(NACC_TabIndexes.keytagArray.navigationTitle,
                           image: NACC_TabIndexes.keytagArray.imageName
                     )
+                    .accessibilityLabel(NACC_TabIndexes.keytagArray.navigationTitle)
+                    .accessibilityHint("SLUG-ACC-Keytag-Array".localizedVariant)
                 }
                 .tag(NACC_TabIndexes.keytagArray)
-                .accessibilityHint("SLUG-ACC-Keytag-Array".localizedVariant)
 
             NACC_KeytagStripTabView(selectedDate: self.selectedDate, image: self.$_renderedImages[.keytagStrip])
                 .tabItem {
                     Label(NACC_TabIndexes.keytagStrip.navigationTitle,
                           image: NACC_TabIndexes.keytagStrip.imageName
                     )
+                    .accessibilityLabel(NACC_TabIndexes.keytagStrip.navigationTitle)
+                    .accessibilityHint("SLUG-ACC-Keytag-Strip".localizedVariant)
                 }
                 .tag(NACC_TabIndexes.keytagStrip)
-                .accessibilityHint("SLUG-ACC-Keytag-Strip".localizedVariant)
 
             if LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneYearOrMore {
                 NACC_MedallionTabView(selectedDate: self.selectedDate, image: self.$_renderedImages[.medallionArray])
@@ -106,13 +108,15 @@ struct NACC_ResultDisplayView: View {
                         Label(NACC_TabIndexes.medallionArray.navigationTitle,
                               image: NACC_TabIndexes.medallionArray.imageName
                         )
+                        .accessibilityLabel(NACC_TabIndexes.medallionArray.navigationTitle)
+                        .accessibilityHint("SLUG-ACC-Medallions".localizedVariant)
                     }
                     .tag(NACC_TabIndexes.medallionArray)
-                    .accessibilityHint("SLUG-ACC-Medallions".localizedVariant)
             }
         }
         .navigationTitle("SLUG-RESULTS-TITLE".localizedVariant)
         .navigationBarTitleDisplayMode(.inline)
+        .modifier(NACC_PlainBackButton())
         .toolbar {
             // The "Action" button
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -120,10 +124,13 @@ struct NACC_ResultDisplayView: View {
                     self._showingShareSheet = true
                 } label: {
                     Image(systemName: "square.and.arrow.up")
+                        .fontWeight(.light)
                 }
                 .disabled(nil == self._renderedImages[self.selectedTab])
+                .accessibilityLabel("SLUG-ACC-SHARE-IMAGE-LABEL".localizedVariant)
                 .accessibilityHint("SLUG-ACC-TABS-ACTION-BUTTON".localizedVariant)
             }
+            .naccWithoutSharedBackground()
         }
         // If we are shoing the share (activity) sheet, then we set the appropriate state property.
         .sheet(isPresented: self.$_showingShareSheet) {
@@ -256,12 +263,16 @@ fileprivate struct NACC_CleantimeRenderedImageView: View {
      */
     let selectedDate: Date
 
+    /** The localized name of the recognition displayed by this view. */
+    let accessibilityLabel: String
+
     /* ################################################################## */
     /**
      We accept a builder closure that returns a fully-configured cleantime view.
      */
-    init(selectedDate: Date, image: Binding<UIImage?>, makeCleantimeView: () -> LGV_UICleantimeImageViewBase) {
+    init(selectedDate: Date, image: Binding<UIImage?>, accessibilityLabel: String, makeCleantimeView: () -> LGV_UICleantimeImageViewBase) {
         self.selectedDate = selectedDate
+        self.accessibilityLabel = accessibilityLabel
         self._image = image
         self.cleantimeView = makeCleantimeView()
     }
@@ -296,6 +307,8 @@ fileprivate struct NACC_CleantimeRenderedImageView: View {
                                     .padding(.horizontal,
                                              Self._sideInsetsInDisplayUnits
                                     )
+                                    .accessibilityLabel(self.accessibilityLabel)
+                                    .accessibilityValue(LGV_UICleantimeDateReportString().naCleantimeText(beginDate: self.selectedDate) ?? "")
                                 Spacer()
                             }
                             .padding(.horizontal,
@@ -304,6 +317,8 @@ fileprivate struct NACC_CleantimeRenderedImageView: View {
                             .frame(width: proxy.size.width)
                         }
                         .scrollBounceBehavior(.basedOnSize)
+                        .accessibilityLabel(self.accessibilityLabel)
+                        .accessibilityHint("SLUG-ACC-RECOGNITION-SCROLL-HINT".localizedVariant)
                     }
                 } else {
                     ProgressView()
@@ -368,7 +383,7 @@ fileprivate struct NACC_KeytagArrayTabView: View, NACC_TabViewProtocol {
      Returns the image in a scroller, or a progress view, if still rendering.
      */
     var body: some View {
-        NACC_CleantimeRenderedImageView(selectedDate: self.selectedDate, image: self.$image) {
+        NACC_CleantimeRenderedImageView(selectedDate: self.selectedDate, image: self.$image, accessibilityLabel: Self.tabName) {
             let view = LGV_UIMultipleCleantimeKeytagImageView()
             view.keytagsAreAVerticalStrip = false
             return view
@@ -407,7 +422,7 @@ fileprivate struct NACC_KeytagStripTabView: View, NACC_TabViewProtocol {
      Returns the image in a scroller, or a progress view, if still rendering.
      */
     var body: some View {
-        NACC_CleantimeRenderedImageView(selectedDate: self.selectedDate, image: self.$image) {
+        NACC_CleantimeRenderedImageView(selectedDate: self.selectedDate, image: self.$image, accessibilityLabel: Self.tabName) {
             let view = LGV_UIMultipleCleantimeKeytagImageView()
             view.keytagsAreAVerticalStrip = true
             return view
@@ -446,6 +461,6 @@ fileprivate struct NACC_MedallionTabView: View, NACC_TabViewProtocol {
      Returns the image in a scroller, or a progress view, if still rendering.
      */
     var body: some View {
-        NACC_CleantimeRenderedImageView(selectedDate: self.selectedDate, image: self.$image) { LGV_UICleantimeMultipleMedallionsImageView() }
+        NACC_CleantimeRenderedImageView(selectedDate: self.selectedDate, image: self.$image, accessibilityLabel: Self.tabName) { LGV_UICleantimeMultipleMedallionsImageView() }
     }
 }

@@ -1,0 +1,9 @@
+// Localized Siri intent titles, parameters, and prompts.
+
+"JIIOVV"                                             = "Zeigt deine Cleanzeit anhand deines Cleandatums an.";
+"PSX6yz"                                             = "Meine Cleanzeit für ${cleandate} anzeigen";
+"trmFCl"                                             = "Meine Cleanzeit für ${cleandate} anzeigen";
+"WQ0Lno"                                             = "Cleandatum";
+"P2qwDt"                                             = "Bitte gib ein Datum nach dem 5. Oktober 1953 an.";
+"AK3YI7"                                             = "Bericht";
+"oaSRoe"                                             = "Cleanzeit anzeigen";

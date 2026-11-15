@@ -231,7 +231,15 @@ It is also dependent upon the following 2 [Little Green Viper Software Developme
 
 The minimum package versions are `LGV_Cleantime` 1.5.0, `LGV_UICleantime` 2.6.0, `RVS_GeneralObserver` 1.1.5, `RVS_Generic_Swift_Toolbox` 1.18.0, `RVS_PersistentPrefs` 1.17.0, and `RVS_UIKit_Toolbox` 1.7.5.
 
-`LGV_UICleantime` supplies its own artwork, report strings, and privacy manifest through its Swift package resource bundle. Do not copy the library's asset catalog or report strings into NACC: app resources with matching names override the package resources. NACC retains its own icons, theme, interface strings, and compact Watch complication day-count strings.
+`LGV_UICleantime` supplies its own artwork, English report strings, and privacy manifest through its Swift package resource bundle. Do not copy the library's asset catalog into NACC. NACC intentionally overrides the library's report localization keys for its non-English languages; English continues to use the package strings. NACC also supplies its own icons, theme, interface strings, and compact Watch complication day-count strings.
+
+## Localization and accessibility
+
+NACC supports English, German, Greek, Spanish, Latin American Spanish, French, Italian, and Brazilian Portuguese across the iPhone/iPad app, Watch app, widgets, complications, Settings, permission messages, and Siri intent. Standard keytag and medallion artwork comes from `LGV_UICleantime`.
+
+App controls have localized accessibility labels and action hints. Reports expose their text as accessibility values, and image-only widgets and recognition pages expose a spoken report. The report and help logo use native buttons for assistive technology and keyboard activation. The report's context menu retains a localized Copy Report action. System navigation, calendar editing, sharing, and printing controls use the platform's accessibility behavior.
+
+Run `python3 Tests/validate-localizations.py` to check key coverage, duplicate keys, format arguments, report fragments, and string catalogs. Add `--bundle /path/to/NACC.app` (repeat for Watch and extension bundles) to validate the compiled resources as well. Run `Tests/run-cleandate-tests.sh` for date-handling regressions. Device review with VoiceOver remains useful for pronunciation and interaction flow.
 
 ## Appearance
 

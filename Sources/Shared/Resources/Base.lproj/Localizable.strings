@@ -31,7 +31,6 @@
 // MARK: WIDGET STUFF
 
 "SLUG-WIDGET-SUBTITLE"                          =   "Calculate Your Cleantime!";
-"SLUG-WIDGET-DESCRIPTION"                       =   "Returns a summary of your cleantime";
 "SLUG-WIDGET-ENTRY-PROMPT"                      =   "Enter Your Clean Date";
 "SLUG-WIDGET-ENTRY-INVALID"                     =   "You must enter a valid clean date!";
 
@@ -48,7 +47,7 @@
 "SLUG-URL-STRING"                               =   "https://nacc.littlegreenviper.com/?%@";
 "SLUG-TODAY"                                    =   "Today";
 "SLUG-RESET"                                    =   "Reset";
-"SLUG-DONE"                                     =   "DONE";
+"SLUG-DONE"                                     =   "Done";
 
 // MARK: CALENDAR EVENT
 
@@ -100,27 +99,27 @@
 
 // MARK: Cleandate Screen
 
-"SLUG-ACC-LOGO"                                 =   "This is the NACC logo. If you select this, the app will display the results of the calculation. If you have one day or more, you will be able to select it, and be taken to the cleantime display tabs.";
-"SLUG-ACC-DATEPICKER"                           =   "This is where you enter your cleandate. Set the date picker to your cleandate, and everything else will be automatically calculated.";
-"SLUG-ACC-REPORT-BUTTON"                        =   "This label will display the results of the calculation. Select it, to change the cleandate.";
-"SLUG-ACC-CALENDAR-BUTTON"                      =   "This allows you to create a repeating calendar event from the cleandate (repeats every year).";
-"SLUG-ACC-ACTION-BUTTON"                        =   "This allows you to share the report. It will bring up a screen, allowing you to send the report to other apps or people (like messages and email). You can also print the report, or save the image in your Photo Library.";
-"SLUG-ACC-INFO-BUTTON"                          =   "If you select this button, you will be taken to a screen with information about this app.";
-"SLUG-ACC-IMAGE"                                =   "This image displays the last keytag or medallion that you should have receieved for your cleantime. If you have thirty days or more, you can select it, and be taken to the cleantime recognition tabs.";
+"SLUG-ACC-LOGO"                                 =   "Shows your earned keytags.";
+"SLUG-ACC-DATEPICKER"                           =   "Changes your cleandate and recalculates your cleantime.";
+"SLUG-ACC-REPORT-BUTTON"                        =   "Opens the cleandate picker.";
+"SLUG-ACC-CALENDAR-BUTTON"                      =   "Creates an anniversary event that repeats every year.";
+"SLUG-ACC-ACTION-BUTTON"                        =   "Offers sharing and printing options for your cleantime report.";
+"SLUG-ACC-INFO-BUTTON"                          =   "Shows information and help for NACC.";
+"SLUG-ACC-IMAGE"                                =   "Shows your earned keytags or medallions.";
 
 // MARK: About Screen
 
-"SLUG-ACC-APPICON-BUTTON"                       =   "This button will take you to the Little Green Viper Software Development LLC Web site, on the page that is assigned to this app.";
-"SLUG-ACC-SETTINGS-BUTTON"                      =   "This button will take you to the app settings screen for this app.";
-"SLUG-ACC-PRIVACY-BUTTON"                       =   "This button will take you to the Little Green Viper Software Development LLC Web site, on the page that defines our privacy policy.";
-"SLUG-ACC-LGV-BUTTON"                           =   "This button will take you to the Little Green Viper Software Development LLC main Web site.";
+"SLUG-ACC-APPICON-BUTTON"                       =   "Opens the NACC help page.";
+"SLUG-ACC-SETTINGS-BUTTON"                      =   "Opens NACC settings.";
+"SLUG-ACC-PRIVACY-BUTTON"                       =   "Opens the privacy policy.";
+"SLUG-ACC-LGV-BUTTON"                           =   "Opens the Little Green Viper website.";
 
 // MARK: Tabs
 
-"SLUG-ACC-Keytag-Array"                         =   "This tab displays an array of keytags, arranged in horizontal rows.";
-"SLUG-ACC-Keytag-Strip"                         =   "This tab displays a vertical strip of linked keytags.";
-"SLUG-ACC-Medallions"                           =   "This tab displays an array of medallions, arranged in horizontal rows.";
-"SLUG-ACC-TABS-ACTION-BUTTON"                   =   "This allows you to share this image. It will bring up a screen, allowing you to send it to other apps or people (like messages and email). You can also print the report, or save the image in your Photo Library.";
+"SLUG-ACC-Keytag-Array"                         =   "Shows your earned keytags in rows.";
+"SLUG-ACC-Keytag-Strip"                         =   "Shows a vertical chain of your earned keytags.";
+"SLUG-ACC-Medallions"                           =   "Shows your earned medallions in rows.";
+"SLUG-ACC-TABS-ACTION-BUTTON"                   =   "Shares or saves the displayed recognition image.";
 
 // MARK: App Intents
 
@@ -136,3 +135,35 @@
 // MARK: Widget
 "SLUG-WIDGET-NAME"                              =   "NACC";
 "SLUG-WIDGET-DESCRIPTION"                       =   "Calculate Your Cleantime!";
+
+// MARK: Accessibility labels and control hints
+
+"SLUG-ACC-LOGO-LABEL"                                = "Show keytags";
+"SLUG-ACC-DATEPICKER-LABEL"                          = "Cleandate";
+"SLUG-ACC-REPORT-LABEL"                              = "Cleantime report";
+"SLUG-ACC-CALENDAR-LABEL"                            = "Add anniversary to calendar";
+"SLUG-ACC-ACTION-LABEL"                              = "Share or print cleantime";
+"SLUG-ACC-IMAGE-LABEL"                               = "Show cleantime recognition";
+"SLUG-ACC-HELP-LABEL"                                = "NACC help";
+"SLUG-ACC-SHARE-IMAGE-LABEL"                         = "Share recognition image";
+"SLUG-ACC-TODAY-HINT"                                = "Sets your cleandate to today.";
+"SLUG-ACC-RESET-HINT"                                = "Restores the date selected when this picker opened.";
+"SLUG-ACC-DONE-HINT"                                 = "Closes the picker and keeps the selected cleandate.";
+"SLUG-ACC-CANCEL-HINT"                               = "Closes these options without sharing or printing.";
+"SLUG-ACC-SHARE-HINT"                                = "Opens sharing options for your cleantime report.";
+"SLUG-ACC-PRINT-HINT"                                = "Opens printing options for your cleantime report.";
+"SLUG-ACC-DEFER-CALENDAR-HINT"                       = "Closes the alert without changing calendar access.";
+"SLUG-ACC-WIDGET-HINT"                               = "Opens NACC to show your cleantime.";
+"SLUG-ACC-REPORT-SCROLL-HINT"                        = "Scrolls through your cleantime report.";
+"SLUG-ACC-RECOGNITION-SCROLL-HINT"                   = "Scrolls through your earned keytags or medallions.";
+"SLUG-ACC-ABOUT-SCROLL-HINT"                         = "Scrolls through information about NACC.";
+"SLUG-ACC-WATCH-PAGES-LABEL"                         = "Cleantime views";
+"SLUG-ACC-WATCH-PAGES-HINT"                          = "Choose the report, medallion, or keytag page.";
+"SLUG-REPORT-UNAVAILABLE"                            = "Cleantime report unavailable.";
+"SLUG-COPY-REPORT"                                   = "Copy report";
+"SLUG-ACC-COPY-REPORT-HINT"                          = "Copies the cleantime report to the clipboard.";
+
+"SLUG-ACC-OPTIONS-SCROLL-HINT" = "Scrolls through the available actions.";
+
+// Navigation
+"SLUG-BACK" = "Back";

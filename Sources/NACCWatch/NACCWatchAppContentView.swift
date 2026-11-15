@@ -308,6 +308,7 @@ struct NACCWatchAppContentView: View {
                     }
                     .buttonStyle(.borderless)
                     .accessibilityLabel(NSLocalizedString("SLUG-SELECT-DATE", tableName: "WatchStrings", comment: ""))
+                    .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
                 }
                 .padding(.horizontal, 4)
 
@@ -321,6 +322,8 @@ struct NACCWatchAppContentView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding()
                         }
+                        .accessibilityLabel("SLUG-ACC-REPORT-LABEL".localizedVariant)
+                        .accessibilityHint("SLUG-ACC-REPORT-SCROLL-HINT".localizedVariant)
                         .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
 
                         Group {
@@ -330,6 +333,9 @@ struct NACCWatchAppContentView: View {
                                     .scaledToFit()
                                     .padding(.bottom, 20)
                                     .frame(width: inGeom.size.width, height: inGeom.size.height)
+                                    .accessibilityLabel("SLUG-TAB-2".localizedVariant)
+                                    .accessibilityValue(self._displayText)
+                                    .accessibilityHint("SLUG-ACC-Medallions".localizedVariant)
                             } else {
                                 ProgressView()
                                     .progressViewStyle(.circular)
@@ -345,8 +351,12 @@ struct NACCWatchAppContentView: View {
                                     Spacer()
                                         .frame(height: 8)
                                     Image(uiImage: image)
+                                        .accessibilityLabel("SLUG-TAB-1".localizedVariant)
+                                        .accessibilityValue(self._displayText)
                                 }
                                 .clipped()
+                                .accessibilityLabel("SLUG-TAB-1".localizedVariant)
+                                .accessibilityHint("SLUG-ACC-RECOGNITION-SCROLL-HINT".localizedVariant)
                             } else {
                                 ProgressView()
                                     .progressViewStyle(.circular)
@@ -369,6 +379,8 @@ struct NACCWatchAppContentView: View {
                         }
                     }
                     .tabViewStyle(PageTabViewStyle())
+                    .accessibilityLabel("SLUG-ACC-WATCH-PAGES-LABEL".localizedVariant)
+                    .accessibilityHint("SLUG-ACC-WATCH-PAGES-HINT".localizedVariant)
                     .navigationDestination(isPresented: self.$showCleanDatePicker) { CleanDatePicker(cleanDate: self.$cleanDate, syncUp: self.$syncUp) }
                     .onAppear {
                         self.showCleanDatePicker = false
@@ -409,7 +421,9 @@ struct CleanDatePicker: View {
         VStack {
             Spacer()
                 .frame(height: 4)
-            DatePicker(NSLocalizedString("SLUG-SELECT-DATE", tableName: "WatchStrings", comment: ""), selection: self.$cleanDate, in: minDate...Date.now)
+            DatePicker("", selection: self.$cleanDate, in: minDate...Date.now, displayedComponents: [.date])
+                .accessibilityLabel("SLUG-ACC-DATEPICKER-LABEL".localizedVariant)
+                .accessibilityHint("SLUG-ACC-DATEPICKER".localizedVariant)
                 .onAppear { self.cleanDate = min(.now, max(minDate, self.cleanDate)) }
                 .foregroundStyle(.primary)
             Spacer()

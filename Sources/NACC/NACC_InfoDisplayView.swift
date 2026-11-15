@@ -120,20 +120,23 @@ struct NACC_InfoDisplayView: View {
                            spacing: Self._edgePaddingInDisplayUnits
                     ) {
                         // The app icon button, at the top.
-                        Image("BrandLogo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: Self._iconSizeInDisplayUnits,
-                                   height: Self._iconSizeInDisplayUnits)
-                            .clipShape(RoundedRectangle(cornerRadius: Self._iconCornerRadiusInDisplayUnits,
-                                                        style: .continuous))
-                            .environment(\.colorScheme, .dark == _colorScheme ? .light : .dark)
-                            .onTapGesture {
-                                if let url = Bundle.main.helpURI {
-                                    self.openURL(url)
-                                }
+                        Button {
+                            if let url = Bundle.main.helpURI {
+                                self.openURL(url)
                             }
-                            .accessibilityHint("SLUG-ACC-APPICON-BUTTON".localizedVariant)
+                        } label: {
+                            Image("BrandLogo")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: Self._iconSizeInDisplayUnits,
+                                       height: Self._iconSizeInDisplayUnits)
+                                .clipShape(RoundedRectangle(cornerRadius: Self._iconCornerRadiusInDisplayUnits,
+                                                            style: .continuous))
+                                .environment(\.colorScheme, .dark == _colorScheme ? .light : .dark)
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel("SLUG-ACC-HELP-LABEL".localizedVariant)
+                        .accessibilityHint("SLUG-ACC-APPICON-BUTTON".localizedVariant)
                         
                         // The app name and version string.
                         let displayString = String(format: "SLUG-APP-INFO-VERSION-FORMAT".localizedVariant,
@@ -161,6 +164,8 @@ struct NACC_InfoDisplayView: View {
                     )
                 }
                 .scrollBounceBehavior(.basedOnSize)
+                .accessibilityLabel("SLUG-ABOUT".localizedVariant)
+                .accessibilityHint("SLUG-ACC-ABOUT-SCROLL-HINT".localizedVariant)
                 
                 // The three buttons along the bottom.
                 HStack {
@@ -173,6 +178,7 @@ struct NACC_InfoDisplayView: View {
                     .frame(maxWidth: .infinity)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
+                    .accessibilityLabel("SLUG-SETTINGS-BUTTON".localizedVariant)
                     .accessibilityHint("SLUG-ACC-SETTINGS-BUTTON".localizedVariant)
 
                     // The privacy link button
@@ -184,6 +190,7 @@ struct NACC_InfoDisplayView: View {
                     .frame(maxWidth: .infinity)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
+                    .accessibilityLabel("SLUG-PRIVACY-BUTTON".localizedVariant)
                     .accessibilityHint("SLUG-ACC-PRIVACY-BUTTON".localizedVariant)
 
                     // The main Web site button
@@ -195,6 +202,7 @@ struct NACC_InfoDisplayView: View {
                     .frame(maxWidth: .infinity)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
+                    .accessibilityLabel("SLUG-LGV-BUTTON".localizedVariant)
                     .accessibilityHint("SLUG-ACC-LGV-BUTTON".localizedVariant)
                 }
                 .padding()
@@ -206,5 +214,6 @@ struct NACC_InfoDisplayView: View {
         }
         .navigationTitle("SLUG-ABOUT".localizedVariant)
         .navigationBarTitleDisplayMode(.inline)
+        .modifier(NACC_PlainBackButton())
     }
 }

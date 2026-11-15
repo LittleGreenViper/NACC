@@ -1,0 +1,171 @@
+/*
+ © Copyright 2012-2026, Little Green Viper Software Development LLC
+ 
+ LICENSE:
+ 
+ MIT License
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
+ modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+//********************************************** **********************************************************
+// --------------------------------------------   ------------------------------------------------------- *
+//|  DO NOT MODIFY ON THIS SIDE OF THE EQUALS  | |   MODIFY THE TEXT ON THIS SIDE TO THE LOCAL LANGUAGE  |*
+// --------------------------------------------   ------------------------------------------------------- *
+//********************************************** **********************************************************
+
+// MARK: -
+// MARK: - MAIN INTERFACE -
+// MARK: -
+
+// MARK: WIDGET STUFF
+"SLUG-WIDGET-SUBTITLE"                               = "Calcola il tuo tempo pulito!";
+"SLUG-WIDGET-ENTRY-PROMPT"                           = "Inserisci la tua data di inizio del tempo pulito";
+"SLUG-WIDGET-ENTRY-INVALID"                          = "Devi inserire una data valida di inizio del tempo pulito!";
+
+// MARK: WATCH COMPLICATION DAY COUNTS
+"SLUG-COMPLICATION-CLEANTIME-DAY"                    = "un giorno";
+"SLUG-COMPLICATION-CLEANTIME-DAYS"                   = "%d giorni";
+
+// MARK: CLEANDATE SCREEN
+"SLUG-NO-CLEANDATE-YET"                              = "Non è stata impostata una data di inizio del tempo pulito.";
+"SLUG-CLEANDATE-PICKER-TITLE"                        = "Seleziona la tua data di inizio del tempo pulito";
+"SLUG-INITIAL-TITLE"                                 = "NACC";
+"SLUG-URL-STRING"                                    = "https://nacc.littlegreenviper.com/?%@";
+"SLUG-TODAY"                                         = "Oggi";
+"SLUG-RESET"                                         = "Ripristina";
+"SLUG-DONE"                                          = "Fine";
+
+// MARK: CALENDAR EVENT
+"SLUG-CAL-ANNIVERSARY-FORMAT"                        = "Anniversario NA (%d)";
+"SLUR-ERR-CALENDAR-DENY-ALERT-TITLE"                 = "È necessario l’accesso al calendario";
+"SLUR-ERR-CALENDAR-DENY-ALERT-MESSAGE"               = "Per aggiungere il tuo anniversario al calendario, consenti a questa app di accedere ai tuoi calendari nelle Impostazioni.";
+"SLUR-ERR-CALENDAR-DENY-ALERT-CANCEL"                = "Non ora";
+"SLUR-ERR-CALENDAR-DENY-ALERT-SETTINGS"              = "Apri Impostazioni";
+
+// MARK: ABOUT SCREEN
+"SLUG-ABOUT"                                         = "Informazioni su NACC";
+"SLUG-APP-INFO-TEXT"                                 = "Questa semplice app ti permette di calcolare il tuo tempo pulito.\n\nNon valuta la qualità del tuo recupero; questo riguarda solo te e il tuo sponsor.\n\nImposta come data di inizio il tuo primo giorno pulito e tocca l’immagine del portachiavi o del medaglione per vedere tutti i portachiavi e i medaglioni che hai ottenuto.\n\nSeleziona il logo qui sopra per aprire una pagina web con istruzioni dettagliate sull’uso di questa app.\n\nI collegamenti qui sotto portano alle impostazioni dell’app, alla nostra pagina sulla privacy e al sito web principale di Little Green Viper LLC.";
+"SLUG-OK-BUTTON-TEXT"                                = "OK";
+"SLUG-APP-INFO-VERSION-FORMAT-SMALL"                 = "Versione %@";
+"SLUG-APP-INFO-VERSION-FORMAT"                       = "%@ Versione: %@ (%@)";
+"SLUG-COPYRIGHT-BUTTON"                              = "©2022-2024 Little Green Viper Software Development LLC";
+"SLUG-PRIVACY-BUTTON"                                = "Privacy";
+"SLUG-SETTINGS-BUTTON"                               = "Impostazioni app";
+"SLUG-LGV-BUTTON"                                    = "Sito web";
+
+// MARK: THE MAIN RESULTS SCREEN
+"SLUG-RESULTS-TITLE"                                 = "Riconoscimenti";
+
+// MARK: HORIZONTAL KEYTAGS SCREEN
+"SLUG-TAB-0"                                         = "Portachiavi";
+
+// MARK: VERTICAL KEYTAGS SCREEN
+"SLUG-TAB-1"                                         = "Catena";
+
+// MARK: MEDALLIONS SCREEN
+"SLUG-TAB-2"                                         = "Medaglioni";
+
+// MARK: ACTION SHEET
+"SLUG-ACTIONS-TITLE"                                 = "Cosa vuoi fare?";
+"SLUG-ACTIONS-SHARE"                                 = "Condividi il mio tempo pulito";
+"SLUG-ACTIONS-PRINT"                                 = "Stampa il mio tempo pulito";
+"SLUG-CANCEL"                                        = "Annulla";
+
+// MARK: -
+// MARK: - ACCESSIBILITY -
+// MARK: -
+
+// MARK: Cleandate Screen
+"SLUG-ACC-LOGO"                                      = "Mostra i portachiavi che hai ottenuto.";
+"SLUG-ACC-DATEPICKER"                                = "Modifica la tua data di inizio e ricalcola il tuo tempo pulito.";
+"SLUG-ACC-REPORT-BUTTON"                             = "Apre il selettore della data di inizio del tempo pulito.";
+"SLUG-ACC-CALENDAR-BUTTON"                           = "Crea un evento di anniversario che si ripete ogni anno.";
+"SLUG-ACC-ACTION-BUTTON"                             = "Offre opzioni per condividere e stampare il tuo resoconto del tempo pulito.";
+"SLUG-ACC-INFO-BUTTON"                               = "Mostra informazioni e aiuto per NACC.";
+"SLUG-ACC-IMAGE"                                     = "Mostra i portachiavi o i medaglioni che hai ottenuto.";
+
+// MARK: About Screen
+"SLUG-ACC-APPICON-BUTTON"                            = "Apre la pagina di aiuto di NACC.";
+"SLUG-ACC-SETTINGS-BUTTON"                           = "Apre le impostazioni di NACC.";
+"SLUG-ACC-PRIVACY-BUTTON"                            = "Apre l’informativa sulla privacy.";
+"SLUG-ACC-LGV-BUTTON"                                = "Apre il sito web di Little Green Viper.";
+
+// MARK: Tabs
+"SLUG-ACC-Keytag-Array"                              = "Mostra i tuoi portachiavi in righe.";
+"SLUG-ACC-Keytag-Strip"                              = "Mostra una catena verticale dei tuoi portachiavi.";
+"SLUG-ACC-Medallions"                                = "Mostra i tuoi medaglioni in righe.";
+"SLUG-ACC-TABS-ACTION-BUTTON"                        = "Condivide o salva l’immagine di riconoscimento visualizzata.";
+
+// MARK: App Intents
+
+// Calculate Cleantime (String) Intent
+"Calculate Cleantime"                                = "Calcola il mio tempo pulito";
+"Returns a summary of your cleantime"                = "Fornisce un riepilogo del tuo tempo pulito";
+"Enter Your Clean Date"                              = "Inserisci la tua data di inizio del tempo pulito";
+"You must enter a valid clean date!"                 = "Devi inserire una data valida di inizio del tempo pulito!";
+"SLUG-DISPLAY-CLEANTIME-ACTIVITY-TITLE"              = "Mostra tempo pulito";
+"SLUG-INTENTS-SHORTTITLE"                            = "Tempo pulito NA";
+
+// MARK: Widget
+"SLUG-WIDGET-NAME"                                   = "NACC";
+"SLUG-WIDGET-DESCRIPTION"                            = "Calcola il tuo tempo pulito!";
+
+// MARK: Accessibility labels and control hints
+"SLUG-ACC-LOGO-LABEL"                                = "Mostra portachiavi";
+"SLUG-ACC-DATEPICKER-LABEL"                          = "Data di inizio del tempo pulito";
+"SLUG-ACC-REPORT-LABEL"                              = "Resoconto del tempo pulito";
+"SLUG-ACC-CALENDAR-LABEL"                            = "Aggiungi anniversario al calendario";
+"SLUG-ACC-ACTION-LABEL"                              = "Condividi o stampa il tempo pulito";
+"SLUG-ACC-IMAGE-LABEL"                               = "Mostra riconoscimento del tempo pulito";
+"SLUG-ACC-HELP-LABEL"                                = "Aiuto NACC";
+"SLUG-ACC-SHARE-IMAGE-LABEL"                         = "Condividi immagine di riconoscimento";
+"SLUG-ACC-TODAY-HINT"                                = "Imposta oggi come data di inizio del tempo pulito.";
+"SLUG-ACC-RESET-HINT"                                = "Ripristina la data selezionata all’apertura del selettore.";
+"SLUG-ACC-DONE-HINT"                                 = "Chiude il selettore e mantiene la data di inizio selezionata.";
+"SLUG-ACC-CANCEL-HINT"                               = "Chiude queste opzioni senza condividere né stampare.";
+"SLUG-ACC-SHARE-HINT"                                = "Apre le opzioni per condividere il tuo resoconto del tempo pulito.";
+"SLUG-ACC-PRINT-HINT"                                = "Apre le opzioni per stampare il tuo resoconto del tempo pulito.";
+"SLUG-ACC-DEFER-CALENDAR-HINT"                       = "Chiude l’avviso senza modificare l’accesso al calendario.";
+"SLUG-ACC-WIDGET-HINT"                               = "Apre NACC per mostrare il tuo tempo pulito.";
+"SLUG-ACC-REPORT-SCROLL-HINT"                        = "Scorre il tuo resoconto del tempo pulito.";
+"SLUG-ACC-RECOGNITION-SCROLL-HINT"                   = "Scorre i portachiavi o i medaglioni che hai ottenuto.";
+"SLUG-ACC-ABOUT-SCROLL-HINT"                         = "Scorre le informazioni su NACC.";
+"SLUG-ACC-WATCH-PAGES-LABEL"                         = "Viste del tempo pulito";
+"SLUG-ACC-WATCH-PAGES-HINT"                          = "Scegli la pagina del resoconto, del medaglione o dei portachiavi.";
+"SLUG-REPORT-UNAVAILABLE"                            = "Resoconto del tempo pulito non disponibile.";
+
+// MARK: Localized report overrides for LGV_UICleantime
+
+"SLUG-STATEMENT-IN-RECOVERY-SINCE"                   = "In recupero dal ";
+"SLUG-STATEMENT-CLEANDATE-SEPARATOR" = "\nIn totale: ";
+"SLUG-STATEMENT-NO-CLEANTIME"                        = "Ti sosteniamo nel tuo percorso di recupero.";
+"SLUG-CLEANTIME-DIVIDER" = "\nOssia ";
+"SLUG-PREFIX-CLEANTIME-YEAR-EXACT"                   = "esattamente un anno.";
+"SLUG-PREFIX-CLEANTIME-YEARS-EXACT"                  = "esattamente %d anni.";
+"SLUG-PREFIX-CLEANTIME-YEAR"                         = "un anno";
+"SLUG-PREFIX-CLEANTIME-YEARS"                        = "%d anni";
+"SLUG-PREFIX-CLEANTIME-MONTH"                        = "un mese";
+"SLUG-PREFIX-CLEANTIME-MONTHS"                       = "%d mesi";
+"SLUG-PREFIX-CLEANTIME-DAY"                          = "un giorno";
+"SLUG-PREFIX-CLEANTIME-DAYS"                         = "%d giorni";
+"SLUG-JOINING-CHAR"                                  = ", ";
+"SLUG-ENDING-CHAR"                                   = ".";
+
+"SLUG-COPY-REPORT" = "Copia resoconto";
+"SLUG-ACC-COPY-REPORT-HINT" = "Copia il resoconto del tempo pulito negli appunti.";
+
+"SLUG-ACC-OPTIONS-SCROLL-HINT" = "Scorre le azioni disponibili.";
+
+// Navigation
+"SLUG-BACK" = "Indietro";

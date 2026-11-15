@@ -146,6 +146,11 @@ struct NACCWatchComplicationEntryView: View {
                 }
             }
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("SLUG-INTENTS-SHORTTITLE".localizedVariant)
+        .accessibilityValue(self.entry.text(for: self._family))
+        .accessibilityHint("SLUG-ACC-WIDGET-HINT".localizedVariant)
+        .accessibilityAddTraits(.isButton)
         .fontDesign(.default)
         .tint(.accentColor)
         .containerBackground(Color("WidgetBackground"), for: .widget)

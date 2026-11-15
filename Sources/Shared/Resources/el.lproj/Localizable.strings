@@ -1,0 +1,171 @@
+/*
+ © Copyright 2012-2026, Little Green Viper Software Development LLC
+ 
+ LICENSE:
+ 
+ MIT License
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
+ modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+//********************************************** **********************************************************
+// --------------------------------------------   ------------------------------------------------------- *
+//|  DO NOT MODIFY ON THIS SIDE OF THE EQUALS  | |   MODIFY THE TEXT ON THIS SIDE TO THE LOCAL LANGUAGE  |*
+// --------------------------------------------   ------------------------------------------------------- *
+//********************************************** **********************************************************
+
+// MARK: -
+// MARK: - MAIN INTERFACE -
+// MARK: -
+
+// MARK: WIDGET STUFF
+"SLUG-WIDGET-SUBTITLE"                               = "Υπολόγισε τον χρόνο σου χωρίς χρήση!";
+"SLUG-WIDGET-ENTRY-PROMPT"                           = "Εισάγαγε την ημερομηνία διακοπής χρήσης";
+"SLUG-WIDGET-ENTRY-INVALID"                          = "Πρέπει να εισαγάγεις έγκυρη ημερομηνία διακοπής χρήσης!";
+
+// MARK: WATCH COMPLICATION DAY COUNTS
+"SLUG-COMPLICATION-CLEANTIME-DAY"                    = "μία ημέρα";
+"SLUG-COMPLICATION-CLEANTIME-DAYS"                   = "%d ημέρες";
+
+// MARK: CLEANDATE SCREEN
+"SLUG-NO-CLEANDATE-YET"                              = "Δεν έχει οριστεί ημερομηνία διακοπής χρήσης.";
+"SLUG-CLEANDATE-PICKER-TITLE"                        = "Επίλεξε την ημερομηνία διακοπής χρήσης";
+"SLUG-INITIAL-TITLE"                                 = "NACC";
+"SLUG-URL-STRING"                                    = "https://nacc.littlegreenviper.com/?%@";
+"SLUG-TODAY"                                         = "Σήμερα";
+"SLUG-RESET"                                         = "Επαναφορά";
+"SLUG-DONE"                                          = "Τέλος";
+
+// MARK: CALENDAR EVENT
+"SLUG-CAL-ANNIVERSARY-FORMAT"                        = "Επέτειος ΝΑ (%d)";
+"SLUR-ERR-CALENDAR-DENY-ALERT-TITLE"                 = "Απαιτείται πρόσβαση στο ημερολόγιο";
+"SLUR-ERR-CALENDAR-DENY-ALERT-MESSAGE"               = "Για να προσθέσεις την επέτειό σου στο ημερολόγιο, επίτρεψε στην εφαρμογή την πρόσβαση στα ημερολόγιά σου από τις Ρυθμίσεις.";
+"SLUR-ERR-CALENDAR-DENY-ALERT-CANCEL"                = "Όχι τώρα";
+"SLUR-ERR-CALENDAR-DENY-ALERT-SETTINGS"              = "Άνοιγμα Ρυθμίσεων";
+
+// MARK: ABOUT SCREEN
+"SLUG-ABOUT"                                         = "Σχετικά με το NACC";
+"SLUG-APP-INFO-TEXT"                                 = "Αυτή είναι μια απλή εφαρμογή για τον υπολογισμό του χρόνου σου χωρίς χρήση.\n\nΔεν αξιολογεί την ποιότητα της ανάρρωσής σου· αυτό είναι θέμα ανάμεσα σε σένα και τον υποστηρικτή σου.\n\nΌρισε ως ημερομηνία διακοπής χρήσης την πρώτη σου ημέρα χωρίς χρήση και πάτησε την εικόνα του μπρελόκ ή του μεταλλίου για να δεις όλα τα μπρελόκ και τα μετάλλια που έχεις κερδίσει.\n\nΕπίλεξε το λογότυπο παραπάνω για να ανοίξεις μια ιστοσελίδα με αναλυτικές οδηγίες χρήσης της εφαρμογής.\n\nΟι παρακάτω σύνδεσμοι οδηγούν στις ρυθμίσεις της εφαρμογής, στη σελίδα απορρήτου μας και στον κεντρικό ιστότοπο της Little Green Viper LLC.";
+"SLUG-OK-BUTTON-TEXT"                                = "Εντάξει";
+"SLUG-APP-INFO-VERSION-FORMAT-SMALL"                 = "Έκδοση %@";
+"SLUG-APP-INFO-VERSION-FORMAT"                       = "%@ Έκδοση: %@ (%@)";
+"SLUG-COPYRIGHT-BUTTON"                              = "©2022-2024 Little Green Viper Software Development LLC";
+"SLUG-PRIVACY-BUTTON"                                = "Απόρρητο";
+"SLUG-SETTINGS-BUTTON"                               = "Ρυθμίσεις εφαρμογής";
+"SLUG-LGV-BUTTON"                                    = "Ιστότοπος";
+
+// MARK: THE MAIN RESULTS SCREEN
+"SLUG-RESULTS-TITLE"                                 = "Διακρίσεις ΝΑ";
+
+// MARK: HORIZONTAL KEYTAGS SCREEN
+"SLUG-TAB-0"                                         = "Μπρελόκ";
+
+// MARK: VERTICAL KEYTAGS SCREEN
+"SLUG-TAB-1"                                         = "Αλυσίδα";
+
+// MARK: MEDALLIONS SCREEN
+"SLUG-TAB-2"                                         = "Μετάλλια";
+
+// MARK: ACTION SHEET
+"SLUG-ACTIONS-TITLE"                                 = "Τι θέλεις να κάνεις;";
+"SLUG-ACTIONS-SHARE"                                 = "Κοινοποίηση του χρόνου μου χωρίς χρήση";
+"SLUG-ACTIONS-PRINT"                                 = "Εκτύπωση του χρόνου μου χωρίς χρήση";
+"SLUG-CANCEL"                                        = "Ακύρωση";
+
+// MARK: -
+// MARK: - ACCESSIBILITY -
+// MARK: -
+
+// MARK: Cleandate Screen
+"SLUG-ACC-LOGO"                                      = "Εμφανίζει τα μπρελόκ που έχεις κερδίσει.";
+"SLUG-ACC-DATEPICKER"                                = "Αλλάζει την ημερομηνία διακοπής χρήσης και υπολογίζει ξανά τον χρόνο σου χωρίς χρήση.";
+"SLUG-ACC-REPORT-BUTTON"                             = "Ανοίγει την επιλογή ημερομηνίας διακοπής χρήσης.";
+"SLUG-ACC-CALENDAR-BUTTON"                           = "Δημιουργεί μια επέτειο που επαναλαμβάνεται κάθε χρόνο.";
+"SLUG-ACC-ACTION-BUTTON"                             = "Εμφανίζει επιλογές κοινοποίησης και εκτύπωσης της αναφοράς σου.";
+"SLUG-ACC-INFO-BUTTON"                               = "Εμφανίζει πληροφορίες και βοήθεια για το NACC.";
+"SLUG-ACC-IMAGE"                                     = "Εμφανίζει τα μπρελόκ ή τα μετάλλια που έχεις κερδίσει.";
+
+// MARK: About Screen
+"SLUG-ACC-APPICON-BUTTON"                            = "Ανοίγει τη σελίδα βοήθειας του NACC.";
+"SLUG-ACC-SETTINGS-BUTTON"                           = "Ανοίγει τις ρυθμίσεις του NACC.";
+"SLUG-ACC-PRIVACY-BUTTON"                            = "Ανοίγει την πολιτική απορρήτου.";
+"SLUG-ACC-LGV-BUTTON"                                = "Ανοίγει τον ιστότοπο της Little Green Viper.";
+
+// MARK: Tabs
+"SLUG-ACC-Keytag-Array"                              = "Εμφανίζει τα μπρελόκ σου σε σειρές.";
+"SLUG-ACC-Keytag-Strip"                              = "Εμφανίζει μια κάθετη αλυσίδα με τα μπρελόκ σου.";
+"SLUG-ACC-Medallions"                                = "Εμφανίζει τα μετάλλιά σου σε σειρές.";
+"SLUG-ACC-TABS-ACTION-BUTTON"                        = "Κοινοποιεί ή αποθηκεύει την εικόνα αναγνώρισης που εμφανίζεται.";
+
+// MARK: App Intents
+
+// Calculate Cleantime (String) Intent
+"Calculate Cleantime"                                = "Υπολογισμός του χρόνου μου χωρίς χρήση";
+"Returns a summary of your cleantime"                = "Εμφανίζει μια σύνοψη του χρόνου σου χωρίς χρήση";
+"Enter Your Clean Date"                              = "Εισάγαγε την ημερομηνία διακοπής χρήσης";
+"You must enter a valid clean date!"                 = "Πρέπει να εισαγάγεις έγκυρη ημερομηνία διακοπής χρήσης!";
+"SLUG-DISPLAY-CLEANTIME-ACTIVITY-TITLE"              = "Εμφάνιση χρόνου χωρίς χρήση";
+"SLUG-INTENTS-SHORTTITLE"                            = "Χρόνος χωρίς χρήση ΝΑ";
+
+// MARK: Widget
+"SLUG-WIDGET-NAME"                                   = "NACC";
+"SLUG-WIDGET-DESCRIPTION"                            = "Υπολόγισε τον χρόνο σου χωρίς χρήση!";
+
+// MARK: Accessibility labels and control hints
+"SLUG-ACC-LOGO-LABEL"                                = "Εμφάνιση μπρελόκ";
+"SLUG-ACC-DATEPICKER-LABEL"                          = "Ημερομηνία διακοπής χρήσης";
+"SLUG-ACC-REPORT-LABEL"                              = "Αναφορά χρόνου χωρίς χρήση";
+"SLUG-ACC-CALENDAR-LABEL"                            = "Προσθήκη επετείου στο ημερολόγιο";
+"SLUG-ACC-ACTION-LABEL"                              = "Κοινοποίηση ή εκτύπωση χρόνου χωρίς χρήση";
+"SLUG-ACC-IMAGE-LABEL"                               = "Εμφάνιση αναγνώρισης χρόνου χωρίς χρήση";
+"SLUG-ACC-HELP-LABEL"                                = "Βοήθεια NACC";
+"SLUG-ACC-SHARE-IMAGE-LABEL"                         = "Κοινοποίηση εικόνας αναγνώρισης";
+"SLUG-ACC-TODAY-HINT"                                = "Ορίζει τη σημερινή ημέρα ως ημερομηνία διακοπής χρήσης.";
+"SLUG-ACC-RESET-HINT"                                = "Επαναφέρει την ημερομηνία που ήταν επιλεγμένη όταν άνοιξε ο επιλογέας.";
+"SLUG-ACC-DONE-HINT"                                 = "Κλείνει τον επιλογέα και διατηρεί την επιλεγμένη ημερομηνία διακοπής χρήσης.";
+"SLUG-ACC-CANCEL-HINT"                               = "Κλείνει τις επιλογές χωρίς κοινοποίηση ή εκτύπωση.";
+"SLUG-ACC-SHARE-HINT"                                = "Ανοίγει τις επιλογές κοινοποίησης της αναφοράς σου.";
+"SLUG-ACC-PRINT-HINT"                                = "Ανοίγει τις επιλογές εκτύπωσης της αναφοράς σου.";
+"SLUG-ACC-DEFER-CALENDAR-HINT"                       = "Κλείνει την ειδοποίηση χωρίς αλλαγή της πρόσβασης στο ημερολόγιο.";
+"SLUG-ACC-WIDGET-HINT"                               = "Ανοίγει το NACC για να εμφανίσει τον χρόνο σου χωρίς χρήση.";
+"SLUG-ACC-REPORT-SCROLL-HINT"                        = "Κάνει κύλιση στην αναφορά του χρόνου σου χωρίς χρήση.";
+"SLUG-ACC-RECOGNITION-SCROLL-HINT"                   = "Κάνει κύλιση στα μπρελόκ ή στα μετάλλια που έχεις κερδίσει.";
+"SLUG-ACC-ABOUT-SCROLL-HINT"                         = "Κάνει κύλιση στις πληροφορίες για το NACC.";
+"SLUG-ACC-WATCH-PAGES-LABEL"                         = "Προβολές χρόνου χωρίς χρήση";
+"SLUG-ACC-WATCH-PAGES-HINT"                          = "Επίλεξε τη σελίδα αναφοράς, μεταλλίου ή μπρελόκ.";
+"SLUG-REPORT-UNAVAILABLE"                            = "Η αναφορά χρόνου χωρίς χρήση δεν είναι διαθέσιμη.";
+
+// MARK: Localized report overrides for LGV_UICleantime
+
+"SLUG-STATEMENT-IN-RECOVERY-SINCE"                   = "Σε ανάρρωση από ";
+"SLUG-STATEMENT-CLEANDATE-SEPARATOR"                 = "\nΑυτό αντιστοιχεί σε ";
+"SLUG-STATEMENT-NO-CLEANTIME"                        = "Σε στηρίζουμε στην πορεία σου προς την ανάρρωση.";
+"SLUG-CLEANTIME-DIVIDER"                             = "\nΔηλαδή ";
+"SLUG-PREFIX-CLEANTIME-YEAR-EXACT"                   = "ακριβώς ένα έτος.";
+"SLUG-PREFIX-CLEANTIME-YEARS-EXACT"                  = "ακριβώς %d έτη.";
+"SLUG-PREFIX-CLEANTIME-YEAR"                         = "ένα έτος";
+"SLUG-PREFIX-CLEANTIME-YEARS"                        = "%d έτη";
+"SLUG-PREFIX-CLEANTIME-MONTH"                        = "ένας μήνας";
+"SLUG-PREFIX-CLEANTIME-MONTHS"                       = "%d μήνες";
+"SLUG-PREFIX-CLEANTIME-DAY"                          = "μία ημέρα";
+"SLUG-PREFIX-CLEANTIME-DAYS"                         = "%d ημέρες";
+"SLUG-JOINING-CHAR"                                  = ", ";
+"SLUG-ENDING-CHAR"                                   = ".";
+
+"SLUG-COPY-REPORT" = "Αντιγραφή αναφοράς";
+"SLUG-ACC-COPY-REPORT-HINT" = "Αντιγράφει την αναφορά χρόνου χωρίς χρήση στο πρόχειρο.";
+
+"SLUG-ACC-OPTIONS-SCROLL-HINT" = "Κάνει κύλιση στις διαθέσιμες ενέργειες.";
+
+// Navigation
+"SLUG-BACK" = "Πίσω";

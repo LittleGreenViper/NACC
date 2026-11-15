@@ -1,61 +1,271 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "SLUG-SELECT-DATE" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Select Clean Date"
+  "sourceLanguage": "en",
+  "strings": {
+    "SLUG-SELECT-DATE": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select Clean Date"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cleandatum wählen"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Επιλογή ημερομηνίας διακοπής χρήσης"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seleccionar fecha de inicio de tiempo limpio"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choisir la date de début d’abstinence"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seleziona data di inizio del tempo pulito"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selecionar data de início do tempo limpo"
+          }
+        },
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seleccionar fecha de inicio de tiempo limpio"
           }
         }
       }
     },
-    "SLUG-WIDGET-ENTRY-INVALID" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You must enter a valid cleandate!"
+    "SLUG-WIDGET-ENTRY-INVALID": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You must enter a valid cleandate!"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitte gib ein gültiges Cleandatum ein!"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Πρέπει να εισαγάγεις έγκυρη ημερομηνία διακοπής χρήσης!"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¡Debes introducir una fecha válida de inicio de tiempo limpio!"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu dois saisir une date de début d’abstinence valide !"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devi inserire una data valida di inizio del tempo pulito!"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Você deve inserir uma data válida de início do tempo limpo!"
+          }
+        },
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¡Debes introducir una fecha válida de inicio de tiempo limpio!"
           }
         }
       }
     },
-    "SLUG-WIDGET-ENTRY-PROMPT" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter Your Cleandate"
+    "SLUG-WIDGET-ENTRY-PROMPT": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter Your Cleandate"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gib dein Cleandatum ein"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Εισάγαγε την ημερομηνία διακοπής χρήσης"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Introduce tu fecha de inicio de tiempo limpio"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saisis ta date de début d’abstinence"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inserisci la tua data di inizio del tempo pulito"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Insira sua data de início do tempo limpo"
+          }
+        },
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Introduce tu fecha de inicio de tiempo limpio"
           }
         }
       }
     },
-    "SLUG-WIDGET-SHORT-DESC" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NA Cleantime"
+    "SLUG-WIDGET-SHORT-DESC": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NA Cleantime"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NA-Cleanzeit"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Χρόνος χωρίς χρήση ΝΑ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiempo limpio de NA"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temps d’abstinence NA"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tempo pulito NA"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tempo limpo de NA"
+          }
+        },
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiempo limpio de NA"
           }
         }
       }
     },
-    "SLUG-WIDGET-SUBTITLE" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Calculate Your Cleantime!"
+    "SLUG-WIDGET-SUBTITLE": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calculate Your Cleantime!"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berechne deine Cleanzeit!"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Υπολόγισε τον χρόνο σου χωρίς χρήση!"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¡Calcula tu tiempo limpio!"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calcule ton temps d’abstinence !"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calcola il tuo tempo pulito!"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calcule seu tempo limpo!"
+          }
+        },
+        "es-419": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¡Calcula tu tiempo limpio!"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

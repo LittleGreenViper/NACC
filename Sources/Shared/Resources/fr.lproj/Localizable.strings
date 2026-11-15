@@ -1,0 +1,171 @@
+/*
+ © Copyright 2012-2026, Little Green Viper Software Development LLC
+ 
+ LICENSE:
+ 
+ MIT License
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
+ modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+//********************************************** **********************************************************
+// --------------------------------------------   ------------------------------------------------------- *
+//|  DO NOT MODIFY ON THIS SIDE OF THE EQUALS  | |   MODIFY THE TEXT ON THIS SIDE TO THE LOCAL LANGUAGE  |*
+// --------------------------------------------   ------------------------------------------------------- *
+//********************************************** **********************************************************
+
+// MARK: -
+// MARK: - MAIN INTERFACE -
+// MARK: -
+
+// MARK: WIDGET STUFF
+"SLUG-WIDGET-SUBTITLE"                               = "Calcule ton temps d’abstinence !";
+"SLUG-WIDGET-ENTRY-PROMPT"                           = "Saisis ta date de début d’abstinence";
+"SLUG-WIDGET-ENTRY-INVALID"                          = "Tu dois saisir une date de début d’abstinence valide !";
+
+// MARK: WATCH COMPLICATION DAY COUNTS
+"SLUG-COMPLICATION-CLEANTIME-DAY"                    = "un jour";
+"SLUG-COMPLICATION-CLEANTIME-DAYS"                   = "%d jours";
+
+// MARK: CLEANDATE SCREEN
+"SLUG-NO-CLEANDATE-YET"                              = "Aucune date de début d’abstinence n’a été définie.";
+"SLUG-CLEANDATE-PICKER-TITLE"                        = "Choisis ta date de début d’abstinence";
+"SLUG-INITIAL-TITLE"                                 = "NACC";
+"SLUG-URL-STRING"                                    = "https://nacc.littlegreenviper.com/?%@";
+"SLUG-TODAY"                                         = "Aujourd’hui";
+"SLUG-RESET"                                         = "Réinitialiser";
+"SLUG-DONE"                                          = "Terminé";
+
+// MARK: CALENDAR EVENT
+"SLUG-CAL-ANNIVERSARY-FORMAT"                        = "Anniversaire NA (%d)";
+"SLUR-ERR-CALENDAR-DENY-ALERT-TITLE"                 = "Accès au calendrier nécessaire";
+"SLUR-ERR-CALENDAR-DENY-ALERT-MESSAGE"               = "Pour ajouter ton anniversaire au calendrier, autorise cette app à accéder à tes calendriers dans les Réglages.";
+"SLUR-ERR-CALENDAR-DENY-ALERT-CANCEL"                = "Pas maintenant";
+"SLUR-ERR-CALENDAR-DENY-ALERT-SETTINGS"              = "Ouvrir les Réglages";
+
+// MARK: ABOUT SCREEN
+"SLUG-ABOUT"                                         = "À propos de NACC";
+"SLUG-APP-INFO-TEXT"                                 = "Cette app simple te permet de calculer ton temps d’abstinence.\n\nElle n’évalue pas la qualité de ton rétablissement ; cela reste entre toi et ton parrain ou ta marraine.\n\nDéfinis la date de début d’abstinence sur ton premier jour d’abstinence, puis touche l’image du porte-clés ou du médaillon pour voir tous les porte-clés et médaillons que tu as obtenus.\n\nSélectionne le logo ci-dessus pour ouvrir une page web contenant des instructions détaillées sur l’utilisation de cette app.\n\nLes liens ci-dessous mènent aux réglages de l’app, à notre page de confidentialité et au site web principal de Little Green Viper LLC.";
+"SLUG-OK-BUTTON-TEXT"                                = "OK";
+"SLUG-APP-INFO-VERSION-FORMAT-SMALL"                 = "Version %@";
+"SLUG-APP-INFO-VERSION-FORMAT"                       = "%@ Version : %@ (%@)";
+"SLUG-COPYRIGHT-BUTTON"                              = "©2022-2024 Little Green Viper Software Development LLC";
+"SLUG-PRIVACY-BUTTON"                                = "Confidentialité";
+"SLUG-SETTINGS-BUTTON"                               = "Réglages de l’app";
+"SLUG-LGV-BUTTON"                                    = "Site web";
+
+// MARK: THE MAIN RESULTS SCREEN
+"SLUG-RESULTS-TITLE"                                 = "Mes récompenses";
+
+// MARK: HORIZONTAL KEYTAGS SCREEN
+"SLUG-TAB-0"                                         = "Porte-clés";
+
+// MARK: VERTICAL KEYTAGS SCREEN
+"SLUG-TAB-1"                                         = "Chaîne";
+
+// MARK: MEDALLIONS SCREEN
+"SLUG-TAB-2"                                         = "Médaillons";
+
+// MARK: ACTION SHEET
+"SLUG-ACTIONS-TITLE"                                 = "Que souhaites-tu faire ?";
+"SLUG-ACTIONS-SHARE"                                 = "Partager mon temps d’abstinence";
+"SLUG-ACTIONS-PRINT"                                 = "Imprimer mon temps d’abstinence";
+"SLUG-CANCEL"                                        = "Annuler";
+
+// MARK: -
+// MARK: - ACCESSIBILITY -
+// MARK: -
+
+// MARK: Cleandate Screen
+"SLUG-ACC-LOGO"                                      = "Affiche les porte-clés que tu as obtenus.";
+"SLUG-ACC-DATEPICKER"                                = "Modifie ta date de début d’abstinence et recalcule ton temps d’abstinence.";
+"SLUG-ACC-REPORT-BUTTON"                             = "Ouvre le sélecteur de date de début d’abstinence.";
+"SLUG-ACC-CALENDAR-BUTTON"                           = "Crée un événement anniversaire qui se répète chaque année.";
+"SLUG-ACC-ACTION-BUTTON"                             = "Propose des options de partage et d’impression de ton rapport de temps d’abstinence.";
+"SLUG-ACC-INFO-BUTTON"                               = "Affiche des informations et de l’aide sur NACC.";
+"SLUG-ACC-IMAGE"                                     = "Affiche les porte-clés ou médaillons que tu as obtenus.";
+
+// MARK: About Screen
+"SLUG-ACC-APPICON-BUTTON"                            = "Ouvre la page d’aide de NACC.";
+"SLUG-ACC-SETTINGS-BUTTON"                           = "Ouvre les réglages de NACC.";
+"SLUG-ACC-PRIVACY-BUTTON"                            = "Ouvre la politique de confidentialité.";
+"SLUG-ACC-LGV-BUTTON"                                = "Ouvre le site web de Little Green Viper.";
+
+// MARK: Tabs
+"SLUG-ACC-Keytag-Array"                              = "Affiche tes porte-clés en rangées.";
+"SLUG-ACC-Keytag-Strip"                              = "Affiche une chaîne verticale de tes porte-clés.";
+"SLUG-ACC-Medallions"                                = "Affiche tes médaillons en rangées.";
+"SLUG-ACC-TABS-ACTION-BUTTON"                        = "Partage ou enregistre l’image de reconnaissance affichée.";
+
+// MARK: App Intents
+
+// Calculate Cleantime (String) Intent
+"Calculate Cleantime"                                = "Calculer mon temps d’abstinence";
+"Returns a summary of your cleantime"                = "Fournit un résumé de ton temps d’abstinence";
+"Enter Your Clean Date"                              = "Saisis ta date de début d’abstinence";
+"You must enter a valid clean date!"                 = "Tu dois saisir une date de début d’abstinence valide !";
+"SLUG-DISPLAY-CLEANTIME-ACTIVITY-TITLE"              = "Afficher le temps d’abstinence";
+"SLUG-INTENTS-SHORTTITLE"                            = "Temps d’abstinence NA";
+
+// MARK: Widget
+"SLUG-WIDGET-NAME"                                   = "NACC";
+"SLUG-WIDGET-DESCRIPTION"                            = "Calcule ton temps d’abstinence !";
+
+// MARK: Accessibility labels and control hints
+"SLUG-ACC-LOGO-LABEL"                                = "Afficher les porte-clés";
+"SLUG-ACC-DATEPICKER-LABEL"                          = "Date de début d’abstinence";
+"SLUG-ACC-REPORT-LABEL"                              = "Rapport de temps d’abstinence";
+"SLUG-ACC-CALENDAR-LABEL"                            = "Ajouter l’anniversaire au calendrier";
+"SLUG-ACC-ACTION-LABEL"                              = "Partager ou imprimer le temps d’abstinence";
+"SLUG-ACC-IMAGE-LABEL"                               = "Afficher la reconnaissance du temps d’abstinence";
+"SLUG-ACC-HELP-LABEL"                                = "Aide NACC";
+"SLUG-ACC-SHARE-IMAGE-LABEL"                         = "Partager l’image de reconnaissance";
+"SLUG-ACC-TODAY-HINT"                                = "Définit aujourd’hui comme date de début d’abstinence.";
+"SLUG-ACC-RESET-HINT"                                = "Rétablit la date sélectionnée à l’ouverture de ce sélecteur.";
+"SLUG-ACC-DONE-HINT"                                 = "Ferme le sélecteur et conserve la date de début d’abstinence choisie.";
+"SLUG-ACC-CANCEL-HINT"                               = "Ferme ces options sans partager ni imprimer.";
+"SLUG-ACC-SHARE-HINT"                                = "Ouvre les options de partage de ton rapport de temps d’abstinence.";
+"SLUG-ACC-PRINT-HINT"                                = "Ouvre les options d’impression de ton rapport de temps d’abstinence.";
+"SLUG-ACC-DEFER-CALENDAR-HINT"                       = "Ferme l’alerte sans modifier l’accès au calendrier.";
+"SLUG-ACC-WIDGET-HINT"                               = "Ouvre NACC pour afficher ton temps d’abstinence.";
+"SLUG-ACC-REPORT-SCROLL-HINT"                        = "Permet de faire défiler ton rapport de temps d’abstinence.";
+"SLUG-ACC-RECOGNITION-SCROLL-HINT"                   = "Permet de faire défiler les porte-clés ou médaillons que tu as obtenus.";
+"SLUG-ACC-ABOUT-SCROLL-HINT"                         = "Permet de faire défiler les informations sur NACC.";
+"SLUG-ACC-WATCH-PAGES-LABEL"                         = "Vues du temps d’abstinence";
+"SLUG-ACC-WATCH-PAGES-HINT"                          = "Choisis la page du rapport, du médaillon ou des porte-clés.";
+"SLUG-REPORT-UNAVAILABLE"                            = "Rapport de temps d’abstinence indisponible.";
+
+// MARK: Localized report overrides for LGV_UICleantime
+
+"SLUG-STATEMENT-IN-RECOVERY-SINCE"                   = "En rétablissement depuis le ";
+"SLUG-STATEMENT-CLEANDATE-SEPARATOR"                 = "\nCe qui représente ";
+"SLUG-STATEMENT-NO-CLEANTIME"                        = "Nous te soutenons sur le chemin du rétablissement.";
+"SLUG-CLEANTIME-DIVIDER"                             = "\nSoit ";
+"SLUG-PREFIX-CLEANTIME-YEAR-EXACT"                   = "exactement un an.";
+"SLUG-PREFIX-CLEANTIME-YEARS-EXACT"                  = "exactement %d ans.";
+"SLUG-PREFIX-CLEANTIME-YEAR"                         = "un an";
+"SLUG-PREFIX-CLEANTIME-YEARS"                        = "%d ans";
+"SLUG-PREFIX-CLEANTIME-MONTH"                        = "un mois";
+"SLUG-PREFIX-CLEANTIME-MONTHS"                       = "%d mois";
+"SLUG-PREFIX-CLEANTIME-DAY"                          = "un jour";
+"SLUG-PREFIX-CLEANTIME-DAYS"                         = "%d jours";
+"SLUG-JOINING-CHAR"                                  = ", ";
+"SLUG-ENDING-CHAR"                                   = ".";
+
+"SLUG-COPY-REPORT" = "Copier le rapport";
+"SLUG-ACC-COPY-REPORT-HINT" = "Copie le rapport de temps d’abstinence dans le presse-papiers.";
+
+"SLUG-ACC-OPTIONS-SCROLL-HINT" = "Permet de faire défiler les actions disponibles.";
+
+// Navigation
+"SLUG-BACK" = "Retour";

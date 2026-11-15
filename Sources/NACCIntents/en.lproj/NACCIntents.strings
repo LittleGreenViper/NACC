@@ -1,0 +1,9 @@
+// Localized Siri intent titles, parameters, and prompts.
+
+"JIIOVV"                                             = "Displays your cleantime, based on your clean date.";
+"PSX6yz"                                             = "Show My Cleantime for ${cleandate}";
+"trmFCl"                                             = "Show my cleantime for ${cleandate}";
+"WQ0Lno"                                             = "Cleandate";
+"P2qwDt"                                             = "Please provide a date after October 5th, 1953.";
+"AK3YI7"                                             = "Report";
+"oaSRoe"                                             = "Show Cleantime";

@@ -178,29 +178,36 @@ struct NACCWidgetEntryView: View {
      It is also possible to only display text, in `systemMedium`.
      */
     var body: some View {
-        if .systemSmall == self._family {
-            if let newGeneratedImage = self.entry.singleMedallion ?? self.entry.singleKeytag {
-                Image(uiImage: newGeneratedImage)
-                    .padding(6)
-                    .shadow(color: .black.opacity(0.45), radius: 6, x: 0, y: 0)
-            } else {
-                Text(self.entry.text)
-                    .foregroundStyle(.primary)
-                    .minimumScaleFactor(0.5)
-            }
-        } else {
-            HStack {
-                Text(self.entry.text)
-                    .foregroundStyle(.primary)
-                    .minimumScaleFactor(0.5)
-                
+        Group {
+            if .systemSmall == self._family {
                 if let newGeneratedImage = self.entry.singleMedallion ?? self.entry.singleKeytag {
                     Image(uiImage: newGeneratedImage)
                         .padding(6)
                         .shadow(color: .black.opacity(0.45), radius: 6, x: 0, y: 0)
+                } else {
+                    Text(self.entry.text)
+                        .foregroundStyle(.primary)
+                        .minimumScaleFactor(0.5)
+                }
+            } else {
+                HStack {
+                    Text(self.entry.text)
+                        .foregroundStyle(.primary)
+                        .minimumScaleFactor(0.5)
+
+                    if let newGeneratedImage = self.entry.singleMedallion ?? self.entry.singleKeytag {
+                        Image(uiImage: newGeneratedImage)
+                            .padding(6)
+                            .shadow(color: .black.opacity(0.45), radius: 6, x: 0, y: 0)
+                    }
                 }
             }
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("SLUG-INTENTS-SHORTTITLE".localizedVariant)
+        .accessibilityValue(self.entry.text)
+        .accessibilityHint("SLUG-ACC-WIDGET-HINT".localizedVariant)
+        .accessibilityAddTraits(.isButton)
     }
 }
 
@@ -227,14 +234,16 @@ struct NACCWidgetIntent: WidgetConfigurationIntent {
     /**
      A simple switch. If on (default is off), then no image is shown; only the text report. This applies to both family variants.
      */
-    @Parameter(title: LocalizedStringResource("SLUG-ONLY-SHOW-TEXT", table: "WidgetStrings"))
+    @Parameter(title: LocalizedStringResource("SLUG-ONLY-SHOW-TEXT", table: "WidgetStrings"),
+               description: LocalizedStringResource("SLUG-ONLY-SHOW-TEXT-HINT", table: "WidgetStrings"))
     var onlyText: Bool?
 
     /* ################################################################## */
     /**
      A simple switch. If on (default is off), then medallions will not be displayed, for cleantime over a year. Ignored, if `onlyText` is true.
      */
-    @Parameter(title: LocalizedStringResource("SLUG-ONLY-SHOW-KEYTAGS", table: "WidgetStrings"))
+    @Parameter(title: LocalizedStringResource("SLUG-ONLY-SHOW-KEYTAGS", table: "WidgetStrings"),
+               description: LocalizedStringResource("SLUG-ONLY-SHOW-KEYTAGS-HINT", table: "WidgetStrings"))
     var forceKeytag: Bool?
     
     /* ################################################################## */
@@ -329,7 +338,7 @@ struct NACC_Entry: TimelineEntry {
         if let textTemp = LGV_UICleantimeDateReportString().naCleantimeText(beginDate: cleanDate, endDate: .now) {
             self.text = textTemp
         } else {
-            self.text = "ERROR"
+            self.text = "SLUG-REPORT-UNAVAILABLE".localizedVariant
         }
 
         let forceKeytagLocal = self.forceKeytag
