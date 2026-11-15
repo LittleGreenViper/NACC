@@ -832,20 +832,20 @@ struct NACC_MainContentView: View {
                                 self.selectedTab = .keytagArray
                                 self.showResult = true
                             } label: {
-                                Image("BrandLogo")
+                                Image("LaunchLogo")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: Self._iconSizeInDisplayUnits)
-                                    .cornerRadius(Self._iconSizeInDisplayUnits / 2)
+                                    .contentShape(Rectangle())
                             }
+                            .buttonStyle(.plain)
                             .accessibilityLabel("SLUG-ACC-LOGO-LABEL".localizedVariant)
                             .accessibilityHint("SLUG-ACC-LOGO".localizedVariant)
                         } else {
-                            Image("BrandLogo")
+                            Image("LaunchLogo")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: Self._iconSizeInDisplayUnits)
-                                .cornerRadius(Self._iconSizeInDisplayUnits / 2)
                         }
                         
                         // If the user has not specified a cleandate, this text item displays a message to that effect.
