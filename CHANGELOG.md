@@ -1,4 +1,4 @@
-**8.0.0.000** *TBD*
+**8.0.0.3000** *November 16, 2026*
 
 - Updated all Swift package dependencies to their latest releases.
 - Updated to the latest tools.
