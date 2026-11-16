@@ -290,29 +290,13 @@ struct NACCWatchAppContentView: View {
     /* ################################################################## */
     /**
      The main view. It's a swiped-tab view (page selector), with text, keytag, and medallion as choices. The choice is saved persistently.
-     A separate settings row opens the cleandate picker without covering the pages.
+     The settings button stays above the pages; its initial clearance scrolls away with the content.
      */
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                HStack {
-                    Spacer()
-                    Button {
-                        self.showCleanDatePicker = true
-                    } label: {
-                        Image(systemName: "gearshape")
-                            .font(.system(size: 14, weight: .regular))
-                            .foregroundStyle(.tint)
-                            .frame(minWidth: 44, minHeight: 44)
-                            .contentShape(Rectangle())
-                    }
-                    .buttonStyle(.borderless)
-                    .accessibilityLabel(NSLocalizedString("SLUG-SELECT-DATE", tableName: "WatchStrings", comment: ""))
-                    .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
-                }
-                .padding(.horizontal, 4)
-
-                GeometryReader { inGeom in
+            GeometryReader { inGeom in
+                let settingsHeight: CGFloat = 44
+                ZStack(alignment: .topTrailing) {
                     let calculator = LGV_CleantimeDateCalc(startDate: self.cleanDate).cleanTime
                     TabView(selection: self.$watchFormat) {
                         ScrollView {
@@ -321,6 +305,7 @@ struct NACCWatchAppContentView: View {
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding()
+                                .padding(.top, settingsHeight)
                         }
                         .accessibilityLabel("SLUG-ACC-REPORT-LABEL".localizedVariant)
                         .accessibilityHint("SLUG-ACC-REPORT-SCROLL-HINT".localizedVariant)
@@ -332,7 +317,8 @@ struct NACCWatchAppContentView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .padding(.bottom, 20)
-                                    .frame(width: inGeom.size.width, height: inGeom.size.height)
+                                    .frame(width: inGeom.size.width, height: max(0, inGeom.size.height - settingsHeight))
+                                    .padding(.top, settingsHeight + inGeom.safeAreaInsets.top)
                                     .accessibilityLabel("SLUG-TAB-2".localizedVariant)
                                     .accessibilityValue(self._displayText)
                                     .accessibilityHint("SLUG-ACC-Medallions".localizedVariant)
@@ -349,12 +335,11 @@ struct NACCWatchAppContentView: View {
                                 ScrollView {
                                     let image = keytagChain
                                     Spacer()
-                                        .frame(height: 8)
+                                        .frame(height: settingsHeight + 8)
                                     Image(uiImage: image)
                                         .accessibilityLabel("SLUG-TAB-1".localizedVariant)
                                         .accessibilityValue(self._displayText)
                                 }
-                                .clipped()
                                 .accessibilityLabel("SLUG-TAB-1".localizedVariant)
                                 .accessibilityHint("SLUG-ACC-RECOGNITION-SCROLL-HINT".localizedVariant)
                             } else {
@@ -379,6 +364,7 @@ struct NACCWatchAppContentView: View {
                         }
                     }
                     .tabViewStyle(PageTabViewStyle())
+                    .ignoresSafeArea(.container, edges: .top)
                     .accessibilityLabel("SLUG-ACC-WATCH-PAGES-LABEL".localizedVariant)
                     .accessibilityHint("SLUG-ACC-WATCH-PAGES-HINT".localizedVariant)
                     .navigationDestination(isPresented: self.$showCleanDatePicker) { CleanDatePicker(cleanDate: self.$cleanDate, syncUp: self.$syncUp) }
@@ -386,6 +372,23 @@ struct NACCWatchAppContentView: View {
                         self.showCleanDatePicker = false
                         self._synchronize()
                     }
+
+                    HStack {
+                        Spacer()
+                        Button {
+                            self.showCleanDatePicker = true
+                        } label: {
+                            Image(systemName: "gearshape")
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundStyle(.tint)
+                                .frame(minWidth: 44, minHeight: 44)
+                                .contentShape(Rectangle())
+                        }
+                        .buttonStyle(.borderless)
+                        .accessibilityLabel(NSLocalizedString("SLUG-SELECT-DATE", tableName: "WatchStrings", comment: ""))
+                        .accessibilityHint("SLUG-ACC-REPORT-BUTTON".localizedVariant)
+                    }
+                    .padding(.horizontal, 4)
                 }
             }
             .background(Color("BackgroundColor-Main").ignoresSafeArea())
