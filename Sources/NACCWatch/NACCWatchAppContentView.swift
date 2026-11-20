@@ -19,100 +19,9 @@
  */
 
 import SwiftUI
-import WatchConnectivity
 import LGV_Cleantime
 import LGV_UICleantime
 import RVS_UIKit_Toolbox
-import WidgetKit
-
-/* ###################################################################################################################################### */
-// MARK: - Observable Model -
-/* ###################################################################################################################################### */
-/**
- This wraps the preferences in an observable wrapper.
- */
-@MainActor
-final class WatchModel: NSObject, ObservableObject, @preconcurrency WCSessionDelegate {
-    /* ################################################################## */
-    /**
-     The text report.
-     */
-    @Published var text: String = ""
-
-    /* ################################################################## */
-    /**
-     The actual cleandate
-     */
-    @Published var cleanDate: Date = NACCPersistentPrefs().cleanDate
-
-    /* ################################################################## */
-    /**
-     Which screen to show
-     */
-    @Published var watchFormat: Int = NACCPersistentPrefs().watchAppDisplayState.rawValue
-
-    /* ################################################################## */
-    /**
-     The task for rendering the text report
-     */
-    private var textTask: Task<Void, Never>?
-
-    /* ################################################################## */
-    /**
-     Tells the app to reload itself from the stored prefs.
-     It does this in a separate thread, as rendering the keytags can take a while.
-     */
-    @MainActor
-    func reloadFromPrefs() {
-        NACCPersistentPrefs().flush()
-        self.cleanDate = NACCPersistentPrefs().cleanDate
-        self.watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue
-
-        // Cancel any in-flight text generation
-        self.textTask?.cancel()
-        let date = self.cleanDate   // capture value
-
-        textTask = Task {
-            let generated = await Task.detached(priority: .userInitiated) {
-                guard !Task.isCancelled else { return "" }
-                return LGV_UICleantimeDateReportString()
-                    .naCleantimeText(beginDate: date, endDate: .now) ?? ""
-            }.value
-
-            guard !Task.isCancelled else { return }
-
-            await MainActor.run {
-                guard !Task.isCancelled else { return }
-                self.text = generated
-            }
-        }
-    }
-
-    /* ################################################################## */
-    /**
-     Called when the app gets its context.
-     
-     - parameter _: Session. ignored
-     - parameter inContext: the app context
-     */
-    func session(_: WCSession, didReceiveApplicationContext inContext: [String: Any]) {
-        Task { @MainActor in
-            if let raw = inContext["watchFormat"] as? Int {
-                NACCPersistentPrefs().watchAppDisplayState = NACCPersistentPrefs.MainWatchState(rawValue: raw) ?? NACCPersistentPrefs.MainWatchState(rawValue: 0) ?? .text
-            }
-            self.reloadFromPrefs()
-        }
-    }
-
-    /* ################################################################## */
-    /**
-     NOP
-     - parameter _: The session. ignored
-     - parameter activationDidCompleteWith: ignored
-     - parameter error: ignored
-     */
-    func session(_: WCSession, activationDidCompleteWith: WCSessionActivationState, error: (any Error)?) { }
-}
 
 /* ###################################################################################################################################### */
 // MARK: - Watch App Content View -
@@ -124,63 +33,52 @@ struct NACCWatchAppContentView: View {
     /* ################################################################## */
     /**
      This is a thread-safe image renderer for the keytags
-     - parameter inDate: The new date that requires an update.
+     - parameter inDates: The clean date and day covered by the report.
      */
-    private static func _renderAssets(for inDate: Date) async -> (keytagChain: UIImage?, singleMedallion: UIImage?) {
-        await Task.detached(priority: .userInitiated) {
-            // Bail out quickly if already cancelled.
-            guard !Task.isCancelled else { return (nil, nil) }
+    @concurrent private static func _renderAssets(for inDates: _ReportDates) async -> (keytagChain: UIImage?, singleMedallion: UIImage?) {
+        // Bail out quickly if already cancelled.
+        guard !Task.isCancelled else { return (nil, nil) }
 
-            let calc = LGV_CleantimeDateCalc(startDate: inDate).cleanTime
+        let calc = LGV_CleantimeDateCalc(startDate: inDates.start, endDate: inDates.end).cleanTime
 
-            guard !Task.isCancelled else { return (nil, nil) }
+        guard !Task.isCancelled else { return (nil, nil) }
 
-            let singleMedallion = (calc.years > 0)
-                ? LGV_MedallionImage(totalMonths: calc.totalMonths).drawImage()
-                : LGV_KeytagImageGenerator(
-                    isRingClosed: true,
-                    totalDays: calc.totalDays,
-                    totalMonths: calc.totalMonths
-                ).generatedImage
-
-            guard !Task.isCancelled else { return (nil, singleMedallion) }
-
-            let keytagChain = LGV_MultiKeytagImageGenerator(
-                isVerticalStrip: true,
+        let singleMedallion = (calc.years > 0)
+            ? LGV_MedallionImage(totalMonths: calc.totalMonths).drawImage()
+            : LGV_KeytagImageGenerator(
+                isRingClosed: true,
                 totalDays: calc.totalDays,
-                totalMonths: calc.totalMonths,
-                widestKeytagImageInDisplayUnits: (calc.years > 2 ? 64 : 128)
+                totalMonths: calc.totalMonths
             ).generatedImage
 
-            guard !Task.isCancelled else { return (nil, singleMedallion) }
+        guard !Task.isCancelled else { return (nil, singleMedallion) }
 
-            return (keytagChain, singleMedallion)
-        }.value
+        let keytagChain = LGV_MultiKeytagImageGenerator(
+            isVerticalStrip: true,
+            totalDays: calc.totalDays,
+            totalMonths: calc.totalMonths,
+            widestKeytagImageInDisplayUnits: (calc.years > 2 ? 64 : 128)
+        ).generatedImage
+
+        guard !Task.isCancelled else { return (nil, singleMedallion) }
+
+        return (keytagChain, singleMedallion)
     }
 
-    /* ################################################################## */
-    /**
-     Task used to render keytags in a separate thread.
-     */
-    static private var _syncTask: Task<Void, Never>?
+    /// A report changes when the clean date changes or a new day begins.
+    private struct _ReportDates: Equatable {
+        let start: Date
+        let end: Date
+    }
 
-    /* ################################################################## */
-    /**
-     Task used to render the text report in a separate thread.
-     */
-    static private var _textSyncTask: Task<Void, Never>?
+    @State private var _today = Calendar.current.startOfDay(for: .now)
+    @State private var _renderedDates: _ReportDates?
 
     /* ################################################################## */
     /**
      Tracks scene activity.
      */
     @Environment(\.scenePhase) private var _scenePhase
-
-    /* ################################################################## */
-    /**
-     An instance of the observable model class.
-     */
-    @Binding var model: WatchModel
 
     /* ################################################################## */
     /**
@@ -202,21 +100,9 @@ struct NACCWatchAppContentView: View {
 
     /* ################################################################## */
     /**
-     The text report to display.
-     */
-    private var _displayText: String { self.model.text.isEmpty ? self.text : self.model.text }
-
-    /* ################################################################## */
-    /**
      This is a binding for a "trigger," that determines whether or not the set cleandate picker is to be shown.
      */
     @Binding var showCleanDatePicker: Bool
-
-    /* ################################################################## */
-    /**
-     This is a binding for a "trigger," that tells the screen to update to the latest values.
-     */
-    @Binding var syncUp: Bool
 
     /* ################################################################## */
     /**
@@ -234,57 +120,24 @@ struct NACCWatchAppContentView: View {
     /**
      This makes sure that the screen reflects the current state.
      */
-    private func _synchronize() {
-        // We’re on the main actor (SwiftUI), so no need for DispatchQueue.main.async
-        guard self.syncUp,
-              !self.showCleanDatePicker
-        else { return }
-
-        self.syncUp = false
-        NACCPersistentPrefs().flush()
-
+    private func _synchronize(for inDates: _ReportDates) async {
+        guard !self.showCleanDatePicker, self._renderedDates != inDates else { return }
+        self._renderedDates = nil
         self.singleMedallion = nil
         self.keytagChain = nil
 
-        // Cancel any previous text render.
-        Self._textSyncTask?.cancel()
-        Self._textSyncTask = nil
+        async let assets = Self._renderAssets(for: inDates)
+        let generated = await Task.detached(priority: .userInitiated) {
+            LGV_UICleantimeDateReportString().naCleantimeText(beginDate: inDates.start, endDate: inDates.end) ?? ""
+        }.value
+        guard !Task.isCancelled, self.cleanDate == inDates.start else { return }
+        self.text = generated
 
-        // Cancel any previous image render.
-        Self._syncTask?.cancel()
-        Self._syncTask = nil
-        
-        let date = self.cleanDate  // capture value so it doesn't change under us
-
-        Self._textSyncTask = Task {
-            let generated = await Task.detached(priority: .userInitiated) {
-                guard !Task.isCancelled else { return "" }
-                return LGV_UICleantimeDateReportString()
-                    .naCleantimeText(beginDate: date, endDate: .now) ?? ""
-            }.value
-
-            guard !Task.isCancelled else { return }
-
-            await MainActor.run {
-                guard self.cleanDate == date else { return }
-                self.text = generated
-                self.model.text = generated
-                Self._textSyncTask = nil
-            }
-        }
-
-        Self._syncTask = Task {
-            let assets = await Self._renderAssets(for: date)
-
-            guard !Task.isCancelled else { return }
-
-            await MainActor.run {
-                guard self.cleanDate == date else { return }
-                self.singleMedallion = assets.singleMedallion
-                self.keytagChain = assets.keytagChain
-                Self._syncTask = nil
-            }
-        }
+        let images = await assets
+        guard !Task.isCancelled, self.cleanDate == inDates.start else { return }
+        self.singleMedallion = images.singleMedallion
+        self.keytagChain = images.keytagChain
+        self._renderedDates = inDates
     }
 
     /* ################################################################## */
@@ -297,10 +150,11 @@ struct NACCWatchAppContentView: View {
             GeometryReader { inGeom in
                 let settingsHeight: CGFloat = 44
                 ZStack(alignment: .topTrailing) {
+                    let reportDates = _ReportDates(start: self.cleanDate, end: self._today)
                     let calculator = LGV_CleantimeDateCalc(startDate: self.cleanDate).cleanTime
                     TabView(selection: self.$watchFormat) {
                         ScrollView {
-                            Text(self._displayText)
+                            Text(self.text)
                                 .foregroundStyle(.primary)
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -311,7 +165,8 @@ struct NACCWatchAppContentView: View {
                         .accessibilityHint("SLUG-ACC-REPORT-SCROLL-HINT".localizedVariant)
                         .tag(NACCPersistentPrefs.MainWatchState.text.rawValue)
 
-                        Group {
+                        // Keep each page stable while its rendered image replaces the spinner.
+                        ZStack {
                             if let singleMedallion = self.singleMedallion {
                                 Image(uiImage: singleMedallion)
                                     .resizable()
@@ -320,7 +175,7 @@ struct NACCWatchAppContentView: View {
                                     .frame(width: inGeom.size.width, height: max(0, inGeom.size.height - settingsHeight))
                                     .padding(.top, settingsHeight + inGeom.safeAreaInsets.top)
                                     .accessibilityLabel("SLUG-TAB-2".localizedVariant)
-                                    .accessibilityValue(self._displayText)
+                                    .accessibilityValue(self.text)
                                     .accessibilityHint("SLUG-ACC-Medallions".localizedVariant)
                             } else {
                                 ProgressView()
@@ -330,7 +185,7 @@ struct NACCWatchAppContentView: View {
                         }
                         .tag(NACCPersistentPrefs.MainWatchState.medallion.rawValue)
 
-                        Group {
+                        ZStack {
                             if let keytagChain = self.keytagChain?.resized(toNewWidth: 2 < calculator.years ? 64 : 128) {
                                 ScrollView {
                                     let image = keytagChain
@@ -338,7 +193,7 @@ struct NACCWatchAppContentView: View {
                                         .frame(height: settingsHeight + 8)
                                     Image(uiImage: image)
                                         .accessibilityLabel("SLUG-TAB-1".localizedVariant)
-                                        .accessibilityValue(self._displayText)
+                                        .accessibilityValue(self.text)
                                 }
                                 .accessibilityLabel("SLUG-TAB-1".localizedVariant)
                                 .accessibilityHint("SLUG-ACC-RECOGNITION-SCROLL-HINT".localizedVariant)
@@ -351,27 +206,20 @@ struct NACCWatchAppContentView: View {
                         .tag(NACCPersistentPrefs.MainWatchState.keytag.rawValue)
                     }
                     .background(Color("BackgroundColor-Main").ignoresSafeArea())
-                    .onDisappear {
-                        Self._textSyncTask?.cancel()
-                        Self._textSyncTask = nil
-                        Self._syncTask?.cancel()
-                        Self._syncTask = nil
+                    .task(id: self.showCleanDatePicker ? nil : reportDates) {
+                        await self._synchronize(for: reportDates)
                     }
-                    .onChange(of: self.syncUp, initial: true) { self._synchronize() }
                     .onChange(of: self._scenePhase, initial: true) {
                         if .active == self._scenePhase {
-                            self.model.reloadFromPrefs()
+                            self._today = Calendar.current.startOfDay(for: .now)
                         }
                     }
                     .tabViewStyle(PageTabViewStyle())
+                    .allowsHitTesting(self.singleMedallion != nil && self.keytagChain != nil)
                     .ignoresSafeArea(.container, edges: .top)
                     .accessibilityLabel("SLUG-ACC-WATCH-PAGES-LABEL".localizedVariant)
                     .accessibilityHint("SLUG-ACC-WATCH-PAGES-HINT".localizedVariant)
-                    .navigationDestination(isPresented: self.$showCleanDatePicker) { CleanDatePicker(cleanDate: self.$cleanDate, syncUp: self.$syncUp) }
-                    .onAppear {
-                        self.showCleanDatePicker = false
-                        self._synchronize()
-                    }
+                    .navigationDestination(isPresented: self.$showCleanDatePicker) { CleanDatePicker(cleanDate: self.$cleanDate) }
 
                     HStack {
                         Spacer()
@@ -408,12 +256,6 @@ struct CleanDatePicker: View {
      The cleandate.
      */
     @Binding var cleanDate: Date
-
-    /* ################################################################## */
-    /**
-     This is a binding for a "trigger," that tells the screen to update to the latest values.
-     */
-    @Binding var syncUp: Bool
 
     /* ################################################################## */
     /**

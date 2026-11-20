@@ -1,4 +1,9 @@
-**8.0.0.3000** *November 16, 2026*
+**8.0.1.3000** *November 20, 2026*
+
+- Fixed a Watch app bug, where an extra reload was triggered.
+- Addressed some Watch sync issues.
+
+**8.0.0.3001** *November 16, 2026*
 
 - Updated all Swift package dependencies to their latest releases.
 - Updated to the latest tools.

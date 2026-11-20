@@ -550,22 +550,10 @@ struct NACC_MainContentView: View {
     
     /* ################################################################## */
     /**
-     This is the local instance of the persistent prefs for the app.
-     */
-    private let _prefs = NACCPersistentPrefs()
-    
-    /* ################################################################## */
-    /**
      This shows a date picker in a modal sheet. If the user taps on the date, they get the sheet.
      */
     private var _calendarIsEnabled: Bool { LGV_CleantimeDateCalc(startDate: self.selectedDate).cleanTime.isOneDayOrMore }
     
-    /* ################################################################## */
-    /**
-     Scene phase, so we know when the app becomes active.
-     */
-    @Environment(\.scenePhase) private var scenePhase
-
     /* ################################################################## */
     /**
      This is set to true, when we want to show the action sheet.
@@ -618,12 +606,6 @@ struct NACC_MainContentView: View {
 
     /* ################################################################## */
     /**
-     This handles interaction with the Watch.
-     */
-    @State private var _watchDelegateObject: NACCWatchAppContentViewWatchDelegate?
-    
-    /* ################################################################## */
-    /**
      This displays the last keytag or medallion earned.
      */
     @State private var _displayedImage: UIImage?
@@ -645,12 +627,6 @@ struct NACC_MainContentView: View {
      */
     @Binding var selectedDate: Date
 
-    /* ################################################################## */
-    /**
-     Updates the user's saved date when it is received from the Watch.
-     */
-    var updateSavedDate: (Date) -> Void
-    
     /* ################################################################## */
     /**
      Allows us to access the openURL capability.
@@ -1010,7 +986,6 @@ struct NACC_MainContentView: View {
             NACC_ActivityView(activityItems: self._activityItems)
         }
         .onAppear {
-            self._watchDelegateObject = self._watchDelegateObject ?? NACCWatchAppContentViewWatchDelegate(updateHandler: self.updateApplicationContext)
             // If we were opened from a URL that specified a tab, then we immediately open the report screen.
             if .undefined != self.selectedTab {
                 self.showResult = true
@@ -1031,44 +1006,6 @@ struct NACC_MainContentView: View {
                 return
             }
             self._displayedImage = generatedImage
-        }
-        .onChange(of: self._showingPicker) { _, inIsShowing in
-            if !inIsShowing {
-                self._watchDelegateObject?.sendApplicationContext()
-            }
-        }
-        .onChange(of: self.scenePhase) { _, newPhase in
-            if newPhase == .active {
-                self._watchDelegateObject?.sendApplicationContext()
-           }
-        }
-    }
-    
-    /* ################################################################## */
-    /**
-     This will update our internal state, to match the new application context that we received from the Watch.
-     
-     - parameter inApplicationContext: The new context dictionary.
-     */
-    func updateApplicationContext(_ inApplicationContext: [String: Any]) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        if let watchFormatTemp = inApplicationContext["watchAppDisplayState"] as? Int,
-           let watchFormatType = NACCPersistentPrefs.MainWatchState(rawValue: watchFormatTemp) {
-            let watchFormat = watchFormatType.rawValue
-            #if DEBUG
-                print("WatchFormat: \(watchFormat)")
-            #endif
-            self._prefs.watchAppDisplayState = watchFormatType
-        }
-        
-        if let cleanDateTemp = inApplicationContext["cleanDate"] as? String,
-           let cleanDate = dateFormatter.date(from: cleanDateTemp) {
-            #if DEBUG
-                print("Cleandate: \(cleanDate)")
-            #endif
-            DispatchQueue.main.async { self.updateSavedDate(cleanDate) }
         }
     }
 }

@@ -46,12 +46,6 @@ struct NACCWatchApp: App {
     
     /* ################################################################## */
     /**
-     An instance of the observable model class.
-     */
-    @State private var _watchModel = WatchModel()
-
-    /* ################################################################## */
-    /**
      The image that represents the keytag chain.
      */
     @State private var _keytagChain: UIImage?
@@ -70,12 +64,6 @@ struct NACCWatchApp: App {
 
     /* ################################################################## */
     /**
-     This is a binding for a "trigger," that tells the screen to update to the latest values.
-     */
-    @State private var _syncUp: Bool = true
-
-    /* ################################################################## */
-    /**
      The text report.
      */
     @State private var _text: String = ""
@@ -90,7 +78,7 @@ struct NACCWatchApp: App {
     /**
      This is a local state that determines which screen is shown (0 is text, 1 is keytag, 2 is medallion).
      */
-    @State private var _watchFormat = NACCPersistentPrefs.MainWatchState.text.rawValue
+    @State private var _watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue
     
     /* ################################################################## */
     /**
@@ -99,18 +87,21 @@ struct NACCWatchApp: App {
      - parameter inApplicationContext: The new context dictionary.
      */
     func updateApplicationContext(_ inApplicationContext: [String: Any]) {
+        // The selected page belongs to the Watch. The phone may echo an older selection.
         if let cleanDateTemp = inApplicationContext["cleanDate"] as? String {
             let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.dateFormat = "yyyy-MM-dd"
-            _cleanDate = dateFormatter.date(from: cleanDateTemp) ?? .now
-            NACCPersistentPrefs().cleanDate = _cleanDate
-            _syncUp = true
-        }
-
-        if let watchFormatTemp = inApplicationContext["watchAppDisplayState"] as? Int,
-           let format = NACCPersistentPrefs.MainWatchState(rawValue: watchFormatTemp) {
-            _watchFormat = format.rawValue
-            NACCPersistentPrefs().watchAppDisplayState = format
+            if let cleanDate = dateFormatter.date(from: cleanDateTemp) {
+                if !Calendar.current.isDate(cleanDate, inSameDayAs: self._cleanDate) {
+                    self._cleanDate = cleanDate
+                }
+                let prefs = NACCPersistentPrefs()
+                // An unset preference also displays today. Save the first received date in that case.
+                if cleanDate != prefs.values[NACCPersistentPrefs.Keys.cleanDate.rawValue] as? Date {
+                    prefs.cleanDate = cleanDate
+                }
+            }
         }
     }
     
@@ -120,37 +111,29 @@ struct NACCWatchApp: App {
      */
     var body: some Scene {
         WindowGroup {
-            NACCWatchAppContentView(model: self.$_watchModel,
-                                    keytagChain: $_keytagChain,
+            NACCWatchAppContentView(keytagChain: $_keytagChain,
                                     singleMedallion: $_singleMedallion,
                                     text: $_text,
                                     showCleanDatePicker: $_showCleanDatePicker,
-                                    syncUp: $_syncUp,
                                     cleanDate: $_cleanDate,
                                     watchFormat: $_watchFormat
             )
             .fontDesign(.default)
             .tint(.accentColor)
-            .onAppear {
-                NACCPersistentPrefs().flush()
-                self._watchFormat = NACCPersistentPrefs().watchAppDisplayState.rawValue
-            }
         }
         .onChange(of: self._cleanDate) {
             if NACCPersistentPrefs().cleanDate != self._cleanDate {
                 NACCPersistentPrefs().cleanDate = self._cleanDate
                 if self._showCleanDatePicker {   // Only if we are changing it on the watch.
                     Self._wcSessionDelegateHandler?.sendApplicationContext()
-                    self._syncUp = true
                 }
                 WidgetCenter.shared.reloadTimelines(ofKind: "NACCWatchComplication")
             }
         }
         .onChange(of: self._watchFormat) {
             if let formatTemp = NACCPersistentPrefs.MainWatchState(rawValue: self._watchFormat),
-               formatTemp != NACCPersistentPrefs().watchAppDisplayState {   // We only send it, if we changed the screen that we're viewing.
+               formatTemp != NACCPersistentPrefs().watchAppDisplayState {
                 NACCPersistentPrefs().watchAppDisplayState = formatTemp
-                Self._wcSessionDelegateHandler?.sendApplicationContext()
             }
         }
         // Forces updates, whenever we become active.

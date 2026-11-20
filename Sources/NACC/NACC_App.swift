@@ -20,6 +20,7 @@
 
 import SwiftUI
 import LGV_Cleantime
+import WatchConnectivity
 import WidgetKit
 import RVS_PersistentPrefs
 import RVS_Generic_Swift_Toolbox
@@ -218,6 +219,9 @@ struct NACC_App: App {
      This contains the cleandate.
      */
     @State private var _dateSession = NACC_CleandateSession(savedDate: NACCPersistentPrefs().cleanDate)
+
+    /** Keeps one Watch session for all of the app's windows. */
+    @State private var _watchDelegateObject: NACCWatchAppContentViewWatchDelegate?
     
     /* ################################################################## */
     /**
@@ -264,6 +268,7 @@ struct NACC_App: App {
     private func _persistSessionDate() {
         guard let date = self._dateSession.dateToSave else { return }
         self._saveDate(date)
+        self._watchDelegateObject?.sendApplicationContext()
     }
 
     /* ################################################################## */
@@ -279,11 +284,22 @@ struct NACC_App: App {
 
     /* ################################################################## */
     /**
-     Watch updates still change the user's saved date, while a temporary report stays on screen.
+     Applies the Watch's settings on the main queue. A temporary report stays on screen.
      */
-    private func _receiveSavedDate(_ inDate: Date) {
-        self._saveDate(inDate)
-        self._dateSession.receiveSavedDate(inDate)
+    private func _receiveWatchContext(_ inApplicationContext: [String: Any]) {
+        if let rawValue = inApplicationContext["watchAppDisplayState"] as? Int,
+           let format = NACCPersistentPrefs.MainWatchState(rawValue: rawValue) {
+            NACCPersistentPrefs().watchAppDisplayState = format
+        }
+
+        guard let dateString = inApplicationContext["cleanDate"] as? String else { return }
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy-MM-dd"
+        if let date = formatter.date(from: dateString) {
+            self._saveDate(date)
+            self._dateSession.receiveSavedDate(date)
+        }
     }
     
     /* ################################################################## */
@@ -298,8 +314,7 @@ struct NACC_App: App {
                                                        set: {
                                                            self._dateSession.selectDate($0)
                                                            self._persistSessionDate()
-                                                       }),
-                                 updateSavedDate: self._receiveSavedDate
+                                                       })
             )
             .fontDesign(.default)
             .tint(.accentColor)
@@ -308,6 +323,9 @@ struct NACC_App: App {
         }
         // Forces updates, whenever we become active.
         .onChange(of: self._scenePhase, initial: true) {
+            if self._watchDelegateObject == nil, WCSession.isSupported() {
+                self._watchDelegateObject = NACCWatchAppContentViewWatchDelegate(updateHandler: self._receiveWatchContext)
+            }
             if .background == self._scenePhase, self._dateSession.isTemporary {
                 self._dateSession.endTemporarySession(savedDate: NACCPersistentPrefs().cleanDate)
                 self._showResult = false
@@ -322,7 +340,7 @@ struct NACC_App: App {
                 }
                 let prefs = NACCPersistentPrefs()
                 prefs.flush()
-
+                self._watchDelegateObject?.sendApplicationContext()
                 WidgetCenter.shared.reloadTimelines(ofKind: Self._widgetKind)
             }
         }
